@@ -1,0 +1,865 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "./generated/werchowsgi"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("WERCHOWSGI_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model USOS {
+  SUC        String?   @db.VarChar(255)
+  ORDEN      String?   @db.VarChar(255)
+  CONTRATO   Int?
+  NRO_ADH    String?   @db.VarChar(255)
+  NRO_DOC    String?   @db.VarChar(255)
+  PLAN       String?   @db.VarChar(255)
+  EDAD       String?   @db.VarChar(255)
+  SEXO       String?   @db.VarChar(255)
+  OBRA_SOC   String?   @db.VarChar(255)
+  FECHA      String?   @db.VarChar(255)
+  FEC_CAJA   String?   @db.VarChar(255)
+  HORA       String?   @db.VarChar(255)
+  SERVICIO   String?   @db.VarChar(255)
+  COMPROBA   String?   @db.VarChar(255)
+  MODALIDAD  String?   @db.VarChar(255)
+  VALOR      String?   @db.VarChar(255)
+  IMPORTE    String?   @db.VarChar(255)
+  PUESTO     String?   @db.VarChar(255)
+  PRESTADO   String?   @db.VarChar(255)
+  ANULADO    String?   @db.VarChar(255)
+  OPERADOR   String?   @db.VarChar(255)
+  OPE_AUTO   String?   @db.VarChar(255)
+  FEC_USO    String?   @db.VarChar(255)
+  PEDIDO     String?   @db.VarChar(255)
+  NRO_RECETA String?   @db.VarChar(255)
+  COMP       String?   @db.VarChar(255)
+  EMPRESA    String?   @db.VarChar(255)
+  N_SERIE    String?   @db.VarChar(255)
+  N_RECIBO   String?   @db.VarChar(255)
+  IMP_NC     String?   @db.VarChar(255)
+  FECHAA     DateTime? @db.Date
+
+  @@ignore
+}
+
+model alta_novell {
+  idnovell            Int       @id @default(autoincrement())
+  fecha_recepcion     DateTime? @db.Date
+  servicio            String?   @db.VarChar(255)
+  monto               Int?
+  monto_letra         String?   @db.VarChar(255)
+  anticipo            Int?
+  gastos_adm          Int?
+  apellido_sol        String?   @db.VarChar(255)
+  nombre_sol          String?   @db.VarChar(255)
+  dni_sol             Int?
+  estcivil_sol        String?   @db.VarChar(255)
+  fecha_nac_sol       DateTime? @db.Date
+  dom_sol             String?   @db.VarChar(255)
+  domnum_sol          Int?
+  piso_sol            String?   @default("1") @db.VarChar(11)
+  barrio_sol          String?   @db.VarChar(255)
+  localidad_sol       String?   @db.VarChar(255)
+  codpostal_sol       Int?
+  telefono_sol        BigInt?
+  movil_sol           BigInt?
+  apellido_ben        String?   @db.VarChar(255)
+  nombre_ben          String?   @db.VarChar(255)
+  dni_ben             Int?
+  estcivil_ben        String?   @db.VarChar(255)
+  fecha_nac_ben       DateTime? @db.Date
+  dom_ben             String?   @db.VarChar(255)
+  domnum_ben          Int?
+  piso_ben            String?   @default("0") @db.VarChar(11)
+  barrio_ben          String?   @db.VarChar(255)
+  localidad_ben       String?   @db.VarChar(255)
+  codpostal_ben       Int?
+  telefono_ben        BigInt?
+  movil_ben           BigInt?
+  operador            String?   @db.VarChar(255)
+  cuotas              Int?
+  nacionalidad_sol    String?   @db.VarChar(255)
+  nacionalidad_ben    String?   @db.VarChar(255)
+  anticipo_letra      String?   @db.VarChar(255)
+  cuotasaldo          Int?
+  cuotasaldo_letra    String?   @db.VarChar(255)
+  cuota_mantenimiento Int?
+}
+
+model caja {
+  idcaja      Int       @id @default(autoincrement())
+  codigo      Int?
+  cuenta      String?   @db.VarChar(255)
+  tipo        String?   @db.VarChar(255)
+  serie       Int?
+  factura     Int?
+  importe     Float?    @db.Float
+  comentarios String?   @db.VarChar(255)
+  nro_caja    Int?
+  movim       String?   @db.VarChar(5)
+  fecha       DateTime? @db.Date
+  puesto      Int?
+  operador    Int?
+  cuit        String?   @db.VarChar(255)
+  proveedor   String?   @db.VarChar(255)
+  sucursal    String?   @db.VarChar(255)
+}
+
+model caja_sucursales {
+  idcaja         Int       @id @default(autoincrement())
+  fecha_carga    DateTime? @db.Date
+  sucursal       String?   @db.VarChar(255)
+  ingresos       Float?    @db.Float
+  egresos        Float?    @db.Float
+  saldo          Float?    @db.Float
+  operador_carga String?   @db.VarChar(255)
+  empresa        String?   @db.VarChar(1)
+}
+
+model campanacasos {
+  idcaso          Int       @id @default(autoincrement())
+  idcampana       Int?
+  fechacampana    DateTime? @db.Date
+  mes             Int?
+  ano             Int?
+  sucursal        String?   @db.VarChar(45)
+  contrato        Int?
+  apellido        String?   @db.VarChar(45)
+  nombre          String?   @db.VarChar(45)
+  dni             Int?
+  telefono        String?   @db.VarChar(45)
+  movil           String?   @db.VarChar(45)
+  calle           String?   @db.VarChar(45)
+  nro_calle       Int?
+  barrio          String?   @db.VarChar(45)
+  localidad       String?   @db.VarChar(45)
+  cuota           Int?
+  cuotasadeudadas Int?
+  montoadeudado   Int?
+  estadocaso      Boolean?
+  accion          Int?
+  edad            Int?
+  adherentes      Int?
+  alta            DateTime? @db.Date
+  vigencia        DateTime? @db.Date
+}
+
+model campanas {
+  idcampana   Int       @id @default(autoincrement())
+  descripcion String?   @db.VarChar(150)
+  operador    String?   @db.VarChar(50)
+  fecha       DateTime? @db.Date
+  empresa     String?   @db.VarChar(50)
+  sucursal    String?   @db.VarChar(50)
+}
+
+model campanatemporal {
+  SUCURSAL          String?   @db.VarChar(1)
+  CONTRATO          Int
+  NRO_DOC           Int?
+  APELLIDOS         String?   @db.VarChar(15)
+  NOMBRES           String?   @db.VarChar(20)
+  ALTA              DateTime? @db.Date
+  VIGENCIA          DateTime? @db.Date
+  CALLE             String?   @db.VarChar(30)
+  NRO_CALLE         Int?
+  BARRIO            String?   @db.VarChar(15)
+  LOCALIDAD         String?   @db.VarChar(15)
+  GRUPO             Int?
+  ZONA              Int?
+  TELEFONO          String?   @db.VarChar(20)
+  MOVIL             String?   @db.VarChar(20)
+  EDAD              BigInt?
+  MES               Int?
+  ANO               Int?
+  IMPORTE           Float?
+  operador          String?   @db.VarChar(255)
+  estado            Boolean?
+  idcaso            Int       @id @default(autoincrement())
+  observacion       String?   @db.VarChar(2000)
+  fecha             String?   @db.VarChar(255)
+  fecha_observacion String?   @db.VarChar(255)
+
+  @@index([CONTRATO], map: "CONTRATO")
+}
+
+model capital_prestamo {
+  idcapital    Int       @id @default(autoincrement())
+  capital      Float?    @db.Float
+  fecha        DateTime? @db.DateTime(0)
+  estado       Boolean?
+  autorizacion Boolean?
+}
+
+model capital_prestamo_empleados {
+  idcapital    Int       @id @default(autoincrement())
+  capital      Float?    @db.Float
+  fecha        DateTime? @db.DateTime(0)
+  estado       Boolean?
+  autorizacion Boolean?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model carteraroja {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(100)
+  NOMBRES   String?   @db.VarChar(100)
+  ALTA      DateTime? @db.Date
+  CALLE     String?   @db.VarChar(50)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(50)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  MES       String    @default("") @db.VarChar(2)
+  ANO       String    @default("") @db.VarChar(4)
+  IMPORTE   Float?
+
+  @@index([CONTRATO], map: "CONTRATO")
+  @@ignore
+}
+
+model categoria_obsequio {
+  idcategoria Int     @id @default(autoincrement())
+  categoria   String? @db.VarChar(255)
+  observacion String? @db.VarChar(1000)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model conceptos_sepelio_cuentas {
+  idconcepto     Int?
+  idcuenta       Int?
+  idempresa      Int?
+  idsucursal     Int?
+  sc_codigo      Int?
+  sc_descripcion String? @db.VarChar(255)
+  sc_cuenta      Int?
+
+  @@ignore
+}
+
+model contratos {
+  idcontrato   Int       @id @default(autoincrement())
+  locatario1   String?   @db.VarChar(255)
+  dni1         Int?
+  domicilio1   String?   @db.VarChar(500)
+  locatario2   String?   @db.VarChar(255)
+  dni2         Int?
+  domicilio2   String?   @db.VarChar(500)
+  monto        Float?    @db.Float
+  fecha_inicio DateTime? @db.Date
+  duracion     Int?
+  locador      Int?
+  operador     String?   @db.VarChar(255)
+  local        String?   @db.VarChar(255)
+  uf           String?   @db.VarChar(255)
+}
+
+model convenio_deuda {
+  idconvdeuda  Int       @id @default(autoincrement())
+  contrato     String?   @db.VarChar(255)
+  apellido     String?   @db.VarChar(255)
+  nombre       String?   @db.VarChar(255)
+  operador     String?   @db.VarChar(255)
+  vigencia     DateTime? @db.Date
+  fecha        DateTime? @db.Date
+  cuotas       Int?
+  dni          Int?
+  empresa      String?   @db.VarChar(255)
+  idoperador   Int?
+  vencimiento1 DateTime? @db.Date
+  importe1     Int?
+  vencimiento2 DateTime? @db.Date
+  importe2     Int?
+  deuda        Int?
+  bonificacion Int?
+  saldo        Int?
+}
+
+model datos {
+  iddato         Int       @id @default(autoincrement())
+  apellido       String?   @db.VarChar(255)
+  nombre         String?   @db.VarChar(255)
+  edad           Int?
+  telefono       BigInt?
+  celular        Int?
+  cobertura      String?   @db.VarChar(255)
+  grupo_familiar String?   @db.VarChar(255)
+  observacion    String?   @db.VarChar(400)
+  operador       String?   @db.VarChar(255)
+  domicilio      String?   @db.VarChar(255)
+  fecha          DateTime? @db.Date
+}
+
+model datos_atencion {
+  iddatos          Int       @id @default(autoincrement())
+  apellido         String?   @db.VarChar(255)
+  nombre           String?   @db.VarChar(255)
+  dni              Int?
+  telefono         Int?
+  parentezco       String?   @db.VarChar(255)
+  motivo           String?   @db.VarChar(500)
+  operador         String?   @db.VarChar(255)
+  operadoratencion String?   @db.VarChar(255)
+  fecha            DateTime? @db.Date
+}
+
+model detalle_orden_pago {
+  iddetallepago  Int       @id @default(autoincrement())
+  norden         String?   @db.VarChar(255)
+  nconsulta      String?   @db.VarChar(255)
+  sucursal       String?   @db.VarChar(255)
+  prestador      String?   @db.VarChar(255)
+  importe        String?   @db.VarChar(255)
+  operador_carga String?   @db.VarChar(255)
+  fecha          DateTime? @db.Date
+}
+
+model empresas {
+  idempresa Int     @id @default(autoincrement())
+  empresa   String? @db.VarChar(255)
+  cuit      String? @db.VarChar(255)
+}
+
+model eventos {
+  idevents Int       @id @default(autoincrement())
+  title    String?   @db.VarChar(255)
+  allDay   Int?      @db.TinyInt
+  start    DateTime? @db.DateTime(0)
+  end      DateTime? @db.DateTime(0)
+}
+
+model fabricante_ataud {
+  idfabricante Int     @id @default(autoincrement())
+  fabricante   String? @db.VarChar(255)
+}
+
+model gestioncaso {
+  idgestion               Int      @id @default(autoincrement())
+  idcaso                  Int?
+  contrato                Int?
+  operador                String?  @db.VarChar(45)
+  accion                  String?  @db.VarChar(200)
+  observacion             String?  @db.VarChar(200)
+  fechaaccion             String?  @db.VarChar(200)
+  nuevaaccion             String?  @db.VarChar(100)
+  fechanuevaaccion        String?  @db.VarChar(200)
+  realizado               Boolean? @default(true)
+  observacion_nuevaaccion String?  @db.VarChar(200)
+}
+
+model historial_acciones {
+  idhistorial Int       @id @default(autoincrement())
+  operador    String?   @db.VarChar(255)
+  fecha       DateTime? @db.DateTime(0)
+  accion      String?   @db.VarChar(1000)
+}
+
+model historial_aprobacion_prestamos {
+  idaprobacion Int       @id @default(autoincrement())
+  operador     String?   @db.VarChar(255)
+  idprestamo   String?   @db.VarChar(255)
+  fecha        DateTime? @db.Timestamp(0)
+  contrato     Int?
+  afiliado     String?   @db.VarChar(255)
+  productor    Int?
+}
+
+model historial_liquidaciones {
+  idliquidacion Int     @id @default(autoincrement())
+  operador      String? @db.VarChar(255)
+  fecha         String? @db.VarChar(255)
+  mes           Int?
+  ano           Int?
+  cobranza      Float?  @db.Float
+  total         Float?  @db.Float
+  comision      Float?  @db.Float
+  entidad       String? @db.VarChar(255)
+}
+
+model intereses_tarjetas {
+  idplan     Int       @id @default(autoincrement())
+  plan_cuota Int?
+  interes    Float?    @db.Float
+  tarjeta    String?   @db.VarChar(255)
+  fecha      DateTime? @db.Date
+  estado     Boolean?
+}
+
+model legajo_virtual {
+  idlegajo     Int       @id @default(autoincrement())
+  contrato     Int?
+  archivo      String?   @db.VarChar(255)
+  fecha_subida DateTime? @db.Date
+  empresa      String?   @db.VarChar(255)
+  tipoarchivo  String?   @db.VarChar(5)
+}
+
+model legajo_virtual_cajas {
+  idlegajo     Int       @id @default(autoincrement())
+  idcaja       Int?
+  archivo      String?   @db.VarChar(255)
+  fecha_subida DateTime? @db.Date
+}
+
+model legajo_virtual_ordenes {
+  idlegajo     Int       @id @default(autoincrement())
+  idorden      Int?
+  archivo      String?   @db.VarChar(255)
+  fecha_subida DateTime? @db.Date
+  empresa      String?   @db.VarChar(255)
+}
+
+model legajo_virtual_personal {
+  idlegajo     Int       @id @default(autoincrement())
+  idpersonal   Int?
+  archivo      String?   @db.VarChar(255)
+  fecha_subida DateTime? @db.Date
+}
+
+model legajo_virtual_prestamos {
+  idlegajo     Int       @id @default(autoincrement())
+  contrato     Int?
+  archivo      String?   @db.VarChar(255)
+  fecha_subida DateTime? @db.Date
+  empresa      String?   @db.VarChar(255)
+  cod_ptm_leg  String?   @db.VarChar(255)
+}
+
+model locador {
+  dni       Int     @id
+  apellido  String  @db.VarChar(100)
+  nombre    String  @db.VarChar(100)
+  domicilio String  @db.VarChar(100)
+  barrio    String? @db.VarChar(100)
+  localidad String  @db.VarChar(100)
+  provincia String  @db.VarChar(100)
+}
+
+model mails {
+  idmail      Int       @id @default(autoincrement())
+  fecha       DateTime? @db.DateTime(0)
+  envia       String?   @db.VarChar(255)
+  recibe      String?   @db.VarChar(255)
+  descrip     String?   @db.VarChar(1000)
+  codmail     String?   @db.VarChar(255)
+  asunto      String?   @db.VarChar(255)
+  leido       Boolean?
+  fecha_leido DateTime? @db.DateTime(0)
+  url_caja    String?   @db.VarChar(255)
+}
+
+model mails_adjuntos {
+  idadjunto Int     @id @default(autoincrement())
+  codmail   String? @db.VarChar(255)
+  adjunto   String? @db.VarChar(255)
+  tipo      String? @db.VarChar(255)
+}
+
+model mbanconv {
+  id_mora   Int     @id @default(autoincrement())
+  tipo      String? @db.VarChar(50)
+  mora      Int?
+  fichas    Int?
+  morarec   Int?
+  fichasrec Int?
+  mes       Int?
+  ano       Int?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model moram {
+  contrato  Int?
+  sucursal  String? @db.VarChar(1)
+  zona      Int?
+  grupo     Int?
+  nro_doc   Int?
+  apellidos String? @db.LongText
+  nombres   String? @db.LongText
+  calle     String? @db.LongText
+  nro_calle Int?
+  barrio    String? @db.LongText
+  localidad String? @db.LongText
+  telefono  String? @db.VarChar(20)
+  movil     String? @db.VarChar(20)
+  cuota     Float?
+  pago      Int     @default(0)
+  mes       Int     @default(0)
+  ano       Int     @default(0)
+
+  @@index([contrato, grupo], map: "contrato")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model moraw {
+  contrato  Int
+  sucursal  String? @db.VarChar(1)
+  zona      Int?
+  grupo     Int?
+  nro_doc   Int?
+  apellidos String? @db.VarChar(100)
+  nombres   String? @db.VarChar(100)
+  calle     String? @db.VarChar(50)
+  nro_calle Int?
+  barrio    String? @db.VarChar(50)
+  localidad String? @db.VarChar(15)
+  telefono  String? @db.VarChar(20)
+  movil     String? @db.VarChar(20)
+  cuota     Float?
+  pago      Int     @default(0)
+  mes       Int?
+  ano       Int?
+
+  @@index([contrato, grupo], map: "contrato")
+  @@ignore
+}
+
+model movimiento_caja_sucursales {
+  idmovimiento     Int       @id @default(autoincrement())
+  fecha_carga      DateTime? @db.Date
+  fecha_movimiento DateTime? @db.Date
+  sucursal         String?   @db.VarChar(255)
+  concepto         String?   @db.VarChar(255)
+  movimiento       String?   @db.VarChar(1)
+  importe          Float?    @db.Float
+  operador_carga   String?   @db.VarChar(255)
+  idcaja           Int?
+  empresa          String?   @db.VarChar(1)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model nomenclador {
+  codigo      String? @db.VarChar(255)
+  detalle     String? @db.VarChar(255)
+  liquidacion String? @db.VarChar(255)
+  F4          String? @db.VarChar(255)
+
+  @@ignore
+}
+
+model noticia {
+  idnoticia Int       @id @default(autoincrement())
+  fecha     DateTime? @db.DateTime(0)
+  noticia   String?   @db.VarChar(1500)
+  operador  String?   @db.VarChar(50)
+  perfil    Int?
+}
+
+model novedades {
+  idnovedades Int       @id @default(autoincrement())
+  novedad     String?   @db.VarChar(1000)
+  fecha       DateTime? @db.DateTime(0)
+  operador    String?   @db.VarChar(255)
+  estado      Boolean?
+}
+
+model obsequios {
+  idobsequio       Int     @id @default(autoincrement())
+  producto         String? @db.VarChar(255)
+  marca            String? @db.VarChar(255)
+  categoria        String? @db.VarChar(255)
+  precio           Float?  @db.Float
+  stock            Int?
+  operador         String? @db.VarChar(255)
+  fecha            String? @db.VarChar(255)
+  observacion      String? @db.VarChar(1000)
+  fecha_reposicion String? @db.VarChar(255)
+  operador_rep     String? @db.VarChar(255)
+}
+
+model openia_keys {
+  idkey  Int       @id @default(autoincrement())
+  key    String?   @db.VarChar(255)
+  fecha  DateTime? @db.Date
+  estado Boolean?
+}
+
+model operador {
+  id         Int      @id @default(autoincrement())
+  nombre     String   @db.VarChar(255)
+  apellido   String   @db.VarChar(255)
+  usuario    String   @db.VarChar(255)
+  contrasena String   @db.VarChar(255)
+  createdAt  DateTime @db.DateTime(0)
+  updatedAt  DateTime @db.DateTime(0)
+  puestom    Int?
+  perfil     Int?
+  estado     Boolean?
+  puestow    Int?
+  codigo     Int?
+  medicos    Boolean?
+  sucursal   String?  @db.VarChar(255)
+}
+
+model ordenes_pago {
+  idorden               Int       @id @default(autoincrement())
+  fecha                 DateTime? @db.Date
+  proveedor             String?   @db.VarChar(255)
+  cuit_cuil             String?   @db.VarChar(255)
+  total                 Float?    @db.Float
+  operador_carga        String?   @db.VarChar(255)
+  autorizado            Boolean?
+  operador_autorizacion String?   @db.VarChar(255)
+  fecha_autorizacion    DateTime? @db.Date
+  norden                String?   @db.VarChar(255)
+  observacion           String?   @db.VarChar(1000)
+  nombre                String?   @db.VarChar(255)
+  tipo_orden            String?   @db.VarChar(500)
+  nfactura              String?   @db.VarChar(500)
+  tipo_factura          String?   @db.VarChar(255)
+  fecha_pago            DateTime? @db.Date
+  pagado                Boolean?
+  estado                Boolean?
+}
+
+model personal {
+  idpersonal Int       @id @default(autoincrement())
+  apellido   String?   @db.VarChar(255)
+  nombre     String?   @db.VarChar(255)
+  dni        Int?
+  alta       DateTime? @db.Date
+  rol        String?   @db.VarChar(255)
+  legajo     String?   @db.VarChar(255)
+  baja       DateTime? @db.Date
+}
+
+model plan_cuentas {
+  idcuenta    Int     @id @default(autoincrement())
+  idempresa   Int?
+  codigo      Int?
+  descripcion String? @db.VarChar(500)
+  asiento     Int?
+  tipo        String? @db.VarChar(5)
+}
+
+model plan_cuentas_x {
+  idcuenta    Int     @id @default(autoincrement())
+  idempresa   Int?
+  codigo      Int?
+  descripcion String? @db.VarChar(500)
+  asiento     Int?
+  tipo        String? @db.VarChar(5)
+}
+
+model plan_detalle {
+  id_plandetalle Int      @id @default(autoincrement())
+  detalle        String?  @db.VarChar(1000)
+  cuota          Int?
+  sub_ext        Boolean?
+  vigencia       String?  @db.VarChar(255)
+  id_plan        Int?
+}
+
+model plan_precio {
+  id_plan   Int     @id @default(autoincrement())
+  plan      String? @db.VarChar(255)
+  tipo_plan String? @db.VarChar(255)
+  codigo    String? @db.VarChar(255)
+}
+
+model porcentaje_liq {
+  porcliq_id         Int     @id @default(autoincrement())
+  porcliq_nombre     String? @db.VarChar(20)
+  porcliq_descrip    String? @db.VarChar(50)
+  porcliq_cuotas     Int?
+  porcliq_porcentaje Int?
+}
+
+model prestamos_empleados {
+  idprestamo      Int       @id @default(autoincrement())
+  empleado        String?   @db.VarChar(255)
+  fecha_solicitud DateTime? @db.Date
+  capital         Float?    @db.Float
+  plan_cuotas     Int?
+  cuota_mensual   Float?    @db.Float
+  capital_dev     Float?    @db.Float
+  inicia          String?   @db.VarChar(255)
+  termina         String?   @db.VarChar(255)
+  estado          String?   @db.VarChar(255)
+}
+
+model prestamos_empleados_cobro {
+  idpago      Int       @id @default(autoincrement())
+  idprestamo  Int?
+  cuota       Int?
+  importe     Float?    @db.Float
+  fecha_cobro DateTime? @db.Date
+  estado      Boolean?
+  fecha_pago  DateTime? @db.Date
+  operador    String?   @db.VarChar(255)
+}
+
+model produccion {
+  prod_ide        Int       @id @default(autoincrement())
+  prod_fechacarga DateTime? @db.Date
+  prod_fechaafi   DateTime? @db.Date
+  prod_asesor     Int?
+  prod_empre      String?   @db.VarChar(4)
+  prod_mes        String?   @db.VarChar(10)
+  prod_anio       Int?
+  prod_apeafi     String?   @db.VarChar(30)
+  prod_nomafi     String?   @db.VarChar(60)
+  prod_dniafi     Int?
+  prod_local      Int?
+  prod_recibo     Int?
+  prod_monto      Float?    @db.Float
+  prod_plan       String?   @db.VarChar(20)
+  prod_pago       String?   @db.VarChar(20)
+  prod_cta_tar    BigInt?
+  prod_obs        String?   @db.Text
+  prod_semana     Int?
+  prod_estado     String?   @db.VarChar(15)
+  prod_cierre     Int?
+  prod_afiliado   Int?
+  prod_rendido    String?   @db.VarChar(2)
+  prod_recibosis  Int?
+  prod_fechren    DateTime? @db.Date
+  prod_tel        String?   @db.VarChar(50)
+}
+
+model registro_constancia_afiliacion {
+  idconstancia       Int       @id @default(autoincrement())
+  apellido_extinto   String?   @db.VarChar(255)
+  nombre_extinto     String?   @db.VarChar(255)
+  dni_extinto        Int?
+  apellido_soli      String?   @db.VarChar(255)
+  nombre_soli        String?   @db.VarChar(255)
+  dni_soli           String?   @db.VarChar(255)
+  lugar_presentacion String?   @db.VarChar(500)
+  fecha              DateTime? @db.Date
+  operador           String?   @db.VarChar(255)
+  idservicio         Int?
+}
+
+model rehabilitaciones {
+  idrehab    Int       @id @default(autoincrement())
+  contrato   String?   @db.VarChar(255)
+  apellido   String?   @db.VarChar(255)
+  nombre     String?   @db.VarChar(255)
+  operador   String?   @db.VarChar(255)
+  vigencia   DateTime? @db.Date
+  fecha      DateTime? @db.Date
+  cuotas     Int?
+  dni        Int?
+  empresa    String?   @db.VarChar(255)
+  idoperador Int?
+}
+
+model rol_personal {
+  idrol Int     @id @default(autoincrement())
+  rol   String? @db.VarChar(255)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model sub2 {
+  EXPEDIEN  String?   @db.VarChar(255)
+  CODIGO    String?   @db.VarChar(255)
+  VALOR     String?   @db.VarChar(255)
+  IMPORTE   String?   @db.VarChar(255)
+  NRO       String?   @db.VarChar(255)
+  FEC_AUTOR DateTime? @db.Date
+  ASUNTO    String?   @db.VarChar(255)
+  ORDEN     String?   @db.VarChar(255)
+  OPE_AUT   String?   @db.VarChar(255)
+
+  @@ignore
+}
+
+model sucursal {
+  idsucursal Int     @id @default(autoincrement())
+  sucursal   String? @db.VarChar(255)
+  codigo     String? @db.VarChar(255)
+}
+
+model sueldos {
+  sld_id        Int     @id @default(autoincrement())
+  sld_perfil    String? @db.VarChar(20)
+  sld_basico    Float?  @db.Float
+  sld_basicoant Float?  @db.Float
+}
+
+model tab_ef {
+  id      String    @id @db.VarChar(255)
+  start   DateTime? @db.DateTime(0)
+  end     DateTime? @db.DateTime(0)
+  allDay  Int?      @db.TinyInt
+  holiday Int?      @db.TinyInt
+  title   String?   @db.VarChar(500)
+  user    String?   @db.VarChar(255)
+  detail  String?   @db.VarChar(1000)
+}
+
+model tablero_efectividad {
+  idregistro  Int      @id @default(autoincrement())
+  ano         Int?
+  mes         Int?
+  dia         Int?
+  efectividad Float?   @db.Float
+  aumento     Boolean?
+  por_aumento Float?   @db.Float
+  feriado     Boolean?
+}
+
+model tareas_sucursales {
+  idevents Int       @id @default(autoincrement())
+  title    String?   @db.VarChar(255)
+  allDay   Int?      @db.TinyInt
+  start    DateTime? @db.DateTime(0)
+  end      DateTime? @db.DateTime(0)
+  priority Int?
+  sucursal String?   @db.VarChar(255)
+  operador String?   @db.VarChar(255)
+  leido    Boolean?
+}
+
+model tipo_contratos {
+  idtipocontrato Int     @id @default(autoincrement())
+  tipo_contrato  String? @db.VarChar(255)
+  url            String? @db.VarChar(255)
+}
+
+model tipo_facturas {
+  idfactura    Int       @id @default(autoincrement())
+  tipo_factura String?   @db.VarChar(255)
+  fecha        DateTime? @db.Date
+  estado       Boolean?
+}
+
+model turno_bajas {
+  idturno           Int       @id @default(autoincrement())
+  contrato          Int?
+  apellido          String?   @db.VarChar(255)
+  nombre            String?   @db.VarChar(255)
+  dni               Int?
+  fecha_pedido      DateTime? @db.Date
+  fecha_turno       DateTime? @db.Date
+  motivo            String?   @db.VarChar(500)
+  operador          String?   @db.VarChar(255)
+  telefono          BigInt?
+  celular           BigInt?
+  fecha_atencion    DateTime? @db.Date
+  estado            Int?      @db.TinyInt
+  empresa           String?   @db.VarChar(255)
+  respuesta         String?   @db.VarChar(500)
+  operador_atencion String?   @db.VarChar(255)
+}
+
+model vacaciones {
+  id       String    @id @db.VarChar(255)
+  start    DateTime? @db.DateTime(0)
+  end      DateTime? @db.DateTime(0)
+  allDay   Int?      @db.TinyInt
+  priority Int?      @db.TinyInt
+  title    String?   @db.VarChar(500)
+  user     String?   @db.VarChar(255)
+  detail   String?   @db.VarChar(1000)
+}
