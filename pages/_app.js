@@ -4,6 +4,7 @@ import { Layout } from '@/components/Layouts/Layout'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { WerchowProvider } from '@/context/WerchowProvider';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
 export default function App({ Component, pageProps }) {

@@ -1,0 +1,320 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "./generated/werchowcamp"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("WERCHOWCAMP_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model at2campana {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")
+
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model atcampana {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  MAIL      String?   @db.VarChar(60)
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")
+
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model blancampana {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")
+
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model reccampana {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model reincampana {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")  
+}
+
+model auxcampana {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")
+}
+
+model policampana {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")
+}
+
+model at2campanaM {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")
+}
+
+model atcampanaM {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")
+}
+
+model blancampanaM {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")
+}
+
+model reccampanaM {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")
+}
+
+model reincampanaM {
+  SUCURSAL  String?   @db.VarChar(1)
+  CONTRATO  Int
+  NRO_DOC   Int?
+  APELLIDOS String?   @db.VarChar(15)
+  NOMBRES   String?   @db.VarChar(20)
+  ALTA      DateTime? @db.Date
+  VIGENCIA  DateTime? @db.Date
+  CALLE     String?   @db.VarChar(30)
+  NRO_CALLE Int?
+  BARRIO    String?   @db.VarChar(15)
+  LOCALIDAD String?   @db.VarChar(15)
+  GRUPO     Int?
+  ZONA      Int?
+  TELEFONO  String?   @db.VarChar(20)
+  MOVIL     String?   @db.VarChar(20)
+  EDAD      Int?
+  MES       Int?
+  ANO       Int?
+  IMPORTE   Float?
+  ID        Int       @id @default(autoincrement())
+
+  @@index([CONTRATO], map: "CONTRATO")
+}

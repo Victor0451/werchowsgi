@@ -8,7 +8,10 @@ import {
     UserCircleIcon,
     CodeBracketSquareIcon,
 } from "@heroicons/react/24/outline";
-import { NavListMenu } from "./NavListMenu";
+import { Campanas } from "./Campanas";
+import { Prestamos } from './Prestamos';
+import { Sepelio } from './Sepelio';
+
 
 // nav list component
 const navListItems = [
@@ -29,7 +32,10 @@ const navListItems = [
 export const NavListItems = () => {
     return (
         <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-            <NavListMenu />
+            <Campanas />
+            <Prestamos />
+            <Sepelio />
+
             {navListItems.map(({ label, icon }, key) => (
                 <Typography
                     key={label}

@@ -173,7 +173,7 @@ model campanatemporal {
   ZONA              Int?
   TELEFONO          String?   @db.VarChar(20)
   MOVIL             String?   @db.VarChar(20)
-  EDAD              BigInt?
+  EDAD              Int?
   MES               Int?
   ANO               Int?
   IMPORTE           Float?
@@ -183,6 +183,7 @@ model campanatemporal {
   observacion       String?   @db.VarChar(2000)
   fecha             String?   @db.VarChar(255)
   fecha_observacion String?   @db.VarChar(255)
+  accion            String?   @db.VarChar(255)
 
   @@index([CONTRATO], map: "CONTRATO")
 }
@@ -347,13 +348,13 @@ model gestioncaso {
   idcaso                  Int?
   contrato                Int?
   operador                String?  @db.VarChar(45)
-  accion                  String?  @db.VarChar(200)
-  observacion             String?  @db.VarChar(200)
-  fechaaccion             String?  @db.VarChar(200)
+  accion                  String?  @db.VarChar(255)
+  observacion             String?  @db.VarChar(1000)
+  fechaaccion             String?  @db.VarChar(255)
   nuevaaccion             String?  @db.VarChar(100)
-  fechanuevaaccion        String?  @db.VarChar(200)
+  fechanuevaaccion        String?  @db.VarChar(255)
   realizado               Boolean? @default(true)
-  observacion_nuevaaccion String?  @db.VarChar(200)
+  observacion_nuevaaccion String?  @db.VarChar(1000)
 }
 
 model historial_acciones {
@@ -685,6 +686,7 @@ model prestamos_empleados {
   inicia          String?   @db.VarChar(255)
   termina         String?   @db.VarChar(255)
   estado          String?   @db.VarChar(255)
+  capinoaut       Boolean?
 }
 
 model prestamos_empleados_cobro {
@@ -844,13 +846,14 @@ model turno_bajas {
   fecha_turno       DateTime? @db.Date
   motivo            String?   @db.VarChar(500)
   operador          String?   @db.VarChar(255)
-  telefono          BigInt?
-  celular           BigInt?
+  telefono          String?   @db.VarChar(255)
+  movil             String?   @db.VarChar(255)
   fecha_atencion    DateTime? @db.Date
   estado            Int?      @db.TinyInt
   empresa           String?   @db.VarChar(255)
   respuesta         String?   @db.VarChar(500)
   operador_atencion String?   @db.VarChar(255)
+  detalle           String?   @db.VarChar(3000)
 }
 
 model vacaciones {
@@ -862,4 +865,25 @@ model vacaciones {
   title    String?   @db.VarChar(500)
   user     String?   @db.VarChar(255)
   detail   String?   @db.VarChar(1000)
+}
+
+model motivos_atencion {
+  idmotivo Int      @id @default(autoincrement())
+  motivo   String?  @db.VarChar(255)
+  estado   Boolean?
+}
+
+model prestamos_plan_cuotas {
+  idplan      Int      @id @default(autoincrement())
+  plan_cuotas Int?
+  detalle     String?  @db.VarChar(255)
+  estado      Boolean?
+}
+
+model prestamos_tasas {
+  idtasa Int      @id @default(autoincrement())
+  tasa   Int?
+  plan   String?  @db.VarChar(255)
+  tipo   String?  @db.VarChar(255)
+  estado Boolean?
 }

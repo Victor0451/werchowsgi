@@ -14,9 +14,11 @@ import {
     TabsBody,
     Tab,
     TabPanel,
+    Alert
 } from "@material-tailwind/react";
 import {
-    BellIcon
+    BellIcon,
+    InformationCircleIcon
 } from "@heroicons/react/24/solid";
 import { registrarHistoria } from '../../../libs/funciones'
 import { toast } from 'react-toastify'
@@ -33,7 +35,10 @@ export default function Campana() {
     const [fechaNuAcc, guardarFechaNuAcc] = useState("")
     const [observAcc, guardarObservAcc] = useState("")
     const [observNuAcc, guardarObservNuAcc] = useState("")
+    const [historial, guardarHistorial] = useState([])
     const [errores, guardarErrores] = useState(null)
+    const [noData, guardarNoData] = useState(false)
+    const [noData2, guardarNoData2] = useState(false)
 
     const { isLoading } = useUser()
 
@@ -84,7 +89,17 @@ export default function Campana() {
             }
         }).then(res => {
 
-            guardarListado(res.data)
+            if (res.data.length > 0) {
+
+                guardarNoData(false)
+                guardarListado(res.data)
+
+            } else if (res.data.length === 0) {
+
+                guardarNoData(true)
+
+
+            }
 
         }).catch(error => {
 
@@ -100,8 +115,19 @@ export default function Campana() {
                 f: 'casos trabajados'
             }
         }).then(res => {
+            if (res.data.length > 0) {
 
-            guardarListadoTrab(res.data)
+                guardarNoData2(false)
+                guardarListadoTrab(res.data)
+
+            } else if (res.data.length === 0) {
+
+                guardarNoData2(true)
+
+
+            }
+
+
 
         }).catch(error => {
 
@@ -197,8 +223,29 @@ export default function Campana() {
 
     };
 
-    useSWR("/api/campanas", nuevosCasos);
+    const historialBonif = async (id) => {
 
+        guardarHistorial([])
+
+        await axios.get(`/api/campanas`, {
+            params: {
+                id: id,
+                f: 'historial'
+            }
+        }).then(res => {
+
+            guardarHistorial(res.data)
+
+        }).catch(error => {
+
+            console.log(error)
+
+        })
+
+
+    }
+
+    useSWR("/api/campanas", nuevosCasos);
 
     return (
 
@@ -238,28 +285,61 @@ export default function Campana() {
 
                                             <TabPanel value={"asignado"}>
 
-                                                <ListadoCasos
-                                                    listado={listado}
-                                                    camp={camp}
-                                                    RegistrarGestion={RegistrarGestion}
-                                                    handleChange={handleChange}
-                                                    errores={errores}
-                                                    usu={usu}
-                                                />
+
+                                                {noData === true ? (
+                                                    <Alert
+                                                        icon={
+                                                            <InformationCircleIcon
+                                                                strokeWidth={2}
+                                                                className="h-6 w-6"
+                                                            />
+                                                        }
+                                                    >
+                                                        No hay casos asignados.
+                                                    </Alert>
+                                                ) : (
+                                                    <ListadoCasos
+                                                        listado={listado}
+                                                        camp={camp}
+                                                        RegistrarGestion={RegistrarGestion}
+                                                        handleChange={handleChange}
+                                                        errores={errores}
+                                                        usu={usu}
+                                                        historialBonif={historialBonif}
+                                                        historial={historial}
+                                                        noData={noData}
+                                                    />
+                                                )}
+
 
                                             </TabPanel >
 
                                             <TabPanel value={"trabajado"}>
+                                                {noData2 === true ? (
+                                                    <Alert
+                                                        icon={
+                                                            <InformationCircleIcon
+                                                                strokeWidth={2}
+                                                                className="h-6 w-6"
+                                                            />
+                                                        }
+                                                    >
+                                                        No hay casos asignados.
+                                                    </Alert>
+                                                ) : (
+                                                    <ListadoCasos
+                                                        listado={listadoTrab}
+                                                        camp={camp}
+                                                        RegistrarGestion={RegistrarGestion}
+                                                        handleChange={handleChange}
+                                                        errores={errores}
+                                                        usu={usu}
+                                                        historialBonif={historialBonif}
+                                                        historial={historial}
+                                                        noData={noData}
 
-                                                <ListadoCasos
-                                                    listado={listadoTrab}
-                                                    camp={camp}
-                                                    RegistrarGestion={RegistrarGestion}
-                                                    handleChange={handleChange}
-                                                    errores={errores}
-                                                    usu={usu}
-                                                />
-
+                                                    />
+                                                )}
 
                                             </TabPanel>
 

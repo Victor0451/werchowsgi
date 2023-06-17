@@ -163,7 +163,7 @@ export type campanatemporal = {
   ZONA: number | null
   TELEFONO: string | null
   MOVIL: string | null
-  EDAD: bigint | null
+  EDAD: number | null
   MES: number | null
   ANO: number | null
   IMPORTE: number | null
@@ -173,6 +173,7 @@ export type campanatemporal = {
   observacion: string | null
   fecha: string | null
   fecha_observacion: string | null
+  accion: string | null
 }
 
 /**
@@ -346,12 +347,13 @@ export type gestioncaso = {
   idcaso: number | null
   contrato: number | null
   operador: string | null
-  accion: number | null
+  accion: string | null
   observacion: string | null
-  fechaaccion: Date | null
+  fechaaccion: string | null
   nuevaaccion: string | null
-  fechanuevaaccion: Date | null
+  fechanuevaaccion: string | null
   realizado: boolean | null
+  observacion_nuevaaccion: string | null
 }
 
 /**
@@ -733,6 +735,7 @@ export type prestamos_empleados = {
   inicia: string | null
   termina: string | null
   estado: string | null
+  capinoaut: boolean | null
 }
 
 /**
@@ -929,13 +932,14 @@ export type turno_bajas = {
   fecha_turno: Date | null
   motivo: string | null
   operador: string | null
-  telefono: bigint | null
-  celular: bigint | null
+  telefono: string | null
+  movil: string | null
   fecha_atencion: Date | null
   estado: number | null
   empresa: string | null
   respuesta: string | null
   operador_atencion: string | null
+  detalle: string | null
 }
 
 /**
@@ -951,6 +955,39 @@ export type vacaciones = {
   title: string | null
   user: string | null
   detail: string | null
+}
+
+/**
+ * Model motivos_atencion
+ * 
+ */
+export type motivos_atencion = {
+  idmotivo: number
+  motivo: string | null
+  estado: boolean | null
+}
+
+/**
+ * Model prestamos_plan_cuotas
+ * 
+ */
+export type prestamos_plan_cuotas = {
+  idplan: number
+  plan_cuotas: number | null
+  detalle: string | null
+  estado: boolean | null
+}
+
+/**
+ * Model prestamos_tasas
+ * 
+ */
+export type prestamos_tasas = {
+  idtasa: number
+  tasa: number | null
+  plan: string | null
+  tipo: string | null
+  estado: boolean | null
 }
 
 
@@ -1660,6 +1697,36 @@ export class PrismaClient<
     * ```
     */
   get vacaciones(): Prisma.vacacionesDelegate<GlobalReject>;
+
+  /**
+   * `prisma.motivos_atencion`: Exposes CRUD operations for the **motivos_atencion** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Motivos_atencions
+    * const motivos_atencions = await prisma.motivos_atencion.findMany()
+    * ```
+    */
+  get motivos_atencion(): Prisma.motivos_atencionDelegate<GlobalReject>;
+
+  /**
+   * `prisma.prestamos_plan_cuotas`: Exposes CRUD operations for the **prestamos_plan_cuotas** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Prestamos_plan_cuotas
+    * const prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.findMany()
+    * ```
+    */
+  get prestamos_plan_cuotas(): Prisma.prestamos_plan_cuotasDelegate<GlobalReject>;
+
+  /**
+   * `prisma.prestamos_tasas`: Exposes CRUD operations for the **prestamos_tasas** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Prestamos_tasas
+    * const prestamos_tasas = await prisma.prestamos_tasas.findMany()
+    * ```
+    */
+  get prestamos_tasas(): Prisma.prestamos_tasasDelegate<GlobalReject>;
 }
 
 export namespace Prisma {
@@ -2187,7 +2254,10 @@ export namespace Prisma {
     tipo_contratos: 'tipo_contratos',
     tipo_facturas: 'tipo_facturas',
     turno_bajas: 'turno_bajas',
-    vacaciones: 'vacaciones'
+    vacaciones: 'vacaciones',
+    motivos_atencion: 'motivos_atencion',
+    prestamos_plan_cuotas: 'prestamos_plan_cuotas',
+    prestamos_tasas: 'prestamos_tasas'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -7685,7 +7755,7 @@ export namespace Prisma {
     NRO_CALLE: number | null
     GRUPO: number | null
     ZONA: number | null
-    EDAD: bigint | null
+    EDAD: number | null
     MES: number | null
     ANO: number | null
     IMPORTE: number | null
@@ -7708,7 +7778,7 @@ export namespace Prisma {
     ZONA: number | null
     TELEFONO: string | null
     MOVIL: string | null
-    EDAD: bigint | null
+    EDAD: number | null
     MES: number | null
     ANO: number | null
     IMPORTE: number | null
@@ -7718,6 +7788,7 @@ export namespace Prisma {
     observacion: string | null
     fecha: string | null
     fecha_observacion: string | null
+    accion: string | null
   }
 
   export type CampanatemporalMaxAggregateOutputType = {
@@ -7736,7 +7807,7 @@ export namespace Prisma {
     ZONA: number | null
     TELEFONO: string | null
     MOVIL: string | null
-    EDAD: bigint | null
+    EDAD: number | null
     MES: number | null
     ANO: number | null
     IMPORTE: number | null
@@ -7746,6 +7817,7 @@ export namespace Prisma {
     observacion: string | null
     fecha: string | null
     fecha_observacion: string | null
+    accion: string | null
   }
 
   export type CampanatemporalCountAggregateOutputType = {
@@ -7774,6 +7846,7 @@ export namespace Prisma {
     observacion: number
     fecha: number
     fecha_observacion: number
+    accion: number
     _all: number
   }
 
@@ -7830,6 +7903,7 @@ export namespace Prisma {
     observacion?: true
     fecha?: true
     fecha_observacion?: true
+    accion?: true
   }
 
   export type CampanatemporalMaxAggregateInputType = {
@@ -7858,6 +7932,7 @@ export namespace Prisma {
     observacion?: true
     fecha?: true
     fecha_observacion?: true
+    accion?: true
   }
 
   export type CampanatemporalCountAggregateInputType = {
@@ -7886,6 +7961,7 @@ export namespace Prisma {
     observacion?: true
     fecha?: true
     fecha_observacion?: true
+    accion?: true
     _all?: true
   }
 
@@ -7992,7 +8068,7 @@ export namespace Prisma {
     ZONA: number | null
     TELEFONO: string | null
     MOVIL: string | null
-    EDAD: bigint | null
+    EDAD: number | null
     MES: number | null
     ANO: number | null
     IMPORTE: number | null
@@ -8002,6 +8078,7 @@ export namespace Prisma {
     observacion: string | null
     fecha: string | null
     fecha_observacion: string | null
+    accion: string | null
     _count: CampanatemporalCountAggregateOutputType | null
     _avg: CampanatemporalAvgAggregateOutputType | null
     _sum: CampanatemporalSumAggregateOutputType | null
@@ -8049,6 +8126,7 @@ export namespace Prisma {
     observacion?: boolean
     fecha?: boolean
     fecha_observacion?: boolean
+    accion?: boolean
   }
 
 
@@ -19182,14 +19260,12 @@ export namespace Prisma {
     idgestion: number | null
     idcaso: number | null
     contrato: number | null
-    accion: number | null
   }
 
   export type GestioncasoSumAggregateOutputType = {
     idgestion: number | null
     idcaso: number | null
     contrato: number | null
-    accion: number | null
   }
 
   export type GestioncasoMinAggregateOutputType = {
@@ -19197,12 +19273,13 @@ export namespace Prisma {
     idcaso: number | null
     contrato: number | null
     operador: string | null
-    accion: number | null
+    accion: string | null
     observacion: string | null
-    fechaaccion: Date | null
+    fechaaccion: string | null
     nuevaaccion: string | null
-    fechanuevaaccion: Date | null
+    fechanuevaaccion: string | null
     realizado: boolean | null
+    observacion_nuevaaccion: string | null
   }
 
   export type GestioncasoMaxAggregateOutputType = {
@@ -19210,12 +19287,13 @@ export namespace Prisma {
     idcaso: number | null
     contrato: number | null
     operador: string | null
-    accion: number | null
+    accion: string | null
     observacion: string | null
-    fechaaccion: Date | null
+    fechaaccion: string | null
     nuevaaccion: string | null
-    fechanuevaaccion: Date | null
+    fechanuevaaccion: string | null
     realizado: boolean | null
+    observacion_nuevaaccion: string | null
   }
 
   export type GestioncasoCountAggregateOutputType = {
@@ -19229,6 +19307,7 @@ export namespace Prisma {
     nuevaaccion: number
     fechanuevaaccion: number
     realizado: number
+    observacion_nuevaaccion: number
     _all: number
   }
 
@@ -19237,14 +19316,12 @@ export namespace Prisma {
     idgestion?: true
     idcaso?: true
     contrato?: true
-    accion?: true
   }
 
   export type GestioncasoSumAggregateInputType = {
     idgestion?: true
     idcaso?: true
     contrato?: true
-    accion?: true
   }
 
   export type GestioncasoMinAggregateInputType = {
@@ -19258,6 +19335,7 @@ export namespace Prisma {
     nuevaaccion?: true
     fechanuevaaccion?: true
     realizado?: true
+    observacion_nuevaaccion?: true
   }
 
   export type GestioncasoMaxAggregateInputType = {
@@ -19271,6 +19349,7 @@ export namespace Prisma {
     nuevaaccion?: true
     fechanuevaaccion?: true
     realizado?: true
+    observacion_nuevaaccion?: true
   }
 
   export type GestioncasoCountAggregateInputType = {
@@ -19284,6 +19363,7 @@ export namespace Prisma {
     nuevaaccion?: true
     fechanuevaaccion?: true
     realizado?: true
+    observacion_nuevaaccion?: true
     _all?: true
   }
 
@@ -19379,12 +19459,13 @@ export namespace Prisma {
     idcaso: number | null
     contrato: number | null
     operador: string | null
-    accion: number | null
+    accion: string | null
     observacion: string | null
-    fechaaccion: Date | null
+    fechaaccion: string | null
     nuevaaccion: string | null
-    fechanuevaaccion: Date | null
+    fechanuevaaccion: string | null
     realizado: boolean | null
+    observacion_nuevaaccion: string | null
     _count: GestioncasoCountAggregateOutputType | null
     _avg: GestioncasoAvgAggregateOutputType | null
     _sum: GestioncasoSumAggregateOutputType | null
@@ -19417,6 +19498,7 @@ export namespace Prisma {
     nuevaaccion?: boolean
     fechanuevaaccion?: boolean
     realizado?: boolean
+    observacion_nuevaaccion?: boolean
   }
 
 
@@ -44569,6 +44651,7 @@ export namespace Prisma {
     inicia: string | null
     termina: string | null
     estado: string | null
+    capinoaut: boolean | null
   }
 
   export type Prestamos_empleadosMaxAggregateOutputType = {
@@ -44582,6 +44665,7 @@ export namespace Prisma {
     inicia: string | null
     termina: string | null
     estado: string | null
+    capinoaut: boolean | null
   }
 
   export type Prestamos_empleadosCountAggregateOutputType = {
@@ -44595,6 +44679,7 @@ export namespace Prisma {
     inicia: number
     termina: number
     estado: number
+    capinoaut: number
     _all: number
   }
 
@@ -44626,6 +44711,7 @@ export namespace Prisma {
     inicia?: true
     termina?: true
     estado?: true
+    capinoaut?: true
   }
 
   export type Prestamos_empleadosMaxAggregateInputType = {
@@ -44639,6 +44725,7 @@ export namespace Prisma {
     inicia?: true
     termina?: true
     estado?: true
+    capinoaut?: true
   }
 
   export type Prestamos_empleadosCountAggregateInputType = {
@@ -44652,6 +44739,7 @@ export namespace Prisma {
     inicia?: true
     termina?: true
     estado?: true
+    capinoaut?: true
     _all?: true
   }
 
@@ -44753,6 +44841,7 @@ export namespace Prisma {
     inicia: string | null
     termina: string | null
     estado: string | null
+    capinoaut: boolean | null
     _count: Prestamos_empleadosCountAggregateOutputType | null
     _avg: Prestamos_empleadosAvgAggregateOutputType | null
     _sum: Prestamos_empleadosSumAggregateOutputType | null
@@ -44785,6 +44874,7 @@ export namespace Prisma {
     inicia?: boolean
     termina?: boolean
     estado?: boolean
+    capinoaut?: boolean
   }
 
 
@@ -56914,8 +57004,6 @@ export namespace Prisma {
     idturno: number | null
     contrato: number | null
     dni: number | null
-    telefono: number | null
-    celular: number | null
     estado: number | null
   }
 
@@ -56923,8 +57011,6 @@ export namespace Prisma {
     idturno: number | null
     contrato: number | null
     dni: number | null
-    telefono: bigint | null
-    celular: bigint | null
     estado: number | null
   }
 
@@ -56938,13 +57024,14 @@ export namespace Prisma {
     fecha_turno: Date | null
     motivo: string | null
     operador: string | null
-    telefono: bigint | null
-    celular: bigint | null
+    telefono: string | null
+    movil: string | null
     fecha_atencion: Date | null
     estado: number | null
     empresa: string | null
     respuesta: string | null
     operador_atencion: string | null
+    detalle: string | null
   }
 
   export type Turno_bajasMaxAggregateOutputType = {
@@ -56957,13 +57044,14 @@ export namespace Prisma {
     fecha_turno: Date | null
     motivo: string | null
     operador: string | null
-    telefono: bigint | null
-    celular: bigint | null
+    telefono: string | null
+    movil: string | null
     fecha_atencion: Date | null
     estado: number | null
     empresa: string | null
     respuesta: string | null
     operador_atencion: string | null
+    detalle: string | null
   }
 
   export type Turno_bajasCountAggregateOutputType = {
@@ -56977,12 +57065,13 @@ export namespace Prisma {
     motivo: number
     operador: number
     telefono: number
-    celular: number
+    movil: number
     fecha_atencion: number
     estado: number
     empresa: number
     respuesta: number
     operador_atencion: number
+    detalle: number
     _all: number
   }
 
@@ -56991,8 +57080,6 @@ export namespace Prisma {
     idturno?: true
     contrato?: true
     dni?: true
-    telefono?: true
-    celular?: true
     estado?: true
   }
 
@@ -57000,8 +57087,6 @@ export namespace Prisma {
     idturno?: true
     contrato?: true
     dni?: true
-    telefono?: true
-    celular?: true
     estado?: true
   }
 
@@ -57016,12 +57101,13 @@ export namespace Prisma {
     motivo?: true
     operador?: true
     telefono?: true
-    celular?: true
+    movil?: true
     fecha_atencion?: true
     estado?: true
     empresa?: true
     respuesta?: true
     operador_atencion?: true
+    detalle?: true
   }
 
   export type Turno_bajasMaxAggregateInputType = {
@@ -57035,12 +57121,13 @@ export namespace Prisma {
     motivo?: true
     operador?: true
     telefono?: true
-    celular?: true
+    movil?: true
     fecha_atencion?: true
     estado?: true
     empresa?: true
     respuesta?: true
     operador_atencion?: true
+    detalle?: true
   }
 
   export type Turno_bajasCountAggregateInputType = {
@@ -57054,12 +57141,13 @@ export namespace Prisma {
     motivo?: true
     operador?: true
     telefono?: true
-    celular?: true
+    movil?: true
     fecha_atencion?: true
     estado?: true
     empresa?: true
     respuesta?: true
     operador_atencion?: true
+    detalle?: true
     _all?: true
   }
 
@@ -57160,13 +57248,14 @@ export namespace Prisma {
     fecha_turno: Date | null
     motivo: string | null
     operador: string | null
-    telefono: bigint | null
-    celular: bigint | null
+    telefono: string | null
+    movil: string | null
     fecha_atencion: Date | null
     estado: number | null
     empresa: string | null
     respuesta: string | null
     operador_atencion: string | null
+    detalle: string | null
     _count: Turno_bajasCountAggregateOutputType | null
     _avg: Turno_bajasAvgAggregateOutputType | null
     _sum: Turno_bajasSumAggregateOutputType | null
@@ -57199,12 +57288,13 @@ export namespace Prisma {
     motivo?: boolean
     operador?: boolean
     telefono?: boolean
-    celular?: boolean
+    movil?: boolean
     fecha_atencion?: boolean
     estado?: boolean
     empresa?: boolean
     respuesta?: boolean
     operador_atencion?: boolean
+    detalle?: boolean
   }
 
 
@@ -58866,6 +58956,2738 @@ export namespace Prisma {
 
 
   /**
+   * Model motivos_atencion
+   */
+
+
+  export type AggregateMotivos_atencion = {
+    _count: Motivos_atencionCountAggregateOutputType | null
+    _avg: Motivos_atencionAvgAggregateOutputType | null
+    _sum: Motivos_atencionSumAggregateOutputType | null
+    _min: Motivos_atencionMinAggregateOutputType | null
+    _max: Motivos_atencionMaxAggregateOutputType | null
+  }
+
+  export type Motivos_atencionAvgAggregateOutputType = {
+    idmotivo: number | null
+  }
+
+  export type Motivos_atencionSumAggregateOutputType = {
+    idmotivo: number | null
+  }
+
+  export type Motivos_atencionMinAggregateOutputType = {
+    idmotivo: number | null
+    motivo: string | null
+    estado: boolean | null
+  }
+
+  export type Motivos_atencionMaxAggregateOutputType = {
+    idmotivo: number | null
+    motivo: string | null
+    estado: boolean | null
+  }
+
+  export type Motivos_atencionCountAggregateOutputType = {
+    idmotivo: number
+    motivo: number
+    estado: number
+    _all: number
+  }
+
+
+  export type Motivos_atencionAvgAggregateInputType = {
+    idmotivo?: true
+  }
+
+  export type Motivos_atencionSumAggregateInputType = {
+    idmotivo?: true
+  }
+
+  export type Motivos_atencionMinAggregateInputType = {
+    idmotivo?: true
+    motivo?: true
+    estado?: true
+  }
+
+  export type Motivos_atencionMaxAggregateInputType = {
+    idmotivo?: true
+    motivo?: true
+    estado?: true
+  }
+
+  export type Motivos_atencionCountAggregateInputType = {
+    idmotivo?: true
+    motivo?: true
+    estado?: true
+    _all?: true
+  }
+
+  export type Motivos_atencionAggregateArgs = {
+    /**
+     * Filter which motivos_atencion to aggregate.
+     */
+    where?: motivos_atencionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of motivos_atencions to fetch.
+     */
+    orderBy?: Enumerable<motivos_atencionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: motivos_atencionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` motivos_atencions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` motivos_atencions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned motivos_atencions
+    **/
+    _count?: true | Motivos_atencionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Motivos_atencionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Motivos_atencionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Motivos_atencionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Motivos_atencionMaxAggregateInputType
+  }
+
+  export type GetMotivos_atencionAggregateType<T extends Motivos_atencionAggregateArgs> = {
+        [P in keyof T & keyof AggregateMotivos_atencion]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMotivos_atencion[P]>
+      : GetScalarType<T[P], AggregateMotivos_atencion[P]>
+  }
+
+
+
+
+  export type Motivos_atencionGroupByArgs = {
+    where?: motivos_atencionWhereInput
+    orderBy?: Enumerable<motivos_atencionOrderByWithAggregationInput>
+    by: Motivos_atencionScalarFieldEnum[]
+    having?: motivos_atencionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Motivos_atencionCountAggregateInputType | true
+    _avg?: Motivos_atencionAvgAggregateInputType
+    _sum?: Motivos_atencionSumAggregateInputType
+    _min?: Motivos_atencionMinAggregateInputType
+    _max?: Motivos_atencionMaxAggregateInputType
+  }
+
+
+  export type Motivos_atencionGroupByOutputType = {
+    idmotivo: number
+    motivo: string | null
+    estado: boolean | null
+    _count: Motivos_atencionCountAggregateOutputType | null
+    _avg: Motivos_atencionAvgAggregateOutputType | null
+    _sum: Motivos_atencionSumAggregateOutputType | null
+    _min: Motivos_atencionMinAggregateOutputType | null
+    _max: Motivos_atencionMaxAggregateOutputType | null
+  }
+
+  type GetMotivos_atencionGroupByPayload<T extends Motivos_atencionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<Motivos_atencionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Motivos_atencionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Motivos_atencionGroupByOutputType[P]>
+            : GetScalarType<T[P], Motivos_atencionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type motivos_atencionSelect = {
+    idmotivo?: boolean
+    motivo?: boolean
+    estado?: boolean
+  }
+
+
+  export type motivos_atencionGetPayload<S extends boolean | null | undefined | motivos_atencionArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? motivos_atencion :
+    S extends undefined ? never :
+    S extends { include: any } & (motivos_atencionArgs | motivos_atencionFindManyArgs)
+    ? motivos_atencion 
+    : S extends { select: any } & (motivos_atencionArgs | motivos_atencionFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+    P extends keyof motivos_atencion ? motivos_atencion[P] : never
+  } 
+      : motivos_atencion
+
+
+  type motivos_atencionCountArgs = 
+    Omit<motivos_atencionFindManyArgs, 'select' | 'include'> & {
+      select?: Motivos_atencionCountAggregateInputType | true
+    }
+
+  export interface motivos_atencionDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+
+    /**
+     * Find zero or one Motivos_atencion that matches the filter.
+     * @param {motivos_atencionFindUniqueArgs} args - Arguments to find a Motivos_atencion
+     * @example
+     * // Get one Motivos_atencion
+     * const motivos_atencion = await prisma.motivos_atencion.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends motivos_atencionFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, motivos_atencionFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'motivos_atencion'> extends True ? Prisma__motivos_atencionClient<motivos_atencionGetPayload<T>> : Prisma__motivos_atencionClient<motivos_atencionGetPayload<T> | null, null>
+
+    /**
+     * Find one Motivos_atencion that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {motivos_atencionFindUniqueOrThrowArgs} args - Arguments to find a Motivos_atencion
+     * @example
+     * // Get one Motivos_atencion
+     * const motivos_atencion = await prisma.motivos_atencion.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends motivos_atencionFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, motivos_atencionFindUniqueOrThrowArgs>
+    ): Prisma__motivos_atencionClient<motivos_atencionGetPayload<T>>
+
+    /**
+     * Find the first Motivos_atencion that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {motivos_atencionFindFirstArgs} args - Arguments to find a Motivos_atencion
+     * @example
+     * // Get one Motivos_atencion
+     * const motivos_atencion = await prisma.motivos_atencion.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends motivos_atencionFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, motivos_atencionFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'motivos_atencion'> extends True ? Prisma__motivos_atencionClient<motivos_atencionGetPayload<T>> : Prisma__motivos_atencionClient<motivos_atencionGetPayload<T> | null, null>
+
+    /**
+     * Find the first Motivos_atencion that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {motivos_atencionFindFirstOrThrowArgs} args - Arguments to find a Motivos_atencion
+     * @example
+     * // Get one Motivos_atencion
+     * const motivos_atencion = await prisma.motivos_atencion.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends motivos_atencionFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, motivos_atencionFindFirstOrThrowArgs>
+    ): Prisma__motivos_atencionClient<motivos_atencionGetPayload<T>>
+
+    /**
+     * Find zero or more Motivos_atencions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {motivos_atencionFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Motivos_atencions
+     * const motivos_atencions = await prisma.motivos_atencion.findMany()
+     * 
+     * // Get first 10 Motivos_atencions
+     * const motivos_atencions = await prisma.motivos_atencion.findMany({ take: 10 })
+     * 
+     * // Only select the `idmotivo`
+     * const motivos_atencionWithIdmotivoOnly = await prisma.motivos_atencion.findMany({ select: { idmotivo: true } })
+     * 
+    **/
+    findMany<T extends motivos_atencionFindManyArgs>(
+      args?: SelectSubset<T, motivos_atencionFindManyArgs>
+    ): Prisma.PrismaPromise<Array<motivos_atencionGetPayload<T>>>
+
+    /**
+     * Create a Motivos_atencion.
+     * @param {motivos_atencionCreateArgs} args - Arguments to create a Motivos_atencion.
+     * @example
+     * // Create one Motivos_atencion
+     * const Motivos_atencion = await prisma.motivos_atencion.create({
+     *   data: {
+     *     // ... data to create a Motivos_atencion
+     *   }
+     * })
+     * 
+    **/
+    create<T extends motivos_atencionCreateArgs>(
+      args: SelectSubset<T, motivos_atencionCreateArgs>
+    ): Prisma__motivos_atencionClient<motivos_atencionGetPayload<T>>
+
+    /**
+     * Create many Motivos_atencions.
+     *     @param {motivos_atencionCreateManyArgs} args - Arguments to create many Motivos_atencions.
+     *     @example
+     *     // Create many Motivos_atencions
+     *     const motivos_atencion = await prisma.motivos_atencion.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends motivos_atencionCreateManyArgs>(
+      args?: SelectSubset<T, motivos_atencionCreateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Motivos_atencion.
+     * @param {motivos_atencionDeleteArgs} args - Arguments to delete one Motivos_atencion.
+     * @example
+     * // Delete one Motivos_atencion
+     * const Motivos_atencion = await prisma.motivos_atencion.delete({
+     *   where: {
+     *     // ... filter to delete one Motivos_atencion
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends motivos_atencionDeleteArgs>(
+      args: SelectSubset<T, motivos_atencionDeleteArgs>
+    ): Prisma__motivos_atencionClient<motivos_atencionGetPayload<T>>
+
+    /**
+     * Update one Motivos_atencion.
+     * @param {motivos_atencionUpdateArgs} args - Arguments to update one Motivos_atencion.
+     * @example
+     * // Update one Motivos_atencion
+     * const motivos_atencion = await prisma.motivos_atencion.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends motivos_atencionUpdateArgs>(
+      args: SelectSubset<T, motivos_atencionUpdateArgs>
+    ): Prisma__motivos_atencionClient<motivos_atencionGetPayload<T>>
+
+    /**
+     * Delete zero or more Motivos_atencions.
+     * @param {motivos_atencionDeleteManyArgs} args - Arguments to filter Motivos_atencions to delete.
+     * @example
+     * // Delete a few Motivos_atencions
+     * const { count } = await prisma.motivos_atencion.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends motivos_atencionDeleteManyArgs>(
+      args?: SelectSubset<T, motivos_atencionDeleteManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Motivos_atencions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {motivos_atencionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Motivos_atencions
+     * const motivos_atencion = await prisma.motivos_atencion.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends motivos_atencionUpdateManyArgs>(
+      args: SelectSubset<T, motivos_atencionUpdateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Motivos_atencion.
+     * @param {motivos_atencionUpsertArgs} args - Arguments to update or create a Motivos_atencion.
+     * @example
+     * // Update or create a Motivos_atencion
+     * const motivos_atencion = await prisma.motivos_atencion.upsert({
+     *   create: {
+     *     // ... data to create a Motivos_atencion
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Motivos_atencion we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends motivos_atencionUpsertArgs>(
+      args: SelectSubset<T, motivos_atencionUpsertArgs>
+    ): Prisma__motivos_atencionClient<motivos_atencionGetPayload<T>>
+
+    /**
+     * Count the number of Motivos_atencions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {motivos_atencionCountArgs} args - Arguments to filter Motivos_atencions to count.
+     * @example
+     * // Count the number of Motivos_atencions
+     * const count = await prisma.motivos_atencion.count({
+     *   where: {
+     *     // ... the filter for the Motivos_atencions we want to count
+     *   }
+     * })
+    **/
+    count<T extends motivos_atencionCountArgs>(
+      args?: Subset<T, motivos_atencionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Motivos_atencionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Motivos_atencion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Motivos_atencionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Motivos_atencionAggregateArgs>(args: Subset<T, Motivos_atencionAggregateArgs>): Prisma.PrismaPromise<GetMotivos_atencionAggregateType<T>>
+
+    /**
+     * Group by Motivos_atencion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Motivos_atencionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Motivos_atencionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Motivos_atencionGroupByArgs['orderBy'] }
+        : { orderBy?: Motivos_atencionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Motivos_atencionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMotivos_atencionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for motivos_atencion.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__motivos_atencionClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * motivos_atencion base type for findUnique actions
+   */
+  export type motivos_atencionFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the motivos_atencion
+     */
+    select?: motivos_atencionSelect | null
+    /**
+     * Filter, which motivos_atencion to fetch.
+     */
+    where: motivos_atencionWhereUniqueInput
+  }
+
+  /**
+   * motivos_atencion findUnique
+   */
+  export interface motivos_atencionFindUniqueArgs extends motivos_atencionFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * motivos_atencion findUniqueOrThrow
+   */
+  export type motivos_atencionFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the motivos_atencion
+     */
+    select?: motivos_atencionSelect | null
+    /**
+     * Filter, which motivos_atencion to fetch.
+     */
+    where: motivos_atencionWhereUniqueInput
+  }
+
+
+  /**
+   * motivos_atencion base type for findFirst actions
+   */
+  export type motivos_atencionFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the motivos_atencion
+     */
+    select?: motivos_atencionSelect | null
+    /**
+     * Filter, which motivos_atencion to fetch.
+     */
+    where?: motivos_atencionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of motivos_atencions to fetch.
+     */
+    orderBy?: Enumerable<motivos_atencionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for motivos_atencions.
+     */
+    cursor?: motivos_atencionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` motivos_atencions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` motivos_atencions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of motivos_atencions.
+     */
+    distinct?: Enumerable<Motivos_atencionScalarFieldEnum>
+  }
+
+  /**
+   * motivos_atencion findFirst
+   */
+  export interface motivos_atencionFindFirstArgs extends motivos_atencionFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * motivos_atencion findFirstOrThrow
+   */
+  export type motivos_atencionFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the motivos_atencion
+     */
+    select?: motivos_atencionSelect | null
+    /**
+     * Filter, which motivos_atencion to fetch.
+     */
+    where?: motivos_atencionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of motivos_atencions to fetch.
+     */
+    orderBy?: Enumerable<motivos_atencionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for motivos_atencions.
+     */
+    cursor?: motivos_atencionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` motivos_atencions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` motivos_atencions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of motivos_atencions.
+     */
+    distinct?: Enumerable<Motivos_atencionScalarFieldEnum>
+  }
+
+
+  /**
+   * motivos_atencion findMany
+   */
+  export type motivos_atencionFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the motivos_atencion
+     */
+    select?: motivos_atencionSelect | null
+    /**
+     * Filter, which motivos_atencions to fetch.
+     */
+    where?: motivos_atencionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of motivos_atencions to fetch.
+     */
+    orderBy?: Enumerable<motivos_atencionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing motivos_atencions.
+     */
+    cursor?: motivos_atencionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` motivos_atencions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` motivos_atencions.
+     */
+    skip?: number
+    distinct?: Enumerable<Motivos_atencionScalarFieldEnum>
+  }
+
+
+  /**
+   * motivos_atencion create
+   */
+  export type motivos_atencionCreateArgs = {
+    /**
+     * Select specific fields to fetch from the motivos_atencion
+     */
+    select?: motivos_atencionSelect | null
+    /**
+     * The data needed to create a motivos_atencion.
+     */
+    data: XOR<motivos_atencionCreateInput, motivos_atencionUncheckedCreateInput>
+  }
+
+
+  /**
+   * motivos_atencion createMany
+   */
+  export type motivos_atencionCreateManyArgs = {
+    /**
+     * The data used to create many motivos_atencions.
+     */
+    data: Enumerable<motivos_atencionCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * motivos_atencion update
+   */
+  export type motivos_atencionUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the motivos_atencion
+     */
+    select?: motivos_atencionSelect | null
+    /**
+     * The data needed to update a motivos_atencion.
+     */
+    data: XOR<motivos_atencionUpdateInput, motivos_atencionUncheckedUpdateInput>
+    /**
+     * Choose, which motivos_atencion to update.
+     */
+    where: motivos_atencionWhereUniqueInput
+  }
+
+
+  /**
+   * motivos_atencion updateMany
+   */
+  export type motivos_atencionUpdateManyArgs = {
+    /**
+     * The data used to update motivos_atencions.
+     */
+    data: XOR<motivos_atencionUpdateManyMutationInput, motivos_atencionUncheckedUpdateManyInput>
+    /**
+     * Filter which motivos_atencions to update
+     */
+    where?: motivos_atencionWhereInput
+  }
+
+
+  /**
+   * motivos_atencion upsert
+   */
+  export type motivos_atencionUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the motivos_atencion
+     */
+    select?: motivos_atencionSelect | null
+    /**
+     * The filter to search for the motivos_atencion to update in case it exists.
+     */
+    where: motivos_atencionWhereUniqueInput
+    /**
+     * In case the motivos_atencion found by the `where` argument doesn't exist, create a new motivos_atencion with this data.
+     */
+    create: XOR<motivos_atencionCreateInput, motivos_atencionUncheckedCreateInput>
+    /**
+     * In case the motivos_atencion was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<motivos_atencionUpdateInput, motivos_atencionUncheckedUpdateInput>
+  }
+
+
+  /**
+   * motivos_atencion delete
+   */
+  export type motivos_atencionDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the motivos_atencion
+     */
+    select?: motivos_atencionSelect | null
+    /**
+     * Filter which motivos_atencion to delete.
+     */
+    where: motivos_atencionWhereUniqueInput
+  }
+
+
+  /**
+   * motivos_atencion deleteMany
+   */
+  export type motivos_atencionDeleteManyArgs = {
+    /**
+     * Filter which motivos_atencions to delete
+     */
+    where?: motivos_atencionWhereInput
+  }
+
+
+  /**
+   * motivos_atencion without action
+   */
+  export type motivos_atencionArgs = {
+    /**
+     * Select specific fields to fetch from the motivos_atencion
+     */
+    select?: motivos_atencionSelect | null
+  }
+
+
+
+  /**
+   * Model prestamos_plan_cuotas
+   */
+
+
+  export type AggregatePrestamos_plan_cuotas = {
+    _count: Prestamos_plan_cuotasCountAggregateOutputType | null
+    _avg: Prestamos_plan_cuotasAvgAggregateOutputType | null
+    _sum: Prestamos_plan_cuotasSumAggregateOutputType | null
+    _min: Prestamos_plan_cuotasMinAggregateOutputType | null
+    _max: Prestamos_plan_cuotasMaxAggregateOutputType | null
+  }
+
+  export type Prestamos_plan_cuotasAvgAggregateOutputType = {
+    idplan: number | null
+    plan_cuotas: number | null
+  }
+
+  export type Prestamos_plan_cuotasSumAggregateOutputType = {
+    idplan: number | null
+    plan_cuotas: number | null
+  }
+
+  export type Prestamos_plan_cuotasMinAggregateOutputType = {
+    idplan: number | null
+    plan_cuotas: number | null
+    detalle: string | null
+    estado: boolean | null
+  }
+
+  export type Prestamos_plan_cuotasMaxAggregateOutputType = {
+    idplan: number | null
+    plan_cuotas: number | null
+    detalle: string | null
+    estado: boolean | null
+  }
+
+  export type Prestamos_plan_cuotasCountAggregateOutputType = {
+    idplan: number
+    plan_cuotas: number
+    detalle: number
+    estado: number
+    _all: number
+  }
+
+
+  export type Prestamos_plan_cuotasAvgAggregateInputType = {
+    idplan?: true
+    plan_cuotas?: true
+  }
+
+  export type Prestamos_plan_cuotasSumAggregateInputType = {
+    idplan?: true
+    plan_cuotas?: true
+  }
+
+  export type Prestamos_plan_cuotasMinAggregateInputType = {
+    idplan?: true
+    plan_cuotas?: true
+    detalle?: true
+    estado?: true
+  }
+
+  export type Prestamos_plan_cuotasMaxAggregateInputType = {
+    idplan?: true
+    plan_cuotas?: true
+    detalle?: true
+    estado?: true
+  }
+
+  export type Prestamos_plan_cuotasCountAggregateInputType = {
+    idplan?: true
+    plan_cuotas?: true
+    detalle?: true
+    estado?: true
+    _all?: true
+  }
+
+  export type Prestamos_plan_cuotasAggregateArgs = {
+    /**
+     * Filter which prestamos_plan_cuotas to aggregate.
+     */
+    where?: prestamos_plan_cuotasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prestamos_plan_cuotas to fetch.
+     */
+    orderBy?: Enumerable<prestamos_plan_cuotasOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: prestamos_plan_cuotasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prestamos_plan_cuotas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prestamos_plan_cuotas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned prestamos_plan_cuotas
+    **/
+    _count?: true | Prestamos_plan_cuotasCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Prestamos_plan_cuotasAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Prestamos_plan_cuotasSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Prestamos_plan_cuotasMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Prestamos_plan_cuotasMaxAggregateInputType
+  }
+
+  export type GetPrestamos_plan_cuotasAggregateType<T extends Prestamos_plan_cuotasAggregateArgs> = {
+        [P in keyof T & keyof AggregatePrestamos_plan_cuotas]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePrestamos_plan_cuotas[P]>
+      : GetScalarType<T[P], AggregatePrestamos_plan_cuotas[P]>
+  }
+
+
+
+
+  export type Prestamos_plan_cuotasGroupByArgs = {
+    where?: prestamos_plan_cuotasWhereInput
+    orderBy?: Enumerable<prestamos_plan_cuotasOrderByWithAggregationInput>
+    by: Prestamos_plan_cuotasScalarFieldEnum[]
+    having?: prestamos_plan_cuotasScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Prestamos_plan_cuotasCountAggregateInputType | true
+    _avg?: Prestamos_plan_cuotasAvgAggregateInputType
+    _sum?: Prestamos_plan_cuotasSumAggregateInputType
+    _min?: Prestamos_plan_cuotasMinAggregateInputType
+    _max?: Prestamos_plan_cuotasMaxAggregateInputType
+  }
+
+
+  export type Prestamos_plan_cuotasGroupByOutputType = {
+    idplan: number
+    plan_cuotas: number | null
+    detalle: string | null
+    estado: boolean | null
+    _count: Prestamos_plan_cuotasCountAggregateOutputType | null
+    _avg: Prestamos_plan_cuotasAvgAggregateOutputType | null
+    _sum: Prestamos_plan_cuotasSumAggregateOutputType | null
+    _min: Prestamos_plan_cuotasMinAggregateOutputType | null
+    _max: Prestamos_plan_cuotasMaxAggregateOutputType | null
+  }
+
+  type GetPrestamos_plan_cuotasGroupByPayload<T extends Prestamos_plan_cuotasGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<Prestamos_plan_cuotasGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Prestamos_plan_cuotasGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Prestamos_plan_cuotasGroupByOutputType[P]>
+            : GetScalarType<T[P], Prestamos_plan_cuotasGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type prestamos_plan_cuotasSelect = {
+    idplan?: boolean
+    plan_cuotas?: boolean
+    detalle?: boolean
+    estado?: boolean
+  }
+
+
+  export type prestamos_plan_cuotasGetPayload<S extends boolean | null | undefined | prestamos_plan_cuotasArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? prestamos_plan_cuotas :
+    S extends undefined ? never :
+    S extends { include: any } & (prestamos_plan_cuotasArgs | prestamos_plan_cuotasFindManyArgs)
+    ? prestamos_plan_cuotas 
+    : S extends { select: any } & (prestamos_plan_cuotasArgs | prestamos_plan_cuotasFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+    P extends keyof prestamos_plan_cuotas ? prestamos_plan_cuotas[P] : never
+  } 
+      : prestamos_plan_cuotas
+
+
+  type prestamos_plan_cuotasCountArgs = 
+    Omit<prestamos_plan_cuotasFindManyArgs, 'select' | 'include'> & {
+      select?: Prestamos_plan_cuotasCountAggregateInputType | true
+    }
+
+  export interface prestamos_plan_cuotasDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+
+    /**
+     * Find zero or one Prestamos_plan_cuotas that matches the filter.
+     * @param {prestamos_plan_cuotasFindUniqueArgs} args - Arguments to find a Prestamos_plan_cuotas
+     * @example
+     * // Get one Prestamos_plan_cuotas
+     * const prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends prestamos_plan_cuotasFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, prestamos_plan_cuotasFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'prestamos_plan_cuotas'> extends True ? Prisma__prestamos_plan_cuotasClient<prestamos_plan_cuotasGetPayload<T>> : Prisma__prestamos_plan_cuotasClient<prestamos_plan_cuotasGetPayload<T> | null, null>
+
+    /**
+     * Find one Prestamos_plan_cuotas that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {prestamos_plan_cuotasFindUniqueOrThrowArgs} args - Arguments to find a Prestamos_plan_cuotas
+     * @example
+     * // Get one Prestamos_plan_cuotas
+     * const prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends prestamos_plan_cuotasFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, prestamos_plan_cuotasFindUniqueOrThrowArgs>
+    ): Prisma__prestamos_plan_cuotasClient<prestamos_plan_cuotasGetPayload<T>>
+
+    /**
+     * Find the first Prestamos_plan_cuotas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prestamos_plan_cuotasFindFirstArgs} args - Arguments to find a Prestamos_plan_cuotas
+     * @example
+     * // Get one Prestamos_plan_cuotas
+     * const prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends prestamos_plan_cuotasFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, prestamos_plan_cuotasFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'prestamos_plan_cuotas'> extends True ? Prisma__prestamos_plan_cuotasClient<prestamos_plan_cuotasGetPayload<T>> : Prisma__prestamos_plan_cuotasClient<prestamos_plan_cuotasGetPayload<T> | null, null>
+
+    /**
+     * Find the first Prestamos_plan_cuotas that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prestamos_plan_cuotasFindFirstOrThrowArgs} args - Arguments to find a Prestamos_plan_cuotas
+     * @example
+     * // Get one Prestamos_plan_cuotas
+     * const prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends prestamos_plan_cuotasFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, prestamos_plan_cuotasFindFirstOrThrowArgs>
+    ): Prisma__prestamos_plan_cuotasClient<prestamos_plan_cuotasGetPayload<T>>
+
+    /**
+     * Find zero or more Prestamos_plan_cuotas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prestamos_plan_cuotasFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Prestamos_plan_cuotas
+     * const prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.findMany()
+     * 
+     * // Get first 10 Prestamos_plan_cuotas
+     * const prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.findMany({ take: 10 })
+     * 
+     * // Only select the `idplan`
+     * const prestamos_plan_cuotasWithIdplanOnly = await prisma.prestamos_plan_cuotas.findMany({ select: { idplan: true } })
+     * 
+    **/
+    findMany<T extends prestamos_plan_cuotasFindManyArgs>(
+      args?: SelectSubset<T, prestamos_plan_cuotasFindManyArgs>
+    ): Prisma.PrismaPromise<Array<prestamos_plan_cuotasGetPayload<T>>>
+
+    /**
+     * Create a Prestamos_plan_cuotas.
+     * @param {prestamos_plan_cuotasCreateArgs} args - Arguments to create a Prestamos_plan_cuotas.
+     * @example
+     * // Create one Prestamos_plan_cuotas
+     * const Prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.create({
+     *   data: {
+     *     // ... data to create a Prestamos_plan_cuotas
+     *   }
+     * })
+     * 
+    **/
+    create<T extends prestamos_plan_cuotasCreateArgs>(
+      args: SelectSubset<T, prestamos_plan_cuotasCreateArgs>
+    ): Prisma__prestamos_plan_cuotasClient<prestamos_plan_cuotasGetPayload<T>>
+
+    /**
+     * Create many Prestamos_plan_cuotas.
+     *     @param {prestamos_plan_cuotasCreateManyArgs} args - Arguments to create many Prestamos_plan_cuotas.
+     *     @example
+     *     // Create many Prestamos_plan_cuotas
+     *     const prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends prestamos_plan_cuotasCreateManyArgs>(
+      args?: SelectSubset<T, prestamos_plan_cuotasCreateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Prestamos_plan_cuotas.
+     * @param {prestamos_plan_cuotasDeleteArgs} args - Arguments to delete one Prestamos_plan_cuotas.
+     * @example
+     * // Delete one Prestamos_plan_cuotas
+     * const Prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.delete({
+     *   where: {
+     *     // ... filter to delete one Prestamos_plan_cuotas
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends prestamos_plan_cuotasDeleteArgs>(
+      args: SelectSubset<T, prestamos_plan_cuotasDeleteArgs>
+    ): Prisma__prestamos_plan_cuotasClient<prestamos_plan_cuotasGetPayload<T>>
+
+    /**
+     * Update one Prestamos_plan_cuotas.
+     * @param {prestamos_plan_cuotasUpdateArgs} args - Arguments to update one Prestamos_plan_cuotas.
+     * @example
+     * // Update one Prestamos_plan_cuotas
+     * const prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends prestamos_plan_cuotasUpdateArgs>(
+      args: SelectSubset<T, prestamos_plan_cuotasUpdateArgs>
+    ): Prisma__prestamos_plan_cuotasClient<prestamos_plan_cuotasGetPayload<T>>
+
+    /**
+     * Delete zero or more Prestamos_plan_cuotas.
+     * @param {prestamos_plan_cuotasDeleteManyArgs} args - Arguments to filter Prestamos_plan_cuotas to delete.
+     * @example
+     * // Delete a few Prestamos_plan_cuotas
+     * const { count } = await prisma.prestamos_plan_cuotas.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends prestamos_plan_cuotasDeleteManyArgs>(
+      args?: SelectSubset<T, prestamos_plan_cuotasDeleteManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Prestamos_plan_cuotas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prestamos_plan_cuotasUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Prestamos_plan_cuotas
+     * const prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends prestamos_plan_cuotasUpdateManyArgs>(
+      args: SelectSubset<T, prestamos_plan_cuotasUpdateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Prestamos_plan_cuotas.
+     * @param {prestamos_plan_cuotasUpsertArgs} args - Arguments to update or create a Prestamos_plan_cuotas.
+     * @example
+     * // Update or create a Prestamos_plan_cuotas
+     * const prestamos_plan_cuotas = await prisma.prestamos_plan_cuotas.upsert({
+     *   create: {
+     *     // ... data to create a Prestamos_plan_cuotas
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Prestamos_plan_cuotas we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends prestamos_plan_cuotasUpsertArgs>(
+      args: SelectSubset<T, prestamos_plan_cuotasUpsertArgs>
+    ): Prisma__prestamos_plan_cuotasClient<prestamos_plan_cuotasGetPayload<T>>
+
+    /**
+     * Count the number of Prestamos_plan_cuotas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prestamos_plan_cuotasCountArgs} args - Arguments to filter Prestamos_plan_cuotas to count.
+     * @example
+     * // Count the number of Prestamos_plan_cuotas
+     * const count = await prisma.prestamos_plan_cuotas.count({
+     *   where: {
+     *     // ... the filter for the Prestamos_plan_cuotas we want to count
+     *   }
+     * })
+    **/
+    count<T extends prestamos_plan_cuotasCountArgs>(
+      args?: Subset<T, prestamos_plan_cuotasCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Prestamos_plan_cuotasCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Prestamos_plan_cuotas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Prestamos_plan_cuotasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Prestamos_plan_cuotasAggregateArgs>(args: Subset<T, Prestamos_plan_cuotasAggregateArgs>): Prisma.PrismaPromise<GetPrestamos_plan_cuotasAggregateType<T>>
+
+    /**
+     * Group by Prestamos_plan_cuotas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Prestamos_plan_cuotasGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Prestamos_plan_cuotasGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Prestamos_plan_cuotasGroupByArgs['orderBy'] }
+        : { orderBy?: Prestamos_plan_cuotasGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Prestamos_plan_cuotasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPrestamos_plan_cuotasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for prestamos_plan_cuotas.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__prestamos_plan_cuotasClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * prestamos_plan_cuotas base type for findUnique actions
+   */
+  export type prestamos_plan_cuotasFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the prestamos_plan_cuotas
+     */
+    select?: prestamos_plan_cuotasSelect | null
+    /**
+     * Filter, which prestamos_plan_cuotas to fetch.
+     */
+    where: prestamos_plan_cuotasWhereUniqueInput
+  }
+
+  /**
+   * prestamos_plan_cuotas findUnique
+   */
+  export interface prestamos_plan_cuotasFindUniqueArgs extends prestamos_plan_cuotasFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * prestamos_plan_cuotas findUniqueOrThrow
+   */
+  export type prestamos_plan_cuotasFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_plan_cuotas
+     */
+    select?: prestamos_plan_cuotasSelect | null
+    /**
+     * Filter, which prestamos_plan_cuotas to fetch.
+     */
+    where: prestamos_plan_cuotasWhereUniqueInput
+  }
+
+
+  /**
+   * prestamos_plan_cuotas base type for findFirst actions
+   */
+  export type prestamos_plan_cuotasFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the prestamos_plan_cuotas
+     */
+    select?: prestamos_plan_cuotasSelect | null
+    /**
+     * Filter, which prestamos_plan_cuotas to fetch.
+     */
+    where?: prestamos_plan_cuotasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prestamos_plan_cuotas to fetch.
+     */
+    orderBy?: Enumerable<prestamos_plan_cuotasOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for prestamos_plan_cuotas.
+     */
+    cursor?: prestamos_plan_cuotasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prestamos_plan_cuotas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prestamos_plan_cuotas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of prestamos_plan_cuotas.
+     */
+    distinct?: Enumerable<Prestamos_plan_cuotasScalarFieldEnum>
+  }
+
+  /**
+   * prestamos_plan_cuotas findFirst
+   */
+  export interface prestamos_plan_cuotasFindFirstArgs extends prestamos_plan_cuotasFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * prestamos_plan_cuotas findFirstOrThrow
+   */
+  export type prestamos_plan_cuotasFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_plan_cuotas
+     */
+    select?: prestamos_plan_cuotasSelect | null
+    /**
+     * Filter, which prestamos_plan_cuotas to fetch.
+     */
+    where?: prestamos_plan_cuotasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prestamos_plan_cuotas to fetch.
+     */
+    orderBy?: Enumerable<prestamos_plan_cuotasOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for prestamos_plan_cuotas.
+     */
+    cursor?: prestamos_plan_cuotasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prestamos_plan_cuotas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prestamos_plan_cuotas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of prestamos_plan_cuotas.
+     */
+    distinct?: Enumerable<Prestamos_plan_cuotasScalarFieldEnum>
+  }
+
+
+  /**
+   * prestamos_plan_cuotas findMany
+   */
+  export type prestamos_plan_cuotasFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_plan_cuotas
+     */
+    select?: prestamos_plan_cuotasSelect | null
+    /**
+     * Filter, which prestamos_plan_cuotas to fetch.
+     */
+    where?: prestamos_plan_cuotasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prestamos_plan_cuotas to fetch.
+     */
+    orderBy?: Enumerable<prestamos_plan_cuotasOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing prestamos_plan_cuotas.
+     */
+    cursor?: prestamos_plan_cuotasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prestamos_plan_cuotas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prestamos_plan_cuotas.
+     */
+    skip?: number
+    distinct?: Enumerable<Prestamos_plan_cuotasScalarFieldEnum>
+  }
+
+
+  /**
+   * prestamos_plan_cuotas create
+   */
+  export type prestamos_plan_cuotasCreateArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_plan_cuotas
+     */
+    select?: prestamos_plan_cuotasSelect | null
+    /**
+     * The data needed to create a prestamos_plan_cuotas.
+     */
+    data: XOR<prestamos_plan_cuotasCreateInput, prestamos_plan_cuotasUncheckedCreateInput>
+  }
+
+
+  /**
+   * prestamos_plan_cuotas createMany
+   */
+  export type prestamos_plan_cuotasCreateManyArgs = {
+    /**
+     * The data used to create many prestamos_plan_cuotas.
+     */
+    data: Enumerable<prestamos_plan_cuotasCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * prestamos_plan_cuotas update
+   */
+  export type prestamos_plan_cuotasUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_plan_cuotas
+     */
+    select?: prestamos_plan_cuotasSelect | null
+    /**
+     * The data needed to update a prestamos_plan_cuotas.
+     */
+    data: XOR<prestamos_plan_cuotasUpdateInput, prestamos_plan_cuotasUncheckedUpdateInput>
+    /**
+     * Choose, which prestamos_plan_cuotas to update.
+     */
+    where: prestamos_plan_cuotasWhereUniqueInput
+  }
+
+
+  /**
+   * prestamos_plan_cuotas updateMany
+   */
+  export type prestamos_plan_cuotasUpdateManyArgs = {
+    /**
+     * The data used to update prestamos_plan_cuotas.
+     */
+    data: XOR<prestamos_plan_cuotasUpdateManyMutationInput, prestamos_plan_cuotasUncheckedUpdateManyInput>
+    /**
+     * Filter which prestamos_plan_cuotas to update
+     */
+    where?: prestamos_plan_cuotasWhereInput
+  }
+
+
+  /**
+   * prestamos_plan_cuotas upsert
+   */
+  export type prestamos_plan_cuotasUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_plan_cuotas
+     */
+    select?: prestamos_plan_cuotasSelect | null
+    /**
+     * The filter to search for the prestamos_plan_cuotas to update in case it exists.
+     */
+    where: prestamos_plan_cuotasWhereUniqueInput
+    /**
+     * In case the prestamos_plan_cuotas found by the `where` argument doesn't exist, create a new prestamos_plan_cuotas with this data.
+     */
+    create: XOR<prestamos_plan_cuotasCreateInput, prestamos_plan_cuotasUncheckedCreateInput>
+    /**
+     * In case the prestamos_plan_cuotas was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<prestamos_plan_cuotasUpdateInput, prestamos_plan_cuotasUncheckedUpdateInput>
+  }
+
+
+  /**
+   * prestamos_plan_cuotas delete
+   */
+  export type prestamos_plan_cuotasDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_plan_cuotas
+     */
+    select?: prestamos_plan_cuotasSelect | null
+    /**
+     * Filter which prestamos_plan_cuotas to delete.
+     */
+    where: prestamos_plan_cuotasWhereUniqueInput
+  }
+
+
+  /**
+   * prestamos_plan_cuotas deleteMany
+   */
+  export type prestamos_plan_cuotasDeleteManyArgs = {
+    /**
+     * Filter which prestamos_plan_cuotas to delete
+     */
+    where?: prestamos_plan_cuotasWhereInput
+  }
+
+
+  /**
+   * prestamos_plan_cuotas without action
+   */
+  export type prestamos_plan_cuotasArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_plan_cuotas
+     */
+    select?: prestamos_plan_cuotasSelect | null
+  }
+
+
+
+  /**
+   * Model prestamos_tasas
+   */
+
+
+  export type AggregatePrestamos_tasas = {
+    _count: Prestamos_tasasCountAggregateOutputType | null
+    _avg: Prestamos_tasasAvgAggregateOutputType | null
+    _sum: Prestamos_tasasSumAggregateOutputType | null
+    _min: Prestamos_tasasMinAggregateOutputType | null
+    _max: Prestamos_tasasMaxAggregateOutputType | null
+  }
+
+  export type Prestamos_tasasAvgAggregateOutputType = {
+    idtasa: number | null
+    tasa: number | null
+  }
+
+  export type Prestamos_tasasSumAggregateOutputType = {
+    idtasa: number | null
+    tasa: number | null
+  }
+
+  export type Prestamos_tasasMinAggregateOutputType = {
+    idtasa: number | null
+    tasa: number | null
+    plan: string | null
+    tipo: string | null
+    estado: boolean | null
+  }
+
+  export type Prestamos_tasasMaxAggregateOutputType = {
+    idtasa: number | null
+    tasa: number | null
+    plan: string | null
+    tipo: string | null
+    estado: boolean | null
+  }
+
+  export type Prestamos_tasasCountAggregateOutputType = {
+    idtasa: number
+    tasa: number
+    plan: number
+    tipo: number
+    estado: number
+    _all: number
+  }
+
+
+  export type Prestamos_tasasAvgAggregateInputType = {
+    idtasa?: true
+    tasa?: true
+  }
+
+  export type Prestamos_tasasSumAggregateInputType = {
+    idtasa?: true
+    tasa?: true
+  }
+
+  export type Prestamos_tasasMinAggregateInputType = {
+    idtasa?: true
+    tasa?: true
+    plan?: true
+    tipo?: true
+    estado?: true
+  }
+
+  export type Prestamos_tasasMaxAggregateInputType = {
+    idtasa?: true
+    tasa?: true
+    plan?: true
+    tipo?: true
+    estado?: true
+  }
+
+  export type Prestamos_tasasCountAggregateInputType = {
+    idtasa?: true
+    tasa?: true
+    plan?: true
+    tipo?: true
+    estado?: true
+    _all?: true
+  }
+
+  export type Prestamos_tasasAggregateArgs = {
+    /**
+     * Filter which prestamos_tasas to aggregate.
+     */
+    where?: prestamos_tasasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prestamos_tasas to fetch.
+     */
+    orderBy?: Enumerable<prestamos_tasasOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: prestamos_tasasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prestamos_tasas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prestamos_tasas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned prestamos_tasas
+    **/
+    _count?: true | Prestamos_tasasCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Prestamos_tasasAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Prestamos_tasasSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Prestamos_tasasMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Prestamos_tasasMaxAggregateInputType
+  }
+
+  export type GetPrestamos_tasasAggregateType<T extends Prestamos_tasasAggregateArgs> = {
+        [P in keyof T & keyof AggregatePrestamos_tasas]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePrestamos_tasas[P]>
+      : GetScalarType<T[P], AggregatePrestamos_tasas[P]>
+  }
+
+
+
+
+  export type Prestamos_tasasGroupByArgs = {
+    where?: prestamos_tasasWhereInput
+    orderBy?: Enumerable<prestamos_tasasOrderByWithAggregationInput>
+    by: Prestamos_tasasScalarFieldEnum[]
+    having?: prestamos_tasasScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Prestamos_tasasCountAggregateInputType | true
+    _avg?: Prestamos_tasasAvgAggregateInputType
+    _sum?: Prestamos_tasasSumAggregateInputType
+    _min?: Prestamos_tasasMinAggregateInputType
+    _max?: Prestamos_tasasMaxAggregateInputType
+  }
+
+
+  export type Prestamos_tasasGroupByOutputType = {
+    idtasa: number
+    tasa: number | null
+    plan: string | null
+    tipo: string | null
+    estado: boolean | null
+    _count: Prestamos_tasasCountAggregateOutputType | null
+    _avg: Prestamos_tasasAvgAggregateOutputType | null
+    _sum: Prestamos_tasasSumAggregateOutputType | null
+    _min: Prestamos_tasasMinAggregateOutputType | null
+    _max: Prestamos_tasasMaxAggregateOutputType | null
+  }
+
+  type GetPrestamos_tasasGroupByPayload<T extends Prestamos_tasasGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<Prestamos_tasasGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Prestamos_tasasGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Prestamos_tasasGroupByOutputType[P]>
+            : GetScalarType<T[P], Prestamos_tasasGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type prestamos_tasasSelect = {
+    idtasa?: boolean
+    tasa?: boolean
+    plan?: boolean
+    tipo?: boolean
+    estado?: boolean
+  }
+
+
+  export type prestamos_tasasGetPayload<S extends boolean | null | undefined | prestamos_tasasArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? prestamos_tasas :
+    S extends undefined ? never :
+    S extends { include: any } & (prestamos_tasasArgs | prestamos_tasasFindManyArgs)
+    ? prestamos_tasas 
+    : S extends { select: any } & (prestamos_tasasArgs | prestamos_tasasFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+    P extends keyof prestamos_tasas ? prestamos_tasas[P] : never
+  } 
+      : prestamos_tasas
+
+
+  type prestamos_tasasCountArgs = 
+    Omit<prestamos_tasasFindManyArgs, 'select' | 'include'> & {
+      select?: Prestamos_tasasCountAggregateInputType | true
+    }
+
+  export interface prestamos_tasasDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+
+    /**
+     * Find zero or one Prestamos_tasas that matches the filter.
+     * @param {prestamos_tasasFindUniqueArgs} args - Arguments to find a Prestamos_tasas
+     * @example
+     * // Get one Prestamos_tasas
+     * const prestamos_tasas = await prisma.prestamos_tasas.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends prestamos_tasasFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, prestamos_tasasFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'prestamos_tasas'> extends True ? Prisma__prestamos_tasasClient<prestamos_tasasGetPayload<T>> : Prisma__prestamos_tasasClient<prestamos_tasasGetPayload<T> | null, null>
+
+    /**
+     * Find one Prestamos_tasas that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {prestamos_tasasFindUniqueOrThrowArgs} args - Arguments to find a Prestamos_tasas
+     * @example
+     * // Get one Prestamos_tasas
+     * const prestamos_tasas = await prisma.prestamos_tasas.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends prestamos_tasasFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, prestamos_tasasFindUniqueOrThrowArgs>
+    ): Prisma__prestamos_tasasClient<prestamos_tasasGetPayload<T>>
+
+    /**
+     * Find the first Prestamos_tasas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prestamos_tasasFindFirstArgs} args - Arguments to find a Prestamos_tasas
+     * @example
+     * // Get one Prestamos_tasas
+     * const prestamos_tasas = await prisma.prestamos_tasas.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends prestamos_tasasFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, prestamos_tasasFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'prestamos_tasas'> extends True ? Prisma__prestamos_tasasClient<prestamos_tasasGetPayload<T>> : Prisma__prestamos_tasasClient<prestamos_tasasGetPayload<T> | null, null>
+
+    /**
+     * Find the first Prestamos_tasas that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prestamos_tasasFindFirstOrThrowArgs} args - Arguments to find a Prestamos_tasas
+     * @example
+     * // Get one Prestamos_tasas
+     * const prestamos_tasas = await prisma.prestamos_tasas.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends prestamos_tasasFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, prestamos_tasasFindFirstOrThrowArgs>
+    ): Prisma__prestamos_tasasClient<prestamos_tasasGetPayload<T>>
+
+    /**
+     * Find zero or more Prestamos_tasas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prestamos_tasasFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Prestamos_tasas
+     * const prestamos_tasas = await prisma.prestamos_tasas.findMany()
+     * 
+     * // Get first 10 Prestamos_tasas
+     * const prestamos_tasas = await prisma.prestamos_tasas.findMany({ take: 10 })
+     * 
+     * // Only select the `idtasa`
+     * const prestamos_tasasWithIdtasaOnly = await prisma.prestamos_tasas.findMany({ select: { idtasa: true } })
+     * 
+    **/
+    findMany<T extends prestamos_tasasFindManyArgs>(
+      args?: SelectSubset<T, prestamos_tasasFindManyArgs>
+    ): Prisma.PrismaPromise<Array<prestamos_tasasGetPayload<T>>>
+
+    /**
+     * Create a Prestamos_tasas.
+     * @param {prestamos_tasasCreateArgs} args - Arguments to create a Prestamos_tasas.
+     * @example
+     * // Create one Prestamos_tasas
+     * const Prestamos_tasas = await prisma.prestamos_tasas.create({
+     *   data: {
+     *     // ... data to create a Prestamos_tasas
+     *   }
+     * })
+     * 
+    **/
+    create<T extends prestamos_tasasCreateArgs>(
+      args: SelectSubset<T, prestamos_tasasCreateArgs>
+    ): Prisma__prestamos_tasasClient<prestamos_tasasGetPayload<T>>
+
+    /**
+     * Create many Prestamos_tasas.
+     *     @param {prestamos_tasasCreateManyArgs} args - Arguments to create many Prestamos_tasas.
+     *     @example
+     *     // Create many Prestamos_tasas
+     *     const prestamos_tasas = await prisma.prestamos_tasas.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends prestamos_tasasCreateManyArgs>(
+      args?: SelectSubset<T, prestamos_tasasCreateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Prestamos_tasas.
+     * @param {prestamos_tasasDeleteArgs} args - Arguments to delete one Prestamos_tasas.
+     * @example
+     * // Delete one Prestamos_tasas
+     * const Prestamos_tasas = await prisma.prestamos_tasas.delete({
+     *   where: {
+     *     // ... filter to delete one Prestamos_tasas
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends prestamos_tasasDeleteArgs>(
+      args: SelectSubset<T, prestamos_tasasDeleteArgs>
+    ): Prisma__prestamos_tasasClient<prestamos_tasasGetPayload<T>>
+
+    /**
+     * Update one Prestamos_tasas.
+     * @param {prestamos_tasasUpdateArgs} args - Arguments to update one Prestamos_tasas.
+     * @example
+     * // Update one Prestamos_tasas
+     * const prestamos_tasas = await prisma.prestamos_tasas.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends prestamos_tasasUpdateArgs>(
+      args: SelectSubset<T, prestamos_tasasUpdateArgs>
+    ): Prisma__prestamos_tasasClient<prestamos_tasasGetPayload<T>>
+
+    /**
+     * Delete zero or more Prestamos_tasas.
+     * @param {prestamos_tasasDeleteManyArgs} args - Arguments to filter Prestamos_tasas to delete.
+     * @example
+     * // Delete a few Prestamos_tasas
+     * const { count } = await prisma.prestamos_tasas.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends prestamos_tasasDeleteManyArgs>(
+      args?: SelectSubset<T, prestamos_tasasDeleteManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Prestamos_tasas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prestamos_tasasUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Prestamos_tasas
+     * const prestamos_tasas = await prisma.prestamos_tasas.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends prestamos_tasasUpdateManyArgs>(
+      args: SelectSubset<T, prestamos_tasasUpdateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Prestamos_tasas.
+     * @param {prestamos_tasasUpsertArgs} args - Arguments to update or create a Prestamos_tasas.
+     * @example
+     * // Update or create a Prestamos_tasas
+     * const prestamos_tasas = await prisma.prestamos_tasas.upsert({
+     *   create: {
+     *     // ... data to create a Prestamos_tasas
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Prestamos_tasas we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends prestamos_tasasUpsertArgs>(
+      args: SelectSubset<T, prestamos_tasasUpsertArgs>
+    ): Prisma__prestamos_tasasClient<prestamos_tasasGetPayload<T>>
+
+    /**
+     * Count the number of Prestamos_tasas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prestamos_tasasCountArgs} args - Arguments to filter Prestamos_tasas to count.
+     * @example
+     * // Count the number of Prestamos_tasas
+     * const count = await prisma.prestamos_tasas.count({
+     *   where: {
+     *     // ... the filter for the Prestamos_tasas we want to count
+     *   }
+     * })
+    **/
+    count<T extends prestamos_tasasCountArgs>(
+      args?: Subset<T, prestamos_tasasCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Prestamos_tasasCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Prestamos_tasas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Prestamos_tasasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Prestamos_tasasAggregateArgs>(args: Subset<T, Prestamos_tasasAggregateArgs>): Prisma.PrismaPromise<GetPrestamos_tasasAggregateType<T>>
+
+    /**
+     * Group by Prestamos_tasas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Prestamos_tasasGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Prestamos_tasasGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Prestamos_tasasGroupByArgs['orderBy'] }
+        : { orderBy?: Prestamos_tasasGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Prestamos_tasasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPrestamos_tasasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for prestamos_tasas.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__prestamos_tasasClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * prestamos_tasas base type for findUnique actions
+   */
+  export type prestamos_tasasFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the prestamos_tasas
+     */
+    select?: prestamos_tasasSelect | null
+    /**
+     * Filter, which prestamos_tasas to fetch.
+     */
+    where: prestamos_tasasWhereUniqueInput
+  }
+
+  /**
+   * prestamos_tasas findUnique
+   */
+  export interface prestamos_tasasFindUniqueArgs extends prestamos_tasasFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * prestamos_tasas findUniqueOrThrow
+   */
+  export type prestamos_tasasFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_tasas
+     */
+    select?: prestamos_tasasSelect | null
+    /**
+     * Filter, which prestamos_tasas to fetch.
+     */
+    where: prestamos_tasasWhereUniqueInput
+  }
+
+
+  /**
+   * prestamos_tasas base type for findFirst actions
+   */
+  export type prestamos_tasasFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the prestamos_tasas
+     */
+    select?: prestamos_tasasSelect | null
+    /**
+     * Filter, which prestamos_tasas to fetch.
+     */
+    where?: prestamos_tasasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prestamos_tasas to fetch.
+     */
+    orderBy?: Enumerable<prestamos_tasasOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for prestamos_tasas.
+     */
+    cursor?: prestamos_tasasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prestamos_tasas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prestamos_tasas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of prestamos_tasas.
+     */
+    distinct?: Enumerable<Prestamos_tasasScalarFieldEnum>
+  }
+
+  /**
+   * prestamos_tasas findFirst
+   */
+  export interface prestamos_tasasFindFirstArgs extends prestamos_tasasFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * prestamos_tasas findFirstOrThrow
+   */
+  export type prestamos_tasasFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_tasas
+     */
+    select?: prestamos_tasasSelect | null
+    /**
+     * Filter, which prestamos_tasas to fetch.
+     */
+    where?: prestamos_tasasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prestamos_tasas to fetch.
+     */
+    orderBy?: Enumerable<prestamos_tasasOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for prestamos_tasas.
+     */
+    cursor?: prestamos_tasasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prestamos_tasas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prestamos_tasas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of prestamos_tasas.
+     */
+    distinct?: Enumerable<Prestamos_tasasScalarFieldEnum>
+  }
+
+
+  /**
+   * prestamos_tasas findMany
+   */
+  export type prestamos_tasasFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_tasas
+     */
+    select?: prestamos_tasasSelect | null
+    /**
+     * Filter, which prestamos_tasas to fetch.
+     */
+    where?: prestamos_tasasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prestamos_tasas to fetch.
+     */
+    orderBy?: Enumerable<prestamos_tasasOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing prestamos_tasas.
+     */
+    cursor?: prestamos_tasasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prestamos_tasas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prestamos_tasas.
+     */
+    skip?: number
+    distinct?: Enumerable<Prestamos_tasasScalarFieldEnum>
+  }
+
+
+  /**
+   * prestamos_tasas create
+   */
+  export type prestamos_tasasCreateArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_tasas
+     */
+    select?: prestamos_tasasSelect | null
+    /**
+     * The data needed to create a prestamos_tasas.
+     */
+    data: XOR<prestamos_tasasCreateInput, prestamos_tasasUncheckedCreateInput>
+  }
+
+
+  /**
+   * prestamos_tasas createMany
+   */
+  export type prestamos_tasasCreateManyArgs = {
+    /**
+     * The data used to create many prestamos_tasas.
+     */
+    data: Enumerable<prestamos_tasasCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * prestamos_tasas update
+   */
+  export type prestamos_tasasUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_tasas
+     */
+    select?: prestamos_tasasSelect | null
+    /**
+     * The data needed to update a prestamos_tasas.
+     */
+    data: XOR<prestamos_tasasUpdateInput, prestamos_tasasUncheckedUpdateInput>
+    /**
+     * Choose, which prestamos_tasas to update.
+     */
+    where: prestamos_tasasWhereUniqueInput
+  }
+
+
+  /**
+   * prestamos_tasas updateMany
+   */
+  export type prestamos_tasasUpdateManyArgs = {
+    /**
+     * The data used to update prestamos_tasas.
+     */
+    data: XOR<prestamos_tasasUpdateManyMutationInput, prestamos_tasasUncheckedUpdateManyInput>
+    /**
+     * Filter which prestamos_tasas to update
+     */
+    where?: prestamos_tasasWhereInput
+  }
+
+
+  /**
+   * prestamos_tasas upsert
+   */
+  export type prestamos_tasasUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_tasas
+     */
+    select?: prestamos_tasasSelect | null
+    /**
+     * The filter to search for the prestamos_tasas to update in case it exists.
+     */
+    where: prestamos_tasasWhereUniqueInput
+    /**
+     * In case the prestamos_tasas found by the `where` argument doesn't exist, create a new prestamos_tasas with this data.
+     */
+    create: XOR<prestamos_tasasCreateInput, prestamos_tasasUncheckedCreateInput>
+    /**
+     * In case the prestamos_tasas was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<prestamos_tasasUpdateInput, prestamos_tasasUncheckedUpdateInput>
+  }
+
+
+  /**
+   * prestamos_tasas delete
+   */
+  export type prestamos_tasasDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_tasas
+     */
+    select?: prestamos_tasasSelect | null
+    /**
+     * Filter which prestamos_tasas to delete.
+     */
+    where: prestamos_tasasWhereUniqueInput
+  }
+
+
+  /**
+   * prestamos_tasas deleteMany
+   */
+  export type prestamos_tasasDeleteManyArgs = {
+    /**
+     * Filter which prestamos_tasas to delete
+     */
+    where?: prestamos_tasasWhereInput
+  }
+
+
+  /**
+   * prestamos_tasas without action
+   */
+  export type prestamos_tasasArgs = {
+    /**
+     * Select specific fields to fetch from the prestamos_tasas
+     */
+    select?: prestamos_tasasSelect | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -59023,7 +61845,8 @@ export namespace Prisma {
     idcaso: 'idcaso',
     observacion: 'observacion',
     fecha: 'fecha',
-    fecha_observacion: 'fecha_observacion'
+    fecha_observacion: 'fecha_observacion',
+    accion: 'accion'
   };
 
   export type CampanatemporalScalarFieldEnum = (typeof CampanatemporalScalarFieldEnum)[keyof typeof CampanatemporalScalarFieldEnum]
@@ -59190,7 +62013,8 @@ export namespace Prisma {
     fechaaccion: 'fechaaccion',
     nuevaaccion: 'nuevaaccion',
     fechanuevaaccion: 'fechanuevaaccion',
-    realizado: 'realizado'
+    realizado: 'realizado',
+    observacion_nuevaaccion: 'observacion_nuevaaccion'
   };
 
   export type GestioncasoScalarFieldEnum = (typeof GestioncasoScalarFieldEnum)[keyof typeof GestioncasoScalarFieldEnum]
@@ -59352,6 +62176,15 @@ export namespace Prisma {
   };
 
   export type MbanconvScalarFieldEnum = (typeof MbanconvScalarFieldEnum)[keyof typeof MbanconvScalarFieldEnum]
+
+
+  export const Motivos_atencionScalarFieldEnum: {
+    idmotivo: 'idmotivo',
+    motivo: 'motivo',
+    estado: 'estado'
+  };
+
+  export type Motivos_atencionScalarFieldEnum = (typeof Motivos_atencionScalarFieldEnum)[keyof typeof Motivos_atencionScalarFieldEnum]
 
 
   export const Movimiento_caja_sucursalesScalarFieldEnum: {
@@ -59544,7 +62377,8 @@ export namespace Prisma {
     capital_dev: 'capital_dev',
     inicia: 'inicia',
     termina: 'termina',
-    estado: 'estado'
+    estado: 'estado',
+    capinoaut: 'capinoaut'
   };
 
   export type Prestamos_empleadosScalarFieldEnum = (typeof Prestamos_empleadosScalarFieldEnum)[keyof typeof Prestamos_empleadosScalarFieldEnum]
@@ -59562,6 +62396,27 @@ export namespace Prisma {
   };
 
   export type Prestamos_empleados_cobroScalarFieldEnum = (typeof Prestamos_empleados_cobroScalarFieldEnum)[keyof typeof Prestamos_empleados_cobroScalarFieldEnum]
+
+
+  export const Prestamos_plan_cuotasScalarFieldEnum: {
+    idplan: 'idplan',
+    plan_cuotas: 'plan_cuotas',
+    detalle: 'detalle',
+    estado: 'estado'
+  };
+
+  export type Prestamos_plan_cuotasScalarFieldEnum = (typeof Prestamos_plan_cuotasScalarFieldEnum)[keyof typeof Prestamos_plan_cuotasScalarFieldEnum]
+
+
+  export const Prestamos_tasasScalarFieldEnum: {
+    idtasa: 'idtasa',
+    tasa: 'tasa',
+    plan: 'plan',
+    tipo: 'tipo',
+    estado: 'estado'
+  };
+
+  export type Prestamos_tasasScalarFieldEnum = (typeof Prestamos_tasasScalarFieldEnum)[keyof typeof Prestamos_tasasScalarFieldEnum]
 
 
   export const ProduccionScalarFieldEnum: {
@@ -59747,12 +62602,13 @@ export namespace Prisma {
     motivo: 'motivo',
     operador: 'operador',
     telefono: 'telefono',
-    celular: 'celular',
+    movil: 'movil',
     fecha_atencion: 'fecha_atencion',
     estado: 'estado',
     empresa: 'empresa',
     respuesta: 'respuesta',
-    operador_atencion: 'operador_atencion'
+    operador_atencion: 'operador_atencion',
+    detalle: 'detalle'
   };
 
   export type Turno_bajasScalarFieldEnum = (typeof Turno_bajasScalarFieldEnum)[keyof typeof Turno_bajasScalarFieldEnum]
@@ -60315,7 +63171,7 @@ export namespace Prisma {
     ZONA?: IntNullableFilter | number | null
     TELEFONO?: StringNullableFilter | string | null
     MOVIL?: StringNullableFilter | string | null
-    EDAD?: BigIntNullableFilter | bigint | number | null
+    EDAD?: IntNullableFilter | number | null
     MES?: IntNullableFilter | number | null
     ANO?: IntNullableFilter | number | null
     IMPORTE?: FloatNullableFilter | number | null
@@ -60325,6 +63181,7 @@ export namespace Prisma {
     observacion?: StringNullableFilter | string | null
     fecha?: StringNullableFilter | string | null
     fecha_observacion?: StringNullableFilter | string | null
+    accion?: StringNullableFilter | string | null
   }
 
   export type campanatemporalOrderByWithRelationInput = {
@@ -60353,6 +63210,7 @@ export namespace Prisma {
     observacion?: SortOrder
     fecha?: SortOrder
     fecha_observacion?: SortOrder
+    accion?: SortOrder
   }
 
   export type campanatemporalWhereUniqueInput = {
@@ -60385,6 +63243,7 @@ export namespace Prisma {
     observacion?: SortOrder
     fecha?: SortOrder
     fecha_observacion?: SortOrder
+    accion?: SortOrder
     _count?: campanatemporalCountOrderByAggregateInput
     _avg?: campanatemporalAvgOrderByAggregateInput
     _max?: campanatemporalMaxOrderByAggregateInput
@@ -60411,7 +63270,7 @@ export namespace Prisma {
     ZONA?: IntNullableWithAggregatesFilter | number | null
     TELEFONO?: StringNullableWithAggregatesFilter | string | null
     MOVIL?: StringNullableWithAggregatesFilter | string | null
-    EDAD?: BigIntNullableWithAggregatesFilter | bigint | number | null
+    EDAD?: IntNullableWithAggregatesFilter | number | null
     MES?: IntNullableWithAggregatesFilter | number | null
     ANO?: IntNullableWithAggregatesFilter | number | null
     IMPORTE?: FloatNullableWithAggregatesFilter | number | null
@@ -60421,6 +63280,7 @@ export namespace Prisma {
     observacion?: StringNullableWithAggregatesFilter | string | null
     fecha?: StringNullableWithAggregatesFilter | string | null
     fecha_observacion?: StringNullableWithAggregatesFilter | string | null
+    accion?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type capital_prestamoWhereInput = {
@@ -61068,12 +63928,13 @@ export namespace Prisma {
     idcaso?: IntNullableFilter | number | null
     contrato?: IntNullableFilter | number | null
     operador?: StringNullableFilter | string | null
-    accion?: IntNullableFilter | number | null
+    accion?: StringNullableFilter | string | null
     observacion?: StringNullableFilter | string | null
-    fechaaccion?: DateTimeNullableFilter | Date | string | null
+    fechaaccion?: StringNullableFilter | string | null
     nuevaaccion?: StringNullableFilter | string | null
-    fechanuevaaccion?: DateTimeNullableFilter | Date | string | null
+    fechanuevaaccion?: StringNullableFilter | string | null
     realizado?: BoolNullableFilter | boolean | null
+    observacion_nuevaaccion?: StringNullableFilter | string | null
   }
 
   export type gestioncasoOrderByWithRelationInput = {
@@ -61087,6 +63948,7 @@ export namespace Prisma {
     nuevaaccion?: SortOrder
     fechanuevaaccion?: SortOrder
     realizado?: SortOrder
+    observacion_nuevaaccion?: SortOrder
   }
 
   export type gestioncasoWhereUniqueInput = {
@@ -61104,6 +63966,7 @@ export namespace Prisma {
     nuevaaccion?: SortOrder
     fechanuevaaccion?: SortOrder
     realizado?: SortOrder
+    observacion_nuevaaccion?: SortOrder
     _count?: gestioncasoCountOrderByAggregateInput
     _avg?: gestioncasoAvgOrderByAggregateInput
     _max?: gestioncasoMaxOrderByAggregateInput
@@ -61119,12 +63982,13 @@ export namespace Prisma {
     idcaso?: IntNullableWithAggregatesFilter | number | null
     contrato?: IntNullableWithAggregatesFilter | number | null
     operador?: StringNullableWithAggregatesFilter | string | null
-    accion?: IntNullableWithAggregatesFilter | number | null
+    accion?: StringNullableWithAggregatesFilter | string | null
     observacion?: StringNullableWithAggregatesFilter | string | null
-    fechaaccion?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    fechaaccion?: StringNullableWithAggregatesFilter | string | null
     nuevaaccion?: StringNullableWithAggregatesFilter | string | null
-    fechanuevaaccion?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    fechanuevaaccion?: StringNullableWithAggregatesFilter | string | null
     realizado?: BoolNullableWithAggregatesFilter | boolean | null
+    observacion_nuevaaccion?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type historial_accionesWhereInput = {
@@ -62571,6 +65435,7 @@ export namespace Prisma {
     inicia?: StringNullableFilter | string | null
     termina?: StringNullableFilter | string | null
     estado?: StringNullableFilter | string | null
+    capinoaut?: BoolNullableFilter | boolean | null
   }
 
   export type prestamos_empleadosOrderByWithRelationInput = {
@@ -62584,6 +65449,7 @@ export namespace Prisma {
     inicia?: SortOrder
     termina?: SortOrder
     estado?: SortOrder
+    capinoaut?: SortOrder
   }
 
   export type prestamos_empleadosWhereUniqueInput = {
@@ -62601,6 +65467,7 @@ export namespace Prisma {
     inicia?: SortOrder
     termina?: SortOrder
     estado?: SortOrder
+    capinoaut?: SortOrder
     _count?: prestamos_empleadosCountOrderByAggregateInput
     _avg?: prestamos_empleadosAvgOrderByAggregateInput
     _max?: prestamos_empleadosMaxOrderByAggregateInput
@@ -62622,6 +65489,7 @@ export namespace Prisma {
     inicia?: StringNullableWithAggregatesFilter | string | null
     termina?: StringNullableWithAggregatesFilter | string | null
     estado?: StringNullableWithAggregatesFilter | string | null
+    capinoaut?: BoolNullableWithAggregatesFilter | boolean | null
   }
 
   export type prestamos_empleados_cobroWhereInput = {
@@ -63345,13 +66213,14 @@ export namespace Prisma {
     fecha_turno?: DateTimeNullableFilter | Date | string | null
     motivo?: StringNullableFilter | string | null
     operador?: StringNullableFilter | string | null
-    telefono?: BigIntNullableFilter | bigint | number | null
-    celular?: BigIntNullableFilter | bigint | number | null
+    telefono?: StringNullableFilter | string | null
+    movil?: StringNullableFilter | string | null
     fecha_atencion?: DateTimeNullableFilter | Date | string | null
     estado?: IntNullableFilter | number | null
     empresa?: StringNullableFilter | string | null
     respuesta?: StringNullableFilter | string | null
     operador_atencion?: StringNullableFilter | string | null
+    detalle?: StringNullableFilter | string | null
   }
 
   export type turno_bajasOrderByWithRelationInput = {
@@ -63365,12 +66234,13 @@ export namespace Prisma {
     motivo?: SortOrder
     operador?: SortOrder
     telefono?: SortOrder
-    celular?: SortOrder
+    movil?: SortOrder
     fecha_atencion?: SortOrder
     estado?: SortOrder
     empresa?: SortOrder
     respuesta?: SortOrder
     operador_atencion?: SortOrder
+    detalle?: SortOrder
   }
 
   export type turno_bajasWhereUniqueInput = {
@@ -63388,12 +66258,13 @@ export namespace Prisma {
     motivo?: SortOrder
     operador?: SortOrder
     telefono?: SortOrder
-    celular?: SortOrder
+    movil?: SortOrder
     fecha_atencion?: SortOrder
     estado?: SortOrder
     empresa?: SortOrder
     respuesta?: SortOrder
     operador_atencion?: SortOrder
+    detalle?: SortOrder
     _count?: turno_bajasCountOrderByAggregateInput
     _avg?: turno_bajasAvgOrderByAggregateInput
     _max?: turno_bajasMaxOrderByAggregateInput
@@ -63414,13 +66285,14 @@ export namespace Prisma {
     fecha_turno?: DateTimeNullableWithAggregatesFilter | Date | string | null
     motivo?: StringNullableWithAggregatesFilter | string | null
     operador?: StringNullableWithAggregatesFilter | string | null
-    telefono?: BigIntNullableWithAggregatesFilter | bigint | number | null
-    celular?: BigIntNullableWithAggregatesFilter | bigint | number | null
+    telefono?: StringNullableWithAggregatesFilter | string | null
+    movil?: StringNullableWithAggregatesFilter | string | null
     fecha_atencion?: DateTimeNullableWithAggregatesFilter | Date | string | null
     estado?: IntNullableWithAggregatesFilter | number | null
     empresa?: StringNullableWithAggregatesFilter | string | null
     respuesta?: StringNullableWithAggregatesFilter | string | null
     operador_atencion?: StringNullableWithAggregatesFilter | string | null
+    detalle?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type vacacionesWhereInput = {
@@ -63480,6 +66352,135 @@ export namespace Prisma {
     title?: StringNullableWithAggregatesFilter | string | null
     user?: StringNullableWithAggregatesFilter | string | null
     detail?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type motivos_atencionWhereInput = {
+    AND?: Enumerable<motivos_atencionWhereInput>
+    OR?: Enumerable<motivos_atencionWhereInput>
+    NOT?: Enumerable<motivos_atencionWhereInput>
+    idmotivo?: IntFilter | number
+    motivo?: StringNullableFilter | string | null
+    estado?: BoolNullableFilter | boolean | null
+  }
+
+  export type motivos_atencionOrderByWithRelationInput = {
+    idmotivo?: SortOrder
+    motivo?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type motivos_atencionWhereUniqueInput = {
+    idmotivo?: number
+  }
+
+  export type motivos_atencionOrderByWithAggregationInput = {
+    idmotivo?: SortOrder
+    motivo?: SortOrder
+    estado?: SortOrder
+    _count?: motivos_atencionCountOrderByAggregateInput
+    _avg?: motivos_atencionAvgOrderByAggregateInput
+    _max?: motivos_atencionMaxOrderByAggregateInput
+    _min?: motivos_atencionMinOrderByAggregateInput
+    _sum?: motivos_atencionSumOrderByAggregateInput
+  }
+
+  export type motivos_atencionScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<motivos_atencionScalarWhereWithAggregatesInput>
+    OR?: Enumerable<motivos_atencionScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<motivos_atencionScalarWhereWithAggregatesInput>
+    idmotivo?: IntWithAggregatesFilter | number
+    motivo?: StringNullableWithAggregatesFilter | string | null
+    estado?: BoolNullableWithAggregatesFilter | boolean | null
+  }
+
+  export type prestamos_plan_cuotasWhereInput = {
+    AND?: Enumerable<prestamos_plan_cuotasWhereInput>
+    OR?: Enumerable<prestamos_plan_cuotasWhereInput>
+    NOT?: Enumerable<prestamos_plan_cuotasWhereInput>
+    idplan?: IntFilter | number
+    plan_cuotas?: IntNullableFilter | number | null
+    detalle?: StringNullableFilter | string | null
+    estado?: BoolNullableFilter | boolean | null
+  }
+
+  export type prestamos_plan_cuotasOrderByWithRelationInput = {
+    idplan?: SortOrder
+    plan_cuotas?: SortOrder
+    detalle?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type prestamos_plan_cuotasWhereUniqueInput = {
+    idplan?: number
+  }
+
+  export type prestamos_plan_cuotasOrderByWithAggregationInput = {
+    idplan?: SortOrder
+    plan_cuotas?: SortOrder
+    detalle?: SortOrder
+    estado?: SortOrder
+    _count?: prestamos_plan_cuotasCountOrderByAggregateInput
+    _avg?: prestamos_plan_cuotasAvgOrderByAggregateInput
+    _max?: prestamos_plan_cuotasMaxOrderByAggregateInput
+    _min?: prestamos_plan_cuotasMinOrderByAggregateInput
+    _sum?: prestamos_plan_cuotasSumOrderByAggregateInput
+  }
+
+  export type prestamos_plan_cuotasScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<prestamos_plan_cuotasScalarWhereWithAggregatesInput>
+    OR?: Enumerable<prestamos_plan_cuotasScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<prestamos_plan_cuotasScalarWhereWithAggregatesInput>
+    idplan?: IntWithAggregatesFilter | number
+    plan_cuotas?: IntNullableWithAggregatesFilter | number | null
+    detalle?: StringNullableWithAggregatesFilter | string | null
+    estado?: BoolNullableWithAggregatesFilter | boolean | null
+  }
+
+  export type prestamos_tasasWhereInput = {
+    AND?: Enumerable<prestamos_tasasWhereInput>
+    OR?: Enumerable<prestamos_tasasWhereInput>
+    NOT?: Enumerable<prestamos_tasasWhereInput>
+    idtasa?: IntFilter | number
+    tasa?: IntNullableFilter | number | null
+    plan?: StringNullableFilter | string | null
+    tipo?: StringNullableFilter | string | null
+    estado?: BoolNullableFilter | boolean | null
+  }
+
+  export type prestamos_tasasOrderByWithRelationInput = {
+    idtasa?: SortOrder
+    tasa?: SortOrder
+    plan?: SortOrder
+    tipo?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type prestamos_tasasWhereUniqueInput = {
+    idtasa?: number
+  }
+
+  export type prestamos_tasasOrderByWithAggregationInput = {
+    idtasa?: SortOrder
+    tasa?: SortOrder
+    plan?: SortOrder
+    tipo?: SortOrder
+    estado?: SortOrder
+    _count?: prestamos_tasasCountOrderByAggregateInput
+    _avg?: prestamos_tasasAvgOrderByAggregateInput
+    _max?: prestamos_tasasMaxOrderByAggregateInput
+    _min?: prestamos_tasasMinOrderByAggregateInput
+    _sum?: prestamos_tasasSumOrderByAggregateInput
+  }
+
+  export type prestamos_tasasScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<prestamos_tasasScalarWhereWithAggregatesInput>
+    OR?: Enumerable<prestamos_tasasScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<prestamos_tasasScalarWhereWithAggregatesInput>
+    idtasa?: IntWithAggregatesFilter | number
+    tasa?: IntNullableWithAggregatesFilter | number | null
+    plan?: StringNullableWithAggregatesFilter | string | null
+    tipo?: StringNullableWithAggregatesFilter | string | null
+    estado?: BoolNullableWithAggregatesFilter | boolean | null
   }
 
   export type alta_novellCreateInput = {
@@ -64260,7 +67261,7 @@ export namespace Prisma {
     ZONA?: number | null
     TELEFONO?: string | null
     MOVIL?: string | null
-    EDAD?: bigint | number | null
+    EDAD?: number | null
     MES?: number | null
     ANO?: number | null
     IMPORTE?: number | null
@@ -64269,6 +67270,7 @@ export namespace Prisma {
     observacion?: string | null
     fecha?: string | null
     fecha_observacion?: string | null
+    accion?: string | null
   }
 
   export type campanatemporalUncheckedCreateInput = {
@@ -64287,7 +67289,7 @@ export namespace Prisma {
     ZONA?: number | null
     TELEFONO?: string | null
     MOVIL?: string | null
-    EDAD?: bigint | number | null
+    EDAD?: number | null
     MES?: number | null
     ANO?: number | null
     IMPORTE?: number | null
@@ -64297,6 +67299,7 @@ export namespace Prisma {
     observacion?: string | null
     fecha?: string | null
     fecha_observacion?: string | null
+    accion?: string | null
   }
 
   export type campanatemporalUpdateInput = {
@@ -64315,7 +67318,7 @@ export namespace Prisma {
     ZONA?: NullableIntFieldUpdateOperationsInput | number | null
     TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
     MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
-    EDAD?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
     MES?: NullableIntFieldUpdateOperationsInput | number | null
     ANO?: NullableIntFieldUpdateOperationsInput | number | null
     IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -64324,6 +67327,7 @@ export namespace Prisma {
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    accion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type campanatemporalUncheckedUpdateInput = {
@@ -64342,7 +67346,7 @@ export namespace Prisma {
     ZONA?: NullableIntFieldUpdateOperationsInput | number | null
     TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
     MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
-    EDAD?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
     MES?: NullableIntFieldUpdateOperationsInput | number | null
     ANO?: NullableIntFieldUpdateOperationsInput | number | null
     IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -64352,6 +67356,7 @@ export namespace Prisma {
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    accion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type campanatemporalCreateManyInput = {
@@ -64370,7 +67375,7 @@ export namespace Prisma {
     ZONA?: number | null
     TELEFONO?: string | null
     MOVIL?: string | null
-    EDAD?: bigint | number | null
+    EDAD?: number | null
     MES?: number | null
     ANO?: number | null
     IMPORTE?: number | null
@@ -64380,6 +67385,7 @@ export namespace Prisma {
     observacion?: string | null
     fecha?: string | null
     fecha_observacion?: string | null
+    accion?: string | null
   }
 
   export type campanatemporalUpdateManyMutationInput = {
@@ -64398,7 +67404,7 @@ export namespace Prisma {
     ZONA?: NullableIntFieldUpdateOperationsInput | number | null
     TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
     MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
-    EDAD?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
     MES?: NullableIntFieldUpdateOperationsInput | number | null
     ANO?: NullableIntFieldUpdateOperationsInput | number | null
     IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -64407,6 +67413,7 @@ export namespace Prisma {
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    accion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type campanatemporalUncheckedUpdateManyInput = {
@@ -64425,7 +67432,7 @@ export namespace Prisma {
     ZONA?: NullableIntFieldUpdateOperationsInput | number | null
     TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
     MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
-    EDAD?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
     MES?: NullableIntFieldUpdateOperationsInput | number | null
     ANO?: NullableIntFieldUpdateOperationsInput | number | null
     IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -64435,6 +67442,7 @@ export namespace Prisma {
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    accion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type capital_prestamoCreateInput = {
@@ -65234,12 +68242,13 @@ export namespace Prisma {
     idcaso?: number | null
     contrato?: number | null
     operador?: string | null
-    accion?: number | null
+    accion?: string | null
     observacion?: string | null
-    fechaaccion?: Date | string | null
+    fechaaccion?: string | null
     nuevaaccion?: string | null
-    fechanuevaaccion?: Date | string | null
+    fechanuevaaccion?: string | null
     realizado?: boolean | null
+    observacion_nuevaaccion?: string | null
   }
 
   export type gestioncasoUncheckedCreateInput = {
@@ -65247,24 +68256,26 @@ export namespace Prisma {
     idcaso?: number | null
     contrato?: number | null
     operador?: string | null
-    accion?: number | null
+    accion?: string | null
     observacion?: string | null
-    fechaaccion?: Date | string | null
+    fechaaccion?: string | null
     nuevaaccion?: string | null
-    fechanuevaaccion?: Date | string | null
+    fechanuevaaccion?: string | null
     realizado?: boolean | null
+    observacion_nuevaaccion?: string | null
   }
 
   export type gestioncasoUpdateInput = {
     idcaso?: NullableIntFieldUpdateOperationsInput | number | null
     contrato?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    accion?: NullableIntFieldUpdateOperationsInput | number | null
+    accion?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaaccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fechaaccion?: NullableStringFieldUpdateOperationsInput | string | null
     nuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
-    fechanuevaaccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fechanuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
     realizado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    observacion_nuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type gestioncasoUncheckedUpdateInput = {
@@ -65272,12 +68283,13 @@ export namespace Prisma {
     idcaso?: NullableIntFieldUpdateOperationsInput | number | null
     contrato?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    accion?: NullableIntFieldUpdateOperationsInput | number | null
+    accion?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaaccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fechaaccion?: NullableStringFieldUpdateOperationsInput | string | null
     nuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
-    fechanuevaaccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fechanuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
     realizado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    observacion_nuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type gestioncasoCreateManyInput = {
@@ -65285,24 +68297,26 @@ export namespace Prisma {
     idcaso?: number | null
     contrato?: number | null
     operador?: string | null
-    accion?: number | null
+    accion?: string | null
     observacion?: string | null
-    fechaaccion?: Date | string | null
+    fechaaccion?: string | null
     nuevaaccion?: string | null
-    fechanuevaaccion?: Date | string | null
+    fechanuevaaccion?: string | null
     realizado?: boolean | null
+    observacion_nuevaaccion?: string | null
   }
 
   export type gestioncasoUpdateManyMutationInput = {
     idcaso?: NullableIntFieldUpdateOperationsInput | number | null
     contrato?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    accion?: NullableIntFieldUpdateOperationsInput | number | null
+    accion?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaaccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fechaaccion?: NullableStringFieldUpdateOperationsInput | string | null
     nuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
-    fechanuevaaccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fechanuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
     realizado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    observacion_nuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type gestioncasoUncheckedUpdateManyInput = {
@@ -65310,12 +68324,13 @@ export namespace Prisma {
     idcaso?: NullableIntFieldUpdateOperationsInput | number | null
     contrato?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    accion?: NullableIntFieldUpdateOperationsInput | number | null
+    accion?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaaccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fechaaccion?: NullableStringFieldUpdateOperationsInput | string | null
     nuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
-    fechanuevaaccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fechanuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
     realizado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    observacion_nuevaaccion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type historial_accionesCreateInput = {
@@ -67073,6 +70088,7 @@ export namespace Prisma {
     inicia?: string | null
     termina?: string | null
     estado?: string | null
+    capinoaut?: boolean | null
   }
 
   export type prestamos_empleadosUncheckedCreateInput = {
@@ -67086,6 +70102,7 @@ export namespace Prisma {
     inicia?: string | null
     termina?: string | null
     estado?: string | null
+    capinoaut?: boolean | null
   }
 
   export type prestamos_empleadosUpdateInput = {
@@ -67098,6 +70115,7 @@ export namespace Prisma {
     inicia?: NullableStringFieldUpdateOperationsInput | string | null
     termina?: NullableStringFieldUpdateOperationsInput | string | null
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type prestamos_empleadosUncheckedUpdateInput = {
@@ -67111,6 +70129,7 @@ export namespace Prisma {
     inicia?: NullableStringFieldUpdateOperationsInput | string | null
     termina?: NullableStringFieldUpdateOperationsInput | string | null
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type prestamos_empleadosCreateManyInput = {
@@ -67124,6 +70143,7 @@ export namespace Prisma {
     inicia?: string | null
     termina?: string | null
     estado?: string | null
+    capinoaut?: boolean | null
   }
 
   export type prestamos_empleadosUpdateManyMutationInput = {
@@ -67136,6 +70156,7 @@ export namespace Prisma {
     inicia?: NullableStringFieldUpdateOperationsInput | string | null
     termina?: NullableStringFieldUpdateOperationsInput | string | null
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type prestamos_empleadosUncheckedUpdateManyInput = {
@@ -67149,6 +70170,7 @@ export namespace Prisma {
     inicia?: NullableStringFieldUpdateOperationsInput | string | null
     termina?: NullableStringFieldUpdateOperationsInput | string | null
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type prestamos_empleados_cobroCreateInput = {
@@ -68051,13 +71073,14 @@ export namespace Prisma {
     fecha_turno?: Date | string | null
     motivo?: string | null
     operador?: string | null
-    telefono?: bigint | number | null
-    celular?: bigint | number | null
+    telefono?: string | null
+    movil?: string | null
     fecha_atencion?: Date | string | null
     estado?: number | null
     empresa?: string | null
     respuesta?: string | null
     operador_atencion?: string | null
+    detalle?: string | null
   }
 
   export type turno_bajasUncheckedCreateInput = {
@@ -68070,13 +71093,14 @@ export namespace Prisma {
     fecha_turno?: Date | string | null
     motivo?: string | null
     operador?: string | null
-    telefono?: bigint | number | null
-    celular?: bigint | number | null
+    telefono?: string | null
+    movil?: string | null
     fecha_atencion?: Date | string | null
     estado?: number | null
     empresa?: string | null
     respuesta?: string | null
     operador_atencion?: string | null
+    detalle?: string | null
   }
 
   export type turno_bajasUpdateInput = {
@@ -68088,13 +71112,14 @@ export namespace Prisma {
     fecha_turno?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     motivo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    celular?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    movil?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_atencion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     estado?: NullableIntFieldUpdateOperationsInput | number | null
     empresa?: NullableStringFieldUpdateOperationsInput | string | null
     respuesta?: NullableStringFieldUpdateOperationsInput | string | null
     operador_atencion?: NullableStringFieldUpdateOperationsInput | string | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type turno_bajasUncheckedUpdateInput = {
@@ -68107,13 +71132,14 @@ export namespace Prisma {
     fecha_turno?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     motivo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    celular?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    movil?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_atencion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     estado?: NullableIntFieldUpdateOperationsInput | number | null
     empresa?: NullableStringFieldUpdateOperationsInput | string | null
     respuesta?: NullableStringFieldUpdateOperationsInput | string | null
     operador_atencion?: NullableStringFieldUpdateOperationsInput | string | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type turno_bajasCreateManyInput = {
@@ -68126,13 +71152,14 @@ export namespace Prisma {
     fecha_turno?: Date | string | null
     motivo?: string | null
     operador?: string | null
-    telefono?: bigint | number | null
-    celular?: bigint | number | null
+    telefono?: string | null
+    movil?: string | null
     fecha_atencion?: Date | string | null
     estado?: number | null
     empresa?: string | null
     respuesta?: string | null
     operador_atencion?: string | null
+    detalle?: string | null
   }
 
   export type turno_bajasUpdateManyMutationInput = {
@@ -68144,13 +71171,14 @@ export namespace Prisma {
     fecha_turno?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     motivo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    celular?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    movil?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_atencion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     estado?: NullableIntFieldUpdateOperationsInput | number | null
     empresa?: NullableStringFieldUpdateOperationsInput | string | null
     respuesta?: NullableStringFieldUpdateOperationsInput | string | null
     operador_atencion?: NullableStringFieldUpdateOperationsInput | string | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type turno_bajasUncheckedUpdateManyInput = {
@@ -68163,13 +71191,14 @@ export namespace Prisma {
     fecha_turno?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     motivo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    celular?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    movil?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_atencion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     estado?: NullableIntFieldUpdateOperationsInput | number | null
     empresa?: NullableStringFieldUpdateOperationsInput | string | null
     respuesta?: NullableStringFieldUpdateOperationsInput | string | null
     operador_atencion?: NullableStringFieldUpdateOperationsInput | string | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type vacacionesCreateInput = {
@@ -68247,6 +71276,144 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     user?: NullableStringFieldUpdateOperationsInput | string | null
     detail?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type motivos_atencionCreateInput = {
+    motivo?: string | null
+    estado?: boolean | null
+  }
+
+  export type motivos_atencionUncheckedCreateInput = {
+    idmotivo?: number
+    motivo?: string | null
+    estado?: boolean | null
+  }
+
+  export type motivos_atencionUpdateInput = {
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type motivos_atencionUncheckedUpdateInput = {
+    idmotivo?: IntFieldUpdateOperationsInput | number
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type motivos_atencionCreateManyInput = {
+    idmotivo?: number
+    motivo?: string | null
+    estado?: boolean | null
+  }
+
+  export type motivos_atencionUpdateManyMutationInput = {
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type motivos_atencionUncheckedUpdateManyInput = {
+    idmotivo?: IntFieldUpdateOperationsInput | number
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type prestamos_plan_cuotasCreateInput = {
+    plan_cuotas?: number | null
+    detalle?: string | null
+    estado?: boolean | null
+  }
+
+  export type prestamos_plan_cuotasUncheckedCreateInput = {
+    idplan?: number
+    plan_cuotas?: number | null
+    detalle?: string | null
+    estado?: boolean | null
+  }
+
+  export type prestamos_plan_cuotasUpdateInput = {
+    plan_cuotas?: NullableIntFieldUpdateOperationsInput | number | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type prestamos_plan_cuotasUncheckedUpdateInput = {
+    idplan?: IntFieldUpdateOperationsInput | number
+    plan_cuotas?: NullableIntFieldUpdateOperationsInput | number | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type prestamos_plan_cuotasCreateManyInput = {
+    idplan?: number
+    plan_cuotas?: number | null
+    detalle?: string | null
+    estado?: boolean | null
+  }
+
+  export type prestamos_plan_cuotasUpdateManyMutationInput = {
+    plan_cuotas?: NullableIntFieldUpdateOperationsInput | number | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type prestamos_plan_cuotasUncheckedUpdateManyInput = {
+    idplan?: IntFieldUpdateOperationsInput | number
+    plan_cuotas?: NullableIntFieldUpdateOperationsInput | number | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type prestamos_tasasCreateInput = {
+    tasa?: number | null
+    plan?: string | null
+    tipo?: string | null
+    estado?: boolean | null
+  }
+
+  export type prestamos_tasasUncheckedCreateInput = {
+    idtasa?: number
+    tasa?: number | null
+    plan?: string | null
+    tipo?: string | null
+    estado?: boolean | null
+  }
+
+  export type prestamos_tasasUpdateInput = {
+    tasa?: NullableIntFieldUpdateOperationsInput | number | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type prestamos_tasasUncheckedUpdateInput = {
+    idtasa?: IntFieldUpdateOperationsInput | number
+    tasa?: NullableIntFieldUpdateOperationsInput | number | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type prestamos_tasasCreateManyInput = {
+    idtasa?: number
+    tasa?: number | null
+    plan?: string | null
+    tipo?: string | null
+    estado?: boolean | null
+  }
+
+  export type prestamos_tasasUpdateManyMutationInput = {
+    tasa?: NullableIntFieldUpdateOperationsInput | number | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type prestamos_tasasUncheckedUpdateManyInput = {
+    idtasa?: IntFieldUpdateOperationsInput | number
+    tasa?: NullableIntFieldUpdateOperationsInput | number | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type IntFilter = {
@@ -68901,6 +72068,7 @@ export namespace Prisma {
     observacion?: SortOrder
     fecha?: SortOrder
     fecha_observacion?: SortOrder
+    accion?: SortOrder
   }
 
   export type campanatemporalAvgOrderByAggregateInput = {
@@ -68942,6 +72110,7 @@ export namespace Prisma {
     observacion?: SortOrder
     fecha?: SortOrder
     fecha_observacion?: SortOrder
+    accion?: SortOrder
   }
 
   export type campanatemporalMinOrderByAggregateInput = {
@@ -68970,6 +72139,7 @@ export namespace Prisma {
     observacion?: SortOrder
     fecha?: SortOrder
     fecha_observacion?: SortOrder
+    accion?: SortOrder
   }
 
   export type campanatemporalSumOrderByAggregateInput = {
@@ -69480,13 +72650,13 @@ export namespace Prisma {
     nuevaaccion?: SortOrder
     fechanuevaaccion?: SortOrder
     realizado?: SortOrder
+    observacion_nuevaaccion?: SortOrder
   }
 
   export type gestioncasoAvgOrderByAggregateInput = {
     idgestion?: SortOrder
     idcaso?: SortOrder
     contrato?: SortOrder
-    accion?: SortOrder
   }
 
   export type gestioncasoMaxOrderByAggregateInput = {
@@ -69500,6 +72670,7 @@ export namespace Prisma {
     nuevaaccion?: SortOrder
     fechanuevaaccion?: SortOrder
     realizado?: SortOrder
+    observacion_nuevaaccion?: SortOrder
   }
 
   export type gestioncasoMinOrderByAggregateInput = {
@@ -69513,13 +72684,13 @@ export namespace Prisma {
     nuevaaccion?: SortOrder
     fechanuevaaccion?: SortOrder
     realizado?: SortOrder
+    observacion_nuevaaccion?: SortOrder
   }
 
   export type gestioncasoSumOrderByAggregateInput = {
     idgestion?: SortOrder
     idcaso?: SortOrder
     contrato?: SortOrder
-    accion?: SortOrder
   }
 
   export type historial_accionesCountOrderByAggregateInput = {
@@ -70659,6 +73830,7 @@ export namespace Prisma {
     inicia?: SortOrder
     termina?: SortOrder
     estado?: SortOrder
+    capinoaut?: SortOrder
   }
 
   export type prestamos_empleadosAvgOrderByAggregateInput = {
@@ -70680,6 +73852,7 @@ export namespace Prisma {
     inicia?: SortOrder
     termina?: SortOrder
     estado?: SortOrder
+    capinoaut?: SortOrder
   }
 
   export type prestamos_empleadosMinOrderByAggregateInput = {
@@ -70693,6 +73866,7 @@ export namespace Prisma {
     inicia?: SortOrder
     termina?: SortOrder
     estado?: SortOrder
+    capinoaut?: SortOrder
   }
 
   export type prestamos_empleadosSumOrderByAggregateInput = {
@@ -71264,20 +74438,19 @@ export namespace Prisma {
     motivo?: SortOrder
     operador?: SortOrder
     telefono?: SortOrder
-    celular?: SortOrder
+    movil?: SortOrder
     fecha_atencion?: SortOrder
     estado?: SortOrder
     empresa?: SortOrder
     respuesta?: SortOrder
     operador_atencion?: SortOrder
+    detalle?: SortOrder
   }
 
   export type turno_bajasAvgOrderByAggregateInput = {
     idturno?: SortOrder
     contrato?: SortOrder
     dni?: SortOrder
-    telefono?: SortOrder
-    celular?: SortOrder
     estado?: SortOrder
   }
 
@@ -71292,12 +74465,13 @@ export namespace Prisma {
     motivo?: SortOrder
     operador?: SortOrder
     telefono?: SortOrder
-    celular?: SortOrder
+    movil?: SortOrder
     fecha_atencion?: SortOrder
     estado?: SortOrder
     empresa?: SortOrder
     respuesta?: SortOrder
     operador_atencion?: SortOrder
+    detalle?: SortOrder
   }
 
   export type turno_bajasMinOrderByAggregateInput = {
@@ -71311,20 +74485,19 @@ export namespace Prisma {
     motivo?: SortOrder
     operador?: SortOrder
     telefono?: SortOrder
-    celular?: SortOrder
+    movil?: SortOrder
     fecha_atencion?: SortOrder
     estado?: SortOrder
     empresa?: SortOrder
     respuesta?: SortOrder
     operador_atencion?: SortOrder
+    detalle?: SortOrder
   }
 
   export type turno_bajasSumOrderByAggregateInput = {
     idturno?: SortOrder
     contrato?: SortOrder
     dni?: SortOrder
-    telefono?: SortOrder
-    celular?: SortOrder
     estado?: SortOrder
   }
 
@@ -71369,6 +74542,97 @@ export namespace Prisma {
   export type vacacionesSumOrderByAggregateInput = {
     allDay?: SortOrder
     priority?: SortOrder
+  }
+
+  export type motivos_atencionCountOrderByAggregateInput = {
+    idmotivo?: SortOrder
+    motivo?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type motivos_atencionAvgOrderByAggregateInput = {
+    idmotivo?: SortOrder
+  }
+
+  export type motivos_atencionMaxOrderByAggregateInput = {
+    idmotivo?: SortOrder
+    motivo?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type motivos_atencionMinOrderByAggregateInput = {
+    idmotivo?: SortOrder
+    motivo?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type motivos_atencionSumOrderByAggregateInput = {
+    idmotivo?: SortOrder
+  }
+
+  export type prestamos_plan_cuotasCountOrderByAggregateInput = {
+    idplan?: SortOrder
+    plan_cuotas?: SortOrder
+    detalle?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type prestamos_plan_cuotasAvgOrderByAggregateInput = {
+    idplan?: SortOrder
+    plan_cuotas?: SortOrder
+  }
+
+  export type prestamos_plan_cuotasMaxOrderByAggregateInput = {
+    idplan?: SortOrder
+    plan_cuotas?: SortOrder
+    detalle?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type prestamos_plan_cuotasMinOrderByAggregateInput = {
+    idplan?: SortOrder
+    plan_cuotas?: SortOrder
+    detalle?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type prestamos_plan_cuotasSumOrderByAggregateInput = {
+    idplan?: SortOrder
+    plan_cuotas?: SortOrder
+  }
+
+  export type prestamos_tasasCountOrderByAggregateInput = {
+    idtasa?: SortOrder
+    tasa?: SortOrder
+    plan?: SortOrder
+    tipo?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type prestamos_tasasAvgOrderByAggregateInput = {
+    idtasa?: SortOrder
+    tasa?: SortOrder
+  }
+
+  export type prestamos_tasasMaxOrderByAggregateInput = {
+    idtasa?: SortOrder
+    tasa?: SortOrder
+    plan?: SortOrder
+    tipo?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type prestamos_tasasMinOrderByAggregateInput = {
+    idtasa?: SortOrder
+    tasa?: SortOrder
+    plan?: SortOrder
+    tipo?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type prestamos_tasasSumOrderByAggregateInput = {
+    idtasa?: SortOrder
+    tasa?: SortOrder
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {

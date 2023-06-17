@@ -1,14 +1,15 @@
-import { PrismaClient as WerchowsgiClient } from '../../prisma/generated/werchowsgi'
+import { Werchow, SGI, Camp } from '../../libs/config'
+
 
 export default async function handler(req, res) {
 
-    const prisma = new WerchowsgiClient();
+    const prisma = SGI
 
     const noti = await prisma.noticia.findFirst({
         where: {
             perfil: parseInt(req.query.per)
         },
-        orderBy:{
+        orderBy: {
             fecha: 'desc'
         }
 

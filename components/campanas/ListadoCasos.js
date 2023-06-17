@@ -2,9 +2,12 @@ import React, { useMemo } from 'react'
 import DataTable from "react-data-table-component";
 import FilterComponent from "../Layouts/FilterComponent";
 import moment from 'moment';
-import { Typography, Card, CardHeader } from "@material-tailwind/react";
+import { Typography, Card, CardHeader, Spinner, Alert } from "@material-tailwind/react";
+
 import ModalAcciones from './ModalAcciones';
 import ModalImpNotificaciones from './ModalImpNotificaciones';
+import ExportarPadron from './ExportarPadron';
+import ModalHistorial from './ModalHistorial';
 
 
 const ListadoCasos = ({
@@ -13,7 +16,9 @@ const ListadoCasos = ({
     RegistrarGestion,
     handleChange,
     errores,
-    usu
+    usu,
+    historialBonif,
+    historial,
 
 }) => {
     const columns = [
@@ -79,6 +84,18 @@ const ListadoCasos = ({
                         RegistrarGestion={RegistrarGestion}
                         handleChange={handleChange}
                         errores={errores}
+                    />
+
+                    <ModalImpNotificaciones
+                        casos={row}
+                        usu={usu}
+                        f={'U'}
+                    />
+
+                    <ModalHistorial
+                        row={row}
+                        historialBonif={historialBonif}
+                        listado={historial}
                     />
 
                 </>
@@ -147,20 +164,35 @@ const ListadoCasos = ({
                     <ModalImpNotificaciones
                         casos={listado}
                         usu={usu}
+                        f={'T'}
+                    />
+
+                    <ExportarPadron
+                        listado={listado}
+                        camp={camp}
                     />
 
                 </div>
             </div>
 
-            <DataTable
-                columns={columns}
-                data={filteredItems}
-                defaultSortField="name"
-                striped
-                pagination
-                subHeader
-                subHeaderComponent={subHeaderComponent}
-            />
+
+            {listado.length === 0 ? (
+                <div className="flex justify-center mt-5 mb-5 gap-8">
+                    <Spinner className="h-12 w-12" />
+                </div>
+            ) : (
+                <DataTable
+                    columns={columns}
+                    data={filteredItems}
+                    defaultSortField="name"
+                    striped
+                    pagination
+                    subHeader
+                    subHeaderComponent={subHeaderComponent}
+                />
+            )
+            }
+
 
         </div>
     )

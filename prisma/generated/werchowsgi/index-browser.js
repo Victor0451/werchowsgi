@@ -222,7 +222,8 @@ exports.Prisma.CampanatemporalScalarFieldEnum = {
   idcaso: 'idcaso',
   observacion: 'observacion',
   fecha: 'fecha',
-  fecha_observacion: 'fecha_observacion'
+  fecha_observacion: 'fecha_observacion',
+  accion: 'accion'
 };
 
 exports.Prisma.Capital_prestamoScalarFieldEnum = {
@@ -353,7 +354,8 @@ exports.Prisma.GestioncasoScalarFieldEnum = {
   fechaaccion: 'fechaaccion',
   nuevaaccion: 'nuevaaccion',
   fechanuevaaccion: 'fechanuevaaccion',
-  realizado: 'realizado'
+  realizado: 'realizado',
+  observacion_nuevaaccion: 'observacion_nuevaaccion'
 };
 
 exports.Prisma.Historial_accionesScalarFieldEnum = {
@@ -473,6 +475,12 @@ exports.Prisma.MbanconvScalarFieldEnum = {
   fichasrec: 'fichasrec',
   mes: 'mes',
   ano: 'ano'
+};
+
+exports.Prisma.Motivos_atencionScalarFieldEnum = {
+  idmotivo: 'idmotivo',
+  motivo: 'motivo',
+  estado: 'estado'
 };
 
 exports.Prisma.Movimiento_caja_sucursalesScalarFieldEnum = {
@@ -626,7 +634,8 @@ exports.Prisma.Prestamos_empleadosScalarFieldEnum = {
   capital_dev: 'capital_dev',
   inicia: 'inicia',
   termina: 'termina',
-  estado: 'estado'
+  estado: 'estado',
+  capinoaut: 'capinoaut'
 };
 
 exports.Prisma.Prestamos_empleados_cobroScalarFieldEnum = {
@@ -638,6 +647,21 @@ exports.Prisma.Prestamos_empleados_cobroScalarFieldEnum = {
   estado: 'estado',
   fecha_pago: 'fecha_pago',
   operador: 'operador'
+};
+
+exports.Prisma.Prestamos_plan_cuotasScalarFieldEnum = {
+  idplan: 'idplan',
+  plan_cuotas: 'plan_cuotas',
+  detalle: 'detalle',
+  estado: 'estado'
+};
+
+exports.Prisma.Prestamos_tasasScalarFieldEnum = {
+  idtasa: 'idtasa',
+  tasa: 'tasa',
+  plan: 'plan',
+  tipo: 'tipo',
+  estado: 'estado'
 };
 
 exports.Prisma.ProduccionScalarFieldEnum = {
@@ -784,12 +808,13 @@ exports.Prisma.Turno_bajasScalarFieldEnum = {
   motivo: 'motivo',
   operador: 'operador',
   telefono: 'telefono',
-  celular: 'celular',
+  movil: 'movil',
   fecha_atencion: 'fecha_atencion',
   estado: 'estado',
   empresa: 'empresa',
   respuesta: 'respuesta',
-  operador_atencion: 'operador_atencion'
+  operador_atencion: 'operador_atencion',
+  detalle: 'detalle'
 };
 
 exports.Prisma.VacacionesScalarFieldEnum = {
@@ -863,7 +888,10 @@ exports.Prisma.ModelName = {
   tipo_contratos: 'tipo_contratos',
   tipo_facturas: 'tipo_facturas',
   turno_bajas: 'turno_bajas',
-  vacaciones: 'vacaciones'
+  vacaciones: 'vacaciones',
+  motivos_atencion: 'motivos_atencion',
+  prestamos_plan_cuotas: 'prestamos_plan_cuotas',
+  prestamos_tasas: 'prestamos_tasas'
 };
 
 /**

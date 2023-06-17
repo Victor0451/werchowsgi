@@ -13,15 +13,20 @@ import {
 
 
 } from "@heroicons/react/24/outline";
+import { Prestamos } from './Prestamos';
 
 const navListMenuItems = [
+    {
+        title: "Campañas Temporales",
+        url: "/campanas/campanastemporales"
+    },
     {
         title: "Casos Asignados",
         url: "/campanas/campanas"
     },
 ];
 
-export const NavListMenu = () => {
+export const Campanas = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const triggers = {
@@ -67,7 +72,7 @@ export const NavListMenu = () => {
                 </MenuList>
             </Menu>
             <MenuItem className="flex items-center gap-2 lg:hidden">
-                <Square3Stack3DIcon className="h-[18px] w-[18px]" /> Pages{" "}
+                <Square3Stack3DIcon className="h-[18px] w-[18px]" /> Campañas{" "}
             </MenuItem>
             <ul className="ml-6 flex w-full flex-col gap-1 lg:hidden">
                 {renderItems}

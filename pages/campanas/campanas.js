@@ -3,6 +3,7 @@ import useUser from '@/hook/useUser'
 import { Skeleton } from '@/components/Layouts/Skeleton'
 import { GestionCampanas } from '@/components/campanas/GestionCampanas';
 import useWerchow from '@/hook/useWerchow';
+import { Redirect } from '@/components/auth/Redirect';
 
 
 export default function Campanas() {

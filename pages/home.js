@@ -1,23 +1,56 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useUser from '@/hook/useUser';
 import { Redirect } from '@/components/auth/Redirect';
 import { Home } from '@/components/home/Home';
 import { Skeleton } from '@/components/Layouts/Skeleton';
+import useWerchow from '@/hook/useWerchow';
+import useSWR from 'swr'
+import axios from 'axios';
+
 
 
 export default function home() {
 
-    const { user, isLoading } = useUser();
+    const { usu } = useWerchow()
+
+    const { isLoading } = useUser();
+
+    const [noticia, guardarNoticia] = useState(null)
+
+    const mostarNoticias = async () => {
+        if (usu) {
+
+            await axios
+                .get(`/api/noticias`, {
+                    params: {
+                        per: usu.perfil
+                    }
+                })
+                .then((res) => {
+                    const noticia = res.data;
+
+                    guardarNoticia(noticia);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+        }
+    };
+
+    useSWR('/api/noticias', mostarNoticias)
 
     if (isLoading === true) return <Skeleton />
 
     return (
         <>
-            
-            {!user ? (
+
+            {!usu ? (
                 <Redirect />
-            ) : user ? (
-                <Home />
+            ) : usu ? (
+                <Home
+                    noticia={noticia}
+                />
             ) : null}
         </>
     )

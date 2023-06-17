@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import ReactToPrint from "react-to-print";
 import moment from "moment";
 
-const Notificacion2 = ({ caso, userData }) => {
+const Notificacion = ({ caso, userData }) => {
+
   let componentRef = React.createRef();
+
 
   if (!userData) return <div>cargando..</div>;
 
@@ -28,35 +30,35 @@ const Notificacion2 = ({ caso, userData }) => {
         id="solicitud"
         ref={(el) => (componentRef = el)}
       >
-        <div className="row border border-dark p-2">
-          <div className="col-md-6 d-flex justify-content-start ">
+        <div className="border-2 p-2">
+          <div className="flex flex-row flex-wrap items-center  ">
             <img
-              className="werchowlogo"
+              className="werchowlogo "
               src="/img/logo.png"
               alt="werchowlogo"
             />
           </div>
 
-          <div className="col-md-6 d-flex justify-content-end ">
+          <div className="flex flex-wrap items-center gap-y-2 gap-x-8 justify-end">
             San Salvador de Jujuy, {moment().format("DD/MM/YYYY")}{" "}
           </div>
 
-          <div className="row col-md-12 m-4">
-            <div className="col-md-6 mt-2">
+          <div className="m-4">
+            <div className="mt-2">
               <strong>
                 <u>Sr/A. Afiliado: {""}</u>
               </strong>
               {caso.apellido}, {caso.nombre}
             </div>
 
-            <div className="col-md-6 mt-2 d-flex justify-content-end">
+            <div className="mt-2">
               <strong>
                 <u>Legajo: </u>
               </strong>{" "}
               {caso.contrato}
             </div>
 
-            <div className="col-md-12 mt-2 d-flex justify-content-start">
+            <div className="mt-2">
               <strong>
                 <u>Domicilio: {""}</u>
               </strong>
@@ -64,12 +66,13 @@ const Notificacion2 = ({ caso, userData }) => {
               {caso.localidad}
             </div>
 
-            <div className="col-md-12 mt-2 d-flex justify-content-start ">
+            <div className="mt-2 ">
               <strong>
                 <u>Telefono - Celular: {""}</u>
               </strong>
               {caso.telefono} - {caso.movil}
             </div>
+
             <p className="text-justify mt-2 p-2">
               Por medio de la presente se le informa que se encuentra con los
               servicios de seperlios atrasados. Por este motivo lo invitamos a
@@ -80,15 +83,15 @@ const Notificacion2 = ({ caso, userData }) => {
               nos despedimos atentamente.
             </p>
 
-            <div className="col-md-12 mt-2">
+            <div className="mt-2 flex flex-wrap  justify-end">
               <strong>Departamento de Cobranza</strong>
             </div>
-            <div className="col-md-12 mt-2">
+            <div className="mt-2 flex flex-wrap  justify-end">
               <strong>
                 <u>Tel.</u>: 388-4225555
               </strong>
             </div>
-            <div className="col-md-12 mt-2 mb-4">
+            <div className="mt-2 flex flex-wrap  justify-end mb-4">
               <strong>
                 <u>Operador</u>: {op(userData)}
               </strong>
@@ -96,35 +99,35 @@ const Notificacion2 = ({ caso, userData }) => {
           </div>
         </div>
         ----------------------------------------------------------------------------------------------------------------------------------------------------------
-        <div className="row border border-dark p-2">
-          <div className="col-md-6 d-flex justify-content-start ">
+        <div className="border-2 p-2">
+          <div className="flex flex-row flex-wrap items-center  ">
             <img
-              className="werchowlogo"
+              className="werchowlogo "
               src="/img/logo.png"
               alt="werchowlogo"
             />
           </div>
 
-          <div className="col-md-6 d-flex justify-content-end ">
+          <div className="flex flex-wrap items-center gap-y-2 gap-x-8 justify-end">
             San Salvador de Jujuy, {moment().format("DD/MM/YYYY")}{" "}
           </div>
 
-          <div className="row col-md-12 m-4">
-            <div className="col-md-6 mt-2">
+          <div className="m-4">
+            <div className="mt-2">
               <strong>
                 <u>Sr/A. Afiliado: {""}</u>
               </strong>
               {caso.apellido}, {caso.nombre}
             </div>
 
-            <div className="col-md-6 mt-2 d-flex justify-content-end">
+            <div className="mt-2">
               <strong>
                 <u>Legajo: </u>
               </strong>{" "}
               {caso.contrato}
             </div>
 
-            <div className="col-md-12 mt-2 d-flex justify-content-start">
+            <div className="mt-2">
               <strong>
                 <u>Domicilio: {""}</u>
               </strong>
@@ -132,12 +135,13 @@ const Notificacion2 = ({ caso, userData }) => {
               {caso.localidad}
             </div>
 
-            <div className="col-md-12 mt-2 d-flex justify-content-start ">
+            <div className="mt-2 ">
               <strong>
                 <u>Telefono - Celular: {""}</u>
               </strong>
               {caso.telefono} - {caso.movil}
             </div>
+
             <p className="text-justify mt-2 p-2">
               Por medio de la presente se le informa que se encuentra con los
               servicios de seperlios atrasados. Por este motivo lo invitamos a
@@ -148,15 +152,15 @@ const Notificacion2 = ({ caso, userData }) => {
               nos despedimos atentamente.
             </p>
 
-            <div className="col-md-12 mt-2">
+            <div className="mt-2 flex flex-wrap  justify-end">
               <strong>Departamento de Cobranza</strong>
             </div>
-            <div className="col-md-12 mt-2">
+            <div className="mt-2 flex flex-wrap  justify-end">
               <strong>
                 <u>Tel.</u>: 388-4225555
               </strong>
             </div>
-            <div className="col-md-12 mt-2 mb-4">
+            <div className="mt-2 flex flex-wrap  justify-end mb-4">
               <strong>
                 <u>Operador</u>: {op(userData)}
               </strong>
@@ -185,4 +189,4 @@ const Notificacion2 = ({ caso, userData }) => {
   );
 };
 
-export default Notificacion2;
+export default Notificacion;

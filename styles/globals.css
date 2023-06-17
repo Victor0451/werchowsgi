@@ -21,6 +21,26 @@ body {
   background: gainsboro;
 }
 
-.toast-container {
-  
+.werchowlogo {
+  width: 75px;
+  height: 65px;
 }
+
+.mutuallogo {
+  width: 150px !important;
+  height: 50px !important;
+}
+
+.clublogo {
+  width: 150px !important;
+  height: 80px !important;
+}
+
+.butlist:hover {
+  opacity: 0.6;
+  color: gray;
+  transition: opacity 0.5s ease 0s;
+
+}
+
+
