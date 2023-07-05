@@ -161,6 +161,8 @@ export default function CampanasTemporales() {
             .catch(error => {
                 console.log(error)
                 toast.error("Ocurrio un error al traer la campaña")
+                guardarNodata2(true)
+
             })
 
     }

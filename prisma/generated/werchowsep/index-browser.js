@@ -4,7 +4,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const {
   Decimal,
   objectEnumValues,
-  makeStrictEnum
+  makeStrictEnum,
+  Public,
 } = require('./runtime/index-browser')
 
 
@@ -13,12 +14,12 @@ const Prisma = {}
 exports.Prisma = Prisma
 
 /**
- * Prisma Client JS version: 4.13.0
- * Query Engine version: 1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
+ * Prisma Client JS version: 4.17.0-dev.38
+ * Query Engine version: e6267db1c1bc827b8eb87f644288c3cb0800ec89
  */
 Prisma.prismaVersion = {
-  client: "4.13.0",
-  engine: "1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a"
+  client: "4.17.0-dev.38",
+  engine: "e6267db1c1bc827b8eb87f644288c3cb0800ec89"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -66,8 +67,19 @@ Prisma.raw = () => {
   throw new Error(`raw is unable to be run in the browser.
 In case this error is unexpected for you, please report it in https://github.com/prisma/prisma/issues`,
 )}
-Prisma.validator = () => (val) => val
+Prisma.validator = Public.validator
 
+/**
+* Extensions
+*/
+Prisma.getExtensionContext = () => {
+  throw new Error(`Extensions.getExtensionContext is unable to be run in the browser.
+In case this error is unexpected for you, please report it in https://github.com/prisma/prisma/issues`,
+)}
+Prisma.defineExtension = () => {
+  throw new Error(`Extensions.defineExtension is unable to be run in the browser.
+In case this error is unexpected for you, please report it in https://github.com/prisma/prisma/issues`,
+)}
 
 /**
  * Shorthand utilities for JSON filtering
@@ -85,6 +97,13 @@ Prisma.NullTypes = {
 /**
  * Enums
  */
+
+exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
+  Serializable: 'Serializable'
+});
 
 exports.Prisma.Ataud_precioScalarFieldEnum = {
   idprecio: 'idprecio',
@@ -487,11 +506,6 @@ exports.Prisma.Servicios_liquidacionScalarFieldEnum = {
   operador: 'operador'
 };
 
-exports.Prisma.SortOrder = {
-  asc: 'asc',
-  desc: 'desc'
-};
-
 exports.Prisma.TareasScalarFieldEnum = {
   idevents: 'idevents',
   title: 'title',
@@ -525,13 +539,6 @@ exports.Prisma.Tipo_detalleScalarFieldEnum = {
   observacion: 'observacion'
 };
 
-exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
-  Serializable: 'Serializable'
-});
-
 exports.Prisma.VisitantesScalarFieldEnum = {
   idvisitante: 'idvisitante',
   idservicio: 'idservicio',
@@ -543,6 +550,16 @@ exports.Prisma.VisitantesScalarFieldEnum = {
   operador: 'operador',
   fecha: 'fecha',
   temperatura: 'temperatura'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 

@@ -142,6 +142,36 @@ export const Sepelio = () => {
                                 </Link>
                             </MenuList>
                         </Menu>
+
+                        <Menu placement="right-start">
+                            <MenuHandler>
+                                <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
+                                    <Typography color="black">
+                                        Servicios
+                                    </Typography>
+                                    <ChevronDownIcon
+                                        strokeWidth={2}
+                                        className={`h-3 w-3 transition-transform `}
+                                    />
+                                </MenuItem>
+                            </MenuHandler>
+                            <MenuList>
+                                <Link href={"/sepelio/servicios/nuevoservicio"}>
+                                    <MenuItem >
+                                        <Typography color="black">
+                                            Nuevo Servicio
+                                        </Typography>
+                                    </MenuItem>
+                                </Link>
+                                <Link href={"/sepelio/servicios/listadoservicio"}>
+                                    <MenuItem>
+                                        <Typography color="black">
+                                            Listado Servicio
+                                        </Typography>
+                                    </MenuItem>
+                                </Link>
+                            </MenuList>
+                        </Menu>
                     </ul>
 
                 </MenuList>

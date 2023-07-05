@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
 
 
-        } if (req.query.f && req.query.f === "list ataudes") {
+        } else if (req.query.f && req.query.f === "list ataudes") {
 
 
             const ataudes = await Sep.ataudes.findMany()
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
 
 
 
-        } if (req.query.f && req.query.f === "traer ataud") {
+        } else if (req.query.f && req.query.f === "traer ataud") {
 
 
             const ataudes = await Sep.ataudes.findUnique({
@@ -42,14 +42,14 @@ export default async function handler(req, res) {
 
             res.status(200).json(ataudes)
 
-        } if (req.query.f && req.query.f === "traer historial id") {
+        } else if (req.query.f && req.query.f === "traer historial id") {
 
 
             const ataudes = await Sep.historial_stock_ataud.findMany({
                 where: {
                     idataud: parseInt(req.query.idataud)
                 },
-                
+
                 orderBy: {
                     fecha_carga: 'desc',
                 }
@@ -60,7 +60,7 @@ export default async function handler(req, res) {
 
         }
 
-    } if (req.method === "POST") {
+    } else if (req.method === "POST") {
 
         if (req.body.f && req.body.f === "reg ataud") {
 
@@ -82,7 +82,7 @@ export default async function handler(req, res) {
 
             res.status(200).json(regAtaud);
 
-        } if (req.body.f && req.body.f === "reg nov auto") {
+        } else if (req.body.f && req.body.f === "reg nov auto") {
 
 
             const regAuto = await Sep.autos_novedades.create({
@@ -98,7 +98,7 @@ export default async function handler(req, res) {
 
             res.status(200).json(regAuto);
 
-        } if (req.body.f && req.body.f === "reg hist ataud") {
+        } else if (req.body.f && req.body.f === "reg hist ataud") {
 
 
             const regHistAtaud = await Sep.historial_stock_ataud.create({
@@ -118,7 +118,7 @@ export default async function handler(req, res) {
 
         }
 
-    } if (req.method === "PUT") {
+    } else if (req.method === "PUT") {
 
         if (req.body.f && req.body.f === "act stock") {
 
@@ -129,12 +129,29 @@ export default async function handler(req, res) {
                     stock: parseInt(req.body.stock),
                     observaciones: req.body.observaciones,
                     fecha_reposicion: new Date(req.body.fecha_reposicion),
-                    idataud: parseInt(req.body.idataud),
                     operador: req.body.operador,
 
                 },
                 where: {
-                    idataud: req.body.idataud
+                    idataud: parseInt(req.body.idataud)
+                }
+
+            })
+
+
+            res.status(200).json(actStock);
+
+        } else if (req.body.f && req.body.f === "act stock servicio") {
+
+
+            const actStock = await Sep.ataudes.update({
+                data: {
+
+                    stock: parseInt(req.body.nuevo)
+
+                },
+                where: {
+                    idataud: parseInt(req.body.idataud)
                 }
 
             })

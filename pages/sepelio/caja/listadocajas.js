@@ -46,6 +46,7 @@ export default function ListadoCajas() {
             .catch(error => {
                 console.log(error)
                 toast.error("Ocurrio un error al traer el listado")
+                guardarNoData(true)
             })
 
     }

@@ -57,6 +57,8 @@ export default function ListadoPrestamosEmpleados() {
             .catch(error => {
                 console.log(error)
                 toast.error("Ocurrio un error al generar el listado")
+                guardarNoData(true)
+
             })
     }
 

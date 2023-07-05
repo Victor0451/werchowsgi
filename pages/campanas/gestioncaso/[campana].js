@@ -104,6 +104,9 @@ export default function Campana() {
         }).catch(error => {
 
             console.log(error)
+            guardarNoData(true)
+            toast.error("Ocurrio un error al traer el listado de casos asignados")
+
 
         })
 
@@ -132,7 +135,8 @@ export default function Campana() {
         }).catch(error => {
 
             console.log(error)
-
+            guardarNoData(true)
+            toast.error("Ocurrio un error al traer el listado de casos trabajados")
         })
     }
 

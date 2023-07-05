@@ -88,7 +88,7 @@ model PLAN2021 {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model SO {
-  CONTRATO  Int?
+  CONTRATO  Int       @id
   APE_NOM   String?   @db.VarChar(30)
   ALTA      DateTime? @db.Date
   GRUPO     Int?
@@ -1538,7 +1538,7 @@ model mutua_baj_adh {
 
 model mutual {
   SUCURSAL   String?   @db.VarChar(1)
-  CONTRATO   Int       @id
+  CONTRATO   Int
   NRO_DOC    Int?
   APELLIDOS  String?   @db.VarChar(15)
   NOMBRES    String?   @db.VarChar(20)
@@ -1623,78 +1623,78 @@ model mutual {
   INTEG      Int?
   EDAD_PROM  Float?
   MAIL       String?   @db.VarChar(60)
+  idmutual   Int       @id @default(autoincrement())
 
   @@index([CONTRATO], map: "1")
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model mutual_adh {
-  SUCURSAL   String?   @db.VarChar(1)
-  CLAVE      Int?
-  CONTRATO   Int?
-  NRO_DOC    Int?
-  APELLIDOS  String?   @db.VarChar(15)
-  NOMBRES    String?   @db.VarChar(20)
-  NACIMIENTO DateTime? @db.Date
-  SEXO       String?   @db.VarChar(1)
-  ALTA       DateTime? @db.Date
-  BAJA       DateTime? @db.Date
-  VIGENCIA   DateTime? @db.Date
-  ALT_SEG    DateTime? @db.Date
-  VIG_SEG    DateTime? @db.Date
-  ENC_SEG    Int?
-  VIG_AYUDA  DateTime? @db.Date
-  PARENT     Int?
-  PAMI       String?   @db.VarChar(1)
-  OBRA_SOC   Int?
-  SEGURO     Int?      @db.TinyInt
-  PRODUCTOR  Int?
-  PLAN       String?   @db.VarChar(1)
-  SUB_PLAN   String?   @db.VarChar(1)
-  FEC_PLAN   DateTime? @db.Date
-  MOD_1      DateTime? @db.Date
-  PRO_1      Int?
-  MOD_2      DateTime? @db.Date
-  PRO_2      Int?
-  MOD_3      DateTime? @db.Date
-  PRO_3      Int?
-  MOD_4      DateTime? @db.Date
-  PRO_4      Int?
-  MOD_5      DateTime? @db.Date
-  TSEG       String?   @db.VarChar(3)
-  PRO_5      Int?
-  MOD_6      DateTime? @db.Date
-  PRO_6      Int?
-  MOD_7      DateTime? @db.Date
-  PRO_7      Int?
-  MOD_8      DateTime? @db.Date
-  PRO_8      Int?
-  MOD_9      DateTime? @db.Date
-  PRO_9      Int?
-  MOD_10     DateTime? @db.Date
-  PRO_10     Int?
-  MOD_11     DateTime? @db.Date
-  PRO_11     Int?
-  MOD_12     DateTime? @db.Date
-  PRO_12     Int?
-  TOT_MOD    Float?
-  BENEF      Int?      @db.TinyInt
-  ORDEN      Int?
-  ACTUALIZA  String?   @db.VarChar(13)
-  EDAD       Int?
-  VIG_OPT    DateTime? @db.Date
-  VIG_SUB    DateTime? @db.Date
-  VIG_CONSU  DateTime? @db.Date
-  VIG_SMEDI  DateTime? @db.Date
-  DECL_JUR   DateTime? @db.Date
-  TIPO_COMI  Int?
-  PAGA_COMI  Int?
-  TIPO_SEGU  Int?
-  PAGO_SEGU  Int?
-  TICOMISE   Int?
-  PACOMISE   Int?
-
-  @@ignore
+  SUCURSAL     String?   @db.VarChar(1)
+  CLAVE        Int?
+  CONTRATO     Int?
+  NRO_DOC      Int?
+  APELLIDOS    String?   @db.VarChar(15)
+  NOMBRES      String?   @db.VarChar(20)
+  NACIMIENTO   DateTime? @db.Date
+  SEXO         String?   @db.VarChar(1)
+  ALTA         DateTime? @db.Date
+  BAJA         DateTime? @db.Date
+  VIGENCIA     DateTime? @db.Date
+  ALT_SEG      DateTime? @db.Date
+  VIG_SEG      DateTime? @db.Date
+  ENC_SEG      Int?
+  VIG_AYUDA    DateTime? @db.Date
+  PARENT       Int?
+  PAMI         String?   @db.VarChar(1)
+  OBRA_SOC     Int?
+  SEGURO       Int?      @db.TinyInt
+  PRODUCTOR    Int?
+  PLAN         String?   @db.VarChar(1)
+  SUB_PLAN     String?   @db.VarChar(1)
+  FEC_PLAN     DateTime? @db.Date
+  MOD_1        DateTime? @db.Date
+  PRO_1        Int?
+  MOD_2        DateTime? @db.Date
+  PRO_2        Int?
+  MOD_3        DateTime? @db.Date
+  PRO_3        Int?
+  MOD_4        DateTime? @db.Date
+  PRO_4        Int?
+  MOD_5        DateTime? @db.Date
+  TSEG         String?   @db.VarChar(3)
+  PRO_5        Int?
+  MOD_6        DateTime? @db.Date
+  PRO_6        Int?
+  MOD_7        DateTime? @db.Date
+  PRO_7        Int?
+  MOD_8        DateTime? @db.Date
+  PRO_8        Int?
+  MOD_9        DateTime? @db.Date
+  PRO_9        Int?
+  MOD_10       DateTime? @db.Date
+  PRO_10       Int?
+  MOD_11       DateTime? @db.Date
+  PRO_11       Int?
+  MOD_12       DateTime? @db.Date
+  PRO_12       Int?
+  TOT_MOD      Float?
+  BENEF        Int?      @db.TinyInt
+  ORDEN        Int?
+  ACTUALIZA    String?   @db.VarChar(13)
+  EDAD         Int?
+  VIG_OPT      DateTime? @db.Date
+  VIG_SUB      DateTime? @db.Date
+  VIG_CONSU    DateTime? @db.Date
+  VIG_SMEDI    DateTime? @db.Date
+  DECL_JUR     DateTime? @db.Date
+  TIPO_COMI    Int?
+  PAGA_COMI    Int?
+  TIPO_SEGU    Int?
+  PAGO_SEGU    Int?
+  TICOMISE     Int?
+  PACOMISE     Int?
+  id_adherente Int       @id @default(autoincrement())
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
@@ -1788,8 +1788,7 @@ model obra_soc {
   OPERADOR   Int?
   ACTUALIZA  String?   @db.VarChar(13)
   SUSPENDIDO Int?      @db.TinyInt
-
-  @@ignore
+  id         Int       @id @default(autoincrement())
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
@@ -2530,6 +2529,19 @@ model zonas {
   PAGINA   Int?    @db.TinyInt
   TITULO1  String? @db.VarChar(80)
   TITULO2  String? @db.VarChar(80)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model cuo_fija_old {
+  CONTRATO  Int?
+  IMPORTE   Float?
+  CUO_ANT   Float?
+  DESDE     DateTime? @db.Date
+  VENCIM    DateTime? @db.Date
+  ACTUALIZA String?   @db.VarChar(13)
+  OPERADOR  Int?
 
   @@ignore
 }

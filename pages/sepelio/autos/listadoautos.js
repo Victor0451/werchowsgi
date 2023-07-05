@@ -54,6 +54,8 @@ export default function Listadoautos() {
             .catch(error => {
                 toast.error("Ocurrio un error al generar el listado de autos")
                 console.log(error)
+                guardarNoData(true)
+
             })
 
     }

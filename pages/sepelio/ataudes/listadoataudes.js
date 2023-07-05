@@ -44,8 +44,9 @@ export default function ListadoAtaudes() {
             })
             .catch(error => {
                 console.log(error)
-
                 toast.error("Ocurrio un error al generar el listado")
+                guardarNoData(true)
+
             })
 
     }

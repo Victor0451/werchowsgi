@@ -75,6 +75,8 @@ export default function ListadoPrestamos() {
                 .catch(error => {
                     console.log(error)
                     toast.error("Ocurrio un error al generar el listado")
+                    guardarNoData(true)
+
                 })
 
         }

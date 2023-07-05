@@ -760,6 +760,95 @@ export type mutual = {
   INTEG: number | null
   EDAD_PROM: number | null
   MAIL: string | null
+  idmutual: number
+}
+
+/**
+ * Model mutual_adh
+ * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+ */
+export type mutual_adh = {
+  SUCURSAL: string | null
+  CLAVE: number | null
+  CONTRATO: number | null
+  NRO_DOC: number | null
+  APELLIDOS: string | null
+  NOMBRES: string | null
+  NACIMIENTO: Date | null
+  SEXO: string | null
+  ALTA: Date | null
+  BAJA: Date | null
+  VIGENCIA: Date | null
+  ALT_SEG: Date | null
+  VIG_SEG: Date | null
+  ENC_SEG: number | null
+  VIG_AYUDA: Date | null
+  PARENT: number | null
+  PAMI: string | null
+  OBRA_SOC: number | null
+  SEGURO: number | null
+  PRODUCTOR: number | null
+  PLAN: string | null
+  SUB_PLAN: string | null
+  FEC_PLAN: Date | null
+  MOD_1: Date | null
+  PRO_1: number | null
+  MOD_2: Date | null
+  PRO_2: number | null
+  MOD_3: Date | null
+  PRO_3: number | null
+  MOD_4: Date | null
+  PRO_4: number | null
+  MOD_5: Date | null
+  TSEG: string | null
+  PRO_5: number | null
+  MOD_6: Date | null
+  PRO_6: number | null
+  MOD_7: Date | null
+  PRO_7: number | null
+  MOD_8: Date | null
+  PRO_8: number | null
+  MOD_9: Date | null
+  PRO_9: number | null
+  MOD_10: Date | null
+  PRO_10: number | null
+  MOD_11: Date | null
+  PRO_11: number | null
+  MOD_12: Date | null
+  PRO_12: number | null
+  TOT_MOD: number | null
+  BENEF: number | null
+  ORDEN: number | null
+  ACTUALIZA: string | null
+  EDAD: number | null
+  VIG_OPT: Date | null
+  VIG_SUB: Date | null
+  VIG_CONSU: Date | null
+  VIG_SMEDI: Date | null
+  DECL_JUR: Date | null
+  TIPO_COMI: number | null
+  PAGA_COMI: number | null
+  TIPO_SEGU: number | null
+  PAGO_SEGU: number | null
+  TICOMISE: number | null
+  PACOMISE: number | null
+  id_adherente: number
+}
+
+/**
+ * Model obra_soc
+ * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+ */
+export type obra_soc = {
+  CODIGO: number | null
+  NOMBRE: string | null
+  DETALLE: string | null
+  DOMICILIO: string | null
+  FECHA_SUSP: Date | null
+  OPERADOR: number | null
+  ACTUALIZA: string | null
+  SUSPENDIDO: number | null
+  id: number
 }
 
 /**
@@ -1410,6 +1499,26 @@ export class PrismaClient<
     * ```
     */
   get mutual(): Prisma.mutualDelegate<GlobalReject>;
+
+  /**
+   * `prisma.mutual_adh`: Exposes CRUD operations for the **mutual_adh** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Mutual_adhs
+    * const mutual_adhs = await prisma.mutual_adh.findMany()
+    * ```
+    */
+  get mutual_adh(): Prisma.mutual_adhDelegate<GlobalReject>;
+
+  /**
+   * `prisma.obra_soc`: Exposes CRUD operations for the **obra_soc** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Obra_socs
+    * const obra_socs = await prisma.obra_soc.findMany()
+    * ```
+    */
+  get obra_soc(): Prisma.obra_socDelegate<GlobalReject>;
 
   /**
    * `prisma.parcelas`: Exposes CRUD operations for the **parcelas** model.
@@ -2080,6 +2189,8 @@ export namespace Prisma {
     memo: 'memo',
     meses: 'meses',
     mutual: 'mutual',
+    mutual_adh: 'mutual_adh',
+    obra_soc: 'obra_soc',
     parcelas: 'parcelas',
     planificacion: 'planificacion',
     porcentaje_liq: 'porcentaje_liq',
@@ -24863,6 +24974,7 @@ export namespace Prisma {
     MAY_65: number | null
     INTEG: number | null
     EDAD_PROM: number | null
+    idmutual: number | null
   }
 
   export type MutualSumAggregateOutputType = {
@@ -24908,6 +25020,7 @@ export namespace Prisma {
     MAY_65: number | null
     INTEG: number | null
     EDAD_PROM: number | null
+    idmutual: number | null
   }
 
   export type MutualMinAggregateOutputType = {
@@ -24997,6 +25110,7 @@ export namespace Prisma {
     INTEG: number | null
     EDAD_PROM: number | null
     MAIL: string | null
+    idmutual: number | null
   }
 
   export type MutualMaxAggregateOutputType = {
@@ -25086,6 +25200,7 @@ export namespace Prisma {
     INTEG: number | null
     EDAD_PROM: number | null
     MAIL: string | null
+    idmutual: number | null
   }
 
   export type MutualCountAggregateOutputType = {
@@ -25175,6 +25290,7 @@ export namespace Prisma {
     INTEG: number
     EDAD_PROM: number
     MAIL: number
+    idmutual: number
     _all: number
   }
 
@@ -25222,6 +25338,7 @@ export namespace Prisma {
     MAY_65?: true
     INTEG?: true
     EDAD_PROM?: true
+    idmutual?: true
   }
 
   export type MutualSumAggregateInputType = {
@@ -25267,6 +25384,7 @@ export namespace Prisma {
     MAY_65?: true
     INTEG?: true
     EDAD_PROM?: true
+    idmutual?: true
   }
 
   export type MutualMinAggregateInputType = {
@@ -25356,6 +25474,7 @@ export namespace Prisma {
     INTEG?: true
     EDAD_PROM?: true
     MAIL?: true
+    idmutual?: true
   }
 
   export type MutualMaxAggregateInputType = {
@@ -25445,6 +25564,7 @@ export namespace Prisma {
     INTEG?: true
     EDAD_PROM?: true
     MAIL?: true
+    idmutual?: true
   }
 
   export type MutualCountAggregateInputType = {
@@ -25534,6 +25654,7 @@ export namespace Prisma {
     INTEG?: true
     EDAD_PROM?: true
     MAIL?: true
+    idmutual?: true
     _all?: true
   }
 
@@ -25711,6 +25832,7 @@ export namespace Prisma {
     INTEG: number | null
     EDAD_PROM: number | null
     MAIL: string | null
+    idmutual: number
     _count: MutualCountAggregateOutputType | null
     _avg: MutualAvgAggregateOutputType | null
     _sum: MutualSumAggregateOutputType | null
@@ -25819,6 +25941,7 @@ export namespace Prisma {
     INTEG?: boolean
     EDAD_PROM?: boolean
     MAIL?: boolean
+    idmutual?: boolean
   }
 
 
@@ -26531,6 +26654,2482 @@ export namespace Prisma {
      * Select specific fields to fetch from the mutual
      */
     select?: mutualSelect | null
+  }
+
+
+
+  /**
+   * Model mutual_adh
+   */
+
+
+  export type AggregateMutual_adh = {
+    _count: Mutual_adhCountAggregateOutputType | null
+    _avg: Mutual_adhAvgAggregateOutputType | null
+    _sum: Mutual_adhSumAggregateOutputType | null
+    _min: Mutual_adhMinAggregateOutputType | null
+    _max: Mutual_adhMaxAggregateOutputType | null
+  }
+
+  export type Mutual_adhAvgAggregateOutputType = {
+    CLAVE: number | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    ENC_SEG: number | null
+    PARENT: number | null
+    OBRA_SOC: number | null
+    SEGURO: number | null
+    PRODUCTOR: number | null
+    PRO_1: number | null
+    PRO_2: number | null
+    PRO_3: number | null
+    PRO_4: number | null
+    PRO_5: number | null
+    PRO_6: number | null
+    PRO_7: number | null
+    PRO_8: number | null
+    PRO_9: number | null
+    PRO_10: number | null
+    PRO_11: number | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    BENEF: number | null
+    ORDEN: number | null
+    EDAD: number | null
+    TIPO_COMI: number | null
+    PAGA_COMI: number | null
+    TIPO_SEGU: number | null
+    PAGO_SEGU: number | null
+    TICOMISE: number | null
+    PACOMISE: number | null
+    id_adherente: number | null
+  }
+
+  export type Mutual_adhSumAggregateOutputType = {
+    CLAVE: number | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    ENC_SEG: number | null
+    PARENT: number | null
+    OBRA_SOC: number | null
+    SEGURO: number | null
+    PRODUCTOR: number | null
+    PRO_1: number | null
+    PRO_2: number | null
+    PRO_3: number | null
+    PRO_4: number | null
+    PRO_5: number | null
+    PRO_6: number | null
+    PRO_7: number | null
+    PRO_8: number | null
+    PRO_9: number | null
+    PRO_10: number | null
+    PRO_11: number | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    BENEF: number | null
+    ORDEN: number | null
+    EDAD: number | null
+    TIPO_COMI: number | null
+    PAGA_COMI: number | null
+    TIPO_SEGU: number | null
+    PAGO_SEGU: number | null
+    TICOMISE: number | null
+    PACOMISE: number | null
+    id_adherente: number | null
+  }
+
+  export type Mutual_adhMinAggregateOutputType = {
+    SUCURSAL: string | null
+    CLAVE: number | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    NACIMIENTO: Date | null
+    SEXO: string | null
+    ALTA: Date | null
+    BAJA: Date | null
+    VIGENCIA: Date | null
+    ALT_SEG: Date | null
+    VIG_SEG: Date | null
+    ENC_SEG: number | null
+    VIG_AYUDA: Date | null
+    PARENT: number | null
+    PAMI: string | null
+    OBRA_SOC: number | null
+    SEGURO: number | null
+    PRODUCTOR: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    FEC_PLAN: Date | null
+    MOD_1: Date | null
+    PRO_1: number | null
+    MOD_2: Date | null
+    PRO_2: number | null
+    MOD_3: Date | null
+    PRO_3: number | null
+    MOD_4: Date | null
+    PRO_4: number | null
+    MOD_5: Date | null
+    TSEG: string | null
+    PRO_5: number | null
+    MOD_6: Date | null
+    PRO_6: number | null
+    MOD_7: Date | null
+    PRO_7: number | null
+    MOD_8: Date | null
+    PRO_8: number | null
+    MOD_9: Date | null
+    PRO_9: number | null
+    MOD_10: Date | null
+    PRO_10: number | null
+    MOD_11: Date | null
+    PRO_11: number | null
+    MOD_12: Date | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    BENEF: number | null
+    ORDEN: number | null
+    ACTUALIZA: string | null
+    EDAD: number | null
+    VIG_OPT: Date | null
+    VIG_SUB: Date | null
+    VIG_CONSU: Date | null
+    VIG_SMEDI: Date | null
+    DECL_JUR: Date | null
+    TIPO_COMI: number | null
+    PAGA_COMI: number | null
+    TIPO_SEGU: number | null
+    PAGO_SEGU: number | null
+    TICOMISE: number | null
+    PACOMISE: number | null
+    id_adherente: number | null
+  }
+
+  export type Mutual_adhMaxAggregateOutputType = {
+    SUCURSAL: string | null
+    CLAVE: number | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    NACIMIENTO: Date | null
+    SEXO: string | null
+    ALTA: Date | null
+    BAJA: Date | null
+    VIGENCIA: Date | null
+    ALT_SEG: Date | null
+    VIG_SEG: Date | null
+    ENC_SEG: number | null
+    VIG_AYUDA: Date | null
+    PARENT: number | null
+    PAMI: string | null
+    OBRA_SOC: number | null
+    SEGURO: number | null
+    PRODUCTOR: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    FEC_PLAN: Date | null
+    MOD_1: Date | null
+    PRO_1: number | null
+    MOD_2: Date | null
+    PRO_2: number | null
+    MOD_3: Date | null
+    PRO_3: number | null
+    MOD_4: Date | null
+    PRO_4: number | null
+    MOD_5: Date | null
+    TSEG: string | null
+    PRO_5: number | null
+    MOD_6: Date | null
+    PRO_6: number | null
+    MOD_7: Date | null
+    PRO_7: number | null
+    MOD_8: Date | null
+    PRO_8: number | null
+    MOD_9: Date | null
+    PRO_9: number | null
+    MOD_10: Date | null
+    PRO_10: number | null
+    MOD_11: Date | null
+    PRO_11: number | null
+    MOD_12: Date | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    BENEF: number | null
+    ORDEN: number | null
+    ACTUALIZA: string | null
+    EDAD: number | null
+    VIG_OPT: Date | null
+    VIG_SUB: Date | null
+    VIG_CONSU: Date | null
+    VIG_SMEDI: Date | null
+    DECL_JUR: Date | null
+    TIPO_COMI: number | null
+    PAGA_COMI: number | null
+    TIPO_SEGU: number | null
+    PAGO_SEGU: number | null
+    TICOMISE: number | null
+    PACOMISE: number | null
+    id_adherente: number | null
+  }
+
+  export type Mutual_adhCountAggregateOutputType = {
+    SUCURSAL: number
+    CLAVE: number
+    CONTRATO: number
+    NRO_DOC: number
+    APELLIDOS: number
+    NOMBRES: number
+    NACIMIENTO: number
+    SEXO: number
+    ALTA: number
+    BAJA: number
+    VIGENCIA: number
+    ALT_SEG: number
+    VIG_SEG: number
+    ENC_SEG: number
+    VIG_AYUDA: number
+    PARENT: number
+    PAMI: number
+    OBRA_SOC: number
+    SEGURO: number
+    PRODUCTOR: number
+    PLAN: number
+    SUB_PLAN: number
+    FEC_PLAN: number
+    MOD_1: number
+    PRO_1: number
+    MOD_2: number
+    PRO_2: number
+    MOD_3: number
+    PRO_3: number
+    MOD_4: number
+    PRO_4: number
+    MOD_5: number
+    TSEG: number
+    PRO_5: number
+    MOD_6: number
+    PRO_6: number
+    MOD_7: number
+    PRO_7: number
+    MOD_8: number
+    PRO_8: number
+    MOD_9: number
+    PRO_9: number
+    MOD_10: number
+    PRO_10: number
+    MOD_11: number
+    PRO_11: number
+    MOD_12: number
+    PRO_12: number
+    TOT_MOD: number
+    BENEF: number
+    ORDEN: number
+    ACTUALIZA: number
+    EDAD: number
+    VIG_OPT: number
+    VIG_SUB: number
+    VIG_CONSU: number
+    VIG_SMEDI: number
+    DECL_JUR: number
+    TIPO_COMI: number
+    PAGA_COMI: number
+    TIPO_SEGU: number
+    PAGO_SEGU: number
+    TICOMISE: number
+    PACOMISE: number
+    id_adherente: number
+    _all: number
+  }
+
+
+  export type Mutual_adhAvgAggregateInputType = {
+    CLAVE?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    ENC_SEG?: true
+    PARENT?: true
+    OBRA_SOC?: true
+    SEGURO?: true
+    PRODUCTOR?: true
+    PRO_1?: true
+    PRO_2?: true
+    PRO_3?: true
+    PRO_4?: true
+    PRO_5?: true
+    PRO_6?: true
+    PRO_7?: true
+    PRO_8?: true
+    PRO_9?: true
+    PRO_10?: true
+    PRO_11?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    BENEF?: true
+    ORDEN?: true
+    EDAD?: true
+    TIPO_COMI?: true
+    PAGA_COMI?: true
+    TIPO_SEGU?: true
+    PAGO_SEGU?: true
+    TICOMISE?: true
+    PACOMISE?: true
+    id_adherente?: true
+  }
+
+  export type Mutual_adhSumAggregateInputType = {
+    CLAVE?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    ENC_SEG?: true
+    PARENT?: true
+    OBRA_SOC?: true
+    SEGURO?: true
+    PRODUCTOR?: true
+    PRO_1?: true
+    PRO_2?: true
+    PRO_3?: true
+    PRO_4?: true
+    PRO_5?: true
+    PRO_6?: true
+    PRO_7?: true
+    PRO_8?: true
+    PRO_9?: true
+    PRO_10?: true
+    PRO_11?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    BENEF?: true
+    ORDEN?: true
+    EDAD?: true
+    TIPO_COMI?: true
+    PAGA_COMI?: true
+    TIPO_SEGU?: true
+    PAGO_SEGU?: true
+    TICOMISE?: true
+    PACOMISE?: true
+    id_adherente?: true
+  }
+
+  export type Mutual_adhMinAggregateInputType = {
+    SUCURSAL?: true
+    CLAVE?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    NACIMIENTO?: true
+    SEXO?: true
+    ALTA?: true
+    BAJA?: true
+    VIGENCIA?: true
+    ALT_SEG?: true
+    VIG_SEG?: true
+    ENC_SEG?: true
+    VIG_AYUDA?: true
+    PARENT?: true
+    PAMI?: true
+    OBRA_SOC?: true
+    SEGURO?: true
+    PRODUCTOR?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    FEC_PLAN?: true
+    MOD_1?: true
+    PRO_1?: true
+    MOD_2?: true
+    PRO_2?: true
+    MOD_3?: true
+    PRO_3?: true
+    MOD_4?: true
+    PRO_4?: true
+    MOD_5?: true
+    TSEG?: true
+    PRO_5?: true
+    MOD_6?: true
+    PRO_6?: true
+    MOD_7?: true
+    PRO_7?: true
+    MOD_8?: true
+    PRO_8?: true
+    MOD_9?: true
+    PRO_9?: true
+    MOD_10?: true
+    PRO_10?: true
+    MOD_11?: true
+    PRO_11?: true
+    MOD_12?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    BENEF?: true
+    ORDEN?: true
+    ACTUALIZA?: true
+    EDAD?: true
+    VIG_OPT?: true
+    VIG_SUB?: true
+    VIG_CONSU?: true
+    VIG_SMEDI?: true
+    DECL_JUR?: true
+    TIPO_COMI?: true
+    PAGA_COMI?: true
+    TIPO_SEGU?: true
+    PAGO_SEGU?: true
+    TICOMISE?: true
+    PACOMISE?: true
+    id_adherente?: true
+  }
+
+  export type Mutual_adhMaxAggregateInputType = {
+    SUCURSAL?: true
+    CLAVE?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    NACIMIENTO?: true
+    SEXO?: true
+    ALTA?: true
+    BAJA?: true
+    VIGENCIA?: true
+    ALT_SEG?: true
+    VIG_SEG?: true
+    ENC_SEG?: true
+    VIG_AYUDA?: true
+    PARENT?: true
+    PAMI?: true
+    OBRA_SOC?: true
+    SEGURO?: true
+    PRODUCTOR?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    FEC_PLAN?: true
+    MOD_1?: true
+    PRO_1?: true
+    MOD_2?: true
+    PRO_2?: true
+    MOD_3?: true
+    PRO_3?: true
+    MOD_4?: true
+    PRO_4?: true
+    MOD_5?: true
+    TSEG?: true
+    PRO_5?: true
+    MOD_6?: true
+    PRO_6?: true
+    MOD_7?: true
+    PRO_7?: true
+    MOD_8?: true
+    PRO_8?: true
+    MOD_9?: true
+    PRO_9?: true
+    MOD_10?: true
+    PRO_10?: true
+    MOD_11?: true
+    PRO_11?: true
+    MOD_12?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    BENEF?: true
+    ORDEN?: true
+    ACTUALIZA?: true
+    EDAD?: true
+    VIG_OPT?: true
+    VIG_SUB?: true
+    VIG_CONSU?: true
+    VIG_SMEDI?: true
+    DECL_JUR?: true
+    TIPO_COMI?: true
+    PAGA_COMI?: true
+    TIPO_SEGU?: true
+    PAGO_SEGU?: true
+    TICOMISE?: true
+    PACOMISE?: true
+    id_adherente?: true
+  }
+
+  export type Mutual_adhCountAggregateInputType = {
+    SUCURSAL?: true
+    CLAVE?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    NACIMIENTO?: true
+    SEXO?: true
+    ALTA?: true
+    BAJA?: true
+    VIGENCIA?: true
+    ALT_SEG?: true
+    VIG_SEG?: true
+    ENC_SEG?: true
+    VIG_AYUDA?: true
+    PARENT?: true
+    PAMI?: true
+    OBRA_SOC?: true
+    SEGURO?: true
+    PRODUCTOR?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    FEC_PLAN?: true
+    MOD_1?: true
+    PRO_1?: true
+    MOD_2?: true
+    PRO_2?: true
+    MOD_3?: true
+    PRO_3?: true
+    MOD_4?: true
+    PRO_4?: true
+    MOD_5?: true
+    TSEG?: true
+    PRO_5?: true
+    MOD_6?: true
+    PRO_6?: true
+    MOD_7?: true
+    PRO_7?: true
+    MOD_8?: true
+    PRO_8?: true
+    MOD_9?: true
+    PRO_9?: true
+    MOD_10?: true
+    PRO_10?: true
+    MOD_11?: true
+    PRO_11?: true
+    MOD_12?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    BENEF?: true
+    ORDEN?: true
+    ACTUALIZA?: true
+    EDAD?: true
+    VIG_OPT?: true
+    VIG_SUB?: true
+    VIG_CONSU?: true
+    VIG_SMEDI?: true
+    DECL_JUR?: true
+    TIPO_COMI?: true
+    PAGA_COMI?: true
+    TIPO_SEGU?: true
+    PAGO_SEGU?: true
+    TICOMISE?: true
+    PACOMISE?: true
+    id_adherente?: true
+    _all?: true
+  }
+
+  export type Mutual_adhAggregateArgs = {
+    /**
+     * Filter which mutual_adh to aggregate.
+     */
+    where?: mutual_adhWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mutual_adhs to fetch.
+     */
+    orderBy?: Enumerable<mutual_adhOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: mutual_adhWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mutual_adhs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mutual_adhs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned mutual_adhs
+    **/
+    _count?: true | Mutual_adhCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Mutual_adhAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Mutual_adhSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Mutual_adhMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Mutual_adhMaxAggregateInputType
+  }
+
+  export type GetMutual_adhAggregateType<T extends Mutual_adhAggregateArgs> = {
+        [P in keyof T & keyof AggregateMutual_adh]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMutual_adh[P]>
+      : GetScalarType<T[P], AggregateMutual_adh[P]>
+  }
+
+
+
+
+  export type Mutual_adhGroupByArgs = {
+    where?: mutual_adhWhereInput
+    orderBy?: Enumerable<mutual_adhOrderByWithAggregationInput>
+    by: Mutual_adhScalarFieldEnum[]
+    having?: mutual_adhScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Mutual_adhCountAggregateInputType | true
+    _avg?: Mutual_adhAvgAggregateInputType
+    _sum?: Mutual_adhSumAggregateInputType
+    _min?: Mutual_adhMinAggregateInputType
+    _max?: Mutual_adhMaxAggregateInputType
+  }
+
+
+  export type Mutual_adhGroupByOutputType = {
+    SUCURSAL: string | null
+    CLAVE: number | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    NACIMIENTO: Date | null
+    SEXO: string | null
+    ALTA: Date | null
+    BAJA: Date | null
+    VIGENCIA: Date | null
+    ALT_SEG: Date | null
+    VIG_SEG: Date | null
+    ENC_SEG: number | null
+    VIG_AYUDA: Date | null
+    PARENT: number | null
+    PAMI: string | null
+    OBRA_SOC: number | null
+    SEGURO: number | null
+    PRODUCTOR: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    FEC_PLAN: Date | null
+    MOD_1: Date | null
+    PRO_1: number | null
+    MOD_2: Date | null
+    PRO_2: number | null
+    MOD_3: Date | null
+    PRO_3: number | null
+    MOD_4: Date | null
+    PRO_4: number | null
+    MOD_5: Date | null
+    TSEG: string | null
+    PRO_5: number | null
+    MOD_6: Date | null
+    PRO_6: number | null
+    MOD_7: Date | null
+    PRO_7: number | null
+    MOD_8: Date | null
+    PRO_8: number | null
+    MOD_9: Date | null
+    PRO_9: number | null
+    MOD_10: Date | null
+    PRO_10: number | null
+    MOD_11: Date | null
+    PRO_11: number | null
+    MOD_12: Date | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    BENEF: number | null
+    ORDEN: number | null
+    ACTUALIZA: string | null
+    EDAD: number | null
+    VIG_OPT: Date | null
+    VIG_SUB: Date | null
+    VIG_CONSU: Date | null
+    VIG_SMEDI: Date | null
+    DECL_JUR: Date | null
+    TIPO_COMI: number | null
+    PAGA_COMI: number | null
+    TIPO_SEGU: number | null
+    PAGO_SEGU: number | null
+    TICOMISE: number | null
+    PACOMISE: number | null
+    id_adherente: number
+    _count: Mutual_adhCountAggregateOutputType | null
+    _avg: Mutual_adhAvgAggregateOutputType | null
+    _sum: Mutual_adhSumAggregateOutputType | null
+    _min: Mutual_adhMinAggregateOutputType | null
+    _max: Mutual_adhMaxAggregateOutputType | null
+  }
+
+  type GetMutual_adhGroupByPayload<T extends Mutual_adhGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<Mutual_adhGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Mutual_adhGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Mutual_adhGroupByOutputType[P]>
+            : GetScalarType<T[P], Mutual_adhGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type mutual_adhSelect = {
+    SUCURSAL?: boolean
+    CLAVE?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    NACIMIENTO?: boolean
+    SEXO?: boolean
+    ALTA?: boolean
+    BAJA?: boolean
+    VIGENCIA?: boolean
+    ALT_SEG?: boolean
+    VIG_SEG?: boolean
+    ENC_SEG?: boolean
+    VIG_AYUDA?: boolean
+    PARENT?: boolean
+    PAMI?: boolean
+    OBRA_SOC?: boolean
+    SEGURO?: boolean
+    PRODUCTOR?: boolean
+    PLAN?: boolean
+    SUB_PLAN?: boolean
+    FEC_PLAN?: boolean
+    MOD_1?: boolean
+    PRO_1?: boolean
+    MOD_2?: boolean
+    PRO_2?: boolean
+    MOD_3?: boolean
+    PRO_3?: boolean
+    MOD_4?: boolean
+    PRO_4?: boolean
+    MOD_5?: boolean
+    TSEG?: boolean
+    PRO_5?: boolean
+    MOD_6?: boolean
+    PRO_6?: boolean
+    MOD_7?: boolean
+    PRO_7?: boolean
+    MOD_8?: boolean
+    PRO_8?: boolean
+    MOD_9?: boolean
+    PRO_9?: boolean
+    MOD_10?: boolean
+    PRO_10?: boolean
+    MOD_11?: boolean
+    PRO_11?: boolean
+    MOD_12?: boolean
+    PRO_12?: boolean
+    TOT_MOD?: boolean
+    BENEF?: boolean
+    ORDEN?: boolean
+    ACTUALIZA?: boolean
+    EDAD?: boolean
+    VIG_OPT?: boolean
+    VIG_SUB?: boolean
+    VIG_CONSU?: boolean
+    VIG_SMEDI?: boolean
+    DECL_JUR?: boolean
+    TIPO_COMI?: boolean
+    PAGA_COMI?: boolean
+    TIPO_SEGU?: boolean
+    PAGO_SEGU?: boolean
+    TICOMISE?: boolean
+    PACOMISE?: boolean
+    id_adherente?: boolean
+  }
+
+
+  export type mutual_adhGetPayload<S extends boolean | null | undefined | mutual_adhArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? mutual_adh :
+    S extends undefined ? never :
+    S extends { include: any } & (mutual_adhArgs | mutual_adhFindManyArgs)
+    ? mutual_adh 
+    : S extends { select: any } & (mutual_adhArgs | mutual_adhFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+    P extends keyof mutual_adh ? mutual_adh[P] : never
+  } 
+      : mutual_adh
+
+
+  type mutual_adhCountArgs = 
+    Omit<mutual_adhFindManyArgs, 'select' | 'include'> & {
+      select?: Mutual_adhCountAggregateInputType | true
+    }
+
+  export interface mutual_adhDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+
+    /**
+     * Find zero or one Mutual_adh that matches the filter.
+     * @param {mutual_adhFindUniqueArgs} args - Arguments to find a Mutual_adh
+     * @example
+     * // Get one Mutual_adh
+     * const mutual_adh = await prisma.mutual_adh.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends mutual_adhFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, mutual_adhFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'mutual_adh'> extends True ? Prisma__mutual_adhClient<mutual_adhGetPayload<T>> : Prisma__mutual_adhClient<mutual_adhGetPayload<T> | null, null>
+
+    /**
+     * Find one Mutual_adh that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {mutual_adhFindUniqueOrThrowArgs} args - Arguments to find a Mutual_adh
+     * @example
+     * // Get one Mutual_adh
+     * const mutual_adh = await prisma.mutual_adh.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends mutual_adhFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, mutual_adhFindUniqueOrThrowArgs>
+    ): Prisma__mutual_adhClient<mutual_adhGetPayload<T>>
+
+    /**
+     * Find the first Mutual_adh that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mutual_adhFindFirstArgs} args - Arguments to find a Mutual_adh
+     * @example
+     * // Get one Mutual_adh
+     * const mutual_adh = await prisma.mutual_adh.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends mutual_adhFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, mutual_adhFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'mutual_adh'> extends True ? Prisma__mutual_adhClient<mutual_adhGetPayload<T>> : Prisma__mutual_adhClient<mutual_adhGetPayload<T> | null, null>
+
+    /**
+     * Find the first Mutual_adh that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mutual_adhFindFirstOrThrowArgs} args - Arguments to find a Mutual_adh
+     * @example
+     * // Get one Mutual_adh
+     * const mutual_adh = await prisma.mutual_adh.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends mutual_adhFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, mutual_adhFindFirstOrThrowArgs>
+    ): Prisma__mutual_adhClient<mutual_adhGetPayload<T>>
+
+    /**
+     * Find zero or more Mutual_adhs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mutual_adhFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Mutual_adhs
+     * const mutual_adhs = await prisma.mutual_adh.findMany()
+     * 
+     * // Get first 10 Mutual_adhs
+     * const mutual_adhs = await prisma.mutual_adh.findMany({ take: 10 })
+     * 
+     * // Only select the `SUCURSAL`
+     * const mutual_adhWithSUCURSALOnly = await prisma.mutual_adh.findMany({ select: { SUCURSAL: true } })
+     * 
+    **/
+    findMany<T extends mutual_adhFindManyArgs>(
+      args?: SelectSubset<T, mutual_adhFindManyArgs>
+    ): Prisma.PrismaPromise<Array<mutual_adhGetPayload<T>>>
+
+    /**
+     * Create a Mutual_adh.
+     * @param {mutual_adhCreateArgs} args - Arguments to create a Mutual_adh.
+     * @example
+     * // Create one Mutual_adh
+     * const Mutual_adh = await prisma.mutual_adh.create({
+     *   data: {
+     *     // ... data to create a Mutual_adh
+     *   }
+     * })
+     * 
+    **/
+    create<T extends mutual_adhCreateArgs>(
+      args: SelectSubset<T, mutual_adhCreateArgs>
+    ): Prisma__mutual_adhClient<mutual_adhGetPayload<T>>
+
+    /**
+     * Create many Mutual_adhs.
+     *     @param {mutual_adhCreateManyArgs} args - Arguments to create many Mutual_adhs.
+     *     @example
+     *     // Create many Mutual_adhs
+     *     const mutual_adh = await prisma.mutual_adh.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends mutual_adhCreateManyArgs>(
+      args?: SelectSubset<T, mutual_adhCreateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Mutual_adh.
+     * @param {mutual_adhDeleteArgs} args - Arguments to delete one Mutual_adh.
+     * @example
+     * // Delete one Mutual_adh
+     * const Mutual_adh = await prisma.mutual_adh.delete({
+     *   where: {
+     *     // ... filter to delete one Mutual_adh
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends mutual_adhDeleteArgs>(
+      args: SelectSubset<T, mutual_adhDeleteArgs>
+    ): Prisma__mutual_adhClient<mutual_adhGetPayload<T>>
+
+    /**
+     * Update one Mutual_adh.
+     * @param {mutual_adhUpdateArgs} args - Arguments to update one Mutual_adh.
+     * @example
+     * // Update one Mutual_adh
+     * const mutual_adh = await prisma.mutual_adh.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends mutual_adhUpdateArgs>(
+      args: SelectSubset<T, mutual_adhUpdateArgs>
+    ): Prisma__mutual_adhClient<mutual_adhGetPayload<T>>
+
+    /**
+     * Delete zero or more Mutual_adhs.
+     * @param {mutual_adhDeleteManyArgs} args - Arguments to filter Mutual_adhs to delete.
+     * @example
+     * // Delete a few Mutual_adhs
+     * const { count } = await prisma.mutual_adh.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends mutual_adhDeleteManyArgs>(
+      args?: SelectSubset<T, mutual_adhDeleteManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Mutual_adhs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mutual_adhUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Mutual_adhs
+     * const mutual_adh = await prisma.mutual_adh.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends mutual_adhUpdateManyArgs>(
+      args: SelectSubset<T, mutual_adhUpdateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Mutual_adh.
+     * @param {mutual_adhUpsertArgs} args - Arguments to update or create a Mutual_adh.
+     * @example
+     * // Update or create a Mutual_adh
+     * const mutual_adh = await prisma.mutual_adh.upsert({
+     *   create: {
+     *     // ... data to create a Mutual_adh
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Mutual_adh we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends mutual_adhUpsertArgs>(
+      args: SelectSubset<T, mutual_adhUpsertArgs>
+    ): Prisma__mutual_adhClient<mutual_adhGetPayload<T>>
+
+    /**
+     * Count the number of Mutual_adhs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mutual_adhCountArgs} args - Arguments to filter Mutual_adhs to count.
+     * @example
+     * // Count the number of Mutual_adhs
+     * const count = await prisma.mutual_adh.count({
+     *   where: {
+     *     // ... the filter for the Mutual_adhs we want to count
+     *   }
+     * })
+    **/
+    count<T extends mutual_adhCountArgs>(
+      args?: Subset<T, mutual_adhCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Mutual_adhCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Mutual_adh.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Mutual_adhAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Mutual_adhAggregateArgs>(args: Subset<T, Mutual_adhAggregateArgs>): Prisma.PrismaPromise<GetMutual_adhAggregateType<T>>
+
+    /**
+     * Group by Mutual_adh.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Mutual_adhGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Mutual_adhGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Mutual_adhGroupByArgs['orderBy'] }
+        : { orderBy?: Mutual_adhGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Mutual_adhGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMutual_adhGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for mutual_adh.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__mutual_adhClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * mutual_adh base type for findUnique actions
+   */
+  export type mutual_adhFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the mutual_adh
+     */
+    select?: mutual_adhSelect | null
+    /**
+     * Filter, which mutual_adh to fetch.
+     */
+    where: mutual_adhWhereUniqueInput
+  }
+
+  /**
+   * mutual_adh findUnique
+   */
+  export interface mutual_adhFindUniqueArgs extends mutual_adhFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * mutual_adh findUniqueOrThrow
+   */
+  export type mutual_adhFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the mutual_adh
+     */
+    select?: mutual_adhSelect | null
+    /**
+     * Filter, which mutual_adh to fetch.
+     */
+    where: mutual_adhWhereUniqueInput
+  }
+
+
+  /**
+   * mutual_adh base type for findFirst actions
+   */
+  export type mutual_adhFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the mutual_adh
+     */
+    select?: mutual_adhSelect | null
+    /**
+     * Filter, which mutual_adh to fetch.
+     */
+    where?: mutual_adhWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mutual_adhs to fetch.
+     */
+    orderBy?: Enumerable<mutual_adhOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for mutual_adhs.
+     */
+    cursor?: mutual_adhWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mutual_adhs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mutual_adhs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of mutual_adhs.
+     */
+    distinct?: Enumerable<Mutual_adhScalarFieldEnum>
+  }
+
+  /**
+   * mutual_adh findFirst
+   */
+  export interface mutual_adhFindFirstArgs extends mutual_adhFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * mutual_adh findFirstOrThrow
+   */
+  export type mutual_adhFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the mutual_adh
+     */
+    select?: mutual_adhSelect | null
+    /**
+     * Filter, which mutual_adh to fetch.
+     */
+    where?: mutual_adhWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mutual_adhs to fetch.
+     */
+    orderBy?: Enumerable<mutual_adhOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for mutual_adhs.
+     */
+    cursor?: mutual_adhWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mutual_adhs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mutual_adhs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of mutual_adhs.
+     */
+    distinct?: Enumerable<Mutual_adhScalarFieldEnum>
+  }
+
+
+  /**
+   * mutual_adh findMany
+   */
+  export type mutual_adhFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the mutual_adh
+     */
+    select?: mutual_adhSelect | null
+    /**
+     * Filter, which mutual_adhs to fetch.
+     */
+    where?: mutual_adhWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mutual_adhs to fetch.
+     */
+    orderBy?: Enumerable<mutual_adhOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing mutual_adhs.
+     */
+    cursor?: mutual_adhWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mutual_adhs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mutual_adhs.
+     */
+    skip?: number
+    distinct?: Enumerable<Mutual_adhScalarFieldEnum>
+  }
+
+
+  /**
+   * mutual_adh create
+   */
+  export type mutual_adhCreateArgs = {
+    /**
+     * Select specific fields to fetch from the mutual_adh
+     */
+    select?: mutual_adhSelect | null
+    /**
+     * The data needed to create a mutual_adh.
+     */
+    data: XOR<mutual_adhCreateInput, mutual_adhUncheckedCreateInput>
+  }
+
+
+  /**
+   * mutual_adh createMany
+   */
+  export type mutual_adhCreateManyArgs = {
+    /**
+     * The data used to create many mutual_adhs.
+     */
+    data: Enumerable<mutual_adhCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * mutual_adh update
+   */
+  export type mutual_adhUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the mutual_adh
+     */
+    select?: mutual_adhSelect | null
+    /**
+     * The data needed to update a mutual_adh.
+     */
+    data: XOR<mutual_adhUpdateInput, mutual_adhUncheckedUpdateInput>
+    /**
+     * Choose, which mutual_adh to update.
+     */
+    where: mutual_adhWhereUniqueInput
+  }
+
+
+  /**
+   * mutual_adh updateMany
+   */
+  export type mutual_adhUpdateManyArgs = {
+    /**
+     * The data used to update mutual_adhs.
+     */
+    data: XOR<mutual_adhUpdateManyMutationInput, mutual_adhUncheckedUpdateManyInput>
+    /**
+     * Filter which mutual_adhs to update
+     */
+    where?: mutual_adhWhereInput
+  }
+
+
+  /**
+   * mutual_adh upsert
+   */
+  export type mutual_adhUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the mutual_adh
+     */
+    select?: mutual_adhSelect | null
+    /**
+     * The filter to search for the mutual_adh to update in case it exists.
+     */
+    where: mutual_adhWhereUniqueInput
+    /**
+     * In case the mutual_adh found by the `where` argument doesn't exist, create a new mutual_adh with this data.
+     */
+    create: XOR<mutual_adhCreateInput, mutual_adhUncheckedCreateInput>
+    /**
+     * In case the mutual_adh was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<mutual_adhUpdateInput, mutual_adhUncheckedUpdateInput>
+  }
+
+
+  /**
+   * mutual_adh delete
+   */
+  export type mutual_adhDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the mutual_adh
+     */
+    select?: mutual_adhSelect | null
+    /**
+     * Filter which mutual_adh to delete.
+     */
+    where: mutual_adhWhereUniqueInput
+  }
+
+
+  /**
+   * mutual_adh deleteMany
+   */
+  export type mutual_adhDeleteManyArgs = {
+    /**
+     * Filter which mutual_adhs to delete
+     */
+    where?: mutual_adhWhereInput
+  }
+
+
+  /**
+   * mutual_adh without action
+   */
+  export type mutual_adhArgs = {
+    /**
+     * Select specific fields to fetch from the mutual_adh
+     */
+    select?: mutual_adhSelect | null
+  }
+
+
+
+  /**
+   * Model obra_soc
+   */
+
+
+  export type AggregateObra_soc = {
+    _count: Obra_socCountAggregateOutputType | null
+    _avg: Obra_socAvgAggregateOutputType | null
+    _sum: Obra_socSumAggregateOutputType | null
+    _min: Obra_socMinAggregateOutputType | null
+    _max: Obra_socMaxAggregateOutputType | null
+  }
+
+  export type Obra_socAvgAggregateOutputType = {
+    CODIGO: number | null
+    OPERADOR: number | null
+    SUSPENDIDO: number | null
+    id: number | null
+  }
+
+  export type Obra_socSumAggregateOutputType = {
+    CODIGO: number | null
+    OPERADOR: number | null
+    SUSPENDIDO: number | null
+    id: number | null
+  }
+
+  export type Obra_socMinAggregateOutputType = {
+    CODIGO: number | null
+    NOMBRE: string | null
+    DETALLE: string | null
+    DOMICILIO: string | null
+    FECHA_SUSP: Date | null
+    OPERADOR: number | null
+    ACTUALIZA: string | null
+    SUSPENDIDO: number | null
+    id: number | null
+  }
+
+  export type Obra_socMaxAggregateOutputType = {
+    CODIGO: number | null
+    NOMBRE: string | null
+    DETALLE: string | null
+    DOMICILIO: string | null
+    FECHA_SUSP: Date | null
+    OPERADOR: number | null
+    ACTUALIZA: string | null
+    SUSPENDIDO: number | null
+    id: number | null
+  }
+
+  export type Obra_socCountAggregateOutputType = {
+    CODIGO: number
+    NOMBRE: number
+    DETALLE: number
+    DOMICILIO: number
+    FECHA_SUSP: number
+    OPERADOR: number
+    ACTUALIZA: number
+    SUSPENDIDO: number
+    id: number
+    _all: number
+  }
+
+
+  export type Obra_socAvgAggregateInputType = {
+    CODIGO?: true
+    OPERADOR?: true
+    SUSPENDIDO?: true
+    id?: true
+  }
+
+  export type Obra_socSumAggregateInputType = {
+    CODIGO?: true
+    OPERADOR?: true
+    SUSPENDIDO?: true
+    id?: true
+  }
+
+  export type Obra_socMinAggregateInputType = {
+    CODIGO?: true
+    NOMBRE?: true
+    DETALLE?: true
+    DOMICILIO?: true
+    FECHA_SUSP?: true
+    OPERADOR?: true
+    ACTUALIZA?: true
+    SUSPENDIDO?: true
+    id?: true
+  }
+
+  export type Obra_socMaxAggregateInputType = {
+    CODIGO?: true
+    NOMBRE?: true
+    DETALLE?: true
+    DOMICILIO?: true
+    FECHA_SUSP?: true
+    OPERADOR?: true
+    ACTUALIZA?: true
+    SUSPENDIDO?: true
+    id?: true
+  }
+
+  export type Obra_socCountAggregateInputType = {
+    CODIGO?: true
+    NOMBRE?: true
+    DETALLE?: true
+    DOMICILIO?: true
+    FECHA_SUSP?: true
+    OPERADOR?: true
+    ACTUALIZA?: true
+    SUSPENDIDO?: true
+    id?: true
+    _all?: true
+  }
+
+  export type Obra_socAggregateArgs = {
+    /**
+     * Filter which obra_soc to aggregate.
+     */
+    where?: obra_socWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of obra_socs to fetch.
+     */
+    orderBy?: Enumerable<obra_socOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: obra_socWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` obra_socs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` obra_socs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned obra_socs
+    **/
+    _count?: true | Obra_socCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Obra_socAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Obra_socSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Obra_socMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Obra_socMaxAggregateInputType
+  }
+
+  export type GetObra_socAggregateType<T extends Obra_socAggregateArgs> = {
+        [P in keyof T & keyof AggregateObra_soc]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateObra_soc[P]>
+      : GetScalarType<T[P], AggregateObra_soc[P]>
+  }
+
+
+
+
+  export type Obra_socGroupByArgs = {
+    where?: obra_socWhereInput
+    orderBy?: Enumerable<obra_socOrderByWithAggregationInput>
+    by: Obra_socScalarFieldEnum[]
+    having?: obra_socScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Obra_socCountAggregateInputType | true
+    _avg?: Obra_socAvgAggregateInputType
+    _sum?: Obra_socSumAggregateInputType
+    _min?: Obra_socMinAggregateInputType
+    _max?: Obra_socMaxAggregateInputType
+  }
+
+
+  export type Obra_socGroupByOutputType = {
+    CODIGO: number | null
+    NOMBRE: string | null
+    DETALLE: string | null
+    DOMICILIO: string | null
+    FECHA_SUSP: Date | null
+    OPERADOR: number | null
+    ACTUALIZA: string | null
+    SUSPENDIDO: number | null
+    id: number
+    _count: Obra_socCountAggregateOutputType | null
+    _avg: Obra_socAvgAggregateOutputType | null
+    _sum: Obra_socSumAggregateOutputType | null
+    _min: Obra_socMinAggregateOutputType | null
+    _max: Obra_socMaxAggregateOutputType | null
+  }
+
+  type GetObra_socGroupByPayload<T extends Obra_socGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<Obra_socGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Obra_socGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Obra_socGroupByOutputType[P]>
+            : GetScalarType<T[P], Obra_socGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type obra_socSelect = {
+    CODIGO?: boolean
+    NOMBRE?: boolean
+    DETALLE?: boolean
+    DOMICILIO?: boolean
+    FECHA_SUSP?: boolean
+    OPERADOR?: boolean
+    ACTUALIZA?: boolean
+    SUSPENDIDO?: boolean
+    id?: boolean
+  }
+
+
+  export type obra_socGetPayload<S extends boolean | null | undefined | obra_socArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? obra_soc :
+    S extends undefined ? never :
+    S extends { include: any } & (obra_socArgs | obra_socFindManyArgs)
+    ? obra_soc 
+    : S extends { select: any } & (obra_socArgs | obra_socFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+    P extends keyof obra_soc ? obra_soc[P] : never
+  } 
+      : obra_soc
+
+
+  type obra_socCountArgs = 
+    Omit<obra_socFindManyArgs, 'select' | 'include'> & {
+      select?: Obra_socCountAggregateInputType | true
+    }
+
+  export interface obra_socDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+
+    /**
+     * Find zero or one Obra_soc that matches the filter.
+     * @param {obra_socFindUniqueArgs} args - Arguments to find a Obra_soc
+     * @example
+     * // Get one Obra_soc
+     * const obra_soc = await prisma.obra_soc.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends obra_socFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, obra_socFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'obra_soc'> extends True ? Prisma__obra_socClient<obra_socGetPayload<T>> : Prisma__obra_socClient<obra_socGetPayload<T> | null, null>
+
+    /**
+     * Find one Obra_soc that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {obra_socFindUniqueOrThrowArgs} args - Arguments to find a Obra_soc
+     * @example
+     * // Get one Obra_soc
+     * const obra_soc = await prisma.obra_soc.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends obra_socFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, obra_socFindUniqueOrThrowArgs>
+    ): Prisma__obra_socClient<obra_socGetPayload<T>>
+
+    /**
+     * Find the first Obra_soc that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {obra_socFindFirstArgs} args - Arguments to find a Obra_soc
+     * @example
+     * // Get one Obra_soc
+     * const obra_soc = await prisma.obra_soc.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends obra_socFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, obra_socFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'obra_soc'> extends True ? Prisma__obra_socClient<obra_socGetPayload<T>> : Prisma__obra_socClient<obra_socGetPayload<T> | null, null>
+
+    /**
+     * Find the first Obra_soc that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {obra_socFindFirstOrThrowArgs} args - Arguments to find a Obra_soc
+     * @example
+     * // Get one Obra_soc
+     * const obra_soc = await prisma.obra_soc.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends obra_socFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, obra_socFindFirstOrThrowArgs>
+    ): Prisma__obra_socClient<obra_socGetPayload<T>>
+
+    /**
+     * Find zero or more Obra_socs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {obra_socFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Obra_socs
+     * const obra_socs = await prisma.obra_soc.findMany()
+     * 
+     * // Get first 10 Obra_socs
+     * const obra_socs = await prisma.obra_soc.findMany({ take: 10 })
+     * 
+     * // Only select the `CODIGO`
+     * const obra_socWithCODIGOOnly = await prisma.obra_soc.findMany({ select: { CODIGO: true } })
+     * 
+    **/
+    findMany<T extends obra_socFindManyArgs>(
+      args?: SelectSubset<T, obra_socFindManyArgs>
+    ): Prisma.PrismaPromise<Array<obra_socGetPayload<T>>>
+
+    /**
+     * Create a Obra_soc.
+     * @param {obra_socCreateArgs} args - Arguments to create a Obra_soc.
+     * @example
+     * // Create one Obra_soc
+     * const Obra_soc = await prisma.obra_soc.create({
+     *   data: {
+     *     // ... data to create a Obra_soc
+     *   }
+     * })
+     * 
+    **/
+    create<T extends obra_socCreateArgs>(
+      args: SelectSubset<T, obra_socCreateArgs>
+    ): Prisma__obra_socClient<obra_socGetPayload<T>>
+
+    /**
+     * Create many Obra_socs.
+     *     @param {obra_socCreateManyArgs} args - Arguments to create many Obra_socs.
+     *     @example
+     *     // Create many Obra_socs
+     *     const obra_soc = await prisma.obra_soc.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends obra_socCreateManyArgs>(
+      args?: SelectSubset<T, obra_socCreateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Obra_soc.
+     * @param {obra_socDeleteArgs} args - Arguments to delete one Obra_soc.
+     * @example
+     * // Delete one Obra_soc
+     * const Obra_soc = await prisma.obra_soc.delete({
+     *   where: {
+     *     // ... filter to delete one Obra_soc
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends obra_socDeleteArgs>(
+      args: SelectSubset<T, obra_socDeleteArgs>
+    ): Prisma__obra_socClient<obra_socGetPayload<T>>
+
+    /**
+     * Update one Obra_soc.
+     * @param {obra_socUpdateArgs} args - Arguments to update one Obra_soc.
+     * @example
+     * // Update one Obra_soc
+     * const obra_soc = await prisma.obra_soc.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends obra_socUpdateArgs>(
+      args: SelectSubset<T, obra_socUpdateArgs>
+    ): Prisma__obra_socClient<obra_socGetPayload<T>>
+
+    /**
+     * Delete zero or more Obra_socs.
+     * @param {obra_socDeleteManyArgs} args - Arguments to filter Obra_socs to delete.
+     * @example
+     * // Delete a few Obra_socs
+     * const { count } = await prisma.obra_soc.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends obra_socDeleteManyArgs>(
+      args?: SelectSubset<T, obra_socDeleteManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Obra_socs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {obra_socUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Obra_socs
+     * const obra_soc = await prisma.obra_soc.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends obra_socUpdateManyArgs>(
+      args: SelectSubset<T, obra_socUpdateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Obra_soc.
+     * @param {obra_socUpsertArgs} args - Arguments to update or create a Obra_soc.
+     * @example
+     * // Update or create a Obra_soc
+     * const obra_soc = await prisma.obra_soc.upsert({
+     *   create: {
+     *     // ... data to create a Obra_soc
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Obra_soc we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends obra_socUpsertArgs>(
+      args: SelectSubset<T, obra_socUpsertArgs>
+    ): Prisma__obra_socClient<obra_socGetPayload<T>>
+
+    /**
+     * Count the number of Obra_socs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {obra_socCountArgs} args - Arguments to filter Obra_socs to count.
+     * @example
+     * // Count the number of Obra_socs
+     * const count = await prisma.obra_soc.count({
+     *   where: {
+     *     // ... the filter for the Obra_socs we want to count
+     *   }
+     * })
+    **/
+    count<T extends obra_socCountArgs>(
+      args?: Subset<T, obra_socCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Obra_socCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Obra_soc.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Obra_socAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Obra_socAggregateArgs>(args: Subset<T, Obra_socAggregateArgs>): Prisma.PrismaPromise<GetObra_socAggregateType<T>>
+
+    /**
+     * Group by Obra_soc.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Obra_socGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Obra_socGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Obra_socGroupByArgs['orderBy'] }
+        : { orderBy?: Obra_socGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Obra_socGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetObra_socGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for obra_soc.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__obra_socClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * obra_soc base type for findUnique actions
+   */
+  export type obra_socFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the obra_soc
+     */
+    select?: obra_socSelect | null
+    /**
+     * Filter, which obra_soc to fetch.
+     */
+    where: obra_socWhereUniqueInput
+  }
+
+  /**
+   * obra_soc findUnique
+   */
+  export interface obra_socFindUniqueArgs extends obra_socFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * obra_soc findUniqueOrThrow
+   */
+  export type obra_socFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the obra_soc
+     */
+    select?: obra_socSelect | null
+    /**
+     * Filter, which obra_soc to fetch.
+     */
+    where: obra_socWhereUniqueInput
+  }
+
+
+  /**
+   * obra_soc base type for findFirst actions
+   */
+  export type obra_socFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the obra_soc
+     */
+    select?: obra_socSelect | null
+    /**
+     * Filter, which obra_soc to fetch.
+     */
+    where?: obra_socWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of obra_socs to fetch.
+     */
+    orderBy?: Enumerable<obra_socOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for obra_socs.
+     */
+    cursor?: obra_socWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` obra_socs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` obra_socs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of obra_socs.
+     */
+    distinct?: Enumerable<Obra_socScalarFieldEnum>
+  }
+
+  /**
+   * obra_soc findFirst
+   */
+  export interface obra_socFindFirstArgs extends obra_socFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * obra_soc findFirstOrThrow
+   */
+  export type obra_socFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the obra_soc
+     */
+    select?: obra_socSelect | null
+    /**
+     * Filter, which obra_soc to fetch.
+     */
+    where?: obra_socWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of obra_socs to fetch.
+     */
+    orderBy?: Enumerable<obra_socOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for obra_socs.
+     */
+    cursor?: obra_socWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` obra_socs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` obra_socs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of obra_socs.
+     */
+    distinct?: Enumerable<Obra_socScalarFieldEnum>
+  }
+
+
+  /**
+   * obra_soc findMany
+   */
+  export type obra_socFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the obra_soc
+     */
+    select?: obra_socSelect | null
+    /**
+     * Filter, which obra_socs to fetch.
+     */
+    where?: obra_socWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of obra_socs to fetch.
+     */
+    orderBy?: Enumerable<obra_socOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing obra_socs.
+     */
+    cursor?: obra_socWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` obra_socs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` obra_socs.
+     */
+    skip?: number
+    distinct?: Enumerable<Obra_socScalarFieldEnum>
+  }
+
+
+  /**
+   * obra_soc create
+   */
+  export type obra_socCreateArgs = {
+    /**
+     * Select specific fields to fetch from the obra_soc
+     */
+    select?: obra_socSelect | null
+    /**
+     * The data needed to create a obra_soc.
+     */
+    data: XOR<obra_socCreateInput, obra_socUncheckedCreateInput>
+  }
+
+
+  /**
+   * obra_soc createMany
+   */
+  export type obra_socCreateManyArgs = {
+    /**
+     * The data used to create many obra_socs.
+     */
+    data: Enumerable<obra_socCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * obra_soc update
+   */
+  export type obra_socUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the obra_soc
+     */
+    select?: obra_socSelect | null
+    /**
+     * The data needed to update a obra_soc.
+     */
+    data: XOR<obra_socUpdateInput, obra_socUncheckedUpdateInput>
+    /**
+     * Choose, which obra_soc to update.
+     */
+    where: obra_socWhereUniqueInput
+  }
+
+
+  /**
+   * obra_soc updateMany
+   */
+  export type obra_socUpdateManyArgs = {
+    /**
+     * The data used to update obra_socs.
+     */
+    data: XOR<obra_socUpdateManyMutationInput, obra_socUncheckedUpdateManyInput>
+    /**
+     * Filter which obra_socs to update
+     */
+    where?: obra_socWhereInput
+  }
+
+
+  /**
+   * obra_soc upsert
+   */
+  export type obra_socUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the obra_soc
+     */
+    select?: obra_socSelect | null
+    /**
+     * The filter to search for the obra_soc to update in case it exists.
+     */
+    where: obra_socWhereUniqueInput
+    /**
+     * In case the obra_soc found by the `where` argument doesn't exist, create a new obra_soc with this data.
+     */
+    create: XOR<obra_socCreateInput, obra_socUncheckedCreateInput>
+    /**
+     * In case the obra_soc was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<obra_socUpdateInput, obra_socUncheckedUpdateInput>
+  }
+
+
+  /**
+   * obra_soc delete
+   */
+  export type obra_socDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the obra_soc
+     */
+    select?: obra_socSelect | null
+    /**
+     * Filter which obra_soc to delete.
+     */
+    where: obra_socWhereUniqueInput
+  }
+
+
+  /**
+   * obra_soc deleteMany
+   */
+  export type obra_socDeleteManyArgs = {
+    /**
+     * Filter which obra_socs to delete
+     */
+    where?: obra_socWhereInput
+  }
+
+
+  /**
+   * obra_soc without action
+   */
+  export type obra_socArgs = {
+    /**
+     * Select specific fields to fetch from the obra_soc
+     */
+    select?: obra_socSelect | null
   }
 
 
@@ -44929,10 +47528,97 @@ export namespace Prisma {
     MAY_65: 'MAY_65',
     INTEG: 'INTEG',
     EDAD_PROM: 'EDAD_PROM',
-    MAIL: 'MAIL'
+    MAIL: 'MAIL',
+    idmutual: 'idmutual'
   };
 
   export type MutualScalarFieldEnum = (typeof MutualScalarFieldEnum)[keyof typeof MutualScalarFieldEnum]
+
+
+  export const Mutual_adhScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CLAVE: 'CLAVE',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    NACIMIENTO: 'NACIMIENTO',
+    SEXO: 'SEXO',
+    ALTA: 'ALTA',
+    BAJA: 'BAJA',
+    VIGENCIA: 'VIGENCIA',
+    ALT_SEG: 'ALT_SEG',
+    VIG_SEG: 'VIG_SEG',
+    ENC_SEG: 'ENC_SEG',
+    VIG_AYUDA: 'VIG_AYUDA',
+    PARENT: 'PARENT',
+    PAMI: 'PAMI',
+    OBRA_SOC: 'OBRA_SOC',
+    SEGURO: 'SEGURO',
+    PRODUCTOR: 'PRODUCTOR',
+    PLAN: 'PLAN',
+    SUB_PLAN: 'SUB_PLAN',
+    FEC_PLAN: 'FEC_PLAN',
+    MOD_1: 'MOD_1',
+    PRO_1: 'PRO_1',
+    MOD_2: 'MOD_2',
+    PRO_2: 'PRO_2',
+    MOD_3: 'MOD_3',
+    PRO_3: 'PRO_3',
+    MOD_4: 'MOD_4',
+    PRO_4: 'PRO_4',
+    MOD_5: 'MOD_5',
+    TSEG: 'TSEG',
+    PRO_5: 'PRO_5',
+    MOD_6: 'MOD_6',
+    PRO_6: 'PRO_6',
+    MOD_7: 'MOD_7',
+    PRO_7: 'PRO_7',
+    MOD_8: 'MOD_8',
+    PRO_8: 'PRO_8',
+    MOD_9: 'MOD_9',
+    PRO_9: 'PRO_9',
+    MOD_10: 'MOD_10',
+    PRO_10: 'PRO_10',
+    MOD_11: 'MOD_11',
+    PRO_11: 'PRO_11',
+    MOD_12: 'MOD_12',
+    PRO_12: 'PRO_12',
+    TOT_MOD: 'TOT_MOD',
+    BENEF: 'BENEF',
+    ORDEN: 'ORDEN',
+    ACTUALIZA: 'ACTUALIZA',
+    EDAD: 'EDAD',
+    VIG_OPT: 'VIG_OPT',
+    VIG_SUB: 'VIG_SUB',
+    VIG_CONSU: 'VIG_CONSU',
+    VIG_SMEDI: 'VIG_SMEDI',
+    DECL_JUR: 'DECL_JUR',
+    TIPO_COMI: 'TIPO_COMI',
+    PAGA_COMI: 'PAGA_COMI',
+    TIPO_SEGU: 'TIPO_SEGU',
+    PAGO_SEGU: 'PAGO_SEGU',
+    TICOMISE: 'TICOMISE',
+    PACOMISE: 'PACOMISE',
+    id_adherente: 'id_adherente'
+  };
+
+  export type Mutual_adhScalarFieldEnum = (typeof Mutual_adhScalarFieldEnum)[keyof typeof Mutual_adhScalarFieldEnum]
+
+
+  export const Obra_socScalarFieldEnum: {
+    CODIGO: 'CODIGO',
+    NOMBRE: 'NOMBRE',
+    DETALLE: 'DETALLE',
+    DOMICILIO: 'DOMICILIO',
+    FECHA_SUSP: 'FECHA_SUSP',
+    OPERADOR: 'OPERADOR',
+    ACTUALIZA: 'ACTUALIZA',
+    SUSPENDIDO: 'SUSPENDIDO',
+    id: 'id'
+  };
+
+  export type Obra_socScalarFieldEnum = (typeof Obra_socScalarFieldEnum)[keyof typeof Obra_socScalarFieldEnum]
 
 
   export const ParcelasScalarFieldEnum: {
@@ -47959,6 +50645,7 @@ export namespace Prisma {
     INTEG?: IntNullableFilter | number | null
     EDAD_PROM?: FloatNullableFilter | number | null
     MAIL?: StringNullableFilter | string | null
+    idmutual?: IntFilter | number
   }
 
   export type mutualOrderByWithRelationInput = {
@@ -48048,10 +50735,11 @@ export namespace Prisma {
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
     MAIL?: SortOrder
+    idmutual?: SortOrder
   }
 
   export type mutualWhereUniqueInput = {
-    CONTRATO?: number
+    idmutual?: number
   }
 
   export type mutualOrderByWithAggregationInput = {
@@ -48141,6 +50829,7 @@ export namespace Prisma {
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
     MAIL?: SortOrder
+    idmutual?: SortOrder
     _count?: mutualCountOrderByAggregateInput
     _avg?: mutualAvgOrderByAggregateInput
     _max?: mutualMaxOrderByAggregateInput
@@ -48238,6 +50927,357 @@ export namespace Prisma {
     INTEG?: IntNullableWithAggregatesFilter | number | null
     EDAD_PROM?: FloatNullableWithAggregatesFilter | number | null
     MAIL?: StringNullableWithAggregatesFilter | string | null
+    idmutual?: IntWithAggregatesFilter | number
+  }
+
+  export type mutual_adhWhereInput = {
+    AND?: Enumerable<mutual_adhWhereInput>
+    OR?: Enumerable<mutual_adhWhereInput>
+    NOT?: Enumerable<mutual_adhWhereInput>
+    SUCURSAL?: StringNullableFilter | string | null
+    CLAVE?: IntNullableFilter | number | null
+    CONTRATO?: IntNullableFilter | number | null
+    NRO_DOC?: IntNullableFilter | number | null
+    APELLIDOS?: StringNullableFilter | string | null
+    NOMBRES?: StringNullableFilter | string | null
+    NACIMIENTO?: DateTimeNullableFilter | Date | string | null
+    SEXO?: StringNullableFilter | string | null
+    ALTA?: DateTimeNullableFilter | Date | string | null
+    BAJA?: DateTimeNullableFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableFilter | Date | string | null
+    ALT_SEG?: DateTimeNullableFilter | Date | string | null
+    VIG_SEG?: DateTimeNullableFilter | Date | string | null
+    ENC_SEG?: IntNullableFilter | number | null
+    VIG_AYUDA?: DateTimeNullableFilter | Date | string | null
+    PARENT?: IntNullableFilter | number | null
+    PAMI?: StringNullableFilter | string | null
+    OBRA_SOC?: IntNullableFilter | number | null
+    SEGURO?: IntNullableFilter | number | null
+    PRODUCTOR?: IntNullableFilter | number | null
+    PLAN?: StringNullableFilter | string | null
+    SUB_PLAN?: StringNullableFilter | string | null
+    FEC_PLAN?: DateTimeNullableFilter | Date | string | null
+    MOD_1?: DateTimeNullableFilter | Date | string | null
+    PRO_1?: IntNullableFilter | number | null
+    MOD_2?: DateTimeNullableFilter | Date | string | null
+    PRO_2?: IntNullableFilter | number | null
+    MOD_3?: DateTimeNullableFilter | Date | string | null
+    PRO_3?: IntNullableFilter | number | null
+    MOD_4?: DateTimeNullableFilter | Date | string | null
+    PRO_4?: IntNullableFilter | number | null
+    MOD_5?: DateTimeNullableFilter | Date | string | null
+    TSEG?: StringNullableFilter | string | null
+    PRO_5?: IntNullableFilter | number | null
+    MOD_6?: DateTimeNullableFilter | Date | string | null
+    PRO_6?: IntNullableFilter | number | null
+    MOD_7?: DateTimeNullableFilter | Date | string | null
+    PRO_7?: IntNullableFilter | number | null
+    MOD_8?: DateTimeNullableFilter | Date | string | null
+    PRO_8?: IntNullableFilter | number | null
+    MOD_9?: DateTimeNullableFilter | Date | string | null
+    PRO_9?: IntNullableFilter | number | null
+    MOD_10?: DateTimeNullableFilter | Date | string | null
+    PRO_10?: IntNullableFilter | number | null
+    MOD_11?: DateTimeNullableFilter | Date | string | null
+    PRO_11?: IntNullableFilter | number | null
+    MOD_12?: DateTimeNullableFilter | Date | string | null
+    PRO_12?: IntNullableFilter | number | null
+    TOT_MOD?: FloatNullableFilter | number | null
+    BENEF?: IntNullableFilter | number | null
+    ORDEN?: IntNullableFilter | number | null
+    ACTUALIZA?: StringNullableFilter | string | null
+    EDAD?: IntNullableFilter | number | null
+    VIG_OPT?: DateTimeNullableFilter | Date | string | null
+    VIG_SUB?: DateTimeNullableFilter | Date | string | null
+    VIG_CONSU?: DateTimeNullableFilter | Date | string | null
+    VIG_SMEDI?: DateTimeNullableFilter | Date | string | null
+    DECL_JUR?: DateTimeNullableFilter | Date | string | null
+    TIPO_COMI?: IntNullableFilter | number | null
+    PAGA_COMI?: IntNullableFilter | number | null
+    TIPO_SEGU?: IntNullableFilter | number | null
+    PAGO_SEGU?: IntNullableFilter | number | null
+    TICOMISE?: IntNullableFilter | number | null
+    PACOMISE?: IntNullableFilter | number | null
+    id_adherente?: IntFilter | number
+  }
+
+  export type mutual_adhOrderByWithRelationInput = {
+    SUCURSAL?: SortOrder
+    CLAVE?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    NACIMIENTO?: SortOrder
+    SEXO?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    VIGENCIA?: SortOrder
+    ALT_SEG?: SortOrder
+    VIG_SEG?: SortOrder
+    ENC_SEG?: SortOrder
+    VIG_AYUDA?: SortOrder
+    PARENT?: SortOrder
+    PAMI?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    FEC_PLAN?: SortOrder
+    MOD_1?: SortOrder
+    PRO_1?: SortOrder
+    MOD_2?: SortOrder
+    PRO_2?: SortOrder
+    MOD_3?: SortOrder
+    PRO_3?: SortOrder
+    MOD_4?: SortOrder
+    PRO_4?: SortOrder
+    MOD_5?: SortOrder
+    TSEG?: SortOrder
+    PRO_5?: SortOrder
+    MOD_6?: SortOrder
+    PRO_6?: SortOrder
+    MOD_7?: SortOrder
+    PRO_7?: SortOrder
+    MOD_8?: SortOrder
+    PRO_8?: SortOrder
+    MOD_9?: SortOrder
+    PRO_9?: SortOrder
+    MOD_10?: SortOrder
+    PRO_10?: SortOrder
+    MOD_11?: SortOrder
+    PRO_11?: SortOrder
+    MOD_12?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    BENEF?: SortOrder
+    ORDEN?: SortOrder
+    ACTUALIZA?: SortOrder
+    EDAD?: SortOrder
+    VIG_OPT?: SortOrder
+    VIG_SUB?: SortOrder
+    VIG_CONSU?: SortOrder
+    VIG_SMEDI?: SortOrder
+    DECL_JUR?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    TICOMISE?: SortOrder
+    PACOMISE?: SortOrder
+    id_adherente?: SortOrder
+  }
+
+  export type mutual_adhWhereUniqueInput = {
+    id_adherente?: number
+  }
+
+  export type mutual_adhOrderByWithAggregationInput = {
+    SUCURSAL?: SortOrder
+    CLAVE?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    NACIMIENTO?: SortOrder
+    SEXO?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    VIGENCIA?: SortOrder
+    ALT_SEG?: SortOrder
+    VIG_SEG?: SortOrder
+    ENC_SEG?: SortOrder
+    VIG_AYUDA?: SortOrder
+    PARENT?: SortOrder
+    PAMI?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    FEC_PLAN?: SortOrder
+    MOD_1?: SortOrder
+    PRO_1?: SortOrder
+    MOD_2?: SortOrder
+    PRO_2?: SortOrder
+    MOD_3?: SortOrder
+    PRO_3?: SortOrder
+    MOD_4?: SortOrder
+    PRO_4?: SortOrder
+    MOD_5?: SortOrder
+    TSEG?: SortOrder
+    PRO_5?: SortOrder
+    MOD_6?: SortOrder
+    PRO_6?: SortOrder
+    MOD_7?: SortOrder
+    PRO_7?: SortOrder
+    MOD_8?: SortOrder
+    PRO_8?: SortOrder
+    MOD_9?: SortOrder
+    PRO_9?: SortOrder
+    MOD_10?: SortOrder
+    PRO_10?: SortOrder
+    MOD_11?: SortOrder
+    PRO_11?: SortOrder
+    MOD_12?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    BENEF?: SortOrder
+    ORDEN?: SortOrder
+    ACTUALIZA?: SortOrder
+    EDAD?: SortOrder
+    VIG_OPT?: SortOrder
+    VIG_SUB?: SortOrder
+    VIG_CONSU?: SortOrder
+    VIG_SMEDI?: SortOrder
+    DECL_JUR?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    TICOMISE?: SortOrder
+    PACOMISE?: SortOrder
+    id_adherente?: SortOrder
+    _count?: mutual_adhCountOrderByAggregateInput
+    _avg?: mutual_adhAvgOrderByAggregateInput
+    _max?: mutual_adhMaxOrderByAggregateInput
+    _min?: mutual_adhMinOrderByAggregateInput
+    _sum?: mutual_adhSumOrderByAggregateInput
+  }
+
+  export type mutual_adhScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<mutual_adhScalarWhereWithAggregatesInput>
+    OR?: Enumerable<mutual_adhScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<mutual_adhScalarWhereWithAggregatesInput>
+    SUCURSAL?: StringNullableWithAggregatesFilter | string | null
+    CLAVE?: IntNullableWithAggregatesFilter | number | null
+    CONTRATO?: IntNullableWithAggregatesFilter | number | null
+    NRO_DOC?: IntNullableWithAggregatesFilter | number | null
+    APELLIDOS?: StringNullableWithAggregatesFilter | string | null
+    NOMBRES?: StringNullableWithAggregatesFilter | string | null
+    NACIMIENTO?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    SEXO?: StringNullableWithAggregatesFilter | string | null
+    ALTA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    BAJA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    ALT_SEG?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_SEG?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    ENC_SEG?: IntNullableWithAggregatesFilter | number | null
+    VIG_AYUDA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PARENT?: IntNullableWithAggregatesFilter | number | null
+    PAMI?: StringNullableWithAggregatesFilter | string | null
+    OBRA_SOC?: IntNullableWithAggregatesFilter | number | null
+    SEGURO?: IntNullableWithAggregatesFilter | number | null
+    PRODUCTOR?: IntNullableWithAggregatesFilter | number | null
+    PLAN?: StringNullableWithAggregatesFilter | string | null
+    SUB_PLAN?: StringNullableWithAggregatesFilter | string | null
+    FEC_PLAN?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    MOD_1?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_1?: IntNullableWithAggregatesFilter | number | null
+    MOD_2?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_2?: IntNullableWithAggregatesFilter | number | null
+    MOD_3?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_3?: IntNullableWithAggregatesFilter | number | null
+    MOD_4?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_4?: IntNullableWithAggregatesFilter | number | null
+    MOD_5?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    TSEG?: StringNullableWithAggregatesFilter | string | null
+    PRO_5?: IntNullableWithAggregatesFilter | number | null
+    MOD_6?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_6?: IntNullableWithAggregatesFilter | number | null
+    MOD_7?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_7?: IntNullableWithAggregatesFilter | number | null
+    MOD_8?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_8?: IntNullableWithAggregatesFilter | number | null
+    MOD_9?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_9?: IntNullableWithAggregatesFilter | number | null
+    MOD_10?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_10?: IntNullableWithAggregatesFilter | number | null
+    MOD_11?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_11?: IntNullableWithAggregatesFilter | number | null
+    MOD_12?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_12?: IntNullableWithAggregatesFilter | number | null
+    TOT_MOD?: FloatNullableWithAggregatesFilter | number | null
+    BENEF?: IntNullableWithAggregatesFilter | number | null
+    ORDEN?: IntNullableWithAggregatesFilter | number | null
+    ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
+    EDAD?: IntNullableWithAggregatesFilter | number | null
+    VIG_OPT?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_SUB?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_CONSU?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_SMEDI?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    DECL_JUR?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    TIPO_COMI?: IntNullableWithAggregatesFilter | number | null
+    PAGA_COMI?: IntNullableWithAggregatesFilter | number | null
+    TIPO_SEGU?: IntNullableWithAggregatesFilter | number | null
+    PAGO_SEGU?: IntNullableWithAggregatesFilter | number | null
+    TICOMISE?: IntNullableWithAggregatesFilter | number | null
+    PACOMISE?: IntNullableWithAggregatesFilter | number | null
+    id_adherente?: IntWithAggregatesFilter | number
+  }
+
+  export type obra_socWhereInput = {
+    AND?: Enumerable<obra_socWhereInput>
+    OR?: Enumerable<obra_socWhereInput>
+    NOT?: Enumerable<obra_socWhereInput>
+    CODIGO?: IntNullableFilter | number | null
+    NOMBRE?: StringNullableFilter | string | null
+    DETALLE?: StringNullableFilter | string | null
+    DOMICILIO?: StringNullableFilter | string | null
+    FECHA_SUSP?: DateTimeNullableFilter | Date | string | null
+    OPERADOR?: IntNullableFilter | number | null
+    ACTUALIZA?: StringNullableFilter | string | null
+    SUSPENDIDO?: IntNullableFilter | number | null
+    id?: IntFilter | number
+  }
+
+  export type obra_socOrderByWithRelationInput = {
+    CODIGO?: SortOrder
+    NOMBRE?: SortOrder
+    DETALLE?: SortOrder
+    DOMICILIO?: SortOrder
+    FECHA_SUSP?: SortOrder
+    OPERADOR?: SortOrder
+    ACTUALIZA?: SortOrder
+    SUSPENDIDO?: SortOrder
+    id?: SortOrder
+  }
+
+  export type obra_socWhereUniqueInput = {
+    id?: number
+  }
+
+  export type obra_socOrderByWithAggregationInput = {
+    CODIGO?: SortOrder
+    NOMBRE?: SortOrder
+    DETALLE?: SortOrder
+    DOMICILIO?: SortOrder
+    FECHA_SUSP?: SortOrder
+    OPERADOR?: SortOrder
+    ACTUALIZA?: SortOrder
+    SUSPENDIDO?: SortOrder
+    id?: SortOrder
+    _count?: obra_socCountOrderByAggregateInput
+    _avg?: obra_socAvgOrderByAggregateInput
+    _max?: obra_socMaxOrderByAggregateInput
+    _min?: obra_socMinOrderByAggregateInput
+    _sum?: obra_socSumOrderByAggregateInput
+  }
+
+  export type obra_socScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<obra_socScalarWhereWithAggregatesInput>
+    OR?: Enumerable<obra_socScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<obra_socScalarWhereWithAggregatesInput>
+    CODIGO?: IntNullableWithAggregatesFilter | number | null
+    NOMBRE?: StringNullableWithAggregatesFilter | string | null
+    DETALLE?: StringNullableWithAggregatesFilter | string | null
+    DOMICILIO?: StringNullableWithAggregatesFilter | string | null
+    FECHA_SUSP?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    OPERADOR?: IntNullableWithAggregatesFilter | number | null
+    ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
+    SUSPENDIDO?: IntNullableWithAggregatesFilter | number | null
+    id?: IntWithAggregatesFilter | number
   }
 
   export type parcelasWhereInput = {
@@ -53680,6 +56720,7 @@ export namespace Prisma {
     INTEG?: number | null
     EDAD_PROM?: number | null
     MAIL?: string | null
+    idmutual?: number
   }
 
   export type mutualUpdateInput = {
@@ -53858,6 +56899,7 @@ export namespace Prisma {
     INTEG?: NullableIntFieldUpdateOperationsInput | number | null
     EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
     MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    idmutual?: IntFieldUpdateOperationsInput | number
   }
 
   export type mutualCreateManyInput = {
@@ -53947,6 +56989,7 @@ export namespace Prisma {
     INTEG?: number | null
     EDAD_PROM?: number | null
     MAIL?: string | null
+    idmutual?: number
   }
 
   export type mutualUpdateManyMutationInput = {
@@ -54125,6 +57168,561 @@ export namespace Prisma {
     INTEG?: NullableIntFieldUpdateOperationsInput | number | null
     EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
     MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    idmutual?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type mutual_adhCreateInput = {
+    SUCURSAL?: string | null
+    CLAVE?: number | null
+    CONTRATO?: number | null
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    NACIMIENTO?: Date | string | null
+    SEXO?: string | null
+    ALTA?: Date | string | null
+    BAJA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    ALT_SEG?: Date | string | null
+    VIG_SEG?: Date | string | null
+    ENC_SEG?: number | null
+    VIG_AYUDA?: Date | string | null
+    PARENT?: number | null
+    PAMI?: string | null
+    OBRA_SOC?: number | null
+    SEGURO?: number | null
+    PRODUCTOR?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    FEC_PLAN?: Date | string | null
+    MOD_1?: Date | string | null
+    PRO_1?: number | null
+    MOD_2?: Date | string | null
+    PRO_2?: number | null
+    MOD_3?: Date | string | null
+    PRO_3?: number | null
+    MOD_4?: Date | string | null
+    PRO_4?: number | null
+    MOD_5?: Date | string | null
+    TSEG?: string | null
+    PRO_5?: number | null
+    MOD_6?: Date | string | null
+    PRO_6?: number | null
+    MOD_7?: Date | string | null
+    PRO_7?: number | null
+    MOD_8?: Date | string | null
+    PRO_8?: number | null
+    MOD_9?: Date | string | null
+    PRO_9?: number | null
+    MOD_10?: Date | string | null
+    PRO_10?: number | null
+    MOD_11?: Date | string | null
+    PRO_11?: number | null
+    MOD_12?: Date | string | null
+    PRO_12?: number | null
+    TOT_MOD?: number | null
+    BENEF?: number | null
+    ORDEN?: number | null
+    ACTUALIZA?: string | null
+    EDAD?: number | null
+    VIG_OPT?: Date | string | null
+    VIG_SUB?: Date | string | null
+    VIG_CONSU?: Date | string | null
+    VIG_SMEDI?: Date | string | null
+    DECL_JUR?: Date | string | null
+    TIPO_COMI?: number | null
+    PAGA_COMI?: number | null
+    TIPO_SEGU?: number | null
+    PAGO_SEGU?: number | null
+    TICOMISE?: number | null
+    PACOMISE?: number | null
+  }
+
+  export type mutual_adhUncheckedCreateInput = {
+    SUCURSAL?: string | null
+    CLAVE?: number | null
+    CONTRATO?: number | null
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    NACIMIENTO?: Date | string | null
+    SEXO?: string | null
+    ALTA?: Date | string | null
+    BAJA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    ALT_SEG?: Date | string | null
+    VIG_SEG?: Date | string | null
+    ENC_SEG?: number | null
+    VIG_AYUDA?: Date | string | null
+    PARENT?: number | null
+    PAMI?: string | null
+    OBRA_SOC?: number | null
+    SEGURO?: number | null
+    PRODUCTOR?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    FEC_PLAN?: Date | string | null
+    MOD_1?: Date | string | null
+    PRO_1?: number | null
+    MOD_2?: Date | string | null
+    PRO_2?: number | null
+    MOD_3?: Date | string | null
+    PRO_3?: number | null
+    MOD_4?: Date | string | null
+    PRO_4?: number | null
+    MOD_5?: Date | string | null
+    TSEG?: string | null
+    PRO_5?: number | null
+    MOD_6?: Date | string | null
+    PRO_6?: number | null
+    MOD_7?: Date | string | null
+    PRO_7?: number | null
+    MOD_8?: Date | string | null
+    PRO_8?: number | null
+    MOD_9?: Date | string | null
+    PRO_9?: number | null
+    MOD_10?: Date | string | null
+    PRO_10?: number | null
+    MOD_11?: Date | string | null
+    PRO_11?: number | null
+    MOD_12?: Date | string | null
+    PRO_12?: number | null
+    TOT_MOD?: number | null
+    BENEF?: number | null
+    ORDEN?: number | null
+    ACTUALIZA?: string | null
+    EDAD?: number | null
+    VIG_OPT?: Date | string | null
+    VIG_SUB?: Date | string | null
+    VIG_CONSU?: Date | string | null
+    VIG_SMEDI?: Date | string | null
+    DECL_JUR?: Date | string | null
+    TIPO_COMI?: number | null
+    PAGA_COMI?: number | null
+    TIPO_SEGU?: number | null
+    PAGO_SEGU?: number | null
+    TICOMISE?: number | null
+    PACOMISE?: number | null
+    id_adherente?: number
+  }
+
+  export type mutual_adhUpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CLAVE?: NullableIntFieldUpdateOperationsInput | number | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PARENT?: NullableIntFieldUpdateOperationsInput | number | null
+    PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    BENEF?: NullableIntFieldUpdateOperationsInput | number | null
+    ORDEN?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TIPO_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGA_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    TIPO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    TICOMISE?: NullableIntFieldUpdateOperationsInput | number | null
+    PACOMISE?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type mutual_adhUncheckedUpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CLAVE?: NullableIntFieldUpdateOperationsInput | number | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PARENT?: NullableIntFieldUpdateOperationsInput | number | null
+    PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    BENEF?: NullableIntFieldUpdateOperationsInput | number | null
+    ORDEN?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TIPO_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGA_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    TIPO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    TICOMISE?: NullableIntFieldUpdateOperationsInput | number | null
+    PACOMISE?: NullableIntFieldUpdateOperationsInput | number | null
+    id_adherente?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type mutual_adhCreateManyInput = {
+    SUCURSAL?: string | null
+    CLAVE?: number | null
+    CONTRATO?: number | null
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    NACIMIENTO?: Date | string | null
+    SEXO?: string | null
+    ALTA?: Date | string | null
+    BAJA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    ALT_SEG?: Date | string | null
+    VIG_SEG?: Date | string | null
+    ENC_SEG?: number | null
+    VIG_AYUDA?: Date | string | null
+    PARENT?: number | null
+    PAMI?: string | null
+    OBRA_SOC?: number | null
+    SEGURO?: number | null
+    PRODUCTOR?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    FEC_PLAN?: Date | string | null
+    MOD_1?: Date | string | null
+    PRO_1?: number | null
+    MOD_2?: Date | string | null
+    PRO_2?: number | null
+    MOD_3?: Date | string | null
+    PRO_3?: number | null
+    MOD_4?: Date | string | null
+    PRO_4?: number | null
+    MOD_5?: Date | string | null
+    TSEG?: string | null
+    PRO_5?: number | null
+    MOD_6?: Date | string | null
+    PRO_6?: number | null
+    MOD_7?: Date | string | null
+    PRO_7?: number | null
+    MOD_8?: Date | string | null
+    PRO_8?: number | null
+    MOD_9?: Date | string | null
+    PRO_9?: number | null
+    MOD_10?: Date | string | null
+    PRO_10?: number | null
+    MOD_11?: Date | string | null
+    PRO_11?: number | null
+    MOD_12?: Date | string | null
+    PRO_12?: number | null
+    TOT_MOD?: number | null
+    BENEF?: number | null
+    ORDEN?: number | null
+    ACTUALIZA?: string | null
+    EDAD?: number | null
+    VIG_OPT?: Date | string | null
+    VIG_SUB?: Date | string | null
+    VIG_CONSU?: Date | string | null
+    VIG_SMEDI?: Date | string | null
+    DECL_JUR?: Date | string | null
+    TIPO_COMI?: number | null
+    PAGA_COMI?: number | null
+    TIPO_SEGU?: number | null
+    PAGO_SEGU?: number | null
+    TICOMISE?: number | null
+    PACOMISE?: number | null
+    id_adherente?: number
+  }
+
+  export type mutual_adhUpdateManyMutationInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CLAVE?: NullableIntFieldUpdateOperationsInput | number | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PARENT?: NullableIntFieldUpdateOperationsInput | number | null
+    PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    BENEF?: NullableIntFieldUpdateOperationsInput | number | null
+    ORDEN?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TIPO_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGA_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    TIPO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    TICOMISE?: NullableIntFieldUpdateOperationsInput | number | null
+    PACOMISE?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type mutual_adhUncheckedUpdateManyInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CLAVE?: NullableIntFieldUpdateOperationsInput | number | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PARENT?: NullableIntFieldUpdateOperationsInput | number | null
+    PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    BENEF?: NullableIntFieldUpdateOperationsInput | number | null
+    ORDEN?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TIPO_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGA_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    TIPO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    TICOMISE?: NullableIntFieldUpdateOperationsInput | number | null
+    PACOMISE?: NullableIntFieldUpdateOperationsInput | number | null
+    id_adherente?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type obra_socCreateInput = {
+    CODIGO?: number | null
+    NOMBRE?: string | null
+    DETALLE?: string | null
+    DOMICILIO?: string | null
+    FECHA_SUSP?: Date | string | null
+    OPERADOR?: number | null
+    ACTUALIZA?: string | null
+    SUSPENDIDO?: number | null
+  }
+
+  export type obra_socUncheckedCreateInput = {
+    CODIGO?: number | null
+    NOMBRE?: string | null
+    DETALLE?: string | null
+    DOMICILIO?: string | null
+    FECHA_SUSP?: Date | string | null
+    OPERADOR?: number | null
+    ACTUALIZA?: string | null
+    SUSPENDIDO?: number | null
+    id?: number
+  }
+
+  export type obra_socUpdateInput = {
+    CODIGO?: NullableIntFieldUpdateOperationsInput | number | null
+    NOMBRE?: NullableStringFieldUpdateOperationsInput | string | null
+    DETALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMICILIO?: NullableStringFieldUpdateOperationsInput | string | null
+    FECHA_SUSP?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUSPENDIDO?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type obra_socUncheckedUpdateInput = {
+    CODIGO?: NullableIntFieldUpdateOperationsInput | number | null
+    NOMBRE?: NullableStringFieldUpdateOperationsInput | string | null
+    DETALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMICILIO?: NullableStringFieldUpdateOperationsInput | string | null
+    FECHA_SUSP?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUSPENDIDO?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type obra_socCreateManyInput = {
+    CODIGO?: number | null
+    NOMBRE?: string | null
+    DETALLE?: string | null
+    DOMICILIO?: string | null
+    FECHA_SUSP?: Date | string | null
+    OPERADOR?: number | null
+    ACTUALIZA?: string | null
+    SUSPENDIDO?: number | null
+    id?: number
+  }
+
+  export type obra_socUpdateManyMutationInput = {
+    CODIGO?: NullableIntFieldUpdateOperationsInput | number | null
+    NOMBRE?: NullableStringFieldUpdateOperationsInput | string | null
+    DETALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMICILIO?: NullableStringFieldUpdateOperationsInput | string | null
+    FECHA_SUSP?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUSPENDIDO?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type obra_socUncheckedUpdateManyInput = {
+    CODIGO?: NullableIntFieldUpdateOperationsInput | number | null
+    NOMBRE?: NullableStringFieldUpdateOperationsInput | string | null
+    DETALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMICILIO?: NullableStringFieldUpdateOperationsInput | string | null
+    FECHA_SUSP?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUSPENDIDO?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type parcelasCreateInput = {
@@ -58477,6 +62075,7 @@ export namespace Prisma {
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
     MAIL?: SortOrder
+    idmutual?: SortOrder
   }
 
   export type mutualAvgOrderByAggregateInput = {
@@ -58522,6 +62121,7 @@ export namespace Prisma {
     MAY_65?: SortOrder
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
+    idmutual?: SortOrder
   }
 
   export type mutualMaxOrderByAggregateInput = {
@@ -58611,6 +62211,7 @@ export namespace Prisma {
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
     MAIL?: SortOrder
+    idmutual?: SortOrder
   }
 
   export type mutualMinOrderByAggregateInput = {
@@ -58700,6 +62301,7 @@ export namespace Prisma {
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
     MAIL?: SortOrder
+    idmutual?: SortOrder
   }
 
   export type mutualSumOrderByAggregateInput = {
@@ -58745,6 +62347,329 @@ export namespace Prisma {
     MAY_65?: SortOrder
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
+    idmutual?: SortOrder
+  }
+
+  export type mutual_adhCountOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CLAVE?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    NACIMIENTO?: SortOrder
+    SEXO?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    VIGENCIA?: SortOrder
+    ALT_SEG?: SortOrder
+    VIG_SEG?: SortOrder
+    ENC_SEG?: SortOrder
+    VIG_AYUDA?: SortOrder
+    PARENT?: SortOrder
+    PAMI?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    FEC_PLAN?: SortOrder
+    MOD_1?: SortOrder
+    PRO_1?: SortOrder
+    MOD_2?: SortOrder
+    PRO_2?: SortOrder
+    MOD_3?: SortOrder
+    PRO_3?: SortOrder
+    MOD_4?: SortOrder
+    PRO_4?: SortOrder
+    MOD_5?: SortOrder
+    TSEG?: SortOrder
+    PRO_5?: SortOrder
+    MOD_6?: SortOrder
+    PRO_6?: SortOrder
+    MOD_7?: SortOrder
+    PRO_7?: SortOrder
+    MOD_8?: SortOrder
+    PRO_8?: SortOrder
+    MOD_9?: SortOrder
+    PRO_9?: SortOrder
+    MOD_10?: SortOrder
+    PRO_10?: SortOrder
+    MOD_11?: SortOrder
+    PRO_11?: SortOrder
+    MOD_12?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    BENEF?: SortOrder
+    ORDEN?: SortOrder
+    ACTUALIZA?: SortOrder
+    EDAD?: SortOrder
+    VIG_OPT?: SortOrder
+    VIG_SUB?: SortOrder
+    VIG_CONSU?: SortOrder
+    VIG_SMEDI?: SortOrder
+    DECL_JUR?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    TICOMISE?: SortOrder
+    PACOMISE?: SortOrder
+    id_adherente?: SortOrder
+  }
+
+  export type mutual_adhAvgOrderByAggregateInput = {
+    CLAVE?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    ENC_SEG?: SortOrder
+    PARENT?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PRO_1?: SortOrder
+    PRO_2?: SortOrder
+    PRO_3?: SortOrder
+    PRO_4?: SortOrder
+    PRO_5?: SortOrder
+    PRO_6?: SortOrder
+    PRO_7?: SortOrder
+    PRO_8?: SortOrder
+    PRO_9?: SortOrder
+    PRO_10?: SortOrder
+    PRO_11?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    BENEF?: SortOrder
+    ORDEN?: SortOrder
+    EDAD?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    TICOMISE?: SortOrder
+    PACOMISE?: SortOrder
+    id_adherente?: SortOrder
+  }
+
+  export type mutual_adhMaxOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CLAVE?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    NACIMIENTO?: SortOrder
+    SEXO?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    VIGENCIA?: SortOrder
+    ALT_SEG?: SortOrder
+    VIG_SEG?: SortOrder
+    ENC_SEG?: SortOrder
+    VIG_AYUDA?: SortOrder
+    PARENT?: SortOrder
+    PAMI?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    FEC_PLAN?: SortOrder
+    MOD_1?: SortOrder
+    PRO_1?: SortOrder
+    MOD_2?: SortOrder
+    PRO_2?: SortOrder
+    MOD_3?: SortOrder
+    PRO_3?: SortOrder
+    MOD_4?: SortOrder
+    PRO_4?: SortOrder
+    MOD_5?: SortOrder
+    TSEG?: SortOrder
+    PRO_5?: SortOrder
+    MOD_6?: SortOrder
+    PRO_6?: SortOrder
+    MOD_7?: SortOrder
+    PRO_7?: SortOrder
+    MOD_8?: SortOrder
+    PRO_8?: SortOrder
+    MOD_9?: SortOrder
+    PRO_9?: SortOrder
+    MOD_10?: SortOrder
+    PRO_10?: SortOrder
+    MOD_11?: SortOrder
+    PRO_11?: SortOrder
+    MOD_12?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    BENEF?: SortOrder
+    ORDEN?: SortOrder
+    ACTUALIZA?: SortOrder
+    EDAD?: SortOrder
+    VIG_OPT?: SortOrder
+    VIG_SUB?: SortOrder
+    VIG_CONSU?: SortOrder
+    VIG_SMEDI?: SortOrder
+    DECL_JUR?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    TICOMISE?: SortOrder
+    PACOMISE?: SortOrder
+    id_adherente?: SortOrder
+  }
+
+  export type mutual_adhMinOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CLAVE?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    NACIMIENTO?: SortOrder
+    SEXO?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    VIGENCIA?: SortOrder
+    ALT_SEG?: SortOrder
+    VIG_SEG?: SortOrder
+    ENC_SEG?: SortOrder
+    VIG_AYUDA?: SortOrder
+    PARENT?: SortOrder
+    PAMI?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    FEC_PLAN?: SortOrder
+    MOD_1?: SortOrder
+    PRO_1?: SortOrder
+    MOD_2?: SortOrder
+    PRO_2?: SortOrder
+    MOD_3?: SortOrder
+    PRO_3?: SortOrder
+    MOD_4?: SortOrder
+    PRO_4?: SortOrder
+    MOD_5?: SortOrder
+    TSEG?: SortOrder
+    PRO_5?: SortOrder
+    MOD_6?: SortOrder
+    PRO_6?: SortOrder
+    MOD_7?: SortOrder
+    PRO_7?: SortOrder
+    MOD_8?: SortOrder
+    PRO_8?: SortOrder
+    MOD_9?: SortOrder
+    PRO_9?: SortOrder
+    MOD_10?: SortOrder
+    PRO_10?: SortOrder
+    MOD_11?: SortOrder
+    PRO_11?: SortOrder
+    MOD_12?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    BENEF?: SortOrder
+    ORDEN?: SortOrder
+    ACTUALIZA?: SortOrder
+    EDAD?: SortOrder
+    VIG_OPT?: SortOrder
+    VIG_SUB?: SortOrder
+    VIG_CONSU?: SortOrder
+    VIG_SMEDI?: SortOrder
+    DECL_JUR?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    TICOMISE?: SortOrder
+    PACOMISE?: SortOrder
+    id_adherente?: SortOrder
+  }
+
+  export type mutual_adhSumOrderByAggregateInput = {
+    CLAVE?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    ENC_SEG?: SortOrder
+    PARENT?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PRO_1?: SortOrder
+    PRO_2?: SortOrder
+    PRO_3?: SortOrder
+    PRO_4?: SortOrder
+    PRO_5?: SortOrder
+    PRO_6?: SortOrder
+    PRO_7?: SortOrder
+    PRO_8?: SortOrder
+    PRO_9?: SortOrder
+    PRO_10?: SortOrder
+    PRO_11?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    BENEF?: SortOrder
+    ORDEN?: SortOrder
+    EDAD?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    TICOMISE?: SortOrder
+    PACOMISE?: SortOrder
+    id_adherente?: SortOrder
+  }
+
+  export type obra_socCountOrderByAggregateInput = {
+    CODIGO?: SortOrder
+    NOMBRE?: SortOrder
+    DETALLE?: SortOrder
+    DOMICILIO?: SortOrder
+    FECHA_SUSP?: SortOrder
+    OPERADOR?: SortOrder
+    ACTUALIZA?: SortOrder
+    SUSPENDIDO?: SortOrder
+    id?: SortOrder
+  }
+
+  export type obra_socAvgOrderByAggregateInput = {
+    CODIGO?: SortOrder
+    OPERADOR?: SortOrder
+    SUSPENDIDO?: SortOrder
+    id?: SortOrder
+  }
+
+  export type obra_socMaxOrderByAggregateInput = {
+    CODIGO?: SortOrder
+    NOMBRE?: SortOrder
+    DETALLE?: SortOrder
+    DOMICILIO?: SortOrder
+    FECHA_SUSP?: SortOrder
+    OPERADOR?: SortOrder
+    ACTUALIZA?: SortOrder
+    SUSPENDIDO?: SortOrder
+    id?: SortOrder
+  }
+
+  export type obra_socMinOrderByAggregateInput = {
+    CODIGO?: SortOrder
+    NOMBRE?: SortOrder
+    DETALLE?: SortOrder
+    DOMICILIO?: SortOrder
+    FECHA_SUSP?: SortOrder
+    OPERADOR?: SortOrder
+    ACTUALIZA?: SortOrder
+    SUSPENDIDO?: SortOrder
+    id?: SortOrder
+  }
+
+  export type obra_socSumOrderByAggregateInput = {
+    CODIGO?: SortOrder
+    OPERADOR?: SortOrder
+    SUSPENDIDO?: SortOrder
+    id?: SortOrder
   }
 
   export type parcelasCountOrderByAggregateInput = {

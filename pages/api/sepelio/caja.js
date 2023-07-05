@@ -43,6 +43,16 @@ export default async function handler(req, res) {
 
             res.status(200).json(cajaSep);
 
+        } else if (req.query.f && req.query.f === "traer ingresos") {
+
+            const cajaSep = await Sep.ingreso_caja.findMany({
+                where: {
+                    idcaja: parseInt(req.query.idcaja)
+                }
+            })
+
+            res.status(200).json(cajaSep);
+
         } else if (req.query.f && req.query.f === "traer gastos caja") {
 
             const cajaSep = await Sep.gastos_caja.findMany({
@@ -61,13 +71,10 @@ export default async function handler(req, res) {
 
         } else if (req.query.f && req.query.f === "traer operadores") {
 
-            const prov = await SGI.operador.findMany({
-                where: {
-                    perfil: 4
-                },
-                select: {
-                    usuario: true,
+            const prov = await Sep.operadorsep.findMany({
 
+                select: {
+                    operador: true,
                 },
             })
 
@@ -147,7 +154,28 @@ export default async function handler(req, res) {
 
             res.status(200).json(regCaja);
 
+        } else if (req.body.f && req.body.f === "reg ingreso caja") {
+
+
+            const regCaja = await Sep.ingreso_caja.create({
+                data: {
+                    idcaja: parseInt(req.body.idcaja),
+                    concepto: req.body.concepto,
+                    tipofactura: req.body.tipofactura,
+                    empresa: req.body.empresa,
+                    fecha: new Date(req.body.fecha),
+                    nfactura: req.body.nfactura,
+                    ptoventa: parseFloat(req.body.ptoventa),
+                    detalle: req.body.detalle,
+                    monto: parseFloat(req.body.total),
+                }
+            })
+
+
+            res.status(200).json(regCaja);
+
         }
+
 
     } if (req.method === "PUT") {
 
@@ -195,6 +223,25 @@ export default async function handler(req, res) {
                 data: {
 
                     gastos: parseFloat(req.body.gastos),
+                    totalcaja: parseFloat(req.body.totalcaja),
+
+                },
+                where: {
+                    idcaja: parseInt(req.body.idcaja)
+                }
+
+            })
+
+
+            res.status(200).json(cerrarCaja);
+
+        } else if (req.body.f && req.body.f === "update valores ing") {
+
+
+            const cerrarCaja = await Sep.caja_sepelio.update({
+                data: {
+
+                    monto: parseFloat(req.body.monto),
                     totalcaja: parseFloat(req.body.totalcaja),
 
                 },

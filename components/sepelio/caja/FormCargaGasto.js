@@ -45,7 +45,8 @@ export const FormCargaGasto = ({
     totCaja,
     regGasto,
     cerrarCaja,
-    errores
+    errores,
+    alertas
 }) => {
 
     let columns = [
@@ -340,6 +341,7 @@ export const FormCargaGasto = ({
                                         totalRef={totalRef}
                                         nuevoGasto={nuevoGasto}
                                         errores={errores}
+                                        alertas={alertas}
                                     />
                                 </div>
                                 <div className="relative w-full mb-6 group">

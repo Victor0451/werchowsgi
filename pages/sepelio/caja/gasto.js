@@ -47,6 +47,7 @@ export default function Gasto() {
     const [acGast, guardarAcGast] = useState(0);
     const [totCaja, guardarTotCaja] = useState(0);
     const [errores, guardarErrores] = useState(null)
+    const [alertas, guardarAlertas] = useState(null)
 
 
     const { usu } = useWerchow()
@@ -279,6 +280,7 @@ export default function Gasto() {
     const nuevoGasto = () => {
 
         guardarErrores(null)
+        guardarAlertas(null)
 
         const gasto = {
             idcaja: caja.idcaja,
@@ -303,7 +305,6 @@ export default function Gasto() {
             f: 'reg gasto caja'
         };
 
-console.log(gasto)
 
         if (gasto.empresa === "") {
 
@@ -357,6 +358,8 @@ console.log(gasto)
             let totcaja = caja.monto - totgast;
 
             guardarTotCaja(totcaja);
+
+            guardarAlertas("Gasto precargado correctamente")
         }
 
 
@@ -574,6 +577,7 @@ console.log(gasto)
                             regGasto={regGasto}
                             cerrarCaja={cerrarCaja}
                             errores={errores}
+                            alertas={alertas}
                         />
 
                     </>

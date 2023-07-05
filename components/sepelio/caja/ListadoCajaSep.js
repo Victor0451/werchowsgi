@@ -14,7 +14,7 @@ import {
     Spinner
 
 } from "@material-tailwind/react";
-import { FaceSmileIcon, FaceFrownIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
+import { FaceSmileIcon, FaceFrownIcon, InformationCircleIcon, PrinterIcon } from "@heroicons/react/24/solid";
 import moment from 'moment';
 import Link from 'next/link';
 import ExportarPadron from './ExportarPadron';
@@ -125,11 +125,29 @@ export const ListadoCajaSep = ({
                                             </Link>
 
 
+                                            <Link
+
+                                                href={{
+                                                    pathname: '/sepelio/caja/impresion',
+                                                    query: { idcaja: row.idcaja },
+                                                }}
+                                            >
+                                                <PrinterIcon color='orange' className="butlist mt-px h-6 w-6" />
+                                            </Link>
 
                                         </>
                                     ) : row.estado === false ? (
                                         <>
-                                            Caja cerrada, sin acciones.
+
+                                            <Link
+
+                                                href={{
+                                                    pathname: '/sepelio/caja/impresion',
+                                                    query: { idcaja: row.idcaja },
+                                                }}
+                                            >
+                                                <PrinterIcon color='orange' className="butlist mt-px h-6 w-6" />
+                                            </Link>
                                         </>
                                     ) : null
                                 }

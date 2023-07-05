@@ -35,7 +35,8 @@ export default function ModalPreGasto({
     percIVARef,
     totalRef,
     nuevoGasto,
-    errores
+    errores,
+    alertas
 }) {
 
     const [open, setOpen] = useState(false);
@@ -232,7 +233,7 @@ export default function ModalPreGasto({
 
                                     {
                                         operadores.map((f, index) => (
-                                            <Option key={index} value={f.usuario}>{f.usuario}</Option>
+                                            <Option key={index} value={f.operador}>{f.operador}</Option>
                                         ))
                                     }
                                 </Select>
@@ -273,6 +274,23 @@ export default function ModalPreGasto({
                                     }
                                 >
                                     {errores}
+
+                                </Alert>
+                            ) : null
+                        }
+
+                        {
+                            alertas ? (
+                                <Alert
+                                    color="green"
+                                    icon={
+                                        <InformationCircleIcon
+                                            strokeWidth={2}
+                                            className="h-6 w-6"
+                                        />
+                                    }
+                                >
+                                    {alertas}
 
                                 </Alert>
                             ) : null
