@@ -764,6 +764,7 @@ model grupos {
   SUCURSAL  String? @db.VarChar(1)
   MARCA     String? @db.VarChar(2)
   CONVENIO  String? @db.VarChar(5)
+  id        Int     @id @default(autoincrement())
 
   @@ignore
 }
@@ -1847,10 +1848,10 @@ model pago_bco {
   DIA_PAGO DateTime? @db.Date
   SUCURSAL String?   @db.VarChar(1)
   SEGURO   Float?
+  id       Int       @id @default(autoincrement())
 
   @@index([CONTRATO], map: "order 1")
   @@index([NRO_DOC], map: "order 2")
-  @@ignore
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
@@ -1867,9 +1868,9 @@ model pago_bcom {
   DIA_PAGO DateTime? @db.Date
   SUCURSAL String?   @db.VarChar(1)
   SEGURO   Float?
+  id       Int       @id @default(autoincrement())
 
   @@index([CONTRATO, MES, ANO, DIA_PAGO], map: "indx")
-  @@ignore
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
@@ -1913,9 +1914,9 @@ model pagos {
   FEC_REF    DateTime? @db.Date
   CUOTAS_REF Int?
   IMPO_REF   Float?
+  id         Int       @id @default(autoincrement())
 
   @@index([CONTRATO, DIA_PAG, MES, ANO, MOVIM, NRO_RECIBO], map: "idx")
-  @@ignore
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
@@ -2004,9 +2005,9 @@ model pagos_mutual {
   FEC_REF    DateTime? @db.Date
   CUOTAS_REF Int?
   IMPO_REF   Float?
+  id         Int       @id @default(autoincrement())
 
   @@index([CONTRATO, DIA_PAG, MES, ANO, MOVIM, NRO_RECIBO], map: "ind")
-  @@ignore
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
@@ -2544,4 +2545,29 @@ model cuo_fija_old {
   OPERADOR  Int?
 
   @@ignore
+}
+
+model SO1 {
+  CONTRATO  Int       @id
+  APE_NOM   String?   @db.VarChar(30)
+  ALTA      DateTime? @db.Date
+  GRUPO     Int?
+  ADHS      Int?
+  PLAN      String?   @db.VarChar(2)
+  SUB_PLAN  String?   @db.VarChar(2)
+  ZONA      Int?
+  CUOTA     Float?
+  EMPRESA   String?   @db.VarChar(1)
+  SUCURSAL  String?   @db.VarChar(1)
+  EDAD_PROM Float?
+  PERMANEN  Float?
+  DEUDA     Int?
+}
+
+model guardia {
+  g_id         Int       @id
+  g_fec        DateTime? @db.Date
+  g_turno      Int?
+  g_descrIp    String?   @db.VarChar(20)
+  g_id_usuario Int?
 }

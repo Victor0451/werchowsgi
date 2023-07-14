@@ -552,6 +552,17 @@ exports.Prisma.VisitantesScalarFieldEnum = {
   temperatura: 'temperatura'
 };
 
+exports.Prisma.Parcelas_lugaresScalarFieldEnum = {
+  idlugar: 'idlugar',
+  idparcela: 'idparcela',
+  idservicio: 'idservicio',
+  lugar: 'lugar',
+  contrato: 'contrato',
+  dni: 'dni',
+  fecha: 'fecha',
+  operador: 'operador'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -596,7 +607,8 @@ exports.Prisma.ModelName = {
   tareas: 'tareas',
   tareas_adicionales: 'tareas_adicionales',
   tipo_detalle: 'tipo_detalle',
-  visitantes: 'visitantes'
+  visitantes: 'visitantes',
+  parcelas_lugares: 'parcelas_lugares'
 };
 
 /**

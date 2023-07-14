@@ -1,56 +1,22 @@
-import React from 'react'
+import React from "react";
+import { Typography, MenuItem } from "@material-tailwind/react";
 import {
-    Typography,
-    MenuItem,
-} from "@material-tailwind/react";
-import {
-    CubeTransparentIcon,
-    UserCircleIcon,
-    CodeBracketSquareIcon,
+  CubeTransparentIcon,
+  UserCircleIcon,
+  CodeBracketSquareIcon,
 } from "@heroicons/react/24/outline";
 import { Campanas } from "./Campanas";
-import { Prestamos } from './Prestamos';
-import { Sepelio } from './Sepelio';
-
-
-// nav list component
-const navListItems = [
-    {
-        label: "Account",
-        icon: UserCircleIcon,
-    },
-    {
-        label: "Blocks",
-        icon: CubeTransparentIcon,
-    },
-    {
-        label: "Docs",
-        icon: CodeBracketSquareIcon,
-    },
-];
+import { Prestamos } from "./Prestamos";
+import { Sepelio } from "./Sepelio";
+import { Socios } from "./Socios";
 
 export const NavListItems = () => {
-    return (
-        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-            <Campanas />
-            <Prestamos />
-            <Sepelio />
-
-            {navListItems.map(({ label, icon }, key) => (
-                <Typography
-                    key={label}
-                    as="a"
-                    href="#"
-                    variant="small"
-                    color="white"
-                    className="font-normal"
-                >
-                    <MenuItem className="flex items-center gap-2 lg:rounded-full">
-                        {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
-                        {label}
-                    </MenuItem>
-                </Typography>
-            ))}
-        </ul>
-    );
-}
+  return (
+    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+      <Campanas />
+      <Prestamos />
+      <Sepelio />
+      <Socios />
+    </ul>
+  );
+};

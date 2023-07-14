@@ -464,7 +464,7 @@ export type planificacion_guardiasPayload<ExtArgs extends $Extensions.Args = $Ex
     lugar: string | null
     inicio: Date | null
     fin: Date | null
-    horas: Date | null
+    horas: number | null
     operador: string | null
     mes_planificacion: string | null
     feriado: boolean | null
@@ -682,7 +682,7 @@ export type tareasPayload<ExtArgs extends $Extensions.Args = $Extensions.Default
     allDay: number | null
     start: string | null
     end: string | null
-    priority: boolean | null
+    priority: number | null
   }, ExtArgs["result"]["tareas"]>
   composites: {}
 }
@@ -756,6 +756,26 @@ export type visitantesPayload<ExtArgs extends $Extensions.Args = $Extensions.Def
  * 
  */
 export type visitantes = runtime.Types.DefaultSelection<visitantesPayload>
+export type parcelas_lugaresPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idlugar: number
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+    fecha: Date | null
+    operador: string | null
+  }, ExtArgs["result"]["parcelas_lugares"]>
+  composites: {}
+}
+
+/**
+ * Model parcelas_lugares
+ * 
+ */
+export type parcelas_lugares = runtime.Types.DefaultSelection<parcelas_lugaresPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1211,6 +1231,16 @@ export class PrismaClient<
     * ```
     */
   get visitantes(): Prisma.visitantesDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.parcelas_lugares`: Exposes CRUD operations for the **parcelas_lugares** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Parcelas_lugares
+    * const parcelas_lugares = await prisma.parcelas_lugares.findMany()
+    * ```
+    */
+  get parcelas_lugares(): Prisma.parcelas_lugaresDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -1726,7 +1756,8 @@ export namespace Prisma {
     tareas: 'tareas',
     tareas_adicionales: 'tareas_adicionales',
     tipo_detalle: 'tipo_detalle',
-    visitantes: 'visitantes'
+    visitantes: 'visitantes',
+    parcelas_lugares: 'parcelas_lugares'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1743,7 +1774,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sepelio' | 'conceptos' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'novedades' | 'operadorsep' | 'parcelas' | 'planificacion_guardias' | 'precio_servicio' | 'proveedores' | 'servicio_detalles' | 'servicio_gastos' | 'servicio_venta' | 'servicios' | 'servicios_liquidacion' | 'tareas' | 'tareas_adicionales' | 'tipo_detalle' | 'visitantes'
+      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sepelio' | 'conceptos' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'novedades' | 'operadorsep' | 'parcelas' | 'planificacion_guardias' | 'precio_servicio' | 'proveedores' | 'servicio_detalles' | 'servicio_gastos' | 'servicio_venta' | 'servicios' | 'servicios_liquidacion' | 'tareas' | 'tareas_adicionales' | 'tipo_detalle' | 'visitantes' | 'parcelas_lugares'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -4351,6 +4382,85 @@ export namespace Prisma {
             args: Prisma.visitantesCountArgs<ExtArgs>,
             result: $Utils.Optional<VisitantesCountAggregateOutputType> | number
             payload: visitantesPayload<ExtArgs>
+          }
+        }
+      }
+      parcelas_lugares: {
+        operations: {
+          findUnique: {
+            args: Prisma.parcelas_lugaresFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload> | null
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.parcelas_lugaresFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload> | null
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.parcelas_lugaresFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.parcelas_lugaresFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>[]
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.parcelas_lugaresCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.parcelas_lugaresCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.parcelas_lugaresDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.parcelas_lugaresUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.parcelas_lugaresDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.parcelas_lugaresUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.parcelas_lugaresUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Parcelas_lugaresAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateParcelas_lugares>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.parcelas_lugaresGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Parcelas_lugaresGroupByOutputType>[]
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.parcelas_lugaresCountArgs<ExtArgs>,
+            result: $Utils.Optional<Parcelas_lugaresCountAggregateOutputType> | number
+            payload: parcelas_lugaresPayload<ExtArgs>
           }
         }
       }
@@ -24725,11 +24835,13 @@ export namespace Prisma {
 
   export type Planificacion_guardiasAvgAggregateOutputType = {
     idturno: number | null
+    horas: number | null
     ano_planificacion: number | null
   }
 
   export type Planificacion_guardiasSumAggregateOutputType = {
     idturno: number | null
+    horas: number | null
     ano_planificacion: number | null
   }
 
@@ -24738,7 +24850,7 @@ export namespace Prisma {
     lugar: string | null
     inicio: Date | null
     fin: Date | null
-    horas: Date | null
+    horas: number | null
     operador: string | null
     mes_planificacion: string | null
     feriado: boolean | null
@@ -24757,7 +24869,7 @@ export namespace Prisma {
     lugar: string | null
     inicio: Date | null
     fin: Date | null
-    horas: Date | null
+    horas: number | null
     operador: string | null
     mes_planificacion: string | null
     feriado: boolean | null
@@ -24794,11 +24906,13 @@ export namespace Prisma {
 
   export type Planificacion_guardiasAvgAggregateInputType = {
     idturno?: true
+    horas?: true
     ano_planificacion?: true
   }
 
   export type Planificacion_guardiasSumAggregateInputType = {
     idturno?: true
+    horas?: true
     ano_planificacion?: true
   }
 
@@ -24952,7 +25066,7 @@ export namespace Prisma {
     lugar: string | null
     inicio: Date | null
     fin: Date | null
-    horas: Date | null
+    horas: number | null
     operador: string | null
     mes_planificacion: string | null
     feriado: boolean | null
@@ -32879,11 +32993,13 @@ export namespace Prisma {
   export type TareasAvgAggregateOutputType = {
     idevents: number | null
     allDay: number | null
+    priority: number | null
   }
 
   export type TareasSumAggregateOutputType = {
     idevents: number | null
     allDay: number | null
+    priority: number | null
   }
 
   export type TareasMinAggregateOutputType = {
@@ -32892,7 +33008,7 @@ export namespace Prisma {
     allDay: number | null
     start: string | null
     end: string | null
-    priority: boolean | null
+    priority: number | null
   }
 
   export type TareasMaxAggregateOutputType = {
@@ -32901,7 +33017,7 @@ export namespace Prisma {
     allDay: number | null
     start: string | null
     end: string | null
-    priority: boolean | null
+    priority: number | null
   }
 
   export type TareasCountAggregateOutputType = {
@@ -32918,11 +33034,13 @@ export namespace Prisma {
   export type TareasAvgAggregateInputType = {
     idevents?: true
     allDay?: true
+    priority?: true
   }
 
   export type TareasSumAggregateInputType = {
     idevents?: true
     allDay?: true
+    priority?: true
   }
 
   export type TareasMinAggregateInputType = {
@@ -33046,7 +33164,7 @@ export namespace Prisma {
     allDay: number | null
     start: string | null
     end: string | null
-    priority: boolean | null
+    priority: number | null
     _count: TareasCountAggregateOutputType | null
     _avg: TareasAvgAggregateOutputType | null
     _sum: TareasSumAggregateOutputType | null
@@ -36658,6 +36776,965 @@ export namespace Prisma {
 
 
   /**
+   * Model parcelas_lugares
+   */
+
+
+  export type AggregateParcelas_lugares = {
+    _count: Parcelas_lugaresCountAggregateOutputType | null
+    _avg: Parcelas_lugaresAvgAggregateOutputType | null
+    _sum: Parcelas_lugaresSumAggregateOutputType | null
+    _min: Parcelas_lugaresMinAggregateOutputType | null
+    _max: Parcelas_lugaresMaxAggregateOutputType | null
+  }
+
+  export type Parcelas_lugaresAvgAggregateOutputType = {
+    idlugar: number | null
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+  }
+
+  export type Parcelas_lugaresSumAggregateOutputType = {
+    idlugar: number | null
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+  }
+
+  export type Parcelas_lugaresMinAggregateOutputType = {
+    idlugar: number | null
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+    fecha: Date | null
+    operador: string | null
+  }
+
+  export type Parcelas_lugaresMaxAggregateOutputType = {
+    idlugar: number | null
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+    fecha: Date | null
+    operador: string | null
+  }
+
+  export type Parcelas_lugaresCountAggregateOutputType = {
+    idlugar: number
+    idparcela: number
+    idservicio: number
+    lugar: number
+    contrato: number
+    dni: number
+    fecha: number
+    operador: number
+    _all: number
+  }
+
+
+  export type Parcelas_lugaresAvgAggregateInputType = {
+    idlugar?: true
+    idparcela?: true
+    idservicio?: true
+    lugar?: true
+    contrato?: true
+    dni?: true
+  }
+
+  export type Parcelas_lugaresSumAggregateInputType = {
+    idlugar?: true
+    idparcela?: true
+    idservicio?: true
+    lugar?: true
+    contrato?: true
+    dni?: true
+  }
+
+  export type Parcelas_lugaresMinAggregateInputType = {
+    idlugar?: true
+    idparcela?: true
+    idservicio?: true
+    lugar?: true
+    contrato?: true
+    dni?: true
+    fecha?: true
+    operador?: true
+  }
+
+  export type Parcelas_lugaresMaxAggregateInputType = {
+    idlugar?: true
+    idparcela?: true
+    idservicio?: true
+    lugar?: true
+    contrato?: true
+    dni?: true
+    fecha?: true
+    operador?: true
+  }
+
+  export type Parcelas_lugaresCountAggregateInputType = {
+    idlugar?: true
+    idparcela?: true
+    idservicio?: true
+    lugar?: true
+    contrato?: true
+    dni?: true
+    fecha?: true
+    operador?: true
+    _all?: true
+  }
+
+  export type Parcelas_lugaresAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which parcelas_lugares to aggregate.
+     */
+    where?: parcelas_lugaresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parcelas_lugares to fetch.
+     */
+    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: parcelas_lugaresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parcelas_lugares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parcelas_lugares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned parcelas_lugares
+    **/
+    _count?: true | Parcelas_lugaresCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Parcelas_lugaresAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Parcelas_lugaresSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Parcelas_lugaresMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Parcelas_lugaresMaxAggregateInputType
+  }
+
+  export type GetParcelas_lugaresAggregateType<T extends Parcelas_lugaresAggregateArgs> = {
+        [P in keyof T & keyof AggregateParcelas_lugares]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateParcelas_lugares[P]>
+      : GetScalarType<T[P], AggregateParcelas_lugares[P]>
+  }
+
+
+
+
+  export type parcelas_lugaresGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: parcelas_lugaresWhereInput
+    orderBy?: parcelas_lugaresOrderByWithAggregationInput | parcelas_lugaresOrderByWithAggregationInput[]
+    by: Parcelas_lugaresScalarFieldEnum[] | Parcelas_lugaresScalarFieldEnum
+    having?: parcelas_lugaresScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Parcelas_lugaresCountAggregateInputType | true
+    _avg?: Parcelas_lugaresAvgAggregateInputType
+    _sum?: Parcelas_lugaresSumAggregateInputType
+    _min?: Parcelas_lugaresMinAggregateInputType
+    _max?: Parcelas_lugaresMaxAggregateInputType
+  }
+
+
+  export type Parcelas_lugaresGroupByOutputType = {
+    idlugar: number
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+    fecha: Date | null
+    operador: string | null
+    _count: Parcelas_lugaresCountAggregateOutputType | null
+    _avg: Parcelas_lugaresAvgAggregateOutputType | null
+    _sum: Parcelas_lugaresSumAggregateOutputType | null
+    _min: Parcelas_lugaresMinAggregateOutputType | null
+    _max: Parcelas_lugaresMaxAggregateOutputType | null
+  }
+
+  type GetParcelas_lugaresGroupByPayload<T extends parcelas_lugaresGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Parcelas_lugaresGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Parcelas_lugaresGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Parcelas_lugaresGroupByOutputType[P]>
+            : GetScalarType<T[P], Parcelas_lugaresGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type parcelas_lugaresSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idlugar?: boolean
+    idparcela?: boolean
+    idservicio?: boolean
+    lugar?: boolean
+    contrato?: boolean
+    dni?: boolean
+    fecha?: boolean
+    operador?: boolean
+  }, ExtArgs["result"]["parcelas_lugares"]>
+
+  export type parcelas_lugaresSelectScalar = {
+    idlugar?: boolean
+    idparcela?: boolean
+    idservicio?: boolean
+    lugar?: boolean
+    contrato?: boolean
+    dni?: boolean
+    fecha?: boolean
+    operador?: boolean
+  }
+
+
+  type parcelas_lugaresGetPayload<S extends boolean | null | undefined | parcelas_lugaresArgs> = $Types.GetResult<parcelas_lugaresPayload, S>
+
+  type parcelas_lugaresCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<parcelas_lugaresFindManyArgs, 'select' | 'include'> & {
+      select?: Parcelas_lugaresCountAggregateInputType | true
+    }
+
+  export interface parcelas_lugaresDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['parcelas_lugares'], meta: { name: 'parcelas_lugares' } }
+    /**
+     * Find zero or one Parcelas_lugares that matches the filter.
+     * @param {parcelas_lugaresFindUniqueArgs} args - Arguments to find a Parcelas_lugares
+     * @example
+     * // Get one Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends parcelas_lugaresFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, parcelas_lugaresFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'parcelas_lugares'> extends True ? Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Parcelas_lugares that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {parcelas_lugaresFindUniqueOrThrowArgs} args - Arguments to find a Parcelas_lugares
+     * @example
+     * // Get one Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Parcelas_lugares that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresFindFirstArgs} args - Arguments to find a Parcelas_lugares
+     * @example
+     * // Get one Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends parcelas_lugaresFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, parcelas_lugaresFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'parcelas_lugares'> extends True ? Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Parcelas_lugares that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresFindFirstOrThrowArgs} args - Arguments to find a Parcelas_lugares
+     * @example
+     * // Get one Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends parcelas_lugaresFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, parcelas_lugaresFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Parcelas_lugares that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findMany()
+     * 
+     * // Get first 10 Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findMany({ take: 10 })
+     * 
+     * // Only select the `idlugar`
+     * const parcelas_lugaresWithIdlugarOnly = await prisma.parcelas_lugares.findMany({ select: { idlugar: true } })
+     * 
+    **/
+    findMany<T extends parcelas_lugaresFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, parcelas_lugaresFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Parcelas_lugares.
+     * @param {parcelas_lugaresCreateArgs} args - Arguments to create a Parcelas_lugares.
+     * @example
+     * // Create one Parcelas_lugares
+     * const Parcelas_lugares = await prisma.parcelas_lugares.create({
+     *   data: {
+     *     // ... data to create a Parcelas_lugares
+     *   }
+     * })
+     * 
+    **/
+    create<T extends parcelas_lugaresCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, parcelas_lugaresCreateArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Parcelas_lugares.
+     *     @param {parcelas_lugaresCreateManyArgs} args - Arguments to create many Parcelas_lugares.
+     *     @example
+     *     // Create many Parcelas_lugares
+     *     const parcelas_lugares = await prisma.parcelas_lugares.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends parcelas_lugaresCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, parcelas_lugaresCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Parcelas_lugares.
+     * @param {parcelas_lugaresDeleteArgs} args - Arguments to delete one Parcelas_lugares.
+     * @example
+     * // Delete one Parcelas_lugares
+     * const Parcelas_lugares = await prisma.parcelas_lugares.delete({
+     *   where: {
+     *     // ... filter to delete one Parcelas_lugares
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends parcelas_lugaresDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, parcelas_lugaresDeleteArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Parcelas_lugares.
+     * @param {parcelas_lugaresUpdateArgs} args - Arguments to update one Parcelas_lugares.
+     * @example
+     * // Update one Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends parcelas_lugaresUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, parcelas_lugaresUpdateArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Parcelas_lugares.
+     * @param {parcelas_lugaresDeleteManyArgs} args - Arguments to filter Parcelas_lugares to delete.
+     * @example
+     * // Delete a few Parcelas_lugares
+     * const { count } = await prisma.parcelas_lugares.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends parcelas_lugaresDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, parcelas_lugaresDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Parcelas_lugares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends parcelas_lugaresUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, parcelas_lugaresUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Parcelas_lugares.
+     * @param {parcelas_lugaresUpsertArgs} args - Arguments to update or create a Parcelas_lugares.
+     * @example
+     * // Update or create a Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.upsert({
+     *   create: {
+     *     // ... data to create a Parcelas_lugares
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Parcelas_lugares we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends parcelas_lugaresUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, parcelas_lugaresUpsertArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Parcelas_lugares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresCountArgs} args - Arguments to filter Parcelas_lugares to count.
+     * @example
+     * // Count the number of Parcelas_lugares
+     * const count = await prisma.parcelas_lugares.count({
+     *   where: {
+     *     // ... the filter for the Parcelas_lugares we want to count
+     *   }
+     * })
+    **/
+    count<T extends parcelas_lugaresCountArgs>(
+      args?: Subset<T, parcelas_lugaresCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Parcelas_lugaresCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Parcelas_lugares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Parcelas_lugaresAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Parcelas_lugaresAggregateArgs>(args: Subset<T, Parcelas_lugaresAggregateArgs>): Prisma.PrismaPromise<GetParcelas_lugaresAggregateType<T>>
+
+    /**
+     * Group by Parcelas_lugares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends parcelas_lugaresGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: parcelas_lugaresGroupByArgs['orderBy'] }
+        : { orderBy?: parcelas_lugaresGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, parcelas_lugaresGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetParcelas_lugaresGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for parcelas_lugares.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__parcelas_lugaresClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * parcelas_lugares base type for findUnique actions
+   */
+  export type parcelas_lugaresFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter, which parcelas_lugares to fetch.
+     */
+    where: parcelas_lugaresWhereUniqueInput
+  }
+
+  /**
+   * parcelas_lugares findUnique
+   */
+  export interface parcelas_lugaresFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends parcelas_lugaresFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * parcelas_lugares findUniqueOrThrow
+   */
+  export type parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter, which parcelas_lugares to fetch.
+     */
+    where: parcelas_lugaresWhereUniqueInput
+  }
+
+
+  /**
+   * parcelas_lugares base type for findFirst actions
+   */
+  export type parcelas_lugaresFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter, which parcelas_lugares to fetch.
+     */
+    where?: parcelas_lugaresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parcelas_lugares to fetch.
+     */
+    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for parcelas_lugares.
+     */
+    cursor?: parcelas_lugaresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parcelas_lugares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parcelas_lugares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of parcelas_lugares.
+     */
+    distinct?: Parcelas_lugaresScalarFieldEnum | Parcelas_lugaresScalarFieldEnum[]
+  }
+
+  /**
+   * parcelas_lugares findFirst
+   */
+  export interface parcelas_lugaresFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends parcelas_lugaresFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * parcelas_lugares findFirstOrThrow
+   */
+  export type parcelas_lugaresFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter, which parcelas_lugares to fetch.
+     */
+    where?: parcelas_lugaresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parcelas_lugares to fetch.
+     */
+    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for parcelas_lugares.
+     */
+    cursor?: parcelas_lugaresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parcelas_lugares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parcelas_lugares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of parcelas_lugares.
+     */
+    distinct?: Parcelas_lugaresScalarFieldEnum | Parcelas_lugaresScalarFieldEnum[]
+  }
+
+
+  /**
+   * parcelas_lugares findMany
+   */
+  export type parcelas_lugaresFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter, which parcelas_lugares to fetch.
+     */
+    where?: parcelas_lugaresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parcelas_lugares to fetch.
+     */
+    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing parcelas_lugares.
+     */
+    cursor?: parcelas_lugaresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parcelas_lugares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parcelas_lugares.
+     */
+    skip?: number
+    distinct?: Parcelas_lugaresScalarFieldEnum | Parcelas_lugaresScalarFieldEnum[]
+  }
+
+
+  /**
+   * parcelas_lugares create
+   */
+  export type parcelas_lugaresCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * The data needed to create a parcelas_lugares.
+     */
+    data?: XOR<parcelas_lugaresCreateInput, parcelas_lugaresUncheckedCreateInput>
+  }
+
+
+  /**
+   * parcelas_lugares createMany
+   */
+  export type parcelas_lugaresCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many parcelas_lugares.
+     */
+    data: parcelas_lugaresCreateManyInput | parcelas_lugaresCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * parcelas_lugares update
+   */
+  export type parcelas_lugaresUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * The data needed to update a parcelas_lugares.
+     */
+    data: XOR<parcelas_lugaresUpdateInput, parcelas_lugaresUncheckedUpdateInput>
+    /**
+     * Choose, which parcelas_lugares to update.
+     */
+    where: parcelas_lugaresWhereUniqueInput
+  }
+
+
+  /**
+   * parcelas_lugares updateMany
+   */
+  export type parcelas_lugaresUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update parcelas_lugares.
+     */
+    data: XOR<parcelas_lugaresUpdateManyMutationInput, parcelas_lugaresUncheckedUpdateManyInput>
+    /**
+     * Filter which parcelas_lugares to update
+     */
+    where?: parcelas_lugaresWhereInput
+  }
+
+
+  /**
+   * parcelas_lugares upsert
+   */
+  export type parcelas_lugaresUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * The filter to search for the parcelas_lugares to update in case it exists.
+     */
+    where: parcelas_lugaresWhereUniqueInput
+    /**
+     * In case the parcelas_lugares found by the `where` argument doesn't exist, create a new parcelas_lugares with this data.
+     */
+    create: XOR<parcelas_lugaresCreateInput, parcelas_lugaresUncheckedCreateInput>
+    /**
+     * In case the parcelas_lugares was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<parcelas_lugaresUpdateInput, parcelas_lugaresUncheckedUpdateInput>
+  }
+
+
+  /**
+   * parcelas_lugares delete
+   */
+  export type parcelas_lugaresDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter which parcelas_lugares to delete.
+     */
+    where: parcelas_lugaresWhereUniqueInput
+  }
+
+
+  /**
+   * parcelas_lugares deleteMany
+   */
+  export type parcelas_lugaresDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which parcelas_lugares to delete
+     */
+    where?: parcelas_lugaresWhereInput
+  }
+
+
+  /**
+   * parcelas_lugares without action
+   */
+  export type parcelas_lugaresArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -37215,6 +38292,20 @@ export namespace Prisma {
   };
 
   export type VisitantesScalarFieldEnum = (typeof VisitantesScalarFieldEnum)[keyof typeof VisitantesScalarFieldEnum]
+
+
+  export const Parcelas_lugaresScalarFieldEnum: {
+    idlugar: 'idlugar',
+    idparcela: 'idparcela',
+    idservicio: 'idservicio',
+    lugar: 'lugar',
+    contrato: 'contrato',
+    dni: 'dni',
+    fecha: 'fecha',
+    operador: 'operador'
+  };
+
+  export type Parcelas_lugaresScalarFieldEnum = (typeof Parcelas_lugaresScalarFieldEnum)[keyof typeof Parcelas_lugaresScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -38585,7 +39676,7 @@ export namespace Prisma {
     lugar?: StringNullableFilter | string | null
     inicio?: DateTimeNullableFilter | Date | string | null
     fin?: DateTimeNullableFilter | Date | string | null
-    horas?: DateTimeNullableFilter | Date | string | null
+    horas?: IntNullableFilter | number | null
     operador?: StringNullableFilter | string | null
     mes_planificacion?: StringNullableFilter | string | null
     feriado?: BoolNullableFilter | boolean | null
@@ -38654,7 +39745,7 @@ export namespace Prisma {
     lugar?: StringNullableWithAggregatesFilter | string | null
     inicio?: DateTimeNullableWithAggregatesFilter | Date | string | null
     fin?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    horas?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    horas?: IntNullableWithAggregatesFilter | number | null
     operador?: StringNullableWithAggregatesFilter | string | null
     mes_planificacion?: StringNullableWithAggregatesFilter | string | null
     feriado?: BoolNullableWithAggregatesFilter | boolean | null
@@ -39286,7 +40377,7 @@ export namespace Prisma {
     allDay?: IntNullableFilter | number | null
     start?: StringNullableFilter | string | null
     end?: StringNullableFilter | string | null
-    priority?: BoolNullableFilter | boolean | null
+    priority?: IntNullableFilter | number | null
   }
 
   export type tareasOrderByWithRelationInput = {
@@ -39325,7 +40416,7 @@ export namespace Prisma {
     allDay?: IntNullableWithAggregatesFilter | number | null
     start?: StringNullableWithAggregatesFilter | string | null
     end?: StringNullableWithAggregatesFilter | string | null
-    priority?: BoolNullableWithAggregatesFilter | boolean | null
+    priority?: IntNullableWithAggregatesFilter | number | null
   }
 
   export type tareas_adicionalesWhereInput = {
@@ -39519,6 +40610,65 @@ export namespace Prisma {
     operador?: StringNullableWithAggregatesFilter | string | null
     fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
     temperatura?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type parcelas_lugaresWhereInput = {
+    AND?: parcelas_lugaresWhereInput | parcelas_lugaresWhereInput[]
+    OR?: parcelas_lugaresWhereInput[]
+    NOT?: parcelas_lugaresWhereInput | parcelas_lugaresWhereInput[]
+    idlugar?: IntFilter | number
+    idparcela?: IntNullableFilter | number | null
+    idservicio?: IntNullableFilter | number | null
+    lugar?: IntNullableFilter | number | null
+    contrato?: IntNullableFilter | number | null
+    dni?: IntNullableFilter | number | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+    operador?: StringNullableFilter | string | null
+  }
+
+  export type parcelas_lugaresOrderByWithRelationInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrderInput | SortOrder
+    idservicio?: SortOrderInput | SortOrder
+    lugar?: SortOrderInput | SortOrder
+    contrato?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+  }
+
+  export type parcelas_lugaresWhereUniqueInput = {
+    idlugar?: number
+  }
+
+  export type parcelas_lugaresOrderByWithAggregationInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrderInput | SortOrder
+    idservicio?: SortOrderInput | SortOrder
+    lugar?: SortOrderInput | SortOrder
+    contrato?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    _count?: parcelas_lugaresCountOrderByAggregateInput
+    _avg?: parcelas_lugaresAvgOrderByAggregateInput
+    _max?: parcelas_lugaresMaxOrderByAggregateInput
+    _min?: parcelas_lugaresMinOrderByAggregateInput
+    _sum?: parcelas_lugaresSumOrderByAggregateInput
+  }
+
+  export type parcelas_lugaresScalarWhereWithAggregatesInput = {
+    AND?: parcelas_lugaresScalarWhereWithAggregatesInput | parcelas_lugaresScalarWhereWithAggregatesInput[]
+    OR?: parcelas_lugaresScalarWhereWithAggregatesInput[]
+    NOT?: parcelas_lugaresScalarWhereWithAggregatesInput | parcelas_lugaresScalarWhereWithAggregatesInput[]
+    idlugar?: IntWithAggregatesFilter | number
+    idparcela?: IntNullableWithAggregatesFilter | number | null
+    idservicio?: IntNullableWithAggregatesFilter | number | null
+    lugar?: IntNullableWithAggregatesFilter | number | null
+    contrato?: IntNullableWithAggregatesFilter | number | null
+    dni?: IntNullableWithAggregatesFilter | number | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    operador?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type ataud_precioCreateInput = {
@@ -41254,7 +42404,7 @@ export namespace Prisma {
     lugar?: string | null
     inicio?: Date | string | null
     fin?: Date | string | null
-    horas?: Date | string | null
+    horas?: number | null
     operador?: string | null
     mes_planificacion?: string | null
     feriado?: boolean | null
@@ -41273,7 +42423,7 @@ export namespace Prisma {
     lugar?: string | null
     inicio?: Date | string | null
     fin?: Date | string | null
-    horas?: Date | string | null
+    horas?: number | null
     operador?: string | null
     mes_planificacion?: string | null
     feriado?: boolean | null
@@ -41291,7 +42441,7 @@ export namespace Prisma {
     lugar?: NullableStringFieldUpdateOperationsInput | string | null
     inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    horas?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
     feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -41310,7 +42460,7 @@ export namespace Prisma {
     lugar?: NullableStringFieldUpdateOperationsInput | string | null
     inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    horas?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
     feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -41329,7 +42479,7 @@ export namespace Prisma {
     lugar?: string | null
     inicio?: Date | string | null
     fin?: Date | string | null
-    horas?: Date | string | null
+    horas?: number | null
     operador?: string | null
     mes_planificacion?: string | null
     feriado?: boolean | null
@@ -41347,7 +42497,7 @@ export namespace Prisma {
     lugar?: NullableStringFieldUpdateOperationsInput | string | null
     inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    horas?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
     feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -41366,7 +42516,7 @@ export namespace Prisma {
     lugar?: NullableStringFieldUpdateOperationsInput | string | null
     inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    horas?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
     feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -42246,7 +43396,7 @@ export namespace Prisma {
     allDay?: number | null
     start?: string | null
     end?: string | null
-    priority?: boolean | null
+    priority?: number | null
   }
 
   export type tareasUncheckedCreateInput = {
@@ -42255,7 +43405,7 @@ export namespace Prisma {
     allDay?: number | null
     start?: string | null
     end?: string | null
-    priority?: boolean | null
+    priority?: number | null
   }
 
   export type tareasUpdateInput = {
@@ -42263,7 +43413,7 @@ export namespace Prisma {
     allDay?: NullableIntFieldUpdateOperationsInput | number | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    priority?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priority?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type tareasUncheckedUpdateInput = {
@@ -42272,7 +43422,7 @@ export namespace Prisma {
     allDay?: NullableIntFieldUpdateOperationsInput | number | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    priority?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priority?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type tareasCreateManyInput = {
@@ -42281,7 +43431,7 @@ export namespace Prisma {
     allDay?: number | null
     start?: string | null
     end?: string | null
-    priority?: boolean | null
+    priority?: number | null
   }
 
   export type tareasUpdateManyMutationInput = {
@@ -42289,7 +43439,7 @@ export namespace Prisma {
     allDay?: NullableIntFieldUpdateOperationsInput | number | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    priority?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priority?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type tareasUncheckedUpdateManyInput = {
@@ -42298,7 +43448,7 @@ export namespace Prisma {
     allDay?: NullableIntFieldUpdateOperationsInput | number | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    priority?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priority?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type tareas_adicionalesCreateInput = {
@@ -42549,6 +43699,80 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     temperatura?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type parcelas_lugaresCreateInput = {
+    idparcela?: number | null
+    idservicio?: number | null
+    lugar?: number | null
+    contrato?: number | null
+    dni?: number | null
+    fecha?: Date | string | null
+    operador?: string | null
+  }
+
+  export type parcelas_lugaresUncheckedCreateInput = {
+    idlugar?: number
+    idparcela?: number | null
+    idservicio?: number | null
+    lugar?: number | null
+    contrato?: number | null
+    dni?: number | null
+    fecha?: Date | string | null
+    operador?: string | null
+  }
+
+  export type parcelas_lugaresUpdateInput = {
+    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    lugar?: NullableIntFieldUpdateOperationsInput | number | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type parcelas_lugaresUncheckedUpdateInput = {
+    idlugar?: IntFieldUpdateOperationsInput | number
+    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    lugar?: NullableIntFieldUpdateOperationsInput | number | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type parcelas_lugaresCreateManyInput = {
+    idlugar?: number
+    idparcela?: number | null
+    idservicio?: number | null
+    lugar?: number | null
+    contrato?: number | null
+    dni?: number | null
+    fecha?: Date | string | null
+    operador?: string | null
+  }
+
+  export type parcelas_lugaresUpdateManyMutationInput = {
+    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    lugar?: NullableIntFieldUpdateOperationsInput | number | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type parcelas_lugaresUncheckedUpdateManyInput = {
+    idlugar?: IntFieldUpdateOperationsInput | number
+    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    lugar?: NullableIntFieldUpdateOperationsInput | number | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter = {
@@ -43777,6 +45001,7 @@ export namespace Prisma {
 
   export type planificacion_guardiasAvgOrderByAggregateInput = {
     idturno?: SortOrder
+    horas?: SortOrder
     ano_planificacion?: SortOrder
   }
 
@@ -43820,6 +45045,7 @@ export namespace Prisma {
 
   export type planificacion_guardiasSumOrderByAggregateInput = {
     idturno?: SortOrder
+    horas?: SortOrder
     ano_planificacion?: SortOrder
   }
 
@@ -44331,6 +45557,7 @@ export namespace Prisma {
   export type tareasAvgOrderByAggregateInput = {
     idevents?: SortOrder
     allDay?: SortOrder
+    priority?: SortOrder
   }
 
   export type tareasMaxOrderByAggregateInput = {
@@ -44354,6 +45581,7 @@ export namespace Prisma {
   export type tareasSumOrderByAggregateInput = {
     idevents?: SortOrder
     allDay?: SortOrder
+    priority?: SortOrder
   }
 
   export type tareas_adicionalesCountOrderByAggregateInput = {
@@ -44497,6 +45725,57 @@ export namespace Prisma {
     idservicio?: SortOrder
     dni?: SortOrder
     telefono?: SortOrder
+  }
+
+  export type parcelas_lugaresCountOrderByAggregateInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrder
+    idservicio?: SortOrder
+    lugar?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+    fecha?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type parcelas_lugaresAvgOrderByAggregateInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrder
+    idservicio?: SortOrder
+    lugar?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+  }
+
+  export type parcelas_lugaresMaxOrderByAggregateInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrder
+    idservicio?: SortOrder
+    lugar?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+    fecha?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type parcelas_lugaresMinOrderByAggregateInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrder
+    idservicio?: SortOrder
+    lugar?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+    fecha?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type parcelas_lugaresSumOrderByAggregateInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrder
+    idservicio?: SortOrder
+    lugar?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
   }
 
   export type NullableIntFieldUpdateOperationsInput = {

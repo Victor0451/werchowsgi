@@ -6,7 +6,7 @@ export default async function sendMail(req, res) {
   const mailData = {
     from: "werchowsgi@gmail.com",
     to: `vmlongo@werchow.com`,
-    cc: ["otero464@gmail.com", "grhumanos45@yahoo.com.ar", "santiagoiriarte@werchow.com", "contadoramoreno@werchow.com"],
+    //  cc: ["otero464@gmail.com", "grhumanos45@yahoo.com.ar", "santiagoiriarte@werchow.com", "contadoramoreno@werchow.com"],
     subject: `Notificacion Tarea Registrada - WERCHOW SGI`,
     text: `descripcion: ${req.body.title}, inicia: ${req.body.start}, termina:${req.body.end}, prioridad: ${req.body.priority}, expediente: ${req.body.expediente}`,
     html: `
@@ -20,9 +20,11 @@ export default async function sendMail(req, res) {
 
     <h2>
     <strong>
+      
     <u>
-    Registro de Tarea del Area de Sepelio
+    ${req.body.ft} de Tarea del Area de Sepelio
     </u>
+    
     </strong>
     </h2>
 
@@ -30,20 +32,21 @@ export default async function sendMail(req, res) {
 
     <div>
     <p><strong><u>Asunto</strong></u>: ${req.body.title}</P> 
-    <p><strong><u>Inicia</strong></u>: ${moment(req.body.start).utcOffset("-300").locale("es").format(
+    <p><strong><u>Inicia</strong></u>: ${moment(req.body.start).format(
       "DD/MM/YYYY HH:mm:ss"
     )}</p>
-    <p><strong><u>Termina</strong></u> :${moment(req.body.end).utcOffset("-300").locale("es").format(
+    <p><strong><u>Termina</strong></u> :${moment(req.body.end).format(
       "DD/MM/YYYY HH:mm:ss"
     )}</p> 
-    <p><strong><u>Prioridad</strong></u>: ${req.body.priority == 1
+    <p><strong><u>Prioridad</strong></u>: ${
+      req.body.priority === 1
         ? "Normal"
-        : req.body.priority == 2
-          ? "Importante"
-          : req.body.priority == 3
-            ? "Urgente"
-            : null
-      }</p> 
+        : req.body.priority === 2
+        ? "Importante"
+        : req.body.priority === 3
+        ? "Urgente"
+        : null
+    }</p> 
     
     </div>
     <p>Email enviado desde: WERCHOW SGI - http://sgi.werchow.com

@@ -1,0 +1,96 @@
+import React, { useMemo } from "react";
+import FilterComponent from "../Layouts/FilterComponent";
+import DataTable from "react-data-table-component";
+import moment from "moment";
+
+const ListdadoAdherentes = ({ listado }) => {
+  let columns = [
+    {
+      name: "#",
+      button: true,
+      grow: 0.1,
+      cell: (row, index) => <>{index + 1}</>,
+    },
+    {
+      name: "Adherente",
+      selector: (row) => `${row.APELLIDOS}, ${row.NOMBRES}`,
+      sortable: true,
+      grow: 0.3,
+    },
+    {
+      name: "Fecha Nacimiento",
+      selector: (row) => `${moment(row.NACIMIENTO).format("DD/MM/YYYY")}`,
+      sortable: true,
+      grow: 0.2,
+    },
+    {
+      name: "DNI",
+      selector: (row) => `${row.NRO_DOC}`,
+      sortable: true,
+      grow: 0.1,
+    },
+    {
+      name: "Fecha Alta",
+      selector: (row) => `${moment(row.ALTA).format("DD/MM/YYYY")}`,
+      sortable: true,
+      grow: 0.2,
+    },
+    {
+      name: "Fecha Vigencia",
+      selector: (row) => `${moment(row.VIGENCIA).format("DD/MM/YYYY")}`,
+      sortable: true,
+      grow: 0.2,
+    },
+    {
+      name: "Estado",
+      button: true,
+      grow: 0.1,
+      cell: (row, index) => <>{!row.BAJA ? <>Activo</> : <>Baja</>}</>,
+    },
+  ];
+
+  const [filterText, setFilterText] = React.useState("");
+  const [resetPaginationToggle, setResetPaginationToggle] =
+    React.useState(false);
+
+  const filteredItems = listado.filter(
+    (item) =>
+      JSON.stringify(item).toLowerCase().indexOf(filterText.toLowerCase()) !==
+      -1
+  );
+
+  const subHeaderComponent = useMemo(() => {
+    const handleClear = () => {
+      if (filterText) {
+        setResetPaginationToggle(!resetPaginationToggle);
+        setFilterText("");
+      }
+    };
+
+    return (
+      <>
+        <FilterComponent
+          onFilter={(e) => setFilterText(e.target.value)}
+          onClear={handleClear}
+          filterText={filterText}
+        />
+      </>
+    );
+  }, [filterText, resetPaginationToggle]);
+
+  return (
+    <div>
+      <DataTable
+        columns={columns}
+        data={filteredItems}
+        defaultSortField="name"
+        striped
+        pagination
+        subHeader
+        subHeaderComponent={subHeaderComponent}
+      />
+    </div>
+  );
+};
+
+export default ListdadoAdherentes;

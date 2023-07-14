@@ -4,7 +4,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const {
   Decimal,
   objectEnumValues,
-  makeStrictEnum
+  makeStrictEnum,
+  Public,
 } = require('./runtime/index-browser')
 
 
@@ -13,12 +14,12 @@ const Prisma = {}
 exports.Prisma = Prisma
 
 /**
- * Prisma Client JS version: 4.13.0
- * Query Engine version: 1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
+ * Prisma Client JS version: 4.17.0-dev.38
+ * Query Engine version: e6267db1c1bc827b8eb87f644288c3cb0800ec89
  */
 Prisma.prismaVersion = {
-  client: "4.13.0",
-  engine: "1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a"
+  client: "4.17.0-dev.38",
+  engine: "e6267db1c1bc827b8eb87f644288c3cb0800ec89"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -66,8 +67,19 @@ Prisma.raw = () => {
   throw new Error(`raw is unable to be run in the browser.
 In case this error is unexpected for you, please report it in https://github.com/prisma/prisma/issues`,
 )}
-Prisma.validator = () => (val) => val
+Prisma.validator = Public.validator
 
+/**
+* Extensions
+*/
+Prisma.getExtensionContext = () => {
+  throw new Error(`Extensions.getExtensionContext is unable to be run in the browser.
+In case this error is unexpected for you, please report it in https://github.com/prisma/prisma/issues`,
+)}
+Prisma.defineExtension = () => {
+  throw new Error(`Extensions.defineExtension is unable to be run in the browser.
+In case this error is unexpected for you, please report it in https://github.com/prisma/prisma/issues`,
+)}
 
 /**
  * Shorthand utilities for JSON filtering
@@ -85,6 +97,13 @@ Prisma.NullTypes = {
 /**
  * Enums
  */
+
+exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
+  Serializable: 'Serializable'
+});
 
 exports.Prisma.AccionesScalarFieldEnum = {
   acc_id: 'acc_id',
@@ -384,7 +403,7 @@ exports.Prisma.LocalidadScalarFieldEnum = {
   local_descrip: 'local_descrip'
 };
 
-exports.Prisma.Maestro22ScalarFieldEnum = {
+exports.Prisma.MaestroScalarFieldEnum = {
   SUCURSAL: 'SUCURSAL',
   CONTRATO: 'CONTRATO',
   NRO_DOC: 'NRO_DOC',
@@ -473,7 +492,7 @@ exports.Prisma.Maestro22ScalarFieldEnum = {
   MAIL: 'MAIL'
 };
 
-exports.Prisma.MaestroScalarFieldEnum = {
+exports.Prisma.Maestro22ScalarFieldEnum = {
   SUCURSAL: 'SUCURSAL',
   CONTRATO: 'CONTRATO',
   NRO_DOC: 'NRO_DOC',
@@ -833,6 +852,124 @@ exports.Prisma.Obra_socScalarFieldEnum = {
   id: 'id'
 };
 
+exports.Prisma.Pago_bcoScalarFieldEnum = {
+  NRO_DOC: 'NRO_DOC',
+  CONTRATO: 'CONTRATO',
+  COD_SUC: 'COD_SUC',
+  NRO_CTA: 'NRO_CTA',
+  FEC_ACR: 'FEC_ACR',
+  IMPORTE: 'IMPORTE',
+  MARCA: 'MARCA',
+  MES: 'MES',
+  ANO: 'ANO',
+  DIA_PAGO: 'DIA_PAGO',
+  SUCURSAL: 'SUCURSAL',
+  SEGURO: 'SEGURO',
+  id: 'id'
+};
+
+exports.Prisma.Pago_bcomScalarFieldEnum = {
+  NRO_DOC: 'NRO_DOC',
+  CONTRATO: 'CONTRATO',
+  COD_SUC: 'COD_SUC',
+  NRO_CTA: 'NRO_CTA',
+  FEC_ACR: 'FEC_ACR',
+  IMPORTE: 'IMPORTE',
+  MARCA: 'MARCA',
+  MES: 'MES',
+  ANO: 'ANO',
+  DIA_PAGO: 'DIA_PAGO',
+  SUCURSAL: 'SUCURSAL',
+  SEGURO: 'SEGURO',
+  id: 'id'
+};
+
+exports.Prisma.PagosScalarFieldEnum = {
+  CONTRATO: 'CONTRATO',
+  NRO_RECIBO: 'NRO_RECIBO',
+  SERIE: 'SERIE',
+  COMPROB: 'COMPROB',
+  DIA_REN: 'DIA_REN',
+  DIA_CAR: 'DIA_CAR',
+  DIA_EMI: 'DIA_EMI',
+  DIA_PAG: 'DIA_PAG',
+  HORA_CAR: 'HORA_CAR',
+  MES: 'MES',
+  ANO: 'ANO',
+  IMPORTE: 'IMPORTE',
+  MAN_COM: 'MAN_COM',
+  MOVIM: 'MOVIM',
+  EX: 'EX',
+  GR: 'GR',
+  SEGURO: 'SEGURO',
+  CARGA: 'CARGA',
+  OPERADOR: 'OPERADOR',
+  EXTRA: 'EXTRA',
+  TIP_EXT: 'TIP_EXT',
+  SUCURSAL: 'SUCURSAL',
+  PUESTO: 'PUESTO',
+  ACTUALIZA: 'ACTUALIZA',
+  MARCA: 'MARCA',
+  ZONA: 'ZONA',
+  CUOTA: 'CUOTA',
+  EMPRESA: 'EMPRESA',
+  CAE: 'CAE',
+  CAE_VTO: 'CAE_VTO',
+  NCR_SERIE: 'NCR_SERIE',
+  NCR_NRO: 'NCR_NRO',
+  BARCOD: 'BARCOD',
+  DNI: 'DNI',
+  FE_SERIE: 'FE_SERIE',
+  FE_NRO: 'FE_NRO',
+  FEC_REF: 'FEC_REF',
+  CUOTAS_REF: 'CUOTAS_REF',
+  IMPO_REF: 'IMPO_REF',
+  id: 'id'
+};
+
+exports.Prisma.Pagos_mutualScalarFieldEnum = {
+  CONTRATO: 'CONTRATO',
+  NRO_RECIBO: 'NRO_RECIBO',
+  SERIE: 'SERIE',
+  COMPROB: 'COMPROB',
+  DIA_REN: 'DIA_REN',
+  DIA_CAR: 'DIA_CAR',
+  DIA_EMI: 'DIA_EMI',
+  DIA_PAG: 'DIA_PAG',
+  HORA_CAR: 'HORA_CAR',
+  MES: 'MES',
+  ANO: 'ANO',
+  IMPORTE: 'IMPORTE',
+  MAN_COM: 'MAN_COM',
+  MOVIM: 'MOVIM',
+  EX: 'EX',
+  GR: 'GR',
+  SEGURO: 'SEGURO',
+  CARGA: 'CARGA',
+  OPERADOR: 'OPERADOR',
+  EXTRA: 'EXTRA',
+  TIP_EXT: 'TIP_EXT',
+  SUCURSAL: 'SUCURSAL',
+  PUESTO: 'PUESTO',
+  ACTUALIZA: 'ACTUALIZA',
+  MARCA: 'MARCA',
+  ZONA: 'ZONA',
+  CUOTA: 'CUOTA',
+  EMPRESA: 'EMPRESA',
+  CAE: 'CAE',
+  CAE_VTO: 'CAE_VTO',
+  NCR_SERIE: 'NCR_SERIE',
+  NCR_NRO: 'NCR_NRO',
+  BARCOD: 'BARCOD',
+  DNI: 'DNI',
+  FE_SERIE: 'FE_SERIE',
+  FE_NRO: 'FE_NRO',
+  FEC_REF: 'FEC_REF',
+  CUOTAS_REF: 'CUOTAS_REF',
+  IMPO_REF: 'IMPO_REF',
+  id: 'id'
+};
+
 exports.Prisma.ParcelasScalarFieldEnum = {
   par_id: 'par_id',
   par_fechalta: 'par_fechalta',
@@ -1031,11 +1168,6 @@ exports.Prisma.SomScalarFieldEnum = {
   DEUDA: 'DEUDA'
 };
 
-exports.Prisma.SortOrder = {
-  asc: 'asc',
-  desc: 'desc'
-};
-
 exports.Prisma.SowScalarFieldEnum = {
   CONTRATO: 'CONTRATO',
   APE_NOM: 'APE_NOM',
@@ -1068,13 +1200,6 @@ exports.Prisma.SueldosScalarFieldEnum = {
   sld_fecha_cbio: 'sld_fecha_cbio'
 };
 
-exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
-  Serializable: 'Serializable'
-});
-
 exports.Prisma.UsuarioScalarFieldEnum = {
   usu_ide: 'usu_ide',
   usu_apellido: 'usu_apellido',
@@ -1092,6 +1217,41 @@ exports.Prisma.UsuarioScalarFieldEnum = {
   usu_sem3: 'usu_sem3',
   usu_sem4: 'usu_sem4',
   usu_grupo: 'usu_grupo'
+};
+
+exports.Prisma.SO1ScalarFieldEnum = {
+  CONTRATO: 'CONTRATO',
+  APE_NOM: 'APE_NOM',
+  ALTA: 'ALTA',
+  GRUPO: 'GRUPO',
+  ADHS: 'ADHS',
+  PLAN: 'PLAN',
+  SUB_PLAN: 'SUB_PLAN',
+  ZONA: 'ZONA',
+  CUOTA: 'CUOTA',
+  EMPRESA: 'EMPRESA',
+  SUCURSAL: 'SUCURSAL',
+  EDAD_PROM: 'EDAD_PROM',
+  PERMANEN: 'PERMANEN',
+  DEUDA: 'DEUDA'
+};
+
+exports.Prisma.GuardiaScalarFieldEnum = {
+  g_id: 'g_id',
+  g_fec: 'g_fec',
+  g_turno: 'g_turno',
+  g_descrIp: 'g_descrIp',
+  g_id_usuario: 'g_id_usuario'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 
@@ -1119,6 +1279,10 @@ exports.Prisma.ModelName = {
   mutual: 'mutual',
   mutual_adh: 'mutual_adh',
   obra_soc: 'obra_soc',
+  pago_bco: 'pago_bco',
+  pago_bcom: 'pago_bcom',
+  pagos: 'pagos',
+  pagos_mutual: 'pagos_mutual',
   parcelas: 'parcelas',
   planificacion: 'planificacion',
   porcentaje_liq: 'porcentaje_liq',
@@ -1136,7 +1300,9 @@ exports.Prisma.ModelName = {
   sow: 'sow',
   sucursal: 'sucursal',
   sueldos: 'sueldos',
-  usuario: 'usuario'
+  usuario: 'usuario',
+  SO1: 'SO1',
+  guardia: 'guardia'
 };
 
 /**

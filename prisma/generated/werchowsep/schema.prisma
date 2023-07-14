@@ -320,7 +320,7 @@ model planificacion_guardias {
   lugar             String?   @db.VarChar(255)
   inicio            DateTime? @db.DateTime(0)
   fin               DateTime? @db.DateTime(0)
-  horas             DateTime? @db.Time(0)
+  horas             Int?
   operador          String?   @db.VarChar(255)
   mes_planificacion String?   @db.VarChar(255)
   feriado           Boolean?
@@ -550,12 +550,12 @@ model servicios_liquidacion {
 }
 
 model tareas {
-  idevents Int      @id @default(autoincrement())
-  title    String?  @db.VarChar(2000)
-  allDay   Int?     @db.TinyInt
-  start    String?  @db.VarChar(255)
-  end      String?  @db.VarChar(255)
-  priority Boolean?
+  idevents Int     @id @default(autoincrement())
+  title    String? @db.VarChar(2000)
+  allDay   Int?    @db.TinyInt
+  start    String? @db.VarChar(255)
+  end      String? @db.VarChar(255)
+  priority Int?
 }
 
 model tareas_adicionales {
@@ -593,4 +593,15 @@ model visitantes {
   operador    String?   @db.VarChar(255)
   fecha       DateTime? @db.DateTime(0)
   temperatura String?   @db.VarChar(255)
+}
+
+model parcelas_lugares {
+  idlugar    Int       @id @default(autoincrement())
+  idparcela  Int?
+  idservicio Int?
+  lugar      Int?
+  contrato   Int?
+  dni        Int?
+  fecha      DateTime? @db.Date
+  operador   String?   @db.VarChar(255)
 }
