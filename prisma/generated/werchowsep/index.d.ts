@@ -776,6 +776,80 @@ export type parcelas_lugaresPayload<ExtArgs extends $Extensions.Args = $Extensio
  * 
  */
 export type parcelas_lugares = runtime.Types.DefaultSelection<parcelas_lugaresPayload>
+export type caja_saPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idcaja: number
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }, ExtArgs["result"]["caja_sa"]>
+  composites: {}
+}
+
+/**
+ * Model caja_sa
+ * 
+ */
+export type caja_sa = runtime.Types.DefaultSelection<caja_saPayload>
+export type caja_srlPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idcaja: number
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }, ExtArgs["result"]["caja_srl"]>
+  composites: {}
+}
+
+/**
+ * Model caja_srl
+ * 
+ */
+export type caja_srl = runtime.Types.DefaultSelection<caja_srlPayload>
+export type generacion_cajasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idgeneracion: number
+    desde: Date | null
+    hasta: Date | null
+    empresa: string | null
+    operador: string | null
+    fecha: Date | null
+  }, ExtArgs["result"]["generacion_cajas"]>
+  composites: {}
+}
+
+/**
+ * Model generacion_cajas
+ * 
+ */
+export type generacion_cajas = runtime.Types.DefaultSelection<generacion_cajasPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1241,6 +1315,36 @@ export class PrismaClient<
     * ```
     */
   get parcelas_lugares(): Prisma.parcelas_lugaresDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.caja_sa`: Exposes CRUD operations for the **caja_sa** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Caja_sas
+    * const caja_sas = await prisma.caja_sa.findMany()
+    * ```
+    */
+  get caja_sa(): Prisma.caja_saDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.caja_srl`: Exposes CRUD operations for the **caja_srl** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Caja_srls
+    * const caja_srls = await prisma.caja_srl.findMany()
+    * ```
+    */
+  get caja_srl(): Prisma.caja_srlDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.generacion_cajas`: Exposes CRUD operations for the **generacion_cajas** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Generacion_cajas
+    * const generacion_cajas = await prisma.generacion_cajas.findMany()
+    * ```
+    */
+  get generacion_cajas(): Prisma.generacion_cajasDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -1757,7 +1861,10 @@ export namespace Prisma {
     tareas_adicionales: 'tareas_adicionales',
     tipo_detalle: 'tipo_detalle',
     visitantes: 'visitantes',
-    parcelas_lugares: 'parcelas_lugares'
+    parcelas_lugares: 'parcelas_lugares',
+    caja_sa: 'caja_sa',
+    caja_srl: 'caja_srl',
+    generacion_cajas: 'generacion_cajas'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1774,7 +1881,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sepelio' | 'conceptos' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'novedades' | 'operadorsep' | 'parcelas' | 'planificacion_guardias' | 'precio_servicio' | 'proveedores' | 'servicio_detalles' | 'servicio_gastos' | 'servicio_venta' | 'servicios' | 'servicios_liquidacion' | 'tareas' | 'tareas_adicionales' | 'tipo_detalle' | 'visitantes' | 'parcelas_lugares'
+      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sepelio' | 'conceptos' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'novedades' | 'operadorsep' | 'parcelas' | 'planificacion_guardias' | 'precio_servicio' | 'proveedores' | 'servicio_detalles' | 'servicio_gastos' | 'servicio_venta' | 'servicios' | 'servicios_liquidacion' | 'tareas' | 'tareas_adicionales' | 'tipo_detalle' | 'visitantes' | 'parcelas_lugares' | 'caja_sa' | 'caja_srl' | 'generacion_cajas'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -4461,6 +4568,243 @@ export namespace Prisma {
             args: Prisma.parcelas_lugaresCountArgs<ExtArgs>,
             result: $Utils.Optional<Parcelas_lugaresCountAggregateOutputType> | number
             payload: parcelas_lugaresPayload<ExtArgs>
+          }
+        }
+      }
+      caja_sa: {
+        operations: {
+          findUnique: {
+            args: Prisma.caja_saFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload> | null
+            payload: caja_saPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.caja_saFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.caja_saFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload> | null
+            payload: caja_saPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.caja_saFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.caja_saFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>[]
+            payload: caja_saPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.caja_saCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.caja_saCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_saPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.caja_saDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.caja_saUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.caja_saDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_saPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.caja_saUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_saPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.caja_saUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Caja_saAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCaja_sa>
+            payload: caja_saPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.caja_saGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Caja_saGroupByOutputType>[]
+            payload: caja_saPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.caja_saCountArgs<ExtArgs>,
+            result: $Utils.Optional<Caja_saCountAggregateOutputType> | number
+            payload: caja_saPayload<ExtArgs>
+          }
+        }
+      }
+      caja_srl: {
+        operations: {
+          findUnique: {
+            args: Prisma.caja_srlFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload> | null
+            payload: caja_srlPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.caja_srlFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.caja_srlFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload> | null
+            payload: caja_srlPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.caja_srlFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.caja_srlFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>[]
+            payload: caja_srlPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.caja_srlCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.caja_srlCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_srlPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.caja_srlDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.caja_srlUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.caja_srlDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_srlPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.caja_srlUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_srlPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.caja_srlUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Caja_srlAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCaja_srl>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.caja_srlGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Caja_srlGroupByOutputType>[]
+            payload: caja_srlPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.caja_srlCountArgs<ExtArgs>,
+            result: $Utils.Optional<Caja_srlCountAggregateOutputType> | number
+            payload: caja_srlPayload<ExtArgs>
+          }
+        }
+      }
+      generacion_cajas: {
+        operations: {
+          findUnique: {
+            args: Prisma.generacion_cajasFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload> | null
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.generacion_cajasFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.generacion_cajasFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload> | null
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.generacion_cajasFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.generacion_cajasFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>[]
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.generacion_cajasCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.generacion_cajasCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.generacion_cajasDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.generacion_cajasUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.generacion_cajasDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.generacion_cajasUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.generacion_cajasUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Generacion_cajasAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateGeneracion_cajas>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.generacion_cajasGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Generacion_cajasGroupByOutputType>[]
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.generacion_cajasCountArgs<ExtArgs>,
+            result: $Utils.Optional<Generacion_cajasCountAggregateOutputType> | number
+            payload: generacion_cajasPayload<ExtArgs>
           }
         }
       }
@@ -37735,6 +38079,3005 @@ export namespace Prisma {
 
 
   /**
+   * Model caja_sa
+   */
+
+
+  export type AggregateCaja_sa = {
+    _count: Caja_saCountAggregateOutputType | null
+    _avg: Caja_saAvgAggregateOutputType | null
+    _sum: Caja_saSumAggregateOutputType | null
+    _min: Caja_saMinAggregateOutputType | null
+    _max: Caja_saMaxAggregateOutputType | null
+  }
+
+  export type Caja_saAvgAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    nro_caja: number | null
+    puesto: number | null
+    operador: number | null
+  }
+
+  export type Caja_saSumAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    nro_caja: number | null
+    puesto: number | null
+    operador: number | null
+  }
+
+  export type Caja_saMinAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }
+
+  export type Caja_saMaxAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }
+
+  export type Caja_saCountAggregateOutputType = {
+    idcaja: number
+    codigo: number
+    cuenta: number
+    tipo: number
+    serie: number
+    factura: number
+    importe: number
+    comentarios: number
+    nro_caja: number
+    movim: number
+    fecha: number
+    puesto: number
+    operador: number
+    cuit: number
+    proveedor: number
+    sucursal: number
+    _all: number
+  }
+
+
+  export type Caja_saAvgAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    nro_caja?: true
+    puesto?: true
+    operador?: true
+  }
+
+  export type Caja_saSumAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    nro_caja?: true
+    puesto?: true
+    operador?: true
+  }
+
+  export type Caja_saMinAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+  }
+
+  export type Caja_saMaxAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+  }
+
+  export type Caja_saCountAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+    _all?: true
+  }
+
+  export type Caja_saAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which caja_sa to aggregate.
+     */
+    where?: caja_saWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_sas to fetch.
+     */
+    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: caja_saWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_sas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_sas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned caja_sas
+    **/
+    _count?: true | Caja_saCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Caja_saAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Caja_saSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Caja_saMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Caja_saMaxAggregateInputType
+  }
+
+  export type GetCaja_saAggregateType<T extends Caja_saAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaja_sa]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaja_sa[P]>
+      : GetScalarType<T[P], AggregateCaja_sa[P]>
+  }
+
+
+
+
+  export type caja_saGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: caja_saWhereInput
+    orderBy?: caja_saOrderByWithAggregationInput | caja_saOrderByWithAggregationInput[]
+    by: Caja_saScalarFieldEnum[] | Caja_saScalarFieldEnum
+    having?: caja_saScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Caja_saCountAggregateInputType | true
+    _avg?: Caja_saAvgAggregateInputType
+    _sum?: Caja_saSumAggregateInputType
+    _min?: Caja_saMinAggregateInputType
+    _max?: Caja_saMaxAggregateInputType
+  }
+
+
+  export type Caja_saGroupByOutputType = {
+    idcaja: number
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+    _count: Caja_saCountAggregateOutputType | null
+    _avg: Caja_saAvgAggregateOutputType | null
+    _sum: Caja_saSumAggregateOutputType | null
+    _min: Caja_saMinAggregateOutputType | null
+    _max: Caja_saMaxAggregateOutputType | null
+  }
+
+  type GetCaja_saGroupByPayload<T extends caja_saGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Caja_saGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Caja_saGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Caja_saGroupByOutputType[P]>
+            : GetScalarType<T[P], Caja_saGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type caja_saSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idcaja?: boolean
+    codigo?: boolean
+    cuenta?: boolean
+    tipo?: boolean
+    serie?: boolean
+    factura?: boolean
+    importe?: boolean
+    comentarios?: boolean
+    nro_caja?: boolean
+    movim?: boolean
+    fecha?: boolean
+    puesto?: boolean
+    operador?: boolean
+    cuit?: boolean
+    proveedor?: boolean
+    sucursal?: boolean
+  }, ExtArgs["result"]["caja_sa"]>
+
+  export type caja_saSelectScalar = {
+    idcaja?: boolean
+    codigo?: boolean
+    cuenta?: boolean
+    tipo?: boolean
+    serie?: boolean
+    factura?: boolean
+    importe?: boolean
+    comentarios?: boolean
+    nro_caja?: boolean
+    movim?: boolean
+    fecha?: boolean
+    puesto?: boolean
+    operador?: boolean
+    cuit?: boolean
+    proveedor?: boolean
+    sucursal?: boolean
+  }
+
+
+  type caja_saGetPayload<S extends boolean | null | undefined | caja_saArgs> = $Types.GetResult<caja_saPayload, S>
+
+  type caja_saCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<caja_saFindManyArgs, 'select' | 'include'> & {
+      select?: Caja_saCountAggregateInputType | true
+    }
+
+  export interface caja_saDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['caja_sa'], meta: { name: 'caja_sa' } }
+    /**
+     * Find zero or one Caja_sa that matches the filter.
+     * @param {caja_saFindUniqueArgs} args - Arguments to find a Caja_sa
+     * @example
+     * // Get one Caja_sa
+     * const caja_sa = await prisma.caja_sa.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends caja_saFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, caja_saFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'caja_sa'> extends True ? Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Caja_sa that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {caja_saFindUniqueOrThrowArgs} args - Arguments to find a Caja_sa
+     * @example
+     * // Get one Caja_sa
+     * const caja_sa = await prisma.caja_sa.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends caja_saFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_saFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Caja_sa that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saFindFirstArgs} args - Arguments to find a Caja_sa
+     * @example
+     * // Get one Caja_sa
+     * const caja_sa = await prisma.caja_sa.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends caja_saFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, caja_saFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'caja_sa'> extends True ? Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Caja_sa that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saFindFirstOrThrowArgs} args - Arguments to find a Caja_sa
+     * @example
+     * // Get one Caja_sa
+     * const caja_sa = await prisma.caja_sa.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends caja_saFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_saFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Caja_sas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Caja_sas
+     * const caja_sas = await prisma.caja_sa.findMany()
+     * 
+     * // Get first 10 Caja_sas
+     * const caja_sas = await prisma.caja_sa.findMany({ take: 10 })
+     * 
+     * // Only select the `idcaja`
+     * const caja_saWithIdcajaOnly = await prisma.caja_sa.findMany({ select: { idcaja: true } })
+     * 
+    **/
+    findMany<T extends caja_saFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_saFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Caja_sa.
+     * @param {caja_saCreateArgs} args - Arguments to create a Caja_sa.
+     * @example
+     * // Create one Caja_sa
+     * const Caja_sa = await prisma.caja_sa.create({
+     *   data: {
+     *     // ... data to create a Caja_sa
+     *   }
+     * })
+     * 
+    **/
+    create<T extends caja_saCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_saCreateArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Caja_sas.
+     *     @param {caja_saCreateManyArgs} args - Arguments to create many Caja_sas.
+     *     @example
+     *     // Create many Caja_sas
+     *     const caja_sa = await prisma.caja_sa.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends caja_saCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_saCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Caja_sa.
+     * @param {caja_saDeleteArgs} args - Arguments to delete one Caja_sa.
+     * @example
+     * // Delete one Caja_sa
+     * const Caja_sa = await prisma.caja_sa.delete({
+     *   where: {
+     *     // ... filter to delete one Caja_sa
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends caja_saDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_saDeleteArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Caja_sa.
+     * @param {caja_saUpdateArgs} args - Arguments to update one Caja_sa.
+     * @example
+     * // Update one Caja_sa
+     * const caja_sa = await prisma.caja_sa.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends caja_saUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_saUpdateArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Caja_sas.
+     * @param {caja_saDeleteManyArgs} args - Arguments to filter Caja_sas to delete.
+     * @example
+     * // Delete a few Caja_sas
+     * const { count } = await prisma.caja_sa.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends caja_saDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_saDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Caja_sas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Caja_sas
+     * const caja_sa = await prisma.caja_sa.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends caja_saUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_saUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Caja_sa.
+     * @param {caja_saUpsertArgs} args - Arguments to update or create a Caja_sa.
+     * @example
+     * // Update or create a Caja_sa
+     * const caja_sa = await prisma.caja_sa.upsert({
+     *   create: {
+     *     // ... data to create a Caja_sa
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Caja_sa we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends caja_saUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_saUpsertArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Caja_sas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saCountArgs} args - Arguments to filter Caja_sas to count.
+     * @example
+     * // Count the number of Caja_sas
+     * const count = await prisma.caja_sa.count({
+     *   where: {
+     *     // ... the filter for the Caja_sas we want to count
+     *   }
+     * })
+    **/
+    count<T extends caja_saCountArgs>(
+      args?: Subset<T, caja_saCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Caja_saCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Caja_sa.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Caja_saAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Caja_saAggregateArgs>(args: Subset<T, Caja_saAggregateArgs>): Prisma.PrismaPromise<GetCaja_saAggregateType<T>>
+
+    /**
+     * Group by Caja_sa.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends caja_saGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: caja_saGroupByArgs['orderBy'] }
+        : { orderBy?: caja_saGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, caja_saGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaja_saGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for caja_sa.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__caja_saClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * caja_sa base type for findUnique actions
+   */
+  export type caja_saFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_sa to fetch.
+     */
+    where: caja_saWhereUniqueInput
+  }
+
+  /**
+   * caja_sa findUnique
+   */
+  export interface caja_saFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_saFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * caja_sa findUniqueOrThrow
+   */
+  export type caja_saFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_sa to fetch.
+     */
+    where: caja_saWhereUniqueInput
+  }
+
+
+  /**
+   * caja_sa base type for findFirst actions
+   */
+  export type caja_saFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_sa to fetch.
+     */
+    where?: caja_saWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_sas to fetch.
+     */
+    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for caja_sas.
+     */
+    cursor?: caja_saWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_sas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_sas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of caja_sas.
+     */
+    distinct?: Caja_saScalarFieldEnum | Caja_saScalarFieldEnum[]
+  }
+
+  /**
+   * caja_sa findFirst
+   */
+  export interface caja_saFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_saFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * caja_sa findFirstOrThrow
+   */
+  export type caja_saFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_sa to fetch.
+     */
+    where?: caja_saWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_sas to fetch.
+     */
+    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for caja_sas.
+     */
+    cursor?: caja_saWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_sas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_sas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of caja_sas.
+     */
+    distinct?: Caja_saScalarFieldEnum | Caja_saScalarFieldEnum[]
+  }
+
+
+  /**
+   * caja_sa findMany
+   */
+  export type caja_saFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_sas to fetch.
+     */
+    where?: caja_saWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_sas to fetch.
+     */
+    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing caja_sas.
+     */
+    cursor?: caja_saWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_sas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_sas.
+     */
+    skip?: number
+    distinct?: Caja_saScalarFieldEnum | Caja_saScalarFieldEnum[]
+  }
+
+
+  /**
+   * caja_sa create
+   */
+  export type caja_saCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * The data needed to create a caja_sa.
+     */
+    data?: XOR<caja_saCreateInput, caja_saUncheckedCreateInput>
+  }
+
+
+  /**
+   * caja_sa createMany
+   */
+  export type caja_saCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many caja_sas.
+     */
+    data: caja_saCreateManyInput | caja_saCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * caja_sa update
+   */
+  export type caja_saUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * The data needed to update a caja_sa.
+     */
+    data: XOR<caja_saUpdateInput, caja_saUncheckedUpdateInput>
+    /**
+     * Choose, which caja_sa to update.
+     */
+    where: caja_saWhereUniqueInput
+  }
+
+
+  /**
+   * caja_sa updateMany
+   */
+  export type caja_saUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update caja_sas.
+     */
+    data: XOR<caja_saUpdateManyMutationInput, caja_saUncheckedUpdateManyInput>
+    /**
+     * Filter which caja_sas to update
+     */
+    where?: caja_saWhereInput
+  }
+
+
+  /**
+   * caja_sa upsert
+   */
+  export type caja_saUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * The filter to search for the caja_sa to update in case it exists.
+     */
+    where: caja_saWhereUniqueInput
+    /**
+     * In case the caja_sa found by the `where` argument doesn't exist, create a new caja_sa with this data.
+     */
+    create: XOR<caja_saCreateInput, caja_saUncheckedCreateInput>
+    /**
+     * In case the caja_sa was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<caja_saUpdateInput, caja_saUncheckedUpdateInput>
+  }
+
+
+  /**
+   * caja_sa delete
+   */
+  export type caja_saDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter which caja_sa to delete.
+     */
+    where: caja_saWhereUniqueInput
+  }
+
+
+  /**
+   * caja_sa deleteMany
+   */
+  export type caja_saDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which caja_sas to delete
+     */
+    where?: caja_saWhereInput
+  }
+
+
+  /**
+   * caja_sa without action
+   */
+  export type caja_saArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model caja_srl
+   */
+
+
+  export type AggregateCaja_srl = {
+    _count: Caja_srlCountAggregateOutputType | null
+    _avg: Caja_srlAvgAggregateOutputType | null
+    _sum: Caja_srlSumAggregateOutputType | null
+    _min: Caja_srlMinAggregateOutputType | null
+    _max: Caja_srlMaxAggregateOutputType | null
+  }
+
+  export type Caja_srlAvgAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    nro_caja: number | null
+    puesto: number | null
+    operador: number | null
+  }
+
+  export type Caja_srlSumAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    nro_caja: number | null
+    puesto: number | null
+    operador: number | null
+  }
+
+  export type Caja_srlMinAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }
+
+  export type Caja_srlMaxAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }
+
+  export type Caja_srlCountAggregateOutputType = {
+    idcaja: number
+    codigo: number
+    cuenta: number
+    tipo: number
+    serie: number
+    factura: number
+    importe: number
+    comentarios: number
+    nro_caja: number
+    movim: number
+    fecha: number
+    puesto: number
+    operador: number
+    cuit: number
+    proveedor: number
+    sucursal: number
+    _all: number
+  }
+
+
+  export type Caja_srlAvgAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    nro_caja?: true
+    puesto?: true
+    operador?: true
+  }
+
+  export type Caja_srlSumAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    nro_caja?: true
+    puesto?: true
+    operador?: true
+  }
+
+  export type Caja_srlMinAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+  }
+
+  export type Caja_srlMaxAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+  }
+
+  export type Caja_srlCountAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+    _all?: true
+  }
+
+  export type Caja_srlAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which caja_srl to aggregate.
+     */
+    where?: caja_srlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_srls to fetch.
+     */
+    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: caja_srlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_srls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_srls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned caja_srls
+    **/
+    _count?: true | Caja_srlCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Caja_srlAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Caja_srlSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Caja_srlMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Caja_srlMaxAggregateInputType
+  }
+
+  export type GetCaja_srlAggregateType<T extends Caja_srlAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaja_srl]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaja_srl[P]>
+      : GetScalarType<T[P], AggregateCaja_srl[P]>
+  }
+
+
+
+
+  export type caja_srlGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: caja_srlWhereInput
+    orderBy?: caja_srlOrderByWithAggregationInput | caja_srlOrderByWithAggregationInput[]
+    by: Caja_srlScalarFieldEnum[] | Caja_srlScalarFieldEnum
+    having?: caja_srlScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Caja_srlCountAggregateInputType | true
+    _avg?: Caja_srlAvgAggregateInputType
+    _sum?: Caja_srlSumAggregateInputType
+    _min?: Caja_srlMinAggregateInputType
+    _max?: Caja_srlMaxAggregateInputType
+  }
+
+
+  export type Caja_srlGroupByOutputType = {
+    idcaja: number
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+    _count: Caja_srlCountAggregateOutputType | null
+    _avg: Caja_srlAvgAggregateOutputType | null
+    _sum: Caja_srlSumAggregateOutputType | null
+    _min: Caja_srlMinAggregateOutputType | null
+    _max: Caja_srlMaxAggregateOutputType | null
+  }
+
+  type GetCaja_srlGroupByPayload<T extends caja_srlGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Caja_srlGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Caja_srlGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Caja_srlGroupByOutputType[P]>
+            : GetScalarType<T[P], Caja_srlGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type caja_srlSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idcaja?: boolean
+    codigo?: boolean
+    cuenta?: boolean
+    tipo?: boolean
+    serie?: boolean
+    factura?: boolean
+    importe?: boolean
+    comentarios?: boolean
+    nro_caja?: boolean
+    movim?: boolean
+    fecha?: boolean
+    puesto?: boolean
+    operador?: boolean
+    cuit?: boolean
+    proveedor?: boolean
+    sucursal?: boolean
+  }, ExtArgs["result"]["caja_srl"]>
+
+  export type caja_srlSelectScalar = {
+    idcaja?: boolean
+    codigo?: boolean
+    cuenta?: boolean
+    tipo?: boolean
+    serie?: boolean
+    factura?: boolean
+    importe?: boolean
+    comentarios?: boolean
+    nro_caja?: boolean
+    movim?: boolean
+    fecha?: boolean
+    puesto?: boolean
+    operador?: boolean
+    cuit?: boolean
+    proveedor?: boolean
+    sucursal?: boolean
+  }
+
+
+  type caja_srlGetPayload<S extends boolean | null | undefined | caja_srlArgs> = $Types.GetResult<caja_srlPayload, S>
+
+  type caja_srlCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<caja_srlFindManyArgs, 'select' | 'include'> & {
+      select?: Caja_srlCountAggregateInputType | true
+    }
+
+  export interface caja_srlDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['caja_srl'], meta: { name: 'caja_srl' } }
+    /**
+     * Find zero or one Caja_srl that matches the filter.
+     * @param {caja_srlFindUniqueArgs} args - Arguments to find a Caja_srl
+     * @example
+     * // Get one Caja_srl
+     * const caja_srl = await prisma.caja_srl.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends caja_srlFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, caja_srlFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'caja_srl'> extends True ? Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Caja_srl that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {caja_srlFindUniqueOrThrowArgs} args - Arguments to find a Caja_srl
+     * @example
+     * // Get one Caja_srl
+     * const caja_srl = await prisma.caja_srl.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends caja_srlFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_srlFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Caja_srl that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlFindFirstArgs} args - Arguments to find a Caja_srl
+     * @example
+     * // Get one Caja_srl
+     * const caja_srl = await prisma.caja_srl.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends caja_srlFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, caja_srlFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'caja_srl'> extends True ? Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Caja_srl that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlFindFirstOrThrowArgs} args - Arguments to find a Caja_srl
+     * @example
+     * // Get one Caja_srl
+     * const caja_srl = await prisma.caja_srl.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends caja_srlFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_srlFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Caja_srls that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Caja_srls
+     * const caja_srls = await prisma.caja_srl.findMany()
+     * 
+     * // Get first 10 Caja_srls
+     * const caja_srls = await prisma.caja_srl.findMany({ take: 10 })
+     * 
+     * // Only select the `idcaja`
+     * const caja_srlWithIdcajaOnly = await prisma.caja_srl.findMany({ select: { idcaja: true } })
+     * 
+    **/
+    findMany<T extends caja_srlFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_srlFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Caja_srl.
+     * @param {caja_srlCreateArgs} args - Arguments to create a Caja_srl.
+     * @example
+     * // Create one Caja_srl
+     * const Caja_srl = await prisma.caja_srl.create({
+     *   data: {
+     *     // ... data to create a Caja_srl
+     *   }
+     * })
+     * 
+    **/
+    create<T extends caja_srlCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_srlCreateArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Caja_srls.
+     *     @param {caja_srlCreateManyArgs} args - Arguments to create many Caja_srls.
+     *     @example
+     *     // Create many Caja_srls
+     *     const caja_srl = await prisma.caja_srl.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends caja_srlCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_srlCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Caja_srl.
+     * @param {caja_srlDeleteArgs} args - Arguments to delete one Caja_srl.
+     * @example
+     * // Delete one Caja_srl
+     * const Caja_srl = await prisma.caja_srl.delete({
+     *   where: {
+     *     // ... filter to delete one Caja_srl
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends caja_srlDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_srlDeleteArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Caja_srl.
+     * @param {caja_srlUpdateArgs} args - Arguments to update one Caja_srl.
+     * @example
+     * // Update one Caja_srl
+     * const caja_srl = await prisma.caja_srl.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends caja_srlUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_srlUpdateArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Caja_srls.
+     * @param {caja_srlDeleteManyArgs} args - Arguments to filter Caja_srls to delete.
+     * @example
+     * // Delete a few Caja_srls
+     * const { count } = await prisma.caja_srl.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends caja_srlDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_srlDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Caja_srls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Caja_srls
+     * const caja_srl = await prisma.caja_srl.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends caja_srlUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_srlUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Caja_srl.
+     * @param {caja_srlUpsertArgs} args - Arguments to update or create a Caja_srl.
+     * @example
+     * // Update or create a Caja_srl
+     * const caja_srl = await prisma.caja_srl.upsert({
+     *   create: {
+     *     // ... data to create a Caja_srl
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Caja_srl we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends caja_srlUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_srlUpsertArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Caja_srls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlCountArgs} args - Arguments to filter Caja_srls to count.
+     * @example
+     * // Count the number of Caja_srls
+     * const count = await prisma.caja_srl.count({
+     *   where: {
+     *     // ... the filter for the Caja_srls we want to count
+     *   }
+     * })
+    **/
+    count<T extends caja_srlCountArgs>(
+      args?: Subset<T, caja_srlCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Caja_srlCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Caja_srl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Caja_srlAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Caja_srlAggregateArgs>(args: Subset<T, Caja_srlAggregateArgs>): Prisma.PrismaPromise<GetCaja_srlAggregateType<T>>
+
+    /**
+     * Group by Caja_srl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends caja_srlGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: caja_srlGroupByArgs['orderBy'] }
+        : { orderBy?: caja_srlGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, caja_srlGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaja_srlGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for caja_srl.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__caja_srlClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * caja_srl base type for findUnique actions
+   */
+  export type caja_srlFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_srl to fetch.
+     */
+    where: caja_srlWhereUniqueInput
+  }
+
+  /**
+   * caja_srl findUnique
+   */
+  export interface caja_srlFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_srlFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * caja_srl findUniqueOrThrow
+   */
+  export type caja_srlFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_srl to fetch.
+     */
+    where: caja_srlWhereUniqueInput
+  }
+
+
+  /**
+   * caja_srl base type for findFirst actions
+   */
+  export type caja_srlFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_srl to fetch.
+     */
+    where?: caja_srlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_srls to fetch.
+     */
+    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for caja_srls.
+     */
+    cursor?: caja_srlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_srls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_srls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of caja_srls.
+     */
+    distinct?: Caja_srlScalarFieldEnum | Caja_srlScalarFieldEnum[]
+  }
+
+  /**
+   * caja_srl findFirst
+   */
+  export interface caja_srlFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_srlFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * caja_srl findFirstOrThrow
+   */
+  export type caja_srlFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_srl to fetch.
+     */
+    where?: caja_srlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_srls to fetch.
+     */
+    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for caja_srls.
+     */
+    cursor?: caja_srlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_srls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_srls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of caja_srls.
+     */
+    distinct?: Caja_srlScalarFieldEnum | Caja_srlScalarFieldEnum[]
+  }
+
+
+  /**
+   * caja_srl findMany
+   */
+  export type caja_srlFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_srls to fetch.
+     */
+    where?: caja_srlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_srls to fetch.
+     */
+    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing caja_srls.
+     */
+    cursor?: caja_srlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_srls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_srls.
+     */
+    skip?: number
+    distinct?: Caja_srlScalarFieldEnum | Caja_srlScalarFieldEnum[]
+  }
+
+
+  /**
+   * caja_srl create
+   */
+  export type caja_srlCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * The data needed to create a caja_srl.
+     */
+    data?: XOR<caja_srlCreateInput, caja_srlUncheckedCreateInput>
+  }
+
+
+  /**
+   * caja_srl createMany
+   */
+  export type caja_srlCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many caja_srls.
+     */
+    data: caja_srlCreateManyInput | caja_srlCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * caja_srl update
+   */
+  export type caja_srlUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * The data needed to update a caja_srl.
+     */
+    data: XOR<caja_srlUpdateInput, caja_srlUncheckedUpdateInput>
+    /**
+     * Choose, which caja_srl to update.
+     */
+    where: caja_srlWhereUniqueInput
+  }
+
+
+  /**
+   * caja_srl updateMany
+   */
+  export type caja_srlUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update caja_srls.
+     */
+    data: XOR<caja_srlUpdateManyMutationInput, caja_srlUncheckedUpdateManyInput>
+    /**
+     * Filter which caja_srls to update
+     */
+    where?: caja_srlWhereInput
+  }
+
+
+  /**
+   * caja_srl upsert
+   */
+  export type caja_srlUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * The filter to search for the caja_srl to update in case it exists.
+     */
+    where: caja_srlWhereUniqueInput
+    /**
+     * In case the caja_srl found by the `where` argument doesn't exist, create a new caja_srl with this data.
+     */
+    create: XOR<caja_srlCreateInput, caja_srlUncheckedCreateInput>
+    /**
+     * In case the caja_srl was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<caja_srlUpdateInput, caja_srlUncheckedUpdateInput>
+  }
+
+
+  /**
+   * caja_srl delete
+   */
+  export type caja_srlDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter which caja_srl to delete.
+     */
+    where: caja_srlWhereUniqueInput
+  }
+
+
+  /**
+   * caja_srl deleteMany
+   */
+  export type caja_srlDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which caja_srls to delete
+     */
+    where?: caja_srlWhereInput
+  }
+
+
+  /**
+   * caja_srl without action
+   */
+  export type caja_srlArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model generacion_cajas
+   */
+
+
+  export type AggregateGeneracion_cajas = {
+    _count: Generacion_cajasCountAggregateOutputType | null
+    _avg: Generacion_cajasAvgAggregateOutputType | null
+    _sum: Generacion_cajasSumAggregateOutputType | null
+    _min: Generacion_cajasMinAggregateOutputType | null
+    _max: Generacion_cajasMaxAggregateOutputType | null
+  }
+
+  export type Generacion_cajasAvgAggregateOutputType = {
+    idgeneracion: number | null
+  }
+
+  export type Generacion_cajasSumAggregateOutputType = {
+    idgeneracion: number | null
+  }
+
+  export type Generacion_cajasMinAggregateOutputType = {
+    idgeneracion: number | null
+    desde: Date | null
+    hasta: Date | null
+    empresa: string | null
+    operador: string | null
+    fecha: Date | null
+  }
+
+  export type Generacion_cajasMaxAggregateOutputType = {
+    idgeneracion: number | null
+    desde: Date | null
+    hasta: Date | null
+    empresa: string | null
+    operador: string | null
+    fecha: Date | null
+  }
+
+  export type Generacion_cajasCountAggregateOutputType = {
+    idgeneracion: number
+    desde: number
+    hasta: number
+    empresa: number
+    operador: number
+    fecha: number
+    _all: number
+  }
+
+
+  export type Generacion_cajasAvgAggregateInputType = {
+    idgeneracion?: true
+  }
+
+  export type Generacion_cajasSumAggregateInputType = {
+    idgeneracion?: true
+  }
+
+  export type Generacion_cajasMinAggregateInputType = {
+    idgeneracion?: true
+    desde?: true
+    hasta?: true
+    empresa?: true
+    operador?: true
+    fecha?: true
+  }
+
+  export type Generacion_cajasMaxAggregateInputType = {
+    idgeneracion?: true
+    desde?: true
+    hasta?: true
+    empresa?: true
+    operador?: true
+    fecha?: true
+  }
+
+  export type Generacion_cajasCountAggregateInputType = {
+    idgeneracion?: true
+    desde?: true
+    hasta?: true
+    empresa?: true
+    operador?: true
+    fecha?: true
+    _all?: true
+  }
+
+  export type Generacion_cajasAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which generacion_cajas to aggregate.
+     */
+    where?: generacion_cajasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of generacion_cajas to fetch.
+     */
+    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: generacion_cajasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` generacion_cajas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` generacion_cajas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned generacion_cajas
+    **/
+    _count?: true | Generacion_cajasCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Generacion_cajasAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Generacion_cajasSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Generacion_cajasMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Generacion_cajasMaxAggregateInputType
+  }
+
+  export type GetGeneracion_cajasAggregateType<T extends Generacion_cajasAggregateArgs> = {
+        [P in keyof T & keyof AggregateGeneracion_cajas]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGeneracion_cajas[P]>
+      : GetScalarType<T[P], AggregateGeneracion_cajas[P]>
+  }
+
+
+
+
+  export type generacion_cajasGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: generacion_cajasWhereInput
+    orderBy?: generacion_cajasOrderByWithAggregationInput | generacion_cajasOrderByWithAggregationInput[]
+    by: Generacion_cajasScalarFieldEnum[] | Generacion_cajasScalarFieldEnum
+    having?: generacion_cajasScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Generacion_cajasCountAggregateInputType | true
+    _avg?: Generacion_cajasAvgAggregateInputType
+    _sum?: Generacion_cajasSumAggregateInputType
+    _min?: Generacion_cajasMinAggregateInputType
+    _max?: Generacion_cajasMaxAggregateInputType
+  }
+
+
+  export type Generacion_cajasGroupByOutputType = {
+    idgeneracion: number
+    desde: Date | null
+    hasta: Date | null
+    empresa: string | null
+    operador: string | null
+    fecha: Date | null
+    _count: Generacion_cajasCountAggregateOutputType | null
+    _avg: Generacion_cajasAvgAggregateOutputType | null
+    _sum: Generacion_cajasSumAggregateOutputType | null
+    _min: Generacion_cajasMinAggregateOutputType | null
+    _max: Generacion_cajasMaxAggregateOutputType | null
+  }
+
+  type GetGeneracion_cajasGroupByPayload<T extends generacion_cajasGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Generacion_cajasGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Generacion_cajasGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Generacion_cajasGroupByOutputType[P]>
+            : GetScalarType<T[P], Generacion_cajasGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type generacion_cajasSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idgeneracion?: boolean
+    desde?: boolean
+    hasta?: boolean
+    empresa?: boolean
+    operador?: boolean
+    fecha?: boolean
+  }, ExtArgs["result"]["generacion_cajas"]>
+
+  export type generacion_cajasSelectScalar = {
+    idgeneracion?: boolean
+    desde?: boolean
+    hasta?: boolean
+    empresa?: boolean
+    operador?: boolean
+    fecha?: boolean
+  }
+
+
+  type generacion_cajasGetPayload<S extends boolean | null | undefined | generacion_cajasArgs> = $Types.GetResult<generacion_cajasPayload, S>
+
+  type generacion_cajasCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<generacion_cajasFindManyArgs, 'select' | 'include'> & {
+      select?: Generacion_cajasCountAggregateInputType | true
+    }
+
+  export interface generacion_cajasDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['generacion_cajas'], meta: { name: 'generacion_cajas' } }
+    /**
+     * Find zero or one Generacion_cajas that matches the filter.
+     * @param {generacion_cajasFindUniqueArgs} args - Arguments to find a Generacion_cajas
+     * @example
+     * // Get one Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends generacion_cajasFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, generacion_cajasFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'generacion_cajas'> extends True ? Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Generacion_cajas that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {generacion_cajasFindUniqueOrThrowArgs} args - Arguments to find a Generacion_cajas
+     * @example
+     * // Get one Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends generacion_cajasFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, generacion_cajasFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Generacion_cajas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasFindFirstArgs} args - Arguments to find a Generacion_cajas
+     * @example
+     * // Get one Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends generacion_cajasFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, generacion_cajasFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'generacion_cajas'> extends True ? Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Generacion_cajas that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasFindFirstOrThrowArgs} args - Arguments to find a Generacion_cajas
+     * @example
+     * // Get one Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends generacion_cajasFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, generacion_cajasFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Generacion_cajas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findMany()
+     * 
+     * // Get first 10 Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findMany({ take: 10 })
+     * 
+     * // Only select the `idgeneracion`
+     * const generacion_cajasWithIdgeneracionOnly = await prisma.generacion_cajas.findMany({ select: { idgeneracion: true } })
+     * 
+    **/
+    findMany<T extends generacion_cajasFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, generacion_cajasFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Generacion_cajas.
+     * @param {generacion_cajasCreateArgs} args - Arguments to create a Generacion_cajas.
+     * @example
+     * // Create one Generacion_cajas
+     * const Generacion_cajas = await prisma.generacion_cajas.create({
+     *   data: {
+     *     // ... data to create a Generacion_cajas
+     *   }
+     * })
+     * 
+    **/
+    create<T extends generacion_cajasCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, generacion_cajasCreateArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Generacion_cajas.
+     *     @param {generacion_cajasCreateManyArgs} args - Arguments to create many Generacion_cajas.
+     *     @example
+     *     // Create many Generacion_cajas
+     *     const generacion_cajas = await prisma.generacion_cajas.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends generacion_cajasCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, generacion_cajasCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Generacion_cajas.
+     * @param {generacion_cajasDeleteArgs} args - Arguments to delete one Generacion_cajas.
+     * @example
+     * // Delete one Generacion_cajas
+     * const Generacion_cajas = await prisma.generacion_cajas.delete({
+     *   where: {
+     *     // ... filter to delete one Generacion_cajas
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends generacion_cajasDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, generacion_cajasDeleteArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Generacion_cajas.
+     * @param {generacion_cajasUpdateArgs} args - Arguments to update one Generacion_cajas.
+     * @example
+     * // Update one Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends generacion_cajasUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, generacion_cajasUpdateArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Generacion_cajas.
+     * @param {generacion_cajasDeleteManyArgs} args - Arguments to filter Generacion_cajas to delete.
+     * @example
+     * // Delete a few Generacion_cajas
+     * const { count } = await prisma.generacion_cajas.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends generacion_cajasDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, generacion_cajasDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Generacion_cajas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends generacion_cajasUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, generacion_cajasUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Generacion_cajas.
+     * @param {generacion_cajasUpsertArgs} args - Arguments to update or create a Generacion_cajas.
+     * @example
+     * // Update or create a Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.upsert({
+     *   create: {
+     *     // ... data to create a Generacion_cajas
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Generacion_cajas we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends generacion_cajasUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, generacion_cajasUpsertArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Generacion_cajas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasCountArgs} args - Arguments to filter Generacion_cajas to count.
+     * @example
+     * // Count the number of Generacion_cajas
+     * const count = await prisma.generacion_cajas.count({
+     *   where: {
+     *     // ... the filter for the Generacion_cajas we want to count
+     *   }
+     * })
+    **/
+    count<T extends generacion_cajasCountArgs>(
+      args?: Subset<T, generacion_cajasCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Generacion_cajasCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Generacion_cajas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Generacion_cajasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Generacion_cajasAggregateArgs>(args: Subset<T, Generacion_cajasAggregateArgs>): Prisma.PrismaPromise<GetGeneracion_cajasAggregateType<T>>
+
+    /**
+     * Group by Generacion_cajas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends generacion_cajasGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: generacion_cajasGroupByArgs['orderBy'] }
+        : { orderBy?: generacion_cajasGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, generacion_cajasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGeneracion_cajasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for generacion_cajas.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__generacion_cajasClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * generacion_cajas base type for findUnique actions
+   */
+  export type generacion_cajasFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter, which generacion_cajas to fetch.
+     */
+    where: generacion_cajasWhereUniqueInput
+  }
+
+  /**
+   * generacion_cajas findUnique
+   */
+  export interface generacion_cajasFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends generacion_cajasFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * generacion_cajas findUniqueOrThrow
+   */
+  export type generacion_cajasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter, which generacion_cajas to fetch.
+     */
+    where: generacion_cajasWhereUniqueInput
+  }
+
+
+  /**
+   * generacion_cajas base type for findFirst actions
+   */
+  export type generacion_cajasFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter, which generacion_cajas to fetch.
+     */
+    where?: generacion_cajasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of generacion_cajas to fetch.
+     */
+    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for generacion_cajas.
+     */
+    cursor?: generacion_cajasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` generacion_cajas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` generacion_cajas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of generacion_cajas.
+     */
+    distinct?: Generacion_cajasScalarFieldEnum | Generacion_cajasScalarFieldEnum[]
+  }
+
+  /**
+   * generacion_cajas findFirst
+   */
+  export interface generacion_cajasFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends generacion_cajasFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * generacion_cajas findFirstOrThrow
+   */
+  export type generacion_cajasFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter, which generacion_cajas to fetch.
+     */
+    where?: generacion_cajasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of generacion_cajas to fetch.
+     */
+    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for generacion_cajas.
+     */
+    cursor?: generacion_cajasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` generacion_cajas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` generacion_cajas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of generacion_cajas.
+     */
+    distinct?: Generacion_cajasScalarFieldEnum | Generacion_cajasScalarFieldEnum[]
+  }
+
+
+  /**
+   * generacion_cajas findMany
+   */
+  export type generacion_cajasFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter, which generacion_cajas to fetch.
+     */
+    where?: generacion_cajasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of generacion_cajas to fetch.
+     */
+    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing generacion_cajas.
+     */
+    cursor?: generacion_cajasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` generacion_cajas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` generacion_cajas.
+     */
+    skip?: number
+    distinct?: Generacion_cajasScalarFieldEnum | Generacion_cajasScalarFieldEnum[]
+  }
+
+
+  /**
+   * generacion_cajas create
+   */
+  export type generacion_cajasCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * The data needed to create a generacion_cajas.
+     */
+    data?: XOR<generacion_cajasCreateInput, generacion_cajasUncheckedCreateInput>
+  }
+
+
+  /**
+   * generacion_cajas createMany
+   */
+  export type generacion_cajasCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many generacion_cajas.
+     */
+    data: generacion_cajasCreateManyInput | generacion_cajasCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * generacion_cajas update
+   */
+  export type generacion_cajasUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * The data needed to update a generacion_cajas.
+     */
+    data: XOR<generacion_cajasUpdateInput, generacion_cajasUncheckedUpdateInput>
+    /**
+     * Choose, which generacion_cajas to update.
+     */
+    where: generacion_cajasWhereUniqueInput
+  }
+
+
+  /**
+   * generacion_cajas updateMany
+   */
+  export type generacion_cajasUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update generacion_cajas.
+     */
+    data: XOR<generacion_cajasUpdateManyMutationInput, generacion_cajasUncheckedUpdateManyInput>
+    /**
+     * Filter which generacion_cajas to update
+     */
+    where?: generacion_cajasWhereInput
+  }
+
+
+  /**
+   * generacion_cajas upsert
+   */
+  export type generacion_cajasUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * The filter to search for the generacion_cajas to update in case it exists.
+     */
+    where: generacion_cajasWhereUniqueInput
+    /**
+     * In case the generacion_cajas found by the `where` argument doesn't exist, create a new generacion_cajas with this data.
+     */
+    create: XOR<generacion_cajasCreateInput, generacion_cajasUncheckedCreateInput>
+    /**
+     * In case the generacion_cajas was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<generacion_cajasUpdateInput, generacion_cajasUncheckedUpdateInput>
+  }
+
+
+  /**
+   * generacion_cajas delete
+   */
+  export type generacion_cajasDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter which generacion_cajas to delete.
+     */
+    where: generacion_cajasWhereUniqueInput
+  }
+
+
+  /**
+   * generacion_cajas deleteMany
+   */
+  export type generacion_cajasDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which generacion_cajas to delete
+     */
+    where?: generacion_cajasWhereInput
+  }
+
+
+  /**
+   * generacion_cajas without action
+   */
+  export type generacion_cajasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -38306,6 +41649,62 @@ export namespace Prisma {
   };
 
   export type Parcelas_lugaresScalarFieldEnum = (typeof Parcelas_lugaresScalarFieldEnum)[keyof typeof Parcelas_lugaresScalarFieldEnum]
+
+
+  export const Caja_saScalarFieldEnum: {
+    idcaja: 'idcaja',
+    codigo: 'codigo',
+    cuenta: 'cuenta',
+    tipo: 'tipo',
+    serie: 'serie',
+    factura: 'factura',
+    importe: 'importe',
+    comentarios: 'comentarios',
+    nro_caja: 'nro_caja',
+    movim: 'movim',
+    fecha: 'fecha',
+    puesto: 'puesto',
+    operador: 'operador',
+    cuit: 'cuit',
+    proveedor: 'proveedor',
+    sucursal: 'sucursal'
+  };
+
+  export type Caja_saScalarFieldEnum = (typeof Caja_saScalarFieldEnum)[keyof typeof Caja_saScalarFieldEnum]
+
+
+  export const Caja_srlScalarFieldEnum: {
+    idcaja: 'idcaja',
+    codigo: 'codigo',
+    cuenta: 'cuenta',
+    tipo: 'tipo',
+    serie: 'serie',
+    factura: 'factura',
+    importe: 'importe',
+    comentarios: 'comentarios',
+    nro_caja: 'nro_caja',
+    movim: 'movim',
+    fecha: 'fecha',
+    puesto: 'puesto',
+    operador: 'operador',
+    cuit: 'cuit',
+    proveedor: 'proveedor',
+    sucursal: 'sucursal'
+  };
+
+  export type Caja_srlScalarFieldEnum = (typeof Caja_srlScalarFieldEnum)[keyof typeof Caja_srlScalarFieldEnum]
+
+
+  export const Generacion_cajasScalarFieldEnum: {
+    idgeneracion: 'idgeneracion',
+    desde: 'desde',
+    hasta: 'hasta',
+    empresa: 'empresa',
+    operador: 'operador',
+    fecha: 'fecha'
+  };
+
+  export type Generacion_cajasScalarFieldEnum = (typeof Generacion_cajasScalarFieldEnum)[keyof typeof Generacion_cajasScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -40669,6 +44068,239 @@ export namespace Prisma {
     dni?: IntNullableWithAggregatesFilter | number | null
     fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
     operador?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type caja_saWhereInput = {
+    AND?: caja_saWhereInput | caja_saWhereInput[]
+    OR?: caja_saWhereInput[]
+    NOT?: caja_saWhereInput | caja_saWhereInput[]
+    idcaja?: IntFilter | number
+    codigo?: IntNullableFilter | number | null
+    cuenta?: StringNullableFilter | string | null
+    tipo?: StringNullableFilter | string | null
+    serie?: IntNullableFilter | number | null
+    factura?: IntNullableFilter | number | null
+    importe?: FloatNullableFilter | number | null
+    comentarios?: StringNullableFilter | string | null
+    nro_caja?: IntNullableFilter | number | null
+    movim?: StringNullableFilter | string | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+    puesto?: IntNullableFilter | number | null
+    operador?: IntNullableFilter | number | null
+    cuit?: StringNullableFilter | string | null
+    proveedor?: StringNullableFilter | string | null
+    sucursal?: StringNullableFilter | string | null
+  }
+
+  export type caja_saOrderByWithRelationInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrderInput | SortOrder
+    cuenta?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    serie?: SortOrderInput | SortOrder
+    factura?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    comentarios?: SortOrderInput | SortOrder
+    nro_caja?: SortOrderInput | SortOrder
+    movim?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    puesto?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    cuit?: SortOrderInput | SortOrder
+    proveedor?: SortOrderInput | SortOrder
+    sucursal?: SortOrderInput | SortOrder
+  }
+
+  export type caja_saWhereUniqueInput = {
+    idcaja?: number
+  }
+
+  export type caja_saOrderByWithAggregationInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrderInput | SortOrder
+    cuenta?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    serie?: SortOrderInput | SortOrder
+    factura?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    comentarios?: SortOrderInput | SortOrder
+    nro_caja?: SortOrderInput | SortOrder
+    movim?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    puesto?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    cuit?: SortOrderInput | SortOrder
+    proveedor?: SortOrderInput | SortOrder
+    sucursal?: SortOrderInput | SortOrder
+    _count?: caja_saCountOrderByAggregateInput
+    _avg?: caja_saAvgOrderByAggregateInput
+    _max?: caja_saMaxOrderByAggregateInput
+    _min?: caja_saMinOrderByAggregateInput
+    _sum?: caja_saSumOrderByAggregateInput
+  }
+
+  export type caja_saScalarWhereWithAggregatesInput = {
+    AND?: caja_saScalarWhereWithAggregatesInput | caja_saScalarWhereWithAggregatesInput[]
+    OR?: caja_saScalarWhereWithAggregatesInput[]
+    NOT?: caja_saScalarWhereWithAggregatesInput | caja_saScalarWhereWithAggregatesInput[]
+    idcaja?: IntWithAggregatesFilter | number
+    codigo?: IntNullableWithAggregatesFilter | number | null
+    cuenta?: StringNullableWithAggregatesFilter | string | null
+    tipo?: StringNullableWithAggregatesFilter | string | null
+    serie?: IntNullableWithAggregatesFilter | number | null
+    factura?: IntNullableWithAggregatesFilter | number | null
+    importe?: FloatNullableWithAggregatesFilter | number | null
+    comentarios?: StringNullableWithAggregatesFilter | string | null
+    nro_caja?: IntNullableWithAggregatesFilter | number | null
+    movim?: StringNullableWithAggregatesFilter | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    puesto?: IntNullableWithAggregatesFilter | number | null
+    operador?: IntNullableWithAggregatesFilter | number | null
+    cuit?: StringNullableWithAggregatesFilter | string | null
+    proveedor?: StringNullableWithAggregatesFilter | string | null
+    sucursal?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type caja_srlWhereInput = {
+    AND?: caja_srlWhereInput | caja_srlWhereInput[]
+    OR?: caja_srlWhereInput[]
+    NOT?: caja_srlWhereInput | caja_srlWhereInput[]
+    idcaja?: IntFilter | number
+    codigo?: IntNullableFilter | number | null
+    cuenta?: StringNullableFilter | string | null
+    tipo?: StringNullableFilter | string | null
+    serie?: IntNullableFilter | number | null
+    factura?: IntNullableFilter | number | null
+    importe?: FloatNullableFilter | number | null
+    comentarios?: StringNullableFilter | string | null
+    nro_caja?: IntNullableFilter | number | null
+    movim?: StringNullableFilter | string | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+    puesto?: IntNullableFilter | number | null
+    operador?: IntNullableFilter | number | null
+    cuit?: StringNullableFilter | string | null
+    proveedor?: StringNullableFilter | string | null
+    sucursal?: StringNullableFilter | string | null
+  }
+
+  export type caja_srlOrderByWithRelationInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrderInput | SortOrder
+    cuenta?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    serie?: SortOrderInput | SortOrder
+    factura?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    comentarios?: SortOrderInput | SortOrder
+    nro_caja?: SortOrderInput | SortOrder
+    movim?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    puesto?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    cuit?: SortOrderInput | SortOrder
+    proveedor?: SortOrderInput | SortOrder
+    sucursal?: SortOrderInput | SortOrder
+  }
+
+  export type caja_srlWhereUniqueInput = {
+    idcaja?: number
+  }
+
+  export type caja_srlOrderByWithAggregationInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrderInput | SortOrder
+    cuenta?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    serie?: SortOrderInput | SortOrder
+    factura?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    comentarios?: SortOrderInput | SortOrder
+    nro_caja?: SortOrderInput | SortOrder
+    movim?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    puesto?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    cuit?: SortOrderInput | SortOrder
+    proveedor?: SortOrderInput | SortOrder
+    sucursal?: SortOrderInput | SortOrder
+    _count?: caja_srlCountOrderByAggregateInput
+    _avg?: caja_srlAvgOrderByAggregateInput
+    _max?: caja_srlMaxOrderByAggregateInput
+    _min?: caja_srlMinOrderByAggregateInput
+    _sum?: caja_srlSumOrderByAggregateInput
+  }
+
+  export type caja_srlScalarWhereWithAggregatesInput = {
+    AND?: caja_srlScalarWhereWithAggregatesInput | caja_srlScalarWhereWithAggregatesInput[]
+    OR?: caja_srlScalarWhereWithAggregatesInput[]
+    NOT?: caja_srlScalarWhereWithAggregatesInput | caja_srlScalarWhereWithAggregatesInput[]
+    idcaja?: IntWithAggregatesFilter | number
+    codigo?: IntNullableWithAggregatesFilter | number | null
+    cuenta?: StringNullableWithAggregatesFilter | string | null
+    tipo?: StringNullableWithAggregatesFilter | string | null
+    serie?: IntNullableWithAggregatesFilter | number | null
+    factura?: IntNullableWithAggregatesFilter | number | null
+    importe?: FloatNullableWithAggregatesFilter | number | null
+    comentarios?: StringNullableWithAggregatesFilter | string | null
+    nro_caja?: IntNullableWithAggregatesFilter | number | null
+    movim?: StringNullableWithAggregatesFilter | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    puesto?: IntNullableWithAggregatesFilter | number | null
+    operador?: IntNullableWithAggregatesFilter | number | null
+    cuit?: StringNullableWithAggregatesFilter | string | null
+    proveedor?: StringNullableWithAggregatesFilter | string | null
+    sucursal?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type generacion_cajasWhereInput = {
+    AND?: generacion_cajasWhereInput | generacion_cajasWhereInput[]
+    OR?: generacion_cajasWhereInput[]
+    NOT?: generacion_cajasWhereInput | generacion_cajasWhereInput[]
+    idgeneracion?: IntFilter | number
+    desde?: DateTimeNullableFilter | Date | string | null
+    hasta?: DateTimeNullableFilter | Date | string | null
+    empresa?: StringNullableFilter | string | null
+    operador?: StringNullableFilter | string | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+  }
+
+  export type generacion_cajasOrderByWithRelationInput = {
+    idgeneracion?: SortOrder
+    desde?: SortOrderInput | SortOrder
+    hasta?: SortOrderInput | SortOrder
+    empresa?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+  }
+
+  export type generacion_cajasWhereUniqueInput = {
+    idgeneracion?: number
+  }
+
+  export type generacion_cajasOrderByWithAggregationInput = {
+    idgeneracion?: SortOrder
+    desde?: SortOrderInput | SortOrder
+    hasta?: SortOrderInput | SortOrder
+    empresa?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    _count?: generacion_cajasCountOrderByAggregateInput
+    _avg?: generacion_cajasAvgOrderByAggregateInput
+    _max?: generacion_cajasMaxOrderByAggregateInput
+    _min?: generacion_cajasMinOrderByAggregateInput
+    _sum?: generacion_cajasSumOrderByAggregateInput
+  }
+
+  export type generacion_cajasScalarWhereWithAggregatesInput = {
+    AND?: generacion_cajasScalarWhereWithAggregatesInput | generacion_cajasScalarWhereWithAggregatesInput[]
+    OR?: generacion_cajasScalarWhereWithAggregatesInput[]
+    NOT?: generacion_cajasScalarWhereWithAggregatesInput | generacion_cajasScalarWhereWithAggregatesInput[]
+    idgeneracion?: IntWithAggregatesFilter | number
+    desde?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    hasta?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    empresa?: StringNullableWithAggregatesFilter | string | null
+    operador?: StringNullableWithAggregatesFilter | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
   }
 
   export type ataud_precioCreateInput = {
@@ -43775,6 +47407,326 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type caja_saCreateInput = {
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_saUncheckedCreateInput = {
+    idcaja?: number
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_saUpdateInput = {
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_saUncheckedUpdateInput = {
+    idcaja?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_saCreateManyInput = {
+    idcaja?: number
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_saUpdateManyMutationInput = {
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_saUncheckedUpdateManyInput = {
+    idcaja?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_srlCreateInput = {
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_srlUncheckedCreateInput = {
+    idcaja?: number
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_srlUpdateInput = {
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_srlUncheckedUpdateInput = {
+    idcaja?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_srlCreateManyInput = {
+    idcaja?: number
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_srlUpdateManyMutationInput = {
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_srlUncheckedUpdateManyInput = {
+    idcaja?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type generacion_cajasCreateInput = {
+    desde?: Date | string | null
+    hasta?: Date | string | null
+    empresa?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
+  }
+
+  export type generacion_cajasUncheckedCreateInput = {
+    idgeneracion?: number
+    desde?: Date | string | null
+    hasta?: Date | string | null
+    empresa?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
+  }
+
+  export type generacion_cajasUpdateInput = {
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type generacion_cajasUncheckedUpdateInput = {
+    idgeneracion?: IntFieldUpdateOperationsInput | number
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type generacion_cajasCreateManyInput = {
+    idgeneracion?: number
+    desde?: Date | string | null
+    hasta?: Date | string | null
+    empresa?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
+  }
+
+  export type generacion_cajasUpdateManyMutationInput = {
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type generacion_cajasUncheckedUpdateManyInput = {
+    idgeneracion?: IntFieldUpdateOperationsInput | number
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type IntFilter = {
     equals?: number
     in?: number[]
@@ -45776,6 +49728,199 @@ export namespace Prisma {
     lugar?: SortOrder
     contrato?: SortOrder
     dni?: SortOrder
+  }
+
+  export type caja_saCountOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_saAvgOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    nro_caja?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type caja_saMaxOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_saMinOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_saSumOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    nro_caja?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type caja_srlCountOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_srlAvgOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    nro_caja?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type caja_srlMaxOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_srlMinOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_srlSumOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    nro_caja?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type generacion_cajasCountOrderByAggregateInput = {
+    idgeneracion?: SortOrder
+    desde?: SortOrder
+    hasta?: SortOrder
+    empresa?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
+  }
+
+  export type generacion_cajasAvgOrderByAggregateInput = {
+    idgeneracion?: SortOrder
+  }
+
+  export type generacion_cajasMaxOrderByAggregateInput = {
+    idgeneracion?: SortOrder
+    desde?: SortOrder
+    hasta?: SortOrder
+    empresa?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
+  }
+
+  export type generacion_cajasMinOrderByAggregateInput = {
+    idgeneracion?: SortOrder
+    desde?: SortOrder
+    hasta?: SortOrder
+    empresa?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
+  }
+
+  export type generacion_cajasSumOrderByAggregateInput = {
+    idgeneracion?: SortOrder
   }
 
   export type NullableIntFieldUpdateOperationsInput = {

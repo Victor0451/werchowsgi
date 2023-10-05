@@ -4,7 +4,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const {
   Decimal,
   objectEnumValues,
-  makeStrictEnum
+  makeStrictEnum,
+  Public,
 } = require('./runtime/index-browser')
 
 
@@ -13,12 +14,12 @@ const Prisma = {}
 exports.Prisma = Prisma
 
 /**
- * Prisma Client JS version: 4.13.0
- * Query Engine version: 1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
+ * Prisma Client JS version: 4.17.0-dev.38
+ * Query Engine version: e6267db1c1bc827b8eb87f644288c3cb0800ec89
  */
 Prisma.prismaVersion = {
-  client: "4.13.0",
-  engine: "1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a"
+  client: "4.17.0-dev.38",
+  engine: "e6267db1c1bc827b8eb87f644288c3cb0800ec89"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -66,8 +67,19 @@ Prisma.raw = () => {
   throw new Error(`raw is unable to be run in the browser.
 In case this error is unexpected for you, please report it in https://github.com/prisma/prisma/issues`,
 )}
-Prisma.validator = () => (val) => val
+Prisma.validator = Public.validator
 
+/**
+* Extensions
+*/
+Prisma.getExtensionContext = () => {
+  throw new Error(`Extensions.getExtensionContext is unable to be run in the browser.
+In case this error is unexpected for you, please report it in https://github.com/prisma/prisma/issues`,
+)}
+Prisma.defineExtension = () => {
+  throw new Error(`Extensions.defineExtension is unable to be run in the browser.
+In case this error is unexpected for you, please report it in https://github.com/prisma/prisma/issues`,
+)}
 
 /**
  * Shorthand utilities for JSON filtering
@@ -85,6 +97,13 @@ Prisma.NullTypes = {
 /**
  * Enums
  */
+
+exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
+  Serializable: 'Serializable'
+});
 
 exports.Prisma.Alta_novellScalarFieldEnum = {
   idnovell: 'idnovell',
@@ -128,25 +147,6 @@ exports.Prisma.Alta_novellScalarFieldEnum = {
   cuotasaldo: 'cuotasaldo',
   cuotasaldo_letra: 'cuotasaldo_letra',
   cuota_mantenimiento: 'cuota_mantenimiento'
-};
-
-exports.Prisma.CajaScalarFieldEnum = {
-  idcaja: 'idcaja',
-  codigo: 'codigo',
-  cuenta: 'cuenta',
-  tipo: 'tipo',
-  serie: 'serie',
-  factura: 'factura',
-  importe: 'importe',
-  comentarios: 'comentarios',
-  nro_caja: 'nro_caja',
-  movim: 'movim',
-  fecha: 'fecha',
-  puesto: 'puesto',
-  operador: 'operador',
-  cuit: 'cuit',
-  proveedor: 'proveedor',
-  sucursal: 'sucursal'
 };
 
 exports.Prisma.Caja_sucursalesScalarFieldEnum = {
@@ -477,12 +477,6 @@ exports.Prisma.MbanconvScalarFieldEnum = {
   ano: 'ano'
 };
 
-exports.Prisma.Motivos_atencionScalarFieldEnum = {
-  idmotivo: 'idmotivo',
-  motivo: 'motivo',
-  estado: 'estado'
-};
-
 exports.Prisma.Movimiento_caja_sucursalesScalarFieldEnum = {
   idmovimiento: 'idmovimiento',
   fecha_carga: 'fecha_carga',
@@ -547,7 +541,15 @@ exports.Prisma.OperadorScalarFieldEnum = {
   puestow: 'puestow',
   codigo: 'codigo',
   medicos: 'medicos',
-  sucursal: 'sucursal'
+  sucursal: 'sucursal',
+  prestamos: 'prestamos',
+  ordenpago: 'ordenpago',
+  clubwerchow: 'clubwerchow',
+  ventas: 'ventas',
+  administracion: 'administracion',
+  campanas: 'campanas',
+  socios: 'socios',
+  sepelio: 'sepelio'
 };
 
 exports.Prisma.Ordenes_pagoScalarFieldEnum = {
@@ -649,21 +651,6 @@ exports.Prisma.Prestamos_empleados_cobroScalarFieldEnum = {
   operador: 'operador'
 };
 
-exports.Prisma.Prestamos_plan_cuotasScalarFieldEnum = {
-  idplan: 'idplan',
-  plan_cuotas: 'plan_cuotas',
-  detalle: 'detalle',
-  estado: 'estado'
-};
-
-exports.Prisma.Prestamos_tasasScalarFieldEnum = {
-  idtasa: 'idtasa',
-  tasa: 'tasa',
-  plan: 'plan',
-  tipo: 'tipo',
-  estado: 'estado'
-};
-
 exports.Prisma.ProduccionScalarFieldEnum = {
   prod_ide: 'prod_ide',
   prod_fechacarga: 'prod_fechacarga',
@@ -723,11 +710,6 @@ exports.Prisma.RehabilitacionesScalarFieldEnum = {
 exports.Prisma.Rol_personalScalarFieldEnum = {
   idrol: 'idrol',
   rol: 'rol'
-};
-
-exports.Prisma.SortOrder = {
-  asc: 'asc',
-  desc: 'desc'
 };
 
 exports.Prisma.SucursalScalarFieldEnum = {
@@ -790,13 +772,6 @@ exports.Prisma.Tipo_facturasScalarFieldEnum = {
   estado: 'estado'
 };
 
-exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
-  Serializable: 'Serializable'
-});
-
 exports.Prisma.Turno_bajasScalarFieldEnum = {
   idturno: 'idturno',
   contrato: 'contrato',
@@ -828,10 +803,67 @@ exports.Prisma.VacacionesScalarFieldEnum = {
   detail: 'detail'
 };
 
+exports.Prisma.Motivos_atencionScalarFieldEnum = {
+  idmotivo: 'idmotivo',
+  motivo: 'motivo',
+  estado: 'estado'
+};
+
+exports.Prisma.Prestamos_plan_cuotasScalarFieldEnum = {
+  idplan: 'idplan',
+  plan_cuotas: 'plan_cuotas',
+  detalle: 'detalle',
+  estado: 'estado'
+};
+
+exports.Prisma.Prestamos_tasasScalarFieldEnum = {
+  idtasa: 'idtasa',
+  tasa: 'tasa',
+  plan: 'plan',
+  tipo: 'tipo',
+  estado: 'estado'
+};
+
+exports.Prisma.Certificado_estudiantesScalarFieldEnum = {
+  idcertificado: 'idcertificado',
+  contrato: 'contrato',
+  socio: 'socio',
+  fecha: 'fecha',
+  operador: 'operador',
+  ncert: 'ncert'
+};
+
+exports.Prisma.CarteraScalarFieldEnum = {
+  contrato: 'contrato',
+  socio: 'socio',
+  alta: 'alta',
+  grupo: 'grupo',
+  adhs: 'adhs',
+  plan: 'plan',
+  sub_plan: 'sub_plan',
+  zona: 'zona',
+  cuota: 'cuota',
+  empresa: 'empresa',
+  sucursal: 'sucursal',
+  deuda: 'deuda',
+  mes: 'mes',
+  ano: 'ano',
+  idcartera: 'idcartera'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   alta_novell: 'alta_novell',
-  caja: 'caja',
   caja_sucursales: 'caja_sucursales',
   campanacasos: 'campanacasos',
   campanas: 'campanas',
@@ -891,7 +923,9 @@ exports.Prisma.ModelName = {
   vacaciones: 'vacaciones',
   motivos_atencion: 'motivos_atencion',
   prestamos_plan_cuotas: 'prestamos_plan_cuotas',
-  prestamos_tasas: 'prestamos_tasas'
+  prestamos_tasas: 'prestamos_tasas',
+  certificado_estudiantes: 'certificado_estudiantes',
+  cartera: 'cartera'
 };
 
 /**

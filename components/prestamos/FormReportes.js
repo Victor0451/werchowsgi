@@ -90,6 +90,8 @@ export const FormReportes = ({
                                             listado={reportes}
                                             usu={usu}
                                             f={"rep op"}
+                                            desde={desde}
+                                            hasta={hasta}
 
                                         />
 

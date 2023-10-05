@@ -8,7 +8,7 @@ import { Redirect } from "@/components/auth/Redirect";
 import useSWR from "swr";
 import { confirmAlert } from "react-confirm-alert";
 import moment from "moment";
-import { registrarHistoria, regHistorialAuto } from "@/libs/funciones";
+import { registrarHistoria } from "@/libs/funciones";
 import { useRouter } from "next/router";
 import jsCookie from "js-cookie";
 import { ip } from "@/config/config";
@@ -20,16 +20,22 @@ import FormLegajoSocio from "@/components/socios/FormLegajoSocio";
 
 function Legajo(props) {
   let dniRef = React.createRef();
+  let contratoRef = React.createRef();
+  let cuotasRef = React.createRef();
 
   const [errores, guardarErrores] = useState(null);
   const [alertas, guardarAlertas] = useState(null);
   const [ficha, guardarFicha] = useState([]);
   const [adhs, guardarAdhs] = useState([]);
   const [show, guardarShow] = useState(false);
+  const [showAfi, guardarShowAfi] = useState(false);
   const [archivos, guardarArchivos] = useState([]);
   const [file, setFile] = useState(null);
   const [grupo, guardarGrupo] = useState("");
   const [allPagos, guardarAllPagos] = useState([]);
+  const [cuotas, guardarCuotas] = useState(null);
+  const [vigencia, guardarVigencia] = useState(null);
+  const [usos, guardarUsos] = useState([]);
 
   const { usu } = useWerchow();
 
@@ -68,16 +74,18 @@ function Legajo(props) {
           label: "Si",
           onClick: () => {
             axios
-              .delete(`${ip}/api/archivos/legajovirtual/eliminararchivos/${id}`)
+              .delete(`${ip}api/archivos/legajovirtual/eliminararchivos/${id}`)
               .then((res) => {
                 if (res.status === 200) {
-                  toast.success("El archivo eliminado ");
+                  toast.success("El archivo fue eliminado con exito");
 
-                  //   let accion = `Se elimino un archivo en el legajo virtual del servicio  ${servicio.idservicio} - ${servicio.apellido}, ${servicio.nombre}.`;
+                  let accion = `Se elimino un archivo en el legajo virtual del Socio: ${ficha[0].CONTRATO} - ${ficha[0].APELLIDOS}, ${ficha[0].NOMBRES}.`;
 
-                  //   registrarHistoria(accion, usu.usuario);
+                  registrarHistoria(accion, usu.usuario);
 
-                  traerInfo();
+                  setTimeout(() => {
+                    traerInfo(ficha[0].CONTRATO);
+                  }, 500);
                 }
               })
               .catch((error) => {
@@ -93,7 +101,7 @@ function Legajo(props) {
     });
   };
 
-  const handleUpload = async (file) => {
+  const handleSoli = async (file) => {
     setFile(file);
 
     const upload = new FormData();
@@ -102,7 +110,7 @@ function Legajo(props) {
 
     await axios
       .post(
-        `${ip}api/archivos/legajovirtualservicios/uploadfichalegajo/${servicio.dni}`,
+        `${ip}api/archivos/legajovirtual/uploadfichalegajosoli/${ficha[0].CONTRATO}`,
         upload
       )
       .then((res) => {
@@ -110,12 +118,169 @@ function Legajo(props) {
         if (res.status === 200) {
           toast.success("Archivo Subido Con Exito", "Atencion");
 
-          //   let accion = `Se subio un archivo al legajo virtual del del servicio  ${servicio.idservicio} - ${servicio.apellido}, ${servicio.nombre}.`;
+          let accion = `Se subio un archivo al legajo virtual del Socio: ${ficha[0].CONTRATO} - ${ficha[0].APELLIDOS}, ${ficha[0].NOMBRES}.`;
 
-          //   registrarHistoria(accion, usu.usuario);
+          registrarHistoria(accion, usu.usuario);
         }
 
-        traerInfo();
+        setTimeout(() => {
+          traerInfo(ficha[0].CONTRATO);
+        }, 500);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleCondi = async (file) => {
+    setFile(file);
+
+    const upload = new FormData();
+
+    upload.append("file", file);
+
+    await axios
+      .post(
+        `${ip}api/archivos/legajovirtual/uploadfichalegajocondi/${ficha[0].CONTRATO}`,
+        upload
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          toast.success("Archivo Subido Con Exito", "Atencion");
+
+          let accion = `Se subio un archivo al legajo virtual del Socio: ${ficha[0].CONTRATO} - ${ficha[0].APELLIDOS}, ${ficha[0].NOMBRES}.`;
+
+          registrarHistoria(accion, usu.usuario);
+        }
+
+        setTimeout(() => {
+          traerInfo(ficha[0].CONTRATO);
+        }, 500);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleRehab = async (file) => {
+    setFile(file);
+
+    const upload = new FormData();
+
+    upload.append("file", file);
+
+    await axios
+      .post(
+        `${ip}api/archivos/legajovirtual/uploadfichalegajorehab/${ficha[0].CONTRATO}`,
+        upload
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          toast.success("Archivo Subido Con Exito", "Atencion");
+
+          let accion = `Se subio un archivo al legajo virtual del Socio: ${ficha[0].CONTRATO} - ${ficha[0].APELLIDOS}, ${ficha[0].NOMBRES}.`;
+
+          registrarHistoria(accion, usu.usuario);
+        }
+
+        setTimeout(() => {
+          traerInfo(ficha[0].CONTRATO);
+        }, 500);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleNoti = async (file) => {
+    setFile(file);
+
+    const upload = new FormData();
+
+    upload.append("file", file);
+
+    await axios
+      .post(
+        `${ip}api/archivos/legajovirtual/uploadfichalegajonoti/${ficha[0].CONTRATO}`,
+        upload
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          toast.success("Archivo Subido Con Exito", "Atencion");
+
+          let accion = `Se subio un archivo al legajo virtual del Socio: ${ficha[0].CONTRATO} - ${ficha[0].APELLIDOS}, ${ficha[0].NOMBRES}.`;
+
+          registrarHistoria(accion, usu.usuario);
+        }
+
+        setTimeout(() => {
+          traerInfo(ficha[0].CONTRATO);
+        }, 500);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleRecF = async (file) => {
+    setFile(file);
+
+    const upload = new FormData();
+
+    upload.append("file", file);
+
+    await axios
+      .post(
+        `${ip}api/archivos/legajovirtual/uploadfichalegajorecf/${ficha[0].CONTRATO}`,
+        upload
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          toast.success("Archivo Subido Con Exito", "Atencion");
+
+          let accion = `Se subio un archivo al legajo virtual del Socio: ${ficha[0].CONTRATO} - ${ficha[0].APELLIDOS}, ${ficha[0].NOMBRES}.`;
+
+          registrarHistoria(accion, usu.usuario);
+        }
+
+        setTimeout(() => {
+          traerInfo(ficha[0].CONTRATO);
+        }, 500);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleRecD = async (file) => {
+    setFile(file);
+
+    const upload = new FormData();
+
+    upload.append("file", file);
+
+    await axios
+      .post(
+        `${ip}api/archivos/legajovirtual/uploadfichalegajorecd/${ficha[0].CONTRATO}`,
+        upload
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          toast.success("Archivo Subido Con Exito", "Atencion");
+
+          let accion = `Se subio un archivo al legajo virtual del Socio: ${ficha[0].CONTRATO} - ${ficha[0].APELLIDOS}, ${ficha[0].NOMBRES}.`;
+
+          registrarHistoria(accion, usu.usuario);
+        }
+
+        setTimeout(() => {
+          traerInfo(ficha[0].CONTRATO);
+        }, 500);
       })
       .catch((error) => {
         console.log(error);
@@ -159,8 +324,6 @@ function Legajo(props) {
         },
       })
       .then((res) => {
-        console.log(res.data);
-
         if (res.data.length > 0) {
           pagos = res.data;
         } else {
@@ -244,10 +407,11 @@ function Legajo(props) {
             guardarFicha(ficha);
             guardarShow(true);
 
-            traerAdhs("mae adh", ficha[0].CONTRATO);
+            traerAdhs("adh", ficha[0].CONTRATO);
             traerInfo(ficha[0].CONTRATO);
             descriGrupo(ficha[0].GRUPO);
             traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
+            traerUsos(ficha[0].CONTRATO);
           } else if (re.length === 0) {
             axios
               .get("/api/socios", {
@@ -264,10 +428,11 @@ function Legajo(props) {
                   guardarFicha(ficha);
                   guardarShow(true);
 
-                  traerAdhs("mut adh", ficha[0].CONTRATO);
+                  traerAdhs("mutual adh", ficha[0].CONTRATO);
                   traerInfo(ficha[0].CONTRATO);
                   descriGrupo(ficha[0].GRUPO);
                   traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
+                  traerUsos(ficha[0].CONTRATO);
                 } else {
                   guardarAlertas(
                     "El DNI ingresado no esta registrado o pertenece a un adherente"
@@ -294,6 +459,177 @@ function Legajo(props) {
     }
   };
 
+  const tarerSocioContrato = async () => {
+    let contrato = contratoRef.current.value;
+
+    if (contrato === "") {
+      guardarErrores("Debes ingresar un numero de socio");
+    } else {
+      await axios
+        .get(`/api/socios`, {
+          params: {
+            f: "maestro contrato",
+            ficha: contrato,
+          },
+        })
+        .then((res0) => {
+          let re = JSON.parse(res0.data);
+          if (re.length > 0) {
+            let ficha = JSON.parse(res0.data);
+            guardarFicha(ficha);
+            guardarShow(true);
+
+            traerAdhs("adh", ficha[0].CONTRATO);
+            traerInfo(ficha[0].CONTRATO);
+            descriGrupo(ficha[0].GRUPO);
+            traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
+            traerUsos(ficha[0].CONTRATO);
+          } else if (re.length === 0) {
+            axios
+              .get("/api/socios", {
+                params: {
+                  f: "mutual contrato",
+                  ficha: contrato,
+                },
+              })
+              .then((res2) => {
+                let re = JSON.parse(res2.data);
+
+                if (re.length > 0) {
+                  let ficha = JSON.parse(res2.data);
+                  guardarFicha(ficha);
+                  guardarShow(true);
+
+                  traerAdhs("mutual adh", ficha[0].CONTRATO);
+                  traerInfo(ficha[0].CONTRATO);
+                  descriGrupo(ficha[0].GRUPO);
+                  traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
+                  traerUsos(ficha[0].CONTRATO);
+                } else {
+                  guardarAlertas(
+                    "El DNI ingresado no esta registrado o pertenece a un adherente"
+                  );
+                  toast.info(
+                    "El DNI ingresado no esta registrado o pertenece a un adherente"
+                  );
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error(
+                  "Ocurrio un error al tarer los datos del socio en Mutual"
+                );
+              });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error(
+            "Ocurrio un error al tarer los datos del socio en Werchow"
+          );
+        });
+    }
+  };
+
+  const handleVigencia = () => {
+    guardarErrores(null);
+    let cuotas = cuotasRef.current.value;
+
+    if (cuotas === "") {
+      document.getElementById("btn").hidden = true;
+      guardarVigencia("");
+      guardarShowAfi(false);
+    } else if (cuotas !== "") {
+      if (cuotas === "1") {
+        guardarCuotas(cuotas);
+
+        let carencia = cuotas * 15;
+
+        let vigencia = moment().add(carencia, "days").format("DD/MM/YYYY");
+
+        document.getElementById("btn").hidden = false;
+
+        guardarVigencia(vigencia);
+
+        guardarShowAfi(true);
+      } else if (cuotas > "1") {
+        guardarCuotas(cuotas);
+
+        let carencia = cuotas * 30;
+
+        let vigencia = moment().add(carencia, "days").format("DD/MM/YYYY");
+
+        document.getElementById("btn").hidden = false;
+
+        guardarVigencia(vigencia);
+
+        guardarShowAfi(true);
+      }
+    }
+  };
+
+  const handleBlur = () => {
+    let cuotas = cuotasRef.current.value;
+
+    if (cuotas === "") {
+      const error = "Debes Ingresar La Cantidad De Cuotas Adeudadas";
+      guardarErrores(error);
+    }
+  };
+
+  const regAfi = async () => {
+    const rehab = {
+      contrato: ficha[0].CONTRATO,
+      apellido: ficha[0].APELLIDOS,
+      nombre: ficha[0].NOMBRES,
+      operador: usu.usuario,
+      idoperador: usu.id,
+      vigencia: moment(vigencia).format("YYYY-MM-DD"),
+      fecha: moment().format("YYYY-MM-DD"),
+      cuotas: cuotasRef.current.value,
+      dni: ficha[0].NRO_DOC,
+      empresa: ficha[0].EMPRESA,
+      f: "soli afi",
+    };
+
+    await axios
+      .post(`/api/socios`, rehab)
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          toast.success(
+            "La rehabilitacion del socio fue registrada, puede imprimir la notificacion"
+          );
+
+          let accion = `Se emitio una notificacion de rehabilitacion de servicios ID: ${res.data.idrehab} al socio: ${rehab.contrato} - ${rehab.apellido}, ${rehab.nombre} perteneciente a: ${rehab.empresa}`;
+
+          registrarHistoria(accion, usu.usuario);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const traerUsos = async (contrato) => {
+    await axios
+      .get(`/api/socios`, {
+        params: {
+          contrato: contrato,
+          f: "traer usos",
+        },
+      })
+      .then((res) => {
+        if (res.data.length > 0) {
+          guardarUsos(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al generar el listado de usos");
+      });
+  };
+
   if (isLoading === true) return <Skeleton />;
 
   return (
@@ -304,7 +640,9 @@ function Legajo(props) {
         <>
           <FormLegajoSocio
             dniRef={dniRef}
+            contratoRef={contratoRef}
             traerSocio={traerSocio}
+            tarerSocioContrato={tarerSocioContrato}
             errores={errores}
             alertas={alertas}
             show={show}
@@ -313,8 +651,22 @@ function Legajo(props) {
             archivos={archivos}
             grupo={grupo}
             allPagos={allPagos}
-            handleUpload={handleUpload}
+            handleSoli={handleSoli}
+            handleCondi={handleCondi}
+            handleRehab={handleRehab}
+            handleNoti={handleNoti}
+            handleRecD={handleRecD}
+            handleRecF={handleRecF}
             eliminarArchivos={eliminarArchivos}
+            file={file}
+            cuotasRef={cuotasRef}
+            handleVigencia={handleVigencia}
+            handleBlur={handleBlur}
+            vigencia={vigencia}
+            cuotas={cuotas}
+            showAfi={showAfi}
+            regAfi={regAfi}
+            usos={usos}
           />
         </>
       )}

@@ -11,7 +11,6 @@ import moment from 'moment';
 import { registrarHistoria } from '@/libs/funciones';
 import { useRouter } from 'next/router'
 import jsCookie from 'js-cookie'
-import { FormCargaGasto } from '@/components/sepelio/caja/FormCargaGasto';
 import FormImpresionCaja from '@/components/sepelio/caja/FormImpresionCaja';
 
 export default function Impresion() {

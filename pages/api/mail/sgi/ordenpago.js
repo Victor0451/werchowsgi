@@ -6,7 +6,12 @@ export default async function sendMail(req, res) {
   const mailData = {
     from: "werchowsgi@gmail.com",
     to: `vmlongo@werchow.com`,
-    cc: ["otero464@gmail.com", "grhumanos45@yahoo.com.ar", "santiagoiriarte@werchow.com", "contadoramoreno@werchow.com"],
+    cc: [
+      "otero464@gmail.com",
+      "grhumanos45@yahoo.com.ar",
+      "santiagoiriarte@werchow.com",
+      "contadoramoreno@werchow.com",
+    ],
     subject: `Notificacion Nueva Orden de Pago N° ${req.body.norden}- WERCHOW SGI`,
     html: `
 
@@ -31,19 +36,27 @@ export default async function sendMail(req, res) {
     
     <p><strong><u>Orden tipo</strong></u>: ${req.body.tipo_orden}</P> 
 
-    <p><strong><u>Fecha de carga</strong></u>: ${moment(req.body.fecha).utcOffset("-300").locale("es").format(
-      "DD/MM/YYYY"
-    )}</p>
+    <p><strong><u>Fecha de carga</strong></u>: ${moment(req.body.fecha)
+      .utcOffset("-300")
+      .locale("es")
+      .format("DD/MM/YYYY")}</p>
 
-    <p><strong><u>Fecha De Pago</strong></u>: ${moment(req.body.fecha_pago).utcOffset("-300").locale("es").format(
-      "DD/MM/YYYY"
-    )}</p>
+    <p><strong><u>Fecha De Pago</strong></u>: ${moment(req.body.fecha_pago)
+      .utcOffset("-300")
+      .locale("es")
+      .format("DD/MM/YYYY")}</p>
     
-    <p><strong><u>Proveedor</strong></u>: ${req.body.proveedor} - ${req.body.nombre}</P> 
+    <p><strong><u>Proveedor</strong></u>: ${req.body.proveedor} - ${
+      req.body.nombre
+    }</P> 
 
-    <p><strong><u>Tipo y numero de factura</strong></u>: ${req.body.tipo_factura} - N°${req.body.nfactura}. (Campo valido para ordenes de pago contables)</P> 
+    <p><strong><u>Tipo y numero de factura</strong></u>: ${
+      req.body.tipo_factura
+    } - N°${
+      req.body.nfactura
+    }. (Campo valido para ordenes de pago contables)</P> 
 
-    <p><strong><u>Importe</strong></u>: ${req.body.total}</P> 
+    <p><strong><u>Importe</strong></u>:$ ${req.body.total}</P> 
     
     <p><strong><u>Operador</strong></u>: ${req.body.operador_carga}</P> 
 
@@ -51,7 +64,7 @@ export default async function sendMail(req, res) {
 
     
     </div>
-    <p>Email enviado desde: WERCHOW SGI - http://sgi.werchow.com
+    <p>Email enviado desde: WERCHOW SGI - http://sgi.werchow.com:3001
      </p>
 
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>

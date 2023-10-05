@@ -1,48 +1,55 @@
-import React from 'react'
+import React from "react";
 import { downloadExcel } from "react-export-table-to-excel";
 import { Button } from "@material-tailwind/react";
-import moment from 'moment';
+import moment from "moment";
 
-
-
-export default function ExportarPadron({
-  listado,
-  desde,
-  hasta,
-  f
-}) {
-
-
+export default function ExportarPadron({ listado, desde, hasta, f }) {
   let header = [];
-  let body = []
-  let name = ""
+  let body = [];
+  let name = "";
 
   if (f === "rep op") {
+    name = `Rep. Pretamos aprobados por operador - ${moment().format(
+      "DD-MM-YYYY"
+    )}.xls`;
 
-    name = `Rep. Pretamos aprobados por operador - ${moment().format('DD-MM-YYYY')}.xls`
+    header = [
+      "Operador",
+      "N° Prestamos",
+      "Capital",
+      "Interes",
+      "Cap + Interes",
+    ];
 
-    header = ["Operador", "N° Prestamos", "Capital", "Interes", "Cap + Interes"];
-
-    listado.forEach(i => {
+    listado.forEach((i) => {
       body.push({
         operador: i.operador,
         prestamos: i.prestamos,
         capital: i.capital,
         interes: i.interes,
-        capconint: i.capconint
-      })
-
+        capconint: i.capconint,
+      });
     });
+  } else if (f === "rep prest") {
+    name = `Rep. Pretamos periodo: ${moment(desde).format(
+      "DD-MM-YYYY"
+    )} - ${moment(hasta).format("DD-MM-YYYY")}.xls`;
 
-  } else if (f === 'rep prest') {
+    header = [
+      "Fecha",
+      "Contrato",
+      "Socio",
+      "Renovacion",
+      "Capital",
+      "Cuotas",
+      "Cuo. Mensual",
+      "Estado",
+      "Operador",
+    ];
 
-    name = `Rep. Pretamos periodo: ${moment(desde.current.value).format("DD-MM-YYYY")} - ${moment(hasta.current.value).format("DD-MM-YYYY")}.xls`
-
-    header = ["Fecha", "Contrato", "Socio", "Renovacion", "Capital", "Cuotas", "Cuo. Mensual", "Estado", "Operador"];
-
-    listado.forEach(i => {
+    listado.forEach((i) => {
       body.push({
-        fecha: moment(i.ptm_fechasol).format('DD/MM/YYYY'),
+        fecha: moment(i.ptm_fechasol).format("DD/MM/YYYY"),
         contrato: i.ptm_ficha,
         socio: i.ptm_afi,
         renovacion: i.ptm_renov,
@@ -50,32 +57,26 @@ export default function ExportarPadron({
         cuotas: i.ptm_cuotas,
         cuo_mensual: i.ptm_valcuota,
         estado: i.ptm_estado,
-        operador: i.operador
-      })
-
+        operador: i.operador,
+      });
     });
-
-
   }
 
-
-
-
   const descargarExcel = () => {
-
     downloadExcel({
       fileName: name,
       sheet: "Reporte",
       tablePayload: {
         header,
         // accept two different data structures
-        body: body
-      }
+        body: body,
+      },
     });
-
-  }
+  };
 
   return (
-    <Button color="green" onClick={descargarExcel}>Export excel</Button>
-  )
+    <Button color="green" onClick={descargarExcel}>
+      Export excel
+    </Button>
+  );
 }

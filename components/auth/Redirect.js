@@ -1,27 +1,43 @@
-import React from 'react'
+import React from "react";
+import {
+  Card,
+  CardBody,
+  Typography,
+  Alert,
+  Button,
+  Select,
+  Option,
+  Input,
+} from "@material-tailwind/react";
+import {
+  CheckCircleIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/solid";
+import moment from "moment";
 
 export const Redirect = () => {
-    return (
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 border-2 rounded-lg">
+  return (
+    <Card className="h-full w-full p-4 ">
+      <CardBody className="rounded-none">
+        <img
+          className=" max-h-full max-w-full rounded-xl"
+          src="img/logerr.jpg"
+          alt="No Registrado"
+        />
 
-            <div className="">
-                <img
-                    className=" max-h-full max-w-full"
-                    src="img/logerr.jpg"
-                    alt="No Registrado"
-                />
-
-
-            </div>
-
-            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm justify-center">
-                <h1 className='text-gray-900 font-bold text-xl mb-2 mt-4'>
-                    Se requiere autorizacion para navergar por el sistema. Haz click en el link para {""}
-                    <a href='/' className="font-semibold text-indigo-600 hover:text-indigo-500">
-                        Iniciar Sesion
-                    </a>
-                </h1>
-            </div>
+        <div className="mt-10 ">
+          <Typography variant="h5" color="black">
+            Se requiere autorizacion para navergar por el sistema. Haz click en
+            el link para {""}
+            <a
+              href="/"
+              className="font-semibold text-indigo-600 hover:text-indigo-500"
+            >
+              Iniciar Sesion
+            </a>
+          </Typography>
         </div>
-    )
-}
+      </CardBody>
+    </Card>
+  );
+};

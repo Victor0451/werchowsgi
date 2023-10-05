@@ -605,3 +605,50 @@ model parcelas_lugares {
   fecha      DateTime? @db.Date
   operador   String?   @db.VarChar(255)
 }
+
+model caja_sa {
+  idcaja      Int       @id @default(autoincrement())
+  codigo      Int?
+  cuenta      String?   @db.VarChar(255)
+  tipo        String?   @db.VarChar(255)
+  serie       Int?
+  factura     Int?
+  importe     Float?    @db.Float
+  comentarios String?   @db.VarChar(255)
+  nro_caja    Int?
+  movim       String?   @db.VarChar(5)
+  fecha       DateTime? @db.Date
+  puesto      Int?
+  operador    Int?
+  cuit        String?   @db.VarChar(255)
+  proveedor   String?   @db.VarChar(255)
+  sucursal    String?   @db.VarChar(255)
+}
+
+model caja_srl {
+  idcaja      Int       @id @default(autoincrement())
+  codigo      Int?
+  cuenta      String?   @db.VarChar(255)
+  tipo        String?   @db.VarChar(255)
+  serie       Int?
+  factura     Int?
+  importe     Float?    @db.Float
+  comentarios String?   @db.VarChar(255)
+  nro_caja    Int?
+  movim       String?   @db.VarChar(5)
+  fecha       DateTime? @db.Date
+  puesto      Int?
+  operador    Int?
+  cuit        String?   @db.VarChar(255)
+  proveedor   String?   @db.VarChar(255)
+  sucursal    String?   @db.VarChar(255)
+}
+
+model generacion_cajas {
+  idgeneracion Int       @id @default(autoincrement())
+  desde        DateTime? @db.Date
+  hasta        DateTime? @db.Date
+  empresa      String?   @db.VarChar(255)
+  operador     String?   @db.VarChar(255)
+  fecha        DateTime? @db.Date
+}

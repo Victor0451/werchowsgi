@@ -1,104 +1,159 @@
-import React from 'react'
+import React from "react";
 import {
-  
-    Typography,
-    Button,
-    Menu,
-    MenuHandler,
-    MenuList,
-    MenuItem,
-    Avatar,
-  
+  Typography,
+  Button,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  Avatar,
+  Badge,
 } from "@material-tailwind/react";
-import {  
-    UserCircleIcon,  
-    ChevronDownIcon,
-    Cog6ToothIcon,
-    InboxArrowDownIcon,
-    LifebuoyIcon,
-    PowerIcon,
-   
+import {
+  UserCircleIcon,
+  ChevronDownIcon,
+  Cog6ToothIcon,
+  InboxArrowDownIcon,
+  BellIcon,
+  PowerIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import jsCookie from "js-cookie";
+import Router from "next/router";
 
 // profile menu component
 const profileMenuItems = [
-    {
-        label: "My Profile",
-        icon: UserCircleIcon,
-    },
-    {
-        label: "Edit Profile",
-        icon: Cog6ToothIcon,
-    },
-    {
-        label: "Inbox",
-        icon: InboxArrowDownIcon,
-    },
-    {
-        label: "Help",
-        icon: LifebuoyIcon,
-    },
-    {
-        label: "Sign Out",
-        icon: PowerIcon,
-    },
+  {
+    label: "Notificaciones",
+    icon: BellIcon,
+    url: "/notificaciones",
+    f: 2,
+  },
+
+  {
+    label: "Perfil",
+    icon: UserCircleIcon,
+    url: "/auth/perfil",
+    f: 0,
+  },
+  {
+    label: "Mail Interno",
+    icon: InboxArrowDownIcon,
+    url: "/mail/inbox",
+    f: 3,
+  },
+
+  {
+    label: "Cerrar Sesion",
+    icon: PowerIcon,
+    url: "#",
+    f: 1,
+  },
 ];
 
-export const ProfileMenu = () => {
+export const ProfileMenu = ({ user, msj, orde, prest }) => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const closeMenu = () => setIsMenuOpen(false);
 
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-    const closeMenu = () => setIsMenuOpen(false);
+  return (
+    <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
+      <MenuHandler>
+        <Button
+          variant="text"
+          color="white"
+          className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
+        >
+          {msj > 0 ? (
+            <Badge overlap="circular" placement="bottom-end">
+              <Avatar
+                variant="circular"
+                size="sm"
+                alt="candice wu"
+                className={`  ${
+                  msj > 0
+                    ? "border-2 p-0.5 border-red-900"
+                    : "border p-0.5 border-blue-500"
+                }`}
+                src="https://png.pngtree.com/png-clipart/20210915/ourlarge/pngtree-user-avatar-login-interface-abstract-blue-icon-png-image_3917504.jpg"
+              />
+            </Badge>
+          ) : (
+            <Avatar
+              variant="circular"
+              size="sm"
+              alt="candice wu"
+              className={`  ${
+                msj > 0
+                  ? "border-2 p-0.5 border-red-900"
+                  : "border p-0.5 border-blue-500"
+              }`}
+              src="https://png.pngtree.com/png-clipart/20210915/ourlarge/pngtree-user-avatar-login-interface-abstract-blue-icon-png-image_3917504.jpg"
+            />
+          )}
 
-    return (
-        <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
-            <MenuHandler>
-                <Button
-                    variant="text"
-                    color="white"
-                    className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
+          <ChevronDownIcon
+            strokeWidth={2.5}
+            className={`h-3 w-3 transition-transform ${
+              isMenuOpen ? "rotate-180" : ""
+            }`}
+          />
+        </Button>
+      </MenuHandler>
+
+      <MenuList className="p-1">
+        <MenuItem className="flex items-end gap-2 rounded">
+          <Typography as="span" variant="small" className="font-normal ml-5">
+            <u>Usuario</u>: {user.usuario}
+          </Typography>
+        </MenuItem>
+        <hr className="" />
+        {profileMenuItems.map(({ label, icon, url, f, user }, key) => {
+          const isLastItem = key === profileMenuItems.length - 1;
+          return (
+            <MenuItem
+              key={label}
+              onClick={closeMenu}
+              className={`flex items-center gap-2 rounded ${
+                isLastItem
+                  ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+                  : ""
+              }`}
+            >
+              {React.createElement(icon, {
+                className: `h-5 w-5 ${isLastItem ? "text-red-500" : ""}`,
+                strokeWidth: 2,
+              })}
+              <Link
+                href={`${url}`}
+                onClick={() => {
+                  if (f === 1) {
+                    jsCookie.remove("usuario");
+                    jsCookie.remove("token");
+                    setTimeout(() => {
+                      Router.replace("/");
+                      window.location.reload();
+                    }, 500);
+                  }
+                }}
+              >
+                {f === 2 ? (
+                  <Badge content={msj + orde + prest} withBorder />
+                ) : f === 3 ? (
+                  <Badge content={msj} withBorder />
+                ) : null}
+                <Typography
+                  as="span"
+                  variant="small"
+                  className="font-normal"
+                  color={isLastItem ? "red" : "inherit"}
                 >
-                    <Avatar
-                        variant="circular"
-                        size="sm"
-                        alt="candice wu"
-                        className="border border-blue-500 p-0.5"
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-                    />
-                    <ChevronDownIcon
-                        strokeWidth={2.5}
-                        className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""
-                            }`}
-                    />
-                </Button>
-            </MenuHandler>
-            <MenuList className="p-1">
-                {profileMenuItems.map(({ label, icon }, key) => {
-                    const isLastItem = key === profileMenuItems.length - 1;
-                    return (
-                        <MenuItem
-                            key={label}
-                            onClick={closeMenu}
-                            className={`flex items-center gap-2 rounded ${isLastItem
-                                ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                                : ""
-                                }`}
-                        >
-                            {React.createElement(icon, {
-                                className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
-                                strokeWidth: 2,
-                            })}
-                            <Typography
-                                as="span"
-                                variant="small"
-                                className="font-normal"
-                                color={isLastItem ? "red" : "inherit"}
-                            >
-                                {label}
-                            </Typography>
-                        </MenuItem>
-                    );
-                })}
-            </MenuList>
-        </Menu>
-    );
-}
+                  {label}
+                </Typography>
+              </Link>
+            </MenuItem>
+          );
+        })}
+      </MenuList>
+    </Menu>
+  );
+};

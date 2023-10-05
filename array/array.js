@@ -16,8 +16,6 @@ export const acciones = [
   { value: 19, label: "COMP. PAGO NO EFECTIVO" },
   { value: 20, label: "DOMICILIO INEXISTENTE" },
   { value: 21, label: "NOTIFICACION BAJO PUERTA" },
-
-
 ];
 
 export const nueavaaccion = [
@@ -26,9 +24,7 @@ export const nueavaaccion = [
   { value: 12, label: "PASA POR OFICINA" },
   { value: 16, label: "DEBITO" },
   { value: 17, label: "CREDITO" },
-
 ];
-
 
 export const sucursales = [
   { value: 1, label: "CASA CENTRAL" },
@@ -36,7 +32,6 @@ export const sucursales = [
   { value: 5, label: "PERICO" },
   { value: 60, label: "SAN PEDRO" },
 ];
-
 
 export const meses = [
   { value: 1, label: "ENERO" },
@@ -102,7 +97,6 @@ export const anos = [
   { value: 2023, label: "2023" },
   { value: 2024, label: "2024" },
   { value: 2025, label: "2025" },
-
 ];
 
 export const conceptossep = [
@@ -507,7 +501,6 @@ export const capitalaprest = [
   { value: "15000", label: "15000" },
   { value: "20000", label: "20000" },
   { value: "30000", label: "30000" },
-
 ];
 
 export const cuotasprest = [
@@ -533,9 +526,7 @@ export const estadocartera = [
   { value: 0, label: "Atrasados 1000 Cobrador" },
   { value: 1, label: "Atrasados 1000 Oficina" },
   { value: 2, label: "Atrasados Tarjetas" },
-  { value: 3, label: "Baches Banco" },
-  { value: 4, label: "Morosos 1001" },
-  { value: 5, label: "Morosos Tarjetas" },
+  { value: 3, label: "Atrasados Banco" },
 ];
 
 export const cartera = [
@@ -543,7 +534,6 @@ export const cartera = [
   { value: 1, label: "Tarjetas" },
   { value: 2, label: "Bancos" },
   { value: 3, label: "Policia" },
-
 ];
 
 export const zonas = [
@@ -554,18 +544,10 @@ export const zonas = [
   { value: 60, label: "Oficina San Pedro" },
 ];
 
-export const zonaPal = [
-  { value: 3, label: "Oficina Palpala" },
-];
+export const zonaPal = [{ value: 3, label: "Oficina Palpala" }];
 
-export const zonaPer = [
-  { value: 5, label: "Oficina Perico" },
-];
+export const zonaPer = [{ value: 5, label: "Oficina Perico" }];
 
-export const zonaSP = [
-  { value: 60, label: "Oficina San Pedro" },
-];
+export const zonaSP = [{ value: 60, label: "Oficina San Pedro" }];
 
-export const zonaCC = [
-  { value: 1, label: "Oficina Casa Central" },
-];
+export const zonaCC = [{ value: 1, label: "Oficina Casa Central" }];

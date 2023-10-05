@@ -65,8 +65,8 @@ model alta_novell {
   barrio_sol          String?   @db.VarChar(255)
   localidad_sol       String?   @db.VarChar(255)
   codpostal_sol       Int?
-  telefono_sol        BigInt?
-  movil_sol           BigInt?
+  telefono_sol        String?   @db.VarChar(255)
+  movil_sol           String?   @db.VarChar(255)
   apellido_ben        String?   @db.VarChar(255)
   nombre_ben          String?   @db.VarChar(255)
   dni_ben             Int?
@@ -78,8 +78,8 @@ model alta_novell {
   barrio_ben          String?   @db.VarChar(255)
   localidad_ben       String?   @db.VarChar(255)
   codpostal_ben       Int?
-  telefono_ben        BigInt?
-  movil_ben           BigInt?
+  telefono_ben        String?   @db.VarChar(255)
+  movil_ben           String?   @db.VarChar(255)
   operador            String?   @db.VarChar(255)
   cuotas              Int?
   nacionalidad_sol    String?   @db.VarChar(255)
@@ -90,25 +90,6 @@ model alta_novell {
   cuota_mantenimiento Int?
 }
 
-model caja {
-  idcaja      Int       @id @default(autoincrement())
-  codigo      Int?
-  cuenta      String?   @db.VarChar(255)
-  tipo        String?   @db.VarChar(255)
-  serie       Int?
-  factura     Int?
-  importe     Float?    @db.Float
-  comentarios String?   @db.VarChar(255)
-  nro_caja    Int?
-  movim       String?   @db.VarChar(5)
-  fecha       DateTime? @db.Date
-  puesto      Int?
-  operador    Int?
-  cuit        String?   @db.VarChar(255)
-  proveedor   String?   @db.VarChar(255)
-  sucursal    String?   @db.VarChar(255)
-}
-
 model caja_sucursales {
   idcaja         Int       @id @default(autoincrement())
   fecha_carga    DateTime? @db.Date
@@ -117,7 +98,7 @@ model caja_sucursales {
   egresos        Float?    @db.Float
   saldo          Float?    @db.Float
   operador_carga String?   @db.VarChar(255)
-  empresa        String?   @db.VarChar(1)
+  empresa        String?   @db.VarChar(10)
 }
 
 model campanacasos {
@@ -367,7 +348,7 @@ model historial_acciones {
 model historial_aprobacion_prestamos {
   idaprobacion Int       @id @default(autoincrement())
   operador     String?   @db.VarChar(255)
-  idprestamo   String?   @db.VarChar(255)
+  idprestamo   Int?
   fecha        DateTime? @db.Timestamp(0)
   contrato     Int?
   afiliado     String?   @db.VarChar(255)
@@ -585,20 +566,28 @@ model openia_keys {
 }
 
 model operador {
-  id         Int      @id @default(autoincrement())
-  nombre     String   @db.VarChar(255)
-  apellido   String   @db.VarChar(255)
-  usuario    String   @db.VarChar(255)
-  contrasena String   @db.VarChar(255)
-  createdAt  DateTime @db.DateTime(0)
-  updatedAt  DateTime @db.DateTime(0)
-  puestom    Int?
-  perfil     Int?
-  estado     Boolean?
-  puestow    Int?
-  codigo     Int?
-  medicos    Boolean?
-  sucursal   String?  @db.VarChar(255)
+  id             Int      @id @default(autoincrement())
+  nombre         String   @db.VarChar(255)
+  apellido       String   @db.VarChar(255)
+  usuario        String   @db.VarChar(255)
+  contrasena     String   @db.VarChar(255)
+  createdAt      DateTime @db.DateTime(0)
+  updatedAt      DateTime @db.DateTime(0)
+  puestom        Int?
+  perfil         Int?
+  estado         Boolean?
+  puestow        Int?
+  codigo         Int?
+  medicos        Boolean?
+  sucursal       String?  @db.VarChar(255)
+  prestamos      Boolean?
+  ordenpago      Boolean?
+  clubwerchow    Boolean?
+  ventas         Boolean?
+  administracion Boolean?
+  campanas       Boolean?
+  socios         Boolean?
+  sepelio        Boolean?
 }
 
 model ordenes_pago {
@@ -886,4 +875,33 @@ model prestamos_tasas {
   plan   String?  @db.VarChar(255)
   tipo   String?  @db.VarChar(255)
   estado Boolean?
+}
+
+model certificado_estudiantes {
+  idcertificado Int       @id @default(autoincrement())
+  contrato      Int?
+  socio         String?   @db.VarChar(255)
+  fecha         DateTime? @db.Date
+  operador      String?   @db.VarChar(255)
+  ncert         String?   @db.VarChar(255)
+}
+
+model cartera {
+  contrato  Int?      @unique(map: "contrato")
+  socio     String?   @db.VarChar(30)
+  alta      DateTime? @db.Date
+  grupo     Int?
+  adhs      Int?
+  plan      String?   @db.VarChar(2)
+  sub_plan  String?   @db.VarChar(2)
+  zona      Int?
+  cuota     Float?
+  empresa   String?   @db.VarChar(1)
+  sucursal  String?   @db.VarChar(1)
+  deuda     Int?
+  mes       Int?
+  ano       Int?
+  idcartera Int       @id @default(autoincrement())
+
+  @@index([zona], map: "zona")
 }

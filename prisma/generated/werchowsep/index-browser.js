@@ -563,6 +563,53 @@ exports.Prisma.Parcelas_lugaresScalarFieldEnum = {
   operador: 'operador'
 };
 
+exports.Prisma.Caja_saScalarFieldEnum = {
+  idcaja: 'idcaja',
+  codigo: 'codigo',
+  cuenta: 'cuenta',
+  tipo: 'tipo',
+  serie: 'serie',
+  factura: 'factura',
+  importe: 'importe',
+  comentarios: 'comentarios',
+  nro_caja: 'nro_caja',
+  movim: 'movim',
+  fecha: 'fecha',
+  puesto: 'puesto',
+  operador: 'operador',
+  cuit: 'cuit',
+  proveedor: 'proveedor',
+  sucursal: 'sucursal'
+};
+
+exports.Prisma.Caja_srlScalarFieldEnum = {
+  idcaja: 'idcaja',
+  codigo: 'codigo',
+  cuenta: 'cuenta',
+  tipo: 'tipo',
+  serie: 'serie',
+  factura: 'factura',
+  importe: 'importe',
+  comentarios: 'comentarios',
+  nro_caja: 'nro_caja',
+  movim: 'movim',
+  fecha: 'fecha',
+  puesto: 'puesto',
+  operador: 'operador',
+  cuit: 'cuit',
+  proveedor: 'proveedor',
+  sucursal: 'sucursal'
+};
+
+exports.Prisma.Generacion_cajasScalarFieldEnum = {
+  idgeneracion: 'idgeneracion',
+  desde: 'desde',
+  hasta: 'hasta',
+  empresa: 'empresa',
+  operador: 'operador',
+  fecha: 'fecha'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -608,7 +655,10 @@ exports.Prisma.ModelName = {
   tareas_adicionales: 'tareas_adicionales',
   tipo_detalle: 'tipo_detalle',
   visitantes: 'visitantes',
-  parcelas_lugares: 'parcelas_lugares'
+  parcelas_lugares: 'parcelas_lugares',
+  caja_sa: 'caja_sa',
+  caja_srl: 'caja_srl',
+  generacion_cajas: 'generacion_cajas'
 };
 
 /**
