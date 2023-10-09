@@ -13,16 +13,13 @@ model AUT_PRAC {
   ESP_PRAC   String?   @db.VarChar(3)
   CODIGOS    String?   @db.VarChar(8)
   DESCRIP    String?   @db.VarChar(1500)
-  INOS       Float?
   FECHA_ALT  DateTime? @db.Date
   ANULADO    Int?      @db.TinyInt
-  OPERADOR   Int?
-  OPE_ANULA  Int?
   COD_PRES01 String?   @db.VarChar(5)
-  PRECIO_01  Float?
+  PRECIO_01  String?   @db.VarChar(255)
   SUC_01     String?   @db.VarChar(1)
   COD_PRES02 String?   @db.VarChar(255)
-  PRECIO_02  Float?
+  PRECIO_02  String?   @db.VarChar(255)
   SUC_02     String?   @db.VarChar(1)
   COD_PRES03 String?   @db.VarChar(5)
   PRECIO_03  String?   @db.VarChar(255)
@@ -46,10 +43,10 @@ model AUT_PRAC {
   PRECIO_09  Float?
   SUC_09     String?   @db.VarChar(1)
   COD_PRES10 String?   @db.VarChar(5)
-  PRECIO_10  Float?
+  PRECIO_10  String?   @db.VarChar(255)
   SUC_10     String?   @db.VarChar(1)
   COD_PRES11 String?   @db.VarChar(5)
-  PRECIO_11  Float?
+  PRECIO_11  String?   @db.VarChar(255)
   SUC_11     String?   @db.VarChar(1)
   COD_PRES12 String?   @db.VarChar(5)
   PRECIO_12  String?   @db.VarChar(255)
@@ -185,6 +182,8 @@ model FARMA {
   NOMBRE  String? @db.VarChar(20)
   COMPLEM Int?
   CON_35  Int?
+  DESC    String? @db.VarChar(255)
+  DESC2   String? @db.VarChar(255)
 
   @@ignore
 }
@@ -225,26 +224,18 @@ model HIS_SERV {
 }
 
 model MEDICOS_TURNOS {
-  idturno  Int       @id @default(autoincrement())
-  turno    String?   @db.VarChar(255)
-  fecha    DateTime? @db.Date
-  hora     DateTime? @db.Time(0)
-  doctor   String?   @db.VarChar(255)
-  paciente String?   @db.VarChar(255)
-  obra_soc String?   @db.VarChar(255)
-  telefono BigInt?
-  estado   Int?      @db.TinyInt
-  operador String?   @db.VarChar(255)
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model NUEVOS {
-  CODIGO      String? @db.VarChar(255)
-  DESCRIPCION String? @db.VarChar(255)
-  UNIDADES    String? @db.VarChar(255)
-  VALOR_TOT   String? @db.VarChar(255)
-
-  @@ignore
+  idturno   Int       @id @default(autoincrement())
+  turno     String?   @db.VarChar(255)
+  fecha     DateTime? @db.Date
+  hora      DateTime? @db.Time(0)
+  doctor    String?   @db.VarChar(255)
+  paciente  String?   @db.VarChar(255)
+  obra_soc  String?   @db.VarChar(255)
+  telefono  BigInt?
+  estado    Int?      @db.TinyInt
+  operador  String?   @db.VarChar(255)
+  domicilio String?   @db.VarChar(1000)
+  mail      String?   @db.VarChar(500)
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
@@ -260,26 +251,6 @@ model OPTICA {
   OPERADOR  Int?
   OPE_ANU   Int?
   PUESTO    String?   @db.VarChar(2)
-
-  @@ignore
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model PLAN2021 {
-  CUENTA    String? @db.VarChar(10)
-  DESCRIP   String? @db.VarChar(30)
-  IMPUTABLE Int?    @db.TinyInt
-  FIJA      Int?    @db.TinyInt
-  AUXI      String? @db.VarChar(10)
-
-  @@ignore
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model PLANES {
-  PLAN     String? @db.VarChar(1)
-  SUB_PLAN String? @db.VarChar(2)
-  DESCRIP  String? @db.VarChar(20)
 
   @@ignore
 }
@@ -314,36 +285,22 @@ model PRESTADO {
   ESPEC      String?   @db.VarChar(15)
   LIS_ESPE   String?   @db.VarChar(30)
   SUC        String?   @db.VarChar(1)
-  DIRECCION  String?   @db.VarChar(30)
+  DIRECCION  String?   @db.VarChar(255)
   LOCALIDAD  String?   @db.VarChar(15)
   TELEFONOS  String?   @db.VarChar(15)
   HORARIO1   String?   @db.VarChar(30)
   HORARIO2   String?   @db.VarChar(30)
   MODALIDAD  String?   @db.VarChar(60)
-  EN_BASE    Int?      @db.TinyInt
-  REINTEGRO  Int?      @db.TinyInt
-  DESCUENTO  Int?      @db.TinyInt
-  MAX_DESC   Float?
-  MAX_DESCA  Float?
-  MAX_DESCB  Float?
-  MAX_DESCC  Float?
-  MAX_DESCM  Float?
-  MAX_DESCS  Float?
-  PRECIO_99  Float?
   MATRICULA  String?   @db.VarChar(10)
   COD_POST   Int?
   AUSENTE    Int?      @db.TinyInt
   DESDE      DateTime? @db.Date
   HASTA      DateTime? @db.Date
-  MENS_AUS   String?   @db.VarChar(30)
   CUIT       String?   @db.VarChar(13)
   FEC_NAC    DateTime? @db.Date
-  COD_OPER   Int?
   LUGAR      Int?
   MALA_PRAXI Int?      @db.TinyInt
-  VENCE_SEG  DateTime? @db.Date
-  DESC_PLANI Int?      @db.TinyInt
-  CON_PAGA   Float?
+  CON_PAGA   Int?
   ALTA       DateTime? @db.Date
   BAJA       DateTime? @db.Date
   OTERO      Int?      @db.TinyInt
@@ -392,7 +349,7 @@ model USOS {
   NUSOS         Int?
   MODALIDAD     String?   @db.VarChar(1)
   VALOR         Float?
-  IMPORTE       Float?
+  IMPORTE       Float?    @db.Float
   PUESTO        String?   @db.VarChar(2)
   PRESTADO      String?   @db.VarChar(5)
   ANULADO       Int?      @db.TinyInt
@@ -404,7 +361,7 @@ model USOS {
   CONTROL       Boolean?
   NORDEN        String?   @db.VarChar(255)
   FECHA_CONTROL DateTime? @db.Date
-  IMP_LIQ       Float?    @db.Float
+  IMP_LIQ       String?   @db.VarChar(255)
 }
 
 model USOSFA {

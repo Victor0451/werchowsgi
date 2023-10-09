@@ -18,16 +18,13 @@ export type AUT_PRACPayload<ExtArgs extends $Extensions.Args = $Extensions.Defau
     ESP_PRAC: string | null
     CODIGOS: string | null
     DESCRIP: string | null
-    INOS: number | null
     FECHA_ALT: Date | null
     ANULADO: number | null
-    OPERADOR: number | null
-    OPE_ANULA: number | null
     COD_PRES01: string | null
-    PRECIO_01: number | null
+    PRECIO_01: string | null
     SUC_01: string | null
     COD_PRES02: string | null
-    PRECIO_02: number | null
+    PRECIO_02: string | null
     SUC_02: string | null
     COD_PRES03: string | null
     PRECIO_03: string | null
@@ -51,10 +48,10 @@ export type AUT_PRACPayload<ExtArgs extends $Extensions.Args = $Extensions.Defau
     PRECIO_09: number | null
     SUC_09: string | null
     COD_PRES10: string | null
-    PRECIO_10: number | null
+    PRECIO_10: string | null
     SUC_10: string | null
     COD_PRES11: string | null
-    PRECIO_11: number | null
+    PRECIO_11: string | null
     SUC_11: string | null
     COD_PRES12: string | null
     PRECIO_12: string | null
@@ -223,6 +220,8 @@ export type MEDICOS_TURNOSPayload<ExtArgs extends $Extensions.Args = $Extensions
     telefono: bigint | null
     estado: number | null
     operador: string | null
+    domicilio: string | null
+    mail: string | null
   }, ExtArgs["result"]["mEDICOS_TURNOS"]>
   composites: {}
 }
@@ -288,29 +287,15 @@ export type PRESTADOPayload<ExtArgs extends $Extensions.Args = $Extensions.Defau
     HORARIO1: string | null
     HORARIO2: string | null
     MODALIDAD: string | null
-    EN_BASE: number | null
-    REINTEGRO: number | null
-    DESCUENTO: number | null
-    MAX_DESC: number | null
-    MAX_DESCA: number | null
-    MAX_DESCB: number | null
-    MAX_DESCC: number | null
-    MAX_DESCM: number | null
-    MAX_DESCS: number | null
-    PRECIO_99: number | null
     MATRICULA: string | null
     COD_POST: number | null
     AUSENTE: number | null
     DESDE: Date | null
     HASTA: Date | null
-    MENS_AUS: string | null
     CUIT: string | null
     FEC_NAC: Date | null
-    COD_OPER: number | null
     LUGAR: number | null
     MALA_PRAXI: number | null
-    VENCE_SEG: Date | null
-    DESC_PLANI: number | null
     CON_PAGA: number | null
     ALTA: Date | null
     BAJA: Date | null
@@ -357,7 +342,7 @@ export type USOSPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
     CONTROL: boolean | null
     NORDEN: string | null
     FECHA_CONTROL: Date | null
-    IMP_LIQ: number | null
+    IMP_LIQ: string | null
   }, ExtArgs["result"]["uSOS"]>
   composites: {}
 }
@@ -2791,19 +2776,12 @@ export namespace Prisma {
   }
 
   export type AUT_PRACAvgAggregateOutputType = {
-    INOS: number | null
     ANULADO: number | null
-    OPERADOR: number | null
-    OPE_ANULA: number | null
-    PRECIO_01: number | null
-    PRECIO_02: number | null
     PRECIO_05: number | null
     PRECIO_06: number | null
     PRECIO_07: number | null
     PRECIO_08: number | null
     PRECIO_09: number | null
-    PRECIO_10: number | null
-    PRECIO_11: number | null
     PRECIO_16: number | null
     PRECIO_17: number | null
     PRECIO_18: number | null
@@ -2813,19 +2791,12 @@ export namespace Prisma {
   }
 
   export type AUT_PRACSumAggregateOutputType = {
-    INOS: number | null
     ANULADO: number | null
-    OPERADOR: number | null
-    OPE_ANULA: number | null
-    PRECIO_01: number | null
-    PRECIO_02: number | null
     PRECIO_05: number | null
     PRECIO_06: number | null
     PRECIO_07: number | null
     PRECIO_08: number | null
     PRECIO_09: number | null
-    PRECIO_10: number | null
-    PRECIO_11: number | null
     PRECIO_16: number | null
     PRECIO_17: number | null
     PRECIO_18: number | null
@@ -2838,16 +2809,13 @@ export namespace Prisma {
     ESP_PRAC: string | null
     CODIGOS: string | null
     DESCRIP: string | null
-    INOS: number | null
     FECHA_ALT: Date | null
     ANULADO: number | null
-    OPERADOR: number | null
-    OPE_ANULA: number | null
     COD_PRES01: string | null
-    PRECIO_01: number | null
+    PRECIO_01: string | null
     SUC_01: string | null
     COD_PRES02: string | null
-    PRECIO_02: number | null
+    PRECIO_02: string | null
     SUC_02: string | null
     COD_PRES03: string | null
     PRECIO_03: string | null
@@ -2871,10 +2839,10 @@ export namespace Prisma {
     PRECIO_09: number | null
     SUC_09: string | null
     COD_PRES10: string | null
-    PRECIO_10: number | null
+    PRECIO_10: string | null
     SUC_10: string | null
     COD_PRES11: string | null
-    PRECIO_11: number | null
+    PRECIO_11: string | null
     SUC_11: string | null
     COD_PRES12: string | null
     PRECIO_12: string | null
@@ -2910,16 +2878,13 @@ export namespace Prisma {
     ESP_PRAC: string | null
     CODIGOS: string | null
     DESCRIP: string | null
-    INOS: number | null
     FECHA_ALT: Date | null
     ANULADO: number | null
-    OPERADOR: number | null
-    OPE_ANULA: number | null
     COD_PRES01: string | null
-    PRECIO_01: number | null
+    PRECIO_01: string | null
     SUC_01: string | null
     COD_PRES02: string | null
-    PRECIO_02: number | null
+    PRECIO_02: string | null
     SUC_02: string | null
     COD_PRES03: string | null
     PRECIO_03: string | null
@@ -2943,10 +2908,10 @@ export namespace Prisma {
     PRECIO_09: number | null
     SUC_09: string | null
     COD_PRES10: string | null
-    PRECIO_10: number | null
+    PRECIO_10: string | null
     SUC_10: string | null
     COD_PRES11: string | null
-    PRECIO_11: number | null
+    PRECIO_11: string | null
     SUC_11: string | null
     COD_PRES12: string | null
     PRECIO_12: string | null
@@ -2982,11 +2947,8 @@ export namespace Prisma {
     ESP_PRAC: number
     CODIGOS: number
     DESCRIP: number
-    INOS: number
     FECHA_ALT: number
     ANULADO: number
-    OPERADOR: number
-    OPE_ANULA: number
     COD_PRES01: number
     PRECIO_01: number
     SUC_01: number
@@ -3053,19 +3015,12 @@ export namespace Prisma {
 
 
   export type AUT_PRACAvgAggregateInputType = {
-    INOS?: true
     ANULADO?: true
-    OPERADOR?: true
-    OPE_ANULA?: true
-    PRECIO_01?: true
-    PRECIO_02?: true
     PRECIO_05?: true
     PRECIO_06?: true
     PRECIO_07?: true
     PRECIO_08?: true
     PRECIO_09?: true
-    PRECIO_10?: true
-    PRECIO_11?: true
     PRECIO_16?: true
     PRECIO_17?: true
     PRECIO_18?: true
@@ -3075,19 +3030,12 @@ export namespace Prisma {
   }
 
   export type AUT_PRACSumAggregateInputType = {
-    INOS?: true
     ANULADO?: true
-    OPERADOR?: true
-    OPE_ANULA?: true
-    PRECIO_01?: true
-    PRECIO_02?: true
     PRECIO_05?: true
     PRECIO_06?: true
     PRECIO_07?: true
     PRECIO_08?: true
     PRECIO_09?: true
-    PRECIO_10?: true
-    PRECIO_11?: true
     PRECIO_16?: true
     PRECIO_17?: true
     PRECIO_18?: true
@@ -3100,11 +3048,8 @@ export namespace Prisma {
     ESP_PRAC?: true
     CODIGOS?: true
     DESCRIP?: true
-    INOS?: true
     FECHA_ALT?: true
     ANULADO?: true
-    OPERADOR?: true
-    OPE_ANULA?: true
     COD_PRES01?: true
     PRECIO_01?: true
     SUC_01?: true
@@ -3172,11 +3117,8 @@ export namespace Prisma {
     ESP_PRAC?: true
     CODIGOS?: true
     DESCRIP?: true
-    INOS?: true
     FECHA_ALT?: true
     ANULADO?: true
-    OPERADOR?: true
-    OPE_ANULA?: true
     COD_PRES01?: true
     PRECIO_01?: true
     SUC_01?: true
@@ -3244,11 +3186,8 @@ export namespace Prisma {
     ESP_PRAC?: true
     CODIGOS?: true
     DESCRIP?: true
-    INOS?: true
     FECHA_ALT?: true
     ANULADO?: true
-    OPERADOR?: true
-    OPE_ANULA?: true
     COD_PRES01?: true
     PRECIO_01?: true
     SUC_01?: true
@@ -3404,16 +3343,13 @@ export namespace Prisma {
     ESP_PRAC: string | null
     CODIGOS: string | null
     DESCRIP: string | null
-    INOS: number | null
     FECHA_ALT: Date | null
     ANULADO: number | null
-    OPERADOR: number | null
-    OPE_ANULA: number | null
     COD_PRES01: string | null
-    PRECIO_01: number | null
+    PRECIO_01: string | null
     SUC_01: string | null
     COD_PRES02: string | null
-    PRECIO_02: number | null
+    PRECIO_02: string | null
     SUC_02: string | null
     COD_PRES03: string | null
     PRECIO_03: string | null
@@ -3437,10 +3373,10 @@ export namespace Prisma {
     PRECIO_09: number | null
     SUC_09: string | null
     COD_PRES10: string | null
-    PRECIO_10: number | null
+    PRECIO_10: string | null
     SUC_10: string | null
     COD_PRES11: string | null
-    PRECIO_11: number | null
+    PRECIO_11: string | null
     SUC_11: string | null
     COD_PRES12: string | null
     PRECIO_12: string | null
@@ -3495,11 +3431,8 @@ export namespace Prisma {
     ESP_PRAC?: boolean
     CODIGOS?: boolean
     DESCRIP?: boolean
-    INOS?: boolean
     FECHA_ALT?: boolean
     ANULADO?: boolean
-    OPERADOR?: boolean
-    OPE_ANULA?: boolean
     COD_PRES01?: boolean
     PRECIO_01?: boolean
     SUC_01?: boolean
@@ -3567,11 +3500,8 @@ export namespace Prisma {
     ESP_PRAC?: boolean
     CODIGOS?: boolean
     DESCRIP?: boolean
-    INOS?: boolean
     FECHA_ALT?: boolean
     ANULADO?: boolean
-    OPERADOR?: boolean
-    OPE_ANULA?: boolean
     COD_PRES01?: boolean
     PRECIO_01?: boolean
     SUC_01?: boolean
@@ -8570,6 +8500,8 @@ export namespace Prisma {
     telefono: bigint | null
     estado: number | null
     operador: string | null
+    domicilio: string | null
+    mail: string | null
   }
 
   export type MEDICOS_TURNOSMaxAggregateOutputType = {
@@ -8583,6 +8515,8 @@ export namespace Prisma {
     telefono: bigint | null
     estado: number | null
     operador: string | null
+    domicilio: string | null
+    mail: string | null
   }
 
   export type MEDICOS_TURNOSCountAggregateOutputType = {
@@ -8596,6 +8530,8 @@ export namespace Prisma {
     telefono: number
     estado: number
     operador: number
+    domicilio: number
+    mail: number
     _all: number
   }
 
@@ -8623,6 +8559,8 @@ export namespace Prisma {
     telefono?: true
     estado?: true
     operador?: true
+    domicilio?: true
+    mail?: true
   }
 
   export type MEDICOS_TURNOSMaxAggregateInputType = {
@@ -8636,6 +8574,8 @@ export namespace Prisma {
     telefono?: true
     estado?: true
     operador?: true
+    domicilio?: true
+    mail?: true
   }
 
   export type MEDICOS_TURNOSCountAggregateInputType = {
@@ -8649,6 +8589,8 @@ export namespace Prisma {
     telefono?: true
     estado?: true
     operador?: true
+    domicilio?: true
+    mail?: true
     _all?: true
   }
 
@@ -8750,6 +8692,8 @@ export namespace Prisma {
     telefono: bigint | null
     estado: number | null
     operador: string | null
+    domicilio: string | null
+    mail: string | null
     _count: MEDICOS_TURNOSCountAggregateOutputType | null
     _avg: MEDICOS_TURNOSAvgAggregateOutputType | null
     _sum: MEDICOS_TURNOSSumAggregateOutputType | null
@@ -8782,6 +8726,8 @@ export namespace Prisma {
     telefono?: boolean
     estado?: boolean
     operador?: boolean
+    domicilio?: boolean
+    mail?: boolean
   }, ExtArgs["result"]["mEDICOS_TURNOS"]>
 
   export type MEDICOS_TURNOSSelectScalar = {
@@ -8795,6 +8741,8 @@ export namespace Prisma {
     telefono?: boolean
     estado?: boolean
     operador?: boolean
+    domicilio?: boolean
+    mail?: boolean
   }
 
 
@@ -11437,44 +11385,20 @@ export namespace Prisma {
   }
 
   export type PRESTADOAvgAggregateOutputType = {
-    EN_BASE: number | null
-    REINTEGRO: number | null
-    DESCUENTO: number | null
-    MAX_DESC: number | null
-    MAX_DESCA: number | null
-    MAX_DESCB: number | null
-    MAX_DESCC: number | null
-    MAX_DESCM: number | null
-    MAX_DESCS: number | null
-    PRECIO_99: number | null
     COD_POST: number | null
     AUSENTE: number | null
-    COD_OPER: number | null
     LUGAR: number | null
     MALA_PRAXI: number | null
-    DESC_PLANI: number | null
     CON_PAGA: number | null
     OTERO: number | null
     idprest: number | null
   }
 
   export type PRESTADOSumAggregateOutputType = {
-    EN_BASE: number | null
-    REINTEGRO: number | null
-    DESCUENTO: number | null
-    MAX_DESC: number | null
-    MAX_DESCA: number | null
-    MAX_DESCB: number | null
-    MAX_DESCC: number | null
-    MAX_DESCM: number | null
-    MAX_DESCS: number | null
-    PRECIO_99: number | null
     COD_POST: number | null
     AUSENTE: number | null
-    COD_OPER: number | null
     LUGAR: number | null
     MALA_PRAXI: number | null
-    DESC_PLANI: number | null
     CON_PAGA: number | null
     OTERO: number | null
     idprest: number | null
@@ -11492,29 +11416,15 @@ export namespace Prisma {
     HORARIO1: string | null
     HORARIO2: string | null
     MODALIDAD: string | null
-    EN_BASE: number | null
-    REINTEGRO: number | null
-    DESCUENTO: number | null
-    MAX_DESC: number | null
-    MAX_DESCA: number | null
-    MAX_DESCB: number | null
-    MAX_DESCC: number | null
-    MAX_DESCM: number | null
-    MAX_DESCS: number | null
-    PRECIO_99: number | null
     MATRICULA: string | null
     COD_POST: number | null
     AUSENTE: number | null
     DESDE: Date | null
     HASTA: Date | null
-    MENS_AUS: string | null
     CUIT: string | null
     FEC_NAC: Date | null
-    COD_OPER: number | null
     LUGAR: number | null
     MALA_PRAXI: number | null
-    VENCE_SEG: Date | null
-    DESC_PLANI: number | null
     CON_PAGA: number | null
     ALTA: Date | null
     BAJA: Date | null
@@ -11535,29 +11445,15 @@ export namespace Prisma {
     HORARIO1: string | null
     HORARIO2: string | null
     MODALIDAD: string | null
-    EN_BASE: number | null
-    REINTEGRO: number | null
-    DESCUENTO: number | null
-    MAX_DESC: number | null
-    MAX_DESCA: number | null
-    MAX_DESCB: number | null
-    MAX_DESCC: number | null
-    MAX_DESCM: number | null
-    MAX_DESCS: number | null
-    PRECIO_99: number | null
     MATRICULA: string | null
     COD_POST: number | null
     AUSENTE: number | null
     DESDE: Date | null
     HASTA: Date | null
-    MENS_AUS: string | null
     CUIT: string | null
     FEC_NAC: Date | null
-    COD_OPER: number | null
     LUGAR: number | null
     MALA_PRAXI: number | null
-    VENCE_SEG: Date | null
-    DESC_PLANI: number | null
     CON_PAGA: number | null
     ALTA: Date | null
     BAJA: Date | null
@@ -11578,29 +11474,15 @@ export namespace Prisma {
     HORARIO1: number
     HORARIO2: number
     MODALIDAD: number
-    EN_BASE: number
-    REINTEGRO: number
-    DESCUENTO: number
-    MAX_DESC: number
-    MAX_DESCA: number
-    MAX_DESCB: number
-    MAX_DESCC: number
-    MAX_DESCM: number
-    MAX_DESCS: number
-    PRECIO_99: number
     MATRICULA: number
     COD_POST: number
     AUSENTE: number
     DESDE: number
     HASTA: number
-    MENS_AUS: number
     CUIT: number
     FEC_NAC: number
-    COD_OPER: number
     LUGAR: number
     MALA_PRAXI: number
-    VENCE_SEG: number
-    DESC_PLANI: number
     CON_PAGA: number
     ALTA: number
     BAJA: number
@@ -11612,44 +11494,20 @@ export namespace Prisma {
 
 
   export type PRESTADOAvgAggregateInputType = {
-    EN_BASE?: true
-    REINTEGRO?: true
-    DESCUENTO?: true
-    MAX_DESC?: true
-    MAX_DESCA?: true
-    MAX_DESCB?: true
-    MAX_DESCC?: true
-    MAX_DESCM?: true
-    MAX_DESCS?: true
-    PRECIO_99?: true
     COD_POST?: true
     AUSENTE?: true
-    COD_OPER?: true
     LUGAR?: true
     MALA_PRAXI?: true
-    DESC_PLANI?: true
     CON_PAGA?: true
     OTERO?: true
     idprest?: true
   }
 
   export type PRESTADOSumAggregateInputType = {
-    EN_BASE?: true
-    REINTEGRO?: true
-    DESCUENTO?: true
-    MAX_DESC?: true
-    MAX_DESCA?: true
-    MAX_DESCB?: true
-    MAX_DESCC?: true
-    MAX_DESCM?: true
-    MAX_DESCS?: true
-    PRECIO_99?: true
     COD_POST?: true
     AUSENTE?: true
-    COD_OPER?: true
     LUGAR?: true
     MALA_PRAXI?: true
-    DESC_PLANI?: true
     CON_PAGA?: true
     OTERO?: true
     idprest?: true
@@ -11667,29 +11525,15 @@ export namespace Prisma {
     HORARIO1?: true
     HORARIO2?: true
     MODALIDAD?: true
-    EN_BASE?: true
-    REINTEGRO?: true
-    DESCUENTO?: true
-    MAX_DESC?: true
-    MAX_DESCA?: true
-    MAX_DESCB?: true
-    MAX_DESCC?: true
-    MAX_DESCM?: true
-    MAX_DESCS?: true
-    PRECIO_99?: true
     MATRICULA?: true
     COD_POST?: true
     AUSENTE?: true
     DESDE?: true
     HASTA?: true
-    MENS_AUS?: true
     CUIT?: true
     FEC_NAC?: true
-    COD_OPER?: true
     LUGAR?: true
     MALA_PRAXI?: true
-    VENCE_SEG?: true
-    DESC_PLANI?: true
     CON_PAGA?: true
     ALTA?: true
     BAJA?: true
@@ -11710,29 +11554,15 @@ export namespace Prisma {
     HORARIO1?: true
     HORARIO2?: true
     MODALIDAD?: true
-    EN_BASE?: true
-    REINTEGRO?: true
-    DESCUENTO?: true
-    MAX_DESC?: true
-    MAX_DESCA?: true
-    MAX_DESCB?: true
-    MAX_DESCC?: true
-    MAX_DESCM?: true
-    MAX_DESCS?: true
-    PRECIO_99?: true
     MATRICULA?: true
     COD_POST?: true
     AUSENTE?: true
     DESDE?: true
     HASTA?: true
-    MENS_AUS?: true
     CUIT?: true
     FEC_NAC?: true
-    COD_OPER?: true
     LUGAR?: true
     MALA_PRAXI?: true
-    VENCE_SEG?: true
-    DESC_PLANI?: true
     CON_PAGA?: true
     ALTA?: true
     BAJA?: true
@@ -11753,29 +11583,15 @@ export namespace Prisma {
     HORARIO1?: true
     HORARIO2?: true
     MODALIDAD?: true
-    EN_BASE?: true
-    REINTEGRO?: true
-    DESCUENTO?: true
-    MAX_DESC?: true
-    MAX_DESCA?: true
-    MAX_DESCB?: true
-    MAX_DESCC?: true
-    MAX_DESCM?: true
-    MAX_DESCS?: true
-    PRECIO_99?: true
     MATRICULA?: true
     COD_POST?: true
     AUSENTE?: true
     DESDE?: true
     HASTA?: true
-    MENS_AUS?: true
     CUIT?: true
     FEC_NAC?: true
-    COD_OPER?: true
     LUGAR?: true
     MALA_PRAXI?: true
-    VENCE_SEG?: true
-    DESC_PLANI?: true
     CON_PAGA?: true
     ALTA?: true
     BAJA?: true
@@ -11884,29 +11700,15 @@ export namespace Prisma {
     HORARIO1: string | null
     HORARIO2: string | null
     MODALIDAD: string | null
-    EN_BASE: number | null
-    REINTEGRO: number | null
-    DESCUENTO: number | null
-    MAX_DESC: number | null
-    MAX_DESCA: number | null
-    MAX_DESCB: number | null
-    MAX_DESCC: number | null
-    MAX_DESCM: number | null
-    MAX_DESCS: number | null
-    PRECIO_99: number | null
     MATRICULA: string | null
     COD_POST: number | null
     AUSENTE: number | null
     DESDE: Date | null
     HASTA: Date | null
-    MENS_AUS: string | null
     CUIT: string | null
     FEC_NAC: Date | null
-    COD_OPER: number | null
     LUGAR: number | null
     MALA_PRAXI: number | null
-    VENCE_SEG: Date | null
-    DESC_PLANI: number | null
     CON_PAGA: number | null
     ALTA: Date | null
     BAJA: Date | null
@@ -11946,29 +11748,15 @@ export namespace Prisma {
     HORARIO1?: boolean
     HORARIO2?: boolean
     MODALIDAD?: boolean
-    EN_BASE?: boolean
-    REINTEGRO?: boolean
-    DESCUENTO?: boolean
-    MAX_DESC?: boolean
-    MAX_DESCA?: boolean
-    MAX_DESCB?: boolean
-    MAX_DESCC?: boolean
-    MAX_DESCM?: boolean
-    MAX_DESCS?: boolean
-    PRECIO_99?: boolean
     MATRICULA?: boolean
     COD_POST?: boolean
     AUSENTE?: boolean
     DESDE?: boolean
     HASTA?: boolean
-    MENS_AUS?: boolean
     CUIT?: boolean
     FEC_NAC?: boolean
-    COD_OPER?: boolean
     LUGAR?: boolean
     MALA_PRAXI?: boolean
-    VENCE_SEG?: boolean
-    DESC_PLANI?: boolean
     CON_PAGA?: boolean
     ALTA?: boolean
     BAJA?: boolean
@@ -11989,29 +11777,15 @@ export namespace Prisma {
     HORARIO1?: boolean
     HORARIO2?: boolean
     MODALIDAD?: boolean
-    EN_BASE?: boolean
-    REINTEGRO?: boolean
-    DESCUENTO?: boolean
-    MAX_DESC?: boolean
-    MAX_DESCA?: boolean
-    MAX_DESCB?: boolean
-    MAX_DESCC?: boolean
-    MAX_DESCM?: boolean
-    MAX_DESCS?: boolean
-    PRECIO_99?: boolean
     MATRICULA?: boolean
     COD_POST?: boolean
     AUSENTE?: boolean
     DESDE?: boolean
     HASTA?: boolean
-    MENS_AUS?: boolean
     CUIT?: boolean
     FEC_NAC?: boolean
-    COD_OPER?: boolean
     LUGAR?: boolean
     MALA_PRAXI?: boolean
-    VENCE_SEG?: boolean
-    DESC_PLANI?: boolean
     CON_PAGA?: boolean
     ALTA?: boolean
     BAJA?: boolean
@@ -12746,7 +12520,6 @@ export namespace Prisma {
     ANULADO: number | null
     RENDIDO: number | null
     iduso: number | null
-    IMP_LIQ: number | null
   }
 
   export type USOSSumAggregateOutputType = {
@@ -12760,7 +12533,6 @@ export namespace Prisma {
     ANULADO: number | null
     RENDIDO: number | null
     iduso: number | null
-    IMP_LIQ: number | null
   }
 
   export type USOSMinAggregateOutputType = {
@@ -12792,7 +12564,7 @@ export namespace Prisma {
     CONTROL: boolean | null
     NORDEN: string | null
     FECHA_CONTROL: Date | null
-    IMP_LIQ: number | null
+    IMP_LIQ: string | null
   }
 
   export type USOSMaxAggregateOutputType = {
@@ -12824,7 +12596,7 @@ export namespace Prisma {
     CONTROL: boolean | null
     NORDEN: string | null
     FECHA_CONTROL: Date | null
-    IMP_LIQ: number | null
+    IMP_LIQ: string | null
   }
 
   export type USOSCountAggregateOutputType = {
@@ -12872,7 +12644,6 @@ export namespace Prisma {
     ANULADO?: true
     RENDIDO?: true
     iduso?: true
-    IMP_LIQ?: true
   }
 
   export type USOSSumAggregateInputType = {
@@ -12886,7 +12657,6 @@ export namespace Prisma {
     ANULADO?: true
     RENDIDO?: true
     iduso?: true
-    IMP_LIQ?: true
   }
 
   export type USOSMinAggregateInputType = {
@@ -13102,7 +12872,7 @@ export namespace Prisma {
     CONTROL: boolean | null
     NORDEN: string | null
     FECHA_CONTROL: Date | null
-    IMP_LIQ: number | null
+    IMP_LIQ: string | null
     _count: USOSCountAggregateOutputType | null
     _avg: USOSAvgAggregateOutputType | null
     _sum: USOSSumAggregateOutputType | null
@@ -19948,11 +19718,8 @@ export namespace Prisma {
     ESP_PRAC: 'ESP_PRAC',
     CODIGOS: 'CODIGOS',
     DESCRIP: 'DESCRIP',
-    INOS: 'INOS',
     FECHA_ALT: 'FECHA_ALT',
     ANULADO: 'ANULADO',
-    OPERADOR: 'OPERADOR',
-    OPE_ANULA: 'OPE_ANULA',
     COD_PRES01: 'COD_PRES01',
     PRECIO_01: 'PRECIO_01',
     SUC_01: 'SUC_01',
@@ -20122,7 +19889,9 @@ export namespace Prisma {
     obra_soc: 'obra_soc',
     telefono: 'telefono',
     estado: 'estado',
-    operador: 'operador'
+    operador: 'operador',
+    domicilio: 'domicilio',
+    mail: 'mail'
   };
 
   export type MEDICOS_TURNOSScalarFieldEnum = (typeof MEDICOS_TURNOSScalarFieldEnum)[keyof typeof MEDICOS_TURNOSScalarFieldEnum]
@@ -20170,29 +19939,15 @@ export namespace Prisma {
     HORARIO1: 'HORARIO1',
     HORARIO2: 'HORARIO2',
     MODALIDAD: 'MODALIDAD',
-    EN_BASE: 'EN_BASE',
-    REINTEGRO: 'REINTEGRO',
-    DESCUENTO: 'DESCUENTO',
-    MAX_DESC: 'MAX_DESC',
-    MAX_DESCA: 'MAX_DESCA',
-    MAX_DESCB: 'MAX_DESCB',
-    MAX_DESCC: 'MAX_DESCC',
-    MAX_DESCM: 'MAX_DESCM',
-    MAX_DESCS: 'MAX_DESCS',
-    PRECIO_99: 'PRECIO_99',
     MATRICULA: 'MATRICULA',
     COD_POST: 'COD_POST',
     AUSENTE: 'AUSENTE',
     DESDE: 'DESDE',
     HASTA: 'HASTA',
-    MENS_AUS: 'MENS_AUS',
     CUIT: 'CUIT',
     FEC_NAC: 'FEC_NAC',
-    COD_OPER: 'COD_OPER',
     LUGAR: 'LUGAR',
     MALA_PRAXI: 'MALA_PRAXI',
-    VENCE_SEG: 'VENCE_SEG',
-    DESC_PLANI: 'DESC_PLANI',
     CON_PAGA: 'CON_PAGA',
     ALTA: 'ALTA',
     BAJA: 'BAJA',
@@ -20389,16 +20144,13 @@ export namespace Prisma {
     ESP_PRAC?: StringNullableFilter | string | null
     CODIGOS?: StringNullableFilter | string | null
     DESCRIP?: StringNullableFilter | string | null
-    INOS?: FloatNullableFilter | number | null
     FECHA_ALT?: DateTimeNullableFilter | Date | string | null
     ANULADO?: IntNullableFilter | number | null
-    OPERADOR?: IntNullableFilter | number | null
-    OPE_ANULA?: IntNullableFilter | number | null
     COD_PRES01?: StringNullableFilter | string | null
-    PRECIO_01?: FloatNullableFilter | number | null
+    PRECIO_01?: StringNullableFilter | string | null
     SUC_01?: StringNullableFilter | string | null
     COD_PRES02?: StringNullableFilter | string | null
-    PRECIO_02?: FloatNullableFilter | number | null
+    PRECIO_02?: StringNullableFilter | string | null
     SUC_02?: StringNullableFilter | string | null
     COD_PRES03?: StringNullableFilter | string | null
     PRECIO_03?: StringNullableFilter | string | null
@@ -20422,10 +20174,10 @@ export namespace Prisma {
     PRECIO_09?: FloatNullableFilter | number | null
     SUC_09?: StringNullableFilter | string | null
     COD_PRES10?: StringNullableFilter | string | null
-    PRECIO_10?: FloatNullableFilter | number | null
+    PRECIO_10?: StringNullableFilter | string | null
     SUC_10?: StringNullableFilter | string | null
     COD_PRES11?: StringNullableFilter | string | null
-    PRECIO_11?: FloatNullableFilter | number | null
+    PRECIO_11?: StringNullableFilter | string | null
     SUC_11?: StringNullableFilter | string | null
     COD_PRES12?: StringNullableFilter | string | null
     PRECIO_12?: StringNullableFilter | string | null
@@ -20461,11 +20213,8 @@ export namespace Prisma {
     ESP_PRAC?: SortOrderInput | SortOrder
     CODIGOS?: SortOrderInput | SortOrder
     DESCRIP?: SortOrderInput | SortOrder
-    INOS?: SortOrderInput | SortOrder
     FECHA_ALT?: SortOrderInput | SortOrder
     ANULADO?: SortOrderInput | SortOrder
-    OPERADOR?: SortOrderInput | SortOrder
-    OPE_ANULA?: SortOrderInput | SortOrder
     COD_PRES01?: SortOrderInput | SortOrder
     PRECIO_01?: SortOrderInput | SortOrder
     SUC_01?: SortOrderInput | SortOrder
@@ -20537,11 +20286,8 @@ export namespace Prisma {
     ESP_PRAC?: SortOrderInput | SortOrder
     CODIGOS?: SortOrderInput | SortOrder
     DESCRIP?: SortOrderInput | SortOrder
-    INOS?: SortOrderInput | SortOrder
     FECHA_ALT?: SortOrderInput | SortOrder
     ANULADO?: SortOrderInput | SortOrder
-    OPERADOR?: SortOrderInput | SortOrder
-    OPE_ANULA?: SortOrderInput | SortOrder
     COD_PRES01?: SortOrderInput | SortOrder
     PRECIO_01?: SortOrderInput | SortOrder
     SUC_01?: SortOrderInput | SortOrder
@@ -20617,16 +20363,13 @@ export namespace Prisma {
     ESP_PRAC?: StringNullableWithAggregatesFilter | string | null
     CODIGOS?: StringNullableWithAggregatesFilter | string | null
     DESCRIP?: StringNullableWithAggregatesFilter | string | null
-    INOS?: FloatNullableWithAggregatesFilter | number | null
     FECHA_ALT?: DateTimeNullableWithAggregatesFilter | Date | string | null
     ANULADO?: IntNullableWithAggregatesFilter | number | null
-    OPERADOR?: IntNullableWithAggregatesFilter | number | null
-    OPE_ANULA?: IntNullableWithAggregatesFilter | number | null
     COD_PRES01?: StringNullableWithAggregatesFilter | string | null
-    PRECIO_01?: FloatNullableWithAggregatesFilter | number | null
+    PRECIO_01?: StringNullableWithAggregatesFilter | string | null
     SUC_01?: StringNullableWithAggregatesFilter | string | null
     COD_PRES02?: StringNullableWithAggregatesFilter | string | null
-    PRECIO_02?: FloatNullableWithAggregatesFilter | number | null
+    PRECIO_02?: StringNullableWithAggregatesFilter | string | null
     SUC_02?: StringNullableWithAggregatesFilter | string | null
     COD_PRES03?: StringNullableWithAggregatesFilter | string | null
     PRECIO_03?: StringNullableWithAggregatesFilter | string | null
@@ -20650,10 +20393,10 @@ export namespace Prisma {
     PRECIO_09?: FloatNullableWithAggregatesFilter | number | null
     SUC_09?: StringNullableWithAggregatesFilter | string | null
     COD_PRES10?: StringNullableWithAggregatesFilter | string | null
-    PRECIO_10?: FloatNullableWithAggregatesFilter | number | null
+    PRECIO_10?: StringNullableWithAggregatesFilter | string | null
     SUC_10?: StringNullableWithAggregatesFilter | string | null
     COD_PRES11?: StringNullableWithAggregatesFilter | string | null
-    PRECIO_11?: FloatNullableWithAggregatesFilter | number | null
+    PRECIO_11?: StringNullableWithAggregatesFilter | string | null
     SUC_11?: StringNullableWithAggregatesFilter | string | null
     COD_PRES12?: StringNullableWithAggregatesFilter | string | null
     PRECIO_12?: StringNullableWithAggregatesFilter | string | null
@@ -21083,6 +20826,8 @@ export namespace Prisma {
     telefono?: BigIntNullableFilter | bigint | number | null
     estado?: IntNullableFilter | number | null
     operador?: StringNullableFilter | string | null
+    domicilio?: StringNullableFilter | string | null
+    mail?: StringNullableFilter | string | null
   }
 
   export type MEDICOS_TURNOSOrderByWithRelationInput = {
@@ -21096,6 +20841,8 @@ export namespace Prisma {
     telefono?: SortOrderInput | SortOrder
     estado?: SortOrderInput | SortOrder
     operador?: SortOrderInput | SortOrder
+    domicilio?: SortOrderInput | SortOrder
+    mail?: SortOrderInput | SortOrder
   }
 
   export type MEDICOS_TURNOSWhereUniqueInput = {
@@ -21113,6 +20860,8 @@ export namespace Prisma {
     telefono?: SortOrderInput | SortOrder
     estado?: SortOrderInput | SortOrder
     operador?: SortOrderInput | SortOrder
+    domicilio?: SortOrderInput | SortOrder
+    mail?: SortOrderInput | SortOrder
     _count?: MEDICOS_TURNOSCountOrderByAggregateInput
     _avg?: MEDICOS_TURNOSAvgOrderByAggregateInput
     _max?: MEDICOS_TURNOSMaxOrderByAggregateInput
@@ -21134,6 +20883,8 @@ export namespace Prisma {
     telefono?: BigIntNullableWithAggregatesFilter | bigint | number | null
     estado?: IntNullableWithAggregatesFilter | number | null
     operador?: StringNullableWithAggregatesFilter | string | null
+    domicilio?: StringNullableWithAggregatesFilter | string | null
+    mail?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type PRACTICAWhereInput = {
@@ -21277,30 +21028,16 @@ export namespace Prisma {
     HORARIO1?: StringNullableFilter | string | null
     HORARIO2?: StringNullableFilter | string | null
     MODALIDAD?: StringNullableFilter | string | null
-    EN_BASE?: IntNullableFilter | number | null
-    REINTEGRO?: IntNullableFilter | number | null
-    DESCUENTO?: IntNullableFilter | number | null
-    MAX_DESC?: FloatNullableFilter | number | null
-    MAX_DESCA?: FloatNullableFilter | number | null
-    MAX_DESCB?: FloatNullableFilter | number | null
-    MAX_DESCC?: FloatNullableFilter | number | null
-    MAX_DESCM?: FloatNullableFilter | number | null
-    MAX_DESCS?: FloatNullableFilter | number | null
-    PRECIO_99?: FloatNullableFilter | number | null
     MATRICULA?: StringNullableFilter | string | null
     COD_POST?: IntNullableFilter | number | null
     AUSENTE?: IntNullableFilter | number | null
     DESDE?: DateTimeNullableFilter | Date | string | null
     HASTA?: DateTimeNullableFilter | Date | string | null
-    MENS_AUS?: StringNullableFilter | string | null
     CUIT?: StringNullableFilter | string | null
     FEC_NAC?: DateTimeNullableFilter | Date | string | null
-    COD_OPER?: IntNullableFilter | number | null
     LUGAR?: IntNullableFilter | number | null
     MALA_PRAXI?: IntNullableFilter | number | null
-    VENCE_SEG?: DateTimeNullableFilter | Date | string | null
-    DESC_PLANI?: IntNullableFilter | number | null
-    CON_PAGA?: FloatNullableFilter | number | null
+    CON_PAGA?: IntNullableFilter | number | null
     ALTA?: DateTimeNullableFilter | Date | string | null
     BAJA?: DateTimeNullableFilter | Date | string | null
     OTERO?: IntNullableFilter | number | null
@@ -21320,29 +21057,15 @@ export namespace Prisma {
     HORARIO1?: SortOrderInput | SortOrder
     HORARIO2?: SortOrderInput | SortOrder
     MODALIDAD?: SortOrderInput | SortOrder
-    EN_BASE?: SortOrderInput | SortOrder
-    REINTEGRO?: SortOrderInput | SortOrder
-    DESCUENTO?: SortOrderInput | SortOrder
-    MAX_DESC?: SortOrderInput | SortOrder
-    MAX_DESCA?: SortOrderInput | SortOrder
-    MAX_DESCB?: SortOrderInput | SortOrder
-    MAX_DESCC?: SortOrderInput | SortOrder
-    MAX_DESCM?: SortOrderInput | SortOrder
-    MAX_DESCS?: SortOrderInput | SortOrder
-    PRECIO_99?: SortOrderInput | SortOrder
     MATRICULA?: SortOrderInput | SortOrder
     COD_POST?: SortOrderInput | SortOrder
     AUSENTE?: SortOrderInput | SortOrder
     DESDE?: SortOrderInput | SortOrder
     HASTA?: SortOrderInput | SortOrder
-    MENS_AUS?: SortOrderInput | SortOrder
     CUIT?: SortOrderInput | SortOrder
     FEC_NAC?: SortOrderInput | SortOrder
-    COD_OPER?: SortOrderInput | SortOrder
     LUGAR?: SortOrderInput | SortOrder
     MALA_PRAXI?: SortOrderInput | SortOrder
-    VENCE_SEG?: SortOrderInput | SortOrder
-    DESC_PLANI?: SortOrderInput | SortOrder
     CON_PAGA?: SortOrderInput | SortOrder
     ALTA?: SortOrderInput | SortOrder
     BAJA?: SortOrderInput | SortOrder
@@ -21367,29 +21090,15 @@ export namespace Prisma {
     HORARIO1?: SortOrderInput | SortOrder
     HORARIO2?: SortOrderInput | SortOrder
     MODALIDAD?: SortOrderInput | SortOrder
-    EN_BASE?: SortOrderInput | SortOrder
-    REINTEGRO?: SortOrderInput | SortOrder
-    DESCUENTO?: SortOrderInput | SortOrder
-    MAX_DESC?: SortOrderInput | SortOrder
-    MAX_DESCA?: SortOrderInput | SortOrder
-    MAX_DESCB?: SortOrderInput | SortOrder
-    MAX_DESCC?: SortOrderInput | SortOrder
-    MAX_DESCM?: SortOrderInput | SortOrder
-    MAX_DESCS?: SortOrderInput | SortOrder
-    PRECIO_99?: SortOrderInput | SortOrder
     MATRICULA?: SortOrderInput | SortOrder
     COD_POST?: SortOrderInput | SortOrder
     AUSENTE?: SortOrderInput | SortOrder
     DESDE?: SortOrderInput | SortOrder
     HASTA?: SortOrderInput | SortOrder
-    MENS_AUS?: SortOrderInput | SortOrder
     CUIT?: SortOrderInput | SortOrder
     FEC_NAC?: SortOrderInput | SortOrder
-    COD_OPER?: SortOrderInput | SortOrder
     LUGAR?: SortOrderInput | SortOrder
     MALA_PRAXI?: SortOrderInput | SortOrder
-    VENCE_SEG?: SortOrderInput | SortOrder
-    DESC_PLANI?: SortOrderInput | SortOrder
     CON_PAGA?: SortOrderInput | SortOrder
     ALTA?: SortOrderInput | SortOrder
     BAJA?: SortOrderInput | SortOrder
@@ -21418,30 +21127,16 @@ export namespace Prisma {
     HORARIO1?: StringNullableWithAggregatesFilter | string | null
     HORARIO2?: StringNullableWithAggregatesFilter | string | null
     MODALIDAD?: StringNullableWithAggregatesFilter | string | null
-    EN_BASE?: IntNullableWithAggregatesFilter | number | null
-    REINTEGRO?: IntNullableWithAggregatesFilter | number | null
-    DESCUENTO?: IntNullableWithAggregatesFilter | number | null
-    MAX_DESC?: FloatNullableWithAggregatesFilter | number | null
-    MAX_DESCA?: FloatNullableWithAggregatesFilter | number | null
-    MAX_DESCB?: FloatNullableWithAggregatesFilter | number | null
-    MAX_DESCC?: FloatNullableWithAggregatesFilter | number | null
-    MAX_DESCM?: FloatNullableWithAggregatesFilter | number | null
-    MAX_DESCS?: FloatNullableWithAggregatesFilter | number | null
-    PRECIO_99?: FloatNullableWithAggregatesFilter | number | null
     MATRICULA?: StringNullableWithAggregatesFilter | string | null
     COD_POST?: IntNullableWithAggregatesFilter | number | null
     AUSENTE?: IntNullableWithAggregatesFilter | number | null
     DESDE?: DateTimeNullableWithAggregatesFilter | Date | string | null
     HASTA?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    MENS_AUS?: StringNullableWithAggregatesFilter | string | null
     CUIT?: StringNullableWithAggregatesFilter | string | null
     FEC_NAC?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    COD_OPER?: IntNullableWithAggregatesFilter | number | null
     LUGAR?: IntNullableWithAggregatesFilter | number | null
     MALA_PRAXI?: IntNullableWithAggregatesFilter | number | null
-    VENCE_SEG?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    DESC_PLANI?: IntNullableWithAggregatesFilter | number | null
-    CON_PAGA?: FloatNullableWithAggregatesFilter | number | null
+    CON_PAGA?: IntNullableWithAggregatesFilter | number | null
     ALTA?: DateTimeNullableWithAggregatesFilter | Date | string | null
     BAJA?: DateTimeNullableWithAggregatesFilter | Date | string | null
     OTERO?: IntNullableWithAggregatesFilter | number | null
@@ -21481,7 +21176,7 @@ export namespace Prisma {
     CONTROL?: BoolNullableFilter | boolean | null
     NORDEN?: StringNullableFilter | string | null
     FECHA_CONTROL?: DateTimeNullableFilter | Date | string | null
-    IMP_LIQ?: FloatNullableFilter | number | null
+    IMP_LIQ?: StringNullableFilter | string | null
   }
 
   export type USOSOrderByWithRelationInput = {
@@ -21589,7 +21284,7 @@ export namespace Prisma {
     CONTROL?: BoolNullableWithAggregatesFilter | boolean | null
     NORDEN?: StringNullableWithAggregatesFilter | string | null
     FECHA_CONTROL?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    IMP_LIQ?: FloatNullableWithAggregatesFilter | number | null
+    IMP_LIQ?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type USOSFAWhereInput = {
@@ -22102,16 +21797,13 @@ export namespace Prisma {
     ESP_PRAC?: string | null
     CODIGOS?: string | null
     DESCRIP?: string | null
-    INOS?: number | null
     FECHA_ALT?: Date | string | null
     ANULADO?: number | null
-    OPERADOR?: number | null
-    OPE_ANULA?: number | null
     COD_PRES01?: string | null
-    PRECIO_01?: number | null
+    PRECIO_01?: string | null
     SUC_01?: string | null
     COD_PRES02?: string | null
-    PRECIO_02?: number | null
+    PRECIO_02?: string | null
     SUC_02?: string | null
     COD_PRES03?: string | null
     PRECIO_03?: string | null
@@ -22135,10 +21827,10 @@ export namespace Prisma {
     PRECIO_09?: number | null
     SUC_09?: string | null
     COD_PRES10?: string | null
-    PRECIO_10?: number | null
+    PRECIO_10?: string | null
     SUC_10?: string | null
     COD_PRES11?: string | null
-    PRECIO_11?: number | null
+    PRECIO_11?: string | null
     SUC_11?: string | null
     COD_PRES12?: string | null
     PRECIO_12?: string | null
@@ -22173,16 +21865,13 @@ export namespace Prisma {
     ESP_PRAC?: string | null
     CODIGOS?: string | null
     DESCRIP?: string | null
-    INOS?: number | null
     FECHA_ALT?: Date | string | null
     ANULADO?: number | null
-    OPERADOR?: number | null
-    OPE_ANULA?: number | null
     COD_PRES01?: string | null
-    PRECIO_01?: number | null
+    PRECIO_01?: string | null
     SUC_01?: string | null
     COD_PRES02?: string | null
-    PRECIO_02?: number | null
+    PRECIO_02?: string | null
     SUC_02?: string | null
     COD_PRES03?: string | null
     PRECIO_03?: string | null
@@ -22206,10 +21895,10 @@ export namespace Prisma {
     PRECIO_09?: number | null
     SUC_09?: string | null
     COD_PRES10?: string | null
-    PRECIO_10?: number | null
+    PRECIO_10?: string | null
     SUC_10?: string | null
     COD_PRES11?: string | null
-    PRECIO_11?: number | null
+    PRECIO_11?: string | null
     SUC_11?: string | null
     COD_PRES12?: string | null
     PRECIO_12?: string | null
@@ -22245,16 +21934,13 @@ export namespace Prisma {
     ESP_PRAC?: NullableStringFieldUpdateOperationsInput | string | null
     CODIGOS?: NullableStringFieldUpdateOperationsInput | string | null
     DESCRIP?: NullableStringFieldUpdateOperationsInput | string | null
-    INOS?: NullableFloatFieldUpdateOperationsInput | number | null
     FECHA_ALT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ANULADO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
-    OPE_ANULA?: NullableIntFieldUpdateOperationsInput | number | null
     COD_PRES01?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_01?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_01?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_01?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES02?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_02?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_02?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_02?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES03?: NullableStringFieldUpdateOperationsInput | string | null
     PRECIO_03?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22278,10 +21964,10 @@ export namespace Prisma {
     PRECIO_09?: NullableFloatFieldUpdateOperationsInput | number | null
     SUC_09?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES10?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_10?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_10?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_10?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES11?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_11?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_11?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_11?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES12?: NullableStringFieldUpdateOperationsInput | string | null
     PRECIO_12?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22316,16 +22002,13 @@ export namespace Prisma {
     ESP_PRAC?: NullableStringFieldUpdateOperationsInput | string | null
     CODIGOS?: NullableStringFieldUpdateOperationsInput | string | null
     DESCRIP?: NullableStringFieldUpdateOperationsInput | string | null
-    INOS?: NullableFloatFieldUpdateOperationsInput | number | null
     FECHA_ALT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ANULADO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
-    OPE_ANULA?: NullableIntFieldUpdateOperationsInput | number | null
     COD_PRES01?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_01?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_01?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_01?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES02?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_02?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_02?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_02?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES03?: NullableStringFieldUpdateOperationsInput | string | null
     PRECIO_03?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22349,10 +22032,10 @@ export namespace Prisma {
     PRECIO_09?: NullableFloatFieldUpdateOperationsInput | number | null
     SUC_09?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES10?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_10?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_10?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_10?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES11?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_11?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_11?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_11?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES12?: NullableStringFieldUpdateOperationsInput | string | null
     PRECIO_12?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22388,16 +22071,13 @@ export namespace Prisma {
     ESP_PRAC?: string | null
     CODIGOS?: string | null
     DESCRIP?: string | null
-    INOS?: number | null
     FECHA_ALT?: Date | string | null
     ANULADO?: number | null
-    OPERADOR?: number | null
-    OPE_ANULA?: number | null
     COD_PRES01?: string | null
-    PRECIO_01?: number | null
+    PRECIO_01?: string | null
     SUC_01?: string | null
     COD_PRES02?: string | null
-    PRECIO_02?: number | null
+    PRECIO_02?: string | null
     SUC_02?: string | null
     COD_PRES03?: string | null
     PRECIO_03?: string | null
@@ -22421,10 +22101,10 @@ export namespace Prisma {
     PRECIO_09?: number | null
     SUC_09?: string | null
     COD_PRES10?: string | null
-    PRECIO_10?: number | null
+    PRECIO_10?: string | null
     SUC_10?: string | null
     COD_PRES11?: string | null
-    PRECIO_11?: number | null
+    PRECIO_11?: string | null
     SUC_11?: string | null
     COD_PRES12?: string | null
     PRECIO_12?: string | null
@@ -22460,16 +22140,13 @@ export namespace Prisma {
     ESP_PRAC?: NullableStringFieldUpdateOperationsInput | string | null
     CODIGOS?: NullableStringFieldUpdateOperationsInput | string | null
     DESCRIP?: NullableStringFieldUpdateOperationsInput | string | null
-    INOS?: NullableFloatFieldUpdateOperationsInput | number | null
     FECHA_ALT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ANULADO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
-    OPE_ANULA?: NullableIntFieldUpdateOperationsInput | number | null
     COD_PRES01?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_01?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_01?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_01?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES02?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_02?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_02?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_02?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES03?: NullableStringFieldUpdateOperationsInput | string | null
     PRECIO_03?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22493,10 +22170,10 @@ export namespace Prisma {
     PRECIO_09?: NullableFloatFieldUpdateOperationsInput | number | null
     SUC_09?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES10?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_10?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_10?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_10?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES11?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_11?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_11?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_11?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES12?: NullableStringFieldUpdateOperationsInput | string | null
     PRECIO_12?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22531,16 +22208,13 @@ export namespace Prisma {
     ESP_PRAC?: NullableStringFieldUpdateOperationsInput | string | null
     CODIGOS?: NullableStringFieldUpdateOperationsInput | string | null
     DESCRIP?: NullableStringFieldUpdateOperationsInput | string | null
-    INOS?: NullableFloatFieldUpdateOperationsInput | number | null
     FECHA_ALT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ANULADO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
-    OPE_ANULA?: NullableIntFieldUpdateOperationsInput | number | null
     COD_PRES01?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_01?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_01?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_01?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES02?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_02?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_02?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_02?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES03?: NullableStringFieldUpdateOperationsInput | string | null
     PRECIO_03?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22564,10 +22238,10 @@ export namespace Prisma {
     PRECIO_09?: NullableFloatFieldUpdateOperationsInput | number | null
     SUC_09?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES10?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_10?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_10?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_10?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES11?: NullableStringFieldUpdateOperationsInput | string | null
-    PRECIO_11?: NullableFloatFieldUpdateOperationsInput | number | null
+    PRECIO_11?: NullableStringFieldUpdateOperationsInput | string | null
     SUC_11?: NullableStringFieldUpdateOperationsInput | string | null
     COD_PRES12?: NullableStringFieldUpdateOperationsInput | string | null
     PRECIO_12?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23164,6 +22838,8 @@ export namespace Prisma {
     telefono?: bigint | number | null
     estado?: number | null
     operador?: string | null
+    domicilio?: string | null
+    mail?: string | null
   }
 
   export type MEDICOS_TURNOSUncheckedCreateInput = {
@@ -23177,6 +22853,8 @@ export namespace Prisma {
     telefono?: bigint | number | null
     estado?: number | null
     operador?: string | null
+    domicilio?: string | null
+    mail?: string | null
   }
 
   export type MEDICOS_TURNOSUpdateInput = {
@@ -23189,6 +22867,8 @@ export namespace Prisma {
     telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     estado?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    mail?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MEDICOS_TURNOSUncheckedUpdateInput = {
@@ -23202,6 +22882,8 @@ export namespace Prisma {
     telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     estado?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    mail?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MEDICOS_TURNOSCreateManyInput = {
@@ -23215,6 +22897,8 @@ export namespace Prisma {
     telefono?: bigint | number | null
     estado?: number | null
     operador?: string | null
+    domicilio?: string | null
+    mail?: string | null
   }
 
   export type MEDICOS_TURNOSUpdateManyMutationInput = {
@@ -23227,6 +22911,8 @@ export namespace Prisma {
     telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     estado?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    mail?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MEDICOS_TURNOSUncheckedUpdateManyInput = {
@@ -23240,6 +22926,8 @@ export namespace Prisma {
     telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     estado?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    mail?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PRACTICACreateInput = {
@@ -23416,29 +23104,15 @@ export namespace Prisma {
     HORARIO1?: string | null
     HORARIO2?: string | null
     MODALIDAD?: string | null
-    EN_BASE?: number | null
-    REINTEGRO?: number | null
-    DESCUENTO?: number | null
-    MAX_DESC?: number | null
-    MAX_DESCA?: number | null
-    MAX_DESCB?: number | null
-    MAX_DESCC?: number | null
-    MAX_DESCM?: number | null
-    MAX_DESCS?: number | null
-    PRECIO_99?: number | null
     MATRICULA?: string | null
     COD_POST?: number | null
     AUSENTE?: number | null
     DESDE?: Date | string | null
     HASTA?: Date | string | null
-    MENS_AUS?: string | null
     CUIT?: string | null
     FEC_NAC?: Date | string | null
-    COD_OPER?: number | null
     LUGAR?: number | null
     MALA_PRAXI?: number | null
-    VENCE_SEG?: Date | string | null
-    DESC_PLANI?: number | null
     CON_PAGA?: number | null
     ALTA?: Date | string | null
     BAJA?: Date | string | null
@@ -23458,29 +23132,15 @@ export namespace Prisma {
     HORARIO1?: string | null
     HORARIO2?: string | null
     MODALIDAD?: string | null
-    EN_BASE?: number | null
-    REINTEGRO?: number | null
-    DESCUENTO?: number | null
-    MAX_DESC?: number | null
-    MAX_DESCA?: number | null
-    MAX_DESCB?: number | null
-    MAX_DESCC?: number | null
-    MAX_DESCM?: number | null
-    MAX_DESCS?: number | null
-    PRECIO_99?: number | null
     MATRICULA?: string | null
     COD_POST?: number | null
     AUSENTE?: number | null
     DESDE?: Date | string | null
     HASTA?: Date | string | null
-    MENS_AUS?: string | null
     CUIT?: string | null
     FEC_NAC?: Date | string | null
-    COD_OPER?: number | null
     LUGAR?: number | null
     MALA_PRAXI?: number | null
-    VENCE_SEG?: Date | string | null
-    DESC_PLANI?: number | null
     CON_PAGA?: number | null
     ALTA?: Date | string | null
     BAJA?: Date | string | null
@@ -23501,30 +23161,16 @@ export namespace Prisma {
     HORARIO1?: NullableStringFieldUpdateOperationsInput | string | null
     HORARIO2?: NullableStringFieldUpdateOperationsInput | string | null
     MODALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
-    EN_BASE?: NullableIntFieldUpdateOperationsInput | number | null
-    REINTEGRO?: NullableIntFieldUpdateOperationsInput | number | null
-    DESCUENTO?: NullableIntFieldUpdateOperationsInput | number | null
-    MAX_DESC?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCA?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCB?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCC?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCM?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCS?: NullableFloatFieldUpdateOperationsInput | number | null
-    PRECIO_99?: NullableFloatFieldUpdateOperationsInput | number | null
     MATRICULA?: NullableStringFieldUpdateOperationsInput | string | null
     COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
     AUSENTE?: NullableIntFieldUpdateOperationsInput | number | null
     DESDE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     HASTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    MENS_AUS?: NullableStringFieldUpdateOperationsInput | string | null
     CUIT?: NullableStringFieldUpdateOperationsInput | string | null
     FEC_NAC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    COD_OPER?: NullableIntFieldUpdateOperationsInput | number | null
     LUGAR?: NullableIntFieldUpdateOperationsInput | number | null
     MALA_PRAXI?: NullableIntFieldUpdateOperationsInput | number | null
-    VENCE_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    DESC_PLANI?: NullableIntFieldUpdateOperationsInput | number | null
-    CON_PAGA?: NullableFloatFieldUpdateOperationsInput | number | null
+    CON_PAGA?: NullableIntFieldUpdateOperationsInput | number | null
     ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     OTERO?: NullableIntFieldUpdateOperationsInput | number | null
@@ -23543,30 +23189,16 @@ export namespace Prisma {
     HORARIO1?: NullableStringFieldUpdateOperationsInput | string | null
     HORARIO2?: NullableStringFieldUpdateOperationsInput | string | null
     MODALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
-    EN_BASE?: NullableIntFieldUpdateOperationsInput | number | null
-    REINTEGRO?: NullableIntFieldUpdateOperationsInput | number | null
-    DESCUENTO?: NullableIntFieldUpdateOperationsInput | number | null
-    MAX_DESC?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCA?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCB?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCC?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCM?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCS?: NullableFloatFieldUpdateOperationsInput | number | null
-    PRECIO_99?: NullableFloatFieldUpdateOperationsInput | number | null
     MATRICULA?: NullableStringFieldUpdateOperationsInput | string | null
     COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
     AUSENTE?: NullableIntFieldUpdateOperationsInput | number | null
     DESDE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     HASTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    MENS_AUS?: NullableStringFieldUpdateOperationsInput | string | null
     CUIT?: NullableStringFieldUpdateOperationsInput | string | null
     FEC_NAC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    COD_OPER?: NullableIntFieldUpdateOperationsInput | number | null
     LUGAR?: NullableIntFieldUpdateOperationsInput | number | null
     MALA_PRAXI?: NullableIntFieldUpdateOperationsInput | number | null
-    VENCE_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    DESC_PLANI?: NullableIntFieldUpdateOperationsInput | number | null
-    CON_PAGA?: NullableFloatFieldUpdateOperationsInput | number | null
+    CON_PAGA?: NullableIntFieldUpdateOperationsInput | number | null
     ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     OTERO?: NullableIntFieldUpdateOperationsInput | number | null
@@ -23586,29 +23218,15 @@ export namespace Prisma {
     HORARIO1?: string | null
     HORARIO2?: string | null
     MODALIDAD?: string | null
-    EN_BASE?: number | null
-    REINTEGRO?: number | null
-    DESCUENTO?: number | null
-    MAX_DESC?: number | null
-    MAX_DESCA?: number | null
-    MAX_DESCB?: number | null
-    MAX_DESCC?: number | null
-    MAX_DESCM?: number | null
-    MAX_DESCS?: number | null
-    PRECIO_99?: number | null
     MATRICULA?: string | null
     COD_POST?: number | null
     AUSENTE?: number | null
     DESDE?: Date | string | null
     HASTA?: Date | string | null
-    MENS_AUS?: string | null
     CUIT?: string | null
     FEC_NAC?: Date | string | null
-    COD_OPER?: number | null
     LUGAR?: number | null
     MALA_PRAXI?: number | null
-    VENCE_SEG?: Date | string | null
-    DESC_PLANI?: number | null
     CON_PAGA?: number | null
     ALTA?: Date | string | null
     BAJA?: Date | string | null
@@ -23629,30 +23247,16 @@ export namespace Prisma {
     HORARIO1?: NullableStringFieldUpdateOperationsInput | string | null
     HORARIO2?: NullableStringFieldUpdateOperationsInput | string | null
     MODALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
-    EN_BASE?: NullableIntFieldUpdateOperationsInput | number | null
-    REINTEGRO?: NullableIntFieldUpdateOperationsInput | number | null
-    DESCUENTO?: NullableIntFieldUpdateOperationsInput | number | null
-    MAX_DESC?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCA?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCB?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCC?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCM?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCS?: NullableFloatFieldUpdateOperationsInput | number | null
-    PRECIO_99?: NullableFloatFieldUpdateOperationsInput | number | null
     MATRICULA?: NullableStringFieldUpdateOperationsInput | string | null
     COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
     AUSENTE?: NullableIntFieldUpdateOperationsInput | number | null
     DESDE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     HASTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    MENS_AUS?: NullableStringFieldUpdateOperationsInput | string | null
     CUIT?: NullableStringFieldUpdateOperationsInput | string | null
     FEC_NAC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    COD_OPER?: NullableIntFieldUpdateOperationsInput | number | null
     LUGAR?: NullableIntFieldUpdateOperationsInput | number | null
     MALA_PRAXI?: NullableIntFieldUpdateOperationsInput | number | null
-    VENCE_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    DESC_PLANI?: NullableIntFieldUpdateOperationsInput | number | null
-    CON_PAGA?: NullableFloatFieldUpdateOperationsInput | number | null
+    CON_PAGA?: NullableIntFieldUpdateOperationsInput | number | null
     ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     OTERO?: NullableIntFieldUpdateOperationsInput | number | null
@@ -23671,30 +23275,16 @@ export namespace Prisma {
     HORARIO1?: NullableStringFieldUpdateOperationsInput | string | null
     HORARIO2?: NullableStringFieldUpdateOperationsInput | string | null
     MODALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
-    EN_BASE?: NullableIntFieldUpdateOperationsInput | number | null
-    REINTEGRO?: NullableIntFieldUpdateOperationsInput | number | null
-    DESCUENTO?: NullableIntFieldUpdateOperationsInput | number | null
-    MAX_DESC?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCA?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCB?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCC?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCM?: NullableFloatFieldUpdateOperationsInput | number | null
-    MAX_DESCS?: NullableFloatFieldUpdateOperationsInput | number | null
-    PRECIO_99?: NullableFloatFieldUpdateOperationsInput | number | null
     MATRICULA?: NullableStringFieldUpdateOperationsInput | string | null
     COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
     AUSENTE?: NullableIntFieldUpdateOperationsInput | number | null
     DESDE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     HASTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    MENS_AUS?: NullableStringFieldUpdateOperationsInput | string | null
     CUIT?: NullableStringFieldUpdateOperationsInput | string | null
     FEC_NAC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    COD_OPER?: NullableIntFieldUpdateOperationsInput | number | null
     LUGAR?: NullableIntFieldUpdateOperationsInput | number | null
     MALA_PRAXI?: NullableIntFieldUpdateOperationsInput | number | null
-    VENCE_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    DESC_PLANI?: NullableIntFieldUpdateOperationsInput | number | null
-    CON_PAGA?: NullableFloatFieldUpdateOperationsInput | number | null
+    CON_PAGA?: NullableIntFieldUpdateOperationsInput | number | null
     ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     OTERO?: NullableIntFieldUpdateOperationsInput | number | null
@@ -23730,7 +23320,7 @@ export namespace Prisma {
     CONTROL?: boolean | null
     NORDEN?: string | null
     FECHA_CONTROL?: Date | string | null
-    IMP_LIQ?: number | null
+    IMP_LIQ?: string | null
   }
 
   export type USOSUncheckedCreateInput = {
@@ -23762,7 +23352,7 @@ export namespace Prisma {
     CONTROL?: boolean | null
     NORDEN?: string | null
     FECHA_CONTROL?: Date | string | null
-    IMP_LIQ?: number | null
+    IMP_LIQ?: string | null
   }
 
   export type USOSUpdateInput = {
@@ -23793,7 +23383,7 @@ export namespace Prisma {
     CONTROL?: NullableBoolFieldUpdateOperationsInput | boolean | null
     NORDEN?: NullableStringFieldUpdateOperationsInput | string | null
     FECHA_CONTROL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    IMP_LIQ?: NullableFloatFieldUpdateOperationsInput | number | null
+    IMP_LIQ?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type USOSUncheckedUpdateInput = {
@@ -23825,7 +23415,7 @@ export namespace Prisma {
     CONTROL?: NullableBoolFieldUpdateOperationsInput | boolean | null
     NORDEN?: NullableStringFieldUpdateOperationsInput | string | null
     FECHA_CONTROL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    IMP_LIQ?: NullableFloatFieldUpdateOperationsInput | number | null
+    IMP_LIQ?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type USOSCreateManyInput = {
@@ -23857,7 +23447,7 @@ export namespace Prisma {
     CONTROL?: boolean | null
     NORDEN?: string | null
     FECHA_CONTROL?: Date | string | null
-    IMP_LIQ?: number | null
+    IMP_LIQ?: string | null
   }
 
   export type USOSUpdateManyMutationInput = {
@@ -23888,7 +23478,7 @@ export namespace Prisma {
     CONTROL?: NullableBoolFieldUpdateOperationsInput | boolean | null
     NORDEN?: NullableStringFieldUpdateOperationsInput | string | null
     FECHA_CONTROL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    IMP_LIQ?: NullableFloatFieldUpdateOperationsInput | number | null
+    IMP_LIQ?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type USOSUncheckedUpdateManyInput = {
@@ -23920,7 +23510,7 @@ export namespace Prisma {
     CONTROL?: NullableBoolFieldUpdateOperationsInput | boolean | null
     NORDEN?: NullableStringFieldUpdateOperationsInput | string | null
     FECHA_CONTROL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    IMP_LIQ?: NullableFloatFieldUpdateOperationsInput | number | null
+    IMP_LIQ?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type USOSFACreateInput = {
@@ -24647,17 +24237,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter | string | null
   }
 
-  export type FloatNullableFilter = {
-    equals?: number | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedFloatNullableFilter | number | null
-  }
-
   export type DateTimeNullableFilter = {
     equals?: Date | string | null
     in?: Date[] | string[] | null
@@ -24680,6 +24259,17 @@ export namespace Prisma {
     not?: NestedIntNullableFilter | number | null
   }
 
+  export type FloatNullableFilter = {
+    equals?: number | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedFloatNullableFilter | number | null
+  }
+
   export type IntFilter = {
     equals?: number
     in?: number[]
@@ -24700,11 +24290,8 @@ export namespace Prisma {
     ESP_PRAC?: SortOrder
     CODIGOS?: SortOrder
     DESCRIP?: SortOrder
-    INOS?: SortOrder
     FECHA_ALT?: SortOrder
     ANULADO?: SortOrder
-    OPERADOR?: SortOrder
-    OPE_ANULA?: SortOrder
     COD_PRES01?: SortOrder
     PRECIO_01?: SortOrder
     SUC_01?: SortOrder
@@ -24769,19 +24356,12 @@ export namespace Prisma {
   }
 
   export type AUT_PRACAvgOrderByAggregateInput = {
-    INOS?: SortOrder
     ANULADO?: SortOrder
-    OPERADOR?: SortOrder
-    OPE_ANULA?: SortOrder
-    PRECIO_01?: SortOrder
-    PRECIO_02?: SortOrder
     PRECIO_05?: SortOrder
     PRECIO_06?: SortOrder
     PRECIO_07?: SortOrder
     PRECIO_08?: SortOrder
     PRECIO_09?: SortOrder
-    PRECIO_10?: SortOrder
-    PRECIO_11?: SortOrder
     PRECIO_16?: SortOrder
     PRECIO_17?: SortOrder
     PRECIO_18?: SortOrder
@@ -24794,11 +24374,8 @@ export namespace Prisma {
     ESP_PRAC?: SortOrder
     CODIGOS?: SortOrder
     DESCRIP?: SortOrder
-    INOS?: SortOrder
     FECHA_ALT?: SortOrder
     ANULADO?: SortOrder
-    OPERADOR?: SortOrder
-    OPE_ANULA?: SortOrder
     COD_PRES01?: SortOrder
     PRECIO_01?: SortOrder
     SUC_01?: SortOrder
@@ -24866,11 +24443,8 @@ export namespace Prisma {
     ESP_PRAC?: SortOrder
     CODIGOS?: SortOrder
     DESCRIP?: SortOrder
-    INOS?: SortOrder
     FECHA_ALT?: SortOrder
     ANULADO?: SortOrder
-    OPERADOR?: SortOrder
-    OPE_ANULA?: SortOrder
     COD_PRES01?: SortOrder
     PRECIO_01?: SortOrder
     SUC_01?: SortOrder
@@ -24935,19 +24509,12 @@ export namespace Prisma {
   }
 
   export type AUT_PRACSumOrderByAggregateInput = {
-    INOS?: SortOrder
     ANULADO?: SortOrder
-    OPERADOR?: SortOrder
-    OPE_ANULA?: SortOrder
-    PRECIO_01?: SortOrder
-    PRECIO_02?: SortOrder
     PRECIO_05?: SortOrder
     PRECIO_06?: SortOrder
     PRECIO_07?: SortOrder
     PRECIO_08?: SortOrder
     PRECIO_09?: SortOrder
-    PRECIO_10?: SortOrder
-    PRECIO_11?: SortOrder
     PRECIO_16?: SortOrder
     PRECIO_17?: SortOrder
     PRECIO_18?: SortOrder
@@ -24971,22 +24538,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter
     _min?: NestedStringNullableFilter
     _max?: NestedStringNullableFilter
-  }
-
-  export type FloatNullableWithAggregatesFilter = {
-    equals?: number | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedFloatNullableWithAggregatesFilter | number | null
-    _count?: NestedIntNullableFilter
-    _avg?: NestedFloatNullableFilter
-    _sum?: NestedFloatNullableFilter
-    _min?: NestedFloatNullableFilter
-    _max?: NestedFloatNullableFilter
   }
 
   export type DateTimeNullableWithAggregatesFilter = {
@@ -25017,6 +24568,22 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter
     _min?: NestedIntNullableFilter
     _max?: NestedIntNullableFilter
+  }
+
+  export type FloatNullableWithAggregatesFilter = {
+    equals?: number | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedFloatNullableWithAggregatesFilter | number | null
+    _count?: NestedIntNullableFilter
+    _avg?: NestedFloatNullableFilter
+    _sum?: NestedFloatNullableFilter
+    _min?: NestedFloatNullableFilter
+    _max?: NestedFloatNullableFilter
   }
 
   export type IntWithAggregatesFilter = {
@@ -25386,6 +24953,8 @@ export namespace Prisma {
     telefono?: SortOrder
     estado?: SortOrder
     operador?: SortOrder
+    domicilio?: SortOrder
+    mail?: SortOrder
   }
 
   export type MEDICOS_TURNOSAvgOrderByAggregateInput = {
@@ -25405,6 +24974,8 @@ export namespace Prisma {
     telefono?: SortOrder
     estado?: SortOrder
     operador?: SortOrder
+    domicilio?: SortOrder
+    mail?: SortOrder
   }
 
   export type MEDICOS_TURNOSMinOrderByAggregateInput = {
@@ -25418,6 +24989,8 @@ export namespace Prisma {
     telefono?: SortOrder
     estado?: SortOrder
     operador?: SortOrder
+    domicilio?: SortOrder
+    mail?: SortOrder
   }
 
   export type MEDICOS_TURNOSSumOrderByAggregateInput = {
@@ -25575,29 +25148,15 @@ export namespace Prisma {
     HORARIO1?: SortOrder
     HORARIO2?: SortOrder
     MODALIDAD?: SortOrder
-    EN_BASE?: SortOrder
-    REINTEGRO?: SortOrder
-    DESCUENTO?: SortOrder
-    MAX_DESC?: SortOrder
-    MAX_DESCA?: SortOrder
-    MAX_DESCB?: SortOrder
-    MAX_DESCC?: SortOrder
-    MAX_DESCM?: SortOrder
-    MAX_DESCS?: SortOrder
-    PRECIO_99?: SortOrder
     MATRICULA?: SortOrder
     COD_POST?: SortOrder
     AUSENTE?: SortOrder
     DESDE?: SortOrder
     HASTA?: SortOrder
-    MENS_AUS?: SortOrder
     CUIT?: SortOrder
     FEC_NAC?: SortOrder
-    COD_OPER?: SortOrder
     LUGAR?: SortOrder
     MALA_PRAXI?: SortOrder
-    VENCE_SEG?: SortOrder
-    DESC_PLANI?: SortOrder
     CON_PAGA?: SortOrder
     ALTA?: SortOrder
     BAJA?: SortOrder
@@ -25607,22 +25166,10 @@ export namespace Prisma {
   }
 
   export type PRESTADOAvgOrderByAggregateInput = {
-    EN_BASE?: SortOrder
-    REINTEGRO?: SortOrder
-    DESCUENTO?: SortOrder
-    MAX_DESC?: SortOrder
-    MAX_DESCA?: SortOrder
-    MAX_DESCB?: SortOrder
-    MAX_DESCC?: SortOrder
-    MAX_DESCM?: SortOrder
-    MAX_DESCS?: SortOrder
-    PRECIO_99?: SortOrder
     COD_POST?: SortOrder
     AUSENTE?: SortOrder
-    COD_OPER?: SortOrder
     LUGAR?: SortOrder
     MALA_PRAXI?: SortOrder
-    DESC_PLANI?: SortOrder
     CON_PAGA?: SortOrder
     OTERO?: SortOrder
     idprest?: SortOrder
@@ -25640,29 +25187,15 @@ export namespace Prisma {
     HORARIO1?: SortOrder
     HORARIO2?: SortOrder
     MODALIDAD?: SortOrder
-    EN_BASE?: SortOrder
-    REINTEGRO?: SortOrder
-    DESCUENTO?: SortOrder
-    MAX_DESC?: SortOrder
-    MAX_DESCA?: SortOrder
-    MAX_DESCB?: SortOrder
-    MAX_DESCC?: SortOrder
-    MAX_DESCM?: SortOrder
-    MAX_DESCS?: SortOrder
-    PRECIO_99?: SortOrder
     MATRICULA?: SortOrder
     COD_POST?: SortOrder
     AUSENTE?: SortOrder
     DESDE?: SortOrder
     HASTA?: SortOrder
-    MENS_AUS?: SortOrder
     CUIT?: SortOrder
     FEC_NAC?: SortOrder
-    COD_OPER?: SortOrder
     LUGAR?: SortOrder
     MALA_PRAXI?: SortOrder
-    VENCE_SEG?: SortOrder
-    DESC_PLANI?: SortOrder
     CON_PAGA?: SortOrder
     ALTA?: SortOrder
     BAJA?: SortOrder
@@ -25683,29 +25216,15 @@ export namespace Prisma {
     HORARIO1?: SortOrder
     HORARIO2?: SortOrder
     MODALIDAD?: SortOrder
-    EN_BASE?: SortOrder
-    REINTEGRO?: SortOrder
-    DESCUENTO?: SortOrder
-    MAX_DESC?: SortOrder
-    MAX_DESCA?: SortOrder
-    MAX_DESCB?: SortOrder
-    MAX_DESCC?: SortOrder
-    MAX_DESCM?: SortOrder
-    MAX_DESCS?: SortOrder
-    PRECIO_99?: SortOrder
     MATRICULA?: SortOrder
     COD_POST?: SortOrder
     AUSENTE?: SortOrder
     DESDE?: SortOrder
     HASTA?: SortOrder
-    MENS_AUS?: SortOrder
     CUIT?: SortOrder
     FEC_NAC?: SortOrder
-    COD_OPER?: SortOrder
     LUGAR?: SortOrder
     MALA_PRAXI?: SortOrder
-    VENCE_SEG?: SortOrder
-    DESC_PLANI?: SortOrder
     CON_PAGA?: SortOrder
     ALTA?: SortOrder
     BAJA?: SortOrder
@@ -25715,22 +25234,10 @@ export namespace Prisma {
   }
 
   export type PRESTADOSumOrderByAggregateInput = {
-    EN_BASE?: SortOrder
-    REINTEGRO?: SortOrder
-    DESCUENTO?: SortOrder
-    MAX_DESC?: SortOrder
-    MAX_DESCA?: SortOrder
-    MAX_DESCB?: SortOrder
-    MAX_DESCC?: SortOrder
-    MAX_DESCM?: SortOrder
-    MAX_DESCS?: SortOrder
-    PRECIO_99?: SortOrder
     COD_POST?: SortOrder
     AUSENTE?: SortOrder
-    COD_OPER?: SortOrder
     LUGAR?: SortOrder
     MALA_PRAXI?: SortOrder
-    DESC_PLANI?: SortOrder
     CON_PAGA?: SortOrder
     OTERO?: SortOrder
     idprest?: SortOrder
@@ -25804,7 +25311,6 @@ export namespace Prisma {
     ANULADO?: SortOrder
     RENDIDO?: SortOrder
     iduso?: SortOrder
-    IMP_LIQ?: SortOrder
   }
 
   export type USOSMaxOrderByAggregateInput = {
@@ -25882,7 +25388,6 @@ export namespace Prisma {
     ANULADO?: SortOrder
     RENDIDO?: SortOrder
     iduso?: SortOrder
-    IMP_LIQ?: SortOrder
   }
 
   export type USOSFACountOrderByAggregateInput = {
@@ -26281,7 +25786,11 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type NullableFloatFieldUpdateOperationsInput = {
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
     decrement?: number
@@ -26289,11 +25798,7 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
+  export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
     decrement?: number
@@ -26339,17 +25844,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter | string | null
   }
 
-  export type NestedFloatNullableFilter = {
-    equals?: number | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedFloatNullableFilter | number | null
-  }
-
   export type NestedDateTimeNullableFilter = {
     equals?: Date | string | null
     in?: Date[] | string[] | null
@@ -26370,6 +25864,17 @@ export namespace Prisma {
     gt?: number
     gte?: number
     not?: NestedIntNullableFilter | number | null
+  }
+
+  export type NestedFloatNullableFilter = {
+    equals?: number | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedFloatNullableFilter | number | null
   }
 
   export type NestedIntFilter = {
@@ -26400,22 +25905,6 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter
   }
 
-  export type NestedFloatNullableWithAggregatesFilter = {
-    equals?: number | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedFloatNullableWithAggregatesFilter | number | null
-    _count?: NestedIntNullableFilter
-    _avg?: NestedFloatNullableFilter
-    _sum?: NestedFloatNullableFilter
-    _min?: NestedFloatNullableFilter
-    _max?: NestedFloatNullableFilter
-  }
-
   export type NestedDateTimeNullableWithAggregatesFilter = {
     equals?: Date | string | null
     in?: Date[] | string[] | null
@@ -26444,6 +25933,22 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter
     _min?: NestedIntNullableFilter
     _max?: NestedIntNullableFilter
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter = {
+    equals?: number | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedFloatNullableWithAggregatesFilter | number | null
+    _count?: NestedIntNullableFilter
+    _avg?: NestedFloatNullableFilter
+    _sum?: NestedFloatNullableFilter
+    _min?: NestedFloatNullableFilter
+    _max?: NestedFloatNullableFilter
   }
 
   export type NestedIntWithAggregatesFilter = {
