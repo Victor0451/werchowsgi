@@ -105,7 +105,8 @@ const ListadoOrdenesAuditoria = ({
       grow: 0.1,
       cell: (row, index) => (
         <>
-          {row.ANULADO === null ||
+          {row.ANULADO === 0 ||
+          row.ANULADO === null ||
           row.ANULADO === false ||
           row.ANULADO === "" ||
           row.ANULADO === "FALSO" ? (

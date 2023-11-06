@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactToPrint from "react-to-print";
 import {
   Card,
@@ -12,6 +12,7 @@ import {
   IconButton,
   Textarea,
   ButtonGroup,
+  Spinner,
 } from "@material-tailwind/react";
 import {
   CheckCircleIcon,
@@ -24,6 +25,7 @@ import ListadoOrdenesSinPuntear from "./ListadoOrdenesSinPuntear";
 import ListadoOrdenesAuditoria from "./ListadoOrdenesAuditoria";
 
 const FormAuditoria = ({
+  traerUsosSinPuntear,
   actImpLiq,
   lisOtero,
   lisFabian,
@@ -37,6 +39,14 @@ const FormAuditoria = ({
   eliminarDuplicado,
   impLiqRef,
   modificarImpLiq,
+  traerOdenPago,
+  nOrdenRef,
+  impOrdenPagRef,
+  ordenPag,
+  estF,
+  estO,
+  calcTotales,
+  updateMontoDetalle,
 }) => {
   return (
     <Card className="h-full w-full p-4 mt-5 border-2 ">
@@ -60,6 +70,13 @@ const FormAuditoria = ({
             <div className=" flex justify-end">
               <Button
                 size="sm"
+                className="mt-5 mr-1"
+                onClick={traerUsosSinPuntear}
+              >
+                Buscar Usos
+              </Button>
+              <Button
+                size="sm"
                 className="mt-5 bg-gray-900"
                 onClick={repunteoDeUsos}
               >
@@ -69,19 +86,42 @@ const FormAuditoria = ({
           </div>
           <div className="mt-10 grid md:grid-cols-2 md:gap-6">
             <div className="border-2 p-2 rounded-xl ">
-              <Typography variant="h6" className="mb-5">
-                Usos Otero: {lisOtero.length}
-              </Typography>
-
-              <ListadoOrdenesSinPuntear listado={lisOtero} />
+              {estO === 0 ? (
+                <Typography variant="h6" className=" text-center mt-5 mb-5">
+                  Usos Otero: Todas las ordenes estan punteadas
+                </Typography>
+              ) : estO === 1 ? (
+                <div className="mt-5 mb-5 flex justify-center">
+                  <Spinner />
+                </div>
+              ) : estO === 2 ? (
+                <>
+                  <Typography variant="h6" className="mb-5">
+                    Usos Otero: {lisOtero.length}
+                  </Typography>
+                  <ListadoOrdenesSinPuntear listado={lisOtero} />
+                </>
+              ) : null}
             </div>
 
             <div className="border-2 p-2 rounded-xl">
-              <Typography variant="h6" className="mb-5">
-                Usos Fabian: {lisFabian.length}
-              </Typography>
+              {estF === 0 ? (
+                <Typography variant="h6" className=" text-center mt-5 mb-5">
+                  Usos Fox: Todas las ordenes estan punteadas
+                </Typography>
+              ) : estF === 1 ? (
+                <div className="mt-5 mb-5 flex justify-center">
+                  <Spinner />
+                </div>
+              ) : estF === 2 ? (
+                <>
+                  <Typography variant="h6" className="mb-5">
+                    Usos Fox: {lisFabian.length}
+                  </Typography>
 
-              <ListadoOrdenesSinPuntear listado={lisFabian} />
+                  <ListadoOrdenesSinPuntear listado={lisFabian} />
+                </>
+              ) : null}
             </div>
           </div>
         </div>
@@ -107,7 +147,7 @@ const FormAuditoria = ({
             </div>
             <div className="border-2 p-2 rounded-xl ">
               <Typography variant="h6" className="mb-5">
-                Ingresar N° Orden (Fabian).
+                Ingresar N° Orden (Fox).
               </Typography>
               <Input label="Ej: 000000222465" inputRef={ordenFaRef} />
               <Button
@@ -120,7 +160,7 @@ const FormAuditoria = ({
             </div>
           </div>
 
-          <div className="mt-5">
+          <div className="mt-5 border-2 p-2 rounded-xl">
             <ListadoOrdenesAuditoria
               listado={orden}
               desbloquearUso={desbloquearUso}
@@ -129,6 +169,54 @@ const FormAuditoria = ({
               impLiqRef={impLiqRef}
               modificarImpLiq={modificarImpLiq}
             />
+          </div>
+        </div>
+
+        <hr className="border-2 mt-5 mb-5" />
+
+        <div className="border-2 rounded-xl p-4 mt-5">
+          <Typography variant="h5">
+            Correcion Valores en Orden de Pago
+          </Typography>
+
+          <div className="mt-10 grid md:grid-cols-2 md:gap-6">
+            <div className="border-2 p-2 rounded-xl ">
+              <Typography variant="h6" className="mb-5">
+                Ingresar N° Orden de Pago.
+              </Typography>
+              <Input label="Ej: 1680/2023" inputRef={nOrdenRef} />
+              <Button
+                size="sm"
+                className="mt-5 bg-gray-900 "
+                onClick={() => traerOdenPago()}
+              >
+                Buscar
+              </Button>
+            </div>
+            <div className="border-2 p-2 rounded-xl ">
+              <Typography variant="h6" className="mb-5">
+                Ingresar el nuevo valor de las ordenes medicas.
+              </Typography>
+              <Input label="Importe" inputRef={impOrdenPagRef} />
+              <Button
+                size="sm"
+                className="mt-5 bg-gray-900 "
+                onClick={updateMontoDetalle}
+              >
+                Actualizar
+              </Button>
+            </div>
+          </div>
+          <div className="mt-5 border-2 p-2 rounded-xl">
+            <Typography variant="h6" color="blue-gray" className="mt-5">
+              <u>Monto Total de la Orden de Pago</u>:{" "}
+              {calcTotales(ordenPag, "t")}
+            </Typography>
+            <Typography color="gray" className="mt-1 font-normal mb-5">
+              <u>Total de ordenes liquidadas </u>: {ordenPag.length}
+            </Typography>
+
+            <ListadoDetalleOrden listado={ordenPag} />
           </div>
         </div>
       </CardBody>

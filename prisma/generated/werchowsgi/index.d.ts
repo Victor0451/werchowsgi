@@ -340,6 +340,7 @@ export type detalle_orden_pagoPayload<ExtArgs extends $Extensions.Args = $Extens
     importe: string | null
     operador_carga: string | null
     fecha: Date | null
+    servicio: string | null
   }, ExtArgs["result"]["detalle_orden_pago"]>
   composites: {}
 }
@@ -20022,6 +20023,7 @@ export namespace Prisma {
     importe: string | null
     operador_carga: string | null
     fecha: Date | null
+    servicio: string | null
   }
 
   export type Detalle_orden_pagoMaxAggregateOutputType = {
@@ -20033,6 +20035,7 @@ export namespace Prisma {
     importe: string | null
     operador_carga: string | null
     fecha: Date | null
+    servicio: string | null
   }
 
   export type Detalle_orden_pagoCountAggregateOutputType = {
@@ -20044,6 +20047,7 @@ export namespace Prisma {
     importe: number
     operador_carga: number
     fecha: number
+    servicio: number
     _all: number
   }
 
@@ -20065,6 +20069,7 @@ export namespace Prisma {
     importe?: true
     operador_carga?: true
     fecha?: true
+    servicio?: true
   }
 
   export type Detalle_orden_pagoMaxAggregateInputType = {
@@ -20076,6 +20081,7 @@ export namespace Prisma {
     importe?: true
     operador_carga?: true
     fecha?: true
+    servicio?: true
   }
 
   export type Detalle_orden_pagoCountAggregateInputType = {
@@ -20087,6 +20093,7 @@ export namespace Prisma {
     importe?: true
     operador_carga?: true
     fecha?: true
+    servicio?: true
     _all?: true
   }
 
@@ -20186,6 +20193,7 @@ export namespace Prisma {
     importe: string | null
     operador_carga: string | null
     fecha: Date | null
+    servicio: string | null
     _count: Detalle_orden_pagoCountAggregateOutputType | null
     _avg: Detalle_orden_pagoAvgAggregateOutputType | null
     _sum: Detalle_orden_pagoSumAggregateOutputType | null
@@ -20216,6 +20224,7 @@ export namespace Prisma {
     importe?: boolean
     operador_carga?: boolean
     fecha?: boolean
+    servicio?: boolean
   }, ExtArgs["result"]["detalle_orden_pago"]>
 
   export type detalle_orden_pagoSelectScalar = {
@@ -20227,6 +20236,7 @@ export namespace Prisma {
     importe?: boolean
     operador_carga?: boolean
     fecha?: boolean
+    servicio?: boolean
   }
 
 
@@ -68304,7 +68314,8 @@ export namespace Prisma {
     prestador: 'prestador',
     importe: 'importe',
     operador_carga: 'operador_carga',
-    fecha: 'fecha'
+    fecha: 'fecha',
+    servicio: 'servicio'
   };
 
   export type Detalle_orden_pagoScalarFieldEnum = (typeof Detalle_orden_pagoScalarFieldEnum)[keyof typeof Detalle_orden_pagoScalarFieldEnum]
@@ -70035,6 +70046,7 @@ export namespace Prisma {
     importe?: StringNullableFilter | string | null
     operador_carga?: StringNullableFilter | string | null
     fecha?: DateTimeNullableFilter | Date | string | null
+    servicio?: StringNullableFilter | string | null
   }
 
   export type detalle_orden_pagoOrderByWithRelationInput = {
@@ -70046,6 +70058,7 @@ export namespace Prisma {
     importe?: SortOrderInput | SortOrder
     operador_carga?: SortOrderInput | SortOrder
     fecha?: SortOrderInput | SortOrder
+    servicio?: SortOrderInput | SortOrder
   }
 
   export type detalle_orden_pagoWhereUniqueInput = {
@@ -70061,6 +70074,7 @@ export namespace Prisma {
     importe?: SortOrderInput | SortOrder
     operador_carga?: SortOrderInput | SortOrder
     fecha?: SortOrderInput | SortOrder
+    servicio?: SortOrderInput | SortOrder
     _count?: detalle_orden_pagoCountOrderByAggregateInput
     _avg?: detalle_orden_pagoAvgOrderByAggregateInput
     _max?: detalle_orden_pagoMaxOrderByAggregateInput
@@ -70080,6 +70094,7 @@ export namespace Prisma {
     importe?: StringNullableWithAggregatesFilter | string | null
     operador_carga?: StringNullableWithAggregatesFilter | string | null
     fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    servicio?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type empresasWhereInput = {
@@ -72889,7 +72904,6 @@ export namespace Prisma {
   }
 
   export type carteraWhereUniqueInput = {
-    contrato?: number
     idcartera?: number
   }
 
@@ -74372,6 +74386,7 @@ export namespace Prisma {
     importe?: string | null
     operador_carga?: string | null
     fecha?: Date | string | null
+    servicio?: string | null
   }
 
   export type detalle_orden_pagoUncheckedCreateInput = {
@@ -74383,6 +74398,7 @@ export namespace Prisma {
     importe?: string | null
     operador_carga?: string | null
     fecha?: Date | string | null
+    servicio?: string | null
   }
 
   export type detalle_orden_pagoUpdateInput = {
@@ -74393,6 +74409,7 @@ export namespace Prisma {
     importe?: NullableStringFieldUpdateOperationsInput | string | null
     operador_carga?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    servicio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type detalle_orden_pagoUncheckedUpdateInput = {
@@ -74404,6 +74421,7 @@ export namespace Prisma {
     importe?: NullableStringFieldUpdateOperationsInput | string | null
     operador_carga?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    servicio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type detalle_orden_pagoCreateManyInput = {
@@ -74415,6 +74433,7 @@ export namespace Prisma {
     importe?: string | null
     operador_carga?: string | null
     fecha?: Date | string | null
+    servicio?: string | null
   }
 
   export type detalle_orden_pagoUpdateManyMutationInput = {
@@ -74425,6 +74444,7 @@ export namespace Prisma {
     importe?: NullableStringFieldUpdateOperationsInput | string | null
     operador_carga?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    servicio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type detalle_orden_pagoUncheckedUpdateManyInput = {
@@ -74436,6 +74456,7 @@ export namespace Prisma {
     importe?: NullableStringFieldUpdateOperationsInput | string | null
     operador_carga?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    servicio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type empresasCreateInput = {
@@ -79005,6 +79026,7 @@ export namespace Prisma {
     importe?: SortOrder
     operador_carga?: SortOrder
     fecha?: SortOrder
+    servicio?: SortOrder
   }
 
   export type detalle_orden_pagoAvgOrderByAggregateInput = {
@@ -79020,6 +79042,7 @@ export namespace Prisma {
     importe?: SortOrder
     operador_carga?: SortOrder
     fecha?: SortOrder
+    servicio?: SortOrder
   }
 
   export type detalle_orden_pagoMinOrderByAggregateInput = {
@@ -79031,6 +79054,7 @@ export namespace Prisma {
     importe?: SortOrder
     operador_carga?: SortOrder
     fecha?: SortOrder
+    servicio?: SortOrder
   }
 
   export type detalle_orden_pagoSumOrderByAggregateInput = {

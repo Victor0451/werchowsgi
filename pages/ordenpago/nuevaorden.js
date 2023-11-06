@@ -383,6 +383,7 @@ function NuevaOrden(props) {
               nconsulta: listadoCheck[i].ORDEN,
               sucursal: listadoCheck[i].SUC,
               prestador: listadoCheck[i].PRESTADO,
+              servicio: listadoCheck[i].SERVICIO,
               importe: `${listadoCheck[i].IMP_LIQ}`,
               operador_carga: usu.usuario,
               fecha: moment().format("YYYY-MM-DD"),

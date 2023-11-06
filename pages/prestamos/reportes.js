@@ -76,6 +76,25 @@ export default function Reportes() {
     }
   };
 
+  const totalPrestamo = (arr, f) => {
+    let total = 0;
+    let cap = 0;
+    let int = 0;
+
+    if (f === "c") {
+      for (let i = 0; i < arr.length; i++) {
+        total += parseFloat(arr[i].ptm_prestamo);
+      }
+      return total.toFixed(2);
+    } else if (f === "c+i") {
+      for (let i = 0; i < arr.length; i++) {
+        total += parseFloat(arr[i].ptm_valcuota) * arr[i].ptm_cuotas;
+      }
+
+      return total.toFixed(2);
+    }
+  };
+
   if (isLoading === true) return <Skeleton />;
 
   return (
@@ -91,6 +110,7 @@ export default function Reportes() {
             buscarPeriodo={buscarPeriodo}
             reportes={reportes}
             listPrest={listPrest}
+            totalPrestamo={totalPrestamo}
             usu={usu}
             desde={desde}
             hasta={hasta}

@@ -303,6 +303,7 @@ model detalle_orden_pago {
   importe        String?   @db.VarChar(255)
   operador_carga String?   @db.VarChar(255)
   fecha          DateTime? @db.Date
+  servicio       String?   @db.VarChar(255)
 }
 
 model empresas {
@@ -515,7 +516,7 @@ model movimiento_caja_sucursales {
   importe          Float?    @db.Float
   operador_carga   String?   @db.VarChar(255)
   idcaja           Int?
-  empresa          String?   @db.VarChar(1)
+  empresa          String?   @db.VarChar(5)
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
@@ -887,7 +888,7 @@ model certificado_estudiantes {
 }
 
 model cartera {
-  contrato  Int?      @unique(map: "contrato")
+  contrato  Int?
   socio     String?   @db.VarChar(30)
   alta      DateTime? @db.Date
   grupo     Int?

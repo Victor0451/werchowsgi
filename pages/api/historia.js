@@ -5,7 +5,25 @@ export default async function handler(req, res) {
   const prisma = SGI;
 
   if (req.method === "GET") {
-    if (req.query.f && req.query.f === "nuevos casos") {
+    if (req.query.f && req.query.f === "traer historial") {
+      if (req.query.operador === "") {
+        const historial = await SGI.historial_acciones.findMany({
+          orderBy: {
+            fecha: "desc",
+          },
+        });
+        res.status(200).json(historial);
+      } else {
+        const historial = await SGI.historial_acciones.findMany({
+          where: {
+            operador: req.query.operador,
+          },
+          orderBy: {
+            fecha: "desc",
+          },
+        });
+        res.status(200).json(historial);
+      }
     }
   } else if (req.method === "POST") {
     if (req.body.f && req.body.f === "sistema") {

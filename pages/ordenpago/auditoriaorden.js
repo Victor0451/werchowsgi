@@ -17,11 +17,16 @@ function auditoriaorden(props) {
   let ordenOtRef = React.createRef();
   let ordenFaRef = React.createRef();
   let impLiqRef = React.createRef();
+  let nOrdenRef = React.createRef();
+  let impOrdenPagRef = React.createRef();
 
   const [lisOtero, guardarListOtero] = useState([]);
   const [lisFabian, guardarListFabian] = useState([]);
   const [orden, guardarOrden] = useState([]);
+  const [ordenPag, guardarOrdenPag] = useState([]);
   const [sis, guardarSis] = useState("");
+  const [estO, guardarEstO] = useState(0);
+  const [estF, guardarEstF] = useState(0);
 
   const { usu } = useWerchow();
 
@@ -62,6 +67,12 @@ function auditoriaorden(props) {
   };
 
   const traerUsosSinPuntear = async () => {
+    toast.info(
+      "Buscando usos sin puntear... Este proceso puede demorar unos segundo, Espera el mensaje de finalizacion"
+    );
+    guardarEstF(1);
+    guardarEstO(1);
+
     await axios
       .get(`/api/ordenpago`, {
         params: {
@@ -69,7 +80,18 @@ function auditoriaorden(props) {
         },
       })
       .then((res) => {
-        guardarListOtero(res.data);
+        if (res.data.length > 0) {
+          guardarEstO(2);
+
+          guardarListOtero(res.data);
+          toast.warning(
+            `Se encontraron ${res.data.length} usos sin puntear en el sistema web`
+          );
+        } else if (res.data.length === 0) {
+          guardarEstO(0);
+
+          toast.success(`No se econtraron usos sin puntear en el sistema web`);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -83,7 +105,16 @@ function auditoriaorden(props) {
         },
       })
       .then((res) => {
-        guardarListFabian(res.data);
+        if (res.data.length > 0) {
+          guardarEstF(2);
+          guardarListFabian(res.data);
+          toast.warning(
+            `Se encontraron ${res.data.length} usos sin puntear en el sistema fox`
+          );
+        } else if (res.data.length === 0) {
+          guardarEstF(0);
+          toast.success(`No se econtraron usos sin puntear en el sistema fox`);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -225,7 +256,6 @@ function auditoriaorden(props) {
   };
 
   const modificarImpLiq = async (row) => {
-    console.log(impLiqRef.current.value);
     if (impLiqRef.current.value === "") {
       toast.warning("Debes ingresar el nuevo importe");
     } else {
@@ -365,7 +395,125 @@ function auditoriaorden(props) {
     });
   };
 
-  useSWR("/api/ordenpago", traerUsosSinPuntear);
+  const traerOdenPago = async (f) => {
+    let nOrden = nOrdenRef.current.value;
+
+    if (nOrden === "") {
+      toast.error("Debes ingresar el numero de orden de pago");
+    } else {
+      await axios
+        .get(`/api/ordenpago`, {
+          params: {
+            f: "traer detalle orden",
+            idorden: nOrden,
+          },
+        })
+        .then((res) => {
+          if (res.data.length > 0) {
+            guardarOrdenPag(res.data);
+
+            if (f === "update") {
+              updateMontoOrdenPago(nOrden, res.data);
+            }
+          } else {
+            toast.info("El numero de orden de pago ingresado no existe");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al traer la orden de pago");
+        });
+    }
+  };
+
+  const calcTotales = (arr, f) => {
+    let total = 0;
+
+    if (f === "t") {
+      for (let i = 0; i < arr.length; i++) {
+        total += parseFloat(arr[i].importe);
+      }
+
+      return total.toFixed(2);
+    }
+  };
+
+  const updateMontoDetalle = async () => {
+    let importe = impOrdenPagRef.current.value;
+
+    if (importe === "") {
+      toast.warning("Debes ingresar el nuevo importe");
+    } else {
+      let data = {
+        importe: importe,
+        orde: nOrdenRef.current.value,
+        f: "act importe ordenes",
+      };
+
+      await confirmAlert({
+        title: "ATENCION",
+        message:
+          "¿Seguro quieres modificar el importe de la orden de pago y su detalle?",
+        buttons: [
+          {
+            label: "Si",
+            onClick: () => {
+              axios
+                .put("/api/ordenpago", data)
+                .then((res) => {
+                  if (res.status === 200) {
+                    toast.success(
+                      "El valor de la orden de pago y sus detalle fue actualizado correctamente"
+                    );
+                    traerOdenPago("update");
+                  }
+                })
+                .catch((error) => {
+                  console.log(error);
+                  toast.error(
+                    "Ocurrio un error al actualizar la orden de pago"
+                  );
+                });
+            },
+          },
+          {
+            label: "No",
+            onClick: () => {
+              toast.info(
+                "La accion fue cancelada, no se modifico ningun importe."
+              );
+            },
+          },
+        ],
+      });
+    }
+  };
+
+  const updateMontoOrdenPago = async (orde, arr) => {
+    let data = {
+      f: "act importe orden pago",
+      total: calcTotales(arr, "t"),
+      orde: orde,
+    };
+
+    await axios
+      .put(`/api/ordenpago`, data)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success("Se actualizo el total final de la orden de pago");
+
+          let accion = `Se actualizo el valor de las ordenes de consulta punteadas dentro de la orden de pago ${orde}, a un valor de $${arr[0].importe}. Siendo ahora el total final de $${data.total}`;
+
+          registrarHistoria(accion, usu.usuario);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(
+          "Ocurrio un error al actualizar el total en la orden de pago"
+        );
+      });
+  };
 
   if (isLoading === true) return <Skeleton />;
 
@@ -376,6 +524,7 @@ function auditoriaorden(props) {
       ) : (
         <>
           <FormAuditoria
+            traerUsosSinPuntear={traerUsosSinPuntear}
             actImpLiq={actImpLiq}
             lisOtero={lisOtero}
             lisFabian={lisFabian}
@@ -389,6 +538,14 @@ function auditoriaorden(props) {
             eliminarDuplicado={eliminarDuplicado}
             impLiqRef={impLiqRef}
             modificarImpLiq={modificarImpLiq}
+            traerOdenPago={traerOdenPago}
+            nOrdenRef={nOrdenRef}
+            impOrdenPagRef={impOrdenPagRef}
+            ordenPag={ordenPag}
+            estF={estF}
+            estO={estO}
+            calcTotales={calcTotales}
+            updateMontoDetalle={updateMontoDetalle}
           />
         </>
       )}

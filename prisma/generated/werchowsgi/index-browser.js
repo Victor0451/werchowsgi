@@ -322,7 +322,8 @@ exports.Prisma.Detalle_orden_pagoScalarFieldEnum = {
   prestador: 'prestador',
   importe: 'importe',
   operador_carga: 'operador_carga',
-  fecha: 'fecha'
+  fecha: 'fecha',
+  servicio: 'servicio'
 };
 
 exports.Prisma.EmpresasScalarFieldEnum = {

@@ -50,6 +50,13 @@ const ListadoDetalleOrden = ({ listado, checkOrden, deleteCheckOrden, f }) => {
     },
 
     {
+      name: "Servivio",
+      selector: (row) => `${row.servicio}`,
+      sortable: true,
+      grow: 0.2,
+    },
+
+    {
       name: "Importe",
       selector: (row) => `$${row.importe}`,
       sortable: true,

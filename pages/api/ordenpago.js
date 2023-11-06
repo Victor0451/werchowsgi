@@ -64,7 +64,10 @@ export default async function handler(req, res) {
 
       res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "usos sin puntear") {
-      let desde = moment().startOf("month").format("YYYY-MM-DD");
+      let desde = moment()
+        .subtract(2, "month")
+        .startOf("month")
+        .format("YYYY-MM-DD");
       let hasta = moment().endOf("month").format("YYYY-MM-DD");
 
       const detUsos = await SGI.$queryRaw`
@@ -89,7 +92,10 @@ export default async function handler(req, res) {
 
       res.status(200).json(usosSinPun);
     } else if (req.query.f && req.query.f === "usos fa sin puntear") {
-      let desde = moment().startOf("month").format("YYYY-MM-DD");
+      let desde = moment()
+        .subtract(2, "month")
+        .startOf("month")
+        .format("YYYY-MM-DD");
       let hasta = moment().endOf("month").format("YYYY-MM-DD");
 
       const detUsos = await SGI.$queryRaw`
@@ -98,7 +104,6 @@ export default async function handler(req, res) {
       WHERE fecha BETWEEN ${desde} AND ${hasta}
 
 `;
-
       const usosSinPun = [];
 
       for (let i = 0; i < detUsos.length; i++) {
@@ -161,6 +166,7 @@ export default async function handler(req, res) {
           nconsulta: req.body.nconsulta,
           sucursal: req.body.sucursal,
           prestador: req.body.prestador,
+          servicio: req.body.servicio,
           importe: req.body.importe,
           operador_carga: req.body.operador_carga,
           fecha: new Date(req.body.fecha),
@@ -379,6 +385,23 @@ export default async function handler(req, res) {
         });
         res.status(200).json(levUso);
       }
+    } else if (req.body.f && req.body.f === "act importe ordenes") {
+      const actImpDetOrde = await SGI.$queryRaw`
+        UPDATE detalle_orden_pago         
+        SET importe = ${req.body.importe} 
+        WHERE norden = ${req.body.orde} 
+        AND servicio = "ORDE"`;
+
+      res.status(200).json(actImpDetOrde);
+    } else if (req.body.f && req.body.f === "act importe orden pago") {
+      const actTotOrdePag = await SGI.$queryRaw`
+        UPDATE ordenes_pago         
+        SET total = ${parseFloat(req.body.total)} 
+        WHERE norden = ${req.body.orde} 
+        
+        `;
+
+      res.status(200).json(actTotOrdePag);
     }
   }
   if (req.method === "DELETE") {
