@@ -213,7 +213,7 @@ export type MEDICOS_TURNOSPayload<ExtArgs extends $Extensions.Args = $Extensions
     idturno: number
     turno: string | null
     fecha: Date | null
-    hora: Date | null
+    hora: string | null
     doctor: string | null
     paciente: string | null
     obra_soc: string | null
@@ -222,6 +222,7 @@ export type MEDICOS_TURNOSPayload<ExtArgs extends $Extensions.Args = $Extensions
     operador: string | null
     domicilio: string | null
     mail: string | null
+    dni: number | null
   }, ExtArgs["result"]["mEDICOS_TURNOS"]>
   composites: {}
 }
@@ -329,7 +330,7 @@ export type USOSPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
     SERVICIO: string | null
     NUSOS: number | null
     MODALIDAD: string | null
-    VALOR: number | null
+    VALOR: string | null
     IMPORTE: number | null
     PUESTO: string | null
     PRESTADO: string | null
@@ -342,7 +343,7 @@ export type USOSPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
     CONTROL: boolean | null
     NORDEN: string | null
     FECHA_CONTROL: Date | null
-    IMP_LIQ: string | null
+    IMP_LIQ: number | null
   }, ExtArgs["result"]["uSOS"]>
   composites: {}
 }
@@ -510,6 +511,42 @@ export type planes_visitasPayload<ExtArgs extends $Extensions.Args = $Extensions
  * 
  */
 export type planes_visitas = runtime.Types.DefaultSelection<planes_visitasPayload>
+export type pacientesPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idpaciente: number
+    paciente: string | null
+    dni: number | null
+    obra_soc: string | null
+    telefono: bigint | null
+    domicilio: string | null
+    mail: string | null
+  }, ExtArgs["result"]["pacientes"]>
+  composites: {}
+}
+
+/**
+ * Model pacientes
+ * 
+ */
+export type pacientes = runtime.Types.DefaultSelection<pacientesPayload>
+export type promocionesPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idpromo: number
+    pot1: number | null
+    pot2: number | null
+    pint1: number | null
+    pint2: number | null
+  }, ExtArgs["result"]["promociones"]>
+  composites: {}
+}
+
+/**
+ * Model promociones
+ * 
+ */
+export type promociones = runtime.Types.DefaultSelection<promocionesPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -795,6 +832,26 @@ export class PrismaClient<
     * ```
     */
   get planes_visitas(): Prisma.planes_visitasDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.pacientes`: Exposes CRUD operations for the **pacientes** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Pacientes
+    * const pacientes = await prisma.pacientes.findMany()
+    * ```
+    */
+  get pacientes(): Prisma.pacientesDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.promociones`: Exposes CRUD operations for the **promociones** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Promociones
+    * const promociones = await prisma.promociones.findMany()
+    * ```
+    */
+  get promociones(): Prisma.promocionesDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -1293,7 +1350,9 @@ export namespace Prisma {
     nosocios: 'nosocios',
     planes_odontologicos: 'planes_odontologicos',
     planes_socio: 'planes_socio',
-    planes_visitas: 'planes_visitas'
+    planes_visitas: 'planes_visitas',
+    pacientes: 'pacientes',
+    promociones: 'promociones'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1310,7 +1369,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'aUT_PRAC' | 'cAJA' | 'cONSULTA' | 'eNFERMER' | 'fARMACIA' | 'mEDICOS_TURNOS' | 'pRACTICA' | 'pRACT_ENFER' | 'pRESTADO' | 'uSOS' | 'uSOSFA' | 'adherent_provi' | 'nosocios' | 'planes_odontologicos' | 'planes_socio' | 'planes_visitas'
+      modelProps: 'aUT_PRAC' | 'cAJA' | 'cONSULTA' | 'eNFERMER' | 'fARMACIA' | 'mEDICOS_TURNOS' | 'pRACTICA' | 'pRACT_ENFER' | 'pRESTADO' | 'uSOS' | 'uSOSFA' | 'adherent_provi' | 'nosocios' | 'planes_odontologicos' | 'planes_socio' | 'planes_visitas' | 'pacientes' | 'promociones'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -2575,6 +2634,164 @@ export namespace Prisma {
             args: Prisma.planes_visitasCountArgs<ExtArgs>,
             result: $Utils.Optional<Planes_visitasCountAggregateOutputType> | number
             payload: planes_visitasPayload<ExtArgs>
+          }
+        }
+      }
+      pacientes: {
+        operations: {
+          findUnique: {
+            args: Prisma.pacientesFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<pacientesPayload> | null
+            payload: pacientesPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.pacientesFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<pacientesPayload>
+            payload: pacientesPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.pacientesFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<pacientesPayload> | null
+            payload: pacientesPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.pacientesFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<pacientesPayload>
+            payload: pacientesPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.pacientesFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<pacientesPayload>[]
+            payload: pacientesPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.pacientesCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<pacientesPayload>
+            payload: pacientesPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.pacientesCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: pacientesPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.pacientesDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<pacientesPayload>
+            payload: pacientesPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.pacientesUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<pacientesPayload>
+            payload: pacientesPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.pacientesDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: pacientesPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.pacientesUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: pacientesPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.pacientesUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<pacientesPayload>
+            payload: pacientesPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.PacientesAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePacientes>
+            payload: pacientesPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.pacientesGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PacientesGroupByOutputType>[]
+            payload: pacientesPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.pacientesCountArgs<ExtArgs>,
+            result: $Utils.Optional<PacientesCountAggregateOutputType> | number
+            payload: pacientesPayload<ExtArgs>
+          }
+        }
+      }
+      promociones: {
+        operations: {
+          findUnique: {
+            args: Prisma.promocionesFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<promocionesPayload> | null
+            payload: promocionesPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.promocionesFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<promocionesPayload>
+            payload: promocionesPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.promocionesFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<promocionesPayload> | null
+            payload: promocionesPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.promocionesFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<promocionesPayload>
+            payload: promocionesPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.promocionesFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<promocionesPayload>[]
+            payload: promocionesPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.promocionesCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<promocionesPayload>
+            payload: promocionesPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.promocionesCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: promocionesPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.promocionesDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<promocionesPayload>
+            payload: promocionesPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.promocionesUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<promocionesPayload>
+            payload: promocionesPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.promocionesDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: promocionesPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.promocionesUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: promocionesPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.promocionesUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<promocionesPayload>
+            payload: promocionesPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.PromocionesAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePromociones>
+            payload: promocionesPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.promocionesGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PromocionesGroupByOutputType>[]
+            payload: promocionesPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.promocionesCountArgs<ExtArgs>,
+            result: $Utils.Optional<PromocionesCountAggregateOutputType> | number
+            payload: promocionesPayload<ExtArgs>
           }
         }
       }
@@ -8481,19 +8698,21 @@ export namespace Prisma {
     idturno: number | null
     telefono: number | null
     estado: number | null
+    dni: number | null
   }
 
   export type MEDICOS_TURNOSSumAggregateOutputType = {
     idturno: number | null
     telefono: bigint | null
     estado: number | null
+    dni: number | null
   }
 
   export type MEDICOS_TURNOSMinAggregateOutputType = {
     idturno: number | null
     turno: string | null
     fecha: Date | null
-    hora: Date | null
+    hora: string | null
     doctor: string | null
     paciente: string | null
     obra_soc: string | null
@@ -8502,13 +8721,14 @@ export namespace Prisma {
     operador: string | null
     domicilio: string | null
     mail: string | null
+    dni: number | null
   }
 
   export type MEDICOS_TURNOSMaxAggregateOutputType = {
     idturno: number | null
     turno: string | null
     fecha: Date | null
-    hora: Date | null
+    hora: string | null
     doctor: string | null
     paciente: string | null
     obra_soc: string | null
@@ -8517,6 +8737,7 @@ export namespace Prisma {
     operador: string | null
     domicilio: string | null
     mail: string | null
+    dni: number | null
   }
 
   export type MEDICOS_TURNOSCountAggregateOutputType = {
@@ -8532,6 +8753,7 @@ export namespace Prisma {
     operador: number
     domicilio: number
     mail: number
+    dni: number
     _all: number
   }
 
@@ -8540,12 +8762,14 @@ export namespace Prisma {
     idturno?: true
     telefono?: true
     estado?: true
+    dni?: true
   }
 
   export type MEDICOS_TURNOSSumAggregateInputType = {
     idturno?: true
     telefono?: true
     estado?: true
+    dni?: true
   }
 
   export type MEDICOS_TURNOSMinAggregateInputType = {
@@ -8561,6 +8785,7 @@ export namespace Prisma {
     operador?: true
     domicilio?: true
     mail?: true
+    dni?: true
   }
 
   export type MEDICOS_TURNOSMaxAggregateInputType = {
@@ -8576,6 +8801,7 @@ export namespace Prisma {
     operador?: true
     domicilio?: true
     mail?: true
+    dni?: true
   }
 
   export type MEDICOS_TURNOSCountAggregateInputType = {
@@ -8591,6 +8817,7 @@ export namespace Prisma {
     operador?: true
     domicilio?: true
     mail?: true
+    dni?: true
     _all?: true
   }
 
@@ -8685,7 +8912,7 @@ export namespace Prisma {
     idturno: number
     turno: string | null
     fecha: Date | null
-    hora: Date | null
+    hora: string | null
     doctor: string | null
     paciente: string | null
     obra_soc: string | null
@@ -8694,6 +8921,7 @@ export namespace Prisma {
     operador: string | null
     domicilio: string | null
     mail: string | null
+    dni: number | null
     _count: MEDICOS_TURNOSCountAggregateOutputType | null
     _avg: MEDICOS_TURNOSAvgAggregateOutputType | null
     _sum: MEDICOS_TURNOSSumAggregateOutputType | null
@@ -8728,6 +8956,7 @@ export namespace Prisma {
     operador?: boolean
     domicilio?: boolean
     mail?: boolean
+    dni?: boolean
   }, ExtArgs["result"]["mEDICOS_TURNOS"]>
 
   export type MEDICOS_TURNOSSelectScalar = {
@@ -8743,6 +8972,7 @@ export namespace Prisma {
     operador?: boolean
     domicilio?: boolean
     mail?: boolean
+    dni?: boolean
   }
 
 
@@ -12515,11 +12745,11 @@ export namespace Prisma {
     NRO_DOC: number | null
     EDAD: number | null
     NUSOS: number | null
-    VALOR: number | null
     IMPORTE: number | null
     ANULADO: number | null
     RENDIDO: number | null
     iduso: number | null
+    IMP_LIQ: number | null
   }
 
   export type USOSSumAggregateOutputType = {
@@ -12528,11 +12758,11 @@ export namespace Prisma {
     NRO_DOC: number | null
     EDAD: number | null
     NUSOS: number | null
-    VALOR: number | null
     IMPORTE: number | null
     ANULADO: number | null
     RENDIDO: number | null
     iduso: number | null
+    IMP_LIQ: number | null
   }
 
   export type USOSMinAggregateOutputType = {
@@ -12551,7 +12781,7 @@ export namespace Prisma {
     SERVICIO: string | null
     NUSOS: number | null
     MODALIDAD: string | null
-    VALOR: number | null
+    VALOR: string | null
     IMPORTE: number | null
     PUESTO: string | null
     PRESTADO: string | null
@@ -12564,7 +12794,7 @@ export namespace Prisma {
     CONTROL: boolean | null
     NORDEN: string | null
     FECHA_CONTROL: Date | null
-    IMP_LIQ: string | null
+    IMP_LIQ: number | null
   }
 
   export type USOSMaxAggregateOutputType = {
@@ -12583,7 +12813,7 @@ export namespace Prisma {
     SERVICIO: string | null
     NUSOS: number | null
     MODALIDAD: string | null
-    VALOR: number | null
+    VALOR: string | null
     IMPORTE: number | null
     PUESTO: string | null
     PRESTADO: string | null
@@ -12596,7 +12826,7 @@ export namespace Prisma {
     CONTROL: boolean | null
     NORDEN: string | null
     FECHA_CONTROL: Date | null
-    IMP_LIQ: string | null
+    IMP_LIQ: number | null
   }
 
   export type USOSCountAggregateOutputType = {
@@ -12639,11 +12869,11 @@ export namespace Prisma {
     NRO_DOC?: true
     EDAD?: true
     NUSOS?: true
-    VALOR?: true
     IMPORTE?: true
     ANULADO?: true
     RENDIDO?: true
     iduso?: true
+    IMP_LIQ?: true
   }
 
   export type USOSSumAggregateInputType = {
@@ -12652,11 +12882,11 @@ export namespace Prisma {
     NRO_DOC?: true
     EDAD?: true
     NUSOS?: true
-    VALOR?: true
     IMPORTE?: true
     ANULADO?: true
     RENDIDO?: true
     iduso?: true
+    IMP_LIQ?: true
   }
 
   export type USOSMinAggregateInputType = {
@@ -12859,7 +13089,7 @@ export namespace Prisma {
     SERVICIO: string | null
     NUSOS: number | null
     MODALIDAD: string | null
-    VALOR: number | null
+    VALOR: string | null
     IMPORTE: number | null
     PUESTO: string | null
     PRESTADO: string | null
@@ -12872,7 +13102,7 @@ export namespace Prisma {
     CONTROL: boolean | null
     NORDEN: string | null
     FECHA_CONTROL: Date | null
-    IMP_LIQ: string | null
+    IMP_LIQ: number | null
     _count: USOSCountAggregateOutputType | null
     _avg: USOSAvgAggregateOutputType | null
     _sum: USOSSumAggregateOutputType | null
@@ -19701,6 +19931,1872 @@ export namespace Prisma {
 
 
   /**
+   * Model pacientes
+   */
+
+
+  export type AggregatePacientes = {
+    _count: PacientesCountAggregateOutputType | null
+    _avg: PacientesAvgAggregateOutputType | null
+    _sum: PacientesSumAggregateOutputType | null
+    _min: PacientesMinAggregateOutputType | null
+    _max: PacientesMaxAggregateOutputType | null
+  }
+
+  export type PacientesAvgAggregateOutputType = {
+    idpaciente: number | null
+    dni: number | null
+    telefono: number | null
+  }
+
+  export type PacientesSumAggregateOutputType = {
+    idpaciente: number | null
+    dni: number | null
+    telefono: bigint | null
+  }
+
+  export type PacientesMinAggregateOutputType = {
+    idpaciente: number | null
+    paciente: string | null
+    dni: number | null
+    obra_soc: string | null
+    telefono: bigint | null
+    domicilio: string | null
+    mail: string | null
+  }
+
+  export type PacientesMaxAggregateOutputType = {
+    idpaciente: number | null
+    paciente: string | null
+    dni: number | null
+    obra_soc: string | null
+    telefono: bigint | null
+    domicilio: string | null
+    mail: string | null
+  }
+
+  export type PacientesCountAggregateOutputType = {
+    idpaciente: number
+    paciente: number
+    dni: number
+    obra_soc: number
+    telefono: number
+    domicilio: number
+    mail: number
+    _all: number
+  }
+
+
+  export type PacientesAvgAggregateInputType = {
+    idpaciente?: true
+    dni?: true
+    telefono?: true
+  }
+
+  export type PacientesSumAggregateInputType = {
+    idpaciente?: true
+    dni?: true
+    telefono?: true
+  }
+
+  export type PacientesMinAggregateInputType = {
+    idpaciente?: true
+    paciente?: true
+    dni?: true
+    obra_soc?: true
+    telefono?: true
+    domicilio?: true
+    mail?: true
+  }
+
+  export type PacientesMaxAggregateInputType = {
+    idpaciente?: true
+    paciente?: true
+    dni?: true
+    obra_soc?: true
+    telefono?: true
+    domicilio?: true
+    mail?: true
+  }
+
+  export type PacientesCountAggregateInputType = {
+    idpaciente?: true
+    paciente?: true
+    dni?: true
+    obra_soc?: true
+    telefono?: true
+    domicilio?: true
+    mail?: true
+    _all?: true
+  }
+
+  export type PacientesAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which pacientes to aggregate.
+     */
+    where?: pacientesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pacientes to fetch.
+     */
+    orderBy?: pacientesOrderByWithRelationInput | pacientesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: pacientesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pacientes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pacientes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned pacientes
+    **/
+    _count?: true | PacientesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PacientesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PacientesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PacientesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PacientesMaxAggregateInputType
+  }
+
+  export type GetPacientesAggregateType<T extends PacientesAggregateArgs> = {
+        [P in keyof T & keyof AggregatePacientes]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePacientes[P]>
+      : GetScalarType<T[P], AggregatePacientes[P]>
+  }
+
+
+
+
+  export type pacientesGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: pacientesWhereInput
+    orderBy?: pacientesOrderByWithAggregationInput | pacientesOrderByWithAggregationInput[]
+    by: PacientesScalarFieldEnum[] | PacientesScalarFieldEnum
+    having?: pacientesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PacientesCountAggregateInputType | true
+    _avg?: PacientesAvgAggregateInputType
+    _sum?: PacientesSumAggregateInputType
+    _min?: PacientesMinAggregateInputType
+    _max?: PacientesMaxAggregateInputType
+  }
+
+
+  export type PacientesGroupByOutputType = {
+    idpaciente: number
+    paciente: string | null
+    dni: number | null
+    obra_soc: string | null
+    telefono: bigint | null
+    domicilio: string | null
+    mail: string | null
+    _count: PacientesCountAggregateOutputType | null
+    _avg: PacientesAvgAggregateOutputType | null
+    _sum: PacientesSumAggregateOutputType | null
+    _min: PacientesMinAggregateOutputType | null
+    _max: PacientesMaxAggregateOutputType | null
+  }
+
+  type GetPacientesGroupByPayload<T extends pacientesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PacientesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PacientesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PacientesGroupByOutputType[P]>
+            : GetScalarType<T[P], PacientesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type pacientesSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idpaciente?: boolean
+    paciente?: boolean
+    dni?: boolean
+    obra_soc?: boolean
+    telefono?: boolean
+    domicilio?: boolean
+    mail?: boolean
+  }, ExtArgs["result"]["pacientes"]>
+
+  export type pacientesSelectScalar = {
+    idpaciente?: boolean
+    paciente?: boolean
+    dni?: boolean
+    obra_soc?: boolean
+    telefono?: boolean
+    domicilio?: boolean
+    mail?: boolean
+  }
+
+
+  type pacientesGetPayload<S extends boolean | null | undefined | pacientesArgs> = $Types.GetResult<pacientesPayload, S>
+
+  type pacientesCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<pacientesFindManyArgs, 'select' | 'include'> & {
+      select?: PacientesCountAggregateInputType | true
+    }
+
+  export interface pacientesDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['pacientes'], meta: { name: 'pacientes' } }
+    /**
+     * Find zero or one Pacientes that matches the filter.
+     * @param {pacientesFindUniqueArgs} args - Arguments to find a Pacientes
+     * @example
+     * // Get one Pacientes
+     * const pacientes = await prisma.pacientes.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends pacientesFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, pacientesFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'pacientes'> extends True ? Prisma__pacientesClient<$Types.GetResult<pacientesPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__pacientesClient<$Types.GetResult<pacientesPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Pacientes that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {pacientesFindUniqueOrThrowArgs} args - Arguments to find a Pacientes
+     * @example
+     * // Get one Pacientes
+     * const pacientes = await prisma.pacientes.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends pacientesFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, pacientesFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__pacientesClient<$Types.GetResult<pacientesPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Pacientes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pacientesFindFirstArgs} args - Arguments to find a Pacientes
+     * @example
+     * // Get one Pacientes
+     * const pacientes = await prisma.pacientes.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends pacientesFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, pacientesFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'pacientes'> extends True ? Prisma__pacientesClient<$Types.GetResult<pacientesPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__pacientesClient<$Types.GetResult<pacientesPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Pacientes that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pacientesFindFirstOrThrowArgs} args - Arguments to find a Pacientes
+     * @example
+     * // Get one Pacientes
+     * const pacientes = await prisma.pacientes.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends pacientesFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, pacientesFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__pacientesClient<$Types.GetResult<pacientesPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Pacientes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pacientesFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Pacientes
+     * const pacientes = await prisma.pacientes.findMany()
+     * 
+     * // Get first 10 Pacientes
+     * const pacientes = await prisma.pacientes.findMany({ take: 10 })
+     * 
+     * // Only select the `idpaciente`
+     * const pacientesWithIdpacienteOnly = await prisma.pacientes.findMany({ select: { idpaciente: true } })
+     * 
+    **/
+    findMany<T extends pacientesFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, pacientesFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<pacientesPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Pacientes.
+     * @param {pacientesCreateArgs} args - Arguments to create a Pacientes.
+     * @example
+     * // Create one Pacientes
+     * const Pacientes = await prisma.pacientes.create({
+     *   data: {
+     *     // ... data to create a Pacientes
+     *   }
+     * })
+     * 
+    **/
+    create<T extends pacientesCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, pacientesCreateArgs<ExtArgs>>
+    ): Prisma__pacientesClient<$Types.GetResult<pacientesPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Pacientes.
+     *     @param {pacientesCreateManyArgs} args - Arguments to create many Pacientes.
+     *     @example
+     *     // Create many Pacientes
+     *     const pacientes = await prisma.pacientes.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends pacientesCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, pacientesCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Pacientes.
+     * @param {pacientesDeleteArgs} args - Arguments to delete one Pacientes.
+     * @example
+     * // Delete one Pacientes
+     * const Pacientes = await prisma.pacientes.delete({
+     *   where: {
+     *     // ... filter to delete one Pacientes
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends pacientesDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, pacientesDeleteArgs<ExtArgs>>
+    ): Prisma__pacientesClient<$Types.GetResult<pacientesPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Pacientes.
+     * @param {pacientesUpdateArgs} args - Arguments to update one Pacientes.
+     * @example
+     * // Update one Pacientes
+     * const pacientes = await prisma.pacientes.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends pacientesUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, pacientesUpdateArgs<ExtArgs>>
+    ): Prisma__pacientesClient<$Types.GetResult<pacientesPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Pacientes.
+     * @param {pacientesDeleteManyArgs} args - Arguments to filter Pacientes to delete.
+     * @example
+     * // Delete a few Pacientes
+     * const { count } = await prisma.pacientes.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends pacientesDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, pacientesDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Pacientes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pacientesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Pacientes
+     * const pacientes = await prisma.pacientes.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends pacientesUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, pacientesUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Pacientes.
+     * @param {pacientesUpsertArgs} args - Arguments to update or create a Pacientes.
+     * @example
+     * // Update or create a Pacientes
+     * const pacientes = await prisma.pacientes.upsert({
+     *   create: {
+     *     // ... data to create a Pacientes
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Pacientes we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends pacientesUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, pacientesUpsertArgs<ExtArgs>>
+    ): Prisma__pacientesClient<$Types.GetResult<pacientesPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Pacientes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pacientesCountArgs} args - Arguments to filter Pacientes to count.
+     * @example
+     * // Count the number of Pacientes
+     * const count = await prisma.pacientes.count({
+     *   where: {
+     *     // ... the filter for the Pacientes we want to count
+     *   }
+     * })
+    **/
+    count<T extends pacientesCountArgs>(
+      args?: Subset<T, pacientesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PacientesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Pacientes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PacientesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PacientesAggregateArgs>(args: Subset<T, PacientesAggregateArgs>): Prisma.PrismaPromise<GetPacientesAggregateType<T>>
+
+    /**
+     * Group by Pacientes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pacientesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends pacientesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: pacientesGroupByArgs['orderBy'] }
+        : { orderBy?: pacientesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, pacientesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPacientesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for pacientes.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__pacientesClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * pacientes base type for findUnique actions
+   */
+  export type pacientesFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pacientes
+     */
+    select?: pacientesSelect<ExtArgs> | null
+    /**
+     * Filter, which pacientes to fetch.
+     */
+    where: pacientesWhereUniqueInput
+  }
+
+  /**
+   * pacientes findUnique
+   */
+  export interface pacientesFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends pacientesFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * pacientes findUniqueOrThrow
+   */
+  export type pacientesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pacientes
+     */
+    select?: pacientesSelect<ExtArgs> | null
+    /**
+     * Filter, which pacientes to fetch.
+     */
+    where: pacientesWhereUniqueInput
+  }
+
+
+  /**
+   * pacientes base type for findFirst actions
+   */
+  export type pacientesFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pacientes
+     */
+    select?: pacientesSelect<ExtArgs> | null
+    /**
+     * Filter, which pacientes to fetch.
+     */
+    where?: pacientesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pacientes to fetch.
+     */
+    orderBy?: pacientesOrderByWithRelationInput | pacientesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for pacientes.
+     */
+    cursor?: pacientesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pacientes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pacientes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of pacientes.
+     */
+    distinct?: PacientesScalarFieldEnum | PacientesScalarFieldEnum[]
+  }
+
+  /**
+   * pacientes findFirst
+   */
+  export interface pacientesFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends pacientesFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * pacientes findFirstOrThrow
+   */
+  export type pacientesFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pacientes
+     */
+    select?: pacientesSelect<ExtArgs> | null
+    /**
+     * Filter, which pacientes to fetch.
+     */
+    where?: pacientesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pacientes to fetch.
+     */
+    orderBy?: pacientesOrderByWithRelationInput | pacientesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for pacientes.
+     */
+    cursor?: pacientesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pacientes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pacientes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of pacientes.
+     */
+    distinct?: PacientesScalarFieldEnum | PacientesScalarFieldEnum[]
+  }
+
+
+  /**
+   * pacientes findMany
+   */
+  export type pacientesFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pacientes
+     */
+    select?: pacientesSelect<ExtArgs> | null
+    /**
+     * Filter, which pacientes to fetch.
+     */
+    where?: pacientesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pacientes to fetch.
+     */
+    orderBy?: pacientesOrderByWithRelationInput | pacientesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing pacientes.
+     */
+    cursor?: pacientesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pacientes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pacientes.
+     */
+    skip?: number
+    distinct?: PacientesScalarFieldEnum | PacientesScalarFieldEnum[]
+  }
+
+
+  /**
+   * pacientes create
+   */
+  export type pacientesCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pacientes
+     */
+    select?: pacientesSelect<ExtArgs> | null
+    /**
+     * The data needed to create a pacientes.
+     */
+    data?: XOR<pacientesCreateInput, pacientesUncheckedCreateInput>
+  }
+
+
+  /**
+   * pacientes createMany
+   */
+  export type pacientesCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many pacientes.
+     */
+    data: pacientesCreateManyInput | pacientesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * pacientes update
+   */
+  export type pacientesUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pacientes
+     */
+    select?: pacientesSelect<ExtArgs> | null
+    /**
+     * The data needed to update a pacientes.
+     */
+    data: XOR<pacientesUpdateInput, pacientesUncheckedUpdateInput>
+    /**
+     * Choose, which pacientes to update.
+     */
+    where: pacientesWhereUniqueInput
+  }
+
+
+  /**
+   * pacientes updateMany
+   */
+  export type pacientesUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update pacientes.
+     */
+    data: XOR<pacientesUpdateManyMutationInput, pacientesUncheckedUpdateManyInput>
+    /**
+     * Filter which pacientes to update
+     */
+    where?: pacientesWhereInput
+  }
+
+
+  /**
+   * pacientes upsert
+   */
+  export type pacientesUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pacientes
+     */
+    select?: pacientesSelect<ExtArgs> | null
+    /**
+     * The filter to search for the pacientes to update in case it exists.
+     */
+    where: pacientesWhereUniqueInput
+    /**
+     * In case the pacientes found by the `where` argument doesn't exist, create a new pacientes with this data.
+     */
+    create: XOR<pacientesCreateInput, pacientesUncheckedCreateInput>
+    /**
+     * In case the pacientes was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<pacientesUpdateInput, pacientesUncheckedUpdateInput>
+  }
+
+
+  /**
+   * pacientes delete
+   */
+  export type pacientesDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pacientes
+     */
+    select?: pacientesSelect<ExtArgs> | null
+    /**
+     * Filter which pacientes to delete.
+     */
+    where: pacientesWhereUniqueInput
+  }
+
+
+  /**
+   * pacientes deleteMany
+   */
+  export type pacientesDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which pacientes to delete
+     */
+    where?: pacientesWhereInput
+  }
+
+
+  /**
+   * pacientes without action
+   */
+  export type pacientesArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pacientes
+     */
+    select?: pacientesSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model promociones
+   */
+
+
+  export type AggregatePromociones = {
+    _count: PromocionesCountAggregateOutputType | null
+    _avg: PromocionesAvgAggregateOutputType | null
+    _sum: PromocionesSumAggregateOutputType | null
+    _min: PromocionesMinAggregateOutputType | null
+    _max: PromocionesMaxAggregateOutputType | null
+  }
+
+  export type PromocionesAvgAggregateOutputType = {
+    idpromo: number | null
+    pot1: number | null
+    pot2: number | null
+    pint1: number | null
+    pint2: number | null
+  }
+
+  export type PromocionesSumAggregateOutputType = {
+    idpromo: number | null
+    pot1: number | null
+    pot2: number | null
+    pint1: number | null
+    pint2: number | null
+  }
+
+  export type PromocionesMinAggregateOutputType = {
+    idpromo: number | null
+    pot1: number | null
+    pot2: number | null
+    pint1: number | null
+    pint2: number | null
+  }
+
+  export type PromocionesMaxAggregateOutputType = {
+    idpromo: number | null
+    pot1: number | null
+    pot2: number | null
+    pint1: number | null
+    pint2: number | null
+  }
+
+  export type PromocionesCountAggregateOutputType = {
+    idpromo: number
+    pot1: number
+    pot2: number
+    pint1: number
+    pint2: number
+    _all: number
+  }
+
+
+  export type PromocionesAvgAggregateInputType = {
+    idpromo?: true
+    pot1?: true
+    pot2?: true
+    pint1?: true
+    pint2?: true
+  }
+
+  export type PromocionesSumAggregateInputType = {
+    idpromo?: true
+    pot1?: true
+    pot2?: true
+    pint1?: true
+    pint2?: true
+  }
+
+  export type PromocionesMinAggregateInputType = {
+    idpromo?: true
+    pot1?: true
+    pot2?: true
+    pint1?: true
+    pint2?: true
+  }
+
+  export type PromocionesMaxAggregateInputType = {
+    idpromo?: true
+    pot1?: true
+    pot2?: true
+    pint1?: true
+    pint2?: true
+  }
+
+  export type PromocionesCountAggregateInputType = {
+    idpromo?: true
+    pot1?: true
+    pot2?: true
+    pint1?: true
+    pint2?: true
+    _all?: true
+  }
+
+  export type PromocionesAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which promociones to aggregate.
+     */
+    where?: promocionesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of promociones to fetch.
+     */
+    orderBy?: promocionesOrderByWithRelationInput | promocionesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: promocionesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` promociones from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` promociones.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned promociones
+    **/
+    _count?: true | PromocionesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PromocionesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PromocionesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PromocionesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PromocionesMaxAggregateInputType
+  }
+
+  export type GetPromocionesAggregateType<T extends PromocionesAggregateArgs> = {
+        [P in keyof T & keyof AggregatePromociones]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePromociones[P]>
+      : GetScalarType<T[P], AggregatePromociones[P]>
+  }
+
+
+
+
+  export type promocionesGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: promocionesWhereInput
+    orderBy?: promocionesOrderByWithAggregationInput | promocionesOrderByWithAggregationInput[]
+    by: PromocionesScalarFieldEnum[] | PromocionesScalarFieldEnum
+    having?: promocionesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PromocionesCountAggregateInputType | true
+    _avg?: PromocionesAvgAggregateInputType
+    _sum?: PromocionesSumAggregateInputType
+    _min?: PromocionesMinAggregateInputType
+    _max?: PromocionesMaxAggregateInputType
+  }
+
+
+  export type PromocionesGroupByOutputType = {
+    idpromo: number
+    pot1: number | null
+    pot2: number | null
+    pint1: number | null
+    pint2: number | null
+    _count: PromocionesCountAggregateOutputType | null
+    _avg: PromocionesAvgAggregateOutputType | null
+    _sum: PromocionesSumAggregateOutputType | null
+    _min: PromocionesMinAggregateOutputType | null
+    _max: PromocionesMaxAggregateOutputType | null
+  }
+
+  type GetPromocionesGroupByPayload<T extends promocionesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PromocionesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PromocionesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PromocionesGroupByOutputType[P]>
+            : GetScalarType<T[P], PromocionesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type promocionesSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idpromo?: boolean
+    pot1?: boolean
+    pot2?: boolean
+    pint1?: boolean
+    pint2?: boolean
+  }, ExtArgs["result"]["promociones"]>
+
+  export type promocionesSelectScalar = {
+    idpromo?: boolean
+    pot1?: boolean
+    pot2?: boolean
+    pint1?: boolean
+    pint2?: boolean
+  }
+
+
+  type promocionesGetPayload<S extends boolean | null | undefined | promocionesArgs> = $Types.GetResult<promocionesPayload, S>
+
+  type promocionesCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<promocionesFindManyArgs, 'select' | 'include'> & {
+      select?: PromocionesCountAggregateInputType | true
+    }
+
+  export interface promocionesDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['promociones'], meta: { name: 'promociones' } }
+    /**
+     * Find zero or one Promociones that matches the filter.
+     * @param {promocionesFindUniqueArgs} args - Arguments to find a Promociones
+     * @example
+     * // Get one Promociones
+     * const promociones = await prisma.promociones.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends promocionesFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, promocionesFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'promociones'> extends True ? Prisma__promocionesClient<$Types.GetResult<promocionesPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__promocionesClient<$Types.GetResult<promocionesPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Promociones that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {promocionesFindUniqueOrThrowArgs} args - Arguments to find a Promociones
+     * @example
+     * // Get one Promociones
+     * const promociones = await prisma.promociones.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends promocionesFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, promocionesFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__promocionesClient<$Types.GetResult<promocionesPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Promociones that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {promocionesFindFirstArgs} args - Arguments to find a Promociones
+     * @example
+     * // Get one Promociones
+     * const promociones = await prisma.promociones.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends promocionesFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, promocionesFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'promociones'> extends True ? Prisma__promocionesClient<$Types.GetResult<promocionesPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__promocionesClient<$Types.GetResult<promocionesPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Promociones that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {promocionesFindFirstOrThrowArgs} args - Arguments to find a Promociones
+     * @example
+     * // Get one Promociones
+     * const promociones = await prisma.promociones.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends promocionesFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, promocionesFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__promocionesClient<$Types.GetResult<promocionesPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Promociones that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {promocionesFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Promociones
+     * const promociones = await prisma.promociones.findMany()
+     * 
+     * // Get first 10 Promociones
+     * const promociones = await prisma.promociones.findMany({ take: 10 })
+     * 
+     * // Only select the `idpromo`
+     * const promocionesWithIdpromoOnly = await prisma.promociones.findMany({ select: { idpromo: true } })
+     * 
+    **/
+    findMany<T extends promocionesFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, promocionesFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<promocionesPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Promociones.
+     * @param {promocionesCreateArgs} args - Arguments to create a Promociones.
+     * @example
+     * // Create one Promociones
+     * const Promociones = await prisma.promociones.create({
+     *   data: {
+     *     // ... data to create a Promociones
+     *   }
+     * })
+     * 
+    **/
+    create<T extends promocionesCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, promocionesCreateArgs<ExtArgs>>
+    ): Prisma__promocionesClient<$Types.GetResult<promocionesPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Promociones.
+     *     @param {promocionesCreateManyArgs} args - Arguments to create many Promociones.
+     *     @example
+     *     // Create many Promociones
+     *     const promociones = await prisma.promociones.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends promocionesCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, promocionesCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Promociones.
+     * @param {promocionesDeleteArgs} args - Arguments to delete one Promociones.
+     * @example
+     * // Delete one Promociones
+     * const Promociones = await prisma.promociones.delete({
+     *   where: {
+     *     // ... filter to delete one Promociones
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends promocionesDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, promocionesDeleteArgs<ExtArgs>>
+    ): Prisma__promocionesClient<$Types.GetResult<promocionesPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Promociones.
+     * @param {promocionesUpdateArgs} args - Arguments to update one Promociones.
+     * @example
+     * // Update one Promociones
+     * const promociones = await prisma.promociones.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends promocionesUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, promocionesUpdateArgs<ExtArgs>>
+    ): Prisma__promocionesClient<$Types.GetResult<promocionesPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Promociones.
+     * @param {promocionesDeleteManyArgs} args - Arguments to filter Promociones to delete.
+     * @example
+     * // Delete a few Promociones
+     * const { count } = await prisma.promociones.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends promocionesDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, promocionesDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Promociones.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {promocionesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Promociones
+     * const promociones = await prisma.promociones.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends promocionesUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, promocionesUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Promociones.
+     * @param {promocionesUpsertArgs} args - Arguments to update or create a Promociones.
+     * @example
+     * // Update or create a Promociones
+     * const promociones = await prisma.promociones.upsert({
+     *   create: {
+     *     // ... data to create a Promociones
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Promociones we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends promocionesUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, promocionesUpsertArgs<ExtArgs>>
+    ): Prisma__promocionesClient<$Types.GetResult<promocionesPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Promociones.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {promocionesCountArgs} args - Arguments to filter Promociones to count.
+     * @example
+     * // Count the number of Promociones
+     * const count = await prisma.promociones.count({
+     *   where: {
+     *     // ... the filter for the Promociones we want to count
+     *   }
+     * })
+    **/
+    count<T extends promocionesCountArgs>(
+      args?: Subset<T, promocionesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PromocionesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Promociones.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromocionesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PromocionesAggregateArgs>(args: Subset<T, PromocionesAggregateArgs>): Prisma.PrismaPromise<GetPromocionesAggregateType<T>>
+
+    /**
+     * Group by Promociones.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {promocionesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends promocionesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: promocionesGroupByArgs['orderBy'] }
+        : { orderBy?: promocionesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, promocionesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPromocionesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for promociones.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__promocionesClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * promociones base type for findUnique actions
+   */
+  export type promocionesFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the promociones
+     */
+    select?: promocionesSelect<ExtArgs> | null
+    /**
+     * Filter, which promociones to fetch.
+     */
+    where: promocionesWhereUniqueInput
+  }
+
+  /**
+   * promociones findUnique
+   */
+  export interface promocionesFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends promocionesFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * promociones findUniqueOrThrow
+   */
+  export type promocionesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the promociones
+     */
+    select?: promocionesSelect<ExtArgs> | null
+    /**
+     * Filter, which promociones to fetch.
+     */
+    where: promocionesWhereUniqueInput
+  }
+
+
+  /**
+   * promociones base type for findFirst actions
+   */
+  export type promocionesFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the promociones
+     */
+    select?: promocionesSelect<ExtArgs> | null
+    /**
+     * Filter, which promociones to fetch.
+     */
+    where?: promocionesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of promociones to fetch.
+     */
+    orderBy?: promocionesOrderByWithRelationInput | promocionesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for promociones.
+     */
+    cursor?: promocionesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` promociones from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` promociones.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of promociones.
+     */
+    distinct?: PromocionesScalarFieldEnum | PromocionesScalarFieldEnum[]
+  }
+
+  /**
+   * promociones findFirst
+   */
+  export interface promocionesFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends promocionesFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * promociones findFirstOrThrow
+   */
+  export type promocionesFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the promociones
+     */
+    select?: promocionesSelect<ExtArgs> | null
+    /**
+     * Filter, which promociones to fetch.
+     */
+    where?: promocionesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of promociones to fetch.
+     */
+    orderBy?: promocionesOrderByWithRelationInput | promocionesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for promociones.
+     */
+    cursor?: promocionesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` promociones from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` promociones.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of promociones.
+     */
+    distinct?: PromocionesScalarFieldEnum | PromocionesScalarFieldEnum[]
+  }
+
+
+  /**
+   * promociones findMany
+   */
+  export type promocionesFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the promociones
+     */
+    select?: promocionesSelect<ExtArgs> | null
+    /**
+     * Filter, which promociones to fetch.
+     */
+    where?: promocionesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of promociones to fetch.
+     */
+    orderBy?: promocionesOrderByWithRelationInput | promocionesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing promociones.
+     */
+    cursor?: promocionesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` promociones from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` promociones.
+     */
+    skip?: number
+    distinct?: PromocionesScalarFieldEnum | PromocionesScalarFieldEnum[]
+  }
+
+
+  /**
+   * promociones create
+   */
+  export type promocionesCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the promociones
+     */
+    select?: promocionesSelect<ExtArgs> | null
+    /**
+     * The data needed to create a promociones.
+     */
+    data?: XOR<promocionesCreateInput, promocionesUncheckedCreateInput>
+  }
+
+
+  /**
+   * promociones createMany
+   */
+  export type promocionesCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many promociones.
+     */
+    data: promocionesCreateManyInput | promocionesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * promociones update
+   */
+  export type promocionesUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the promociones
+     */
+    select?: promocionesSelect<ExtArgs> | null
+    /**
+     * The data needed to update a promociones.
+     */
+    data: XOR<promocionesUpdateInput, promocionesUncheckedUpdateInput>
+    /**
+     * Choose, which promociones to update.
+     */
+    where: promocionesWhereUniqueInput
+  }
+
+
+  /**
+   * promociones updateMany
+   */
+  export type promocionesUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update promociones.
+     */
+    data: XOR<promocionesUpdateManyMutationInput, promocionesUncheckedUpdateManyInput>
+    /**
+     * Filter which promociones to update
+     */
+    where?: promocionesWhereInput
+  }
+
+
+  /**
+   * promociones upsert
+   */
+  export type promocionesUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the promociones
+     */
+    select?: promocionesSelect<ExtArgs> | null
+    /**
+     * The filter to search for the promociones to update in case it exists.
+     */
+    where: promocionesWhereUniqueInput
+    /**
+     * In case the promociones found by the `where` argument doesn't exist, create a new promociones with this data.
+     */
+    create: XOR<promocionesCreateInput, promocionesUncheckedCreateInput>
+    /**
+     * In case the promociones was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<promocionesUpdateInput, promocionesUncheckedUpdateInput>
+  }
+
+
+  /**
+   * promociones delete
+   */
+  export type promocionesDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the promociones
+     */
+    select?: promocionesSelect<ExtArgs> | null
+    /**
+     * Filter which promociones to delete.
+     */
+    where: promocionesWhereUniqueInput
+  }
+
+
+  /**
+   * promociones deleteMany
+   */
+  export type promocionesDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which promociones to delete
+     */
+    where?: promocionesWhereInput
+  }
+
+
+  /**
+   * promociones without action
+   */
+  export type promocionesArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the promociones
+     */
+    select?: promocionesSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -19891,7 +21987,8 @@ export namespace Prisma {
     estado: 'estado',
     operador: 'operador',
     domicilio: 'domicilio',
-    mail: 'mail'
+    mail: 'mail',
+    dni: 'dni'
   };
 
   export type MEDICOS_TURNOSScalarFieldEnum = (typeof MEDICOS_TURNOSScalarFieldEnum)[keyof typeof MEDICOS_TURNOSScalarFieldEnum]
@@ -20114,6 +22211,30 @@ export namespace Prisma {
   };
 
   export type Planes_visitasScalarFieldEnum = (typeof Planes_visitasScalarFieldEnum)[keyof typeof Planes_visitasScalarFieldEnum]
+
+
+  export const PacientesScalarFieldEnum: {
+    idpaciente: 'idpaciente',
+    paciente: 'paciente',
+    dni: 'dni',
+    obra_soc: 'obra_soc',
+    telefono: 'telefono',
+    domicilio: 'domicilio',
+    mail: 'mail'
+  };
+
+  export type PacientesScalarFieldEnum = (typeof PacientesScalarFieldEnum)[keyof typeof PacientesScalarFieldEnum]
+
+
+  export const PromocionesScalarFieldEnum: {
+    idpromo: 'idpromo',
+    pot1: 'pot1',
+    pot2: 'pot2',
+    pint1: 'pint1',
+    pint2: 'pint2'
+  };
+
+  export type PromocionesScalarFieldEnum = (typeof PromocionesScalarFieldEnum)[keyof typeof PromocionesScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -20819,7 +22940,7 @@ export namespace Prisma {
     idturno?: IntFilter | number
     turno?: StringNullableFilter | string | null
     fecha?: DateTimeNullableFilter | Date | string | null
-    hora?: DateTimeNullableFilter | Date | string | null
+    hora?: StringNullableFilter | string | null
     doctor?: StringNullableFilter | string | null
     paciente?: StringNullableFilter | string | null
     obra_soc?: StringNullableFilter | string | null
@@ -20828,6 +22949,7 @@ export namespace Prisma {
     operador?: StringNullableFilter | string | null
     domicilio?: StringNullableFilter | string | null
     mail?: StringNullableFilter | string | null
+    dni?: IntNullableFilter | number | null
   }
 
   export type MEDICOS_TURNOSOrderByWithRelationInput = {
@@ -20843,6 +22965,7 @@ export namespace Prisma {
     operador?: SortOrderInput | SortOrder
     domicilio?: SortOrderInput | SortOrder
     mail?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
   }
 
   export type MEDICOS_TURNOSWhereUniqueInput = {
@@ -20862,6 +22985,7 @@ export namespace Prisma {
     operador?: SortOrderInput | SortOrder
     domicilio?: SortOrderInput | SortOrder
     mail?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
     _count?: MEDICOS_TURNOSCountOrderByAggregateInput
     _avg?: MEDICOS_TURNOSAvgOrderByAggregateInput
     _max?: MEDICOS_TURNOSMaxOrderByAggregateInput
@@ -20876,7 +23000,7 @@ export namespace Prisma {
     idturno?: IntWithAggregatesFilter | number
     turno?: StringNullableWithAggregatesFilter | string | null
     fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    hora?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    hora?: StringNullableWithAggregatesFilter | string | null
     doctor?: StringNullableWithAggregatesFilter | string | null
     paciente?: StringNullableWithAggregatesFilter | string | null
     obra_soc?: StringNullableWithAggregatesFilter | string | null
@@ -20885,6 +23009,7 @@ export namespace Prisma {
     operador?: StringNullableWithAggregatesFilter | string | null
     domicilio?: StringNullableWithAggregatesFilter | string | null
     mail?: StringNullableWithAggregatesFilter | string | null
+    dni?: IntNullableWithAggregatesFilter | number | null
   }
 
   export type PRACTICAWhereInput = {
@@ -21163,7 +23288,7 @@ export namespace Prisma {
     SERVICIO?: StringNullableFilter | string | null
     NUSOS?: IntNullableFilter | number | null
     MODALIDAD?: StringNullableFilter | string | null
-    VALOR?: FloatNullableFilter | number | null
+    VALOR?: StringNullableFilter | string | null
     IMPORTE?: FloatNullableFilter | number | null
     PUESTO?: StringNullableFilter | string | null
     PRESTADO?: StringNullableFilter | string | null
@@ -21176,7 +23301,7 @@ export namespace Prisma {
     CONTROL?: BoolNullableFilter | boolean | null
     NORDEN?: StringNullableFilter | string | null
     FECHA_CONTROL?: DateTimeNullableFilter | Date | string | null
-    IMP_LIQ?: StringNullableFilter | string | null
+    IMP_LIQ?: FloatNullableFilter | number | null
   }
 
   export type USOSOrderByWithRelationInput = {
@@ -21271,7 +23396,7 @@ export namespace Prisma {
     SERVICIO?: StringNullableWithAggregatesFilter | string | null
     NUSOS?: IntNullableWithAggregatesFilter | number | null
     MODALIDAD?: StringNullableWithAggregatesFilter | string | null
-    VALOR?: FloatNullableWithAggregatesFilter | number | null
+    VALOR?: StringNullableWithAggregatesFilter | string | null
     IMPORTE?: FloatNullableWithAggregatesFilter | number | null
     PUESTO?: StringNullableWithAggregatesFilter | string | null
     PRESTADO?: StringNullableWithAggregatesFilter | string | null
@@ -21284,7 +23409,7 @@ export namespace Prisma {
     CONTROL?: BoolNullableWithAggregatesFilter | boolean | null
     NORDEN?: StringNullableWithAggregatesFilter | string | null
     FECHA_CONTROL?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    IMP_LIQ?: StringNullableWithAggregatesFilter | string | null
+    IMP_LIQ?: FloatNullableWithAggregatesFilter | number | null
   }
 
   export type USOSFAWhereInput = {
@@ -21791,6 +23916,108 @@ export namespace Prisma {
     pagado?: BoolNullableWithAggregatesFilter | boolean | null
     operador?: StringNullableWithAggregatesFilter | string | null
     plan?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type pacientesWhereInput = {
+    AND?: pacientesWhereInput | pacientesWhereInput[]
+    OR?: pacientesWhereInput[]
+    NOT?: pacientesWhereInput | pacientesWhereInput[]
+    idpaciente?: IntFilter | number
+    paciente?: StringNullableFilter | string | null
+    dni?: IntNullableFilter | number | null
+    obra_soc?: StringNullableFilter | string | null
+    telefono?: BigIntNullableFilter | bigint | number | null
+    domicilio?: StringNullableFilter | string | null
+    mail?: StringNullableFilter | string | null
+  }
+
+  export type pacientesOrderByWithRelationInput = {
+    idpaciente?: SortOrder
+    paciente?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
+    obra_soc?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    domicilio?: SortOrderInput | SortOrder
+    mail?: SortOrderInput | SortOrder
+  }
+
+  export type pacientesWhereUniqueInput = {
+    idpaciente?: number
+  }
+
+  export type pacientesOrderByWithAggregationInput = {
+    idpaciente?: SortOrder
+    paciente?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
+    obra_soc?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    domicilio?: SortOrderInput | SortOrder
+    mail?: SortOrderInput | SortOrder
+    _count?: pacientesCountOrderByAggregateInput
+    _avg?: pacientesAvgOrderByAggregateInput
+    _max?: pacientesMaxOrderByAggregateInput
+    _min?: pacientesMinOrderByAggregateInput
+    _sum?: pacientesSumOrderByAggregateInput
+  }
+
+  export type pacientesScalarWhereWithAggregatesInput = {
+    AND?: pacientesScalarWhereWithAggregatesInput | pacientesScalarWhereWithAggregatesInput[]
+    OR?: pacientesScalarWhereWithAggregatesInput[]
+    NOT?: pacientesScalarWhereWithAggregatesInput | pacientesScalarWhereWithAggregatesInput[]
+    idpaciente?: IntWithAggregatesFilter | number
+    paciente?: StringNullableWithAggregatesFilter | string | null
+    dni?: IntNullableWithAggregatesFilter | number | null
+    obra_soc?: StringNullableWithAggregatesFilter | string | null
+    telefono?: BigIntNullableWithAggregatesFilter | bigint | number | null
+    domicilio?: StringNullableWithAggregatesFilter | string | null
+    mail?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type promocionesWhereInput = {
+    AND?: promocionesWhereInput | promocionesWhereInput[]
+    OR?: promocionesWhereInput[]
+    NOT?: promocionesWhereInput | promocionesWhereInput[]
+    idpromo?: IntFilter | number
+    pot1?: IntNullableFilter | number | null
+    pot2?: IntNullableFilter | number | null
+    pint1?: IntNullableFilter | number | null
+    pint2?: IntNullableFilter | number | null
+  }
+
+  export type promocionesOrderByWithRelationInput = {
+    idpromo?: SortOrder
+    pot1?: SortOrderInput | SortOrder
+    pot2?: SortOrderInput | SortOrder
+    pint1?: SortOrderInput | SortOrder
+    pint2?: SortOrderInput | SortOrder
+  }
+
+  export type promocionesWhereUniqueInput = {
+    idpromo?: number
+  }
+
+  export type promocionesOrderByWithAggregationInput = {
+    idpromo?: SortOrder
+    pot1?: SortOrderInput | SortOrder
+    pot2?: SortOrderInput | SortOrder
+    pint1?: SortOrderInput | SortOrder
+    pint2?: SortOrderInput | SortOrder
+    _count?: promocionesCountOrderByAggregateInput
+    _avg?: promocionesAvgOrderByAggregateInput
+    _max?: promocionesMaxOrderByAggregateInput
+    _min?: promocionesMinOrderByAggregateInput
+    _sum?: promocionesSumOrderByAggregateInput
+  }
+
+  export type promocionesScalarWhereWithAggregatesInput = {
+    AND?: promocionesScalarWhereWithAggregatesInput | promocionesScalarWhereWithAggregatesInput[]
+    OR?: promocionesScalarWhereWithAggregatesInput[]
+    NOT?: promocionesScalarWhereWithAggregatesInput | promocionesScalarWhereWithAggregatesInput[]
+    idpromo?: IntWithAggregatesFilter | number
+    pot1?: IntNullableWithAggregatesFilter | number | null
+    pot2?: IntNullableWithAggregatesFilter | number | null
+    pint1?: IntNullableWithAggregatesFilter | number | null
+    pint2?: IntNullableWithAggregatesFilter | number | null
   }
 
   export type AUT_PRACCreateInput = {
@@ -22831,7 +25058,7 @@ export namespace Prisma {
   export type MEDICOS_TURNOSCreateInput = {
     turno?: string | null
     fecha?: Date | string | null
-    hora?: Date | string | null
+    hora?: string | null
     doctor?: string | null
     paciente?: string | null
     obra_soc?: string | null
@@ -22840,13 +25067,14 @@ export namespace Prisma {
     operador?: string | null
     domicilio?: string | null
     mail?: string | null
+    dni?: number | null
   }
 
   export type MEDICOS_TURNOSUncheckedCreateInput = {
     idturno?: number
     turno?: string | null
     fecha?: Date | string | null
-    hora?: Date | string | null
+    hora?: string | null
     doctor?: string | null
     paciente?: string | null
     obra_soc?: string | null
@@ -22855,12 +25083,13 @@ export namespace Prisma {
     operador?: string | null
     domicilio?: string | null
     mail?: string | null
+    dni?: number | null
   }
 
   export type MEDICOS_TURNOSUpdateInput = {
     turno?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hora?: NullableStringFieldUpdateOperationsInput | string | null
     doctor?: NullableStringFieldUpdateOperationsInput | string | null
     paciente?: NullableStringFieldUpdateOperationsInput | string | null
     obra_soc?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22869,13 +25098,14 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     domicilio?: NullableStringFieldUpdateOperationsInput | string | null
     mail?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type MEDICOS_TURNOSUncheckedUpdateInput = {
     idturno?: IntFieldUpdateOperationsInput | number
     turno?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hora?: NullableStringFieldUpdateOperationsInput | string | null
     doctor?: NullableStringFieldUpdateOperationsInput | string | null
     paciente?: NullableStringFieldUpdateOperationsInput | string | null
     obra_soc?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22884,13 +25114,14 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     domicilio?: NullableStringFieldUpdateOperationsInput | string | null
     mail?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type MEDICOS_TURNOSCreateManyInput = {
     idturno?: number
     turno?: string | null
     fecha?: Date | string | null
-    hora?: Date | string | null
+    hora?: string | null
     doctor?: string | null
     paciente?: string | null
     obra_soc?: string | null
@@ -22899,12 +25130,13 @@ export namespace Prisma {
     operador?: string | null
     domicilio?: string | null
     mail?: string | null
+    dni?: number | null
   }
 
   export type MEDICOS_TURNOSUpdateManyMutationInput = {
     turno?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hora?: NullableStringFieldUpdateOperationsInput | string | null
     doctor?: NullableStringFieldUpdateOperationsInput | string | null
     paciente?: NullableStringFieldUpdateOperationsInput | string | null
     obra_soc?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22913,13 +25145,14 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     domicilio?: NullableStringFieldUpdateOperationsInput | string | null
     mail?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type MEDICOS_TURNOSUncheckedUpdateManyInput = {
     idturno?: IntFieldUpdateOperationsInput | number
     turno?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hora?: NullableStringFieldUpdateOperationsInput | string | null
     doctor?: NullableStringFieldUpdateOperationsInput | string | null
     paciente?: NullableStringFieldUpdateOperationsInput | string | null
     obra_soc?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22928,6 +25161,7 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     domicilio?: NullableStringFieldUpdateOperationsInput | string | null
     mail?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PRACTICACreateInput = {
@@ -23308,7 +25542,7 @@ export namespace Prisma {
     SERVICIO?: string | null
     NUSOS?: number | null
     MODALIDAD?: string | null
-    VALOR?: number | null
+    VALOR?: string | null
     IMPORTE?: number | null
     PUESTO?: string | null
     PRESTADO?: string | null
@@ -23320,7 +25554,7 @@ export namespace Prisma {
     CONTROL?: boolean | null
     NORDEN?: string | null
     FECHA_CONTROL?: Date | string | null
-    IMP_LIQ?: string | null
+    IMP_LIQ?: number | null
   }
 
   export type USOSUncheckedCreateInput = {
@@ -23339,7 +25573,7 @@ export namespace Prisma {
     SERVICIO?: string | null
     NUSOS?: number | null
     MODALIDAD?: string | null
-    VALOR?: number | null
+    VALOR?: string | null
     IMPORTE?: number | null
     PUESTO?: string | null
     PRESTADO?: string | null
@@ -23352,7 +25586,7 @@ export namespace Prisma {
     CONTROL?: boolean | null
     NORDEN?: string | null
     FECHA_CONTROL?: Date | string | null
-    IMP_LIQ?: string | null
+    IMP_LIQ?: number | null
   }
 
   export type USOSUpdateInput = {
@@ -23371,7 +25605,7 @@ export namespace Prisma {
     SERVICIO?: NullableStringFieldUpdateOperationsInput | string | null
     NUSOS?: NullableIntFieldUpdateOperationsInput | number | null
     MODALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
-    VALOR?: NullableFloatFieldUpdateOperationsInput | number | null
+    VALOR?: NullableStringFieldUpdateOperationsInput | string | null
     IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
     PUESTO?: NullableStringFieldUpdateOperationsInput | string | null
     PRESTADO?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23383,7 +25617,7 @@ export namespace Prisma {
     CONTROL?: NullableBoolFieldUpdateOperationsInput | boolean | null
     NORDEN?: NullableStringFieldUpdateOperationsInput | string | null
     FECHA_CONTROL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    IMP_LIQ?: NullableStringFieldUpdateOperationsInput | string | null
+    IMP_LIQ?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type USOSUncheckedUpdateInput = {
@@ -23402,7 +25636,7 @@ export namespace Prisma {
     SERVICIO?: NullableStringFieldUpdateOperationsInput | string | null
     NUSOS?: NullableIntFieldUpdateOperationsInput | number | null
     MODALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
-    VALOR?: NullableFloatFieldUpdateOperationsInput | number | null
+    VALOR?: NullableStringFieldUpdateOperationsInput | string | null
     IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
     PUESTO?: NullableStringFieldUpdateOperationsInput | string | null
     PRESTADO?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23415,7 +25649,7 @@ export namespace Prisma {
     CONTROL?: NullableBoolFieldUpdateOperationsInput | boolean | null
     NORDEN?: NullableStringFieldUpdateOperationsInput | string | null
     FECHA_CONTROL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    IMP_LIQ?: NullableStringFieldUpdateOperationsInput | string | null
+    IMP_LIQ?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type USOSCreateManyInput = {
@@ -23434,7 +25668,7 @@ export namespace Prisma {
     SERVICIO?: string | null
     NUSOS?: number | null
     MODALIDAD?: string | null
-    VALOR?: number | null
+    VALOR?: string | null
     IMPORTE?: number | null
     PUESTO?: string | null
     PRESTADO?: string | null
@@ -23447,7 +25681,7 @@ export namespace Prisma {
     CONTROL?: boolean | null
     NORDEN?: string | null
     FECHA_CONTROL?: Date | string | null
-    IMP_LIQ?: string | null
+    IMP_LIQ?: number | null
   }
 
   export type USOSUpdateManyMutationInput = {
@@ -23466,7 +25700,7 @@ export namespace Prisma {
     SERVICIO?: NullableStringFieldUpdateOperationsInput | string | null
     NUSOS?: NullableIntFieldUpdateOperationsInput | number | null
     MODALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
-    VALOR?: NullableFloatFieldUpdateOperationsInput | number | null
+    VALOR?: NullableStringFieldUpdateOperationsInput | string | null
     IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
     PUESTO?: NullableStringFieldUpdateOperationsInput | string | null
     PRESTADO?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23478,7 +25712,7 @@ export namespace Prisma {
     CONTROL?: NullableBoolFieldUpdateOperationsInput | boolean | null
     NORDEN?: NullableStringFieldUpdateOperationsInput | string | null
     FECHA_CONTROL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    IMP_LIQ?: NullableStringFieldUpdateOperationsInput | string | null
+    IMP_LIQ?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type USOSUncheckedUpdateManyInput = {
@@ -23497,7 +25731,7 @@ export namespace Prisma {
     SERVICIO?: NullableStringFieldUpdateOperationsInput | string | null
     NUSOS?: NullableIntFieldUpdateOperationsInput | number | null
     MODALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
-    VALOR?: NullableFloatFieldUpdateOperationsInput | number | null
+    VALOR?: NullableStringFieldUpdateOperationsInput | string | null
     IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
     PUESTO?: NullableStringFieldUpdateOperationsInput | string | null
     PRESTADO?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23510,7 +25744,7 @@ export namespace Prisma {
     CONTROL?: NullableBoolFieldUpdateOperationsInput | boolean | null
     NORDEN?: NullableStringFieldUpdateOperationsInput | string | null
     FECHA_CONTROL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    IMP_LIQ?: NullableStringFieldUpdateOperationsInput | string | null
+    IMP_LIQ?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type USOSFACreateInput = {
@@ -24221,6 +26455,126 @@ export namespace Prisma {
     pagado?: NullableBoolFieldUpdateOperationsInput | boolean | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     plan?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type pacientesCreateInput = {
+    paciente?: string | null
+    dni?: number | null
+    obra_soc?: string | null
+    telefono?: bigint | number | null
+    domicilio?: string | null
+    mail?: string | null
+  }
+
+  export type pacientesUncheckedCreateInput = {
+    idpaciente?: number
+    paciente?: string | null
+    dni?: number | null
+    obra_soc?: string | null
+    telefono?: bigint | number | null
+    domicilio?: string | null
+    mail?: string | null
+  }
+
+  export type pacientesUpdateInput = {
+    paciente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    obra_soc?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    mail?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type pacientesUncheckedUpdateInput = {
+    idpaciente?: IntFieldUpdateOperationsInput | number
+    paciente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    obra_soc?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    mail?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type pacientesCreateManyInput = {
+    idpaciente?: number
+    paciente?: string | null
+    dni?: number | null
+    obra_soc?: string | null
+    telefono?: bigint | number | null
+    domicilio?: string | null
+    mail?: string | null
+  }
+
+  export type pacientesUpdateManyMutationInput = {
+    paciente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    obra_soc?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    mail?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type pacientesUncheckedUpdateManyInput = {
+    idpaciente?: IntFieldUpdateOperationsInput | number
+    paciente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    obra_soc?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    mail?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type promocionesCreateInput = {
+    pot1?: number | null
+    pot2?: number | null
+    pint1?: number | null
+    pint2?: number | null
+  }
+
+  export type promocionesUncheckedCreateInput = {
+    idpromo?: number
+    pot1?: number | null
+    pot2?: number | null
+    pint1?: number | null
+    pint2?: number | null
+  }
+
+  export type promocionesUpdateInput = {
+    pot1?: NullableIntFieldUpdateOperationsInput | number | null
+    pot2?: NullableIntFieldUpdateOperationsInput | number | null
+    pint1?: NullableIntFieldUpdateOperationsInput | number | null
+    pint2?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type promocionesUncheckedUpdateInput = {
+    idpromo?: IntFieldUpdateOperationsInput | number
+    pot1?: NullableIntFieldUpdateOperationsInput | number | null
+    pot2?: NullableIntFieldUpdateOperationsInput | number | null
+    pint1?: NullableIntFieldUpdateOperationsInput | number | null
+    pint2?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type promocionesCreateManyInput = {
+    idpromo?: number
+    pot1?: number | null
+    pot2?: number | null
+    pint1?: number | null
+    pint2?: number | null
+  }
+
+  export type promocionesUpdateManyMutationInput = {
+    pot1?: NullableIntFieldUpdateOperationsInput | number | null
+    pot2?: NullableIntFieldUpdateOperationsInput | number | null
+    pint1?: NullableIntFieldUpdateOperationsInput | number | null
+    pint2?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type promocionesUncheckedUpdateManyInput = {
+    idpromo?: IntFieldUpdateOperationsInput | number
+    pot1?: NullableIntFieldUpdateOperationsInput | number | null
+    pot2?: NullableIntFieldUpdateOperationsInput | number | null
+    pint1?: NullableIntFieldUpdateOperationsInput | number | null
+    pint2?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type StringNullableFilter = {
@@ -24955,12 +27309,14 @@ export namespace Prisma {
     operador?: SortOrder
     domicilio?: SortOrder
     mail?: SortOrder
+    dni?: SortOrder
   }
 
   export type MEDICOS_TURNOSAvgOrderByAggregateInput = {
     idturno?: SortOrder
     telefono?: SortOrder
     estado?: SortOrder
+    dni?: SortOrder
   }
 
   export type MEDICOS_TURNOSMaxOrderByAggregateInput = {
@@ -24976,6 +27332,7 @@ export namespace Prisma {
     operador?: SortOrder
     domicilio?: SortOrder
     mail?: SortOrder
+    dni?: SortOrder
   }
 
   export type MEDICOS_TURNOSMinOrderByAggregateInput = {
@@ -24991,12 +27348,14 @@ export namespace Prisma {
     operador?: SortOrder
     domicilio?: SortOrder
     mail?: SortOrder
+    dni?: SortOrder
   }
 
   export type MEDICOS_TURNOSSumOrderByAggregateInput = {
     idturno?: SortOrder
     telefono?: SortOrder
     estado?: SortOrder
+    dni?: SortOrder
   }
 
   export type BigIntNullableWithAggregatesFilter = {
@@ -25306,11 +27665,11 @@ export namespace Prisma {
     NRO_DOC?: SortOrder
     EDAD?: SortOrder
     NUSOS?: SortOrder
-    VALOR?: SortOrder
     IMPORTE?: SortOrder
     ANULADO?: SortOrder
     RENDIDO?: SortOrder
     iduso?: SortOrder
+    IMP_LIQ?: SortOrder
   }
 
   export type USOSMaxOrderByAggregateInput = {
@@ -25383,11 +27742,11 @@ export namespace Prisma {
     NRO_DOC?: SortOrder
     EDAD?: SortOrder
     NUSOS?: SortOrder
-    VALOR?: SortOrder
     IMPORTE?: SortOrder
     ANULADO?: SortOrder
     RENDIDO?: SortOrder
     iduso?: SortOrder
+    IMP_LIQ?: SortOrder
   }
 
   export type USOSFACountOrderByAggregateInput = {
@@ -25780,6 +28139,88 @@ export namespace Prisma {
     idplan?: SortOrder
     nvisita?: SortOrder
     pago?: SortOrder
+  }
+
+  export type pacientesCountOrderByAggregateInput = {
+    idpaciente?: SortOrder
+    paciente?: SortOrder
+    dni?: SortOrder
+    obra_soc?: SortOrder
+    telefono?: SortOrder
+    domicilio?: SortOrder
+    mail?: SortOrder
+  }
+
+  export type pacientesAvgOrderByAggregateInput = {
+    idpaciente?: SortOrder
+    dni?: SortOrder
+    telefono?: SortOrder
+  }
+
+  export type pacientesMaxOrderByAggregateInput = {
+    idpaciente?: SortOrder
+    paciente?: SortOrder
+    dni?: SortOrder
+    obra_soc?: SortOrder
+    telefono?: SortOrder
+    domicilio?: SortOrder
+    mail?: SortOrder
+  }
+
+  export type pacientesMinOrderByAggregateInput = {
+    idpaciente?: SortOrder
+    paciente?: SortOrder
+    dni?: SortOrder
+    obra_soc?: SortOrder
+    telefono?: SortOrder
+    domicilio?: SortOrder
+    mail?: SortOrder
+  }
+
+  export type pacientesSumOrderByAggregateInput = {
+    idpaciente?: SortOrder
+    dni?: SortOrder
+    telefono?: SortOrder
+  }
+
+  export type promocionesCountOrderByAggregateInput = {
+    idpromo?: SortOrder
+    pot1?: SortOrder
+    pot2?: SortOrder
+    pint1?: SortOrder
+    pint2?: SortOrder
+  }
+
+  export type promocionesAvgOrderByAggregateInput = {
+    idpromo?: SortOrder
+    pot1?: SortOrder
+    pot2?: SortOrder
+    pint1?: SortOrder
+    pint2?: SortOrder
+  }
+
+  export type promocionesMaxOrderByAggregateInput = {
+    idpromo?: SortOrder
+    pot1?: SortOrder
+    pot2?: SortOrder
+    pint1?: SortOrder
+    pint2?: SortOrder
+  }
+
+  export type promocionesMinOrderByAggregateInput = {
+    idpromo?: SortOrder
+    pot1?: SortOrder
+    pot2?: SortOrder
+    pint1?: SortOrder
+    pint2?: SortOrder
+  }
+
+  export type promocionesSumOrderByAggregateInput = {
+    idpromo?: SortOrder
+    pot1?: SortOrder
+    pot2?: SortOrder
+    pint1?: SortOrder
+    pint2?: SortOrder
   }
 
   export type NullableStringFieldUpdateOperationsInput = {

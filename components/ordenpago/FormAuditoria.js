@@ -14,13 +14,7 @@ import {
   ButtonGroup,
   Spinner,
 } from "@material-tailwind/react";
-import {
-  CheckCircleIcon,
-  InformationCircleIcon,
-} from "@heroicons/react/24/solid";
-import moment from "moment";
 import ListadoDetalleOrden from "./ListadoDetalleOrden";
-import Router from "next/router";
 import ListadoOrdenesSinPuntear from "./ListadoOrdenesSinPuntear";
 import ListadoOrdenesAuditoria from "./ListadoOrdenesAuditoria";
 
@@ -54,7 +48,7 @@ const FormAuditoria = ({
         <Typography variant="h2">Auditoria - Ordenes de Pago</Typography>
 
         <div className="border-2 rounded-xl p-4 mt-5">
-          <Typography variant="h5">Actualizar Campo IMP_LOQ</Typography>
+          <Typography variant="h5">Actualizar Campo IMP_LIQ</Typography>
           <ButtonGroup fullWidth className="mt-5">
             <Button onClick={() => actImpLiq("O")}>Ordenes</Button>
             <Button onClick={() => actImpLiq("P")}>Practicas</Button>

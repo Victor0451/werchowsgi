@@ -29,6 +29,24 @@ export default async function handler(req, res) {
             
             `;
       res.status(200).json(nuevosCasos);
+    } else if (req.query.f && req.query.f === "casos asignados progreso") {
+      const nuevosCasos = await prisma.$queryRaw`
+                SELECT COUNT(*) 'asig'
+                FROM campanacasos as cc
+                INNER JOIN campanas as c ON cc.idcampana = c.idcampana
+                WHERE MONTH(cc.fechacampana) = ${req.query.mes}
+                AND YEAR(cc.fechacampana) = ${req.query.ano}
+                AND c.operador = ${req.query.op}
+
+            
+            `;
+      res
+        .status(200)
+        .json(
+          JSON.stringify(nuevosCasos, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     } else if (req.query.f && req.query.f === "casos trabajados") {
       let operador = req.query.operador;
       let campana = req.query.campana;
@@ -47,6 +65,42 @@ export default async function handler(req, res) {
             
             `;
       res.status(200).json(casosTrab);
+    } else if (req.query.f && req.query.f === "casos trabajados progreso") {
+      const casosTrab = await prisma.$queryRaw`
+                SELECT COUNT(*) 'trab'
+                FROM campanacasos as cc
+                INNER JOIN campanas as c ON cc.idcampana = c.idcampana
+                WHERE MONTH(cc.fechacampana) = ${req.query.mes}
+                AND YEAR(cc.fechacampana) = ${req.query.ano}
+                AND c.operador = ${req.query.op}
+                AND cc.accion = 1
+
+            
+            `;
+      res
+        .status(200)
+        .json(
+          JSON.stringify(casosTrab, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "campanas activas") {
+      const campActivas = await prisma.$queryRaw`
+                select c.idcampana, c.operador, c.descripcion, c.empresa, count(cc.contrato) as cantidad
+                from campanas as c
+                inner join campanacasos as cc on c.idcampana = cc.idcampana
+                where cc.estadocaso = 1
+                group by c.idcampana
+
+            
+            `;
+      res
+        .status(200)
+        .json(
+          JSON.stringify(campActivas, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     } else if (req.query.f && req.query.f === "historial") {
       const hist = await prismaWer.$queryRaw`
                 SELECT
@@ -156,6 +210,19 @@ export default async function handler(req, res) {
                   
                   `;
       res.status(200).json(casosTrab);
+    } else if (req.query.f && req.query.f === "traer operadores") {
+      const casosTrab = await prisma.$queryRaw`
+                   SELECT usuario as 'value',
+                    CONCAT(apellido, ', ', nombre) as 'label'    
+                    FROM operador            
+                    WHERE estado = 1
+                    AND perfil = 2 
+                    AND campanas = 1           
+                    ORDER BY apellido ASC
+                      
+                  
+                  `;
+      res.status(200).json(casosTrab);
     }
   }
   if (req.method === "POST") {
@@ -236,6 +303,15 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(campanaTemp);
+    } else if (req.body.f && req.body.f === "cerrar campaña") {
+      const casosTrab = await prisma.$queryRaw`
+                  UPDATE campanacasos
+                  SET estadocaso = 0
+                  WHERE idcampana = ${parseInt(req.body.idcampana)}
+                      
+                  
+                  `;
+      res.status(200).json(casosTrab);
     }
   }
 }

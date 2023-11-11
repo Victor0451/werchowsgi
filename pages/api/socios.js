@@ -648,78 +648,106 @@ export default async function handler(req, res) {
       });
       res.status(200).json(nCert);
     } else if (req.query.f && req.query.f === "traer usos") {
-      const Usos = await Serv.USOS.findMany({
-        where: {
-          CONTRATO: parseInt(req.query.contrato),
-          ANULADO: null,
-        },
-        orderBy: {
-          FECHA: "desc",
-        },
-      });
+      const usos = await Serv.$queryRaw`
+         
+         SELECT
+          u.CONTRATO,
+          u.FECHA,
+          u.HORA,
+          u.NRO_DOC,
+          p.NOMBRE,
+          u.SERVICIO,
+          u.IMPORTE,
+          u.ANULADO,
+          'WEB' AS SISTEMA,
+          u.ORDEN
+        FROM
+          USOS AS u
+        INNER JOIN PRESTADO AS p ON p.COD_PRES = u.PRESTADO
+        WHERE
+          u.CONTRATO = ${parseInt(req.query.contrato)}
+        ORDER BY u.FECHA DESC
+              `;
 
-      const UsosFa = await Serv.USOSFA.findMany({
-        where: {
-          CONTRATO: req.query.contrato,
-          ANULADO: null,
-        },
-        orderBy: {
-          FECHA: "desc",
-        },
-      });
+      const usosFa = await Serv.$queryRaw`
+         
+         SELECT
+          u.CONTRATO,
+          u.FECHA,
+          u.HORA,
+          u.NRO_DOC,
+          p.NOMBRE,
+          u.SERVICIO,
+          u.IMPORTE,
+          u.ANULADO,
+          'FOX' AS SISTEMA,
+          u.ORDEN
+        FROM
+          USOSFA AS u
+        INNER JOIN PRESTADO AS p ON p.COD_PRES = u.PRESTADO
+        WHERE
+          u.CONTRATO = ${parseInt(req.query.contrato)}
+        ORDER BY u.FECHA DESC
+`;
 
-      let UsosTotal = UsosFa.concat(Usos);
+      let historial = usos.concat(usosFa);
 
-      res.status(200).json(UsosTotal);
+      res
+        .status(200)
+        .json(
+          JSON.stringify(historial, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     }
-  }
-  if (req.method === "POST") {
-    if (req.body.f && req.body.f === "soli afi") {
-      const regSoli = await SGI.rehabilitaciones.create({
-        data: {
-          contrato: `${req.body.contrato}`,
-          apellido: req.body.apellido,
-          nombre: req.body.nombre,
-          operador: req.body.operador,
-          idoperador: parseInt(req.body.idoperador),
-          vigencia: new Date(req.body.vigencia),
-          fecha: new Date(req.body.fecha),
-          cuotas: parseInt(req.body.cuotas),
-          dni: parseInt(req.body.dni),
-          empresa: req.body.empresa,
-        },
-      });
+    if (req.method === "POST") {
+      if (req.body.f && req.body.f === "soli afi") {
+        const regSoli = await SGI.rehabilitaciones.create({
+          data: {
+            contrato: `${req.body.contrato}`,
+            apellido: req.body.apellido,
+            nombre: req.body.nombre,
+            operador: req.body.operador,
+            idoperador: parseInt(req.body.idoperador),
+            vigencia: new Date(req.body.vigencia),
+            fecha: new Date(req.body.fecha),
+            cuotas: parseInt(req.body.cuotas),
+            dni: parseInt(req.body.dni),
+            empresa: req.body.empresa,
+          },
+        });
 
-      res.status(200).json(regSoli);
-    } else if (req.body.f && req.body.f === "reg certificado") {
-      const regSoli = await SGI.certificado_estudiantes.create({
-        data: {
-          contrato: parseInt(req.body.contrato),
-          socio: req.body.socio,
-          fecha: new Date(req.body.fecha),
-          operador: req.body.operador,
-          ncert: req.body.ncert,
-        },
-      });
+        res.status(200).json(regSoli);
+      } else if (req.body.f && req.body.f === "reg certificado") {
+        const regSoli = await SGI.certificado_estudiantes.create({
+          data: {
+            contrato: parseInt(req.body.contrato),
+            socio: req.body.socio,
+            fecha: new Date(req.body.fecha),
+            operador: req.body.operador,
+            ncert: req.body.ncert,
+          },
+        });
 
-      res.status(200).json(regSoli);
+        res.status(200).json(regSoli);
+      }
     }
-  }
-  if (req.method === "PUT") {
-    if (req.body.f && req.body.f === "renov poliza") {
-      const regAuto = await Sep.autos.update({
-        data: {
-          nro_poliza: req.body.nro_poliza,
-          empresa: req.body.empresa,
-          vencimiento: new Date(req.body.vencimiento),
-          cobertura: req.body.cobertura,
-        },
-        where: {
-          idauto: req.body.idauto,
-        },
-      });
+    if (req.method === "PUT") {
+      if (req.body.f && req.body.f === "renov poliza") {
+        const regAuto = await Sep.autos.update({
+          data: {
+            nro_poliza: req.body.nro_poliza,
+            empresa: req.body.empresa,
+            vencimiento: new Date(req.body.vencimiento),
+            cobertura: req.body.cobertura,
+          },
+          where: {
+            idauto: req.body.idauto,
+          },
+        });
 
-      res.status(200).json(regAuto);
+        res.status(200).json(regAuto);
+      }
     }
   }
 }

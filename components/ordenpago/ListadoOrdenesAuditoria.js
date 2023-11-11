@@ -93,7 +93,7 @@ const ListadoOrdenesAuditoria = ({
               className: "hidden",
             }}
             containerProps={{ className: "min-w-[50px] min-w-[50px]" }}
-            defaultValue={row.IMP_LIQ}
+            defaultValue={parseInt(row.IMP_LIQ)}
             inputRef={impLiqRef}
           />
         </div>

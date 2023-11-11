@@ -620,8 +620,10 @@ function Legajo(props) {
         },
       })
       .then((res) => {
-        if (res.data.length > 0) {
-          guardarUsos(res.data);
+        if (res.data) {
+          let usos = JSON.parse(res.data);
+
+          guardarUsos(usos);
         }
       })
       .catch((error) => {

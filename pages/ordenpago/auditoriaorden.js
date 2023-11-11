@@ -70,6 +70,7 @@ function auditoriaorden(props) {
     toast.info(
       "Buscando usos sin puntear... Este proceso puede demorar unos segundo, Espera el mensaje de finalizacion"
     );
+
     guardarEstF(1);
     guardarEstO(1);
 
@@ -124,7 +125,7 @@ function auditoriaorden(props) {
 
   const repunteoDeUsos = async () => {
     let data = {
-      f: "repunteo de usos",
+      f: "",
       Ot: false,
       Fa: false,
     };
@@ -138,7 +139,7 @@ function auditoriaorden(props) {
     if (lisFabian.length > 0) {
       data.Fa = true;
     } else {
-      toast.warning("SIstema Fox no tiene usos para repuntear");
+      toast.warning("Sistema Fox no tiene usos para repuntear");
     }
 
     if (lisFabian.length === 0 && lisOtero.length === 0) {
@@ -149,17 +150,46 @@ function auditoriaorden(props) {
           "Repunteando usos... Este proceso puede demorar unos segundo, Espera el mensaje de finalizacion"
         );
 
+        guardarEstF(1);
+        guardarEstO(1);
+
+        data.f = "repunteo de usos web";
+
         axios
           .put("/api/ordenpago", data)
           .then((res) => {
             if (res.status === 200) {
-              toast.success("El repunteo finalizo con exito");
+              toast.success("El repunteo sistema web finalizo con exito");
 
-              traerUsosSinPuntear();
+              guardarEstO(0);
 
-              let accion = `Repunteo de usos liquidados.`;
+              let accion = `Repunteo de usos liquidados Sistema Web.`;
 
               registrarHistoria(accion, usu.usuario);
+            } else {
+              guardarEstO(2);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            toast.error("Ocurrio un error al repuntear los usos");
+          });
+
+        data.f = "repunteo de usos fox";
+
+        axios
+          .put("/api/ordenpago", data)
+          .then((res) => {
+            if (res.status === 200) {
+              toast.success("El repunteo sistema fox, finalizo con exito");
+
+              guardarEstF(0);
+
+              let accion = `Repunteo de usos liquidados Sistema Fox.`;
+
+              registrarHistoria(accion, usu.usuario);
+            } else {
+              guardarEstF(2);
             }
           })
           .catch((error) => {

@@ -275,8 +275,11 @@ export default async function handler(req, res) {
 `;
 
       res.status(200).json(impLiq);
-    } else if (req.body.f && req.body.f === "repunteo de usos") {
-      let desde = moment().startOf("month").format("YYYY-MM-DD");
+    } else if (req.body.f && req.body.f === "repunteo de usos web") {
+      let desde = moment()
+        .subtract(2, "month")
+        .startOf("month")
+        .format("YYYY-MM-DD");
       let hasta = moment().endOf("month").format("YYYY-MM-DD");
 
       const detUsos = await SGI.$queryRaw`
@@ -300,6 +303,22 @@ export default async function handler(req, res) {
 
         if (response[0]) usosSinPun.push(response[0]);
       }
+      res.status(200).json(usosSinPun);
+    } else if (req.body.f && req.body.f === "repunteo de usos fox") {
+      let desde = moment()
+        .subtract(2, "month")
+        .startOf("month")
+        .format("YYYY-MM-DD");
+      let hasta = moment().endOf("month").format("YYYY-MM-DD");
+
+      const detUsos = await SGI.$queryRaw`
+      SELECT nconsulta, norden, fecha 
+      FROM detalle_orden_pago
+      WHERE fecha BETWEEN ${desde} AND ${hasta}
+
+`;
+
+      const usosSinPun = [];
 
       for (let i = 0; i < detUsos.length; i++) {
         const response = await Serv.$queryRaw`
@@ -319,7 +338,7 @@ export default async function handler(req, res) {
       if (req.body.sis === "O") {
         const levUso = await Serv.USOS.update({
           data: {
-            ANULADO: null,
+            ANULADO: 0,
           },
           where: {
             iduso: parseInt(req.body.iduso),
@@ -329,7 +348,7 @@ export default async function handler(req, res) {
       } else if (req.body.sis === "F") {
         const levUso = await Serv.USOSFA.update({
           data: {
-            ANULADO: null,
+            ANULADO: 0,
           },
           where: {
             iduso: parseInt(req.body.iduso),
@@ -367,7 +386,7 @@ export default async function handler(req, res) {
       if (req.body.sis === "O") {
         const levUso = await Serv.USOS.update({
           data: {
-            IMP_LIQ: req.body.impliq,
+            IMP_LIQ: parseFloat(req.body.impliq),
           },
           where: {
             iduso: parseInt(req.body.iduso),

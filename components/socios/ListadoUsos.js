@@ -22,50 +22,75 @@ export default function ListadoUsos({ listado }) {
 
   let columns = [
     {
-      name: "Sucursal",
-      button: true,
-      grow: 0.1,
-      cell: (row, index) => (
-        <>
-          {row.SUC === "O" ? (
-            <>Otero </>
-          ) : row.SUC === "W" ? (
-            <>C.Central</>
-          ) : row.SUC === "L" ? (
-            <>Palpala</>
-          ) : row.SUC === "R" ? (
-            <>Perico</>
-          ) : row.SUC === "C" ? (
-            <>El Carmen</>
-          ) : row.SUC === "P" ? (
-            <>San Pedro</>
-          ) : null}
-        </>
-      ),
+      name: "Ficha",
+      selector: (row) => `${row.CONTRATO}`,
+      sortable: true,
+      width: "80px",
     },
     {
       name: "Fecha",
       selector: (row) => `${moment(row.FECHA).format("DD/MM/YYYY")}`,
       sortable: true,
-      grow: 0.1,
+      width: "100px",
+    },
+
+    {
+      name: "Hora",
+      selector: (row) => `${row.HORA}`,
+      sortable: true,
+      width: "80px",
+    },
+    {
+      name: "DNI Benef.",
+      selector: (row) => `${row.NRO_DOC}`,
+      sortable: true,
+      width: "100px",
     },
     {
       name: "N° Orden",
       selector: (row) => `${row.ORDEN}`,
       sortable: true,
-      grow: 0.2,
+      width: "150px",
+    },
+    {
+      name: "Prestador",
+      selector: (row) => `${row.NOMBRE}`,
+      sortable: true,
+      width: "300px",
     },
     {
       name: "Servicio",
       selector: (row) => `${row.SERVICIO}`,
       sortable: true,
-      grow: 0.1,
+      width: "80px",
     },
     {
       name: "Importe",
       selector: (row) => `${row.IMPORTE}`,
       sortable: true,
-      grow: 0.1,
+      width: "80px",
+    },
+    {
+      name: "Sistema",
+      selector: (row) => `${row.SISTEMA}`,
+      sortable: true,
+      width: "80px",
+    },
+    {
+      name: "Estado",
+      button: true,
+      width: "80px",
+      cell: (row, index) => (
+        <>
+          {row.ANULADO === 0 ||
+          row.ANULADO === "" ||
+          row.ANULADO === "FALSO" ? (
+            <div>ACTIVA</div>
+          ) : row.ANULADO === 1 || row.ANULADO === "VERDADERO" ? (
+            <div>ANULADA</div>
+          ) : null}
+        </>
+      ),
     },
   ];
 

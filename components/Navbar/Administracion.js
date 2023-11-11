@@ -104,9 +104,14 @@ export const Administracion = () => {
                 </MenuItem>
               </MenuHandler>
               <MenuList>
-                <Link href={"/administracion/sepelio/cajas"}>
+                <Link href={"/sepelio/administracion/cajas"}>
                   <MenuItem>
                     <Typography color="black">Generar Cajas</Typography>
+                  </MenuItem>
+                </Link>{" "}
+                <Link href={"/sepelio/administracion/servicios"}>
+                  <MenuItem>
+                    <Typography color="black">Servicios</Typography>
                   </MenuItem>
                 </Link>
               </MenuList>

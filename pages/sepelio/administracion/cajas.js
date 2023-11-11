@@ -11,7 +11,7 @@ import moment from "moment";
 import { registrarHistoria } from "@/libs/funciones";
 import { useRouter } from "next/router";
 import jsCookie from "js-cookie";
-import FormGenerarCaja from "@/components/adminisracion/sepelio/cajas/FormGenerarCaja";
+import FormGenerarCaja from "@/components/sepelio/administracion/cajas/FormGenerarCaja";
 
 function cajas(props) {
   let desdeRef = React.createRef();
@@ -54,7 +54,7 @@ function cajas(props) {
       guardarEmp(empre);
 
       await axios
-        .get("/api/administracion/sepelio", {
+        .get("/api/sepelio/caja", {
           params: {
             f: `ingresos ${empre}`,
             desde: desde,
@@ -73,7 +73,7 @@ function cajas(props) {
         });
 
       await axios
-        .get("/api/administracion/sepelio", {
+        .get("/api/sepelio/caja", {
           params: {
             f: `egresos ${empre}`,
             desde: desde,
@@ -102,7 +102,7 @@ function cajas(props) {
   };
 
   const postCajas = async (data) => {
-    await axios.post("/api/administracion/sepelio", data);
+    await axios.post("/api/sepelio/caja", data);
   };
 
   const generarCaja = async () => {
@@ -119,7 +119,7 @@ function cajas(props) {
       );
     } else {
       await axios
-        .get("/api/administracion/sepelio", {
+        .get("/api/sepelio/caja", {
           params: {
             desde: desde,
             hasta: hasta,
@@ -159,7 +159,7 @@ function cajas(props) {
                       };
 
                       axios
-                        .post(`/api/administracion/sepelio`, data)
+                        .post(`/api/sepelio/caja`, data)
                         .then((res) => {
                           if (res.status === 200) {
                             toast.success("Se registro el periodo con exito");
@@ -286,7 +286,7 @@ function cajas(props) {
       guardarHasta(hasta);
 
       await axios
-        .get("/api/administracion/sepelio", {
+        .get("/api/sepelio/caja", {
           params: {
             desde: desde,
             hasta: hasta,
