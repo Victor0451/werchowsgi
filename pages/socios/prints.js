@@ -5,16 +5,6 @@ import useWerchow from "@/hook/useWerchow";
 import axios, { all } from "axios";
 import { toast } from "react-toastify";
 import { Redirect } from "@/components/auth/Redirect";
-import useSWR from "swr";
-import { confirmAlert } from "react-confirm-alert";
-import moment from "moment";
-import { registrarHistoria, regHistorialAuto } from "@/libs/funciones";
-import { useRouter } from "next/router";
-import jsCookie from "js-cookie";
-import {
-  CheckCircleIcon,
-  InformationCircleIcon,
-} from "@heroicons/react/24/solid";
 import FormPrintsSocio from "@/components/socios/FormPrintsSocio";
 
 function Prints(props) {

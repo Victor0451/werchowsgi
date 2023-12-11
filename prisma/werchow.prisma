@@ -102,6 +102,8 @@ model SO {
   EDAD_PROM Float?
   PERMANEN  Float?
   DEUDA     Int?
+  ESTADO    String?   @db.VarChar(1)
+  PAGOS     Float?
 
   @@ignore
 }
@@ -615,22 +617,8 @@ model cuo_fija {
   DESDE     DateTime? @db.Date
   VENCIM    DateTime? @db.Date
   ACTUALIZA String?   @db.VarChar(13)
-  OPERADOR  Int?
-
-  @@ignore
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
-model cuo_fija_copy {
-  CONTRATO  Int?
-  IMPORTE   Float?
-  CUO_ANT   Float?
-  DESDE     DateTime? @db.Date
-  VENCIM    DateTime? @db.Date
-  ACTUALIZA String?   @db.VarChar(13)
-  OPERADOR  Int?
-
-  @@ignore
+  OPERADOR  String?   @db.VarChar(255)
+  idcuota   Int       @id @default(autoincrement())
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
@@ -771,30 +759,28 @@ model grupos {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model historia {
-  CONTRATO  Int?
-  OPERADOR  Int?
-  ARCHIVO   Int?
-  CAMPO     String? @db.VarChar(30)
-  ANTERIOR  String? @db.VarChar(30)
-  NUEVO     String? @db.VarChar(30)
-  ACTUALIZA String? @db.VarChar(13)
-  CONTROL   String? @db.VarChar(9)
-
-  @@ignore
+  CONTRATO   Int?
+  OPERADOR   String? @db.VarChar(255)
+  ARCHIVO    Int?
+  CAMPO      String? @db.VarChar(500)
+  ANTERIOR   String? @db.VarChar(500)
+  NUEVO      String? @db.VarChar(500)
+  ACTUALIZA  String? @db.VarChar(255)
+  CONTROL    String? @db.VarChar(9)
+  idhistoria Int     @id @default(autoincrement())
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model historiam {
-  CONTRATO  Int?
-  OPERADOR  Int?
-  ARCHIVO   Int?
-  CAMPO     Int?
-  ANTERIOR  String? @db.VarChar(30)
-  NUEVO     String? @db.VarChar(30)
-  ACTUALIZA String? @db.VarChar(13)
-  CONTROL   String? @db.VarChar(9)
-
-  @@ignore
+  CONTRATO   Int?
+  OPERADOR   String? @db.VarChar(255)
+  ARCHIVO    Int?
+  CAMPO      Int?
+  ANTERIOR   String? @db.VarChar(30)
+  NUEVO      String? @db.VarChar(30)
+  ACTUALIZA  String? @db.VarChar(13)
+  CONTROL    String? @db.VarChar(9)
+  idhistoria Int     @id @default(autoincrement())
 }
 
 model liq_temporal {
@@ -859,7 +845,7 @@ model maestro {
   ADHERENTES Int?
   PRECIO     Float?
   CUO_VIEJA  Float?
-  OPERADOR   Int?
+  OPERADOR   String?   @db.VarChar(255)
   ACTUALIZA  String?   @db.VarChar(13)
   OBRA_SOC   Int?
   PRODUCTOR  Int?
@@ -2534,19 +2520,6 @@ model zonas {
   @@ignore
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
-model cuo_fija_old {
-  CONTRATO  Int?
-  IMPORTE   Float?
-  CUO_ANT   Float?
-  DESDE     DateTime? @db.Date
-  VENCIM    DateTime? @db.Date
-  ACTUALIZA String?   @db.VarChar(13)
-  OPERADOR  Int?
-
-  @@ignore
-}
-
 model SO1 {
   CONTRATO  Int       @id
   APE_NOM   String?   @db.VarChar(30)
@@ -2570,4 +2543,123 @@ model guardia {
   g_turno      Int?
   g_descrIp    String?   @db.VarChar(20)
   g_id_usuario Int?
+}
+
+model listado_rus {
+  NRO        Int
+  DNI        String  @db.VarChar(30)
+  TITULAR    String? @db.VarChar(200)
+  CONTRATO   Int?
+  ALTA       String? @db.VarChar(10)
+  BAJA       String? @db.VarChar(10)
+  GRUPO      Int?
+  PLAN       String? @db.VarChar(5)
+  ADH        Int?
+  CUOTA      String? @db.VarChar(30)
+  INGRESO    String? @db.VarChar(30)
+  NACIMIENTO String? @db.VarChar(30)
+  CAPITAL    String? @db.VarChar(30)
+  TIPO       String? @db.VarChar(50)
+
+  @@id([NRO, DNI])
+}
+
+model poliza_5380 {
+  DNI        String  @id @db.VarChar(255)
+  TITULAR    String? @db.VarChar(255)
+  CONTRATO   String? @db.VarChar(255)
+  ALTA       String? @db.VarChar(255)
+  BAJA       String? @db.VarChar(255)
+  GRUPO      String? @db.VarChar(255)
+  PLAN       String? @db.VarChar(255)
+  ADH        String? @db.VarChar(255)
+  CUOTA      String? @db.VarChar(255)
+  INGRESO    String? @db.VarChar(255)
+  NACIMIENTO String? @db.VarChar(255)
+  CAPITAL    String? @db.VarChar(255)
+  TIPO       String? @db.VarChar(255)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model pres_perico {
+  COD_PRES   String?   @db.VarChar(5)
+  NOMBRE     String?   @db.VarChar(25)
+  ESPEC      String?   @db.VarChar(15)
+  LIS_ESPE   String?   @db.VarChar(30)
+  SUC        String?   @db.VarChar(1)
+  DIRECCION  String?   @db.VarChar(30)
+  LOCALIDAD  String?   @db.VarChar(15)
+  TELEFONOS  String?   @db.VarChar(15)
+  HORARIO1   String?   @db.VarChar(30)
+  HORARIO2   String?   @db.VarChar(30)
+  MODALIDAD  String?   @db.VarChar(60)
+  EN_BASE    Int?      @db.TinyInt
+  REINTEGRO  Int?      @db.TinyInt
+  DESCUENTO  Int?      @db.TinyInt
+  MAX_DESC   Float?
+  MAX_DESCA  Float?
+  MAX_DESCB  Float?
+  MAX_DESCC  Float?
+  MAX_DESCM  Float?
+  MAX_DESCS  Float?
+  MATRICULA  String?   @db.VarChar(10)
+  COD_POST   Int?
+  AUSENTE    Int?      @db.TinyInt
+  DESDE      DateTime? @db.Date
+  HASTA      DateTime? @db.Date
+  MENS_AUS   String?   @db.VarChar(30)
+  CUIT       String?   @db.VarChar(13)
+  FEC_NAC    DateTime? @db.Date
+  COD_OPER   Int?
+  LUGAR      Int?
+  MALA_PRAXI Int?      @db.TinyInt
+  VENCE_SEG  DateTime? @db.Date
+  DESC_PLANI Int?      @db.TinyInt
+  CON_PAGA   Float?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model prestado {
+  COD_PRES   String?   @db.VarChar(5)
+  NOMBRE     String?   @db.VarChar(25)
+  ESPEC      String?   @db.VarChar(15)
+  LIS_ESPE   String?   @db.VarChar(30)
+  SUC        String?   @db.VarChar(1)
+  DIRECCION  String?   @db.VarChar(30)
+  LOCALIDAD  String?   @db.VarChar(15)
+  TELEFONOS  String?   @db.VarChar(15)
+  HORARIO1   String?   @db.VarChar(30)
+  HORARIO2   String?   @db.VarChar(30)
+  MODALIDAD  String?   @db.VarChar(60)
+  EN_BASE    Int?      @db.TinyInt
+  REINTEGRO  Int?      @db.TinyInt
+  DESCUENTO  Int?      @db.TinyInt
+  MAX_DESC   Float?
+  MAX_DESCA  Float?
+  MAX_DESCB  Float?
+  MAX_DESCC  Float?
+  MAX_DESCM  Float?
+  MAX_DESCS  Float?
+  PRECIO_99  Float?
+  MATRICULA  String?   @db.VarChar(10)
+  COD_POST   Int?
+  AUSENTE    Int?      @db.TinyInt
+  DESDE      DateTime? @db.Date
+  HASTA      DateTime? @db.Date
+  MENS_AUS   String?   @db.VarChar(30)
+  CUIT       String?   @db.VarChar(13)
+  FEC_NAC    DateTime? @db.Date
+  COD_OPER   Int?
+  LUGAR      Int?
+  MALA_PRAXI Int?      @db.TinyInt
+  VENCE_SEG  DateTime? @db.Date
+  DESC_PLANI Int?      @db.TinyInt
+  CON_PAGA   Float?
+  ALTA       DateTime? @db.Date
+  BAJA       DateTime? @db.Date
+  OTERO      Int?      @db.TinyInt
+
+  @@ignore
 }

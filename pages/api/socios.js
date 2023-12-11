@@ -699,55 +699,312 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
+    } else if (req.query.f && req.query.f === "traer grupos") {
+      const grupos = await SGI.$queryRaw`
+         
+            SELECT
+               CODIGO,
+               DESCRIP
+            FROM
+               grupos       
+        
+            ORDER BY CODIGO ASC
+              `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(grupos, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "traer zonas") {
+      const zonas = await SGI.$queryRaw`
+         
+            SELECT
+               CODIGO,
+               DESCRIP
+            FROM
+               zonas       
+        
+            ORDER BY CODIGO ASC
+              `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(zonas, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "traer sucursales") {
+      const sucursales = await SGI.$queryRaw`
+         
+            SELECT
+              codigo,
+              sucursal
+            FROM
+               sucursal        
+            
+              `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(sucursales, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "traer productores") {
+      const producto = await SGI.$queryRaw`
+         
+            SELECT
+               CODIGO,
+               DESCRIP
+            FROM
+               producto       
+        
+            ORDER BY CODIGO ASC      
+            
+              `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(producto, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "traer localidades") {
+      const localida = await SGI.$queryRaw`
+         
+            SELECT
+               CODIGO,
+               DETALLE 'DESCRIP'
+            FROM
+               localida   
+        
+            ORDER BY CODIGO ASC      
+            
+              `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(localida, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "traer obra social") {
+      const localida = await Werchow.$queryRaw`
+         
+            SELECT
+               CODIGO,
+               NOMBRE 'DESCRIP'
+            FROM
+               obra_soc   
+        
+            ORDER BY CODIGO ASC      
+            
+              `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(localida, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "traer planes") {
+      const planes = await Werchow.$queryRaw`
+         
+            SELECT
+               PLAN,
+               SUB_PLAN,
+               DESCRIP
+            FROM
+               planes   
+                     
+            
+              `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(planes, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "traer n ficha") {
+      const nFicha = await Werchow.maestro.findFirst({
+        select: {
+          CONTRATO: true,
+        },
+        where: {
+          CONTRATO: {
+            lte: 100000,
+          },
+        },
+        orderBy: {
+          CONTRATO: "desc",
+        },
+      });
+      res.status(200).json(nFicha);
+    } else if (req.query.f && req.query.f === "traer historial") {
+      const historia = await Werchow.historia.findMany({
+        where: {
+          CONTRATO: parseInt(req.query.contrato),
+        },
+        orderBy: {
+          idhistoria: "desc",
+        },
+      });
+
+      res.status(200).json(historia);
+    } else if (req.query.f && req.query.f === "traer cuota mensual") {
+      const cuotaMensual = await Werchow.cuo_fija.findMany({
+        where: {
+          CONTRATO: parseInt(req.query.contrato),
+        },
+      });
+
+      res.status(200).json(cuotaMensual);
+    } else if (req.query.f && req.query.f === "traer cuotas") {
+      const histCuota = await Werchow.$queryRaw`
+         
+            SELECT
+               CONTRATO,
+               ACTUALIZA,
+               ANTERIOR,
+               NUEVO
+            FROM
+               historia
+            WHERE 
+               CONTRATO = ${parseInt(req.query.contrato)}                
+            AND 
+               NUEVO like '%AUMENTO%'                       
+            ORDER BY idhistoria DESC
+              `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(histCuota, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     }
-    if (req.method === "POST") {
-      if (req.body.f && req.body.f === "soli afi") {
-        const regSoli = await SGI.rehabilitaciones.create({
-          data: {
-            contrato: `${req.body.contrato}`,
-            apellido: req.body.apellido,
-            nombre: req.body.nombre,
-            operador: req.body.operador,
-            idoperador: parseInt(req.body.idoperador),
-            vigencia: new Date(req.body.vigencia),
-            fecha: new Date(req.body.fecha),
-            cuotas: parseInt(req.body.cuotas),
-            dni: parseInt(req.body.dni),
-            empresa: req.body.empresa,
-          },
-        });
+  }
+  if (req.method === "POST") {
+    if (req.body.f && req.body.f === "soli afi") {
+      const regSoli = await SGI.rehabilitaciones.create({
+        data: {
+          contrato: `${req.body.contrato}`,
+          apellido: req.body.apellido,
+          nombre: req.body.nombre,
+          operador: req.body.operador,
+          idoperador: parseInt(req.body.idoperador),
+          vigencia: new Date(req.body.vigencia),
+          fecha: new Date(req.body.fecha),
+          cuotas: parseInt(req.body.cuotas),
+          dni: parseInt(req.body.dni),
+          empresa: req.body.empresa,
+        },
+      });
 
-        res.status(200).json(regSoli);
-      } else if (req.body.f && req.body.f === "reg certificado") {
-        const regSoli = await SGI.certificado_estudiantes.create({
-          data: {
-            contrato: parseInt(req.body.contrato),
-            socio: req.body.socio,
-            fecha: new Date(req.body.fecha),
-            operador: req.body.operador,
-            ncert: req.body.ncert,
-          },
-        });
+      res.status(200).json(regSoli);
+    } else if (req.body.f && req.body.f === "reg certificado") {
+      const regSoli = await SGI.certificado_estudiantes.create({
+        data: {
+          contrato: parseInt(req.body.contrato),
+          socio: req.body.socio,
+          fecha: new Date(req.body.fecha),
+          operador: req.body.operador,
+          ncert: req.body.ncert,
+        },
+      });
 
-        res.status(200).json(regSoli);
-      }
+      res.status(200).json(regSoli);
+    } else if (req.body.f && req.body.f === "reg socio") {
+      const regSocio = await Werchow.maestro.create({
+        data: {
+          CONTRATO: parseInt(req.body.CONTRATO),
+          GRUPO: parseInt(req.body.GRUPO),
+          ZONA: parseInt(req.body.ZONA),
+          SUCURSAL: req.body.SUCURSAL,
+          PRODUCTOR: parseInt(req.body.PRODUCTO),
+          APELLIDOS: req.body.APELLIDOS,
+          NOMBRES: req.body.NOMBRES,
+          NRO_DOC: parseInt(req.body.NRO_DOC),
+          NACIMIENTO: new Date(req.body.NACIMIENTO),
+          CALLE: req.body.CALLE,
+          NRO_CALLE: parseInt(req.body.NRO_CALLE),
+          BARRIO: req.body.BARRIO,
+          LOCALIDAD: req.body.LOCALIDAD,
+          DOMI_COBR: req.body.DOMI_COBR,
+          DOM_LAB: req.body.DOMI_LAB,
+          ALTA: new Date(req.body.ALTA),
+          VIGENCIA: new Date(req.body.VIGENCIA),
+          TELEFONO: req.body.TELEFONO,
+          MOVIL: req.body.MOVIL,
+          MAIL: req.body.MAIL,
+          EMPRESA: req.body.EMPRESA,
+          OPERADOR: parseInt(req.body.OPERADOR),
+          OBRA_SOC: parseInt(req.body.OBRA_SOC),
+          PLAN: req.body.PLAN,
+          SUB_PLAN: req.body.SUB_PLAN,
+        },
+      });
+
+      res.status(200).json(regSocio);
+    } else if (req.body.f && req.body.f === "reg adh") {
+      const regAdh = await Werchow.adherent.create({
+        data: {
+          CONTRATO: parseInt(req.body.CONTRATO),
+          SUCURSAL: req.body.SUCURSAL,
+          PRODUCTOR: parseInt(req.body.PRODUCTOR),
+          APELLIDOS: req.body.APELLIDOS,
+          NOMBRES: req.body.NOMBRES,
+          NRO_DOC: parseInt(req.body.NRO_DOC),
+          NACIMIENTO: new Date(req.body.NACIMIENTO),
+          ALTA: new Date(req.body.ALTA),
+          VIGENCIA: new Date(req.body.VIGENCIA),
+          OBRA_SOC: req.body.OBRA_SOC,
+          PLAN: req.body.PLAN,
+          SUB_PLAN: req.body.SUB_PLAN,
+        },
+      });
+
+      res.status(200).json(regAdh);
+    } else if (req.body.f && req.body.f === "reg cuota") {
+      const regCuota = await Werchow.cuo_fija.create({
+        data: {
+          CONTRATO: parseInt(req.body.CONTRATO),
+          IMPORTE: parseFloat(req.body.IMPORTE),
+          CUO_ANT: parseFloat(req.body.CUO_ANT),
+          DESDE: new Date(req.body.DESDE),
+          OPERADOR: req.body.OPERADOR,
+        },
+      });
+
+      res.status(200).json(regCuota);
     }
-    if (req.method === "PUT") {
-      if (req.body.f && req.body.f === "renov poliza") {
-        const regAuto = await Sep.autos.update({
-          data: {
-            nro_poliza: req.body.nro_poliza,
-            empresa: req.body.empresa,
-            vencimiento: new Date(req.body.vencimiento),
-            cobertura: req.body.cobertura,
-          },
-          where: {
-            idauto: req.body.idauto,
-          },
-        });
+  }
+  if (req.method === "PUT") {
+    if (req.body.f && req.body.f === "renov poliza") {
+      const regAuto = await Sep.autos.update({
+        data: {
+          nro_poliza: req.body.nro_poliza,
+          empresa: req.body.empresa,
+          vencimiento: new Date(req.body.vencimiento),
+          cobertura: req.body.cobertura,
+        },
+        where: {
+          idauto: req.body.idauto,
+        },
+      });
 
-        res.status(200).json(regAuto);
-      }
+      res.status(200).json(regAuto);
     }
   }
 }

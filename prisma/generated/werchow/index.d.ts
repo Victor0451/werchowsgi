@@ -333,6 +333,26 @@ export type certificadosPayload<ExtArgs extends $Extensions.Args = $Extensions.D
  * 
  */
 export type certificados = runtime.Types.DefaultSelection<certificadosPayload>
+export type cuo_fijaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    CONTRATO: number | null
+    IMPORTE: number | null
+    CUO_ANT: number | null
+    DESDE: Date | null
+    VENCIM: Date | null
+    ACTUALIZA: string | null
+    OPERADOR: string | null
+    idcuota: number
+  }, ExtArgs["result"]["cuo_fija"]>
+  composites: {}
+}
+
+/**
+ * Model cuo_fija
+ * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+ */
+export type cuo_fija = runtime.Types.DefaultSelection<cuo_fijaPayload>
 export type cuota_prestamoPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -381,6 +401,48 @@ export type debitosPayload<ExtArgs extends $Extensions.Args = $Extensions.Defaul
  * 
  */
 export type debitos = runtime.Types.DefaultSelection<debitosPayload>
+export type historiaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    CONTRATO: number | null
+    OPERADOR: string | null
+    ARCHIVO: number | null
+    CAMPO: string | null
+    ANTERIOR: string | null
+    NUEVO: string | null
+    ACTUALIZA: string | null
+    CONTROL: string | null
+    idhistoria: number
+  }, ExtArgs["result"]["historia"]>
+  composites: {}
+}
+
+/**
+ * Model historia
+ * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+ */
+export type historia = runtime.Types.DefaultSelection<historiaPayload>
+export type historiamPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    CONTRATO: number | null
+    OPERADOR: string | null
+    ARCHIVO: number | null
+    CAMPO: number | null
+    ANTERIOR: string | null
+    NUEVO: string | null
+    ACTUALIZA: string | null
+    CONTROL: string | null
+    idhistoria: number
+  }, ExtArgs["result"]["historiam"]>
+  composites: {}
+}
+
+/**
+ * Model historiam
+ * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+ */
+export type historiam = runtime.Types.DefaultSelection<historiamPayload>
 export type liq_temporalPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -472,7 +534,7 @@ export type maestroPayload<ExtArgs extends $Extensions.Args = $Extensions.Defaul
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
-    OPERADOR: number | null
+    OPERADOR: string | null
     ACTUALIZA: string | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
@@ -1574,6 +1636,57 @@ export type guardiaPayload<ExtArgs extends $Extensions.Args = $Extensions.Defaul
  * 
  */
 export type guardia = runtime.Types.DefaultSelection<guardiaPayload>
+export type listado_rusPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    NRO: number
+    DNI: string
+    TITULAR: string | null
+    CONTRATO: number | null
+    ALTA: string | null
+    BAJA: string | null
+    GRUPO: number | null
+    PLAN: string | null
+    ADH: number | null
+    CUOTA: string | null
+    INGRESO: string | null
+    NACIMIENTO: string | null
+    CAPITAL: string | null
+    TIPO: string | null
+  }, ExtArgs["result"]["listado_rus"]>
+  composites: {}
+}
+
+/**
+ * Model listado_rus
+ * 
+ */
+export type listado_rus = runtime.Types.DefaultSelection<listado_rusPayload>
+export type poliza_5380Payload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    DNI: string
+    TITULAR: string | null
+    CONTRATO: string | null
+    ALTA: string | null
+    BAJA: string | null
+    GRUPO: string | null
+    PLAN: string | null
+    ADH: string | null
+    CUOTA: string | null
+    INGRESO: string | null
+    NACIMIENTO: string | null
+    CAPITAL: string | null
+    TIPO: string | null
+  }, ExtArgs["result"]["poliza_5380"]>
+  composites: {}
+}
+
+/**
+ * Model poliza_5380
+ * 
+ */
+export type poliza_5380 = runtime.Types.DefaultSelection<poliza_5380Payload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1791,6 +1904,16 @@ export class PrismaClient<
   get certificados(): Prisma.certificadosDelegate<GlobalReject, ExtArgs>;
 
   /**
+   * `prisma.cuo_fija`: Exposes CRUD operations for the **cuo_fija** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Cuo_fijas
+    * const cuo_fijas = await prisma.cuo_fija.findMany()
+    * ```
+    */
+  get cuo_fija(): Prisma.cuo_fijaDelegate<GlobalReject, ExtArgs>;
+
+  /**
    * `prisma.cuota_prestamo`: Exposes CRUD operations for the **cuota_prestamo** model.
     * Example usage:
     * ```ts
@@ -1819,6 +1942,26 @@ export class PrismaClient<
     * ```
     */
   get debitos(): Prisma.debitosDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.historia`: Exposes CRUD operations for the **historia** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Historias
+    * const historias = await prisma.historia.findMany()
+    * ```
+    */
+  get historia(): Prisma.historiaDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.historiam`: Exposes CRUD operations for the **historiam** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Historiam
+    * const historiam = await prisma.historiam.findMany()
+    * ```
+    */
+  get historiam(): Prisma.historiamDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.liq_temporal`: Exposes CRUD operations for the **liq_temporal** model.
@@ -2169,6 +2312,26 @@ export class PrismaClient<
     * ```
     */
   get guardia(): Prisma.guardiaDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.listado_rus`: Exposes CRUD operations for the **listado_rus** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Listado_ruses
+    * const listado_ruses = await prisma.listado_rus.findMany()
+    * ```
+    */
+  get listado_rus(): Prisma.listado_rusDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.poliza_5380`: Exposes CRUD operations for the **poliza_5380** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Poliza_5380s
+    * const poliza_5380s = await prisma.poliza_5380.findMany()
+    * ```
+    */
+  get poliza_5380(): Prisma.poliza_5380Delegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -2661,9 +2824,12 @@ export namespace Prisma {
     caja_sucursal: 'caja_sucursal',
     cajas: 'cajas',
     certificados: 'certificados',
+    cuo_fija: 'cuo_fija',
     cuota_prestamo: 'cuota_prestamo',
     cuotas_adeudadas: 'cuotas_adeudadas',
     debitos: 'debitos',
+    historia: 'historia',
+    historiam: 'historiam',
     liq_temporal: 'liq_temporal',
     liquidaciones: 'liquidaciones',
     localidad: 'localidad',
@@ -2698,7 +2864,9 @@ export namespace Prisma {
     sueldos: 'sueldos',
     usuario: 'usuario',
     SO1: 'SO1',
-    guardia: 'guardia'
+    guardia: 'guardia',
+    listado_rus: 'listado_rus',
+    poliza_5380: 'poliza_5380'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2715,7 +2883,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'acciones' | 'adherent' | 'alta_adhe' | 'anticipos' | 'bajas' | 'bancos' | 'caja_sucursal' | 'cajas' | 'certificados' | 'cuota_prestamo' | 'cuotas_adeudadas' | 'debitos' | 'liq_temporal' | 'liquidaciones' | 'localidad' | 'maestro' | 'maestro22' | 'maestro_bis' | 'memo' | 'meses' | 'mutual' | 'mutual_adh' | 'obra_soc' | 'pago_bco' | 'pago_bcom' | 'pagos' | 'pagos_mutual' | 'parcelas' | 'planificacion' | 'porcentaje_liq' | 'prestamos' | 'produccion' | 'produccion_copy' | 'puestos' | 'registro_diario_saldos' | 'registro_egreso_diario' | 'registro_ingreso_diario' | 'registro_sucursal' | 'semana_asesor' | 'semanas' | 'som' | 'sow' | 'sucursal' | 'sueldos' | 'usuario' | 'sO1' | 'guardia'
+      modelProps: 'acciones' | 'adherent' | 'alta_adhe' | 'anticipos' | 'bajas' | 'bancos' | 'caja_sucursal' | 'cajas' | 'certificados' | 'cuo_fija' | 'cuota_prestamo' | 'cuotas_adeudadas' | 'debitos' | 'historia' | 'historiam' | 'liq_temporal' | 'liquidaciones' | 'localidad' | 'maestro' | 'maestro22' | 'maestro_bis' | 'memo' | 'meses' | 'mutual' | 'mutual_adh' | 'obra_soc' | 'pago_bco' | 'pago_bcom' | 'pagos' | 'pagos_mutual' | 'parcelas' | 'planificacion' | 'porcentaje_liq' | 'prestamos' | 'produccion' | 'produccion_copy' | 'puestos' | 'registro_diario_saldos' | 'registro_egreso_diario' | 'registro_ingreso_diario' | 'registro_sucursal' | 'semana_asesor' | 'semanas' | 'som' | 'sow' | 'sucursal' | 'sueldos' | 'usuario' | 'sO1' | 'guardia' | 'listado_rus' | 'poliza_5380'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -3430,6 +3598,85 @@ export namespace Prisma {
           }
         }
       }
+      cuo_fija: {
+        operations: {
+          findUnique: {
+            args: Prisma.cuo_fijaFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<cuo_fijaPayload> | null
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.cuo_fijaFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<cuo_fijaPayload>
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.cuo_fijaFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<cuo_fijaPayload> | null
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.cuo_fijaFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<cuo_fijaPayload>
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.cuo_fijaFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<cuo_fijaPayload>[]
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.cuo_fijaCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<cuo_fijaPayload>
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.cuo_fijaCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.cuo_fijaDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<cuo_fijaPayload>
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.cuo_fijaUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<cuo_fijaPayload>
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.cuo_fijaDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.cuo_fijaUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.cuo_fijaUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<cuo_fijaPayload>
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Cuo_fijaAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCuo_fija>
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.cuo_fijaGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Cuo_fijaGroupByOutputType>[]
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.cuo_fijaCountArgs<ExtArgs>,
+            result: $Utils.Optional<Cuo_fijaCountAggregateOutputType> | number
+            payload: cuo_fijaPayload<ExtArgs>
+          }
+        }
+      }
       cuota_prestamo: {
         operations: {
           findUnique: {
@@ -3664,6 +3911,164 @@ export namespace Prisma {
             args: Prisma.debitosCountArgs<ExtArgs>,
             result: $Utils.Optional<DebitosCountAggregateOutputType> | number
             payload: debitosPayload<ExtArgs>
+          }
+        }
+      }
+      historia: {
+        operations: {
+          findUnique: {
+            args: Prisma.historiaFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiaPayload> | null
+            payload: historiaPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.historiaFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiaPayload>
+            payload: historiaPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.historiaFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiaPayload> | null
+            payload: historiaPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.historiaFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiaPayload>
+            payload: historiaPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.historiaFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiaPayload>[]
+            payload: historiaPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.historiaCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiaPayload>
+            payload: historiaPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.historiaCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: historiaPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.historiaDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiaPayload>
+            payload: historiaPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.historiaUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiaPayload>
+            payload: historiaPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.historiaDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: historiaPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.historiaUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: historiaPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.historiaUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiaPayload>
+            payload: historiaPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.HistoriaAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateHistoria>
+            payload: historiaPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.historiaGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<HistoriaGroupByOutputType>[]
+            payload: historiaPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.historiaCountArgs<ExtArgs>,
+            result: $Utils.Optional<HistoriaCountAggregateOutputType> | number
+            payload: historiaPayload<ExtArgs>
+          }
+        }
+      }
+      historiam: {
+        operations: {
+          findUnique: {
+            args: Prisma.historiamFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiamPayload> | null
+            payload: historiamPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.historiamFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiamPayload>
+            payload: historiamPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.historiamFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiamPayload> | null
+            payload: historiamPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.historiamFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiamPayload>
+            payload: historiamPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.historiamFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiamPayload>[]
+            payload: historiamPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.historiamCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiamPayload>
+            payload: historiamPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.historiamCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: historiamPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.historiamDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiamPayload>
+            payload: historiamPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.historiamUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiamPayload>
+            payload: historiamPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.historiamDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: historiamPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.historiamUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: historiamPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.historiamUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historiamPayload>
+            payload: historiamPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.HistoriamAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateHistoriam>
+            payload: historiamPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.historiamGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<HistoriamGroupByOutputType>[]
+            payload: historiamPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.historiamCountArgs<ExtArgs>,
+            result: $Utils.Optional<HistoriamCountAggregateOutputType> | number
+            payload: historiamPayload<ExtArgs>
           }
         }
       }
@@ -6429,6 +6834,164 @@ export namespace Prisma {
             args: Prisma.guardiaCountArgs<ExtArgs>,
             result: $Utils.Optional<GuardiaCountAggregateOutputType> | number
             payload: guardiaPayload<ExtArgs>
+          }
+        }
+      }
+      listado_rus: {
+        operations: {
+          findUnique: {
+            args: Prisma.listado_rusFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<listado_rusPayload> | null
+            payload: listado_rusPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.listado_rusFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<listado_rusPayload>
+            payload: listado_rusPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.listado_rusFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<listado_rusPayload> | null
+            payload: listado_rusPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.listado_rusFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<listado_rusPayload>
+            payload: listado_rusPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.listado_rusFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<listado_rusPayload>[]
+            payload: listado_rusPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.listado_rusCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<listado_rusPayload>
+            payload: listado_rusPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.listado_rusCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: listado_rusPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.listado_rusDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<listado_rusPayload>
+            payload: listado_rusPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.listado_rusUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<listado_rusPayload>
+            payload: listado_rusPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.listado_rusDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: listado_rusPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.listado_rusUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: listado_rusPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.listado_rusUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<listado_rusPayload>
+            payload: listado_rusPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Listado_rusAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateListado_rus>
+            payload: listado_rusPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.listado_rusGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Listado_rusGroupByOutputType>[]
+            payload: listado_rusPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.listado_rusCountArgs<ExtArgs>,
+            result: $Utils.Optional<Listado_rusCountAggregateOutputType> | number
+            payload: listado_rusPayload<ExtArgs>
+          }
+        }
+      }
+      poliza_5380: {
+        operations: {
+          findUnique: {
+            args: Prisma.poliza_5380FindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<poliza_5380Payload> | null
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.poliza_5380FindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<poliza_5380Payload>
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.poliza_5380FindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<poliza_5380Payload> | null
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.poliza_5380FindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<poliza_5380Payload>
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.poliza_5380FindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<poliza_5380Payload>[]
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          create: {
+            args: Prisma.poliza_5380CreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<poliza_5380Payload>
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.poliza_5380CreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.poliza_5380DeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<poliza_5380Payload>
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          update: {
+            args: Prisma.poliza_5380UpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<poliza_5380Payload>
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.poliza_5380DeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.poliza_5380UpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.poliza_5380UpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<poliza_5380Payload>
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Poliza_5380AggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePoliza_5380>
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.poliza_5380GroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Poliza_5380GroupByOutputType>[]
+            payload: poliza_5380Payload<ExtArgs>
+          }
+          count: {
+            args: Prisma.poliza_5380CountArgs<ExtArgs>,
+            result: $Utils.Optional<Poliza_5380CountAggregateOutputType> | number
+            payload: poliza_5380Payload<ExtArgs>
           }
         }
       }
@@ -16645,6 +17208,957 @@ export namespace Prisma {
 
 
   /**
+   * Model cuo_fija
+   */
+
+
+  export type AggregateCuo_fija = {
+    _count: Cuo_fijaCountAggregateOutputType | null
+    _avg: Cuo_fijaAvgAggregateOutputType | null
+    _sum: Cuo_fijaSumAggregateOutputType | null
+    _min: Cuo_fijaMinAggregateOutputType | null
+    _max: Cuo_fijaMaxAggregateOutputType | null
+  }
+
+  export type Cuo_fijaAvgAggregateOutputType = {
+    CONTRATO: number | null
+    IMPORTE: number | null
+    CUO_ANT: number | null
+    idcuota: number | null
+  }
+
+  export type Cuo_fijaSumAggregateOutputType = {
+    CONTRATO: number | null
+    IMPORTE: number | null
+    CUO_ANT: number | null
+    idcuota: number | null
+  }
+
+  export type Cuo_fijaMinAggregateOutputType = {
+    CONTRATO: number | null
+    IMPORTE: number | null
+    CUO_ANT: number | null
+    DESDE: Date | null
+    VENCIM: Date | null
+    ACTUALIZA: string | null
+    OPERADOR: string | null
+    idcuota: number | null
+  }
+
+  export type Cuo_fijaMaxAggregateOutputType = {
+    CONTRATO: number | null
+    IMPORTE: number | null
+    CUO_ANT: number | null
+    DESDE: Date | null
+    VENCIM: Date | null
+    ACTUALIZA: string | null
+    OPERADOR: string | null
+    idcuota: number | null
+  }
+
+  export type Cuo_fijaCountAggregateOutputType = {
+    CONTRATO: number
+    IMPORTE: number
+    CUO_ANT: number
+    DESDE: number
+    VENCIM: number
+    ACTUALIZA: number
+    OPERADOR: number
+    idcuota: number
+    _all: number
+  }
+
+
+  export type Cuo_fijaAvgAggregateInputType = {
+    CONTRATO?: true
+    IMPORTE?: true
+    CUO_ANT?: true
+    idcuota?: true
+  }
+
+  export type Cuo_fijaSumAggregateInputType = {
+    CONTRATO?: true
+    IMPORTE?: true
+    CUO_ANT?: true
+    idcuota?: true
+  }
+
+  export type Cuo_fijaMinAggregateInputType = {
+    CONTRATO?: true
+    IMPORTE?: true
+    CUO_ANT?: true
+    DESDE?: true
+    VENCIM?: true
+    ACTUALIZA?: true
+    OPERADOR?: true
+    idcuota?: true
+  }
+
+  export type Cuo_fijaMaxAggregateInputType = {
+    CONTRATO?: true
+    IMPORTE?: true
+    CUO_ANT?: true
+    DESDE?: true
+    VENCIM?: true
+    ACTUALIZA?: true
+    OPERADOR?: true
+    idcuota?: true
+  }
+
+  export type Cuo_fijaCountAggregateInputType = {
+    CONTRATO?: true
+    IMPORTE?: true
+    CUO_ANT?: true
+    DESDE?: true
+    VENCIM?: true
+    ACTUALIZA?: true
+    OPERADOR?: true
+    idcuota?: true
+    _all?: true
+  }
+
+  export type Cuo_fijaAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which cuo_fija to aggregate.
+     */
+    where?: cuo_fijaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cuo_fijas to fetch.
+     */
+    orderBy?: cuo_fijaOrderByWithRelationInput | cuo_fijaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: cuo_fijaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cuo_fijas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cuo_fijas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned cuo_fijas
+    **/
+    _count?: true | Cuo_fijaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Cuo_fijaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Cuo_fijaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Cuo_fijaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Cuo_fijaMaxAggregateInputType
+  }
+
+  export type GetCuo_fijaAggregateType<T extends Cuo_fijaAggregateArgs> = {
+        [P in keyof T & keyof AggregateCuo_fija]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCuo_fija[P]>
+      : GetScalarType<T[P], AggregateCuo_fija[P]>
+  }
+
+
+
+
+  export type cuo_fijaGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: cuo_fijaWhereInput
+    orderBy?: cuo_fijaOrderByWithAggregationInput | cuo_fijaOrderByWithAggregationInput[]
+    by: Cuo_fijaScalarFieldEnum[] | Cuo_fijaScalarFieldEnum
+    having?: cuo_fijaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Cuo_fijaCountAggregateInputType | true
+    _avg?: Cuo_fijaAvgAggregateInputType
+    _sum?: Cuo_fijaSumAggregateInputType
+    _min?: Cuo_fijaMinAggregateInputType
+    _max?: Cuo_fijaMaxAggregateInputType
+  }
+
+
+  export type Cuo_fijaGroupByOutputType = {
+    CONTRATO: number | null
+    IMPORTE: number | null
+    CUO_ANT: number | null
+    DESDE: Date | null
+    VENCIM: Date | null
+    ACTUALIZA: string | null
+    OPERADOR: string | null
+    idcuota: number
+    _count: Cuo_fijaCountAggregateOutputType | null
+    _avg: Cuo_fijaAvgAggregateOutputType | null
+    _sum: Cuo_fijaSumAggregateOutputType | null
+    _min: Cuo_fijaMinAggregateOutputType | null
+    _max: Cuo_fijaMaxAggregateOutputType | null
+  }
+
+  type GetCuo_fijaGroupByPayload<T extends cuo_fijaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Cuo_fijaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Cuo_fijaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Cuo_fijaGroupByOutputType[P]>
+            : GetScalarType<T[P], Cuo_fijaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type cuo_fijaSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    CONTRATO?: boolean
+    IMPORTE?: boolean
+    CUO_ANT?: boolean
+    DESDE?: boolean
+    VENCIM?: boolean
+    ACTUALIZA?: boolean
+    OPERADOR?: boolean
+    idcuota?: boolean
+  }, ExtArgs["result"]["cuo_fija"]>
+
+  export type cuo_fijaSelectScalar = {
+    CONTRATO?: boolean
+    IMPORTE?: boolean
+    CUO_ANT?: boolean
+    DESDE?: boolean
+    VENCIM?: boolean
+    ACTUALIZA?: boolean
+    OPERADOR?: boolean
+    idcuota?: boolean
+  }
+
+
+  type cuo_fijaGetPayload<S extends boolean | null | undefined | cuo_fijaArgs> = $Types.GetResult<cuo_fijaPayload, S>
+
+  type cuo_fijaCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<cuo_fijaFindManyArgs, 'select' | 'include'> & {
+      select?: Cuo_fijaCountAggregateInputType | true
+    }
+
+  export interface cuo_fijaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['cuo_fija'], meta: { name: 'cuo_fija' } }
+    /**
+     * Find zero or one Cuo_fija that matches the filter.
+     * @param {cuo_fijaFindUniqueArgs} args - Arguments to find a Cuo_fija
+     * @example
+     * // Get one Cuo_fija
+     * const cuo_fija = await prisma.cuo_fija.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends cuo_fijaFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, cuo_fijaFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'cuo_fija'> extends True ? Prisma__cuo_fijaClient<$Types.GetResult<cuo_fijaPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__cuo_fijaClient<$Types.GetResult<cuo_fijaPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Cuo_fija that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {cuo_fijaFindUniqueOrThrowArgs} args - Arguments to find a Cuo_fija
+     * @example
+     * // Get one Cuo_fija
+     * const cuo_fija = await prisma.cuo_fija.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends cuo_fijaFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, cuo_fijaFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__cuo_fijaClient<$Types.GetResult<cuo_fijaPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Cuo_fija that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cuo_fijaFindFirstArgs} args - Arguments to find a Cuo_fija
+     * @example
+     * // Get one Cuo_fija
+     * const cuo_fija = await prisma.cuo_fija.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends cuo_fijaFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, cuo_fijaFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'cuo_fija'> extends True ? Prisma__cuo_fijaClient<$Types.GetResult<cuo_fijaPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__cuo_fijaClient<$Types.GetResult<cuo_fijaPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Cuo_fija that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cuo_fijaFindFirstOrThrowArgs} args - Arguments to find a Cuo_fija
+     * @example
+     * // Get one Cuo_fija
+     * const cuo_fija = await prisma.cuo_fija.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends cuo_fijaFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, cuo_fijaFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__cuo_fijaClient<$Types.GetResult<cuo_fijaPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Cuo_fijas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cuo_fijaFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Cuo_fijas
+     * const cuo_fijas = await prisma.cuo_fija.findMany()
+     * 
+     * // Get first 10 Cuo_fijas
+     * const cuo_fijas = await prisma.cuo_fija.findMany({ take: 10 })
+     * 
+     * // Only select the `CONTRATO`
+     * const cuo_fijaWithCONTRATOOnly = await prisma.cuo_fija.findMany({ select: { CONTRATO: true } })
+     * 
+    **/
+    findMany<T extends cuo_fijaFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, cuo_fijaFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<cuo_fijaPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Cuo_fija.
+     * @param {cuo_fijaCreateArgs} args - Arguments to create a Cuo_fija.
+     * @example
+     * // Create one Cuo_fija
+     * const Cuo_fija = await prisma.cuo_fija.create({
+     *   data: {
+     *     // ... data to create a Cuo_fija
+     *   }
+     * })
+     * 
+    **/
+    create<T extends cuo_fijaCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, cuo_fijaCreateArgs<ExtArgs>>
+    ): Prisma__cuo_fijaClient<$Types.GetResult<cuo_fijaPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Cuo_fijas.
+     *     @param {cuo_fijaCreateManyArgs} args - Arguments to create many Cuo_fijas.
+     *     @example
+     *     // Create many Cuo_fijas
+     *     const cuo_fija = await prisma.cuo_fija.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends cuo_fijaCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, cuo_fijaCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Cuo_fija.
+     * @param {cuo_fijaDeleteArgs} args - Arguments to delete one Cuo_fija.
+     * @example
+     * // Delete one Cuo_fija
+     * const Cuo_fija = await prisma.cuo_fija.delete({
+     *   where: {
+     *     // ... filter to delete one Cuo_fija
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends cuo_fijaDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, cuo_fijaDeleteArgs<ExtArgs>>
+    ): Prisma__cuo_fijaClient<$Types.GetResult<cuo_fijaPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Cuo_fija.
+     * @param {cuo_fijaUpdateArgs} args - Arguments to update one Cuo_fija.
+     * @example
+     * // Update one Cuo_fija
+     * const cuo_fija = await prisma.cuo_fija.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends cuo_fijaUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, cuo_fijaUpdateArgs<ExtArgs>>
+    ): Prisma__cuo_fijaClient<$Types.GetResult<cuo_fijaPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Cuo_fijas.
+     * @param {cuo_fijaDeleteManyArgs} args - Arguments to filter Cuo_fijas to delete.
+     * @example
+     * // Delete a few Cuo_fijas
+     * const { count } = await prisma.cuo_fija.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends cuo_fijaDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, cuo_fijaDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Cuo_fijas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cuo_fijaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Cuo_fijas
+     * const cuo_fija = await prisma.cuo_fija.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends cuo_fijaUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, cuo_fijaUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Cuo_fija.
+     * @param {cuo_fijaUpsertArgs} args - Arguments to update or create a Cuo_fija.
+     * @example
+     * // Update or create a Cuo_fija
+     * const cuo_fija = await prisma.cuo_fija.upsert({
+     *   create: {
+     *     // ... data to create a Cuo_fija
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Cuo_fija we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends cuo_fijaUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, cuo_fijaUpsertArgs<ExtArgs>>
+    ): Prisma__cuo_fijaClient<$Types.GetResult<cuo_fijaPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Cuo_fijas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cuo_fijaCountArgs} args - Arguments to filter Cuo_fijas to count.
+     * @example
+     * // Count the number of Cuo_fijas
+     * const count = await prisma.cuo_fija.count({
+     *   where: {
+     *     // ... the filter for the Cuo_fijas we want to count
+     *   }
+     * })
+    **/
+    count<T extends cuo_fijaCountArgs>(
+      args?: Subset<T, cuo_fijaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Cuo_fijaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Cuo_fija.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Cuo_fijaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Cuo_fijaAggregateArgs>(args: Subset<T, Cuo_fijaAggregateArgs>): Prisma.PrismaPromise<GetCuo_fijaAggregateType<T>>
+
+    /**
+     * Group by Cuo_fija.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cuo_fijaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends cuo_fijaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: cuo_fijaGroupByArgs['orderBy'] }
+        : { orderBy?: cuo_fijaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, cuo_fijaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCuo_fijaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for cuo_fija.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__cuo_fijaClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * cuo_fija base type for findUnique actions
+   */
+  export type cuo_fijaFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cuo_fija
+     */
+    select?: cuo_fijaSelect<ExtArgs> | null
+    /**
+     * Filter, which cuo_fija to fetch.
+     */
+    where: cuo_fijaWhereUniqueInput
+  }
+
+  /**
+   * cuo_fija findUnique
+   */
+  export interface cuo_fijaFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends cuo_fijaFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * cuo_fija findUniqueOrThrow
+   */
+  export type cuo_fijaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cuo_fija
+     */
+    select?: cuo_fijaSelect<ExtArgs> | null
+    /**
+     * Filter, which cuo_fija to fetch.
+     */
+    where: cuo_fijaWhereUniqueInput
+  }
+
+
+  /**
+   * cuo_fija base type for findFirst actions
+   */
+  export type cuo_fijaFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cuo_fija
+     */
+    select?: cuo_fijaSelect<ExtArgs> | null
+    /**
+     * Filter, which cuo_fija to fetch.
+     */
+    where?: cuo_fijaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cuo_fijas to fetch.
+     */
+    orderBy?: cuo_fijaOrderByWithRelationInput | cuo_fijaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for cuo_fijas.
+     */
+    cursor?: cuo_fijaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cuo_fijas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cuo_fijas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of cuo_fijas.
+     */
+    distinct?: Cuo_fijaScalarFieldEnum | Cuo_fijaScalarFieldEnum[]
+  }
+
+  /**
+   * cuo_fija findFirst
+   */
+  export interface cuo_fijaFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends cuo_fijaFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * cuo_fija findFirstOrThrow
+   */
+  export type cuo_fijaFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cuo_fija
+     */
+    select?: cuo_fijaSelect<ExtArgs> | null
+    /**
+     * Filter, which cuo_fija to fetch.
+     */
+    where?: cuo_fijaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cuo_fijas to fetch.
+     */
+    orderBy?: cuo_fijaOrderByWithRelationInput | cuo_fijaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for cuo_fijas.
+     */
+    cursor?: cuo_fijaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cuo_fijas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cuo_fijas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of cuo_fijas.
+     */
+    distinct?: Cuo_fijaScalarFieldEnum | Cuo_fijaScalarFieldEnum[]
+  }
+
+
+  /**
+   * cuo_fija findMany
+   */
+  export type cuo_fijaFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cuo_fija
+     */
+    select?: cuo_fijaSelect<ExtArgs> | null
+    /**
+     * Filter, which cuo_fijas to fetch.
+     */
+    where?: cuo_fijaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cuo_fijas to fetch.
+     */
+    orderBy?: cuo_fijaOrderByWithRelationInput | cuo_fijaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing cuo_fijas.
+     */
+    cursor?: cuo_fijaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cuo_fijas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cuo_fijas.
+     */
+    skip?: number
+    distinct?: Cuo_fijaScalarFieldEnum | Cuo_fijaScalarFieldEnum[]
+  }
+
+
+  /**
+   * cuo_fija create
+   */
+  export type cuo_fijaCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cuo_fija
+     */
+    select?: cuo_fijaSelect<ExtArgs> | null
+    /**
+     * The data needed to create a cuo_fija.
+     */
+    data?: XOR<cuo_fijaCreateInput, cuo_fijaUncheckedCreateInput>
+  }
+
+
+  /**
+   * cuo_fija createMany
+   */
+  export type cuo_fijaCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many cuo_fijas.
+     */
+    data: cuo_fijaCreateManyInput | cuo_fijaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * cuo_fija update
+   */
+  export type cuo_fijaUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cuo_fija
+     */
+    select?: cuo_fijaSelect<ExtArgs> | null
+    /**
+     * The data needed to update a cuo_fija.
+     */
+    data: XOR<cuo_fijaUpdateInput, cuo_fijaUncheckedUpdateInput>
+    /**
+     * Choose, which cuo_fija to update.
+     */
+    where: cuo_fijaWhereUniqueInput
+  }
+
+
+  /**
+   * cuo_fija updateMany
+   */
+  export type cuo_fijaUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update cuo_fijas.
+     */
+    data: XOR<cuo_fijaUpdateManyMutationInput, cuo_fijaUncheckedUpdateManyInput>
+    /**
+     * Filter which cuo_fijas to update
+     */
+    where?: cuo_fijaWhereInput
+  }
+
+
+  /**
+   * cuo_fija upsert
+   */
+  export type cuo_fijaUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cuo_fija
+     */
+    select?: cuo_fijaSelect<ExtArgs> | null
+    /**
+     * The filter to search for the cuo_fija to update in case it exists.
+     */
+    where: cuo_fijaWhereUniqueInput
+    /**
+     * In case the cuo_fija found by the `where` argument doesn't exist, create a new cuo_fija with this data.
+     */
+    create: XOR<cuo_fijaCreateInput, cuo_fijaUncheckedCreateInput>
+    /**
+     * In case the cuo_fija was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<cuo_fijaUpdateInput, cuo_fijaUncheckedUpdateInput>
+  }
+
+
+  /**
+   * cuo_fija delete
+   */
+  export type cuo_fijaDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cuo_fija
+     */
+    select?: cuo_fijaSelect<ExtArgs> | null
+    /**
+     * Filter which cuo_fija to delete.
+     */
+    where: cuo_fijaWhereUniqueInput
+  }
+
+
+  /**
+   * cuo_fija deleteMany
+   */
+  export type cuo_fijaDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which cuo_fijas to delete
+     */
+    where?: cuo_fijaWhereInput
+  }
+
+
+  /**
+   * cuo_fija without action
+   */
+  export type cuo_fijaArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cuo_fija
+     */
+    select?: cuo_fijaSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Model cuota_prestamo
    */
 
@@ -19377,6 +20891,1922 @@ export namespace Prisma {
      * Select specific fields to fetch from the debitos
      */
     select?: debitosSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model historia
+   */
+
+
+  export type AggregateHistoria = {
+    _count: HistoriaCountAggregateOutputType | null
+    _avg: HistoriaAvgAggregateOutputType | null
+    _sum: HistoriaSumAggregateOutputType | null
+    _min: HistoriaMinAggregateOutputType | null
+    _max: HistoriaMaxAggregateOutputType | null
+  }
+
+  export type HistoriaAvgAggregateOutputType = {
+    CONTRATO: number | null
+    ARCHIVO: number | null
+    idhistoria: number | null
+  }
+
+  export type HistoriaSumAggregateOutputType = {
+    CONTRATO: number | null
+    ARCHIVO: number | null
+    idhistoria: number | null
+  }
+
+  export type HistoriaMinAggregateOutputType = {
+    CONTRATO: number | null
+    OPERADOR: string | null
+    ARCHIVO: number | null
+    CAMPO: string | null
+    ANTERIOR: string | null
+    NUEVO: string | null
+    ACTUALIZA: string | null
+    CONTROL: string | null
+    idhistoria: number | null
+  }
+
+  export type HistoriaMaxAggregateOutputType = {
+    CONTRATO: number | null
+    OPERADOR: string | null
+    ARCHIVO: number | null
+    CAMPO: string | null
+    ANTERIOR: string | null
+    NUEVO: string | null
+    ACTUALIZA: string | null
+    CONTROL: string | null
+    idhistoria: number | null
+  }
+
+  export type HistoriaCountAggregateOutputType = {
+    CONTRATO: number
+    OPERADOR: number
+    ARCHIVO: number
+    CAMPO: number
+    ANTERIOR: number
+    NUEVO: number
+    ACTUALIZA: number
+    CONTROL: number
+    idhistoria: number
+    _all: number
+  }
+
+
+  export type HistoriaAvgAggregateInputType = {
+    CONTRATO?: true
+    ARCHIVO?: true
+    idhistoria?: true
+  }
+
+  export type HistoriaSumAggregateInputType = {
+    CONTRATO?: true
+    ARCHIVO?: true
+    idhistoria?: true
+  }
+
+  export type HistoriaMinAggregateInputType = {
+    CONTRATO?: true
+    OPERADOR?: true
+    ARCHIVO?: true
+    CAMPO?: true
+    ANTERIOR?: true
+    NUEVO?: true
+    ACTUALIZA?: true
+    CONTROL?: true
+    idhistoria?: true
+  }
+
+  export type HistoriaMaxAggregateInputType = {
+    CONTRATO?: true
+    OPERADOR?: true
+    ARCHIVO?: true
+    CAMPO?: true
+    ANTERIOR?: true
+    NUEVO?: true
+    ACTUALIZA?: true
+    CONTROL?: true
+    idhistoria?: true
+  }
+
+  export type HistoriaCountAggregateInputType = {
+    CONTRATO?: true
+    OPERADOR?: true
+    ARCHIVO?: true
+    CAMPO?: true
+    ANTERIOR?: true
+    NUEVO?: true
+    ACTUALIZA?: true
+    CONTROL?: true
+    idhistoria?: true
+    _all?: true
+  }
+
+  export type HistoriaAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which historia to aggregate.
+     */
+    where?: historiaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historias to fetch.
+     */
+    orderBy?: historiaOrderByWithRelationInput | historiaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: historiaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned historias
+    **/
+    _count?: true | HistoriaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HistoriaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HistoriaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HistoriaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HistoriaMaxAggregateInputType
+  }
+
+  export type GetHistoriaAggregateType<T extends HistoriaAggregateArgs> = {
+        [P in keyof T & keyof AggregateHistoria]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHistoria[P]>
+      : GetScalarType<T[P], AggregateHistoria[P]>
+  }
+
+
+
+
+  export type historiaGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: historiaWhereInput
+    orderBy?: historiaOrderByWithAggregationInput | historiaOrderByWithAggregationInput[]
+    by: HistoriaScalarFieldEnum[] | HistoriaScalarFieldEnum
+    having?: historiaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HistoriaCountAggregateInputType | true
+    _avg?: HistoriaAvgAggregateInputType
+    _sum?: HistoriaSumAggregateInputType
+    _min?: HistoriaMinAggregateInputType
+    _max?: HistoriaMaxAggregateInputType
+  }
+
+
+  export type HistoriaGroupByOutputType = {
+    CONTRATO: number | null
+    OPERADOR: string | null
+    ARCHIVO: number | null
+    CAMPO: string | null
+    ANTERIOR: string | null
+    NUEVO: string | null
+    ACTUALIZA: string | null
+    CONTROL: string | null
+    idhistoria: number
+    _count: HistoriaCountAggregateOutputType | null
+    _avg: HistoriaAvgAggregateOutputType | null
+    _sum: HistoriaSumAggregateOutputType | null
+    _min: HistoriaMinAggregateOutputType | null
+    _max: HistoriaMaxAggregateOutputType | null
+  }
+
+  type GetHistoriaGroupByPayload<T extends historiaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HistoriaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HistoriaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HistoriaGroupByOutputType[P]>
+            : GetScalarType<T[P], HistoriaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type historiaSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    CONTRATO?: boolean
+    OPERADOR?: boolean
+    ARCHIVO?: boolean
+    CAMPO?: boolean
+    ANTERIOR?: boolean
+    NUEVO?: boolean
+    ACTUALIZA?: boolean
+    CONTROL?: boolean
+    idhistoria?: boolean
+  }, ExtArgs["result"]["historia"]>
+
+  export type historiaSelectScalar = {
+    CONTRATO?: boolean
+    OPERADOR?: boolean
+    ARCHIVO?: boolean
+    CAMPO?: boolean
+    ANTERIOR?: boolean
+    NUEVO?: boolean
+    ACTUALIZA?: boolean
+    CONTROL?: boolean
+    idhistoria?: boolean
+  }
+
+
+  type historiaGetPayload<S extends boolean | null | undefined | historiaArgs> = $Types.GetResult<historiaPayload, S>
+
+  type historiaCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<historiaFindManyArgs, 'select' | 'include'> & {
+      select?: HistoriaCountAggregateInputType | true
+    }
+
+  export interface historiaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['historia'], meta: { name: 'historia' } }
+    /**
+     * Find zero or one Historia that matches the filter.
+     * @param {historiaFindUniqueArgs} args - Arguments to find a Historia
+     * @example
+     * // Get one Historia
+     * const historia = await prisma.historia.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends historiaFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, historiaFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'historia'> extends True ? Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Historia that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {historiaFindUniqueOrThrowArgs} args - Arguments to find a Historia
+     * @example
+     * // Get one Historia
+     * const historia = await prisma.historia.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends historiaFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, historiaFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Historia that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiaFindFirstArgs} args - Arguments to find a Historia
+     * @example
+     * // Get one Historia
+     * const historia = await prisma.historia.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends historiaFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, historiaFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'historia'> extends True ? Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Historia that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiaFindFirstOrThrowArgs} args - Arguments to find a Historia
+     * @example
+     * // Get one Historia
+     * const historia = await prisma.historia.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends historiaFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, historiaFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Historias that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiaFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Historias
+     * const historias = await prisma.historia.findMany()
+     * 
+     * // Get first 10 Historias
+     * const historias = await prisma.historia.findMany({ take: 10 })
+     * 
+     * // Only select the `CONTRATO`
+     * const historiaWithCONTRATOOnly = await prisma.historia.findMany({ select: { CONTRATO: true } })
+     * 
+    **/
+    findMany<T extends historiaFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, historiaFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Historia.
+     * @param {historiaCreateArgs} args - Arguments to create a Historia.
+     * @example
+     * // Create one Historia
+     * const Historia = await prisma.historia.create({
+     *   data: {
+     *     // ... data to create a Historia
+     *   }
+     * })
+     * 
+    **/
+    create<T extends historiaCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, historiaCreateArgs<ExtArgs>>
+    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Historias.
+     *     @param {historiaCreateManyArgs} args - Arguments to create many Historias.
+     *     @example
+     *     // Create many Historias
+     *     const historia = await prisma.historia.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends historiaCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, historiaCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Historia.
+     * @param {historiaDeleteArgs} args - Arguments to delete one Historia.
+     * @example
+     * // Delete one Historia
+     * const Historia = await prisma.historia.delete({
+     *   where: {
+     *     // ... filter to delete one Historia
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends historiaDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, historiaDeleteArgs<ExtArgs>>
+    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Historia.
+     * @param {historiaUpdateArgs} args - Arguments to update one Historia.
+     * @example
+     * // Update one Historia
+     * const historia = await prisma.historia.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends historiaUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, historiaUpdateArgs<ExtArgs>>
+    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Historias.
+     * @param {historiaDeleteManyArgs} args - Arguments to filter Historias to delete.
+     * @example
+     * // Delete a few Historias
+     * const { count } = await prisma.historia.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends historiaDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, historiaDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Historias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Historias
+     * const historia = await prisma.historia.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends historiaUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, historiaUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Historia.
+     * @param {historiaUpsertArgs} args - Arguments to update or create a Historia.
+     * @example
+     * // Update or create a Historia
+     * const historia = await prisma.historia.upsert({
+     *   create: {
+     *     // ... data to create a Historia
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Historia we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends historiaUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, historiaUpsertArgs<ExtArgs>>
+    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Historias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiaCountArgs} args - Arguments to filter Historias to count.
+     * @example
+     * // Count the number of Historias
+     * const count = await prisma.historia.count({
+     *   where: {
+     *     // ... the filter for the Historias we want to count
+     *   }
+     * })
+    **/
+    count<T extends historiaCountArgs>(
+      args?: Subset<T, historiaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HistoriaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Historia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HistoriaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HistoriaAggregateArgs>(args: Subset<T, HistoriaAggregateArgs>): Prisma.PrismaPromise<GetHistoriaAggregateType<T>>
+
+    /**
+     * Group by Historia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends historiaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: historiaGroupByArgs['orderBy'] }
+        : { orderBy?: historiaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, historiaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHistoriaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for historia.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__historiaClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * historia base type for findUnique actions
+   */
+  export type historiaFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historia
+     */
+    select?: historiaSelect<ExtArgs> | null
+    /**
+     * Filter, which historia to fetch.
+     */
+    where: historiaWhereUniqueInput
+  }
+
+  /**
+   * historia findUnique
+   */
+  export interface historiaFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends historiaFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * historia findUniqueOrThrow
+   */
+  export type historiaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historia
+     */
+    select?: historiaSelect<ExtArgs> | null
+    /**
+     * Filter, which historia to fetch.
+     */
+    where: historiaWhereUniqueInput
+  }
+
+
+  /**
+   * historia base type for findFirst actions
+   */
+  export type historiaFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historia
+     */
+    select?: historiaSelect<ExtArgs> | null
+    /**
+     * Filter, which historia to fetch.
+     */
+    where?: historiaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historias to fetch.
+     */
+    orderBy?: historiaOrderByWithRelationInput | historiaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for historias.
+     */
+    cursor?: historiaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of historias.
+     */
+    distinct?: HistoriaScalarFieldEnum | HistoriaScalarFieldEnum[]
+  }
+
+  /**
+   * historia findFirst
+   */
+  export interface historiaFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends historiaFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * historia findFirstOrThrow
+   */
+  export type historiaFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historia
+     */
+    select?: historiaSelect<ExtArgs> | null
+    /**
+     * Filter, which historia to fetch.
+     */
+    where?: historiaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historias to fetch.
+     */
+    orderBy?: historiaOrderByWithRelationInput | historiaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for historias.
+     */
+    cursor?: historiaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of historias.
+     */
+    distinct?: HistoriaScalarFieldEnum | HistoriaScalarFieldEnum[]
+  }
+
+
+  /**
+   * historia findMany
+   */
+  export type historiaFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historia
+     */
+    select?: historiaSelect<ExtArgs> | null
+    /**
+     * Filter, which historias to fetch.
+     */
+    where?: historiaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historias to fetch.
+     */
+    orderBy?: historiaOrderByWithRelationInput | historiaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing historias.
+     */
+    cursor?: historiaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historias.
+     */
+    skip?: number
+    distinct?: HistoriaScalarFieldEnum | HistoriaScalarFieldEnum[]
+  }
+
+
+  /**
+   * historia create
+   */
+  export type historiaCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historia
+     */
+    select?: historiaSelect<ExtArgs> | null
+    /**
+     * The data needed to create a historia.
+     */
+    data?: XOR<historiaCreateInput, historiaUncheckedCreateInput>
+  }
+
+
+  /**
+   * historia createMany
+   */
+  export type historiaCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many historias.
+     */
+    data: historiaCreateManyInput | historiaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * historia update
+   */
+  export type historiaUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historia
+     */
+    select?: historiaSelect<ExtArgs> | null
+    /**
+     * The data needed to update a historia.
+     */
+    data: XOR<historiaUpdateInput, historiaUncheckedUpdateInput>
+    /**
+     * Choose, which historia to update.
+     */
+    where: historiaWhereUniqueInput
+  }
+
+
+  /**
+   * historia updateMany
+   */
+  export type historiaUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update historias.
+     */
+    data: XOR<historiaUpdateManyMutationInput, historiaUncheckedUpdateManyInput>
+    /**
+     * Filter which historias to update
+     */
+    where?: historiaWhereInput
+  }
+
+
+  /**
+   * historia upsert
+   */
+  export type historiaUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historia
+     */
+    select?: historiaSelect<ExtArgs> | null
+    /**
+     * The filter to search for the historia to update in case it exists.
+     */
+    where: historiaWhereUniqueInput
+    /**
+     * In case the historia found by the `where` argument doesn't exist, create a new historia with this data.
+     */
+    create: XOR<historiaCreateInput, historiaUncheckedCreateInput>
+    /**
+     * In case the historia was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<historiaUpdateInput, historiaUncheckedUpdateInput>
+  }
+
+
+  /**
+   * historia delete
+   */
+  export type historiaDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historia
+     */
+    select?: historiaSelect<ExtArgs> | null
+    /**
+     * Filter which historia to delete.
+     */
+    where: historiaWhereUniqueInput
+  }
+
+
+  /**
+   * historia deleteMany
+   */
+  export type historiaDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which historias to delete
+     */
+    where?: historiaWhereInput
+  }
+
+
+  /**
+   * historia without action
+   */
+  export type historiaArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historia
+     */
+    select?: historiaSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model historiam
+   */
+
+
+  export type AggregateHistoriam = {
+    _count: HistoriamCountAggregateOutputType | null
+    _avg: HistoriamAvgAggregateOutputType | null
+    _sum: HistoriamSumAggregateOutputType | null
+    _min: HistoriamMinAggregateOutputType | null
+    _max: HistoriamMaxAggregateOutputType | null
+  }
+
+  export type HistoriamAvgAggregateOutputType = {
+    CONTRATO: number | null
+    ARCHIVO: number | null
+    CAMPO: number | null
+    idhistoria: number | null
+  }
+
+  export type HistoriamSumAggregateOutputType = {
+    CONTRATO: number | null
+    ARCHIVO: number | null
+    CAMPO: number | null
+    idhistoria: number | null
+  }
+
+  export type HistoriamMinAggregateOutputType = {
+    CONTRATO: number | null
+    OPERADOR: string | null
+    ARCHIVO: number | null
+    CAMPO: number | null
+    ANTERIOR: string | null
+    NUEVO: string | null
+    ACTUALIZA: string | null
+    CONTROL: string | null
+    idhistoria: number | null
+  }
+
+  export type HistoriamMaxAggregateOutputType = {
+    CONTRATO: number | null
+    OPERADOR: string | null
+    ARCHIVO: number | null
+    CAMPO: number | null
+    ANTERIOR: string | null
+    NUEVO: string | null
+    ACTUALIZA: string | null
+    CONTROL: string | null
+    idhistoria: number | null
+  }
+
+  export type HistoriamCountAggregateOutputType = {
+    CONTRATO: number
+    OPERADOR: number
+    ARCHIVO: number
+    CAMPO: number
+    ANTERIOR: number
+    NUEVO: number
+    ACTUALIZA: number
+    CONTROL: number
+    idhistoria: number
+    _all: number
+  }
+
+
+  export type HistoriamAvgAggregateInputType = {
+    CONTRATO?: true
+    ARCHIVO?: true
+    CAMPO?: true
+    idhistoria?: true
+  }
+
+  export type HistoriamSumAggregateInputType = {
+    CONTRATO?: true
+    ARCHIVO?: true
+    CAMPO?: true
+    idhistoria?: true
+  }
+
+  export type HistoriamMinAggregateInputType = {
+    CONTRATO?: true
+    OPERADOR?: true
+    ARCHIVO?: true
+    CAMPO?: true
+    ANTERIOR?: true
+    NUEVO?: true
+    ACTUALIZA?: true
+    CONTROL?: true
+    idhistoria?: true
+  }
+
+  export type HistoriamMaxAggregateInputType = {
+    CONTRATO?: true
+    OPERADOR?: true
+    ARCHIVO?: true
+    CAMPO?: true
+    ANTERIOR?: true
+    NUEVO?: true
+    ACTUALIZA?: true
+    CONTROL?: true
+    idhistoria?: true
+  }
+
+  export type HistoriamCountAggregateInputType = {
+    CONTRATO?: true
+    OPERADOR?: true
+    ARCHIVO?: true
+    CAMPO?: true
+    ANTERIOR?: true
+    NUEVO?: true
+    ACTUALIZA?: true
+    CONTROL?: true
+    idhistoria?: true
+    _all?: true
+  }
+
+  export type HistoriamAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which historiam to aggregate.
+     */
+    where?: historiamWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historiam to fetch.
+     */
+    orderBy?: historiamOrderByWithRelationInput | historiamOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: historiamWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historiam from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historiam.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned historiam
+    **/
+    _count?: true | HistoriamCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HistoriamAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HistoriamSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HistoriamMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HistoriamMaxAggregateInputType
+  }
+
+  export type GetHistoriamAggregateType<T extends HistoriamAggregateArgs> = {
+        [P in keyof T & keyof AggregateHistoriam]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHistoriam[P]>
+      : GetScalarType<T[P], AggregateHistoriam[P]>
+  }
+
+
+
+
+  export type historiamGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: historiamWhereInput
+    orderBy?: historiamOrderByWithAggregationInput | historiamOrderByWithAggregationInput[]
+    by: HistoriamScalarFieldEnum[] | HistoriamScalarFieldEnum
+    having?: historiamScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HistoriamCountAggregateInputType | true
+    _avg?: HistoriamAvgAggregateInputType
+    _sum?: HistoriamSumAggregateInputType
+    _min?: HistoriamMinAggregateInputType
+    _max?: HistoriamMaxAggregateInputType
+  }
+
+
+  export type HistoriamGroupByOutputType = {
+    CONTRATO: number | null
+    OPERADOR: string | null
+    ARCHIVO: number | null
+    CAMPO: number | null
+    ANTERIOR: string | null
+    NUEVO: string | null
+    ACTUALIZA: string | null
+    CONTROL: string | null
+    idhistoria: number
+    _count: HistoriamCountAggregateOutputType | null
+    _avg: HistoriamAvgAggregateOutputType | null
+    _sum: HistoriamSumAggregateOutputType | null
+    _min: HistoriamMinAggregateOutputType | null
+    _max: HistoriamMaxAggregateOutputType | null
+  }
+
+  type GetHistoriamGroupByPayload<T extends historiamGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HistoriamGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HistoriamGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HistoriamGroupByOutputType[P]>
+            : GetScalarType<T[P], HistoriamGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type historiamSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    CONTRATO?: boolean
+    OPERADOR?: boolean
+    ARCHIVO?: boolean
+    CAMPO?: boolean
+    ANTERIOR?: boolean
+    NUEVO?: boolean
+    ACTUALIZA?: boolean
+    CONTROL?: boolean
+    idhistoria?: boolean
+  }, ExtArgs["result"]["historiam"]>
+
+  export type historiamSelectScalar = {
+    CONTRATO?: boolean
+    OPERADOR?: boolean
+    ARCHIVO?: boolean
+    CAMPO?: boolean
+    ANTERIOR?: boolean
+    NUEVO?: boolean
+    ACTUALIZA?: boolean
+    CONTROL?: boolean
+    idhistoria?: boolean
+  }
+
+
+  type historiamGetPayload<S extends boolean | null | undefined | historiamArgs> = $Types.GetResult<historiamPayload, S>
+
+  type historiamCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<historiamFindManyArgs, 'select' | 'include'> & {
+      select?: HistoriamCountAggregateInputType | true
+    }
+
+  export interface historiamDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['historiam'], meta: { name: 'historiam' } }
+    /**
+     * Find zero or one Historiam that matches the filter.
+     * @param {historiamFindUniqueArgs} args - Arguments to find a Historiam
+     * @example
+     * // Get one Historiam
+     * const historiam = await prisma.historiam.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends historiamFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, historiamFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'historiam'> extends True ? Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Historiam that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {historiamFindUniqueOrThrowArgs} args - Arguments to find a Historiam
+     * @example
+     * // Get one Historiam
+     * const historiam = await prisma.historiam.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends historiamFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, historiamFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Historiam that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiamFindFirstArgs} args - Arguments to find a Historiam
+     * @example
+     * // Get one Historiam
+     * const historiam = await prisma.historiam.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends historiamFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, historiamFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'historiam'> extends True ? Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Historiam that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiamFindFirstOrThrowArgs} args - Arguments to find a Historiam
+     * @example
+     * // Get one Historiam
+     * const historiam = await prisma.historiam.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends historiamFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, historiamFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Historiam that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiamFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Historiam
+     * const historiam = await prisma.historiam.findMany()
+     * 
+     * // Get first 10 Historiam
+     * const historiam = await prisma.historiam.findMany({ take: 10 })
+     * 
+     * // Only select the `CONTRATO`
+     * const historiamWithCONTRATOOnly = await prisma.historiam.findMany({ select: { CONTRATO: true } })
+     * 
+    **/
+    findMany<T extends historiamFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, historiamFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Historiam.
+     * @param {historiamCreateArgs} args - Arguments to create a Historiam.
+     * @example
+     * // Create one Historiam
+     * const Historiam = await prisma.historiam.create({
+     *   data: {
+     *     // ... data to create a Historiam
+     *   }
+     * })
+     * 
+    **/
+    create<T extends historiamCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, historiamCreateArgs<ExtArgs>>
+    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Historiam.
+     *     @param {historiamCreateManyArgs} args - Arguments to create many Historiam.
+     *     @example
+     *     // Create many Historiam
+     *     const historiam = await prisma.historiam.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends historiamCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, historiamCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Historiam.
+     * @param {historiamDeleteArgs} args - Arguments to delete one Historiam.
+     * @example
+     * // Delete one Historiam
+     * const Historiam = await prisma.historiam.delete({
+     *   where: {
+     *     // ... filter to delete one Historiam
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends historiamDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, historiamDeleteArgs<ExtArgs>>
+    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Historiam.
+     * @param {historiamUpdateArgs} args - Arguments to update one Historiam.
+     * @example
+     * // Update one Historiam
+     * const historiam = await prisma.historiam.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends historiamUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, historiamUpdateArgs<ExtArgs>>
+    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Historiam.
+     * @param {historiamDeleteManyArgs} args - Arguments to filter Historiam to delete.
+     * @example
+     * // Delete a few Historiam
+     * const { count } = await prisma.historiam.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends historiamDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, historiamDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Historiam.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiamUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Historiam
+     * const historiam = await prisma.historiam.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends historiamUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, historiamUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Historiam.
+     * @param {historiamUpsertArgs} args - Arguments to update or create a Historiam.
+     * @example
+     * // Update or create a Historiam
+     * const historiam = await prisma.historiam.upsert({
+     *   create: {
+     *     // ... data to create a Historiam
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Historiam we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends historiamUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, historiamUpsertArgs<ExtArgs>>
+    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Historiam.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiamCountArgs} args - Arguments to filter Historiam to count.
+     * @example
+     * // Count the number of Historiam
+     * const count = await prisma.historiam.count({
+     *   where: {
+     *     // ... the filter for the Historiam we want to count
+     *   }
+     * })
+    **/
+    count<T extends historiamCountArgs>(
+      args?: Subset<T, historiamCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HistoriamCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Historiam.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HistoriamAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HistoriamAggregateArgs>(args: Subset<T, HistoriamAggregateArgs>): Prisma.PrismaPromise<GetHistoriamAggregateType<T>>
+
+    /**
+     * Group by Historiam.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historiamGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends historiamGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: historiamGroupByArgs['orderBy'] }
+        : { orderBy?: historiamGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, historiamGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHistoriamGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for historiam.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__historiamClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * historiam base type for findUnique actions
+   */
+  export type historiamFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historiam
+     */
+    select?: historiamSelect<ExtArgs> | null
+    /**
+     * Filter, which historiam to fetch.
+     */
+    where: historiamWhereUniqueInput
+  }
+
+  /**
+   * historiam findUnique
+   */
+  export interface historiamFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends historiamFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * historiam findUniqueOrThrow
+   */
+  export type historiamFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historiam
+     */
+    select?: historiamSelect<ExtArgs> | null
+    /**
+     * Filter, which historiam to fetch.
+     */
+    where: historiamWhereUniqueInput
+  }
+
+
+  /**
+   * historiam base type for findFirst actions
+   */
+  export type historiamFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historiam
+     */
+    select?: historiamSelect<ExtArgs> | null
+    /**
+     * Filter, which historiam to fetch.
+     */
+    where?: historiamWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historiam to fetch.
+     */
+    orderBy?: historiamOrderByWithRelationInput | historiamOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for historiam.
+     */
+    cursor?: historiamWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historiam from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historiam.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of historiam.
+     */
+    distinct?: HistoriamScalarFieldEnum | HistoriamScalarFieldEnum[]
+  }
+
+  /**
+   * historiam findFirst
+   */
+  export interface historiamFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends historiamFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * historiam findFirstOrThrow
+   */
+  export type historiamFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historiam
+     */
+    select?: historiamSelect<ExtArgs> | null
+    /**
+     * Filter, which historiam to fetch.
+     */
+    where?: historiamWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historiam to fetch.
+     */
+    orderBy?: historiamOrderByWithRelationInput | historiamOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for historiam.
+     */
+    cursor?: historiamWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historiam from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historiam.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of historiam.
+     */
+    distinct?: HistoriamScalarFieldEnum | HistoriamScalarFieldEnum[]
+  }
+
+
+  /**
+   * historiam findMany
+   */
+  export type historiamFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historiam
+     */
+    select?: historiamSelect<ExtArgs> | null
+    /**
+     * Filter, which historiam to fetch.
+     */
+    where?: historiamWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historiam to fetch.
+     */
+    orderBy?: historiamOrderByWithRelationInput | historiamOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing historiam.
+     */
+    cursor?: historiamWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historiam from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historiam.
+     */
+    skip?: number
+    distinct?: HistoriamScalarFieldEnum | HistoriamScalarFieldEnum[]
+  }
+
+
+  /**
+   * historiam create
+   */
+  export type historiamCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historiam
+     */
+    select?: historiamSelect<ExtArgs> | null
+    /**
+     * The data needed to create a historiam.
+     */
+    data?: XOR<historiamCreateInput, historiamUncheckedCreateInput>
+  }
+
+
+  /**
+   * historiam createMany
+   */
+  export type historiamCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many historiam.
+     */
+    data: historiamCreateManyInput | historiamCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * historiam update
+   */
+  export type historiamUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historiam
+     */
+    select?: historiamSelect<ExtArgs> | null
+    /**
+     * The data needed to update a historiam.
+     */
+    data: XOR<historiamUpdateInput, historiamUncheckedUpdateInput>
+    /**
+     * Choose, which historiam to update.
+     */
+    where: historiamWhereUniqueInput
+  }
+
+
+  /**
+   * historiam updateMany
+   */
+  export type historiamUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update historiam.
+     */
+    data: XOR<historiamUpdateManyMutationInput, historiamUncheckedUpdateManyInput>
+    /**
+     * Filter which historiam to update
+     */
+    where?: historiamWhereInput
+  }
+
+
+  /**
+   * historiam upsert
+   */
+  export type historiamUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historiam
+     */
+    select?: historiamSelect<ExtArgs> | null
+    /**
+     * The filter to search for the historiam to update in case it exists.
+     */
+    where: historiamWhereUniqueInput
+    /**
+     * In case the historiam found by the `where` argument doesn't exist, create a new historiam with this data.
+     */
+    create: XOR<historiamCreateInput, historiamUncheckedCreateInput>
+    /**
+     * In case the historiam was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<historiamUpdateInput, historiamUncheckedUpdateInput>
+  }
+
+
+  /**
+   * historiam delete
+   */
+  export type historiamDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historiam
+     */
+    select?: historiamSelect<ExtArgs> | null
+    /**
+     * Filter which historiam to delete.
+     */
+    where: historiamWhereUniqueInput
+  }
+
+
+  /**
+   * historiam deleteMany
+   */
+  export type historiamDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which historiam to delete
+     */
+    where?: historiamWhereInput
+  }
+
+
+  /**
+   * historiam without action
+   */
+  export type historiamArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historiam
+     */
+    select?: historiamSelect<ExtArgs> | null
   }
 
 
@@ -22313,7 +25743,6 @@ export namespace Prisma {
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
-    OPERADOR: number | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
     PROD_DEB: number | null
@@ -22358,7 +25787,6 @@ export namespace Prisma {
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
-    OPERADOR: number | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
     PROD_DEB: number | null
@@ -22418,7 +25846,7 @@ export namespace Prisma {
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
-    OPERADOR: number | null
+    OPERADOR: string | null
     ACTUALIZA: string | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
@@ -22507,7 +25935,7 @@ export namespace Prisma {
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
-    OPERADOR: number | null
+    OPERADOR: string | null
     ACTUALIZA: string | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
@@ -22672,7 +26100,6 @@ export namespace Prisma {
     ADHERENTES?: true
     PRECIO?: true
     CUO_VIEJA?: true
-    OPERADOR?: true
     OBRA_SOC?: true
     PRODUCTOR?: true
     PROD_DEB?: true
@@ -22717,7 +26144,6 @@ export namespace Prisma {
     ADHERENTES?: true
     PRECIO?: true
     CUO_VIEJA?: true
-    OPERADOR?: true
     OBRA_SOC?: true
     PRODUCTOR?: true
     PROD_DEB?: true
@@ -23132,7 +26558,7 @@ export namespace Prisma {
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
-    OPERADOR: number | null
+    OPERADOR: string | null
     ACTUALIZA: string | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
@@ -58148,6 +61574,1961 @@ export namespace Prisma {
 
 
   /**
+   * Model listado_rus
+   */
+
+
+  export type AggregateListado_rus = {
+    _count: Listado_rusCountAggregateOutputType | null
+    _avg: Listado_rusAvgAggregateOutputType | null
+    _sum: Listado_rusSumAggregateOutputType | null
+    _min: Listado_rusMinAggregateOutputType | null
+    _max: Listado_rusMaxAggregateOutputType | null
+  }
+
+  export type Listado_rusAvgAggregateOutputType = {
+    NRO: number | null
+    CONTRATO: number | null
+    GRUPO: number | null
+    ADH: number | null
+  }
+
+  export type Listado_rusSumAggregateOutputType = {
+    NRO: number | null
+    CONTRATO: number | null
+    GRUPO: number | null
+    ADH: number | null
+  }
+
+  export type Listado_rusMinAggregateOutputType = {
+    NRO: number | null
+    DNI: string | null
+    TITULAR: string | null
+    CONTRATO: number | null
+    ALTA: string | null
+    BAJA: string | null
+    GRUPO: number | null
+    PLAN: string | null
+    ADH: number | null
+    CUOTA: string | null
+    INGRESO: string | null
+    NACIMIENTO: string | null
+    CAPITAL: string | null
+    TIPO: string | null
+  }
+
+  export type Listado_rusMaxAggregateOutputType = {
+    NRO: number | null
+    DNI: string | null
+    TITULAR: string | null
+    CONTRATO: number | null
+    ALTA: string | null
+    BAJA: string | null
+    GRUPO: number | null
+    PLAN: string | null
+    ADH: number | null
+    CUOTA: string | null
+    INGRESO: string | null
+    NACIMIENTO: string | null
+    CAPITAL: string | null
+    TIPO: string | null
+  }
+
+  export type Listado_rusCountAggregateOutputType = {
+    NRO: number
+    DNI: number
+    TITULAR: number
+    CONTRATO: number
+    ALTA: number
+    BAJA: number
+    GRUPO: number
+    PLAN: number
+    ADH: number
+    CUOTA: number
+    INGRESO: number
+    NACIMIENTO: number
+    CAPITAL: number
+    TIPO: number
+    _all: number
+  }
+
+
+  export type Listado_rusAvgAggregateInputType = {
+    NRO?: true
+    CONTRATO?: true
+    GRUPO?: true
+    ADH?: true
+  }
+
+  export type Listado_rusSumAggregateInputType = {
+    NRO?: true
+    CONTRATO?: true
+    GRUPO?: true
+    ADH?: true
+  }
+
+  export type Listado_rusMinAggregateInputType = {
+    NRO?: true
+    DNI?: true
+    TITULAR?: true
+    CONTRATO?: true
+    ALTA?: true
+    BAJA?: true
+    GRUPO?: true
+    PLAN?: true
+    ADH?: true
+    CUOTA?: true
+    INGRESO?: true
+    NACIMIENTO?: true
+    CAPITAL?: true
+    TIPO?: true
+  }
+
+  export type Listado_rusMaxAggregateInputType = {
+    NRO?: true
+    DNI?: true
+    TITULAR?: true
+    CONTRATO?: true
+    ALTA?: true
+    BAJA?: true
+    GRUPO?: true
+    PLAN?: true
+    ADH?: true
+    CUOTA?: true
+    INGRESO?: true
+    NACIMIENTO?: true
+    CAPITAL?: true
+    TIPO?: true
+  }
+
+  export type Listado_rusCountAggregateInputType = {
+    NRO?: true
+    DNI?: true
+    TITULAR?: true
+    CONTRATO?: true
+    ALTA?: true
+    BAJA?: true
+    GRUPO?: true
+    PLAN?: true
+    ADH?: true
+    CUOTA?: true
+    INGRESO?: true
+    NACIMIENTO?: true
+    CAPITAL?: true
+    TIPO?: true
+    _all?: true
+  }
+
+  export type Listado_rusAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which listado_rus to aggregate.
+     */
+    where?: listado_rusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of listado_ruses to fetch.
+     */
+    orderBy?: listado_rusOrderByWithRelationInput | listado_rusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: listado_rusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` listado_ruses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` listado_ruses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned listado_ruses
+    **/
+    _count?: true | Listado_rusCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Listado_rusAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Listado_rusSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Listado_rusMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Listado_rusMaxAggregateInputType
+  }
+
+  export type GetListado_rusAggregateType<T extends Listado_rusAggregateArgs> = {
+        [P in keyof T & keyof AggregateListado_rus]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateListado_rus[P]>
+      : GetScalarType<T[P], AggregateListado_rus[P]>
+  }
+
+
+
+
+  export type listado_rusGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: listado_rusWhereInput
+    orderBy?: listado_rusOrderByWithAggregationInput | listado_rusOrderByWithAggregationInput[]
+    by: Listado_rusScalarFieldEnum[] | Listado_rusScalarFieldEnum
+    having?: listado_rusScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Listado_rusCountAggregateInputType | true
+    _avg?: Listado_rusAvgAggregateInputType
+    _sum?: Listado_rusSumAggregateInputType
+    _min?: Listado_rusMinAggregateInputType
+    _max?: Listado_rusMaxAggregateInputType
+  }
+
+
+  export type Listado_rusGroupByOutputType = {
+    NRO: number
+    DNI: string
+    TITULAR: string | null
+    CONTRATO: number | null
+    ALTA: string | null
+    BAJA: string | null
+    GRUPO: number | null
+    PLAN: string | null
+    ADH: number | null
+    CUOTA: string | null
+    INGRESO: string | null
+    NACIMIENTO: string | null
+    CAPITAL: string | null
+    TIPO: string | null
+    _count: Listado_rusCountAggregateOutputType | null
+    _avg: Listado_rusAvgAggregateOutputType | null
+    _sum: Listado_rusSumAggregateOutputType | null
+    _min: Listado_rusMinAggregateOutputType | null
+    _max: Listado_rusMaxAggregateOutputType | null
+  }
+
+  type GetListado_rusGroupByPayload<T extends listado_rusGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Listado_rusGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Listado_rusGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Listado_rusGroupByOutputType[P]>
+            : GetScalarType<T[P], Listado_rusGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type listado_rusSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    NRO?: boolean
+    DNI?: boolean
+    TITULAR?: boolean
+    CONTRATO?: boolean
+    ALTA?: boolean
+    BAJA?: boolean
+    GRUPO?: boolean
+    PLAN?: boolean
+    ADH?: boolean
+    CUOTA?: boolean
+    INGRESO?: boolean
+    NACIMIENTO?: boolean
+    CAPITAL?: boolean
+    TIPO?: boolean
+  }, ExtArgs["result"]["listado_rus"]>
+
+  export type listado_rusSelectScalar = {
+    NRO?: boolean
+    DNI?: boolean
+    TITULAR?: boolean
+    CONTRATO?: boolean
+    ALTA?: boolean
+    BAJA?: boolean
+    GRUPO?: boolean
+    PLAN?: boolean
+    ADH?: boolean
+    CUOTA?: boolean
+    INGRESO?: boolean
+    NACIMIENTO?: boolean
+    CAPITAL?: boolean
+    TIPO?: boolean
+  }
+
+
+  type listado_rusGetPayload<S extends boolean | null | undefined | listado_rusArgs> = $Types.GetResult<listado_rusPayload, S>
+
+  type listado_rusCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<listado_rusFindManyArgs, 'select' | 'include'> & {
+      select?: Listado_rusCountAggregateInputType | true
+    }
+
+  export interface listado_rusDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['listado_rus'], meta: { name: 'listado_rus' } }
+    /**
+     * Find zero or one Listado_rus that matches the filter.
+     * @param {listado_rusFindUniqueArgs} args - Arguments to find a Listado_rus
+     * @example
+     * // Get one Listado_rus
+     * const listado_rus = await prisma.listado_rus.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends listado_rusFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, listado_rusFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'listado_rus'> extends True ? Prisma__listado_rusClient<$Types.GetResult<listado_rusPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__listado_rusClient<$Types.GetResult<listado_rusPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Listado_rus that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {listado_rusFindUniqueOrThrowArgs} args - Arguments to find a Listado_rus
+     * @example
+     * // Get one Listado_rus
+     * const listado_rus = await prisma.listado_rus.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends listado_rusFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, listado_rusFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__listado_rusClient<$Types.GetResult<listado_rusPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Listado_rus that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {listado_rusFindFirstArgs} args - Arguments to find a Listado_rus
+     * @example
+     * // Get one Listado_rus
+     * const listado_rus = await prisma.listado_rus.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends listado_rusFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, listado_rusFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'listado_rus'> extends True ? Prisma__listado_rusClient<$Types.GetResult<listado_rusPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__listado_rusClient<$Types.GetResult<listado_rusPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Listado_rus that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {listado_rusFindFirstOrThrowArgs} args - Arguments to find a Listado_rus
+     * @example
+     * // Get one Listado_rus
+     * const listado_rus = await prisma.listado_rus.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends listado_rusFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, listado_rusFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__listado_rusClient<$Types.GetResult<listado_rusPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Listado_ruses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {listado_rusFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Listado_ruses
+     * const listado_ruses = await prisma.listado_rus.findMany()
+     * 
+     * // Get first 10 Listado_ruses
+     * const listado_ruses = await prisma.listado_rus.findMany({ take: 10 })
+     * 
+     * // Only select the `NRO`
+     * const listado_rusWithNROOnly = await prisma.listado_rus.findMany({ select: { NRO: true } })
+     * 
+    **/
+    findMany<T extends listado_rusFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, listado_rusFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<listado_rusPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Listado_rus.
+     * @param {listado_rusCreateArgs} args - Arguments to create a Listado_rus.
+     * @example
+     * // Create one Listado_rus
+     * const Listado_rus = await prisma.listado_rus.create({
+     *   data: {
+     *     // ... data to create a Listado_rus
+     *   }
+     * })
+     * 
+    **/
+    create<T extends listado_rusCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, listado_rusCreateArgs<ExtArgs>>
+    ): Prisma__listado_rusClient<$Types.GetResult<listado_rusPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Listado_ruses.
+     *     @param {listado_rusCreateManyArgs} args - Arguments to create many Listado_ruses.
+     *     @example
+     *     // Create many Listado_ruses
+     *     const listado_rus = await prisma.listado_rus.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends listado_rusCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, listado_rusCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Listado_rus.
+     * @param {listado_rusDeleteArgs} args - Arguments to delete one Listado_rus.
+     * @example
+     * // Delete one Listado_rus
+     * const Listado_rus = await prisma.listado_rus.delete({
+     *   where: {
+     *     // ... filter to delete one Listado_rus
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends listado_rusDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, listado_rusDeleteArgs<ExtArgs>>
+    ): Prisma__listado_rusClient<$Types.GetResult<listado_rusPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Listado_rus.
+     * @param {listado_rusUpdateArgs} args - Arguments to update one Listado_rus.
+     * @example
+     * // Update one Listado_rus
+     * const listado_rus = await prisma.listado_rus.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends listado_rusUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, listado_rusUpdateArgs<ExtArgs>>
+    ): Prisma__listado_rusClient<$Types.GetResult<listado_rusPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Listado_ruses.
+     * @param {listado_rusDeleteManyArgs} args - Arguments to filter Listado_ruses to delete.
+     * @example
+     * // Delete a few Listado_ruses
+     * const { count } = await prisma.listado_rus.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends listado_rusDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, listado_rusDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Listado_ruses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {listado_rusUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Listado_ruses
+     * const listado_rus = await prisma.listado_rus.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends listado_rusUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, listado_rusUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Listado_rus.
+     * @param {listado_rusUpsertArgs} args - Arguments to update or create a Listado_rus.
+     * @example
+     * // Update or create a Listado_rus
+     * const listado_rus = await prisma.listado_rus.upsert({
+     *   create: {
+     *     // ... data to create a Listado_rus
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Listado_rus we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends listado_rusUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, listado_rusUpsertArgs<ExtArgs>>
+    ): Prisma__listado_rusClient<$Types.GetResult<listado_rusPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Listado_ruses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {listado_rusCountArgs} args - Arguments to filter Listado_ruses to count.
+     * @example
+     * // Count the number of Listado_ruses
+     * const count = await prisma.listado_rus.count({
+     *   where: {
+     *     // ... the filter for the Listado_ruses we want to count
+     *   }
+     * })
+    **/
+    count<T extends listado_rusCountArgs>(
+      args?: Subset<T, listado_rusCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Listado_rusCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Listado_rus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Listado_rusAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Listado_rusAggregateArgs>(args: Subset<T, Listado_rusAggregateArgs>): Prisma.PrismaPromise<GetListado_rusAggregateType<T>>
+
+    /**
+     * Group by Listado_rus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {listado_rusGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends listado_rusGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: listado_rusGroupByArgs['orderBy'] }
+        : { orderBy?: listado_rusGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, listado_rusGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetListado_rusGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for listado_rus.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__listado_rusClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * listado_rus base type for findUnique actions
+   */
+  export type listado_rusFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the listado_rus
+     */
+    select?: listado_rusSelect<ExtArgs> | null
+    /**
+     * Filter, which listado_rus to fetch.
+     */
+    where: listado_rusWhereUniqueInput
+  }
+
+  /**
+   * listado_rus findUnique
+   */
+  export interface listado_rusFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends listado_rusFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * listado_rus findUniqueOrThrow
+   */
+  export type listado_rusFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the listado_rus
+     */
+    select?: listado_rusSelect<ExtArgs> | null
+    /**
+     * Filter, which listado_rus to fetch.
+     */
+    where: listado_rusWhereUniqueInput
+  }
+
+
+  /**
+   * listado_rus base type for findFirst actions
+   */
+  export type listado_rusFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the listado_rus
+     */
+    select?: listado_rusSelect<ExtArgs> | null
+    /**
+     * Filter, which listado_rus to fetch.
+     */
+    where?: listado_rusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of listado_ruses to fetch.
+     */
+    orderBy?: listado_rusOrderByWithRelationInput | listado_rusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for listado_ruses.
+     */
+    cursor?: listado_rusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` listado_ruses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` listado_ruses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of listado_ruses.
+     */
+    distinct?: Listado_rusScalarFieldEnum | Listado_rusScalarFieldEnum[]
+  }
+
+  /**
+   * listado_rus findFirst
+   */
+  export interface listado_rusFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends listado_rusFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * listado_rus findFirstOrThrow
+   */
+  export type listado_rusFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the listado_rus
+     */
+    select?: listado_rusSelect<ExtArgs> | null
+    /**
+     * Filter, which listado_rus to fetch.
+     */
+    where?: listado_rusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of listado_ruses to fetch.
+     */
+    orderBy?: listado_rusOrderByWithRelationInput | listado_rusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for listado_ruses.
+     */
+    cursor?: listado_rusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` listado_ruses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` listado_ruses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of listado_ruses.
+     */
+    distinct?: Listado_rusScalarFieldEnum | Listado_rusScalarFieldEnum[]
+  }
+
+
+  /**
+   * listado_rus findMany
+   */
+  export type listado_rusFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the listado_rus
+     */
+    select?: listado_rusSelect<ExtArgs> | null
+    /**
+     * Filter, which listado_ruses to fetch.
+     */
+    where?: listado_rusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of listado_ruses to fetch.
+     */
+    orderBy?: listado_rusOrderByWithRelationInput | listado_rusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing listado_ruses.
+     */
+    cursor?: listado_rusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` listado_ruses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` listado_ruses.
+     */
+    skip?: number
+    distinct?: Listado_rusScalarFieldEnum | Listado_rusScalarFieldEnum[]
+  }
+
+
+  /**
+   * listado_rus create
+   */
+  export type listado_rusCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the listado_rus
+     */
+    select?: listado_rusSelect<ExtArgs> | null
+    /**
+     * The data needed to create a listado_rus.
+     */
+    data: XOR<listado_rusCreateInput, listado_rusUncheckedCreateInput>
+  }
+
+
+  /**
+   * listado_rus createMany
+   */
+  export type listado_rusCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many listado_ruses.
+     */
+    data: listado_rusCreateManyInput | listado_rusCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * listado_rus update
+   */
+  export type listado_rusUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the listado_rus
+     */
+    select?: listado_rusSelect<ExtArgs> | null
+    /**
+     * The data needed to update a listado_rus.
+     */
+    data: XOR<listado_rusUpdateInput, listado_rusUncheckedUpdateInput>
+    /**
+     * Choose, which listado_rus to update.
+     */
+    where: listado_rusWhereUniqueInput
+  }
+
+
+  /**
+   * listado_rus updateMany
+   */
+  export type listado_rusUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update listado_ruses.
+     */
+    data: XOR<listado_rusUpdateManyMutationInput, listado_rusUncheckedUpdateManyInput>
+    /**
+     * Filter which listado_ruses to update
+     */
+    where?: listado_rusWhereInput
+  }
+
+
+  /**
+   * listado_rus upsert
+   */
+  export type listado_rusUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the listado_rus
+     */
+    select?: listado_rusSelect<ExtArgs> | null
+    /**
+     * The filter to search for the listado_rus to update in case it exists.
+     */
+    where: listado_rusWhereUniqueInput
+    /**
+     * In case the listado_rus found by the `where` argument doesn't exist, create a new listado_rus with this data.
+     */
+    create: XOR<listado_rusCreateInput, listado_rusUncheckedCreateInput>
+    /**
+     * In case the listado_rus was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<listado_rusUpdateInput, listado_rusUncheckedUpdateInput>
+  }
+
+
+  /**
+   * listado_rus delete
+   */
+  export type listado_rusDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the listado_rus
+     */
+    select?: listado_rusSelect<ExtArgs> | null
+    /**
+     * Filter which listado_rus to delete.
+     */
+    where: listado_rusWhereUniqueInput
+  }
+
+
+  /**
+   * listado_rus deleteMany
+   */
+  export type listado_rusDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which listado_ruses to delete
+     */
+    where?: listado_rusWhereInput
+  }
+
+
+  /**
+   * listado_rus without action
+   */
+  export type listado_rusArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the listado_rus
+     */
+    select?: listado_rusSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model poliza_5380
+   */
+
+
+  export type AggregatePoliza_5380 = {
+    _count: Poliza_5380CountAggregateOutputType | null
+    _min: Poliza_5380MinAggregateOutputType | null
+    _max: Poliza_5380MaxAggregateOutputType | null
+  }
+
+  export type Poliza_5380MinAggregateOutputType = {
+    DNI: string | null
+    TITULAR: string | null
+    CONTRATO: string | null
+    ALTA: string | null
+    BAJA: string | null
+    GRUPO: string | null
+    PLAN: string | null
+    ADH: string | null
+    CUOTA: string | null
+    INGRESO: string | null
+    NACIMIENTO: string | null
+    CAPITAL: string | null
+    TIPO: string | null
+  }
+
+  export type Poliza_5380MaxAggregateOutputType = {
+    DNI: string | null
+    TITULAR: string | null
+    CONTRATO: string | null
+    ALTA: string | null
+    BAJA: string | null
+    GRUPO: string | null
+    PLAN: string | null
+    ADH: string | null
+    CUOTA: string | null
+    INGRESO: string | null
+    NACIMIENTO: string | null
+    CAPITAL: string | null
+    TIPO: string | null
+  }
+
+  export type Poliza_5380CountAggregateOutputType = {
+    DNI: number
+    TITULAR: number
+    CONTRATO: number
+    ALTA: number
+    BAJA: number
+    GRUPO: number
+    PLAN: number
+    ADH: number
+    CUOTA: number
+    INGRESO: number
+    NACIMIENTO: number
+    CAPITAL: number
+    TIPO: number
+    _all: number
+  }
+
+
+  export type Poliza_5380MinAggregateInputType = {
+    DNI?: true
+    TITULAR?: true
+    CONTRATO?: true
+    ALTA?: true
+    BAJA?: true
+    GRUPO?: true
+    PLAN?: true
+    ADH?: true
+    CUOTA?: true
+    INGRESO?: true
+    NACIMIENTO?: true
+    CAPITAL?: true
+    TIPO?: true
+  }
+
+  export type Poliza_5380MaxAggregateInputType = {
+    DNI?: true
+    TITULAR?: true
+    CONTRATO?: true
+    ALTA?: true
+    BAJA?: true
+    GRUPO?: true
+    PLAN?: true
+    ADH?: true
+    CUOTA?: true
+    INGRESO?: true
+    NACIMIENTO?: true
+    CAPITAL?: true
+    TIPO?: true
+  }
+
+  export type Poliza_5380CountAggregateInputType = {
+    DNI?: true
+    TITULAR?: true
+    CONTRATO?: true
+    ALTA?: true
+    BAJA?: true
+    GRUPO?: true
+    PLAN?: true
+    ADH?: true
+    CUOTA?: true
+    INGRESO?: true
+    NACIMIENTO?: true
+    CAPITAL?: true
+    TIPO?: true
+    _all?: true
+  }
+
+  export type Poliza_5380AggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which poliza_5380 to aggregate.
+     */
+    where?: poliza_5380WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of poliza_5380s to fetch.
+     */
+    orderBy?: poliza_5380OrderByWithRelationInput | poliza_5380OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: poliza_5380WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` poliza_5380s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` poliza_5380s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned poliza_5380s
+    **/
+    _count?: true | Poliza_5380CountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Poliza_5380MinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Poliza_5380MaxAggregateInputType
+  }
+
+  export type GetPoliza_5380AggregateType<T extends Poliza_5380AggregateArgs> = {
+        [P in keyof T & keyof AggregatePoliza_5380]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePoliza_5380[P]>
+      : GetScalarType<T[P], AggregatePoliza_5380[P]>
+  }
+
+
+
+
+  export type poliza_5380GroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: poliza_5380WhereInput
+    orderBy?: poliza_5380OrderByWithAggregationInput | poliza_5380OrderByWithAggregationInput[]
+    by: Poliza_5380ScalarFieldEnum[] | Poliza_5380ScalarFieldEnum
+    having?: poliza_5380ScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Poliza_5380CountAggregateInputType | true
+    _min?: Poliza_5380MinAggregateInputType
+    _max?: Poliza_5380MaxAggregateInputType
+  }
+
+
+  export type Poliza_5380GroupByOutputType = {
+    DNI: string
+    TITULAR: string | null
+    CONTRATO: string | null
+    ALTA: string | null
+    BAJA: string | null
+    GRUPO: string | null
+    PLAN: string | null
+    ADH: string | null
+    CUOTA: string | null
+    INGRESO: string | null
+    NACIMIENTO: string | null
+    CAPITAL: string | null
+    TIPO: string | null
+    _count: Poliza_5380CountAggregateOutputType | null
+    _min: Poliza_5380MinAggregateOutputType | null
+    _max: Poliza_5380MaxAggregateOutputType | null
+  }
+
+  type GetPoliza_5380GroupByPayload<T extends poliza_5380GroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Poliza_5380GroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Poliza_5380GroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Poliza_5380GroupByOutputType[P]>
+            : GetScalarType<T[P], Poliza_5380GroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type poliza_5380Select<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    DNI?: boolean
+    TITULAR?: boolean
+    CONTRATO?: boolean
+    ALTA?: boolean
+    BAJA?: boolean
+    GRUPO?: boolean
+    PLAN?: boolean
+    ADH?: boolean
+    CUOTA?: boolean
+    INGRESO?: boolean
+    NACIMIENTO?: boolean
+    CAPITAL?: boolean
+    TIPO?: boolean
+  }, ExtArgs["result"]["poliza_5380"]>
+
+  export type poliza_5380SelectScalar = {
+    DNI?: boolean
+    TITULAR?: boolean
+    CONTRATO?: boolean
+    ALTA?: boolean
+    BAJA?: boolean
+    GRUPO?: boolean
+    PLAN?: boolean
+    ADH?: boolean
+    CUOTA?: boolean
+    INGRESO?: boolean
+    NACIMIENTO?: boolean
+    CAPITAL?: boolean
+    TIPO?: boolean
+  }
+
+
+  type poliza_5380GetPayload<S extends boolean | null | undefined | poliza_5380Args> = $Types.GetResult<poliza_5380Payload, S>
+
+  type poliza_5380CountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<poliza_5380FindManyArgs, 'select' | 'include'> & {
+      select?: Poliza_5380CountAggregateInputType | true
+    }
+
+  export interface poliza_5380Delegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['poliza_5380'], meta: { name: 'poliza_5380' } }
+    /**
+     * Find zero or one Poliza_5380 that matches the filter.
+     * @param {poliza_5380FindUniqueArgs} args - Arguments to find a Poliza_5380
+     * @example
+     * // Get one Poliza_5380
+     * const poliza_5380 = await prisma.poliza_5380.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends poliza_5380FindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, poliza_5380FindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'poliza_5380'> extends True ? Prisma__poliza_5380Client<$Types.GetResult<poliza_5380Payload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__poliza_5380Client<$Types.GetResult<poliza_5380Payload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Poliza_5380 that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {poliza_5380FindUniqueOrThrowArgs} args - Arguments to find a Poliza_5380
+     * @example
+     * // Get one Poliza_5380
+     * const poliza_5380 = await prisma.poliza_5380.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends poliza_5380FindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, poliza_5380FindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__poliza_5380Client<$Types.GetResult<poliza_5380Payload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Poliza_5380 that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {poliza_5380FindFirstArgs} args - Arguments to find a Poliza_5380
+     * @example
+     * // Get one Poliza_5380
+     * const poliza_5380 = await prisma.poliza_5380.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends poliza_5380FindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, poliza_5380FindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'poliza_5380'> extends True ? Prisma__poliza_5380Client<$Types.GetResult<poliza_5380Payload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__poliza_5380Client<$Types.GetResult<poliza_5380Payload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Poliza_5380 that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {poliza_5380FindFirstOrThrowArgs} args - Arguments to find a Poliza_5380
+     * @example
+     * // Get one Poliza_5380
+     * const poliza_5380 = await prisma.poliza_5380.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends poliza_5380FindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, poliza_5380FindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__poliza_5380Client<$Types.GetResult<poliza_5380Payload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Poliza_5380s that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {poliza_5380FindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Poliza_5380s
+     * const poliza_5380s = await prisma.poliza_5380.findMany()
+     * 
+     * // Get first 10 Poliza_5380s
+     * const poliza_5380s = await prisma.poliza_5380.findMany({ take: 10 })
+     * 
+     * // Only select the `DNI`
+     * const poliza_5380WithDNIOnly = await prisma.poliza_5380.findMany({ select: { DNI: true } })
+     * 
+    **/
+    findMany<T extends poliza_5380FindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, poliza_5380FindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<poliza_5380Payload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Poliza_5380.
+     * @param {poliza_5380CreateArgs} args - Arguments to create a Poliza_5380.
+     * @example
+     * // Create one Poliza_5380
+     * const Poliza_5380 = await prisma.poliza_5380.create({
+     *   data: {
+     *     // ... data to create a Poliza_5380
+     *   }
+     * })
+     * 
+    **/
+    create<T extends poliza_5380CreateArgs<ExtArgs>>(
+      args: SelectSubset<T, poliza_5380CreateArgs<ExtArgs>>
+    ): Prisma__poliza_5380Client<$Types.GetResult<poliza_5380Payload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Poliza_5380s.
+     *     @param {poliza_5380CreateManyArgs} args - Arguments to create many Poliza_5380s.
+     *     @example
+     *     // Create many Poliza_5380s
+     *     const poliza_5380 = await prisma.poliza_5380.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends poliza_5380CreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, poliza_5380CreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Poliza_5380.
+     * @param {poliza_5380DeleteArgs} args - Arguments to delete one Poliza_5380.
+     * @example
+     * // Delete one Poliza_5380
+     * const Poliza_5380 = await prisma.poliza_5380.delete({
+     *   where: {
+     *     // ... filter to delete one Poliza_5380
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends poliza_5380DeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, poliza_5380DeleteArgs<ExtArgs>>
+    ): Prisma__poliza_5380Client<$Types.GetResult<poliza_5380Payload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Poliza_5380.
+     * @param {poliza_5380UpdateArgs} args - Arguments to update one Poliza_5380.
+     * @example
+     * // Update one Poliza_5380
+     * const poliza_5380 = await prisma.poliza_5380.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends poliza_5380UpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, poliza_5380UpdateArgs<ExtArgs>>
+    ): Prisma__poliza_5380Client<$Types.GetResult<poliza_5380Payload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Poliza_5380s.
+     * @param {poliza_5380DeleteManyArgs} args - Arguments to filter Poliza_5380s to delete.
+     * @example
+     * // Delete a few Poliza_5380s
+     * const { count } = await prisma.poliza_5380.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends poliza_5380DeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, poliza_5380DeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Poliza_5380s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {poliza_5380UpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Poliza_5380s
+     * const poliza_5380 = await prisma.poliza_5380.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends poliza_5380UpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, poliza_5380UpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Poliza_5380.
+     * @param {poliza_5380UpsertArgs} args - Arguments to update or create a Poliza_5380.
+     * @example
+     * // Update or create a Poliza_5380
+     * const poliza_5380 = await prisma.poliza_5380.upsert({
+     *   create: {
+     *     // ... data to create a Poliza_5380
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Poliza_5380 we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends poliza_5380UpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, poliza_5380UpsertArgs<ExtArgs>>
+    ): Prisma__poliza_5380Client<$Types.GetResult<poliza_5380Payload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Poliza_5380s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {poliza_5380CountArgs} args - Arguments to filter Poliza_5380s to count.
+     * @example
+     * // Count the number of Poliza_5380s
+     * const count = await prisma.poliza_5380.count({
+     *   where: {
+     *     // ... the filter for the Poliza_5380s we want to count
+     *   }
+     * })
+    **/
+    count<T extends poliza_5380CountArgs>(
+      args?: Subset<T, poliza_5380CountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Poliza_5380CountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Poliza_5380.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Poliza_5380AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Poliza_5380AggregateArgs>(args: Subset<T, Poliza_5380AggregateArgs>): Prisma.PrismaPromise<GetPoliza_5380AggregateType<T>>
+
+    /**
+     * Group by Poliza_5380.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {poliza_5380GroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends poliza_5380GroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: poliza_5380GroupByArgs['orderBy'] }
+        : { orderBy?: poliza_5380GroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, poliza_5380GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPoliza_5380GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for poliza_5380.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__poliza_5380Client<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * poliza_5380 base type for findUnique actions
+   */
+  export type poliza_5380FindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the poliza_5380
+     */
+    select?: poliza_5380Select<ExtArgs> | null
+    /**
+     * Filter, which poliza_5380 to fetch.
+     */
+    where: poliza_5380WhereUniqueInput
+  }
+
+  /**
+   * poliza_5380 findUnique
+   */
+  export interface poliza_5380FindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends poliza_5380FindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * poliza_5380 findUniqueOrThrow
+   */
+  export type poliza_5380FindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the poliza_5380
+     */
+    select?: poliza_5380Select<ExtArgs> | null
+    /**
+     * Filter, which poliza_5380 to fetch.
+     */
+    where: poliza_5380WhereUniqueInput
+  }
+
+
+  /**
+   * poliza_5380 base type for findFirst actions
+   */
+  export type poliza_5380FindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the poliza_5380
+     */
+    select?: poliza_5380Select<ExtArgs> | null
+    /**
+     * Filter, which poliza_5380 to fetch.
+     */
+    where?: poliza_5380WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of poliza_5380s to fetch.
+     */
+    orderBy?: poliza_5380OrderByWithRelationInput | poliza_5380OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for poliza_5380s.
+     */
+    cursor?: poliza_5380WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` poliza_5380s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` poliza_5380s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of poliza_5380s.
+     */
+    distinct?: Poliza_5380ScalarFieldEnum | Poliza_5380ScalarFieldEnum[]
+  }
+
+  /**
+   * poliza_5380 findFirst
+   */
+  export interface poliza_5380FindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends poliza_5380FindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * poliza_5380 findFirstOrThrow
+   */
+  export type poliza_5380FindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the poliza_5380
+     */
+    select?: poliza_5380Select<ExtArgs> | null
+    /**
+     * Filter, which poliza_5380 to fetch.
+     */
+    where?: poliza_5380WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of poliza_5380s to fetch.
+     */
+    orderBy?: poliza_5380OrderByWithRelationInput | poliza_5380OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for poliza_5380s.
+     */
+    cursor?: poliza_5380WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` poliza_5380s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` poliza_5380s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of poliza_5380s.
+     */
+    distinct?: Poliza_5380ScalarFieldEnum | Poliza_5380ScalarFieldEnum[]
+  }
+
+
+  /**
+   * poliza_5380 findMany
+   */
+  export type poliza_5380FindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the poliza_5380
+     */
+    select?: poliza_5380Select<ExtArgs> | null
+    /**
+     * Filter, which poliza_5380s to fetch.
+     */
+    where?: poliza_5380WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of poliza_5380s to fetch.
+     */
+    orderBy?: poliza_5380OrderByWithRelationInput | poliza_5380OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing poliza_5380s.
+     */
+    cursor?: poliza_5380WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` poliza_5380s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` poliza_5380s.
+     */
+    skip?: number
+    distinct?: Poliza_5380ScalarFieldEnum | Poliza_5380ScalarFieldEnum[]
+  }
+
+
+  /**
+   * poliza_5380 create
+   */
+  export type poliza_5380CreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the poliza_5380
+     */
+    select?: poliza_5380Select<ExtArgs> | null
+    /**
+     * The data needed to create a poliza_5380.
+     */
+    data: XOR<poliza_5380CreateInput, poliza_5380UncheckedCreateInput>
+  }
+
+
+  /**
+   * poliza_5380 createMany
+   */
+  export type poliza_5380CreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many poliza_5380s.
+     */
+    data: poliza_5380CreateManyInput | poliza_5380CreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * poliza_5380 update
+   */
+  export type poliza_5380UpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the poliza_5380
+     */
+    select?: poliza_5380Select<ExtArgs> | null
+    /**
+     * The data needed to update a poliza_5380.
+     */
+    data: XOR<poliza_5380UpdateInput, poliza_5380UncheckedUpdateInput>
+    /**
+     * Choose, which poliza_5380 to update.
+     */
+    where: poliza_5380WhereUniqueInput
+  }
+
+
+  /**
+   * poliza_5380 updateMany
+   */
+  export type poliza_5380UpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update poliza_5380s.
+     */
+    data: XOR<poliza_5380UpdateManyMutationInput, poliza_5380UncheckedUpdateManyInput>
+    /**
+     * Filter which poliza_5380s to update
+     */
+    where?: poliza_5380WhereInput
+  }
+
+
+  /**
+   * poliza_5380 upsert
+   */
+  export type poliza_5380UpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the poliza_5380
+     */
+    select?: poliza_5380Select<ExtArgs> | null
+    /**
+     * The filter to search for the poliza_5380 to update in case it exists.
+     */
+    where: poliza_5380WhereUniqueInput
+    /**
+     * In case the poliza_5380 found by the `where` argument doesn't exist, create a new poliza_5380 with this data.
+     */
+    create: XOR<poliza_5380CreateInput, poliza_5380UncheckedCreateInput>
+    /**
+     * In case the poliza_5380 was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<poliza_5380UpdateInput, poliza_5380UncheckedUpdateInput>
+  }
+
+
+  /**
+   * poliza_5380 delete
+   */
+  export type poliza_5380DeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the poliza_5380
+     */
+    select?: poliza_5380Select<ExtArgs> | null
+    /**
+     * Filter which poliza_5380 to delete.
+     */
+    where: poliza_5380WhereUniqueInput
+  }
+
+
+  /**
+   * poliza_5380 deleteMany
+   */
+  export type poliza_5380DeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which poliza_5380s to delete
+     */
+    where?: poliza_5380WhereInput
+  }
+
+
+  /**
+   * poliza_5380 without action
+   */
+  export type poliza_5380Args<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the poliza_5380
+     */
+    select?: poliza_5380Select<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -58428,6 +63809,20 @@ export namespace Prisma {
   export type CertificadosScalarFieldEnum = (typeof CertificadosScalarFieldEnum)[keyof typeof CertificadosScalarFieldEnum]
 
 
+  export const Cuo_fijaScalarFieldEnum: {
+    CONTRATO: 'CONTRATO',
+    IMPORTE: 'IMPORTE',
+    CUO_ANT: 'CUO_ANT',
+    DESDE: 'DESDE',
+    VENCIM: 'VENCIM',
+    ACTUALIZA: 'ACTUALIZA',
+    OPERADOR: 'OPERADOR',
+    idcuota: 'idcuota'
+  };
+
+  export type Cuo_fijaScalarFieldEnum = (typeof Cuo_fijaScalarFieldEnum)[keyof typeof Cuo_fijaScalarFieldEnum]
+
+
   export const Cuota_prestamoScalarFieldEnum: {
     cuoptm_id: 'cuoptm_id',
     cuoptm_capital: 'cuoptm_capital',
@@ -58456,6 +63851,36 @@ export namespace Prisma {
   };
 
   export type DebitosScalarFieldEnum = (typeof DebitosScalarFieldEnum)[keyof typeof DebitosScalarFieldEnum]
+
+
+  export const HistoriaScalarFieldEnum: {
+    CONTRATO: 'CONTRATO',
+    OPERADOR: 'OPERADOR',
+    ARCHIVO: 'ARCHIVO',
+    CAMPO: 'CAMPO',
+    ANTERIOR: 'ANTERIOR',
+    NUEVO: 'NUEVO',
+    ACTUALIZA: 'ACTUALIZA',
+    CONTROL: 'CONTROL',
+    idhistoria: 'idhistoria'
+  };
+
+  export type HistoriaScalarFieldEnum = (typeof HistoriaScalarFieldEnum)[keyof typeof HistoriaScalarFieldEnum]
+
+
+  export const HistoriamScalarFieldEnum: {
+    CONTRATO: 'CONTRATO',
+    OPERADOR: 'OPERADOR',
+    ARCHIVO: 'ARCHIVO',
+    CAMPO: 'CAMPO',
+    ANTERIOR: 'ANTERIOR',
+    NUEVO: 'NUEVO',
+    ACTUALIZA: 'ACTUALIZA',
+    CONTROL: 'CONTROL',
+    idhistoria: 'idhistoria'
+  };
+
+  export type HistoriamScalarFieldEnum = (typeof HistoriamScalarFieldEnum)[keyof typeof HistoriamScalarFieldEnum]
 
 
   export const Liq_temporalScalarFieldEnum: {
@@ -59439,6 +64864,45 @@ export namespace Prisma {
   };
 
   export type GuardiaScalarFieldEnum = (typeof GuardiaScalarFieldEnum)[keyof typeof GuardiaScalarFieldEnum]
+
+
+  export const Listado_rusScalarFieldEnum: {
+    NRO: 'NRO',
+    DNI: 'DNI',
+    TITULAR: 'TITULAR',
+    CONTRATO: 'CONTRATO',
+    ALTA: 'ALTA',
+    BAJA: 'BAJA',
+    GRUPO: 'GRUPO',
+    PLAN: 'PLAN',
+    ADH: 'ADH',
+    CUOTA: 'CUOTA',
+    INGRESO: 'INGRESO',
+    NACIMIENTO: 'NACIMIENTO',
+    CAPITAL: 'CAPITAL',
+    TIPO: 'TIPO'
+  };
+
+  export type Listado_rusScalarFieldEnum = (typeof Listado_rusScalarFieldEnum)[keyof typeof Listado_rusScalarFieldEnum]
+
+
+  export const Poliza_5380ScalarFieldEnum: {
+    DNI: 'DNI',
+    TITULAR: 'TITULAR',
+    CONTRATO: 'CONTRATO',
+    ALTA: 'ALTA',
+    BAJA: 'BAJA',
+    GRUPO: 'GRUPO',
+    PLAN: 'PLAN',
+    ADH: 'ADH',
+    CUOTA: 'CUOTA',
+    INGRESO: 'INGRESO',
+    NACIMIENTO: 'NACIMIENTO',
+    CAPITAL: 'CAPITAL',
+    TIPO: 'TIPO'
+  };
+
+  export type Poliza_5380ScalarFieldEnum = (typeof Poliza_5380ScalarFieldEnum)[keyof typeof Poliza_5380ScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -60557,6 +66021,65 @@ export namespace Prisma {
     cer_contrato?: IntNullableWithAggregatesFilter | number | null
   }
 
+  export type cuo_fijaWhereInput = {
+    AND?: cuo_fijaWhereInput | cuo_fijaWhereInput[]
+    OR?: cuo_fijaWhereInput[]
+    NOT?: cuo_fijaWhereInput | cuo_fijaWhereInput[]
+    CONTRATO?: IntNullableFilter | number | null
+    IMPORTE?: FloatNullableFilter | number | null
+    CUO_ANT?: FloatNullableFilter | number | null
+    DESDE?: DateTimeNullableFilter | Date | string | null
+    VENCIM?: DateTimeNullableFilter | Date | string | null
+    ACTUALIZA?: StringNullableFilter | string | null
+    OPERADOR?: StringNullableFilter | string | null
+    idcuota?: IntFilter | number
+  }
+
+  export type cuo_fijaOrderByWithRelationInput = {
+    CONTRATO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
+    CUO_ANT?: SortOrderInput | SortOrder
+    DESDE?: SortOrderInput | SortOrder
+    VENCIM?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    idcuota?: SortOrder
+  }
+
+  export type cuo_fijaWhereUniqueInput = {
+    idcuota?: number
+  }
+
+  export type cuo_fijaOrderByWithAggregationInput = {
+    CONTRATO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
+    CUO_ANT?: SortOrderInput | SortOrder
+    DESDE?: SortOrderInput | SortOrder
+    VENCIM?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    idcuota?: SortOrder
+    _count?: cuo_fijaCountOrderByAggregateInput
+    _avg?: cuo_fijaAvgOrderByAggregateInput
+    _max?: cuo_fijaMaxOrderByAggregateInput
+    _min?: cuo_fijaMinOrderByAggregateInput
+    _sum?: cuo_fijaSumOrderByAggregateInput
+  }
+
+  export type cuo_fijaScalarWhereWithAggregatesInput = {
+    AND?: cuo_fijaScalarWhereWithAggregatesInput | cuo_fijaScalarWhereWithAggregatesInput[]
+    OR?: cuo_fijaScalarWhereWithAggregatesInput[]
+    NOT?: cuo_fijaScalarWhereWithAggregatesInput | cuo_fijaScalarWhereWithAggregatesInput[]
+    CONTRATO?: IntNullableWithAggregatesFilter | number | null
+    IMPORTE?: FloatNullableWithAggregatesFilter | number | null
+    CUO_ANT?: FloatNullableWithAggregatesFilter | number | null
+    DESDE?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VENCIM?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
+    OPERADOR?: StringNullableWithAggregatesFilter | string | null
+    idcuota?: IntWithAggregatesFilter | number
+  }
+
   export type cuota_prestamoWhereInput = {
     AND?: cuota_prestamoWhereInput | cuota_prestamoWhereInput[]
     OR?: cuota_prestamoWhereInput[]
@@ -60684,6 +66207,132 @@ export namespace Prisma {
     dbt_id?: IntWithAggregatesFilter | number
     dbt_descripcion?: StringNullableWithAggregatesFilter | string | null
     dbt_estado?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type historiaWhereInput = {
+    AND?: historiaWhereInput | historiaWhereInput[]
+    OR?: historiaWhereInput[]
+    NOT?: historiaWhereInput | historiaWhereInput[]
+    CONTRATO?: IntNullableFilter | number | null
+    OPERADOR?: StringNullableFilter | string | null
+    ARCHIVO?: IntNullableFilter | number | null
+    CAMPO?: StringNullableFilter | string | null
+    ANTERIOR?: StringNullableFilter | string | null
+    NUEVO?: StringNullableFilter | string | null
+    ACTUALIZA?: StringNullableFilter | string | null
+    CONTROL?: StringNullableFilter | string | null
+    idhistoria?: IntFilter | number
+  }
+
+  export type historiaOrderByWithRelationInput = {
+    CONTRATO?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    ARCHIVO?: SortOrderInput | SortOrder
+    CAMPO?: SortOrderInput | SortOrder
+    ANTERIOR?: SortOrderInput | SortOrder
+    NUEVO?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    CONTROL?: SortOrderInput | SortOrder
+    idhistoria?: SortOrder
+  }
+
+  export type historiaWhereUniqueInput = {
+    idhistoria?: number
+  }
+
+  export type historiaOrderByWithAggregationInput = {
+    CONTRATO?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    ARCHIVO?: SortOrderInput | SortOrder
+    CAMPO?: SortOrderInput | SortOrder
+    ANTERIOR?: SortOrderInput | SortOrder
+    NUEVO?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    CONTROL?: SortOrderInput | SortOrder
+    idhistoria?: SortOrder
+    _count?: historiaCountOrderByAggregateInput
+    _avg?: historiaAvgOrderByAggregateInput
+    _max?: historiaMaxOrderByAggregateInput
+    _min?: historiaMinOrderByAggregateInput
+    _sum?: historiaSumOrderByAggregateInput
+  }
+
+  export type historiaScalarWhereWithAggregatesInput = {
+    AND?: historiaScalarWhereWithAggregatesInput | historiaScalarWhereWithAggregatesInput[]
+    OR?: historiaScalarWhereWithAggregatesInput[]
+    NOT?: historiaScalarWhereWithAggregatesInput | historiaScalarWhereWithAggregatesInput[]
+    CONTRATO?: IntNullableWithAggregatesFilter | number | null
+    OPERADOR?: StringNullableWithAggregatesFilter | string | null
+    ARCHIVO?: IntNullableWithAggregatesFilter | number | null
+    CAMPO?: StringNullableWithAggregatesFilter | string | null
+    ANTERIOR?: StringNullableWithAggregatesFilter | string | null
+    NUEVO?: StringNullableWithAggregatesFilter | string | null
+    ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
+    CONTROL?: StringNullableWithAggregatesFilter | string | null
+    idhistoria?: IntWithAggregatesFilter | number
+  }
+
+  export type historiamWhereInput = {
+    AND?: historiamWhereInput | historiamWhereInput[]
+    OR?: historiamWhereInput[]
+    NOT?: historiamWhereInput | historiamWhereInput[]
+    CONTRATO?: IntNullableFilter | number | null
+    OPERADOR?: StringNullableFilter | string | null
+    ARCHIVO?: IntNullableFilter | number | null
+    CAMPO?: IntNullableFilter | number | null
+    ANTERIOR?: StringNullableFilter | string | null
+    NUEVO?: StringNullableFilter | string | null
+    ACTUALIZA?: StringNullableFilter | string | null
+    CONTROL?: StringNullableFilter | string | null
+    idhistoria?: IntFilter | number
+  }
+
+  export type historiamOrderByWithRelationInput = {
+    CONTRATO?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    ARCHIVO?: SortOrderInput | SortOrder
+    CAMPO?: SortOrderInput | SortOrder
+    ANTERIOR?: SortOrderInput | SortOrder
+    NUEVO?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    CONTROL?: SortOrderInput | SortOrder
+    idhistoria?: SortOrder
+  }
+
+  export type historiamWhereUniqueInput = {
+    idhistoria?: number
+  }
+
+  export type historiamOrderByWithAggregationInput = {
+    CONTRATO?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    ARCHIVO?: SortOrderInput | SortOrder
+    CAMPO?: SortOrderInput | SortOrder
+    ANTERIOR?: SortOrderInput | SortOrder
+    NUEVO?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    CONTROL?: SortOrderInput | SortOrder
+    idhistoria?: SortOrder
+    _count?: historiamCountOrderByAggregateInput
+    _avg?: historiamAvgOrderByAggregateInput
+    _max?: historiamMaxOrderByAggregateInput
+    _min?: historiamMinOrderByAggregateInput
+    _sum?: historiamSumOrderByAggregateInput
+  }
+
+  export type historiamScalarWhereWithAggregatesInput = {
+    AND?: historiamScalarWhereWithAggregatesInput | historiamScalarWhereWithAggregatesInput[]
+    OR?: historiamScalarWhereWithAggregatesInput[]
+    NOT?: historiamScalarWhereWithAggregatesInput | historiamScalarWhereWithAggregatesInput[]
+    CONTRATO?: IntNullableWithAggregatesFilter | number | null
+    OPERADOR?: StringNullableWithAggregatesFilter | string | null
+    ARCHIVO?: IntNullableWithAggregatesFilter | number | null
+    CAMPO?: IntNullableWithAggregatesFilter | number | null
+    ANTERIOR?: StringNullableWithAggregatesFilter | string | null
+    NUEVO?: StringNullableWithAggregatesFilter | string | null
+    ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
+    CONTROL?: StringNullableWithAggregatesFilter | string | null
+    idhistoria?: IntWithAggregatesFilter | number
   }
 
   export type liq_temporalWhereInput = {
@@ -60907,7 +66556,7 @@ export namespace Prisma {
     ADHERENTES?: IntNullableFilter | number | null
     PRECIO?: FloatNullableFilter | number | null
     CUO_VIEJA?: FloatNullableFilter | number | null
-    OPERADOR?: IntNullableFilter | number | null
+    OPERADOR?: StringNullableFilter | string | null
     ACTUALIZA?: StringNullableFilter | string | null
     OBRA_SOC?: IntNullableFilter | number | null
     PRODUCTOR?: IntNullableFilter | number | null
@@ -61186,7 +66835,7 @@ export namespace Prisma {
     ADHERENTES?: IntNullableWithAggregatesFilter | number | null
     PRECIO?: FloatNullableWithAggregatesFilter | number | null
     CUO_VIEJA?: FloatNullableWithAggregatesFilter | number | null
-    OPERADOR?: IntNullableWithAggregatesFilter | number | null
+    OPERADOR?: StringNullableWithAggregatesFilter | string | null
     ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
     OBRA_SOC?: IntNullableWithAggregatesFilter | number | null
     PRODUCTOR?: IntNullableWithAggregatesFilter | number | null
@@ -64724,6 +70373,166 @@ export namespace Prisma {
     g_id_usuario?: IntNullableWithAggregatesFilter | number | null
   }
 
+  export type listado_rusWhereInput = {
+    AND?: listado_rusWhereInput | listado_rusWhereInput[]
+    OR?: listado_rusWhereInput[]
+    NOT?: listado_rusWhereInput | listado_rusWhereInput[]
+    NRO?: IntFilter | number
+    DNI?: StringFilter | string
+    TITULAR?: StringNullableFilter | string | null
+    CONTRATO?: IntNullableFilter | number | null
+    ALTA?: StringNullableFilter | string | null
+    BAJA?: StringNullableFilter | string | null
+    GRUPO?: IntNullableFilter | number | null
+    PLAN?: StringNullableFilter | string | null
+    ADH?: IntNullableFilter | number | null
+    CUOTA?: StringNullableFilter | string | null
+    INGRESO?: StringNullableFilter | string | null
+    NACIMIENTO?: StringNullableFilter | string | null
+    CAPITAL?: StringNullableFilter | string | null
+    TIPO?: StringNullableFilter | string | null
+  }
+
+  export type listado_rusOrderByWithRelationInput = {
+    NRO?: SortOrder
+    DNI?: SortOrder
+    TITULAR?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    BAJA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    ADH?: SortOrderInput | SortOrder
+    CUOTA?: SortOrderInput | SortOrder
+    INGRESO?: SortOrderInput | SortOrder
+    NACIMIENTO?: SortOrderInput | SortOrder
+    CAPITAL?: SortOrderInput | SortOrder
+    TIPO?: SortOrderInput | SortOrder
+  }
+
+  export type listado_rusWhereUniqueInput = {
+    NRO_DNI?: listado_rusNRODNICompoundUniqueInput
+  }
+
+  export type listado_rusOrderByWithAggregationInput = {
+    NRO?: SortOrder
+    DNI?: SortOrder
+    TITULAR?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    BAJA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    ADH?: SortOrderInput | SortOrder
+    CUOTA?: SortOrderInput | SortOrder
+    INGRESO?: SortOrderInput | SortOrder
+    NACIMIENTO?: SortOrderInput | SortOrder
+    CAPITAL?: SortOrderInput | SortOrder
+    TIPO?: SortOrderInput | SortOrder
+    _count?: listado_rusCountOrderByAggregateInput
+    _avg?: listado_rusAvgOrderByAggregateInput
+    _max?: listado_rusMaxOrderByAggregateInput
+    _min?: listado_rusMinOrderByAggregateInput
+    _sum?: listado_rusSumOrderByAggregateInput
+  }
+
+  export type listado_rusScalarWhereWithAggregatesInput = {
+    AND?: listado_rusScalarWhereWithAggregatesInput | listado_rusScalarWhereWithAggregatesInput[]
+    OR?: listado_rusScalarWhereWithAggregatesInput[]
+    NOT?: listado_rusScalarWhereWithAggregatesInput | listado_rusScalarWhereWithAggregatesInput[]
+    NRO?: IntWithAggregatesFilter | number
+    DNI?: StringWithAggregatesFilter | string
+    TITULAR?: StringNullableWithAggregatesFilter | string | null
+    CONTRATO?: IntNullableWithAggregatesFilter | number | null
+    ALTA?: StringNullableWithAggregatesFilter | string | null
+    BAJA?: StringNullableWithAggregatesFilter | string | null
+    GRUPO?: IntNullableWithAggregatesFilter | number | null
+    PLAN?: StringNullableWithAggregatesFilter | string | null
+    ADH?: IntNullableWithAggregatesFilter | number | null
+    CUOTA?: StringNullableWithAggregatesFilter | string | null
+    INGRESO?: StringNullableWithAggregatesFilter | string | null
+    NACIMIENTO?: StringNullableWithAggregatesFilter | string | null
+    CAPITAL?: StringNullableWithAggregatesFilter | string | null
+    TIPO?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type poliza_5380WhereInput = {
+    AND?: poliza_5380WhereInput | poliza_5380WhereInput[]
+    OR?: poliza_5380WhereInput[]
+    NOT?: poliza_5380WhereInput | poliza_5380WhereInput[]
+    DNI?: StringFilter | string
+    TITULAR?: StringNullableFilter | string | null
+    CONTRATO?: StringNullableFilter | string | null
+    ALTA?: StringNullableFilter | string | null
+    BAJA?: StringNullableFilter | string | null
+    GRUPO?: StringNullableFilter | string | null
+    PLAN?: StringNullableFilter | string | null
+    ADH?: StringNullableFilter | string | null
+    CUOTA?: StringNullableFilter | string | null
+    INGRESO?: StringNullableFilter | string | null
+    NACIMIENTO?: StringNullableFilter | string | null
+    CAPITAL?: StringNullableFilter | string | null
+    TIPO?: StringNullableFilter | string | null
+  }
+
+  export type poliza_5380OrderByWithRelationInput = {
+    DNI?: SortOrder
+    TITULAR?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    BAJA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    ADH?: SortOrderInput | SortOrder
+    CUOTA?: SortOrderInput | SortOrder
+    INGRESO?: SortOrderInput | SortOrder
+    NACIMIENTO?: SortOrderInput | SortOrder
+    CAPITAL?: SortOrderInput | SortOrder
+    TIPO?: SortOrderInput | SortOrder
+  }
+
+  export type poliza_5380WhereUniqueInput = {
+    DNI?: string
+  }
+
+  export type poliza_5380OrderByWithAggregationInput = {
+    DNI?: SortOrder
+    TITULAR?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    BAJA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    ADH?: SortOrderInput | SortOrder
+    CUOTA?: SortOrderInput | SortOrder
+    INGRESO?: SortOrderInput | SortOrder
+    NACIMIENTO?: SortOrderInput | SortOrder
+    CAPITAL?: SortOrderInput | SortOrder
+    TIPO?: SortOrderInput | SortOrder
+    _count?: poliza_5380CountOrderByAggregateInput
+    _max?: poliza_5380MaxOrderByAggregateInput
+    _min?: poliza_5380MinOrderByAggregateInput
+  }
+
+  export type poliza_5380ScalarWhereWithAggregatesInput = {
+    AND?: poliza_5380ScalarWhereWithAggregatesInput | poliza_5380ScalarWhereWithAggregatesInput[]
+    OR?: poliza_5380ScalarWhereWithAggregatesInput[]
+    NOT?: poliza_5380ScalarWhereWithAggregatesInput | poliza_5380ScalarWhereWithAggregatesInput[]
+    DNI?: StringWithAggregatesFilter | string
+    TITULAR?: StringNullableWithAggregatesFilter | string | null
+    CONTRATO?: StringNullableWithAggregatesFilter | string | null
+    ALTA?: StringNullableWithAggregatesFilter | string | null
+    BAJA?: StringNullableWithAggregatesFilter | string | null
+    GRUPO?: StringNullableWithAggregatesFilter | string | null
+    PLAN?: StringNullableWithAggregatesFilter | string | null
+    ADH?: StringNullableWithAggregatesFilter | string | null
+    CUOTA?: StringNullableWithAggregatesFilter | string | null
+    INGRESO?: StringNullableWithAggregatesFilter | string | null
+    NACIMIENTO?: StringNullableWithAggregatesFilter | string | null
+    CAPITAL?: StringNullableWithAggregatesFilter | string | null
+    TIPO?: StringNullableWithAggregatesFilter | string | null
+  }
+
   export type accionesCreateInput = {
     acc_fecha?: Date | string | null
     acc_detalle?: string | null
@@ -66377,6 +72186,80 @@ export namespace Prisma {
     cer_contrato?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
+  export type cuo_fijaCreateInput = {
+    CONTRATO?: number | null
+    IMPORTE?: number | null
+    CUO_ANT?: number | null
+    DESDE?: Date | string | null
+    VENCIM?: Date | string | null
+    ACTUALIZA?: string | null
+    OPERADOR?: string | null
+  }
+
+  export type cuo_fijaUncheckedCreateInput = {
+    CONTRATO?: number | null
+    IMPORTE?: number | null
+    CUO_ANT?: number | null
+    DESDE?: Date | string | null
+    VENCIM?: Date | string | null
+    ACTUALIZA?: string | null
+    OPERADOR?: string | null
+    idcuota?: number
+  }
+
+  export type cuo_fijaUpdateInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUO_ANT?: NullableFloatFieldUpdateOperationsInput | number | null
+    DESDE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VENCIM?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type cuo_fijaUncheckedUpdateInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUO_ANT?: NullableFloatFieldUpdateOperationsInput | number | null
+    DESDE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VENCIM?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    idcuota?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type cuo_fijaCreateManyInput = {
+    CONTRATO?: number | null
+    IMPORTE?: number | null
+    CUO_ANT?: number | null
+    DESDE?: Date | string | null
+    VENCIM?: Date | string | null
+    ACTUALIZA?: string | null
+    OPERADOR?: string | null
+    idcuota?: number
+  }
+
+  export type cuo_fijaUpdateManyMutationInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUO_ANT?: NullableFloatFieldUpdateOperationsInput | number | null
+    DESDE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VENCIM?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type cuo_fijaUncheckedUpdateManyInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUO_ANT?: NullableFloatFieldUpdateOperationsInput | number | null
+    DESDE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VENCIM?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    idcuota?: IntFieldUpdateOperationsInput | number
+  }
+
   export type cuota_prestamoCreateInput = {
     cuoptm_capital?: number | null
     cuoptm_cantidad?: number | null
@@ -66516,6 +72399,168 @@ export namespace Prisma {
     dbt_id?: IntFieldUpdateOperationsInput | number
     dbt_descripcion?: NullableStringFieldUpdateOperationsInput | string | null
     dbt_estado?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type historiaCreateInput = {
+    CONTRATO?: number | null
+    OPERADOR?: string | null
+    ARCHIVO?: number | null
+    CAMPO?: string | null
+    ANTERIOR?: string | null
+    NUEVO?: string | null
+    ACTUALIZA?: string | null
+    CONTROL?: string | null
+  }
+
+  export type historiaUncheckedCreateInput = {
+    CONTRATO?: number | null
+    OPERADOR?: string | null
+    ARCHIVO?: number | null
+    CAMPO?: string | null
+    ANTERIOR?: string | null
+    NUEVO?: string | null
+    ACTUALIZA?: string | null
+    CONTROL?: string | null
+    idhistoria?: number
+  }
+
+  export type historiaUpdateInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMPO?: NullableStringFieldUpdateOperationsInput | string | null
+    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
+    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type historiaUncheckedUpdateInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMPO?: NullableStringFieldUpdateOperationsInput | string | null
+    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
+    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
+    idhistoria?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type historiaCreateManyInput = {
+    CONTRATO?: number | null
+    OPERADOR?: string | null
+    ARCHIVO?: number | null
+    CAMPO?: string | null
+    ANTERIOR?: string | null
+    NUEVO?: string | null
+    ACTUALIZA?: string | null
+    CONTROL?: string | null
+    idhistoria?: number
+  }
+
+  export type historiaUpdateManyMutationInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMPO?: NullableStringFieldUpdateOperationsInput | string | null
+    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
+    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type historiaUncheckedUpdateManyInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMPO?: NullableStringFieldUpdateOperationsInput | string | null
+    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
+    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
+    idhistoria?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type historiamCreateInput = {
+    CONTRATO?: number | null
+    OPERADOR?: string | null
+    ARCHIVO?: number | null
+    CAMPO?: number | null
+    ANTERIOR?: string | null
+    NUEVO?: string | null
+    ACTUALIZA?: string | null
+    CONTROL?: string | null
+  }
+
+  export type historiamUncheckedCreateInput = {
+    CONTRATO?: number | null
+    OPERADOR?: string | null
+    ARCHIVO?: number | null
+    CAMPO?: number | null
+    ANTERIOR?: string | null
+    NUEVO?: string | null
+    ACTUALIZA?: string | null
+    CONTROL?: string | null
+    idhistoria?: number
+  }
+
+  export type historiamUpdateInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
+    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type historiamUncheckedUpdateInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
+    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
+    idhistoria?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type historiamCreateManyInput = {
+    CONTRATO?: number | null
+    OPERADOR?: string | null
+    ARCHIVO?: number | null
+    CAMPO?: number | null
+    ANTERIOR?: string | null
+    NUEVO?: string | null
+    ACTUALIZA?: string | null
+    CONTROL?: string | null
+    idhistoria?: number
+  }
+
+  export type historiamUpdateManyMutationInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
+    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type historiamUncheckedUpdateManyInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
+    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
+    idhistoria?: IntFieldUpdateOperationsInput | number
   }
 
   export type liq_temporalCreateInput = {
@@ -66796,7 +72841,7 @@ export namespace Prisma {
     ADHERENTES?: number | null
     PRECIO?: number | null
     CUO_VIEJA?: number | null
-    OPERADOR?: number | null
+    OPERADOR?: string | null
     ACTUALIZA?: string | null
     OBRA_SOC?: number | null
     PRODUCTOR?: number | null
@@ -66885,7 +72930,7 @@ export namespace Prisma {
     ADHERENTES?: number | null
     PRECIO?: number | null
     CUO_VIEJA?: number | null
-    OPERADOR?: number | null
+    OPERADOR?: string | null
     ACTUALIZA?: string | null
     OBRA_SOC?: number | null
     PRODUCTOR?: number | null
@@ -66974,7 +73019,7 @@ export namespace Prisma {
     ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
     PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
     ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
     OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
     PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67063,7 +73108,7 @@ export namespace Prisma {
     ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
     PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
     ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
     OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
     PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67152,7 +73197,7 @@ export namespace Prisma {
     ADHERENTES?: number | null
     PRECIO?: number | null
     CUO_VIEJA?: number | null
-    OPERADOR?: number | null
+    OPERADOR?: string | null
     ACTUALIZA?: string | null
     OBRA_SOC?: number | null
     PRODUCTOR?: number | null
@@ -67241,7 +73286,7 @@ export namespace Prisma {
     ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
     PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
     ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
     OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
     PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67330,7 +73375,7 @@ export namespace Prisma {
     ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
     PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
     ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
     OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
     PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
@@ -72586,6 +78631,237 @@ export namespace Prisma {
     g_id_usuario?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
+  export type listado_rusCreateInput = {
+    NRO: number
+    DNI: string
+    TITULAR?: string | null
+    CONTRATO?: number | null
+    ALTA?: string | null
+    BAJA?: string | null
+    GRUPO?: number | null
+    PLAN?: string | null
+    ADH?: number | null
+    CUOTA?: string | null
+    INGRESO?: string | null
+    NACIMIENTO?: string | null
+    CAPITAL?: string | null
+    TIPO?: string | null
+  }
+
+  export type listado_rusUncheckedCreateInput = {
+    NRO: number
+    DNI: string
+    TITULAR?: string | null
+    CONTRATO?: number | null
+    ALTA?: string | null
+    BAJA?: string | null
+    GRUPO?: number | null
+    PLAN?: string | null
+    ADH?: number | null
+    CUOTA?: string | null
+    INGRESO?: string | null
+    NACIMIENTO?: string | null
+    CAPITAL?: string | null
+    TIPO?: string | null
+  }
+
+  export type listado_rusUpdateInput = {
+    NRO?: IntFieldUpdateOperationsInput | number
+    DNI?: StringFieldUpdateOperationsInput | string
+    TITULAR?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableStringFieldUpdateOperationsInput | string | null
+    BAJA?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ADH?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableStringFieldUpdateOperationsInput | string | null
+    INGRESO?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    CAPITAL?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type listado_rusUncheckedUpdateInput = {
+    NRO?: IntFieldUpdateOperationsInput | number
+    DNI?: StringFieldUpdateOperationsInput | string
+    TITULAR?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableStringFieldUpdateOperationsInput | string | null
+    BAJA?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ADH?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableStringFieldUpdateOperationsInput | string | null
+    INGRESO?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    CAPITAL?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type listado_rusCreateManyInput = {
+    NRO: number
+    DNI: string
+    TITULAR?: string | null
+    CONTRATO?: number | null
+    ALTA?: string | null
+    BAJA?: string | null
+    GRUPO?: number | null
+    PLAN?: string | null
+    ADH?: number | null
+    CUOTA?: string | null
+    INGRESO?: string | null
+    NACIMIENTO?: string | null
+    CAPITAL?: string | null
+    TIPO?: string | null
+  }
+
+  export type listado_rusUpdateManyMutationInput = {
+    NRO?: IntFieldUpdateOperationsInput | number
+    DNI?: StringFieldUpdateOperationsInput | string
+    TITULAR?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableStringFieldUpdateOperationsInput | string | null
+    BAJA?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ADH?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableStringFieldUpdateOperationsInput | string | null
+    INGRESO?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    CAPITAL?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type listado_rusUncheckedUpdateManyInput = {
+    NRO?: IntFieldUpdateOperationsInput | number
+    DNI?: StringFieldUpdateOperationsInput | string
+    TITULAR?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableStringFieldUpdateOperationsInput | string | null
+    BAJA?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ADH?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableStringFieldUpdateOperationsInput | string | null
+    INGRESO?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    CAPITAL?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type poliza_5380CreateInput = {
+    DNI: string
+    TITULAR?: string | null
+    CONTRATO?: string | null
+    ALTA?: string | null
+    BAJA?: string | null
+    GRUPO?: string | null
+    PLAN?: string | null
+    ADH?: string | null
+    CUOTA?: string | null
+    INGRESO?: string | null
+    NACIMIENTO?: string | null
+    CAPITAL?: string | null
+    TIPO?: string | null
+  }
+
+  export type poliza_5380UncheckedCreateInput = {
+    DNI: string
+    TITULAR?: string | null
+    CONTRATO?: string | null
+    ALTA?: string | null
+    BAJA?: string | null
+    GRUPO?: string | null
+    PLAN?: string | null
+    ADH?: string | null
+    CUOTA?: string | null
+    INGRESO?: string | null
+    NACIMIENTO?: string | null
+    CAPITAL?: string | null
+    TIPO?: string | null
+  }
+
+  export type poliza_5380UpdateInput = {
+    DNI?: StringFieldUpdateOperationsInput | string
+    TITULAR?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableStringFieldUpdateOperationsInput | string | null
+    BAJA?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableStringFieldUpdateOperationsInput | string | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ADH?: NullableStringFieldUpdateOperationsInput | string | null
+    CUOTA?: NullableStringFieldUpdateOperationsInput | string | null
+    INGRESO?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    CAPITAL?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type poliza_5380UncheckedUpdateInput = {
+    DNI?: StringFieldUpdateOperationsInput | string
+    TITULAR?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableStringFieldUpdateOperationsInput | string | null
+    BAJA?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableStringFieldUpdateOperationsInput | string | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ADH?: NullableStringFieldUpdateOperationsInput | string | null
+    CUOTA?: NullableStringFieldUpdateOperationsInput | string | null
+    INGRESO?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    CAPITAL?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type poliza_5380CreateManyInput = {
+    DNI: string
+    TITULAR?: string | null
+    CONTRATO?: string | null
+    ALTA?: string | null
+    BAJA?: string | null
+    GRUPO?: string | null
+    PLAN?: string | null
+    ADH?: string | null
+    CUOTA?: string | null
+    INGRESO?: string | null
+    NACIMIENTO?: string | null
+    CAPITAL?: string | null
+    TIPO?: string | null
+  }
+
+  export type poliza_5380UpdateManyMutationInput = {
+    DNI?: StringFieldUpdateOperationsInput | string
+    TITULAR?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableStringFieldUpdateOperationsInput | string | null
+    BAJA?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableStringFieldUpdateOperationsInput | string | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ADH?: NullableStringFieldUpdateOperationsInput | string | null
+    CUOTA?: NullableStringFieldUpdateOperationsInput | string | null
+    INGRESO?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    CAPITAL?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type poliza_5380UncheckedUpdateManyInput = {
+    DNI?: StringFieldUpdateOperationsInput | string
+    TITULAR?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableStringFieldUpdateOperationsInput | string | null
+    BAJA?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableStringFieldUpdateOperationsInput | string | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ADH?: NullableStringFieldUpdateOperationsInput | string | null
+    CUOTA?: NullableStringFieldUpdateOperationsInput | string | null
+    INGRESO?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    CAPITAL?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type IntFilter = {
     equals?: number
     in?: number[]
@@ -73687,6 +79963,53 @@ export namespace Prisma {
     cer_contrato?: SortOrder
   }
 
+  export type cuo_fijaCountOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    IMPORTE?: SortOrder
+    CUO_ANT?: SortOrder
+    DESDE?: SortOrder
+    VENCIM?: SortOrder
+    ACTUALIZA?: SortOrder
+    OPERADOR?: SortOrder
+    idcuota?: SortOrder
+  }
+
+  export type cuo_fijaAvgOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    IMPORTE?: SortOrder
+    CUO_ANT?: SortOrder
+    idcuota?: SortOrder
+  }
+
+  export type cuo_fijaMaxOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    IMPORTE?: SortOrder
+    CUO_ANT?: SortOrder
+    DESDE?: SortOrder
+    VENCIM?: SortOrder
+    ACTUALIZA?: SortOrder
+    OPERADOR?: SortOrder
+    idcuota?: SortOrder
+  }
+
+  export type cuo_fijaMinOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    IMPORTE?: SortOrder
+    CUO_ANT?: SortOrder
+    DESDE?: SortOrder
+    VENCIM?: SortOrder
+    ACTUALIZA?: SortOrder
+    OPERADOR?: SortOrder
+    idcuota?: SortOrder
+  }
+
+  export type cuo_fijaSumOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    IMPORTE?: SortOrder
+    CUO_ANT?: SortOrder
+    idcuota?: SortOrder
+  }
+
   export type cuota_prestamoCountOrderByAggregateInput = {
     cuoptm_id?: SortOrder
     cuoptm_capital?: SortOrder
@@ -73786,6 +80109,104 @@ export namespace Prisma {
 
   export type debitosSumOrderByAggregateInput = {
     dbt_id?: SortOrder
+  }
+
+  export type historiaCountOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    OPERADOR?: SortOrder
+    ARCHIVO?: SortOrder
+    CAMPO?: SortOrder
+    ANTERIOR?: SortOrder
+    NUEVO?: SortOrder
+    ACTUALIZA?: SortOrder
+    CONTROL?: SortOrder
+    idhistoria?: SortOrder
+  }
+
+  export type historiaAvgOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    ARCHIVO?: SortOrder
+    idhistoria?: SortOrder
+  }
+
+  export type historiaMaxOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    OPERADOR?: SortOrder
+    ARCHIVO?: SortOrder
+    CAMPO?: SortOrder
+    ANTERIOR?: SortOrder
+    NUEVO?: SortOrder
+    ACTUALIZA?: SortOrder
+    CONTROL?: SortOrder
+    idhistoria?: SortOrder
+  }
+
+  export type historiaMinOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    OPERADOR?: SortOrder
+    ARCHIVO?: SortOrder
+    CAMPO?: SortOrder
+    ANTERIOR?: SortOrder
+    NUEVO?: SortOrder
+    ACTUALIZA?: SortOrder
+    CONTROL?: SortOrder
+    idhistoria?: SortOrder
+  }
+
+  export type historiaSumOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    ARCHIVO?: SortOrder
+    idhistoria?: SortOrder
+  }
+
+  export type historiamCountOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    OPERADOR?: SortOrder
+    ARCHIVO?: SortOrder
+    CAMPO?: SortOrder
+    ANTERIOR?: SortOrder
+    NUEVO?: SortOrder
+    ACTUALIZA?: SortOrder
+    CONTROL?: SortOrder
+    idhistoria?: SortOrder
+  }
+
+  export type historiamAvgOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    ARCHIVO?: SortOrder
+    CAMPO?: SortOrder
+    idhistoria?: SortOrder
+  }
+
+  export type historiamMaxOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    OPERADOR?: SortOrder
+    ARCHIVO?: SortOrder
+    CAMPO?: SortOrder
+    ANTERIOR?: SortOrder
+    NUEVO?: SortOrder
+    ACTUALIZA?: SortOrder
+    CONTROL?: SortOrder
+    idhistoria?: SortOrder
+  }
+
+  export type historiamMinOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    OPERADOR?: SortOrder
+    ARCHIVO?: SortOrder
+    CAMPO?: SortOrder
+    ANTERIOR?: SortOrder
+    NUEVO?: SortOrder
+    ACTUALIZA?: SortOrder
+    CONTROL?: SortOrder
+    idhistoria?: SortOrder
+  }
+
+  export type historiamSumOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    ARCHIVO?: SortOrder
+    CAMPO?: SortOrder
+    idhistoria?: SortOrder
   }
 
   export type liq_temporalCountOrderByAggregateInput = {
@@ -74108,7 +80529,6 @@ export namespace Prisma {
     ADHERENTES?: SortOrder
     PRECIO?: SortOrder
     CUO_VIEJA?: SortOrder
-    OPERADOR?: SortOrder
     OBRA_SOC?: SortOrder
     PRODUCTOR?: SortOrder
     PROD_DEB?: SortOrder
@@ -74331,7 +80751,6 @@ export namespace Prisma {
     ADHERENTES?: SortOrder
     PRECIO?: SortOrder
     CUO_VIEJA?: SortOrder
-    OPERADOR?: SortOrder
     OBRA_SOC?: SortOrder
     PRODUCTOR?: SortOrder
     PROD_DEB?: SortOrder
@@ -77542,6 +83961,124 @@ export namespace Prisma {
     g_id?: SortOrder
     g_turno?: SortOrder
     g_id_usuario?: SortOrder
+  }
+
+  export type listado_rusNRODNICompoundUniqueInput = {
+    NRO: number
+    DNI: string
+  }
+
+  export type listado_rusCountOrderByAggregateInput = {
+    NRO?: SortOrder
+    DNI?: SortOrder
+    TITULAR?: SortOrder
+    CONTRATO?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    GRUPO?: SortOrder
+    PLAN?: SortOrder
+    ADH?: SortOrder
+    CUOTA?: SortOrder
+    INGRESO?: SortOrder
+    NACIMIENTO?: SortOrder
+    CAPITAL?: SortOrder
+    TIPO?: SortOrder
+  }
+
+  export type listado_rusAvgOrderByAggregateInput = {
+    NRO?: SortOrder
+    CONTRATO?: SortOrder
+    GRUPO?: SortOrder
+    ADH?: SortOrder
+  }
+
+  export type listado_rusMaxOrderByAggregateInput = {
+    NRO?: SortOrder
+    DNI?: SortOrder
+    TITULAR?: SortOrder
+    CONTRATO?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    GRUPO?: SortOrder
+    PLAN?: SortOrder
+    ADH?: SortOrder
+    CUOTA?: SortOrder
+    INGRESO?: SortOrder
+    NACIMIENTO?: SortOrder
+    CAPITAL?: SortOrder
+    TIPO?: SortOrder
+  }
+
+  export type listado_rusMinOrderByAggregateInput = {
+    NRO?: SortOrder
+    DNI?: SortOrder
+    TITULAR?: SortOrder
+    CONTRATO?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    GRUPO?: SortOrder
+    PLAN?: SortOrder
+    ADH?: SortOrder
+    CUOTA?: SortOrder
+    INGRESO?: SortOrder
+    NACIMIENTO?: SortOrder
+    CAPITAL?: SortOrder
+    TIPO?: SortOrder
+  }
+
+  export type listado_rusSumOrderByAggregateInput = {
+    NRO?: SortOrder
+    CONTRATO?: SortOrder
+    GRUPO?: SortOrder
+    ADH?: SortOrder
+  }
+
+  export type poliza_5380CountOrderByAggregateInput = {
+    DNI?: SortOrder
+    TITULAR?: SortOrder
+    CONTRATO?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    GRUPO?: SortOrder
+    PLAN?: SortOrder
+    ADH?: SortOrder
+    CUOTA?: SortOrder
+    INGRESO?: SortOrder
+    NACIMIENTO?: SortOrder
+    CAPITAL?: SortOrder
+    TIPO?: SortOrder
+  }
+
+  export type poliza_5380MaxOrderByAggregateInput = {
+    DNI?: SortOrder
+    TITULAR?: SortOrder
+    CONTRATO?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    GRUPO?: SortOrder
+    PLAN?: SortOrder
+    ADH?: SortOrder
+    CUOTA?: SortOrder
+    INGRESO?: SortOrder
+    NACIMIENTO?: SortOrder
+    CAPITAL?: SortOrder
+    TIPO?: SortOrder
+  }
+
+  export type poliza_5380MinOrderByAggregateInput = {
+    DNI?: SortOrder
+    TITULAR?: SortOrder
+    CONTRATO?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    GRUPO?: SortOrder
+    PLAN?: SortOrder
+    ADH?: SortOrder
+    CUOTA?: SortOrder
+    INGRESO?: SortOrder
+    NACIMIENTO?: SortOrder
+    CAPITAL?: SortOrder
+    TIPO?: SortOrder
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {

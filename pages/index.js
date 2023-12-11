@@ -173,11 +173,11 @@ export default function Index() {
 
   const { usu } = useWerchow();
 
-  const { isLoading } = useUser();
+  //const { isLoading } = useUser();
 
   useSWR("/api/noticias", traerNoticias);
 
-  if (isLoading === true) return <Skeleton />;
+  //if (isLoading === true) return <Skeleton />;
 
   return (
     <>

@@ -19,8 +19,6 @@ import {
 } from "@heroicons/react/24/solid";
 import moment from "moment";
 import ListadoAdherentesPrint from "./ListadoAdherentesPrint";
-import { FormSubirArchivos } from "../archivos/FormSubirArchivos";
-import { Archivo } from "../archivos/Archivo";
 import ListadoPagosPrint from "./ListadoPagosPrint";
 import Router from "next/router";
 import ReactToPrint from "react-to-print";

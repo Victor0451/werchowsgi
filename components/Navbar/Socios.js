@@ -46,6 +46,11 @@ export const Socios = () => {
           className="hidden  grid-cols-4 gap-3 overflow-visible lg:grid"
         >
           <ul className="col-span-4 flex w-full flex-col gap-1">
+            <Link href={"/socios/nuevo"}>
+              <MenuItem>
+                <Typography color="black">Nueva Ficha</Typography>
+              </MenuItem>
+            </Link>
             <Link href={"/socios/legajo"}>
               <MenuItem>
                 <Typography color="black">Legajo Virtual</Typography>

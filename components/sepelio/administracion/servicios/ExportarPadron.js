@@ -8,10 +8,9 @@ export default function ExportarPadron({ listado }) {
   let body = [];
   let name = "";
 
-  name = `Servicios sin impactar - ${moment().format("DD-MM-YYYY")}.xls`;
+  name = `Servicios Sin Impactar - ${moment().format("DD-MM-YYYY")}.xls`;
 
   header = [
-    "#",
     "Empresa",
     "Ficha",
     "Difunto",
@@ -22,13 +21,12 @@ export default function ExportarPadron({ listado }) {
 
   listado.forEach((i) => {
     body.push({
-      n: i + 1,
       empresa: i.empresa,
-      ficha: i.ficha,
+      ficha: i.contrato,
       difunto: i.difunto,
       seguro: i.seguro,
       estado_ficha: i.estado_ficha,
-      fecha_fallecimiento: i.fecha_fallecimiento,
+      fecha_fallecimiento: moment(i.fecha_fallecimiento).format("DD/MM/YYYY"),
     });
   });
 

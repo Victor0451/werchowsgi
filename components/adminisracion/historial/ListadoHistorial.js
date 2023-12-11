@@ -3,6 +3,7 @@ import DataTable from "react-data-table-component";
 import FilterComponent from "../../Layouts/FilterComponent";
 import { Typography } from "@material-tailwind/react";
 import moment from "moment";
+import ExportarPadron from "./ExportarPadron";
 
 const ListadoHistorial = ({ listado }) => {
   let columns = [
@@ -59,21 +60,31 @@ const ListadoHistorial = ({ listado }) => {
 
   return (
     <div>
-      <Typography variant="h6" color="blue-gray" className="mt-5">
-        <u>Historial de movimientos</u>
-      </Typography>
-      <Typography color="gray" className="mt-1 font-normal mb-5">
-        <u>Total de registros</u>: {listado.length}
-      </Typography>
-      <DataTable
-        columns={columns}
-        data={filteredItems}
-        defaultSortField="name"
-        striped
-        pagination
-        subHeader
-        subHeaderComponent={subHeaderComponent}
-      />
+      <div className="">
+        <div className="">
+          <Typography variant="h6" color="blue-gray">
+            <u>Historial de movimientos</u>
+          </Typography>
+          <Typography color="gray" className="mt-1 font-normal mb-5">
+            <u>Total de registros</u>: {listado.length}
+          </Typography>
+        </div>
+        <div className="flex justify-end">
+          <ExportarPadron listado={listado} />
+        </div>
+      </div>
+
+      <div className="mt-5 border-2 rounded-xl p-4">
+        <DataTable
+          columns={columns}
+          data={filteredItems}
+          defaultSortField="name"
+          striped
+          pagination
+          subHeader
+          subHeaderComponent={subHeaderComponent}
+        />
+      </div>
     </div>
   );
 };

@@ -8,10 +8,12 @@ import useSWR from "swr";
 import axios from "axios";
 import PanelHistorial from "@/components/adminisracion/historial/PanelHistorial";
 import { toast } from "react-toastify";
-function historial(props) {
+
+function panel(props) {
   const [operadores, guardarOperadores] = useState([]);
   const [historial, guardarHistorial] = useState([]);
   const [operSel, guardarOperSel] = useState("");
+  const [loading, guardarLoading] = useState(0);
 
   const { usu } = useWerchow();
 
@@ -41,10 +43,16 @@ function historial(props) {
     }
   };
 
-  const traerHistorial = async () => {
+  const traerHistorial = async (f) => {
+    if (f === "T") {
+      guardarOperSel("");
+    }
+
     toast.info(
       "Generando Historial... Este proceso puede demorar unos segundo, Espera el mensaje de finalizacion"
     );
+
+    guardarLoading(1);
 
     guardarHistorial([]);
 
@@ -59,13 +67,16 @@ function historial(props) {
         if (res.data.length > 0) {
           guardarHistorial(res.data);
           toast.success("Historial Generado");
+          guardarLoading(0);
         } else {
           toast.info("No se encontraron registros");
+          guardarLoading(2);
         }
       })
       .catch((error) => {
         console.log(error);
         toast.error("Ocurrio un error al generar el historial");
+        guardarLoading(2);
       });
   };
 
@@ -83,6 +94,7 @@ function historial(props) {
             handleChange={handleChange}
             traerHistorial={traerHistorial}
             historial={historial}
+            loading={loading}
           />
         </>
       ) : null}
@@ -90,4 +102,4 @@ function historial(props) {
   );
 }
 
-export default historial;
+export default panel;

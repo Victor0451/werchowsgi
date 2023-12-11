@@ -12,6 +12,7 @@ import { registrarHistoria } from "@/libs/funciones";
 import { useRouter } from "next/router";
 import jsCookie from "js-cookie";
 import FormImprimirOrden from "@/components/ordenpago/FormImprimirOrden";
+import { useEffect } from "react";
 
 function ImprimirOrden(props) {
   let componentRef = React.createRef();
@@ -38,6 +39,7 @@ function ImprimirOrden(props) {
           },
         })
         .then((res) => {
+          console.log(res.data);
           if (res.data.length > 0) {
             guardarOrden(res.data[0]);
 
@@ -83,7 +85,11 @@ function ImprimirOrden(props) {
     return total.toFixed(2);
   };
 
-  useSWR("/api/ordenpago", traerCaja);
+  useEffect(() => {
+    setTimeout(() => {
+      traerCaja();
+    }, 200);
+  });
 
   if (isLoading === true) return <Skeleton />;
   return (

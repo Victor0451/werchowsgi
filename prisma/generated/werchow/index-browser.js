@@ -345,6 +345,17 @@ exports.Prisma.CertificadosScalarFieldEnum = {
   cer_contrato: 'cer_contrato'
 };
 
+exports.Prisma.Cuo_fijaScalarFieldEnum = {
+  CONTRATO: 'CONTRATO',
+  IMPORTE: 'IMPORTE',
+  CUO_ANT: 'CUO_ANT',
+  DESDE: 'DESDE',
+  VENCIM: 'VENCIM',
+  ACTUALIZA: 'ACTUALIZA',
+  OPERADOR: 'OPERADOR',
+  idcuota: 'idcuota'
+};
+
 exports.Prisma.Cuota_prestamoScalarFieldEnum = {
   cuoptm_id: 'cuoptm_id',
   cuoptm_capital: 'cuoptm_capital',
@@ -364,6 +375,30 @@ exports.Prisma.DebitosScalarFieldEnum = {
   dbt_id: 'dbt_id',
   dbt_descripcion: 'dbt_descripcion',
   dbt_estado: 'dbt_estado'
+};
+
+exports.Prisma.HistoriaScalarFieldEnum = {
+  CONTRATO: 'CONTRATO',
+  OPERADOR: 'OPERADOR',
+  ARCHIVO: 'ARCHIVO',
+  CAMPO: 'CAMPO',
+  ANTERIOR: 'ANTERIOR',
+  NUEVO: 'NUEVO',
+  ACTUALIZA: 'ACTUALIZA',
+  CONTROL: 'CONTROL',
+  idhistoria: 'idhistoria'
+};
+
+exports.Prisma.HistoriamScalarFieldEnum = {
+  CONTRATO: 'CONTRATO',
+  OPERADOR: 'OPERADOR',
+  ARCHIVO: 'ARCHIVO',
+  CAMPO: 'CAMPO',
+  ANTERIOR: 'ANTERIOR',
+  NUEVO: 'NUEVO',
+  ACTUALIZA: 'ACTUALIZA',
+  CONTROL: 'CONTROL',
+  idhistoria: 'idhistoria'
 };
 
 exports.Prisma.Liq_temporalScalarFieldEnum = {
@@ -1244,6 +1279,39 @@ exports.Prisma.GuardiaScalarFieldEnum = {
   g_id_usuario: 'g_id_usuario'
 };
 
+exports.Prisma.Listado_rusScalarFieldEnum = {
+  NRO: 'NRO',
+  DNI: 'DNI',
+  TITULAR: 'TITULAR',
+  CONTRATO: 'CONTRATO',
+  ALTA: 'ALTA',
+  BAJA: 'BAJA',
+  GRUPO: 'GRUPO',
+  PLAN: 'PLAN',
+  ADH: 'ADH',
+  CUOTA: 'CUOTA',
+  INGRESO: 'INGRESO',
+  NACIMIENTO: 'NACIMIENTO',
+  CAPITAL: 'CAPITAL',
+  TIPO: 'TIPO'
+};
+
+exports.Prisma.Poliza_5380ScalarFieldEnum = {
+  DNI: 'DNI',
+  TITULAR: 'TITULAR',
+  CONTRATO: 'CONTRATO',
+  ALTA: 'ALTA',
+  BAJA: 'BAJA',
+  GRUPO: 'GRUPO',
+  PLAN: 'PLAN',
+  ADH: 'ADH',
+  CUOTA: 'CUOTA',
+  INGRESO: 'INGRESO',
+  NACIMIENTO: 'NACIMIENTO',
+  CAPITAL: 'CAPITAL',
+  TIPO: 'TIPO'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1265,9 +1333,12 @@ exports.Prisma.ModelName = {
   caja_sucursal: 'caja_sucursal',
   cajas: 'cajas',
   certificados: 'certificados',
+  cuo_fija: 'cuo_fija',
   cuota_prestamo: 'cuota_prestamo',
   cuotas_adeudadas: 'cuotas_adeudadas',
   debitos: 'debitos',
+  historia: 'historia',
+  historiam: 'historiam',
   liq_temporal: 'liq_temporal',
   liquidaciones: 'liquidaciones',
   localidad: 'localidad',
@@ -1302,7 +1373,9 @@ exports.Prisma.ModelName = {
   sueldos: 'sueldos',
   usuario: 'usuario',
   SO1: 'SO1',
-  guardia: 'guardia'
+  guardia: 'guardia',
+  listado_rus: 'listado_rus',
+  poliza_5380: 'poliza_5380'
 };
 
 /**

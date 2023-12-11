@@ -75,6 +75,13 @@ export const Administracion = () => {
                 </Link>
               </MenuList>
             </Menu>
+
+            <Link href={"/administracion/historial/panel"}>
+              <MenuItem>
+                <Typography color="black">Historial del Sistema</Typography>
+              </MenuItem>
+            </Link>
+
             <Menu placement="right-start">
               <MenuHandler>
                 <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">

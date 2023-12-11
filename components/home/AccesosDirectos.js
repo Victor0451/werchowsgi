@@ -18,7 +18,7 @@ export const AccesosDirectos = () => {
       </Typography>
 
       <div className="mt-4 grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-3">
-        <Card className="mt-6 w-96">
+        <Card className="mt-6">
           <CardBody>
             <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
             <Typography variant="h5" color="blue-gray" className="mb-2">
@@ -42,7 +42,7 @@ export const AccesosDirectos = () => {
           </CardFooter>
         </Card>
 
-        <Card className="mt-6 w-96">
+        <Card className="mt-6">
           <CardBody>
             <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
             <Typography variant="h5" color="blue-gray" className="mb-2">
@@ -66,7 +66,7 @@ export const AccesosDirectos = () => {
           </CardFooter>
         </Card>
 
-        <Card className="mt-6 w-96">
+        <Card className="mt-6">
           <CardBody>
             <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
             <Typography variant="h5" color="blue-gray" className="mb-2">
@@ -92,7 +92,7 @@ export const AccesosDirectos = () => {
           </CardFooter>
         </Card>
 
-        <Card className="mt-6 w-96">
+        <Card className="mt-6">
           <CardBody>
             <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
             <Typography variant="h5" color="blue-gray" className="mb-2">

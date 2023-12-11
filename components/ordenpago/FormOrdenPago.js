@@ -21,6 +21,7 @@ import Menu from "./Menu";
 import FormContable from "./FormContable";
 import FormOrdenes from "./FormOrdenes";
 import FormPracticas from "./FormPracticas";
+import { IconSolid } from "../../libs/funciones";
 
 const FormOrdenPago = ({
   vistas,
@@ -55,11 +56,7 @@ const FormOrdenPago = ({
       <CardBody className="rounded-none">
         <Typography variant="h2">Ordenes de Pago</Typography>
 
-        <Alert
-          className="mt-6"
-          variant="gradient"
-          icon={<InformationCircleIcon />}
-        >
+        <Alert className="mt-6" variant="gradient" icon={<IconSolid />}>
           <Typography variant="h6">Generacion de Ordenes de Pago:</Typography>
           <ul className="mt-2 ml-2 list-inside list-disc">
             <li>

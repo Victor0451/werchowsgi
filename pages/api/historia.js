@@ -61,6 +61,20 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(historial);
+    } else if (req.body.f && req.body.f === "socios") {
+      const historial = await Werchow.historia.create({
+        data: {
+          CONTRATO: parseInt(req.body.CONTRATO),
+          OPERADOR: req.body.OPERADOR,
+          ARCHIVO: parseInt(req.body.ARCHIVO),
+          CAMPO: req.body.CAMPO,
+          ANTERIOR: req.body.ANTERIOR,
+          NUEVO: req.body.NUEVO,
+          ACTUALIZA: req.body.ACTUALIZA,
+        },
+      });
+
+      res.status(200).json(historial);
     }
   }
 }

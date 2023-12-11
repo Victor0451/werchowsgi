@@ -36,26 +36,26 @@ const ListadoOrdenesGeneradas = ({
       name: "Fecha",
       selector: (row) => `${moment(row.fecha).format("DD/MM/YYYY")}`,
       sortable: true,
-      grow: 0.1,
+      width: "110px",
     },
 
     {
       name: "Orden Tipo",
       selector: (row) => `${row.tipo_orden}`,
       sortable: true,
-      grow: 0.3,
+      width: "150px",
     },
     {
       name: "N° Orden",
       selector: (row) => `${row.norden}`,
       sortable: true,
-      grow: 0.1,
+      width: "110px",
     },
     {
       name: "Proveedor",
       selector: (row) => `${row.nombre}`,
       sortable: true,
-      grow: 0.3,
+      width: "190px",
     },
     {
       name: "Importe",
@@ -190,7 +190,7 @@ const ListadoOrdenesGeneradas = ({
           <Alert
             icon={<InformationCircleIcon strokeWidth={2} className="h-6 w-6" />}
           >
-            No hay cajas registradas.
+            No hay ordenes de pago registradas.
           </Alert>
         ) : (
           <>

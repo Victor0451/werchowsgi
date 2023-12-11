@@ -26,6 +26,9 @@ import ListadoPagos from "./ListadoPagos";
 import Router from "next/router";
 import ModalAfiliacion from "./ModalAfiliacion";
 import ListadoUsos from "./ListadoUsos";
+import ListadoHistorial from "./ListadoHistorial";
+import Link from "next/link";
+import ModalActualizarCuota from "./ModalActualizarCuota";
 
 const FormLegajoSocio = ({
   dniRef,
@@ -56,6 +59,9 @@ const FormLegajoSocio = ({
   showAfi,
   regAfi,
   usos,
+  historial,
+  histCuotas,
+  cuotaMensual,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -229,18 +235,48 @@ const FormLegajoSocio = ({
                   </Typography>
 
                   <div className=" mt-4 grid gap-6 mb-6 md:grid-cols-5">
-                    <ModalAfiliacion
-                      ficha={ficha}
-                      cuotasRef={cuotasRef}
-                      handleVigencia={handleVigencia}
-                      handleBlur={handleBlur}
-                      vigencia={vigencia}
-                      cuotas={cuotas}
-                      errores={errores}
-                      showAfi={showAfi}
-                      regAfi={regAfi}
-                    />
-                    <ListadoUsos listado={usos} />
+                    <div>
+                      <ModalAfiliacion
+                        ficha={ficha}
+                        cuotasRef={cuotasRef}
+                        handleVigencia={handleVigencia}
+                        handleBlur={handleBlur}
+                        vigencia={vigencia}
+                        cuotas={cuotas}
+                        errores={errores}
+                        showAfi={showAfi}
+                        regAfi={regAfi}
+                      />
+                    </div>
+
+                    <div>
+                      <ListadoUsos listado={usos} />
+                    </div>
+
+                    <Link
+                      href={{
+                        pathname: "/socios/adherentes",
+                        query: {
+                          contrato: ficha.CONTRATO,
+                        },
+                      }}
+                      target="__blank"
+                    >
+                      <Button color="#0288d1" size="sm">
+                        Agregar Adherentes
+                      </Button>
+                    </Link>
+
+                    <div>
+                      <ListadoHistorial listado={historial} />
+                    </div>
+
+                    <div>
+                      <ModalActualizarCuota
+                        histCuotas={histCuotas}
+                        cuotaMensual={cuotaMensual}
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -316,6 +352,16 @@ const FormLegajoSocio = ({
                         defaultValue={moment(ficha.VIGENCIA).format(
                           "DD/MM/YYYY"
                         )}
+                        readOnly
+                      />
+                    </div>
+
+                    <div className="relative w-full mb-6 group">
+                      <Input
+                        size="md"
+                        label="Cuota Mensual"
+                        type="text"
+                        value={`$${cuotaMensual}`}
                         readOnly
                       />
                     </div>

@@ -36,6 +36,9 @@ function Legajo(props) {
   const [cuotas, guardarCuotas] = useState(null);
   const [vigencia, guardarVigencia] = useState(null);
   const [usos, guardarUsos] = useState([]);
+  const [historial, guardarHistorial] = useState([]);
+  const [histCuotas, guardarHistCuotas] = useState([]);
+  const [cuotaMensual, guardarCuotaMensual] = useState(0);
 
   const { usu } = useWerchow();
 
@@ -412,6 +415,8 @@ function Legajo(props) {
             descriGrupo(ficha[0].GRUPO);
             traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
             traerUsos(ficha[0].CONTRATO);
+            traerHistorial(ficha[0].CONTRATO);
+            traerCuotas(ficha[0].CONTRATO);
           } else if (re.length === 0) {
             axios
               .get("/api/socios", {
@@ -433,6 +438,8 @@ function Legajo(props) {
                   descriGrupo(ficha[0].GRUPO);
                   traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
                   traerUsos(ficha[0].CONTRATO);
+                  traerHistorial(ficha[0].CONTRATO);
+                  traerCuotas(ficha[0].CONTRATO);
                 } else {
                   guardarAlertas(
                     "El DNI ingresado no esta registrado o pertenece a un adherente"
@@ -484,6 +491,8 @@ function Legajo(props) {
             descriGrupo(ficha[0].GRUPO);
             traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
             traerUsos(ficha[0].CONTRATO);
+            traerHistorial(ficha[0].CONTRATO);
+            traerCuotas(ficha[0].CONTRATO);
           } else if (re.length === 0) {
             axios
               .get("/api/socios", {
@@ -505,6 +514,8 @@ function Legajo(props) {
                   descriGrupo(ficha[0].GRUPO);
                   traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
                   traerUsos(ficha[0].CONTRATO);
+                  traerHistorial(ficha[0].CONTRATO);
+                  traerCuotas(ficha[0].CONTRATO);
                 } else {
                   guardarAlertas(
                     "El DNI ingresado no esta registrado o pertenece a un adherente"
@@ -632,6 +643,66 @@ function Legajo(props) {
       });
   };
 
+  const traerHistorial = async (contrato) => {
+    await axios
+      .get(`/api/socios`, {
+        params: {
+          contrato: contrato,
+          f: "traer historial",
+        },
+      })
+      .then((res) => {
+        if (res.data) {
+          guardarHistorial(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al generar el historial de movimientos");
+      });
+  };
+
+  const traerCuotas = async (contrato) => {
+    await axios
+      .get(`/api/socios`, {
+        params: {
+          contrato: contrato,
+          f: "traer cuotas",
+        },
+      })
+      .then((res) => {
+        if (res.data) {
+          let arr = JSON.parse(res.data);
+          guardarHistCuotas(arr);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(
+          "Ocurrio un error al generar el historial de cuotas mensuales"
+        );
+      });
+
+    await axios
+      .get(`/api/socios`, {
+        params: {
+          contrato: contrato,
+          f: "traer cuota mensual",
+        },
+      })
+      .then((res) => {
+        console.log(res.data[0].IMPORTE);
+
+        if (res.data) {
+          guardarCuotaMensual(res.data[0].IMPORTE);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al traer la cuota mensual");
+      });
+  };
+
   if (isLoading === true) return <Skeleton />;
 
   return (
@@ -669,6 +740,9 @@ function Legajo(props) {
             showAfi={showAfi}
             regAfi={regAfi}
             usos={usos}
+            historial={historial}
+            histCuotas={histCuotas}
+            cuotaMensual={cuotaMensual}
           />
         </>
       )}

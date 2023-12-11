@@ -42,7 +42,7 @@ export default async function handler(req, res) {
                 SELECT
                 s.empresa,
                 s.contrato,
-                dni AS 'difunto',
+                concat(s.apellido,', ', s.nombre, ' - ', s.dni) 'difunto',                
                 (
                   CASE
                   WHEN s.empresa = 'Werchow'
@@ -157,11 +157,21 @@ export default async function handler(req, res) {
                       m.NRO_DOC = s.dni
                     AND m.PLAN != 'P'
                   ) THEN
+                  (SELECT
                     CONCAT(
-                      'NUEVO TITULAR',
-                      ' ',
-                      dni_nuevotitular
+                      'NUEVO TIT.',
+                      ' --> ',
+                      m.APELLIDOS,
+                      ', ',
+                      m.NOMBRES,
+                      ' - ',
+                      m.NRO_DOC
                     )
+                  FROM
+                    werchow.adherent AS m
+                  WHERE
+                    m.NRO_DOC = s.dni_nuevotitular
+                 ) 
                   WHEN s.empresa = 'Werchow'
                   AND s.dni_nuevotitular NOT IN (1, 11111111)
                   AND NOT EXISTS (
@@ -184,11 +194,21 @@ export default async function handler(req, res) {
                       m.NRO_DOC = s.dni
                     AND m.PLAN != 'P'
                   ) THEN
-                    CONCAT(
-                      'NUEVO TITULAR',
-                      ' ',
-                      dni_nuevotitular
-                    )
+                  (SELECT
+                      CONCAT(
+                        'NUEVO TIT.',
+                        ' --> ',
+                        m.APELLIDOS,
+                        ', ',
+                        m.NOMBRES,
+                        ' - ',
+                        m.NRO_DOC
+                      )
+                    FROM
+                      werchow.mutual_adh AS m
+                    WHERE
+                    m.NRO_DOC = s.dni_nuevotitular
+                   ) 
                   WHEN s.empresa = 'Mutual'
                   AND s.dni_nuevotitular NOT IN (1, 11111111)
                   AND NOT EXISTS (
@@ -212,7 +232,7 @@ export default async function handler(req, res) {
                       m.NRO_DOC = s.dni
                     AND m.BAJA IS NOT NULL
                     AND m.EDAD = 999
-                  ) THEN
+                  ) THEN                 
                     'ADHERENTE'
                   WHEN dni_nuevotitular = 1
                   AND s.empresa = 'Werchow'
@@ -238,7 +258,7 @@ export default async function handler(req, res) {
                       m.NRO_DOC = s.dni
                     AND m.BAJA IS NOT NULL
                     AND m.EDAD != 999
-                  ) THEN
+                  ) THEN                
                     'ADHERENTE'
                   WHEN dni_nuevotitular = 1
                   AND s.empresa = 'Mutual'

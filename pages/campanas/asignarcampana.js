@@ -160,18 +160,24 @@ export default function AsignarCampana() {
         idcamp = 13;
       } else if (camp === "atcampanaM") {
         idcamp = 30;
+      } else if (camp === "auxcampana") {
+        idcamp = 24;
       }
     } else if (op === "perico") {
       if (camp === "atcampana") {
         idcamp = 14;
       } else if (camp === "atcampanaM") {
         idcamp = 31;
+      } else if (camp === "auxcampana") {
+        idcamp = 25;
       }
     } else if (op === "sanpedro") {
       if (camp === "atcampana") {
         idcamp = 15;
       } else if (camp === "atcampanaM") {
         idcamp = 32;
+      } else if (camp === "auxcampana") {
+        idcamp = 26;
       }
     }
 

@@ -33,7 +33,7 @@ const FormAdminServicios = ({
     {
       name: "#",
       button: true,
-      grow: 0.1,
+      width: "80px",
       cell: (row, index) => (
         <>
           <div>{index + 1}</div>
@@ -45,33 +45,39 @@ const FormAdminServicios = ({
       name: "Empresa",
       selector: (row) => `${row.empresa}`,
       sortable: true,
-      grow: 0.1,
+      width: "100px",
     },
 
     {
       name: "Ficha",
       selector: (row) => `${row.contrato}`,
       sortable: true,
-      grow: 0.1,
+      width: "100px",
+    },
+    {
+      name: "Difunto",
+      selector: (row) => `${row.difunto}`,
+      sortable: true,
+      width: "350px",
     },
     {
       name: "Seguro",
       selector: (row) => `${row.seguro}`,
       sortable: true,
-      grow: 0.1,
+      width: "80px",
     },
     {
       name: "Estado Ficha",
       selector: (row) => `${row.estado_ficha}`,
       sortable: true,
-      grow: 0.5,
+      width: "450px",
     },
     {
       name: "Fecha Fallecimiento",
       selector: (row) =>
         `${moment(row.fecha_fallecimiento).format("DD/MM/YYYY")}`,
       sortable: true,
-      grow: 0.3,
+      width: "150px",
     },
   ];
 
@@ -109,36 +115,13 @@ const FormAdminServicios = ({
       <CardBody className="rounded-none">
         <Typography variant="h2">Servicios Sin Impactar</Typography>
 
-        <div className="mt-4 ">
-          <div className="mt-5 mb-5 border-2 rounded-xl p-4">
-            <Typography variant="h5" color="blue-gray">
-              Opciones
-            </Typography>
-
-            <div className=" mt-4 grid gap-6 mb-6 md:grid-cols-3">
-              <ExportarPadron listado={listado} />
-              <Button
-                color="gray"
-                size="sm"
-                className=""
-                onClick={() => actImpactado("TW")}
-              >
-                Actualizar Maestro
-              </Button>{" "}
-              <Button color="gray" size="sm" onClick={() => actImpactado("TM")}>
-                Actualizar Adherentes
-              </Button>{" "}
-              <Button color="gray" size="sm" onClick={() => actImpactado("AW")}>
-                Actualizar Mutual
-              </Button>{" "}
-              <Button color="gray" size="sm" onClick={() => actImpactado("AM")}>
-                Actualizar Mutual Adherentes
-              </Button>
-              <Button color="blue" size="sm" onClick={servSinImpac}>
-                Buscar Servicios
-              </Button>
-            </div>
-          </div>
+        <div className="mt-4 mb-4">
+          <Alert
+            icon={<InformationCircleIcon strokeWidth={2} className="h-6 w-6" />}
+          >
+            Modulo para el control de los servicios cargados en el sistema WEB y
+            que no estan impactados en el sistema FOX.
+          </Alert>
         </div>
 
         {noData === true ? (
@@ -175,6 +158,38 @@ const FormAdminServicios = ({
             )}
           </>
         )}
+
+        <div className="mt-4 ">
+          <div className="mt-5 mb-5 border-2 rounded-xl p-4">
+            <Typography variant="h5" color="blue-gray">
+              Opciones
+            </Typography>
+
+            <div className=" mt-4 grid gap-6 mb-6 md:grid-cols-3">
+              <ExportarPadron listado={listado} />
+              <Button
+                color="gray"
+                size="sm"
+                className=""
+                onClick={() => actImpactado("TW")}
+              >
+                Actualizar Maestro
+              </Button>{" "}
+              <Button color="gray" size="sm" onClick={() => actImpactado("AW")}>
+                Actualizar Adherentes
+              </Button>{" "}
+              <Button color="gray" size="sm" onClick={() => actImpactado("TM")}>
+                Actualizar Mutual
+              </Button>{" "}
+              <Button color="gray" size="sm" onClick={() => actImpactado("AM")}>
+                Actualizar Mutual Adherentes
+              </Button>
+              <Button color="blue" size="sm" onClick={servSinImpac}>
+                Buscar Servicios
+              </Button>
+            </div>
+          </div>
+        </div>
       </CardBody>
     </Card>
   );
