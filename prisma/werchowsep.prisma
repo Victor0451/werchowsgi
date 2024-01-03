@@ -136,7 +136,7 @@ model caja_sepelio {
   detalle     String?   @db.VarChar(255)
   monto       Float?    @db.Float
   estado      Boolean?
-  fecha       DateTime? @db.DateTime(0)
+  fecha       DateTime? @db.Date
   gastos      Float?    @db.Float
   totalcaja   Float?    @db.Float
   empresa     String?   @db.VarChar(255)
@@ -157,10 +157,7 @@ model conceptos {
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model conceptos_sepelio_cuentas {
   idconcepto     Int?
-  idcuenta       Int?
   idempresa      Int?
-  idsucursal     Int?
-  sc_codigo      Int?
   sc_descripcion String? @db.VarChar(255)
   sc_cuenta      Int?
   id             Int     @id @default(autoincrement())
@@ -470,7 +467,6 @@ model servicios {
   domicilio_solicitante String?   @db.VarChar(500)
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model servicios_historico {
   NRO_NOTACR Int?
   FEC_CREDIT DateTime? @db.Date
@@ -537,8 +533,6 @@ model servicios_historico {
   TRASPASO   DateTime? @db.Date
   EMPRESA    String?   @db.VarChar(3)
   id         Int       @id @default(autoincrement())
-
-  @@ignore
 }
 
 model servicios_liquidacion {

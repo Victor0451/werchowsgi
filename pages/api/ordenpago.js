@@ -54,6 +54,14 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(Orden);
+    } else if (req.query.f && req.query.f === "traer datos orden") {
+      const Orden = await SGI.ordenes_pago.findMany({
+        where: {
+          norden: req.query.idorden,
+        },
+      });
+
+      res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "traer ordenes pendientes") {
       const Orden = await SGI.ordenes_pago.findMany({
         where: {

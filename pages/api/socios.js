@@ -106,6 +106,118 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
+    } else if (req.query.f && req.query.f === "maestro apellido") {
+      const mae = await Werchow.$queryRawUnsafe(`
+            SELECT
+               *     
+            FROM maestro as m               
+            WHERE m.APELLIDOS LIKE UPPER('%${req.query.apellido}%')
+
+    `);
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(mae, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "maestro baja") {
+      const mae = await Werchow.$queryRaw`
+            SELECT
+                m.CONTRATO, 
+                m.GRUPO, 
+                m.SUCURSAL, 
+                m.NRO_DOC, 
+                m.APELLIDOS,
+                m.NOMBRES, 
+                m.ALTA, 
+                m.VIGENCIA, 
+                m.DOM_LAB, 
+                m.PLAN,
+                m.SUB_PLAN, 
+                m.CALLE, 
+                m.NRO_CALLE,
+                m.BARRIO, 
+                m.NACIMIENTO, 
+                m.TELEFONO, 
+                m.MOVIL, 
+                m.MAIL,                 
+                m.PRODUCTOR, 
+                m.LOCALIDAD, 
+                m.DOM_LAB , 
+                m.TSEG , 
+                "T" as "perfil", 
+                "WERCHOW SERV. SOC." as "OBRA_SOC",
+                "47" as "COD_OBRA", 
+                m.ADHERENTES, 
+                TIMESTAMPDIFF(YEAR,m.NACIMIENTO,CURDATE()) "EDAD",  
+                m.SEXO,
+                CASE 
+                    WHEN m.EMPRESA = "W" THEN  "WERCHOW"
+                    WHEN m.EMPRESA = "M" THEN  "MUTUAL"
+                    ELSE  null
+                END 'EMPRESA'                        
+                FROM bajas as m              
+                WHERE m.NRO_DOC = ${req.query.dni}
+
+    `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(mae, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "maestro baja contrato") {
+      const mae = await Werchow.$queryRaw`
+            SELECT
+                m.CONTRATO, 
+                m.GRUPO, 
+                m.SUCURSAL, 
+                m.NRO_DOC, 
+                m.APELLIDOS,
+                m.NOMBRES, 
+                m.ALTA, 
+                m.VIGENCIA, 
+                m.DOM_LAB, 
+                m.PLAN,
+                m.SUB_PLAN, 
+                m.CALLE, 
+                m.NRO_CALLE,
+                m.BARRIO, 
+                m.NACIMIENTO, 
+                m.TELEFONO, 
+                m.MOVIL, 
+                m.MAIL,                 
+                m.PRODUCTOR, 
+                m.LOCALIDAD, 
+                m.DOM_LAB , 
+                m.TSEG , 
+                "T" as "perfil", 
+                "WERCHOW SERV. SOC." as "OBRA_SOC",
+                "47" as "COD_OBRA", 
+                m.ADHERENTES, 
+                TIMESTAMPDIFF(YEAR,m.NACIMIENTO,CURDATE()) "EDAD",  
+                m.SEXO,
+                CASE 
+                    WHEN m.EMPRESA = "W" THEN  "WERCHOW"
+                    WHEN m.EMPRESA = "M" THEN  "MUTUAL"
+                    ELSE  null
+                END 'EMPRESA'                        
+                FROM bajas as m              
+                WHERE m.CONTRATO = ${req.query.ficha}
+
+    `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(mae, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     } else if (req.query.f && req.query.f === "adh") {
       const adh = await Werchow.$queryRaw`
           SELECT
@@ -245,6 +357,118 @@ export default async function handler(req, res) {
         .status(200)
         .json(
           JSON.stringify(mut, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "mutual apellido") {
+      const mae = await Werchow.$queryRawUnsafe(`
+            SELECT
+               *    
+            FROM mutual as m               
+            WHERE m.APELLIDOS LIKE UPPER('%${req.query.apellido}%')
+
+    `);
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(mae, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "maestro baja") {
+      const mae = await Werchow.$queryRaw`
+            SELECT
+                m.CONTRATO, 
+                m.GRUPO, 
+                m.SUCURSAL, 
+                m.NRO_DOC, 
+                m.APELLIDOS,
+                m.NOMBRES, 
+                m.ALTA, 
+                m.VIGENCIA, 
+                m.DOM_LAB, 
+                m.PLAN,
+                m.SUB_PLAN, 
+                m.CALLE, 
+                m.NRO_CALLE,
+                m.BARRIO, 
+                m.NACIMIENTO, 
+                m.TELEFONO, 
+                m.MOVIL, 
+                m.MAIL,                 
+                m.PRODUCTOR, 
+                m.LOCALIDAD, 
+                m.DOM_LAB , 
+                m.TSEG , 
+                "T" as "perfil", 
+                "WERCHOW SERV. SOC." as "OBRA_SOC",
+                "47" as "COD_OBRA", 
+                m.ADHERENTES, 
+                TIMESTAMPDIFF(YEAR,m.NACIMIENTO,CURDATE()) "EDAD",  
+                m.SEXO,
+                CASE 
+                    WHEN m.EMPRESA = "W" THEN  "WERCHOW"
+                    WHEN m.EMPRESA = "M" THEN  "MUTUAL"
+                    ELSE  null
+                END 'EMPRESA'                        
+                FROM bajas_mutual as m              
+                WHERE m.NRO_DOC = ${req.query.dni}
+
+    `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(mae, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "maestro baja contrato") {
+      const mae = await Werchow.$queryRaw`
+            SELECT
+                m.CONTRATO, 
+                m.GRUPO, 
+                m.SUCURSAL, 
+                m.NRO_DOC, 
+                m.APELLIDOS,
+                m.NOMBRES, 
+                m.ALTA, 
+                m.VIGENCIA, 
+                m.DOM_LAB, 
+                m.PLAN,
+                m.SUB_PLAN, 
+                m.CALLE, 
+                m.NRO_CALLE,
+                m.BARRIO, 
+                m.NACIMIENTO, 
+                m.TELEFONO, 
+                m.MOVIL, 
+                m.MAIL,                 
+                m.PRODUCTOR, 
+                m.LOCALIDAD, 
+                m.DOM_LAB , 
+                m.TSEG , 
+                "T" as "perfil", 
+                "WERCHOW SERV. SOC." as "OBRA_SOC",
+                "47" as "COD_OBRA", 
+                m.ADHERENTES, 
+                TIMESTAMPDIFF(YEAR,m.NACIMIENTO,CURDATE()) "EDAD",  
+                m.SEXO,
+                CASE 
+                    WHEN m.EMPRESA = "W" THEN  "WERCHOW"
+                    WHEN m.EMPRESA = "M" THEN  "MUTUAL"
+                    ELSE  null
+                END 'EMPRESA'                        
+                FROM bajas_mutual as m              
+                WHERE m.CONTRATO = ${req.query.ficha}
+
+    `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(mae, (key, value) =>
             typeof value === "bigint" ? value.toString() : value
           )
         );

@@ -536,10 +536,12 @@ exports.Prisma.OperadorScalarFieldEnum = {
   contrasena: 'contrasena',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  puestom: 'puestom',
   perfil: 'perfil',
   estado: 'estado',
   puestow: 'puestow',
+  seriew: 'seriew',
+  puestom: 'puestom',
+  seriem: 'seriem',
   codigo: 'codigo',
   medicos: 'medicos',
   sucursal: 'sucursal',
@@ -550,7 +552,8 @@ exports.Prisma.OperadorScalarFieldEnum = {
   administracion: 'administracion',
   campanas: 'campanas',
   socios: 'socios',
-  sepelio: 'sepelio'
+  sepelio: 'sepelio',
+  cobranza: 'cobranza'
 };
 
 exports.Prisma.Ordenes_pagoScalarFieldEnum = {

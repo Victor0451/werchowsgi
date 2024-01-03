@@ -24,6 +24,7 @@ function auditoriaorden(props) {
   const [lisFabian, guardarListFabian] = useState([]);
   const [orden, guardarOrden] = useState([]);
   const [ordenPag, guardarOrdenPag] = useState([]);
+  const [datosOrden, guardarDatosOrden] = useState([]);
   const [sis, guardarSis] = useState("");
   const [estO, guardarEstO] = useState(0);
   const [estF, guardarEstF] = useState(0);
@@ -442,6 +443,8 @@ function auditoriaorden(props) {
           if (res.data.length > 0) {
             guardarOrdenPag(res.data);
 
+            traerDatosOrdenPago(nOrden);
+
             if (f === "update") {
               updateMontoOrdenPago(nOrden, res.data);
             }
@@ -454,6 +457,27 @@ function auditoriaorden(props) {
           toast.error("Ocurrio un error al traer la orden de pago");
         });
     }
+  };
+
+  const traerDatosOrdenPago = async (nOrden) => {
+    await axios
+      .get(`/api/ordenpago`, {
+        params: {
+          f: "traer datos orden",
+          idorden: nOrden,
+        },
+      })
+      .then((res) => {
+        if (res.data.length > 0) {
+          guardarDatosOrden(res.data[0]);
+        } else {
+          toast.info("El numero de orden de pago ingresado no existe");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al traer la orden de pago");
+      });
   };
 
   const calcTotales = (arr, f) => {
@@ -576,6 +600,7 @@ function auditoriaorden(props) {
             estO={estO}
             calcTotales={calcTotales}
             updateMontoDetalle={updateMontoDetalle}
+            datosOrden={datosOrden}
           />
         </>
       )}

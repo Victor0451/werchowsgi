@@ -30,7 +30,7 @@ export default function ModalAfiliacion({
 
   return (
     <Fragment>
-      <Button color="#0288d1" size="sm" onClick={handleOpen}>
+      <Button className=" bg-gray-900" size="sm" onClick={handleOpen}>
         Solicitud de Afiliacion
       </Button>
 

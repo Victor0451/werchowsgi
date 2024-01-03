@@ -19,8 +19,17 @@ import {
 } from "@heroicons/react/24/solid";
 import moment from "moment";
 import Link from "next/link";
+import ModalServHistoricos from "./ModalServHistoricos";
+import ExportarServicios from "./ExportarServicios";
+import ExportarServiciosHist from "./ExportarServiciosHist";
 
-const ListadoServicios = ({ listado, usu, noData }) => {
+const ListadoServicios = ({
+  listado,
+  usu,
+  noData,
+  listadoHist,
+  ServiciosHistoricos,
+}) => {
   let columns = [
     {
       name: "#",
@@ -148,12 +157,21 @@ const ListadoServicios = ({ listado, usu, noData }) => {
             <u>Total</u>: {listado.length}
           </Typography>
 
-          <div className="mt-5 mb-5 border-2 p-4">
+          <div className="mt-5 mb-5 border-2 rounded-xl p-4">
             <Typography variant="h5" color="blue-gray">
-              Resumen
+              Opciones
             </Typography>
 
-            <div className=" mt-4 grid gap-6 mb-6 md:grid-cols-5"></div>
+            <div className=" mt-4 grid gap-6 mb-6 md:grid-cols-5">
+              <ModalServHistoricos
+                listado={listadoHist}
+                ServiciosHistoricos={ServiciosHistoricos}
+              />
+
+              <ExportarServiciosHist listado={listadoHist} />
+
+              <ExportarServicios listado={listado} />
+            </div>
           </div>
 
           {noData === true ? (

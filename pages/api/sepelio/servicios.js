@@ -20,6 +20,10 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(servicios);
+    } else if (req.query.f && req.query.f === "traer servicios historicos") {
+      const servicios = await Sep.servicios_historico.findMany();
+
+      res.status(200).json(servicios);
     } else if (req.query.f && req.query.f === "legajo servicio") {
       const servicios = await Sep.servicios.findMany({
         where: {

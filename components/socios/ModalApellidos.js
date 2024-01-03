@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useMemo } from "react";
-import DataTable from "react-data-table-component";
 import FilterComponent from "../Layouts/FilterComponent";
+import DataTable from "react-data-table-component";
 import {
   Button,
   Dialog,
@@ -11,83 +11,80 @@ import {
   Alert,
   Input,
 } from "@material-tailwind/react";
-import { DocumentIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
+import {
+  InformationCircleIcon,
+  ArrowLeftCircleIcon,
+} from "@heroicons/react/24/solid";
 import moment from "moment";
-import ReactToPrint from "react-to-print";
 
-export default function ListadoUsos({ listado }) {
-  let componentRef = React.createRef();
+export default function ModalApellidos({
+  nombreBoton,
+  listado,
+  fn,
+  tarerSocioContrato,
+  tarerSocioContratoMutual,
+}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
   let columns = [
     {
+      name: "#",
+      button: true,
+      grow: 0.1,
+      cell: (row, index) => <>{index + 1}</>,
+    },
+    {
       name: "Ficha",
       selector: (row) => `${row.CONTRATO}`,
       sortable: true,
-      width: "80px",
+      grow: 0.1,
     },
     {
-      name: "Fecha",
-      selector: (row) => `${moment(row.FECHA).format("DD/MM/YYYY")}`,
+      name: "Grupo",
+      selector: (row) => `${row.GRUPO}`,
       sortable: true,
-      width: "100px",
+      grow: 0.1,
+    },
+    {
+      name: "Titular",
+      selector: (row) => `${row.APELLIDOS}, ${row.NOMBRES}`,
+      sortable: true,
+      grow: 0.4,
     },
 
     {
-      name: "Hora",
-      selector: (row) => `${row.HORA}`,
-      sortable: true,
-      width: "80px",
-    },
-    {
-      name: "DNI Benef.",
+      name: "DNI",
       selector: (row) => `${row.NRO_DOC}`,
       sortable: true,
-      width: "100px",
+      grow: 0.1,
     },
+
     {
-      name: "N° Orden",
-      selector: (row) => `${row.ORDEN}`,
+      name: "Fecha Alta",
+      selector: (row) => `${moment(row.ALTA).format("DD/MM/YYYY")}`,
       sortable: true,
-      width: "150px",
+      grow: 0.2,
     },
+
     {
-      name: "Prestador",
-      selector: (row) => `${row.NOMBRE}`,
-      sortable: true,
-      width: "300px",
-    },
-    {
-      name: "Servicio",
-      selector: (row) => `${row.SERVICIO}`,
-      sortable: true,
-      width: "80px",
-    },
-    {
-      name: "Importe",
-      selector: (row) => `${row.IMPORTE}`,
-      sortable: true,
-      width: "80px",
-    },
-    {
-      name: "Sistema",
-      selector: (row) => `${row.SISTEMA}`,
-      sortable: true,
-      width: "80px",
-    },
-    {
-      name: "Estado",
+      name: "Acciones",
       button: true,
-      width: "80px",
+      grow: 0.1,
       cell: (row, index) => (
         <>
-          {row.ANULADO === 0 ||
-          row.ANULADO === "" ||
-          row.ANULADO === "FALSO" ? (
-            <div>ACTIVA</div>
-          ) : row.ANULADO === 1 || row.ANULADO === "VERDADERO" ? (
-            <div>ANULADA</div>
+          {nombreBoton === "Werchow" ? (
+            <ArrowLeftCircleIcon
+              color="green"
+              className="butlist mt-px h-6 w-6 "
+              onClick={() => tarerSocioContrato(row.CONTRATO)}
+            />
+          ) : nombreBoton === "Mutual" ? (
+            <ArrowLeftCircleIcon
+              color="green"
+              className="butlist mt-px h-6 w-6 "
+              onClick={() => tarerSocioContratoMutual(row.CONTRATO)}
+            />
           ) : null}
         </>
       ),
@@ -125,8 +122,14 @@ export default function ListadoUsos({ listado }) {
 
   return (
     <Fragment>
-      <Button className=" bg-gray-900" size="sm" onClick={handleOpen}>
-        Historial de Usos
+      <Button
+        color="#0288d1"
+        size="sm"
+        onClick={() => {
+          handleOpen(), fn();
+        }}
+      >
+        {nombreBoton}
       </Button>
 
       <Dialog
@@ -138,16 +141,13 @@ export default function ListadoUsos({ listado }) {
         }}
         size="xl"
       >
-        <DialogHeader>Historial de Usos</DialogHeader>
-
+        <DialogHeader>Listado de Socios</DialogHeader>
         <DialogBody divider={true} className="h-[45vw] overflow-scroll">
-          <div className="border p-4 rounded-xl">
-            <Typography variant="h5" color="blue-gray">
-              Usos registrados
+          <div className="w-full  p-4 border-2 rounded-xl mt-5">
+            <Typography variant="h5">
+              Listado de Titulares - {nombreBoton}
             </Typography>
-            <Typography color="gray" className="mt-4 mb-4 font-normal">
-              <u>Total</u>: {listado.length}
-            </Typography>
+
             <DataTable
               columns={columns}
               data={filteredItems}
@@ -158,6 +158,16 @@ export default function ListadoUsos({ listado }) {
               subHeaderComponent={subHeaderComponent}
             />
           </div>
+
+          <Alert
+            className="mt-5 mb-5 text-white"
+            color="blue"
+            icon={<InformationCircleIcon strokeWidth={2} className="h-6 w-6" />}
+          >
+            En el listado generado solamente figuran las fichas que estan
+            activas (al dia o morosas). Las fichas que estan dadas de baja, no
+            figuraran.
+          </Alert>
         </DialogBody>
         <DialogFooter>
           <Button

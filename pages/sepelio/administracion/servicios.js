@@ -51,56 +51,52 @@ function servicios(props) {
   };
 
   const actImpactado = async (flag) => {
-    if (listado.length === 0) {
-      toast.info("No hay servicios sin impactar");
-    } else {
-      let data = {
-        f: "",
-      };
+    let data = {
+      f: "",
+    };
 
-      if (flag === "TW") {
-        data.f = "act titulares werchow";
-      } else if (flag === "TM") {
-        data.f = "act titulares mutual";
-      } else if (flag === "AW") {
-        data.f = "act adherentes werchow";
-      } else if (flag === "AM") {
-        data.f = "act adherentes mutual";
-      }
-
-      toast.info(
-        "Aplicando actualizacion... Esto puede demorar unos segundos."
-      );
-
-      await axios
-        .put("/api/sepelio/servicios", data)
-        .then((res) => {
-          if (res.status === 200) {
-            if (flag === "TW") {
-              toast.success(
-                "Servicios de TITULARES WERCHOW, actualizados e impactados"
-              );
-            } else if (flag === "TM") {
-              toast.success(
-                "Servicios de TITULARES MUTUAL, actualizados e impactados"
-              );
-            } else if (flag === "AW") {
-              toast.success(
-                "Servicios de ADHERENTES WERCHOW, actualizados e impactados"
-              );
-            } else if (flag === "AM") {
-              toast.success(
-                "Servicios de ADHERENTES MUTUAL, actualizados e impactados"
-              );
-            }
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-
-          toast.error("Ocurrio un error al ejecutar la funcion");
-        });
+    if (flag === "TW") {
+      data.f = "act titulares werchow";
+    } else if (flag === "TM") {
+      data.f = "act titulares mutual";
+    } else if (flag === "AW") {
+      data.f = "act adherentes werchow";
+    } else if (flag === "AM") {
+      data.f = "act adherentes mutual";
     }
+
+    toast.info(
+      "Analizando servicios sin impactar... Esto puede demorar unos segundos."
+    );
+
+    await axios
+      .put("/api/sepelio/servicios", data)
+      .then((res) => {
+        if (res.status === 200) {
+          if (flag === "TW") {
+            toast.success(
+              "Servicios sin impactar encotrados de TITULARES WERCHOW."
+            );
+          } else if (flag === "TM") {
+            toast.success(
+              "Servicios sin impactar encotrados de TITULARES MUTUAL."
+            );
+          } else if (flag === "AW") {
+            toast.success(
+              "Servicios sin impactar encotrados de ADHERENTES WERCHOW."
+            );
+          } else if (flag === "AM") {
+            toast.success(
+              "Servicios sin impactar encotrados de ADHERENTES MUTUAL."
+            );
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+
+        toast.error("Ocurrio un error al ejecutar la funcion");
+      });
   };
 
   useSWR("/api/sepelio/servicios", servSinImpac);

@@ -1,6 +1,4 @@
 import React, { Fragment, useState, useMemo } from "react";
-import DataTable from "react-data-table-component";
-import FilterComponent from "../Layouts/FilterComponent";
 import {
   Button,
   Dialog,
@@ -10,87 +8,64 @@ import {
   Typography,
   Alert,
   Input,
+  Spinner,
 } from "@material-tailwind/react";
-import { DocumentIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
+import { ArrowLeftCircleIcon } from "@heroicons/react/24/solid";
 import moment from "moment";
-import ReactToPrint from "react-to-print";
+import DataTable from "react-data-table-component";
+import FilterComponent from "../../Layouts/FilterComponent";
 
-export default function ListadoUsos({ listado }) {
-  let componentRef = React.createRef();
+export default function ModalServHistoricos({ listado, ServiciosHistoricos }) {
+  console.log(listado);
+
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = () => {
+    setOpen(!open);
+    ServiciosHistoricos();
+  };
 
   let columns = [
+    {
+      name: "#",
+      button: true,
+      grow: 0.1,
+      cell: (row, index) => <>{index + 1}</>,
+    },
+    {
+      name: "N° Nota Credito",
+      selector: (row) => `${row.NRO_NOTACR}`,
+      sortable: true,
+      grow: 0.1,
+    },
+    {
+      name: "Fecha",
+      selector: (row) => `${moment(row.FEC_FALLEC).format("DD/MM/YYYY")}`,
+      sortable: true,
+      grow: 0.1,
+    },
     {
       name: "Ficha",
       selector: (row) => `${row.CONTRATO}`,
       sortable: true,
-      width: "80px",
+      grow: 0.1,
     },
     {
-      name: "Fecha",
-      selector: (row) => `${moment(row.FECHA).format("DD/MM/YYYY")}`,
+      name: "Fallecido",
+      selector: (row) => `${row.EXINTO}`,
       sortable: true,
-      width: "100px",
+      grow: 0.3,
     },
-
     {
-      name: "Hora",
-      selector: (row) => `${row.HORA}`,
+      name: "DNI",
+      selector: (row) => `${row.DNI_EXIN}`,
       sortable: true,
-      width: "80px",
+      grow: 0.1,
     },
     {
-      name: "DNI Benef.",
-      selector: (row) => `${row.NRO_DOC}`,
+      name: "Lugar",
+      selector: (row) => `${row.LUGAR}`,
       sortable: true,
-      width: "100px",
-    },
-    {
-      name: "N° Orden",
-      selector: (row) => `${row.ORDEN}`,
-      sortable: true,
-      width: "150px",
-    },
-    {
-      name: "Prestador",
-      selector: (row) => `${row.NOMBRE}`,
-      sortable: true,
-      width: "300px",
-    },
-    {
-      name: "Servicio",
-      selector: (row) => `${row.SERVICIO}`,
-      sortable: true,
-      width: "80px",
-    },
-    {
-      name: "Importe",
-      selector: (row) => `${row.IMPORTE}`,
-      sortable: true,
-      width: "80px",
-    },
-    {
-      name: "Sistema",
-      selector: (row) => `${row.SISTEMA}`,
-      sortable: true,
-      width: "80px",
-    },
-    {
-      name: "Estado",
-      button: true,
-      width: "80px",
-      cell: (row, index) => (
-        <>
-          {row.ANULADO === 0 ||
-          row.ANULADO === "" ||
-          row.ANULADO === "FALSO" ? (
-            <div>ACTIVA</div>
-          ) : row.ANULADO === 1 || row.ANULADO === "VERDADERO" ? (
-            <div>ANULADA</div>
-          ) : null}
-        </>
-      ),
+      grow: 0.3,
     },
   ];
 
@@ -125,8 +100,13 @@ export default function ListadoUsos({ listado }) {
 
   return (
     <Fragment>
-      <Button className=" bg-gray-900" size="sm" onClick={handleOpen}>
-        Historial de Usos
+      <Button
+        color="blue"
+        onClick={() => {
+          handleOpen();
+        }}
+      >
+        Servicios Historicos
       </Button>
 
       <Dialog
@@ -138,16 +118,13 @@ export default function ListadoUsos({ listado }) {
         }}
         size="xl"
       >
-        <DialogHeader>Historial de Usos</DialogHeader>
-
+        <DialogHeader>Listado de Servicios Historicos</DialogHeader>
         <DialogBody divider={true} className="h-[45vw] overflow-scroll">
-          <div className="border p-4 rounded-xl">
-            <Typography variant="h5" color="blue-gray">
-              Usos registrados
-            </Typography>
-            <Typography color="gray" className="mt-4 mb-4 font-normal">
-              <u>Total</u>: {listado.length}
-            </Typography>
+          {listado.length === 0 ? (
+            <div className="flex justify-center mt-5 mb-5 gap-8">
+              <Spinner className="h-12 w-12" />
+            </div>
+          ) : (
             <DataTable
               columns={columns}
               data={filteredItems}
@@ -157,7 +134,7 @@ export default function ListadoUsos({ listado }) {
               subHeader
               subHeaderComponent={subHeaderComponent}
             />
-          </div>
+          )}
         </DialogBody>
         <DialogFooter>
           <Button

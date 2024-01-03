@@ -188,6 +188,23 @@ function listadoorden(props) {
     });
   };
 
+  const conditionalRowStyles = [
+    {
+      when: (row) => row.estado === false,
+      style: {
+        backgroundColor: "red",
+        color: "white",
+      },
+    },
+    {
+      when: (row) => row.estado === true && row.autorizado === true,
+      style: {
+        backgroundColor: "greenyellow",
+        color: "black",
+      },
+    },
+  ];
+
   useSWR("/api/ordenpago", traerDatos);
 
   if (isLoading === true) return <Skeleton />;
@@ -205,6 +222,7 @@ function listadoorden(props) {
             aprobarOrden={aprobarOrden}
             anularOrden={anularOrden}
             mandarMail={mandarMail}
+            conditionalRowStyles={conditionalRowStyles}
           />
         </>
       )}

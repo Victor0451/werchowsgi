@@ -14,9 +14,14 @@ import {
   ButtonGroup,
   Spinner,
 } from "@material-tailwind/react";
+import {
+  CheckCircleIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/solid";
 import ListadoDetalleOrden from "./ListadoDetalleOrden";
 import ListadoOrdenesSinPuntear from "./ListadoOrdenesSinPuntear";
 import ListadoOrdenesAuditoria from "./ListadoOrdenesAuditoria";
+import moment from "moment";
 
 const FormAuditoria = ({
   traerUsosSinPuntear,
@@ -41,6 +46,7 @@ const FormAuditoria = ({
   estO,
   calcTotales,
   updateMontoDetalle,
+  datosOrden,
 }) => {
   return (
     <Card className="h-full w-full p-4 mt-5 border-2 ">
@@ -201,15 +207,58 @@ const FormAuditoria = ({
               </Button>
             </div>
           </div>
+
           <div className="mt-5 border-2 p-2 rounded-xl">
+            <div className="mt-5 mb-5">
+              {datosOrden.estado === true ? (
+                <Alert
+                  color="blue"
+                  icon={
+                    <InformationCircleIcon
+                      strokeWidth={2}
+                      className="h-6 w-6"
+                    />
+                  }
+                >
+                  {datosOrden.autorizado === true ? (
+                    <>
+                      La orden de pago esta activa y fue autorizada por{" "}
+                      {datosOrden.operador_autorizacion} para que sea abonada.
+                    </>
+                  ) : datosOrden.autorizado === false ? (
+                    <>
+                      La orden de pago esta activa pero aun sin autorizacion por
+                      parte de gerencia para ser abonada.
+                    </>
+                  ) : null}
+                </Alert>
+              ) : datosOrden.estado === false ? (
+                <Alert
+                  color="red"
+                  icon={
+                    <InformationCircleIcon
+                      strokeWidth={2}
+                      className="h-6 w-6"
+                    />
+                  }
+                >
+                  La orden de pago esta dada de baja, no tiene valor.
+                </Alert>
+              ) : null}
+            </div>
+
             <Typography variant="h6" color="blue-gray" className="mt-5">
-              <u>Monto Total de la Orden de Pago</u>:{" "}
-              {calcTotales(ordenPag, "t")}
+              <u>Monto Total de la Orden de Pago</u>: ${datosOrden.total}
             </Typography>
-            <Typography color="gray" className="mt-1 font-normal mb-5">
+            <Typography color="gray" className="mt-1 font-normal ">
               <u>Total de ordenes liquidadas </u>: {ordenPag.length}
             </Typography>
-
+            <Typography color="gray" className="mt-1 font-normal ">
+              <u>Prestador </u>: {datosOrden.proveedor} - {datosOrden.nombre}
+            </Typography>
+            <Typography color="gray" className="mt-1 font-normal mb-5">
+              <u>Fecha </u>: {moment(datosOrden.fecha).format("DD/MM/YYYY")}
+            </Typography>
             <ListadoDetalleOrden listado={ordenPag} />
           </div>
         </div>

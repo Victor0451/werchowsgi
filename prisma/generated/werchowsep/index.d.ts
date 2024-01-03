@@ -657,6 +657,83 @@ export type serviciosPayload<ExtArgs extends $Extensions.Args = $Extensions.Defa
  * 
  */
 export type servicios = runtime.Types.DefaultSelection<serviciosPayload>
+export type servicios_historicoPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    NRO_NOTACR: number | null
+    FEC_CREDIT: Date | null
+    EXINTO: string | null
+    DNI_EXIN: number | null
+    EDAD_EXIN: number | null
+    FEC_FALLEC: Date | null
+    LUGAR: string | null
+    TIPO_SERV: string | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    CONTRATO: number | null
+    CASA_MORT: string | null
+    FEC_INHU: Date | null
+    HORA: string | null
+    CEMENTERIO: string | null
+    DONDE_ENTI: string | null
+    ATAUD_TIPO: string | null
+    COD_ATAUD: number | null
+    DETALLE: string | null
+    RETI_CUER: string | null
+    TRASLADO_A: string | null
+    DIFE_KM: number | null
+    CAPI_DOMI: string | null
+    GRAB_PLACA: string | null
+    TRAMITES: string | null
+    AVISO_TELR: string | null
+    CARROZA: number | null
+    PORTACORO: string | null
+    AUTO_DUELO: number | null
+    SALA_VELAT: string | null
+    ADICIONAL: string | null
+    ADICIO_PAG: number | null
+    OBSERVA0: string | null
+    PARCELA: string | null
+    SEC: string | null
+    PARC: string | null
+    SECC: string | null
+    GASTO_ASOC: number | null
+    GASTO_PAMI: string | null
+    OBSERVA1: string | null
+    OPE_ANUL: number | null
+    ANULAR: number | null
+    FEC_ANULA: Date | null
+    CREDITO: number | null
+    TOTA_LETRA: string | null
+    TOTA_NUM: number | null
+    FORMA_PAGO: string | null
+    DOCUMENTO: string | null
+    SOLI_CRED: string | null
+    GARANT_CRE: string | null
+    DNI_SOLI: number | null
+    TEL_SOLI: string | null
+    DOMI_SOLI: string | null
+    DNI_GARANT: number | null
+    TEL_GARANT: string | null
+    DOMI_GARAN: string | null
+    OPE_ANUCRE: number | null
+    ANULA_CRE: number | null
+    FECANU_CRE: Date | null
+    INFO_CRE: number | null
+    SUCURSAL: string | null
+    OPERADOR: number | null
+    TRASPASO: Date | null
+    EMPRESA: string | null
+    id: number
+  }, ExtArgs["result"]["servicios_historico"]>
+  composites: {}
+}
+
+/**
+ * Model servicios_historico
+ * 
+ */
+export type servicios_historico = runtime.Types.DefaultSelection<servicios_historicoPayload>
 export type servicios_liquidacionPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -1255,6 +1332,16 @@ export class PrismaClient<
     * ```
     */
   get servicios(): Prisma.serviciosDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.servicios_historico`: Exposes CRUD operations for the **servicios_historico** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Servicios_historicos
+    * const servicios_historicos = await prisma.servicios_historico.findMany()
+    * ```
+    */
+  get servicios_historico(): Prisma.servicios_historicoDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.servicios_liquidacion`: Exposes CRUD operations for the **servicios_liquidacion** model.
@@ -1856,6 +1943,7 @@ export namespace Prisma {
     servicio_gastos: 'servicio_gastos',
     servicio_venta: 'servicio_venta',
     servicios: 'servicios',
+    servicios_historico: 'servicios_historico',
     servicios_liquidacion: 'servicios_liquidacion',
     tareas: 'tareas',
     tareas_adicionales: 'tareas_adicionales',
@@ -1881,7 +1969,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sepelio' | 'conceptos' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'novedades' | 'operadorsep' | 'parcelas' | 'planificacion_guardias' | 'precio_servicio' | 'proveedores' | 'servicio_detalles' | 'servicio_gastos' | 'servicio_venta' | 'servicios' | 'servicios_liquidacion' | 'tareas' | 'tareas_adicionales' | 'tipo_detalle' | 'visitantes' | 'parcelas_lugares' | 'caja_sa' | 'caja_srl' | 'generacion_cajas'
+      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sepelio' | 'conceptos' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'novedades' | 'operadorsep' | 'parcelas' | 'planificacion_guardias' | 'precio_servicio' | 'proveedores' | 'servicio_detalles' | 'servicio_gastos' | 'servicio_venta' | 'servicios' | 'servicios_historico' | 'servicios_liquidacion' | 'tareas' | 'tareas_adicionales' | 'tipo_detalle' | 'visitantes' | 'parcelas_lugares' | 'caja_sa' | 'caja_srl' | 'generacion_cajas'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -4094,6 +4182,85 @@ export namespace Prisma {
             args: Prisma.serviciosCountArgs<ExtArgs>,
             result: $Utils.Optional<ServiciosCountAggregateOutputType> | number
             payload: serviciosPayload<ExtArgs>
+          }
+        }
+      }
+      servicios_historico: {
+        operations: {
+          findUnique: {
+            args: Prisma.servicios_historicoFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicios_historicoPayload> | null
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.servicios_historicoFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicios_historicoPayload>
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.servicios_historicoFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicios_historicoPayload> | null
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.servicios_historicoFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicios_historicoPayload>
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.servicios_historicoFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicios_historicoPayload>[]
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.servicios_historicoCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicios_historicoPayload>
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.servicios_historicoCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.servicios_historicoDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicios_historicoPayload>
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.servicios_historicoUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicios_historicoPayload>
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.servicios_historicoDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.servicios_historicoUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.servicios_historicoUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicios_historicoPayload>
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Servicios_historicoAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateServicios_historico>
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.servicios_historicoGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Servicios_historicoGroupByOutputType>[]
+            payload: servicios_historicoPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.servicios_historicoCountArgs<ExtArgs>,
+            result: $Utils.Optional<Servicios_historicoCountAggregateOutputType> | number
+            payload: servicios_historicoPayload<ExtArgs>
           }
         }
       }
@@ -32402,6 +32569,1538 @@ export namespace Prisma {
 
 
   /**
+   * Model servicios_historico
+   */
+
+
+  export type AggregateServicios_historico = {
+    _count: Servicios_historicoCountAggregateOutputType | null
+    _avg: Servicios_historicoAvgAggregateOutputType | null
+    _sum: Servicios_historicoSumAggregateOutputType | null
+    _min: Servicios_historicoMinAggregateOutputType | null
+    _max: Servicios_historicoMaxAggregateOutputType | null
+  }
+
+  export type Servicios_historicoAvgAggregateOutputType = {
+    NRO_NOTACR: number | null
+    DNI_EXIN: number | null
+    EDAD_EXIN: number | null
+    CONTRATO: number | null
+    COD_ATAUD: number | null
+    DIFE_KM: number | null
+    CARROZA: number | null
+    AUTO_DUELO: number | null
+    ADICIO_PAG: number | null
+    GASTO_ASOC: number | null
+    OPE_ANUL: number | null
+    ANULAR: number | null
+    CREDITO: number | null
+    TOTA_NUM: number | null
+    DNI_SOLI: number | null
+    DNI_GARANT: number | null
+    OPE_ANUCRE: number | null
+    ANULA_CRE: number | null
+    INFO_CRE: number | null
+    OPERADOR: number | null
+    id: number | null
+  }
+
+  export type Servicios_historicoSumAggregateOutputType = {
+    NRO_NOTACR: number | null
+    DNI_EXIN: number | null
+    EDAD_EXIN: number | null
+    CONTRATO: number | null
+    COD_ATAUD: number | null
+    DIFE_KM: number | null
+    CARROZA: number | null
+    AUTO_DUELO: number | null
+    ADICIO_PAG: number | null
+    GASTO_ASOC: number | null
+    OPE_ANUL: number | null
+    ANULAR: number | null
+    CREDITO: number | null
+    TOTA_NUM: number | null
+    DNI_SOLI: number | null
+    DNI_GARANT: number | null
+    OPE_ANUCRE: number | null
+    ANULA_CRE: number | null
+    INFO_CRE: number | null
+    OPERADOR: number | null
+    id: number | null
+  }
+
+  export type Servicios_historicoMinAggregateOutputType = {
+    NRO_NOTACR: number | null
+    FEC_CREDIT: Date | null
+    EXINTO: string | null
+    DNI_EXIN: number | null
+    EDAD_EXIN: number | null
+    FEC_FALLEC: Date | null
+    LUGAR: string | null
+    TIPO_SERV: string | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    CONTRATO: number | null
+    CASA_MORT: string | null
+    FEC_INHU: Date | null
+    HORA: string | null
+    CEMENTERIO: string | null
+    DONDE_ENTI: string | null
+    ATAUD_TIPO: string | null
+    COD_ATAUD: number | null
+    DETALLE: string | null
+    RETI_CUER: string | null
+    TRASLADO_A: string | null
+    DIFE_KM: number | null
+    CAPI_DOMI: string | null
+    GRAB_PLACA: string | null
+    TRAMITES: string | null
+    AVISO_TELR: string | null
+    CARROZA: number | null
+    PORTACORO: string | null
+    AUTO_DUELO: number | null
+    SALA_VELAT: string | null
+    ADICIONAL: string | null
+    ADICIO_PAG: number | null
+    OBSERVA0: string | null
+    PARCELA: string | null
+    SEC: string | null
+    PARC: string | null
+    SECC: string | null
+    GASTO_ASOC: number | null
+    GASTO_PAMI: string | null
+    OBSERVA1: string | null
+    OPE_ANUL: number | null
+    ANULAR: number | null
+    FEC_ANULA: Date | null
+    CREDITO: number | null
+    TOTA_LETRA: string | null
+    TOTA_NUM: number | null
+    FORMA_PAGO: string | null
+    DOCUMENTO: string | null
+    SOLI_CRED: string | null
+    GARANT_CRE: string | null
+    DNI_SOLI: number | null
+    TEL_SOLI: string | null
+    DOMI_SOLI: string | null
+    DNI_GARANT: number | null
+    TEL_GARANT: string | null
+    DOMI_GARAN: string | null
+    OPE_ANUCRE: number | null
+    ANULA_CRE: number | null
+    FECANU_CRE: Date | null
+    INFO_CRE: number | null
+    SUCURSAL: string | null
+    OPERADOR: number | null
+    TRASPASO: Date | null
+    EMPRESA: string | null
+    id: number | null
+  }
+
+  export type Servicios_historicoMaxAggregateOutputType = {
+    NRO_NOTACR: number | null
+    FEC_CREDIT: Date | null
+    EXINTO: string | null
+    DNI_EXIN: number | null
+    EDAD_EXIN: number | null
+    FEC_FALLEC: Date | null
+    LUGAR: string | null
+    TIPO_SERV: string | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    CONTRATO: number | null
+    CASA_MORT: string | null
+    FEC_INHU: Date | null
+    HORA: string | null
+    CEMENTERIO: string | null
+    DONDE_ENTI: string | null
+    ATAUD_TIPO: string | null
+    COD_ATAUD: number | null
+    DETALLE: string | null
+    RETI_CUER: string | null
+    TRASLADO_A: string | null
+    DIFE_KM: number | null
+    CAPI_DOMI: string | null
+    GRAB_PLACA: string | null
+    TRAMITES: string | null
+    AVISO_TELR: string | null
+    CARROZA: number | null
+    PORTACORO: string | null
+    AUTO_DUELO: number | null
+    SALA_VELAT: string | null
+    ADICIONAL: string | null
+    ADICIO_PAG: number | null
+    OBSERVA0: string | null
+    PARCELA: string | null
+    SEC: string | null
+    PARC: string | null
+    SECC: string | null
+    GASTO_ASOC: number | null
+    GASTO_PAMI: string | null
+    OBSERVA1: string | null
+    OPE_ANUL: number | null
+    ANULAR: number | null
+    FEC_ANULA: Date | null
+    CREDITO: number | null
+    TOTA_LETRA: string | null
+    TOTA_NUM: number | null
+    FORMA_PAGO: string | null
+    DOCUMENTO: string | null
+    SOLI_CRED: string | null
+    GARANT_CRE: string | null
+    DNI_SOLI: number | null
+    TEL_SOLI: string | null
+    DOMI_SOLI: string | null
+    DNI_GARANT: number | null
+    TEL_GARANT: string | null
+    DOMI_GARAN: string | null
+    OPE_ANUCRE: number | null
+    ANULA_CRE: number | null
+    FECANU_CRE: Date | null
+    INFO_CRE: number | null
+    SUCURSAL: string | null
+    OPERADOR: number | null
+    TRASPASO: Date | null
+    EMPRESA: string | null
+    id: number | null
+  }
+
+  export type Servicios_historicoCountAggregateOutputType = {
+    NRO_NOTACR: number
+    FEC_CREDIT: number
+    EXINTO: number
+    DNI_EXIN: number
+    EDAD_EXIN: number
+    FEC_FALLEC: number
+    LUGAR: number
+    TIPO_SERV: number
+    PLAN: number
+    SUB_PLAN: number
+    CONTRATO: number
+    CASA_MORT: number
+    FEC_INHU: number
+    HORA: number
+    CEMENTERIO: number
+    DONDE_ENTI: number
+    ATAUD_TIPO: number
+    COD_ATAUD: number
+    DETALLE: number
+    RETI_CUER: number
+    TRASLADO_A: number
+    DIFE_KM: number
+    CAPI_DOMI: number
+    GRAB_PLACA: number
+    TRAMITES: number
+    AVISO_TELR: number
+    CARROZA: number
+    PORTACORO: number
+    AUTO_DUELO: number
+    SALA_VELAT: number
+    ADICIONAL: number
+    ADICIO_PAG: number
+    OBSERVA0: number
+    PARCELA: number
+    SEC: number
+    PARC: number
+    SECC: number
+    GASTO_ASOC: number
+    GASTO_PAMI: number
+    OBSERVA1: number
+    OPE_ANUL: number
+    ANULAR: number
+    FEC_ANULA: number
+    CREDITO: number
+    TOTA_LETRA: number
+    TOTA_NUM: number
+    FORMA_PAGO: number
+    DOCUMENTO: number
+    SOLI_CRED: number
+    GARANT_CRE: number
+    DNI_SOLI: number
+    TEL_SOLI: number
+    DOMI_SOLI: number
+    DNI_GARANT: number
+    TEL_GARANT: number
+    DOMI_GARAN: number
+    OPE_ANUCRE: number
+    ANULA_CRE: number
+    FECANU_CRE: number
+    INFO_CRE: number
+    SUCURSAL: number
+    OPERADOR: number
+    TRASPASO: number
+    EMPRESA: number
+    id: number
+    _all: number
+  }
+
+
+  export type Servicios_historicoAvgAggregateInputType = {
+    NRO_NOTACR?: true
+    DNI_EXIN?: true
+    EDAD_EXIN?: true
+    CONTRATO?: true
+    COD_ATAUD?: true
+    DIFE_KM?: true
+    CARROZA?: true
+    AUTO_DUELO?: true
+    ADICIO_PAG?: true
+    GASTO_ASOC?: true
+    OPE_ANUL?: true
+    ANULAR?: true
+    CREDITO?: true
+    TOTA_NUM?: true
+    DNI_SOLI?: true
+    DNI_GARANT?: true
+    OPE_ANUCRE?: true
+    ANULA_CRE?: true
+    INFO_CRE?: true
+    OPERADOR?: true
+    id?: true
+  }
+
+  export type Servicios_historicoSumAggregateInputType = {
+    NRO_NOTACR?: true
+    DNI_EXIN?: true
+    EDAD_EXIN?: true
+    CONTRATO?: true
+    COD_ATAUD?: true
+    DIFE_KM?: true
+    CARROZA?: true
+    AUTO_DUELO?: true
+    ADICIO_PAG?: true
+    GASTO_ASOC?: true
+    OPE_ANUL?: true
+    ANULAR?: true
+    CREDITO?: true
+    TOTA_NUM?: true
+    DNI_SOLI?: true
+    DNI_GARANT?: true
+    OPE_ANUCRE?: true
+    ANULA_CRE?: true
+    INFO_CRE?: true
+    OPERADOR?: true
+    id?: true
+  }
+
+  export type Servicios_historicoMinAggregateInputType = {
+    NRO_NOTACR?: true
+    FEC_CREDIT?: true
+    EXINTO?: true
+    DNI_EXIN?: true
+    EDAD_EXIN?: true
+    FEC_FALLEC?: true
+    LUGAR?: true
+    TIPO_SERV?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    CONTRATO?: true
+    CASA_MORT?: true
+    FEC_INHU?: true
+    HORA?: true
+    CEMENTERIO?: true
+    DONDE_ENTI?: true
+    ATAUD_TIPO?: true
+    COD_ATAUD?: true
+    DETALLE?: true
+    RETI_CUER?: true
+    TRASLADO_A?: true
+    DIFE_KM?: true
+    CAPI_DOMI?: true
+    GRAB_PLACA?: true
+    TRAMITES?: true
+    AVISO_TELR?: true
+    CARROZA?: true
+    PORTACORO?: true
+    AUTO_DUELO?: true
+    SALA_VELAT?: true
+    ADICIONAL?: true
+    ADICIO_PAG?: true
+    OBSERVA0?: true
+    PARCELA?: true
+    SEC?: true
+    PARC?: true
+    SECC?: true
+    GASTO_ASOC?: true
+    GASTO_PAMI?: true
+    OBSERVA1?: true
+    OPE_ANUL?: true
+    ANULAR?: true
+    FEC_ANULA?: true
+    CREDITO?: true
+    TOTA_LETRA?: true
+    TOTA_NUM?: true
+    FORMA_PAGO?: true
+    DOCUMENTO?: true
+    SOLI_CRED?: true
+    GARANT_CRE?: true
+    DNI_SOLI?: true
+    TEL_SOLI?: true
+    DOMI_SOLI?: true
+    DNI_GARANT?: true
+    TEL_GARANT?: true
+    DOMI_GARAN?: true
+    OPE_ANUCRE?: true
+    ANULA_CRE?: true
+    FECANU_CRE?: true
+    INFO_CRE?: true
+    SUCURSAL?: true
+    OPERADOR?: true
+    TRASPASO?: true
+    EMPRESA?: true
+    id?: true
+  }
+
+  export type Servicios_historicoMaxAggregateInputType = {
+    NRO_NOTACR?: true
+    FEC_CREDIT?: true
+    EXINTO?: true
+    DNI_EXIN?: true
+    EDAD_EXIN?: true
+    FEC_FALLEC?: true
+    LUGAR?: true
+    TIPO_SERV?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    CONTRATO?: true
+    CASA_MORT?: true
+    FEC_INHU?: true
+    HORA?: true
+    CEMENTERIO?: true
+    DONDE_ENTI?: true
+    ATAUD_TIPO?: true
+    COD_ATAUD?: true
+    DETALLE?: true
+    RETI_CUER?: true
+    TRASLADO_A?: true
+    DIFE_KM?: true
+    CAPI_DOMI?: true
+    GRAB_PLACA?: true
+    TRAMITES?: true
+    AVISO_TELR?: true
+    CARROZA?: true
+    PORTACORO?: true
+    AUTO_DUELO?: true
+    SALA_VELAT?: true
+    ADICIONAL?: true
+    ADICIO_PAG?: true
+    OBSERVA0?: true
+    PARCELA?: true
+    SEC?: true
+    PARC?: true
+    SECC?: true
+    GASTO_ASOC?: true
+    GASTO_PAMI?: true
+    OBSERVA1?: true
+    OPE_ANUL?: true
+    ANULAR?: true
+    FEC_ANULA?: true
+    CREDITO?: true
+    TOTA_LETRA?: true
+    TOTA_NUM?: true
+    FORMA_PAGO?: true
+    DOCUMENTO?: true
+    SOLI_CRED?: true
+    GARANT_CRE?: true
+    DNI_SOLI?: true
+    TEL_SOLI?: true
+    DOMI_SOLI?: true
+    DNI_GARANT?: true
+    TEL_GARANT?: true
+    DOMI_GARAN?: true
+    OPE_ANUCRE?: true
+    ANULA_CRE?: true
+    FECANU_CRE?: true
+    INFO_CRE?: true
+    SUCURSAL?: true
+    OPERADOR?: true
+    TRASPASO?: true
+    EMPRESA?: true
+    id?: true
+  }
+
+  export type Servicios_historicoCountAggregateInputType = {
+    NRO_NOTACR?: true
+    FEC_CREDIT?: true
+    EXINTO?: true
+    DNI_EXIN?: true
+    EDAD_EXIN?: true
+    FEC_FALLEC?: true
+    LUGAR?: true
+    TIPO_SERV?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    CONTRATO?: true
+    CASA_MORT?: true
+    FEC_INHU?: true
+    HORA?: true
+    CEMENTERIO?: true
+    DONDE_ENTI?: true
+    ATAUD_TIPO?: true
+    COD_ATAUD?: true
+    DETALLE?: true
+    RETI_CUER?: true
+    TRASLADO_A?: true
+    DIFE_KM?: true
+    CAPI_DOMI?: true
+    GRAB_PLACA?: true
+    TRAMITES?: true
+    AVISO_TELR?: true
+    CARROZA?: true
+    PORTACORO?: true
+    AUTO_DUELO?: true
+    SALA_VELAT?: true
+    ADICIONAL?: true
+    ADICIO_PAG?: true
+    OBSERVA0?: true
+    PARCELA?: true
+    SEC?: true
+    PARC?: true
+    SECC?: true
+    GASTO_ASOC?: true
+    GASTO_PAMI?: true
+    OBSERVA1?: true
+    OPE_ANUL?: true
+    ANULAR?: true
+    FEC_ANULA?: true
+    CREDITO?: true
+    TOTA_LETRA?: true
+    TOTA_NUM?: true
+    FORMA_PAGO?: true
+    DOCUMENTO?: true
+    SOLI_CRED?: true
+    GARANT_CRE?: true
+    DNI_SOLI?: true
+    TEL_SOLI?: true
+    DOMI_SOLI?: true
+    DNI_GARANT?: true
+    TEL_GARANT?: true
+    DOMI_GARAN?: true
+    OPE_ANUCRE?: true
+    ANULA_CRE?: true
+    FECANU_CRE?: true
+    INFO_CRE?: true
+    SUCURSAL?: true
+    OPERADOR?: true
+    TRASPASO?: true
+    EMPRESA?: true
+    id?: true
+    _all?: true
+  }
+
+  export type Servicios_historicoAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which servicios_historico to aggregate.
+     */
+    where?: servicios_historicoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicios_historicos to fetch.
+     */
+    orderBy?: servicios_historicoOrderByWithRelationInput | servicios_historicoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: servicios_historicoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicios_historicos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicios_historicos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned servicios_historicos
+    **/
+    _count?: true | Servicios_historicoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Servicios_historicoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Servicios_historicoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Servicios_historicoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Servicios_historicoMaxAggregateInputType
+  }
+
+  export type GetServicios_historicoAggregateType<T extends Servicios_historicoAggregateArgs> = {
+        [P in keyof T & keyof AggregateServicios_historico]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateServicios_historico[P]>
+      : GetScalarType<T[P], AggregateServicios_historico[P]>
+  }
+
+
+
+
+  export type servicios_historicoGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: servicios_historicoWhereInput
+    orderBy?: servicios_historicoOrderByWithAggregationInput | servicios_historicoOrderByWithAggregationInput[]
+    by: Servicios_historicoScalarFieldEnum[] | Servicios_historicoScalarFieldEnum
+    having?: servicios_historicoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Servicios_historicoCountAggregateInputType | true
+    _avg?: Servicios_historicoAvgAggregateInputType
+    _sum?: Servicios_historicoSumAggregateInputType
+    _min?: Servicios_historicoMinAggregateInputType
+    _max?: Servicios_historicoMaxAggregateInputType
+  }
+
+
+  export type Servicios_historicoGroupByOutputType = {
+    NRO_NOTACR: number | null
+    FEC_CREDIT: Date | null
+    EXINTO: string | null
+    DNI_EXIN: number | null
+    EDAD_EXIN: number | null
+    FEC_FALLEC: Date | null
+    LUGAR: string | null
+    TIPO_SERV: string | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    CONTRATO: number | null
+    CASA_MORT: string | null
+    FEC_INHU: Date | null
+    HORA: string | null
+    CEMENTERIO: string | null
+    DONDE_ENTI: string | null
+    ATAUD_TIPO: string | null
+    COD_ATAUD: number | null
+    DETALLE: string | null
+    RETI_CUER: string | null
+    TRASLADO_A: string | null
+    DIFE_KM: number | null
+    CAPI_DOMI: string | null
+    GRAB_PLACA: string | null
+    TRAMITES: string | null
+    AVISO_TELR: string | null
+    CARROZA: number | null
+    PORTACORO: string | null
+    AUTO_DUELO: number | null
+    SALA_VELAT: string | null
+    ADICIONAL: string | null
+    ADICIO_PAG: number | null
+    OBSERVA0: string | null
+    PARCELA: string | null
+    SEC: string | null
+    PARC: string | null
+    SECC: string | null
+    GASTO_ASOC: number | null
+    GASTO_PAMI: string | null
+    OBSERVA1: string | null
+    OPE_ANUL: number | null
+    ANULAR: number | null
+    FEC_ANULA: Date | null
+    CREDITO: number | null
+    TOTA_LETRA: string | null
+    TOTA_NUM: number | null
+    FORMA_PAGO: string | null
+    DOCUMENTO: string | null
+    SOLI_CRED: string | null
+    GARANT_CRE: string | null
+    DNI_SOLI: number | null
+    TEL_SOLI: string | null
+    DOMI_SOLI: string | null
+    DNI_GARANT: number | null
+    TEL_GARANT: string | null
+    DOMI_GARAN: string | null
+    OPE_ANUCRE: number | null
+    ANULA_CRE: number | null
+    FECANU_CRE: Date | null
+    INFO_CRE: number | null
+    SUCURSAL: string | null
+    OPERADOR: number | null
+    TRASPASO: Date | null
+    EMPRESA: string | null
+    id: number
+    _count: Servicios_historicoCountAggregateOutputType | null
+    _avg: Servicios_historicoAvgAggregateOutputType | null
+    _sum: Servicios_historicoSumAggregateOutputType | null
+    _min: Servicios_historicoMinAggregateOutputType | null
+    _max: Servicios_historicoMaxAggregateOutputType | null
+  }
+
+  type GetServicios_historicoGroupByPayload<T extends servicios_historicoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Servicios_historicoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Servicios_historicoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Servicios_historicoGroupByOutputType[P]>
+            : GetScalarType<T[P], Servicios_historicoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type servicios_historicoSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    NRO_NOTACR?: boolean
+    FEC_CREDIT?: boolean
+    EXINTO?: boolean
+    DNI_EXIN?: boolean
+    EDAD_EXIN?: boolean
+    FEC_FALLEC?: boolean
+    LUGAR?: boolean
+    TIPO_SERV?: boolean
+    PLAN?: boolean
+    SUB_PLAN?: boolean
+    CONTRATO?: boolean
+    CASA_MORT?: boolean
+    FEC_INHU?: boolean
+    HORA?: boolean
+    CEMENTERIO?: boolean
+    DONDE_ENTI?: boolean
+    ATAUD_TIPO?: boolean
+    COD_ATAUD?: boolean
+    DETALLE?: boolean
+    RETI_CUER?: boolean
+    TRASLADO_A?: boolean
+    DIFE_KM?: boolean
+    CAPI_DOMI?: boolean
+    GRAB_PLACA?: boolean
+    TRAMITES?: boolean
+    AVISO_TELR?: boolean
+    CARROZA?: boolean
+    PORTACORO?: boolean
+    AUTO_DUELO?: boolean
+    SALA_VELAT?: boolean
+    ADICIONAL?: boolean
+    ADICIO_PAG?: boolean
+    OBSERVA0?: boolean
+    PARCELA?: boolean
+    SEC?: boolean
+    PARC?: boolean
+    SECC?: boolean
+    GASTO_ASOC?: boolean
+    GASTO_PAMI?: boolean
+    OBSERVA1?: boolean
+    OPE_ANUL?: boolean
+    ANULAR?: boolean
+    FEC_ANULA?: boolean
+    CREDITO?: boolean
+    TOTA_LETRA?: boolean
+    TOTA_NUM?: boolean
+    FORMA_PAGO?: boolean
+    DOCUMENTO?: boolean
+    SOLI_CRED?: boolean
+    GARANT_CRE?: boolean
+    DNI_SOLI?: boolean
+    TEL_SOLI?: boolean
+    DOMI_SOLI?: boolean
+    DNI_GARANT?: boolean
+    TEL_GARANT?: boolean
+    DOMI_GARAN?: boolean
+    OPE_ANUCRE?: boolean
+    ANULA_CRE?: boolean
+    FECANU_CRE?: boolean
+    INFO_CRE?: boolean
+    SUCURSAL?: boolean
+    OPERADOR?: boolean
+    TRASPASO?: boolean
+    EMPRESA?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["servicios_historico"]>
+
+  export type servicios_historicoSelectScalar = {
+    NRO_NOTACR?: boolean
+    FEC_CREDIT?: boolean
+    EXINTO?: boolean
+    DNI_EXIN?: boolean
+    EDAD_EXIN?: boolean
+    FEC_FALLEC?: boolean
+    LUGAR?: boolean
+    TIPO_SERV?: boolean
+    PLAN?: boolean
+    SUB_PLAN?: boolean
+    CONTRATO?: boolean
+    CASA_MORT?: boolean
+    FEC_INHU?: boolean
+    HORA?: boolean
+    CEMENTERIO?: boolean
+    DONDE_ENTI?: boolean
+    ATAUD_TIPO?: boolean
+    COD_ATAUD?: boolean
+    DETALLE?: boolean
+    RETI_CUER?: boolean
+    TRASLADO_A?: boolean
+    DIFE_KM?: boolean
+    CAPI_DOMI?: boolean
+    GRAB_PLACA?: boolean
+    TRAMITES?: boolean
+    AVISO_TELR?: boolean
+    CARROZA?: boolean
+    PORTACORO?: boolean
+    AUTO_DUELO?: boolean
+    SALA_VELAT?: boolean
+    ADICIONAL?: boolean
+    ADICIO_PAG?: boolean
+    OBSERVA0?: boolean
+    PARCELA?: boolean
+    SEC?: boolean
+    PARC?: boolean
+    SECC?: boolean
+    GASTO_ASOC?: boolean
+    GASTO_PAMI?: boolean
+    OBSERVA1?: boolean
+    OPE_ANUL?: boolean
+    ANULAR?: boolean
+    FEC_ANULA?: boolean
+    CREDITO?: boolean
+    TOTA_LETRA?: boolean
+    TOTA_NUM?: boolean
+    FORMA_PAGO?: boolean
+    DOCUMENTO?: boolean
+    SOLI_CRED?: boolean
+    GARANT_CRE?: boolean
+    DNI_SOLI?: boolean
+    TEL_SOLI?: boolean
+    DOMI_SOLI?: boolean
+    DNI_GARANT?: boolean
+    TEL_GARANT?: boolean
+    DOMI_GARAN?: boolean
+    OPE_ANUCRE?: boolean
+    ANULA_CRE?: boolean
+    FECANU_CRE?: boolean
+    INFO_CRE?: boolean
+    SUCURSAL?: boolean
+    OPERADOR?: boolean
+    TRASPASO?: boolean
+    EMPRESA?: boolean
+    id?: boolean
+  }
+
+
+  type servicios_historicoGetPayload<S extends boolean | null | undefined | servicios_historicoArgs> = $Types.GetResult<servicios_historicoPayload, S>
+
+  type servicios_historicoCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<servicios_historicoFindManyArgs, 'select' | 'include'> & {
+      select?: Servicios_historicoCountAggregateInputType | true
+    }
+
+  export interface servicios_historicoDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['servicios_historico'], meta: { name: 'servicios_historico' } }
+    /**
+     * Find zero or one Servicios_historico that matches the filter.
+     * @param {servicios_historicoFindUniqueArgs} args - Arguments to find a Servicios_historico
+     * @example
+     * // Get one Servicios_historico
+     * const servicios_historico = await prisma.servicios_historico.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends servicios_historicoFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, servicios_historicoFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'servicios_historico'> extends True ? Prisma__servicios_historicoClient<$Types.GetResult<servicios_historicoPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__servicios_historicoClient<$Types.GetResult<servicios_historicoPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Servicios_historico that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {servicios_historicoFindUniqueOrThrowArgs} args - Arguments to find a Servicios_historico
+     * @example
+     * // Get one Servicios_historico
+     * const servicios_historico = await prisma.servicios_historico.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends servicios_historicoFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicios_historicoFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__servicios_historicoClient<$Types.GetResult<servicios_historicoPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Servicios_historico that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicios_historicoFindFirstArgs} args - Arguments to find a Servicios_historico
+     * @example
+     * // Get one Servicios_historico
+     * const servicios_historico = await prisma.servicios_historico.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends servicios_historicoFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, servicios_historicoFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'servicios_historico'> extends True ? Prisma__servicios_historicoClient<$Types.GetResult<servicios_historicoPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__servicios_historicoClient<$Types.GetResult<servicios_historicoPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Servicios_historico that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicios_historicoFindFirstOrThrowArgs} args - Arguments to find a Servicios_historico
+     * @example
+     * // Get one Servicios_historico
+     * const servicios_historico = await prisma.servicios_historico.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends servicios_historicoFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicios_historicoFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__servicios_historicoClient<$Types.GetResult<servicios_historicoPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Servicios_historicos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicios_historicoFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Servicios_historicos
+     * const servicios_historicos = await prisma.servicios_historico.findMany()
+     * 
+     * // Get first 10 Servicios_historicos
+     * const servicios_historicos = await prisma.servicios_historico.findMany({ take: 10 })
+     * 
+     * // Only select the `NRO_NOTACR`
+     * const servicios_historicoWithNRO_NOTACROnly = await prisma.servicios_historico.findMany({ select: { NRO_NOTACR: true } })
+     * 
+    **/
+    findMany<T extends servicios_historicoFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicios_historicoFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<servicios_historicoPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Servicios_historico.
+     * @param {servicios_historicoCreateArgs} args - Arguments to create a Servicios_historico.
+     * @example
+     * // Create one Servicios_historico
+     * const Servicios_historico = await prisma.servicios_historico.create({
+     *   data: {
+     *     // ... data to create a Servicios_historico
+     *   }
+     * })
+     * 
+    **/
+    create<T extends servicios_historicoCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, servicios_historicoCreateArgs<ExtArgs>>
+    ): Prisma__servicios_historicoClient<$Types.GetResult<servicios_historicoPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Servicios_historicos.
+     *     @param {servicios_historicoCreateManyArgs} args - Arguments to create many Servicios_historicos.
+     *     @example
+     *     // Create many Servicios_historicos
+     *     const servicios_historico = await prisma.servicios_historico.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends servicios_historicoCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicios_historicoCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Servicios_historico.
+     * @param {servicios_historicoDeleteArgs} args - Arguments to delete one Servicios_historico.
+     * @example
+     * // Delete one Servicios_historico
+     * const Servicios_historico = await prisma.servicios_historico.delete({
+     *   where: {
+     *     // ... filter to delete one Servicios_historico
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends servicios_historicoDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, servicios_historicoDeleteArgs<ExtArgs>>
+    ): Prisma__servicios_historicoClient<$Types.GetResult<servicios_historicoPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Servicios_historico.
+     * @param {servicios_historicoUpdateArgs} args - Arguments to update one Servicios_historico.
+     * @example
+     * // Update one Servicios_historico
+     * const servicios_historico = await prisma.servicios_historico.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends servicios_historicoUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, servicios_historicoUpdateArgs<ExtArgs>>
+    ): Prisma__servicios_historicoClient<$Types.GetResult<servicios_historicoPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Servicios_historicos.
+     * @param {servicios_historicoDeleteManyArgs} args - Arguments to filter Servicios_historicos to delete.
+     * @example
+     * // Delete a few Servicios_historicos
+     * const { count } = await prisma.servicios_historico.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends servicios_historicoDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicios_historicoDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Servicios_historicos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicios_historicoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Servicios_historicos
+     * const servicios_historico = await prisma.servicios_historico.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends servicios_historicoUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, servicios_historicoUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Servicios_historico.
+     * @param {servicios_historicoUpsertArgs} args - Arguments to update or create a Servicios_historico.
+     * @example
+     * // Update or create a Servicios_historico
+     * const servicios_historico = await prisma.servicios_historico.upsert({
+     *   create: {
+     *     // ... data to create a Servicios_historico
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Servicios_historico we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends servicios_historicoUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, servicios_historicoUpsertArgs<ExtArgs>>
+    ): Prisma__servicios_historicoClient<$Types.GetResult<servicios_historicoPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Servicios_historicos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicios_historicoCountArgs} args - Arguments to filter Servicios_historicos to count.
+     * @example
+     * // Count the number of Servicios_historicos
+     * const count = await prisma.servicios_historico.count({
+     *   where: {
+     *     // ... the filter for the Servicios_historicos we want to count
+     *   }
+     * })
+    **/
+    count<T extends servicios_historicoCountArgs>(
+      args?: Subset<T, servicios_historicoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Servicios_historicoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Servicios_historico.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Servicios_historicoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Servicios_historicoAggregateArgs>(args: Subset<T, Servicios_historicoAggregateArgs>): Prisma.PrismaPromise<GetServicios_historicoAggregateType<T>>
+
+    /**
+     * Group by Servicios_historico.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicios_historicoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends servicios_historicoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: servicios_historicoGroupByArgs['orderBy'] }
+        : { orderBy?: servicios_historicoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, servicios_historicoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServicios_historicoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for servicios_historico.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__servicios_historicoClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * servicios_historico base type for findUnique actions
+   */
+  export type servicios_historicoFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicios_historico
+     */
+    select?: servicios_historicoSelect<ExtArgs> | null
+    /**
+     * Filter, which servicios_historico to fetch.
+     */
+    where: servicios_historicoWhereUniqueInput
+  }
+
+  /**
+   * servicios_historico findUnique
+   */
+  export interface servicios_historicoFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends servicios_historicoFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * servicios_historico findUniqueOrThrow
+   */
+  export type servicios_historicoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicios_historico
+     */
+    select?: servicios_historicoSelect<ExtArgs> | null
+    /**
+     * Filter, which servicios_historico to fetch.
+     */
+    where: servicios_historicoWhereUniqueInput
+  }
+
+
+  /**
+   * servicios_historico base type for findFirst actions
+   */
+  export type servicios_historicoFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicios_historico
+     */
+    select?: servicios_historicoSelect<ExtArgs> | null
+    /**
+     * Filter, which servicios_historico to fetch.
+     */
+    where?: servicios_historicoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicios_historicos to fetch.
+     */
+    orderBy?: servicios_historicoOrderByWithRelationInput | servicios_historicoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for servicios_historicos.
+     */
+    cursor?: servicios_historicoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicios_historicos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicios_historicos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of servicios_historicos.
+     */
+    distinct?: Servicios_historicoScalarFieldEnum | Servicios_historicoScalarFieldEnum[]
+  }
+
+  /**
+   * servicios_historico findFirst
+   */
+  export interface servicios_historicoFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends servicios_historicoFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * servicios_historico findFirstOrThrow
+   */
+  export type servicios_historicoFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicios_historico
+     */
+    select?: servicios_historicoSelect<ExtArgs> | null
+    /**
+     * Filter, which servicios_historico to fetch.
+     */
+    where?: servicios_historicoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicios_historicos to fetch.
+     */
+    orderBy?: servicios_historicoOrderByWithRelationInput | servicios_historicoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for servicios_historicos.
+     */
+    cursor?: servicios_historicoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicios_historicos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicios_historicos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of servicios_historicos.
+     */
+    distinct?: Servicios_historicoScalarFieldEnum | Servicios_historicoScalarFieldEnum[]
+  }
+
+
+  /**
+   * servicios_historico findMany
+   */
+  export type servicios_historicoFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicios_historico
+     */
+    select?: servicios_historicoSelect<ExtArgs> | null
+    /**
+     * Filter, which servicios_historicos to fetch.
+     */
+    where?: servicios_historicoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicios_historicos to fetch.
+     */
+    orderBy?: servicios_historicoOrderByWithRelationInput | servicios_historicoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing servicios_historicos.
+     */
+    cursor?: servicios_historicoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicios_historicos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicios_historicos.
+     */
+    skip?: number
+    distinct?: Servicios_historicoScalarFieldEnum | Servicios_historicoScalarFieldEnum[]
+  }
+
+
+  /**
+   * servicios_historico create
+   */
+  export type servicios_historicoCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicios_historico
+     */
+    select?: servicios_historicoSelect<ExtArgs> | null
+    /**
+     * The data needed to create a servicios_historico.
+     */
+    data?: XOR<servicios_historicoCreateInput, servicios_historicoUncheckedCreateInput>
+  }
+
+
+  /**
+   * servicios_historico createMany
+   */
+  export type servicios_historicoCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many servicios_historicos.
+     */
+    data: servicios_historicoCreateManyInput | servicios_historicoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * servicios_historico update
+   */
+  export type servicios_historicoUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicios_historico
+     */
+    select?: servicios_historicoSelect<ExtArgs> | null
+    /**
+     * The data needed to update a servicios_historico.
+     */
+    data: XOR<servicios_historicoUpdateInput, servicios_historicoUncheckedUpdateInput>
+    /**
+     * Choose, which servicios_historico to update.
+     */
+    where: servicios_historicoWhereUniqueInput
+  }
+
+
+  /**
+   * servicios_historico updateMany
+   */
+  export type servicios_historicoUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update servicios_historicos.
+     */
+    data: XOR<servicios_historicoUpdateManyMutationInput, servicios_historicoUncheckedUpdateManyInput>
+    /**
+     * Filter which servicios_historicos to update
+     */
+    where?: servicios_historicoWhereInput
+  }
+
+
+  /**
+   * servicios_historico upsert
+   */
+  export type servicios_historicoUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicios_historico
+     */
+    select?: servicios_historicoSelect<ExtArgs> | null
+    /**
+     * The filter to search for the servicios_historico to update in case it exists.
+     */
+    where: servicios_historicoWhereUniqueInput
+    /**
+     * In case the servicios_historico found by the `where` argument doesn't exist, create a new servicios_historico with this data.
+     */
+    create: XOR<servicios_historicoCreateInput, servicios_historicoUncheckedCreateInput>
+    /**
+     * In case the servicios_historico was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<servicios_historicoUpdateInput, servicios_historicoUncheckedUpdateInput>
+  }
+
+
+  /**
+   * servicios_historico delete
+   */
+  export type servicios_historicoDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicios_historico
+     */
+    select?: servicios_historicoSelect<ExtArgs> | null
+    /**
+     * Filter which servicios_historico to delete.
+     */
+    where: servicios_historicoWhereUniqueInput
+  }
+
+
+  /**
+   * servicios_historico deleteMany
+   */
+  export type servicios_historicoDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which servicios_historicos to delete
+     */
+    where?: servicios_historicoWhereInput
+  }
+
+
+  /**
+   * servicios_historico without action
+   */
+  export type servicios_historicoArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicios_historico
+     */
+    select?: servicios_historicoSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Model servicios_liquidacion
    */
 
@@ -41568,6 +43267,77 @@ export namespace Prisma {
   export type ServiciosScalarFieldEnum = (typeof ServiciosScalarFieldEnum)[keyof typeof ServiciosScalarFieldEnum]
 
 
+  export const Servicios_historicoScalarFieldEnum: {
+    NRO_NOTACR: 'NRO_NOTACR',
+    FEC_CREDIT: 'FEC_CREDIT',
+    EXINTO: 'EXINTO',
+    DNI_EXIN: 'DNI_EXIN',
+    EDAD_EXIN: 'EDAD_EXIN',
+    FEC_FALLEC: 'FEC_FALLEC',
+    LUGAR: 'LUGAR',
+    TIPO_SERV: 'TIPO_SERV',
+    PLAN: 'PLAN',
+    SUB_PLAN: 'SUB_PLAN',
+    CONTRATO: 'CONTRATO',
+    CASA_MORT: 'CASA_MORT',
+    FEC_INHU: 'FEC_INHU',
+    HORA: 'HORA',
+    CEMENTERIO: 'CEMENTERIO',
+    DONDE_ENTI: 'DONDE_ENTI',
+    ATAUD_TIPO: 'ATAUD_TIPO',
+    COD_ATAUD: 'COD_ATAUD',
+    DETALLE: 'DETALLE',
+    RETI_CUER: 'RETI_CUER',
+    TRASLADO_A: 'TRASLADO_A',
+    DIFE_KM: 'DIFE_KM',
+    CAPI_DOMI: 'CAPI_DOMI',
+    GRAB_PLACA: 'GRAB_PLACA',
+    TRAMITES: 'TRAMITES',
+    AVISO_TELR: 'AVISO_TELR',
+    CARROZA: 'CARROZA',
+    PORTACORO: 'PORTACORO',
+    AUTO_DUELO: 'AUTO_DUELO',
+    SALA_VELAT: 'SALA_VELAT',
+    ADICIONAL: 'ADICIONAL',
+    ADICIO_PAG: 'ADICIO_PAG',
+    OBSERVA0: 'OBSERVA0',
+    PARCELA: 'PARCELA',
+    SEC: 'SEC',
+    PARC: 'PARC',
+    SECC: 'SECC',
+    GASTO_ASOC: 'GASTO_ASOC',
+    GASTO_PAMI: 'GASTO_PAMI',
+    OBSERVA1: 'OBSERVA1',
+    OPE_ANUL: 'OPE_ANUL',
+    ANULAR: 'ANULAR',
+    FEC_ANULA: 'FEC_ANULA',
+    CREDITO: 'CREDITO',
+    TOTA_LETRA: 'TOTA_LETRA',
+    TOTA_NUM: 'TOTA_NUM',
+    FORMA_PAGO: 'FORMA_PAGO',
+    DOCUMENTO: 'DOCUMENTO',
+    SOLI_CRED: 'SOLI_CRED',
+    GARANT_CRE: 'GARANT_CRE',
+    DNI_SOLI: 'DNI_SOLI',
+    TEL_SOLI: 'TEL_SOLI',
+    DOMI_SOLI: 'DOMI_SOLI',
+    DNI_GARANT: 'DNI_GARANT',
+    TEL_GARANT: 'TEL_GARANT',
+    DOMI_GARAN: 'DOMI_GARAN',
+    OPE_ANUCRE: 'OPE_ANUCRE',
+    ANULA_CRE: 'ANULA_CRE',
+    FECANU_CRE: 'FECANU_CRE',
+    INFO_CRE: 'INFO_CRE',
+    SUCURSAL: 'SUCURSAL',
+    OPERADOR: 'OPERADOR',
+    TRASPASO: 'TRASPASO',
+    EMPRESA: 'EMPRESA',
+    id: 'id'
+  };
+
+  export type Servicios_historicoScalarFieldEnum = (typeof Servicios_historicoScalarFieldEnum)[keyof typeof Servicios_historicoScalarFieldEnum]
+
+
   export const Servicios_liquidacionScalarFieldEnum: {
     idliquidacion: 'idliquidacion',
     idservicio: 'idservicio',
@@ -43718,6 +45488,293 @@ export namespace Prisma {
     importe?: FloatNullableWithAggregatesFilter | number | null
     donacion?: BoolNullableWithAggregatesFilter | boolean | null
     domicilio_solicitante?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type servicios_historicoWhereInput = {
+    AND?: servicios_historicoWhereInput | servicios_historicoWhereInput[]
+    OR?: servicios_historicoWhereInput[]
+    NOT?: servicios_historicoWhereInput | servicios_historicoWhereInput[]
+    NRO_NOTACR?: IntNullableFilter | number | null
+    FEC_CREDIT?: DateTimeNullableFilter | Date | string | null
+    EXINTO?: StringNullableFilter | string | null
+    DNI_EXIN?: IntNullableFilter | number | null
+    EDAD_EXIN?: IntNullableFilter | number | null
+    FEC_FALLEC?: DateTimeNullableFilter | Date | string | null
+    LUGAR?: StringNullableFilter | string | null
+    TIPO_SERV?: StringNullableFilter | string | null
+    PLAN?: StringNullableFilter | string | null
+    SUB_PLAN?: StringNullableFilter | string | null
+    CONTRATO?: IntNullableFilter | number | null
+    CASA_MORT?: StringNullableFilter | string | null
+    FEC_INHU?: DateTimeNullableFilter | Date | string | null
+    HORA?: StringNullableFilter | string | null
+    CEMENTERIO?: StringNullableFilter | string | null
+    DONDE_ENTI?: StringNullableFilter | string | null
+    ATAUD_TIPO?: StringNullableFilter | string | null
+    COD_ATAUD?: IntNullableFilter | number | null
+    DETALLE?: StringNullableFilter | string | null
+    RETI_CUER?: StringNullableFilter | string | null
+    TRASLADO_A?: StringNullableFilter | string | null
+    DIFE_KM?: FloatNullableFilter | number | null
+    CAPI_DOMI?: StringNullableFilter | string | null
+    GRAB_PLACA?: StringNullableFilter | string | null
+    TRAMITES?: StringNullableFilter | string | null
+    AVISO_TELR?: StringNullableFilter | string | null
+    CARROZA?: IntNullableFilter | number | null
+    PORTACORO?: StringNullableFilter | string | null
+    AUTO_DUELO?: IntNullableFilter | number | null
+    SALA_VELAT?: StringNullableFilter | string | null
+    ADICIONAL?: StringNullableFilter | string | null
+    ADICIO_PAG?: FloatNullableFilter | number | null
+    OBSERVA0?: StringNullableFilter | string | null
+    PARCELA?: StringNullableFilter | string | null
+    SEC?: StringNullableFilter | string | null
+    PARC?: StringNullableFilter | string | null
+    SECC?: StringNullableFilter | string | null
+    GASTO_ASOC?: FloatNullableFilter | number | null
+    GASTO_PAMI?: StringNullableFilter | string | null
+    OBSERVA1?: StringNullableFilter | string | null
+    OPE_ANUL?: IntNullableFilter | number | null
+    ANULAR?: IntNullableFilter | number | null
+    FEC_ANULA?: DateTimeNullableFilter | Date | string | null
+    CREDITO?: IntNullableFilter | number | null
+    TOTA_LETRA?: StringNullableFilter | string | null
+    TOTA_NUM?: FloatNullableFilter | number | null
+    FORMA_PAGO?: StringNullableFilter | string | null
+    DOCUMENTO?: StringNullableFilter | string | null
+    SOLI_CRED?: StringNullableFilter | string | null
+    GARANT_CRE?: StringNullableFilter | string | null
+    DNI_SOLI?: IntNullableFilter | number | null
+    TEL_SOLI?: StringNullableFilter | string | null
+    DOMI_SOLI?: StringNullableFilter | string | null
+    DNI_GARANT?: IntNullableFilter | number | null
+    TEL_GARANT?: StringNullableFilter | string | null
+    DOMI_GARAN?: StringNullableFilter | string | null
+    OPE_ANUCRE?: IntNullableFilter | number | null
+    ANULA_CRE?: IntNullableFilter | number | null
+    FECANU_CRE?: DateTimeNullableFilter | Date | string | null
+    INFO_CRE?: IntNullableFilter | number | null
+    SUCURSAL?: StringNullableFilter | string | null
+    OPERADOR?: IntNullableFilter | number | null
+    TRASPASO?: DateTimeNullableFilter | Date | string | null
+    EMPRESA?: StringNullableFilter | string | null
+    id?: IntFilter | number
+  }
+
+  export type servicios_historicoOrderByWithRelationInput = {
+    NRO_NOTACR?: SortOrderInput | SortOrder
+    FEC_CREDIT?: SortOrderInput | SortOrder
+    EXINTO?: SortOrderInput | SortOrder
+    DNI_EXIN?: SortOrderInput | SortOrder
+    EDAD_EXIN?: SortOrderInput | SortOrder
+    FEC_FALLEC?: SortOrderInput | SortOrder
+    LUGAR?: SortOrderInput | SortOrder
+    TIPO_SERV?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    SUB_PLAN?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrderInput | SortOrder
+    CASA_MORT?: SortOrderInput | SortOrder
+    FEC_INHU?: SortOrderInput | SortOrder
+    HORA?: SortOrderInput | SortOrder
+    CEMENTERIO?: SortOrderInput | SortOrder
+    DONDE_ENTI?: SortOrderInput | SortOrder
+    ATAUD_TIPO?: SortOrderInput | SortOrder
+    COD_ATAUD?: SortOrderInput | SortOrder
+    DETALLE?: SortOrderInput | SortOrder
+    RETI_CUER?: SortOrderInput | SortOrder
+    TRASLADO_A?: SortOrderInput | SortOrder
+    DIFE_KM?: SortOrderInput | SortOrder
+    CAPI_DOMI?: SortOrderInput | SortOrder
+    GRAB_PLACA?: SortOrderInput | SortOrder
+    TRAMITES?: SortOrderInput | SortOrder
+    AVISO_TELR?: SortOrderInput | SortOrder
+    CARROZA?: SortOrderInput | SortOrder
+    PORTACORO?: SortOrderInput | SortOrder
+    AUTO_DUELO?: SortOrderInput | SortOrder
+    SALA_VELAT?: SortOrderInput | SortOrder
+    ADICIONAL?: SortOrderInput | SortOrder
+    ADICIO_PAG?: SortOrderInput | SortOrder
+    OBSERVA0?: SortOrderInput | SortOrder
+    PARCELA?: SortOrderInput | SortOrder
+    SEC?: SortOrderInput | SortOrder
+    PARC?: SortOrderInput | SortOrder
+    SECC?: SortOrderInput | SortOrder
+    GASTO_ASOC?: SortOrderInput | SortOrder
+    GASTO_PAMI?: SortOrderInput | SortOrder
+    OBSERVA1?: SortOrderInput | SortOrder
+    OPE_ANUL?: SortOrderInput | SortOrder
+    ANULAR?: SortOrderInput | SortOrder
+    FEC_ANULA?: SortOrderInput | SortOrder
+    CREDITO?: SortOrderInput | SortOrder
+    TOTA_LETRA?: SortOrderInput | SortOrder
+    TOTA_NUM?: SortOrderInput | SortOrder
+    FORMA_PAGO?: SortOrderInput | SortOrder
+    DOCUMENTO?: SortOrderInput | SortOrder
+    SOLI_CRED?: SortOrderInput | SortOrder
+    GARANT_CRE?: SortOrderInput | SortOrder
+    DNI_SOLI?: SortOrderInput | SortOrder
+    TEL_SOLI?: SortOrderInput | SortOrder
+    DOMI_SOLI?: SortOrderInput | SortOrder
+    DNI_GARANT?: SortOrderInput | SortOrder
+    TEL_GARANT?: SortOrderInput | SortOrder
+    DOMI_GARAN?: SortOrderInput | SortOrder
+    OPE_ANUCRE?: SortOrderInput | SortOrder
+    ANULA_CRE?: SortOrderInput | SortOrder
+    FECANU_CRE?: SortOrderInput | SortOrder
+    INFO_CRE?: SortOrderInput | SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    TRASPASO?: SortOrderInput | SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+    id?: SortOrder
+  }
+
+  export type servicios_historicoWhereUniqueInput = {
+    id?: number
+  }
+
+  export type servicios_historicoOrderByWithAggregationInput = {
+    NRO_NOTACR?: SortOrderInput | SortOrder
+    FEC_CREDIT?: SortOrderInput | SortOrder
+    EXINTO?: SortOrderInput | SortOrder
+    DNI_EXIN?: SortOrderInput | SortOrder
+    EDAD_EXIN?: SortOrderInput | SortOrder
+    FEC_FALLEC?: SortOrderInput | SortOrder
+    LUGAR?: SortOrderInput | SortOrder
+    TIPO_SERV?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    SUB_PLAN?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrderInput | SortOrder
+    CASA_MORT?: SortOrderInput | SortOrder
+    FEC_INHU?: SortOrderInput | SortOrder
+    HORA?: SortOrderInput | SortOrder
+    CEMENTERIO?: SortOrderInput | SortOrder
+    DONDE_ENTI?: SortOrderInput | SortOrder
+    ATAUD_TIPO?: SortOrderInput | SortOrder
+    COD_ATAUD?: SortOrderInput | SortOrder
+    DETALLE?: SortOrderInput | SortOrder
+    RETI_CUER?: SortOrderInput | SortOrder
+    TRASLADO_A?: SortOrderInput | SortOrder
+    DIFE_KM?: SortOrderInput | SortOrder
+    CAPI_DOMI?: SortOrderInput | SortOrder
+    GRAB_PLACA?: SortOrderInput | SortOrder
+    TRAMITES?: SortOrderInput | SortOrder
+    AVISO_TELR?: SortOrderInput | SortOrder
+    CARROZA?: SortOrderInput | SortOrder
+    PORTACORO?: SortOrderInput | SortOrder
+    AUTO_DUELO?: SortOrderInput | SortOrder
+    SALA_VELAT?: SortOrderInput | SortOrder
+    ADICIONAL?: SortOrderInput | SortOrder
+    ADICIO_PAG?: SortOrderInput | SortOrder
+    OBSERVA0?: SortOrderInput | SortOrder
+    PARCELA?: SortOrderInput | SortOrder
+    SEC?: SortOrderInput | SortOrder
+    PARC?: SortOrderInput | SortOrder
+    SECC?: SortOrderInput | SortOrder
+    GASTO_ASOC?: SortOrderInput | SortOrder
+    GASTO_PAMI?: SortOrderInput | SortOrder
+    OBSERVA1?: SortOrderInput | SortOrder
+    OPE_ANUL?: SortOrderInput | SortOrder
+    ANULAR?: SortOrderInput | SortOrder
+    FEC_ANULA?: SortOrderInput | SortOrder
+    CREDITO?: SortOrderInput | SortOrder
+    TOTA_LETRA?: SortOrderInput | SortOrder
+    TOTA_NUM?: SortOrderInput | SortOrder
+    FORMA_PAGO?: SortOrderInput | SortOrder
+    DOCUMENTO?: SortOrderInput | SortOrder
+    SOLI_CRED?: SortOrderInput | SortOrder
+    GARANT_CRE?: SortOrderInput | SortOrder
+    DNI_SOLI?: SortOrderInput | SortOrder
+    TEL_SOLI?: SortOrderInput | SortOrder
+    DOMI_SOLI?: SortOrderInput | SortOrder
+    DNI_GARANT?: SortOrderInput | SortOrder
+    TEL_GARANT?: SortOrderInput | SortOrder
+    DOMI_GARAN?: SortOrderInput | SortOrder
+    OPE_ANUCRE?: SortOrderInput | SortOrder
+    ANULA_CRE?: SortOrderInput | SortOrder
+    FECANU_CRE?: SortOrderInput | SortOrder
+    INFO_CRE?: SortOrderInput | SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    TRASPASO?: SortOrderInput | SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+    id?: SortOrder
+    _count?: servicios_historicoCountOrderByAggregateInput
+    _avg?: servicios_historicoAvgOrderByAggregateInput
+    _max?: servicios_historicoMaxOrderByAggregateInput
+    _min?: servicios_historicoMinOrderByAggregateInput
+    _sum?: servicios_historicoSumOrderByAggregateInput
+  }
+
+  export type servicios_historicoScalarWhereWithAggregatesInput = {
+    AND?: servicios_historicoScalarWhereWithAggregatesInput | servicios_historicoScalarWhereWithAggregatesInput[]
+    OR?: servicios_historicoScalarWhereWithAggregatesInput[]
+    NOT?: servicios_historicoScalarWhereWithAggregatesInput | servicios_historicoScalarWhereWithAggregatesInput[]
+    NRO_NOTACR?: IntNullableWithAggregatesFilter | number | null
+    FEC_CREDIT?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    EXINTO?: StringNullableWithAggregatesFilter | string | null
+    DNI_EXIN?: IntNullableWithAggregatesFilter | number | null
+    EDAD_EXIN?: IntNullableWithAggregatesFilter | number | null
+    FEC_FALLEC?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    LUGAR?: StringNullableWithAggregatesFilter | string | null
+    TIPO_SERV?: StringNullableWithAggregatesFilter | string | null
+    PLAN?: StringNullableWithAggregatesFilter | string | null
+    SUB_PLAN?: StringNullableWithAggregatesFilter | string | null
+    CONTRATO?: IntNullableWithAggregatesFilter | number | null
+    CASA_MORT?: StringNullableWithAggregatesFilter | string | null
+    FEC_INHU?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    HORA?: StringNullableWithAggregatesFilter | string | null
+    CEMENTERIO?: StringNullableWithAggregatesFilter | string | null
+    DONDE_ENTI?: StringNullableWithAggregatesFilter | string | null
+    ATAUD_TIPO?: StringNullableWithAggregatesFilter | string | null
+    COD_ATAUD?: IntNullableWithAggregatesFilter | number | null
+    DETALLE?: StringNullableWithAggregatesFilter | string | null
+    RETI_CUER?: StringNullableWithAggregatesFilter | string | null
+    TRASLADO_A?: StringNullableWithAggregatesFilter | string | null
+    DIFE_KM?: FloatNullableWithAggregatesFilter | number | null
+    CAPI_DOMI?: StringNullableWithAggregatesFilter | string | null
+    GRAB_PLACA?: StringNullableWithAggregatesFilter | string | null
+    TRAMITES?: StringNullableWithAggregatesFilter | string | null
+    AVISO_TELR?: StringNullableWithAggregatesFilter | string | null
+    CARROZA?: IntNullableWithAggregatesFilter | number | null
+    PORTACORO?: StringNullableWithAggregatesFilter | string | null
+    AUTO_DUELO?: IntNullableWithAggregatesFilter | number | null
+    SALA_VELAT?: StringNullableWithAggregatesFilter | string | null
+    ADICIONAL?: StringNullableWithAggregatesFilter | string | null
+    ADICIO_PAG?: FloatNullableWithAggregatesFilter | number | null
+    OBSERVA0?: StringNullableWithAggregatesFilter | string | null
+    PARCELA?: StringNullableWithAggregatesFilter | string | null
+    SEC?: StringNullableWithAggregatesFilter | string | null
+    PARC?: StringNullableWithAggregatesFilter | string | null
+    SECC?: StringNullableWithAggregatesFilter | string | null
+    GASTO_ASOC?: FloatNullableWithAggregatesFilter | number | null
+    GASTO_PAMI?: StringNullableWithAggregatesFilter | string | null
+    OBSERVA1?: StringNullableWithAggregatesFilter | string | null
+    OPE_ANUL?: IntNullableWithAggregatesFilter | number | null
+    ANULAR?: IntNullableWithAggregatesFilter | number | null
+    FEC_ANULA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    CREDITO?: IntNullableWithAggregatesFilter | number | null
+    TOTA_LETRA?: StringNullableWithAggregatesFilter | string | null
+    TOTA_NUM?: FloatNullableWithAggregatesFilter | number | null
+    FORMA_PAGO?: StringNullableWithAggregatesFilter | string | null
+    DOCUMENTO?: StringNullableWithAggregatesFilter | string | null
+    SOLI_CRED?: StringNullableWithAggregatesFilter | string | null
+    GARANT_CRE?: StringNullableWithAggregatesFilter | string | null
+    DNI_SOLI?: IntNullableWithAggregatesFilter | number | null
+    TEL_SOLI?: StringNullableWithAggregatesFilter | string | null
+    DOMI_SOLI?: StringNullableWithAggregatesFilter | string | null
+    DNI_GARANT?: IntNullableWithAggregatesFilter | number | null
+    TEL_GARANT?: StringNullableWithAggregatesFilter | string | null
+    DOMI_GARAN?: StringNullableWithAggregatesFilter | string | null
+    OPE_ANUCRE?: IntNullableWithAggregatesFilter | number | null
+    ANULA_CRE?: IntNullableWithAggregatesFilter | number | null
+    FECANU_CRE?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    INFO_CRE?: IntNullableWithAggregatesFilter | number | null
+    SUCURSAL?: StringNullableWithAggregatesFilter | string | null
+    OPERADOR?: IntNullableWithAggregatesFilter | number | null
+    TRASPASO?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    EMPRESA?: StringNullableWithAggregatesFilter | string | null
+    id?: IntWithAggregatesFilter | number
   }
 
   export type servicios_liquidacionWhereInput = {
@@ -46970,6 +49027,479 @@ export namespace Prisma {
     domicilio_solicitante?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type servicios_historicoCreateInput = {
+    NRO_NOTACR?: number | null
+    FEC_CREDIT?: Date | string | null
+    EXINTO?: string | null
+    DNI_EXIN?: number | null
+    EDAD_EXIN?: number | null
+    FEC_FALLEC?: Date | string | null
+    LUGAR?: string | null
+    TIPO_SERV?: string | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    CONTRATO?: number | null
+    CASA_MORT?: string | null
+    FEC_INHU?: Date | string | null
+    HORA?: string | null
+    CEMENTERIO?: string | null
+    DONDE_ENTI?: string | null
+    ATAUD_TIPO?: string | null
+    COD_ATAUD?: number | null
+    DETALLE?: string | null
+    RETI_CUER?: string | null
+    TRASLADO_A?: string | null
+    DIFE_KM?: number | null
+    CAPI_DOMI?: string | null
+    GRAB_PLACA?: string | null
+    TRAMITES?: string | null
+    AVISO_TELR?: string | null
+    CARROZA?: number | null
+    PORTACORO?: string | null
+    AUTO_DUELO?: number | null
+    SALA_VELAT?: string | null
+    ADICIONAL?: string | null
+    ADICIO_PAG?: number | null
+    OBSERVA0?: string | null
+    PARCELA?: string | null
+    SEC?: string | null
+    PARC?: string | null
+    SECC?: string | null
+    GASTO_ASOC?: number | null
+    GASTO_PAMI?: string | null
+    OBSERVA1?: string | null
+    OPE_ANUL?: number | null
+    ANULAR?: number | null
+    FEC_ANULA?: Date | string | null
+    CREDITO?: number | null
+    TOTA_LETRA?: string | null
+    TOTA_NUM?: number | null
+    FORMA_PAGO?: string | null
+    DOCUMENTO?: string | null
+    SOLI_CRED?: string | null
+    GARANT_CRE?: string | null
+    DNI_SOLI?: number | null
+    TEL_SOLI?: string | null
+    DOMI_SOLI?: string | null
+    DNI_GARANT?: number | null
+    TEL_GARANT?: string | null
+    DOMI_GARAN?: string | null
+    OPE_ANUCRE?: number | null
+    ANULA_CRE?: number | null
+    FECANU_CRE?: Date | string | null
+    INFO_CRE?: number | null
+    SUCURSAL?: string | null
+    OPERADOR?: number | null
+    TRASPASO?: Date | string | null
+    EMPRESA?: string | null
+  }
+
+  export type servicios_historicoUncheckedCreateInput = {
+    NRO_NOTACR?: number | null
+    FEC_CREDIT?: Date | string | null
+    EXINTO?: string | null
+    DNI_EXIN?: number | null
+    EDAD_EXIN?: number | null
+    FEC_FALLEC?: Date | string | null
+    LUGAR?: string | null
+    TIPO_SERV?: string | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    CONTRATO?: number | null
+    CASA_MORT?: string | null
+    FEC_INHU?: Date | string | null
+    HORA?: string | null
+    CEMENTERIO?: string | null
+    DONDE_ENTI?: string | null
+    ATAUD_TIPO?: string | null
+    COD_ATAUD?: number | null
+    DETALLE?: string | null
+    RETI_CUER?: string | null
+    TRASLADO_A?: string | null
+    DIFE_KM?: number | null
+    CAPI_DOMI?: string | null
+    GRAB_PLACA?: string | null
+    TRAMITES?: string | null
+    AVISO_TELR?: string | null
+    CARROZA?: number | null
+    PORTACORO?: string | null
+    AUTO_DUELO?: number | null
+    SALA_VELAT?: string | null
+    ADICIONAL?: string | null
+    ADICIO_PAG?: number | null
+    OBSERVA0?: string | null
+    PARCELA?: string | null
+    SEC?: string | null
+    PARC?: string | null
+    SECC?: string | null
+    GASTO_ASOC?: number | null
+    GASTO_PAMI?: string | null
+    OBSERVA1?: string | null
+    OPE_ANUL?: number | null
+    ANULAR?: number | null
+    FEC_ANULA?: Date | string | null
+    CREDITO?: number | null
+    TOTA_LETRA?: string | null
+    TOTA_NUM?: number | null
+    FORMA_PAGO?: string | null
+    DOCUMENTO?: string | null
+    SOLI_CRED?: string | null
+    GARANT_CRE?: string | null
+    DNI_SOLI?: number | null
+    TEL_SOLI?: string | null
+    DOMI_SOLI?: string | null
+    DNI_GARANT?: number | null
+    TEL_GARANT?: string | null
+    DOMI_GARAN?: string | null
+    OPE_ANUCRE?: number | null
+    ANULA_CRE?: number | null
+    FECANU_CRE?: Date | string | null
+    INFO_CRE?: number | null
+    SUCURSAL?: string | null
+    OPERADOR?: number | null
+    TRASPASO?: Date | string | null
+    EMPRESA?: string | null
+    id?: number
+  }
+
+  export type servicios_historicoUpdateInput = {
+    NRO_NOTACR?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_CREDIT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    EXINTO?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_EXIN?: NullableIntFieldUpdateOperationsInput | number | null
+    EDAD_EXIN?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_FALLEC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    LUGAR?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO_SERV?: NullableStringFieldUpdateOperationsInput | string | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    CASA_MORT?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_INHU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    HORA?: NullableStringFieldUpdateOperationsInput | string | null
+    CEMENTERIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DONDE_ENTI?: NullableStringFieldUpdateOperationsInput | string | null
+    ATAUD_TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+    COD_ATAUD?: NullableIntFieldUpdateOperationsInput | number | null
+    DETALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    RETI_CUER?: NullableStringFieldUpdateOperationsInput | string | null
+    TRASLADO_A?: NullableStringFieldUpdateOperationsInput | string | null
+    DIFE_KM?: NullableFloatFieldUpdateOperationsInput | number | null
+    CAPI_DOMI?: NullableStringFieldUpdateOperationsInput | string | null
+    GRAB_PLACA?: NullableStringFieldUpdateOperationsInput | string | null
+    TRAMITES?: NullableStringFieldUpdateOperationsInput | string | null
+    AVISO_TELR?: NullableStringFieldUpdateOperationsInput | string | null
+    CARROZA?: NullableIntFieldUpdateOperationsInput | number | null
+    PORTACORO?: NullableStringFieldUpdateOperationsInput | string | null
+    AUTO_DUELO?: NullableIntFieldUpdateOperationsInput | number | null
+    SALA_VELAT?: NullableStringFieldUpdateOperationsInput | string | null
+    ADICIONAL?: NullableStringFieldUpdateOperationsInput | string | null
+    ADICIO_PAG?: NullableFloatFieldUpdateOperationsInput | number | null
+    OBSERVA0?: NullableStringFieldUpdateOperationsInput | string | null
+    PARCELA?: NullableStringFieldUpdateOperationsInput | string | null
+    SEC?: NullableStringFieldUpdateOperationsInput | string | null
+    PARC?: NullableStringFieldUpdateOperationsInput | string | null
+    SECC?: NullableStringFieldUpdateOperationsInput | string | null
+    GASTO_ASOC?: NullableFloatFieldUpdateOperationsInput | number | null
+    GASTO_PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA1?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_ANUL?: NullableIntFieldUpdateOperationsInput | number | null
+    ANULAR?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_ANULA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CREDITO?: NullableIntFieldUpdateOperationsInput | number | null
+    TOTA_LETRA?: NullableStringFieldUpdateOperationsInput | string | null
+    TOTA_NUM?: NullableFloatFieldUpdateOperationsInput | number | null
+    FORMA_PAGO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOCUMENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    SOLI_CRED?: NullableStringFieldUpdateOperationsInput | string | null
+    GARANT_CRE?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_SOLI?: NullableIntFieldUpdateOperationsInput | number | null
+    TEL_SOLI?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_SOLI?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_GARANT?: NullableIntFieldUpdateOperationsInput | number | null
+    TEL_GARANT?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_GARAN?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_ANUCRE?: NullableIntFieldUpdateOperationsInput | number | null
+    ANULA_CRE?: NullableIntFieldUpdateOperationsInput | number | null
+    FECANU_CRE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    INFO_CRE?: NullableIntFieldUpdateOperationsInput | number | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type servicios_historicoUncheckedUpdateInput = {
+    NRO_NOTACR?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_CREDIT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    EXINTO?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_EXIN?: NullableIntFieldUpdateOperationsInput | number | null
+    EDAD_EXIN?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_FALLEC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    LUGAR?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO_SERV?: NullableStringFieldUpdateOperationsInput | string | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    CASA_MORT?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_INHU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    HORA?: NullableStringFieldUpdateOperationsInput | string | null
+    CEMENTERIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DONDE_ENTI?: NullableStringFieldUpdateOperationsInput | string | null
+    ATAUD_TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+    COD_ATAUD?: NullableIntFieldUpdateOperationsInput | number | null
+    DETALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    RETI_CUER?: NullableStringFieldUpdateOperationsInput | string | null
+    TRASLADO_A?: NullableStringFieldUpdateOperationsInput | string | null
+    DIFE_KM?: NullableFloatFieldUpdateOperationsInput | number | null
+    CAPI_DOMI?: NullableStringFieldUpdateOperationsInput | string | null
+    GRAB_PLACA?: NullableStringFieldUpdateOperationsInput | string | null
+    TRAMITES?: NullableStringFieldUpdateOperationsInput | string | null
+    AVISO_TELR?: NullableStringFieldUpdateOperationsInput | string | null
+    CARROZA?: NullableIntFieldUpdateOperationsInput | number | null
+    PORTACORO?: NullableStringFieldUpdateOperationsInput | string | null
+    AUTO_DUELO?: NullableIntFieldUpdateOperationsInput | number | null
+    SALA_VELAT?: NullableStringFieldUpdateOperationsInput | string | null
+    ADICIONAL?: NullableStringFieldUpdateOperationsInput | string | null
+    ADICIO_PAG?: NullableFloatFieldUpdateOperationsInput | number | null
+    OBSERVA0?: NullableStringFieldUpdateOperationsInput | string | null
+    PARCELA?: NullableStringFieldUpdateOperationsInput | string | null
+    SEC?: NullableStringFieldUpdateOperationsInput | string | null
+    PARC?: NullableStringFieldUpdateOperationsInput | string | null
+    SECC?: NullableStringFieldUpdateOperationsInput | string | null
+    GASTO_ASOC?: NullableFloatFieldUpdateOperationsInput | number | null
+    GASTO_PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA1?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_ANUL?: NullableIntFieldUpdateOperationsInput | number | null
+    ANULAR?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_ANULA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CREDITO?: NullableIntFieldUpdateOperationsInput | number | null
+    TOTA_LETRA?: NullableStringFieldUpdateOperationsInput | string | null
+    TOTA_NUM?: NullableFloatFieldUpdateOperationsInput | number | null
+    FORMA_PAGO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOCUMENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    SOLI_CRED?: NullableStringFieldUpdateOperationsInput | string | null
+    GARANT_CRE?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_SOLI?: NullableIntFieldUpdateOperationsInput | number | null
+    TEL_SOLI?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_SOLI?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_GARANT?: NullableIntFieldUpdateOperationsInput | number | null
+    TEL_GARANT?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_GARAN?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_ANUCRE?: NullableIntFieldUpdateOperationsInput | number | null
+    ANULA_CRE?: NullableIntFieldUpdateOperationsInput | number | null
+    FECANU_CRE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    INFO_CRE?: NullableIntFieldUpdateOperationsInput | number | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type servicios_historicoCreateManyInput = {
+    NRO_NOTACR?: number | null
+    FEC_CREDIT?: Date | string | null
+    EXINTO?: string | null
+    DNI_EXIN?: number | null
+    EDAD_EXIN?: number | null
+    FEC_FALLEC?: Date | string | null
+    LUGAR?: string | null
+    TIPO_SERV?: string | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    CONTRATO?: number | null
+    CASA_MORT?: string | null
+    FEC_INHU?: Date | string | null
+    HORA?: string | null
+    CEMENTERIO?: string | null
+    DONDE_ENTI?: string | null
+    ATAUD_TIPO?: string | null
+    COD_ATAUD?: number | null
+    DETALLE?: string | null
+    RETI_CUER?: string | null
+    TRASLADO_A?: string | null
+    DIFE_KM?: number | null
+    CAPI_DOMI?: string | null
+    GRAB_PLACA?: string | null
+    TRAMITES?: string | null
+    AVISO_TELR?: string | null
+    CARROZA?: number | null
+    PORTACORO?: string | null
+    AUTO_DUELO?: number | null
+    SALA_VELAT?: string | null
+    ADICIONAL?: string | null
+    ADICIO_PAG?: number | null
+    OBSERVA0?: string | null
+    PARCELA?: string | null
+    SEC?: string | null
+    PARC?: string | null
+    SECC?: string | null
+    GASTO_ASOC?: number | null
+    GASTO_PAMI?: string | null
+    OBSERVA1?: string | null
+    OPE_ANUL?: number | null
+    ANULAR?: number | null
+    FEC_ANULA?: Date | string | null
+    CREDITO?: number | null
+    TOTA_LETRA?: string | null
+    TOTA_NUM?: number | null
+    FORMA_PAGO?: string | null
+    DOCUMENTO?: string | null
+    SOLI_CRED?: string | null
+    GARANT_CRE?: string | null
+    DNI_SOLI?: number | null
+    TEL_SOLI?: string | null
+    DOMI_SOLI?: string | null
+    DNI_GARANT?: number | null
+    TEL_GARANT?: string | null
+    DOMI_GARAN?: string | null
+    OPE_ANUCRE?: number | null
+    ANULA_CRE?: number | null
+    FECANU_CRE?: Date | string | null
+    INFO_CRE?: number | null
+    SUCURSAL?: string | null
+    OPERADOR?: number | null
+    TRASPASO?: Date | string | null
+    EMPRESA?: string | null
+    id?: number
+  }
+
+  export type servicios_historicoUpdateManyMutationInput = {
+    NRO_NOTACR?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_CREDIT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    EXINTO?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_EXIN?: NullableIntFieldUpdateOperationsInput | number | null
+    EDAD_EXIN?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_FALLEC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    LUGAR?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO_SERV?: NullableStringFieldUpdateOperationsInput | string | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    CASA_MORT?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_INHU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    HORA?: NullableStringFieldUpdateOperationsInput | string | null
+    CEMENTERIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DONDE_ENTI?: NullableStringFieldUpdateOperationsInput | string | null
+    ATAUD_TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+    COD_ATAUD?: NullableIntFieldUpdateOperationsInput | number | null
+    DETALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    RETI_CUER?: NullableStringFieldUpdateOperationsInput | string | null
+    TRASLADO_A?: NullableStringFieldUpdateOperationsInput | string | null
+    DIFE_KM?: NullableFloatFieldUpdateOperationsInput | number | null
+    CAPI_DOMI?: NullableStringFieldUpdateOperationsInput | string | null
+    GRAB_PLACA?: NullableStringFieldUpdateOperationsInput | string | null
+    TRAMITES?: NullableStringFieldUpdateOperationsInput | string | null
+    AVISO_TELR?: NullableStringFieldUpdateOperationsInput | string | null
+    CARROZA?: NullableIntFieldUpdateOperationsInput | number | null
+    PORTACORO?: NullableStringFieldUpdateOperationsInput | string | null
+    AUTO_DUELO?: NullableIntFieldUpdateOperationsInput | number | null
+    SALA_VELAT?: NullableStringFieldUpdateOperationsInput | string | null
+    ADICIONAL?: NullableStringFieldUpdateOperationsInput | string | null
+    ADICIO_PAG?: NullableFloatFieldUpdateOperationsInput | number | null
+    OBSERVA0?: NullableStringFieldUpdateOperationsInput | string | null
+    PARCELA?: NullableStringFieldUpdateOperationsInput | string | null
+    SEC?: NullableStringFieldUpdateOperationsInput | string | null
+    PARC?: NullableStringFieldUpdateOperationsInput | string | null
+    SECC?: NullableStringFieldUpdateOperationsInput | string | null
+    GASTO_ASOC?: NullableFloatFieldUpdateOperationsInput | number | null
+    GASTO_PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA1?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_ANUL?: NullableIntFieldUpdateOperationsInput | number | null
+    ANULAR?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_ANULA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CREDITO?: NullableIntFieldUpdateOperationsInput | number | null
+    TOTA_LETRA?: NullableStringFieldUpdateOperationsInput | string | null
+    TOTA_NUM?: NullableFloatFieldUpdateOperationsInput | number | null
+    FORMA_PAGO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOCUMENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    SOLI_CRED?: NullableStringFieldUpdateOperationsInput | string | null
+    GARANT_CRE?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_SOLI?: NullableIntFieldUpdateOperationsInput | number | null
+    TEL_SOLI?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_SOLI?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_GARANT?: NullableIntFieldUpdateOperationsInput | number | null
+    TEL_GARANT?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_GARAN?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_ANUCRE?: NullableIntFieldUpdateOperationsInput | number | null
+    ANULA_CRE?: NullableIntFieldUpdateOperationsInput | number | null
+    FECANU_CRE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    INFO_CRE?: NullableIntFieldUpdateOperationsInput | number | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type servicios_historicoUncheckedUpdateManyInput = {
+    NRO_NOTACR?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_CREDIT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    EXINTO?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_EXIN?: NullableIntFieldUpdateOperationsInput | number | null
+    EDAD_EXIN?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_FALLEC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    LUGAR?: NullableStringFieldUpdateOperationsInput | string | null
+    TIPO_SERV?: NullableStringFieldUpdateOperationsInput | string | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    CASA_MORT?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_INHU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    HORA?: NullableStringFieldUpdateOperationsInput | string | null
+    CEMENTERIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DONDE_ENTI?: NullableStringFieldUpdateOperationsInput | string | null
+    ATAUD_TIPO?: NullableStringFieldUpdateOperationsInput | string | null
+    COD_ATAUD?: NullableIntFieldUpdateOperationsInput | number | null
+    DETALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    RETI_CUER?: NullableStringFieldUpdateOperationsInput | string | null
+    TRASLADO_A?: NullableStringFieldUpdateOperationsInput | string | null
+    DIFE_KM?: NullableFloatFieldUpdateOperationsInput | number | null
+    CAPI_DOMI?: NullableStringFieldUpdateOperationsInput | string | null
+    GRAB_PLACA?: NullableStringFieldUpdateOperationsInput | string | null
+    TRAMITES?: NullableStringFieldUpdateOperationsInput | string | null
+    AVISO_TELR?: NullableStringFieldUpdateOperationsInput | string | null
+    CARROZA?: NullableIntFieldUpdateOperationsInput | number | null
+    PORTACORO?: NullableStringFieldUpdateOperationsInput | string | null
+    AUTO_DUELO?: NullableIntFieldUpdateOperationsInput | number | null
+    SALA_VELAT?: NullableStringFieldUpdateOperationsInput | string | null
+    ADICIONAL?: NullableStringFieldUpdateOperationsInput | string | null
+    ADICIO_PAG?: NullableFloatFieldUpdateOperationsInput | number | null
+    OBSERVA0?: NullableStringFieldUpdateOperationsInput | string | null
+    PARCELA?: NullableStringFieldUpdateOperationsInput | string | null
+    SEC?: NullableStringFieldUpdateOperationsInput | string | null
+    PARC?: NullableStringFieldUpdateOperationsInput | string | null
+    SECC?: NullableStringFieldUpdateOperationsInput | string | null
+    GASTO_ASOC?: NullableFloatFieldUpdateOperationsInput | number | null
+    GASTO_PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA1?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_ANUL?: NullableIntFieldUpdateOperationsInput | number | null
+    ANULAR?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_ANULA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CREDITO?: NullableIntFieldUpdateOperationsInput | number | null
+    TOTA_LETRA?: NullableStringFieldUpdateOperationsInput | string | null
+    TOTA_NUM?: NullableFloatFieldUpdateOperationsInput | number | null
+    FORMA_PAGO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOCUMENTO?: NullableStringFieldUpdateOperationsInput | string | null
+    SOLI_CRED?: NullableStringFieldUpdateOperationsInput | string | null
+    GARANT_CRE?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_SOLI?: NullableIntFieldUpdateOperationsInput | number | null
+    TEL_SOLI?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_SOLI?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI_GARANT?: NullableIntFieldUpdateOperationsInput | number | null
+    TEL_GARANT?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_GARAN?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_ANUCRE?: NullableIntFieldUpdateOperationsInput | number | null
+    ANULA_CRE?: NullableIntFieldUpdateOperationsInput | number | null
+    FECANU_CRE?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    INFO_CRE?: NullableIntFieldUpdateOperationsInput | number | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
   export type servicios_liquidacionCreateInput = {
     idservicio?: number | null
     total_liquidacion?: number | null
@@ -49459,6 +51989,258 @@ export namespace Prisma {
     idparcela?: SortOrder
     gastos_cargados?: SortOrder
     importe?: SortOrder
+  }
+
+  export type servicios_historicoCountOrderByAggregateInput = {
+    NRO_NOTACR?: SortOrder
+    FEC_CREDIT?: SortOrder
+    EXINTO?: SortOrder
+    DNI_EXIN?: SortOrder
+    EDAD_EXIN?: SortOrder
+    FEC_FALLEC?: SortOrder
+    LUGAR?: SortOrder
+    TIPO_SERV?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    CONTRATO?: SortOrder
+    CASA_MORT?: SortOrder
+    FEC_INHU?: SortOrder
+    HORA?: SortOrder
+    CEMENTERIO?: SortOrder
+    DONDE_ENTI?: SortOrder
+    ATAUD_TIPO?: SortOrder
+    COD_ATAUD?: SortOrder
+    DETALLE?: SortOrder
+    RETI_CUER?: SortOrder
+    TRASLADO_A?: SortOrder
+    DIFE_KM?: SortOrder
+    CAPI_DOMI?: SortOrder
+    GRAB_PLACA?: SortOrder
+    TRAMITES?: SortOrder
+    AVISO_TELR?: SortOrder
+    CARROZA?: SortOrder
+    PORTACORO?: SortOrder
+    AUTO_DUELO?: SortOrder
+    SALA_VELAT?: SortOrder
+    ADICIONAL?: SortOrder
+    ADICIO_PAG?: SortOrder
+    OBSERVA0?: SortOrder
+    PARCELA?: SortOrder
+    SEC?: SortOrder
+    PARC?: SortOrder
+    SECC?: SortOrder
+    GASTO_ASOC?: SortOrder
+    GASTO_PAMI?: SortOrder
+    OBSERVA1?: SortOrder
+    OPE_ANUL?: SortOrder
+    ANULAR?: SortOrder
+    FEC_ANULA?: SortOrder
+    CREDITO?: SortOrder
+    TOTA_LETRA?: SortOrder
+    TOTA_NUM?: SortOrder
+    FORMA_PAGO?: SortOrder
+    DOCUMENTO?: SortOrder
+    SOLI_CRED?: SortOrder
+    GARANT_CRE?: SortOrder
+    DNI_SOLI?: SortOrder
+    TEL_SOLI?: SortOrder
+    DOMI_SOLI?: SortOrder
+    DNI_GARANT?: SortOrder
+    TEL_GARANT?: SortOrder
+    DOMI_GARAN?: SortOrder
+    OPE_ANUCRE?: SortOrder
+    ANULA_CRE?: SortOrder
+    FECANU_CRE?: SortOrder
+    INFO_CRE?: SortOrder
+    SUCURSAL?: SortOrder
+    OPERADOR?: SortOrder
+    TRASPASO?: SortOrder
+    EMPRESA?: SortOrder
+    id?: SortOrder
+  }
+
+  export type servicios_historicoAvgOrderByAggregateInput = {
+    NRO_NOTACR?: SortOrder
+    DNI_EXIN?: SortOrder
+    EDAD_EXIN?: SortOrder
+    CONTRATO?: SortOrder
+    COD_ATAUD?: SortOrder
+    DIFE_KM?: SortOrder
+    CARROZA?: SortOrder
+    AUTO_DUELO?: SortOrder
+    ADICIO_PAG?: SortOrder
+    GASTO_ASOC?: SortOrder
+    OPE_ANUL?: SortOrder
+    ANULAR?: SortOrder
+    CREDITO?: SortOrder
+    TOTA_NUM?: SortOrder
+    DNI_SOLI?: SortOrder
+    DNI_GARANT?: SortOrder
+    OPE_ANUCRE?: SortOrder
+    ANULA_CRE?: SortOrder
+    INFO_CRE?: SortOrder
+    OPERADOR?: SortOrder
+    id?: SortOrder
+  }
+
+  export type servicios_historicoMaxOrderByAggregateInput = {
+    NRO_NOTACR?: SortOrder
+    FEC_CREDIT?: SortOrder
+    EXINTO?: SortOrder
+    DNI_EXIN?: SortOrder
+    EDAD_EXIN?: SortOrder
+    FEC_FALLEC?: SortOrder
+    LUGAR?: SortOrder
+    TIPO_SERV?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    CONTRATO?: SortOrder
+    CASA_MORT?: SortOrder
+    FEC_INHU?: SortOrder
+    HORA?: SortOrder
+    CEMENTERIO?: SortOrder
+    DONDE_ENTI?: SortOrder
+    ATAUD_TIPO?: SortOrder
+    COD_ATAUD?: SortOrder
+    DETALLE?: SortOrder
+    RETI_CUER?: SortOrder
+    TRASLADO_A?: SortOrder
+    DIFE_KM?: SortOrder
+    CAPI_DOMI?: SortOrder
+    GRAB_PLACA?: SortOrder
+    TRAMITES?: SortOrder
+    AVISO_TELR?: SortOrder
+    CARROZA?: SortOrder
+    PORTACORO?: SortOrder
+    AUTO_DUELO?: SortOrder
+    SALA_VELAT?: SortOrder
+    ADICIONAL?: SortOrder
+    ADICIO_PAG?: SortOrder
+    OBSERVA0?: SortOrder
+    PARCELA?: SortOrder
+    SEC?: SortOrder
+    PARC?: SortOrder
+    SECC?: SortOrder
+    GASTO_ASOC?: SortOrder
+    GASTO_PAMI?: SortOrder
+    OBSERVA1?: SortOrder
+    OPE_ANUL?: SortOrder
+    ANULAR?: SortOrder
+    FEC_ANULA?: SortOrder
+    CREDITO?: SortOrder
+    TOTA_LETRA?: SortOrder
+    TOTA_NUM?: SortOrder
+    FORMA_PAGO?: SortOrder
+    DOCUMENTO?: SortOrder
+    SOLI_CRED?: SortOrder
+    GARANT_CRE?: SortOrder
+    DNI_SOLI?: SortOrder
+    TEL_SOLI?: SortOrder
+    DOMI_SOLI?: SortOrder
+    DNI_GARANT?: SortOrder
+    TEL_GARANT?: SortOrder
+    DOMI_GARAN?: SortOrder
+    OPE_ANUCRE?: SortOrder
+    ANULA_CRE?: SortOrder
+    FECANU_CRE?: SortOrder
+    INFO_CRE?: SortOrder
+    SUCURSAL?: SortOrder
+    OPERADOR?: SortOrder
+    TRASPASO?: SortOrder
+    EMPRESA?: SortOrder
+    id?: SortOrder
+  }
+
+  export type servicios_historicoMinOrderByAggregateInput = {
+    NRO_NOTACR?: SortOrder
+    FEC_CREDIT?: SortOrder
+    EXINTO?: SortOrder
+    DNI_EXIN?: SortOrder
+    EDAD_EXIN?: SortOrder
+    FEC_FALLEC?: SortOrder
+    LUGAR?: SortOrder
+    TIPO_SERV?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    CONTRATO?: SortOrder
+    CASA_MORT?: SortOrder
+    FEC_INHU?: SortOrder
+    HORA?: SortOrder
+    CEMENTERIO?: SortOrder
+    DONDE_ENTI?: SortOrder
+    ATAUD_TIPO?: SortOrder
+    COD_ATAUD?: SortOrder
+    DETALLE?: SortOrder
+    RETI_CUER?: SortOrder
+    TRASLADO_A?: SortOrder
+    DIFE_KM?: SortOrder
+    CAPI_DOMI?: SortOrder
+    GRAB_PLACA?: SortOrder
+    TRAMITES?: SortOrder
+    AVISO_TELR?: SortOrder
+    CARROZA?: SortOrder
+    PORTACORO?: SortOrder
+    AUTO_DUELO?: SortOrder
+    SALA_VELAT?: SortOrder
+    ADICIONAL?: SortOrder
+    ADICIO_PAG?: SortOrder
+    OBSERVA0?: SortOrder
+    PARCELA?: SortOrder
+    SEC?: SortOrder
+    PARC?: SortOrder
+    SECC?: SortOrder
+    GASTO_ASOC?: SortOrder
+    GASTO_PAMI?: SortOrder
+    OBSERVA1?: SortOrder
+    OPE_ANUL?: SortOrder
+    ANULAR?: SortOrder
+    FEC_ANULA?: SortOrder
+    CREDITO?: SortOrder
+    TOTA_LETRA?: SortOrder
+    TOTA_NUM?: SortOrder
+    FORMA_PAGO?: SortOrder
+    DOCUMENTO?: SortOrder
+    SOLI_CRED?: SortOrder
+    GARANT_CRE?: SortOrder
+    DNI_SOLI?: SortOrder
+    TEL_SOLI?: SortOrder
+    DOMI_SOLI?: SortOrder
+    DNI_GARANT?: SortOrder
+    TEL_GARANT?: SortOrder
+    DOMI_GARAN?: SortOrder
+    OPE_ANUCRE?: SortOrder
+    ANULA_CRE?: SortOrder
+    FECANU_CRE?: SortOrder
+    INFO_CRE?: SortOrder
+    SUCURSAL?: SortOrder
+    OPERADOR?: SortOrder
+    TRASPASO?: SortOrder
+    EMPRESA?: SortOrder
+    id?: SortOrder
+  }
+
+  export type servicios_historicoSumOrderByAggregateInput = {
+    NRO_NOTACR?: SortOrder
+    DNI_EXIN?: SortOrder
+    EDAD_EXIN?: SortOrder
+    CONTRATO?: SortOrder
+    COD_ATAUD?: SortOrder
+    DIFE_KM?: SortOrder
+    CARROZA?: SortOrder
+    AUTO_DUELO?: SortOrder
+    ADICIO_PAG?: SortOrder
+    GASTO_ASOC?: SortOrder
+    OPE_ANUL?: SortOrder
+    ANULAR?: SortOrder
+    CREDITO?: SortOrder
+    TOTA_NUM?: SortOrder
+    DNI_SOLI?: SortOrder
+    DNI_GARANT?: SortOrder
+    OPE_ANUCRE?: SortOrder
+    ANULA_CRE?: SortOrder
+    INFO_CRE?: SortOrder
+    OPERADOR?: SortOrder
+    id?: SortOrder
   }
 
   export type servicios_liquidacionCountOrderByAggregateInput = {

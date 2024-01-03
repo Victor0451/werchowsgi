@@ -234,7 +234,8 @@ export type bajasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultA
     ANTICIPO: number | null
     CUOTAS: number | null
     MAIL: string | null
-    idbajas: number
+    idbaja: number
+    EMPRESA: string | null
   }, ExtArgs["result"]["bajas"]>
   composites: {}
 }
@@ -244,6 +245,95 @@ export type bajasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultA
  * 
  */
 export type bajas = runtime.Types.DefaultSelection<bajasPayload>
+export type bajas_mutualPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    NACIMIENTO: Date | null
+    CALLE: string | null
+    LOCALIDAD: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    DOMI_COBR: string | null
+    DOM_LAB: string | null
+    ZONA: number | null
+    ALTA: Date | null
+    BAJA: Date | null
+    VIGENCIA: Date | null
+    ALT_SEG: Date | null
+    VIG_SEG: Date | null
+    ENC_SEG: number | null
+    VIG_AYUDA: Date | null
+    GRUPO: number | null
+    SEXO: string | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    OPERADOR: number | null
+    ACTUALIZA: string | null
+    PAMI: string | null
+    OBRA_SOC: number | null
+    SEGURO: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    FEC_PLAN: Date | null
+    MOD_1: Date | null
+    PRO_1: number | null
+    MOD_2: Date | null
+    PRO_2: number | null
+    MOD_3: Date | null
+    PRO_3: number | null
+    MOD_4: Date | null
+    PRO_4: number | null
+    MOD_5: Date | null
+    TSEG: string | null
+    PRO_5: number | null
+    MOD_6: Date | null
+    PRO_6: number | null
+    MOD_7: Date | null
+    PRO_7: number | null
+    MOD_8: Date | null
+    PRO_8: number | null
+    MOD_9: Date | null
+    PRO_9: number | null
+    MOD_10: Date | null
+    PRO_10: number | null
+    MOD_11: Date | null
+    PRO_11: number | null
+    MOD_12: Date | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    TRASPASO: Date | null
+    FEC_REAFIL: Date | null
+    NUM_REAFIL: number | null
+    LEGAJO: string | null
+    COD_POST: number | null
+    VIG_OPT: Date | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    DECL_JUR: Date | null
+    VIG_SUB: Date | null
+    VIG_CONSU: Date | null
+    VIG_SMEDI: Date | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    MAIL: string | null
+    idbaja: number
+    EMPRESA: string | null
+  }, ExtArgs["result"]["bajas_mutual"]>
+  composites: {}
+}
+
+/**
+ * Model bajas_mutual
+ * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+ */
+export type bajas_mutual = runtime.Types.DefaultSelection<bajas_mutualPayload>
 export type bancosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -401,48 +491,6 @@ export type debitosPayload<ExtArgs extends $Extensions.Args = $Extensions.Defaul
  * 
  */
 export type debitos = runtime.Types.DefaultSelection<debitosPayload>
-export type historiaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    CONTRATO: number | null
-    OPERADOR: string | null
-    ARCHIVO: number | null
-    CAMPO: string | null
-    ANTERIOR: string | null
-    NUEVO: string | null
-    ACTUALIZA: string | null
-    CONTROL: string | null
-    idhistoria: number
-  }, ExtArgs["result"]["historia"]>
-  composites: {}
-}
-
-/**
- * Model historia
- * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
- */
-export type historia = runtime.Types.DefaultSelection<historiaPayload>
-export type historiamPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    CONTRATO: number | null
-    OPERADOR: string | null
-    ARCHIVO: number | null
-    CAMPO: number | null
-    ANTERIOR: string | null
-    NUEVO: string | null
-    ACTUALIZA: string | null
-    CONTROL: string | null
-    idhistoria: number
-  }, ExtArgs["result"]["historiam"]>
-  composites: {}
-}
-
-/**
- * Model historiam
- * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
- */
-export type historiam = runtime.Types.DefaultSelection<historiamPayload>
 export type liq_temporalPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -534,7 +582,7 @@ export type maestroPayload<ExtArgs extends $Extensions.Args = $Extensions.Defaul
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
-    OPERADOR: string | null
+    OPERADOR: number | null
     ACTUALIZA: string | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
@@ -1593,32 +1641,6 @@ export type usuarioPayload<ExtArgs extends $Extensions.Args = $Extensions.Defaul
  * 
  */
 export type usuario = runtime.Types.DefaultSelection<usuarioPayload>
-export type SO1Payload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    CONTRATO: number
-    APE_NOM: string | null
-    ALTA: Date | null
-    GRUPO: number | null
-    ADHS: number | null
-    PLAN: string | null
-    SUB_PLAN: string | null
-    ZONA: number | null
-    CUOTA: number | null
-    EMPRESA: string | null
-    SUCURSAL: string | null
-    EDAD_PROM: number | null
-    PERMANEN: number | null
-    DEUDA: number | null
-  }, ExtArgs["result"]["sO1"]>
-  composites: {}
-}
-
-/**
- * Model SO1
- * 
- */
-export type SO1 = runtime.Types.DefaultSelection<SO1Payload>
 export type guardiaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -1864,6 +1886,16 @@ export class PrismaClient<
   get bajas(): Prisma.bajasDelegate<GlobalReject, ExtArgs>;
 
   /**
+   * `prisma.bajas_mutual`: Exposes CRUD operations for the **bajas_mutual** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Bajas_mutuals
+    * const bajas_mutuals = await prisma.bajas_mutual.findMany()
+    * ```
+    */
+  get bajas_mutual(): Prisma.bajas_mutualDelegate<GlobalReject, ExtArgs>;
+
+  /**
    * `prisma.bancos`: Exposes CRUD operations for the **bancos** model.
     * Example usage:
     * ```ts
@@ -1942,26 +1974,6 @@ export class PrismaClient<
     * ```
     */
   get debitos(): Prisma.debitosDelegate<GlobalReject, ExtArgs>;
-
-  /**
-   * `prisma.historia`: Exposes CRUD operations for the **historia** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Historias
-    * const historias = await prisma.historia.findMany()
-    * ```
-    */
-  get historia(): Prisma.historiaDelegate<GlobalReject, ExtArgs>;
-
-  /**
-   * `prisma.historiam`: Exposes CRUD operations for the **historiam** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Historiam
-    * const historiam = await prisma.historiam.findMany()
-    * ```
-    */
-  get historiam(): Prisma.historiamDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.liq_temporal`: Exposes CRUD operations for the **liq_temporal** model.
@@ -2292,16 +2304,6 @@ export class PrismaClient<
     * ```
     */
   get usuario(): Prisma.usuarioDelegate<GlobalReject, ExtArgs>;
-
-  /**
-   * `prisma.sO1`: Exposes CRUD operations for the **SO1** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more SO1s
-    * const sO1s = await prisma.sO1.findMany()
-    * ```
-    */
-  get sO1(): Prisma.SO1Delegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.guardia`: Exposes CRUD operations for the **guardia** model.
@@ -2820,6 +2822,7 @@ export namespace Prisma {
     alta_adhe: 'alta_adhe',
     anticipos: 'anticipos',
     bajas: 'bajas',
+    bajas_mutual: 'bajas_mutual',
     bancos: 'bancos',
     caja_sucursal: 'caja_sucursal',
     cajas: 'cajas',
@@ -2828,8 +2831,6 @@ export namespace Prisma {
     cuota_prestamo: 'cuota_prestamo',
     cuotas_adeudadas: 'cuotas_adeudadas',
     debitos: 'debitos',
-    historia: 'historia',
-    historiam: 'historiam',
     liq_temporal: 'liq_temporal',
     liquidaciones: 'liquidaciones',
     localidad: 'localidad',
@@ -2863,7 +2864,6 @@ export namespace Prisma {
     sucursal: 'sucursal',
     sueldos: 'sueldos',
     usuario: 'usuario',
-    SO1: 'SO1',
     guardia: 'guardia',
     listado_rus: 'listado_rus',
     poliza_5380: 'poliza_5380'
@@ -2883,7 +2883,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'acciones' | 'adherent' | 'alta_adhe' | 'anticipos' | 'bajas' | 'bancos' | 'caja_sucursal' | 'cajas' | 'certificados' | 'cuo_fija' | 'cuota_prestamo' | 'cuotas_adeudadas' | 'debitos' | 'historia' | 'historiam' | 'liq_temporal' | 'liquidaciones' | 'localidad' | 'maestro' | 'maestro22' | 'maestro_bis' | 'memo' | 'meses' | 'mutual' | 'mutual_adh' | 'obra_soc' | 'pago_bco' | 'pago_bcom' | 'pagos' | 'pagos_mutual' | 'parcelas' | 'planificacion' | 'porcentaje_liq' | 'prestamos' | 'produccion' | 'produccion_copy' | 'puestos' | 'registro_diario_saldos' | 'registro_egreso_diario' | 'registro_ingreso_diario' | 'registro_sucursal' | 'semana_asesor' | 'semanas' | 'som' | 'sow' | 'sucursal' | 'sueldos' | 'usuario' | 'sO1' | 'guardia' | 'listado_rus' | 'poliza_5380'
+      modelProps: 'acciones' | 'adherent' | 'alta_adhe' | 'anticipos' | 'bajas' | 'bajas_mutual' | 'bancos' | 'caja_sucursal' | 'cajas' | 'certificados' | 'cuo_fija' | 'cuota_prestamo' | 'cuotas_adeudadas' | 'debitos' | 'liq_temporal' | 'liquidaciones' | 'localidad' | 'maestro' | 'maestro22' | 'maestro_bis' | 'memo' | 'meses' | 'mutual' | 'mutual_adh' | 'obra_soc' | 'pago_bco' | 'pago_bcom' | 'pagos' | 'pagos_mutual' | 'parcelas' | 'planificacion' | 'porcentaje_liq' | 'prestamos' | 'produccion' | 'produccion_copy' | 'puestos' | 'registro_diario_saldos' | 'registro_egreso_diario' | 'registro_ingreso_diario' | 'registro_sucursal' | 'semana_asesor' | 'semanas' | 'som' | 'sow' | 'sucursal' | 'sueldos' | 'usuario' | 'guardia' | 'listado_rus' | 'poliza_5380'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -3279,6 +3279,85 @@ export namespace Prisma {
             args: Prisma.bajasCountArgs<ExtArgs>,
             result: $Utils.Optional<BajasCountAggregateOutputType> | number
             payload: bajasPayload<ExtArgs>
+          }
+        }
+      }
+      bajas_mutual: {
+        operations: {
+          findUnique: {
+            args: Prisma.bajas_mutualFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<bajas_mutualPayload> | null
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.bajas_mutualFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<bajas_mutualPayload>
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.bajas_mutualFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<bajas_mutualPayload> | null
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.bajas_mutualFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<bajas_mutualPayload>
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.bajas_mutualFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<bajas_mutualPayload>[]
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.bajas_mutualCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<bajas_mutualPayload>
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.bajas_mutualCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.bajas_mutualDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<bajas_mutualPayload>
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.bajas_mutualUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<bajas_mutualPayload>
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.bajas_mutualDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.bajas_mutualUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.bajas_mutualUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<bajas_mutualPayload>
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Bajas_mutualAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateBajas_mutual>
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.bajas_mutualGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Bajas_mutualGroupByOutputType>[]
+            payload: bajas_mutualPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.bajas_mutualCountArgs<ExtArgs>,
+            result: $Utils.Optional<Bajas_mutualCountAggregateOutputType> | number
+            payload: bajas_mutualPayload<ExtArgs>
           }
         }
       }
@@ -3911,164 +3990,6 @@ export namespace Prisma {
             args: Prisma.debitosCountArgs<ExtArgs>,
             result: $Utils.Optional<DebitosCountAggregateOutputType> | number
             payload: debitosPayload<ExtArgs>
-          }
-        }
-      }
-      historia: {
-        operations: {
-          findUnique: {
-            args: Prisma.historiaFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiaPayload> | null
-            payload: historiaPayload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.historiaFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiaPayload>
-            payload: historiaPayload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.historiaFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiaPayload> | null
-            payload: historiaPayload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.historiaFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiaPayload>
-            payload: historiaPayload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.historiaFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiaPayload>[]
-            payload: historiaPayload<ExtArgs>
-          }
-          create: {
-            args: Prisma.historiaCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiaPayload>
-            payload: historiaPayload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.historiaCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: historiaPayload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.historiaDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiaPayload>
-            payload: historiaPayload<ExtArgs>
-          }
-          update: {
-            args: Prisma.historiaUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiaPayload>
-            payload: historiaPayload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.historiaDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: historiaPayload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.historiaUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: historiaPayload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.historiaUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiaPayload>
-            payload: historiaPayload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.HistoriaAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateHistoria>
-            payload: historiaPayload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.historiaGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<HistoriaGroupByOutputType>[]
-            payload: historiaPayload<ExtArgs>
-          }
-          count: {
-            args: Prisma.historiaCountArgs<ExtArgs>,
-            result: $Utils.Optional<HistoriaCountAggregateOutputType> | number
-            payload: historiaPayload<ExtArgs>
-          }
-        }
-      }
-      historiam: {
-        operations: {
-          findUnique: {
-            args: Prisma.historiamFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiamPayload> | null
-            payload: historiamPayload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.historiamFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiamPayload>
-            payload: historiamPayload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.historiamFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiamPayload> | null
-            payload: historiamPayload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.historiamFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiamPayload>
-            payload: historiamPayload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.historiamFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiamPayload>[]
-            payload: historiamPayload<ExtArgs>
-          }
-          create: {
-            args: Prisma.historiamCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiamPayload>
-            payload: historiamPayload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.historiamCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: historiamPayload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.historiamDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiamPayload>
-            payload: historiamPayload<ExtArgs>
-          }
-          update: {
-            args: Prisma.historiamUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiamPayload>
-            payload: historiamPayload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.historiamDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: historiamPayload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.historiamUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: historiamPayload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.historiamUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<historiamPayload>
-            payload: historiamPayload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.HistoriamAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateHistoriam>
-            payload: historiamPayload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.historiamGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<HistoriamGroupByOutputType>[]
-            payload: historiamPayload<ExtArgs>
-          }
-          count: {
-            args: Prisma.historiamCountArgs<ExtArgs>,
-            result: $Utils.Optional<HistoriamCountAggregateOutputType> | number
-            payload: historiamPayload<ExtArgs>
           }
         }
       }
@@ -6676,85 +6597,6 @@ export namespace Prisma {
             args: Prisma.usuarioCountArgs<ExtArgs>,
             result: $Utils.Optional<UsuarioCountAggregateOutputType> | number
             payload: usuarioPayload<ExtArgs>
-          }
-        }
-      }
-      SO1: {
-        operations: {
-          findUnique: {
-            args: Prisma.SO1FindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SO1Payload> | null
-            payload: SO1Payload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.SO1FindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SO1Payload>
-            payload: SO1Payload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.SO1FindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SO1Payload> | null
-            payload: SO1Payload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.SO1FindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SO1Payload>
-            payload: SO1Payload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.SO1FindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SO1Payload>[]
-            payload: SO1Payload<ExtArgs>
-          }
-          create: {
-            args: Prisma.SO1CreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SO1Payload>
-            payload: SO1Payload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.SO1CreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: SO1Payload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.SO1DeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SO1Payload>
-            payload: SO1Payload<ExtArgs>
-          }
-          update: {
-            args: Prisma.SO1UpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SO1Payload>
-            payload: SO1Payload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.SO1DeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: SO1Payload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.SO1UpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: SO1Payload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.SO1UpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SO1Payload>
-            payload: SO1Payload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.SO1AggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateSO1>
-            payload: SO1Payload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.SO1GroupByArgs<ExtArgs>,
-            result: $Utils.Optional<SO1GroupByOutputType>[]
-            payload: SO1Payload<ExtArgs>
-          }
-          count: {
-            args: Prisma.SO1CountArgs<ExtArgs>,
-            result: $Utils.Optional<SO1CountAggregateOutputType> | number
-            payload: SO1Payload<ExtArgs>
           }
         }
       }
@@ -11707,7 +11549,7 @@ export namespace Prisma {
     COD_POST: number | null
     ANTICIPO: number | null
     CUOTAS: number | null
-    idbajas: number | null
+    idbaja: number | null
   }
 
   export type BajasSumAggregateOutputType = {
@@ -11741,7 +11583,7 @@ export namespace Prisma {
     COD_POST: number | null
     ANTICIPO: number | null
     CUOTAS: number | null
-    idbajas: number | null
+    idbaja: number | null
   }
 
   export type BajasMinAggregateOutputType = {
@@ -11820,7 +11662,8 @@ export namespace Prisma {
     ANTICIPO: number | null
     CUOTAS: number | null
     MAIL: string | null
-    idbajas: number | null
+    idbaja: number | null
+    EMPRESA: string | null
   }
 
   export type BajasMaxAggregateOutputType = {
@@ -11899,7 +11742,8 @@ export namespace Prisma {
     ANTICIPO: number | null
     CUOTAS: number | null
     MAIL: string | null
-    idbajas: number | null
+    idbaja: number | null
+    EMPRESA: string | null
   }
 
   export type BajasCountAggregateOutputType = {
@@ -11978,7 +11822,8 @@ export namespace Prisma {
     ANTICIPO: number
     CUOTAS: number
     MAIL: number
-    idbajas: number
+    idbaja: number
+    EMPRESA: number
     _all: number
   }
 
@@ -12014,7 +11859,7 @@ export namespace Prisma {
     COD_POST?: true
     ANTICIPO?: true
     CUOTAS?: true
-    idbajas?: true
+    idbaja?: true
   }
 
   export type BajasSumAggregateInputType = {
@@ -12048,7 +11893,7 @@ export namespace Prisma {
     COD_POST?: true
     ANTICIPO?: true
     CUOTAS?: true
-    idbajas?: true
+    idbaja?: true
   }
 
   export type BajasMinAggregateInputType = {
@@ -12127,7 +11972,8 @@ export namespace Prisma {
     ANTICIPO?: true
     CUOTAS?: true
     MAIL?: true
-    idbajas?: true
+    idbaja?: true
+    EMPRESA?: true
   }
 
   export type BajasMaxAggregateInputType = {
@@ -12206,7 +12052,8 @@ export namespace Prisma {
     ANTICIPO?: true
     CUOTAS?: true
     MAIL?: true
-    idbajas?: true
+    idbaja?: true
+    EMPRESA?: true
   }
 
   export type BajasCountAggregateInputType = {
@@ -12285,7 +12132,8 @@ export namespace Prisma {
     ANTICIPO?: true
     CUOTAS?: true
     MAIL?: true
-    idbajas?: true
+    idbaja?: true
+    EMPRESA?: true
     _all?: true
   }
 
@@ -12452,7 +12300,8 @@ export namespace Prisma {
     ANTICIPO: number | null
     CUOTAS: number | null
     MAIL: string | null
-    idbajas: number
+    idbaja: number
+    EMPRESA: string | null
     _count: BajasCountAggregateOutputType | null
     _avg: BajasAvgAggregateOutputType | null
     _sum: BajasSumAggregateOutputType | null
@@ -12550,7 +12399,8 @@ export namespace Prisma {
     ANTICIPO?: boolean
     CUOTAS?: boolean
     MAIL?: boolean
-    idbajas?: boolean
+    idbaja?: boolean
+    EMPRESA?: boolean
   }, ExtArgs["result"]["bajas"]>
 
   export type bajasSelectScalar = {
@@ -12629,7 +12479,8 @@ export namespace Prisma {
     ANTICIPO?: boolean
     CUOTAS?: boolean
     MAIL?: boolean
-    idbajas?: boolean
+    idbaja?: boolean
+    EMPRESA?: boolean
   }
 
 
@@ -13330,6 +13181,1686 @@ export namespace Prisma {
      * Select specific fields to fetch from the bajas
      */
     select?: bajasSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model bajas_mutual
+   */
+
+
+  export type AggregateBajas_mutual = {
+    _count: Bajas_mutualCountAggregateOutputType | null
+    _avg: Bajas_mutualAvgAggregateOutputType | null
+    _sum: Bajas_mutualSumAggregateOutputType | null
+    _min: Bajas_mutualMinAggregateOutputType | null
+    _max: Bajas_mutualMaxAggregateOutputType | null
+  }
+
+  export type Bajas_mutualAvgAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    NRO_CALLE: number | null
+    ZONA: number | null
+    ENC_SEG: number | null
+    GRUPO: number | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    OPERADOR: number | null
+    OBRA_SOC: number | null
+    SEGURO: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PRO_1: number | null
+    PRO_2: number | null
+    PRO_3: number | null
+    PRO_4: number | null
+    PRO_5: number | null
+    PRO_6: number | null
+    PRO_7: number | null
+    PRO_8: number | null
+    PRO_9: number | null
+    PRO_10: number | null
+    PRO_11: number | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    NUM_REAFIL: number | null
+    COD_POST: number | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    idbaja: number | null
+  }
+
+  export type Bajas_mutualSumAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    NRO_CALLE: number | null
+    ZONA: number | null
+    ENC_SEG: number | null
+    GRUPO: number | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    OPERADOR: number | null
+    OBRA_SOC: number | null
+    SEGURO: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PRO_1: number | null
+    PRO_2: number | null
+    PRO_3: number | null
+    PRO_4: number | null
+    PRO_5: number | null
+    PRO_6: number | null
+    PRO_7: number | null
+    PRO_8: number | null
+    PRO_9: number | null
+    PRO_10: number | null
+    PRO_11: number | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    NUM_REAFIL: number | null
+    COD_POST: number | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    idbaja: number | null
+  }
+
+  export type Bajas_mutualMinAggregateOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    NACIMIENTO: Date | null
+    CALLE: string | null
+    LOCALIDAD: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    DOMI_COBR: string | null
+    DOM_LAB: string | null
+    ZONA: number | null
+    ALTA: Date | null
+    BAJA: Date | null
+    VIGENCIA: Date | null
+    ALT_SEG: Date | null
+    VIG_SEG: Date | null
+    ENC_SEG: number | null
+    VIG_AYUDA: Date | null
+    GRUPO: number | null
+    SEXO: string | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    OPERADOR: number | null
+    ACTUALIZA: string | null
+    PAMI: string | null
+    OBRA_SOC: number | null
+    SEGURO: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    FEC_PLAN: Date | null
+    MOD_1: Date | null
+    PRO_1: number | null
+    MOD_2: Date | null
+    PRO_2: number | null
+    MOD_3: Date | null
+    PRO_3: number | null
+    MOD_4: Date | null
+    PRO_4: number | null
+    MOD_5: Date | null
+    TSEG: string | null
+    PRO_5: number | null
+    MOD_6: Date | null
+    PRO_6: number | null
+    MOD_7: Date | null
+    PRO_7: number | null
+    MOD_8: Date | null
+    PRO_8: number | null
+    MOD_9: Date | null
+    PRO_9: number | null
+    MOD_10: Date | null
+    PRO_10: number | null
+    MOD_11: Date | null
+    PRO_11: number | null
+    MOD_12: Date | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    TRASPASO: Date | null
+    FEC_REAFIL: Date | null
+    NUM_REAFIL: number | null
+    LEGAJO: string | null
+    COD_POST: number | null
+    VIG_OPT: Date | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    DECL_JUR: Date | null
+    VIG_SUB: Date | null
+    VIG_CONSU: Date | null
+    VIG_SMEDI: Date | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    MAIL: string | null
+    idbaja: number | null
+    EMPRESA: string | null
+  }
+
+  export type Bajas_mutualMaxAggregateOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    NACIMIENTO: Date | null
+    CALLE: string | null
+    LOCALIDAD: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    DOMI_COBR: string | null
+    DOM_LAB: string | null
+    ZONA: number | null
+    ALTA: Date | null
+    BAJA: Date | null
+    VIGENCIA: Date | null
+    ALT_SEG: Date | null
+    VIG_SEG: Date | null
+    ENC_SEG: number | null
+    VIG_AYUDA: Date | null
+    GRUPO: number | null
+    SEXO: string | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    OPERADOR: number | null
+    ACTUALIZA: string | null
+    PAMI: string | null
+    OBRA_SOC: number | null
+    SEGURO: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    FEC_PLAN: Date | null
+    MOD_1: Date | null
+    PRO_1: number | null
+    MOD_2: Date | null
+    PRO_2: number | null
+    MOD_3: Date | null
+    PRO_3: number | null
+    MOD_4: Date | null
+    PRO_4: number | null
+    MOD_5: Date | null
+    TSEG: string | null
+    PRO_5: number | null
+    MOD_6: Date | null
+    PRO_6: number | null
+    MOD_7: Date | null
+    PRO_7: number | null
+    MOD_8: Date | null
+    PRO_8: number | null
+    MOD_9: Date | null
+    PRO_9: number | null
+    MOD_10: Date | null
+    PRO_10: number | null
+    MOD_11: Date | null
+    PRO_11: number | null
+    MOD_12: Date | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    TRASPASO: Date | null
+    FEC_REAFIL: Date | null
+    NUM_REAFIL: number | null
+    LEGAJO: string | null
+    COD_POST: number | null
+    VIG_OPT: Date | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    DECL_JUR: Date | null
+    VIG_SUB: Date | null
+    VIG_CONSU: Date | null
+    VIG_SMEDI: Date | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    MAIL: string | null
+    idbaja: number | null
+    EMPRESA: string | null
+  }
+
+  export type Bajas_mutualCountAggregateOutputType = {
+    SUCURSAL: number
+    CONTRATO: number
+    NRO_DOC: number
+    APELLIDOS: number
+    NOMBRES: number
+    NACIMIENTO: number
+    CALLE: number
+    LOCALIDAD: number
+    NRO_CALLE: number
+    BARRIO: number
+    DOMI_COBR: number
+    DOM_LAB: number
+    ZONA: number
+    ALTA: number
+    BAJA: number
+    VIGENCIA: number
+    ALT_SEG: number
+    VIG_SEG: number
+    ENC_SEG: number
+    VIG_AYUDA: number
+    GRUPO: number
+    SEXO: number
+    ADHERENTES: number
+    PRECIO: number
+    OPERADOR: number
+    ACTUALIZA: number
+    PAMI: number
+    OBRA_SOC: number
+    SEGURO: number
+    PRODUCTOR: number
+    PROD_DEB: number
+    PLAN: number
+    SUB_PLAN: number
+    FEC_PLAN: number
+    MOD_1: number
+    PRO_1: number
+    MOD_2: number
+    PRO_2: number
+    MOD_3: number
+    PRO_3: number
+    MOD_4: number
+    PRO_4: number
+    MOD_5: number
+    TSEG: number
+    PRO_5: number
+    MOD_6: number
+    PRO_6: number
+    MOD_7: number
+    PRO_7: number
+    MOD_8: number
+    PRO_8: number
+    MOD_9: number
+    PRO_9: number
+    MOD_10: number
+    PRO_10: number
+    MOD_11: number
+    PRO_11: number
+    MOD_12: number
+    PRO_12: number
+    TOT_MOD: number
+    TRASPASO: number
+    FEC_REAFIL: number
+    NUM_REAFIL: number
+    LEGAJO: number
+    COD_POST: number
+    VIG_OPT: number
+    TELEFONO: number
+    MOVIL: number
+    DECL_JUR: number
+    VIG_SUB: number
+    VIG_CONSU: number
+    VIG_SMEDI: number
+    ANTICIPO: number
+    CUOTAS: number
+    MAIL: number
+    idbaja: number
+    EMPRESA: number
+    _all: number
+  }
+
+
+  export type Bajas_mutualAvgAggregateInputType = {
+    CONTRATO?: true
+    NRO_DOC?: true
+    NRO_CALLE?: true
+    ZONA?: true
+    ENC_SEG?: true
+    GRUPO?: true
+    ADHERENTES?: true
+    PRECIO?: true
+    OPERADOR?: true
+    OBRA_SOC?: true
+    SEGURO?: true
+    PRODUCTOR?: true
+    PROD_DEB?: true
+    PRO_1?: true
+    PRO_2?: true
+    PRO_3?: true
+    PRO_4?: true
+    PRO_5?: true
+    PRO_6?: true
+    PRO_7?: true
+    PRO_8?: true
+    PRO_9?: true
+    PRO_10?: true
+    PRO_11?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    NUM_REAFIL?: true
+    COD_POST?: true
+    ANTICIPO?: true
+    CUOTAS?: true
+    idbaja?: true
+  }
+
+  export type Bajas_mutualSumAggregateInputType = {
+    CONTRATO?: true
+    NRO_DOC?: true
+    NRO_CALLE?: true
+    ZONA?: true
+    ENC_SEG?: true
+    GRUPO?: true
+    ADHERENTES?: true
+    PRECIO?: true
+    OPERADOR?: true
+    OBRA_SOC?: true
+    SEGURO?: true
+    PRODUCTOR?: true
+    PROD_DEB?: true
+    PRO_1?: true
+    PRO_2?: true
+    PRO_3?: true
+    PRO_4?: true
+    PRO_5?: true
+    PRO_6?: true
+    PRO_7?: true
+    PRO_8?: true
+    PRO_9?: true
+    PRO_10?: true
+    PRO_11?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    NUM_REAFIL?: true
+    COD_POST?: true
+    ANTICIPO?: true
+    CUOTAS?: true
+    idbaja?: true
+  }
+
+  export type Bajas_mutualMinAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    NACIMIENTO?: true
+    CALLE?: true
+    LOCALIDAD?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    DOMI_COBR?: true
+    DOM_LAB?: true
+    ZONA?: true
+    ALTA?: true
+    BAJA?: true
+    VIGENCIA?: true
+    ALT_SEG?: true
+    VIG_SEG?: true
+    ENC_SEG?: true
+    VIG_AYUDA?: true
+    GRUPO?: true
+    SEXO?: true
+    ADHERENTES?: true
+    PRECIO?: true
+    OPERADOR?: true
+    ACTUALIZA?: true
+    PAMI?: true
+    OBRA_SOC?: true
+    SEGURO?: true
+    PRODUCTOR?: true
+    PROD_DEB?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    FEC_PLAN?: true
+    MOD_1?: true
+    PRO_1?: true
+    MOD_2?: true
+    PRO_2?: true
+    MOD_3?: true
+    PRO_3?: true
+    MOD_4?: true
+    PRO_4?: true
+    MOD_5?: true
+    TSEG?: true
+    PRO_5?: true
+    MOD_6?: true
+    PRO_6?: true
+    MOD_7?: true
+    PRO_7?: true
+    MOD_8?: true
+    PRO_8?: true
+    MOD_9?: true
+    PRO_9?: true
+    MOD_10?: true
+    PRO_10?: true
+    MOD_11?: true
+    PRO_11?: true
+    MOD_12?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    TRASPASO?: true
+    FEC_REAFIL?: true
+    NUM_REAFIL?: true
+    LEGAJO?: true
+    COD_POST?: true
+    VIG_OPT?: true
+    TELEFONO?: true
+    MOVIL?: true
+    DECL_JUR?: true
+    VIG_SUB?: true
+    VIG_CONSU?: true
+    VIG_SMEDI?: true
+    ANTICIPO?: true
+    CUOTAS?: true
+    MAIL?: true
+    idbaja?: true
+    EMPRESA?: true
+  }
+
+  export type Bajas_mutualMaxAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    NACIMIENTO?: true
+    CALLE?: true
+    LOCALIDAD?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    DOMI_COBR?: true
+    DOM_LAB?: true
+    ZONA?: true
+    ALTA?: true
+    BAJA?: true
+    VIGENCIA?: true
+    ALT_SEG?: true
+    VIG_SEG?: true
+    ENC_SEG?: true
+    VIG_AYUDA?: true
+    GRUPO?: true
+    SEXO?: true
+    ADHERENTES?: true
+    PRECIO?: true
+    OPERADOR?: true
+    ACTUALIZA?: true
+    PAMI?: true
+    OBRA_SOC?: true
+    SEGURO?: true
+    PRODUCTOR?: true
+    PROD_DEB?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    FEC_PLAN?: true
+    MOD_1?: true
+    PRO_1?: true
+    MOD_2?: true
+    PRO_2?: true
+    MOD_3?: true
+    PRO_3?: true
+    MOD_4?: true
+    PRO_4?: true
+    MOD_5?: true
+    TSEG?: true
+    PRO_5?: true
+    MOD_6?: true
+    PRO_6?: true
+    MOD_7?: true
+    PRO_7?: true
+    MOD_8?: true
+    PRO_8?: true
+    MOD_9?: true
+    PRO_9?: true
+    MOD_10?: true
+    PRO_10?: true
+    MOD_11?: true
+    PRO_11?: true
+    MOD_12?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    TRASPASO?: true
+    FEC_REAFIL?: true
+    NUM_REAFIL?: true
+    LEGAJO?: true
+    COD_POST?: true
+    VIG_OPT?: true
+    TELEFONO?: true
+    MOVIL?: true
+    DECL_JUR?: true
+    VIG_SUB?: true
+    VIG_CONSU?: true
+    VIG_SMEDI?: true
+    ANTICIPO?: true
+    CUOTAS?: true
+    MAIL?: true
+    idbaja?: true
+    EMPRESA?: true
+  }
+
+  export type Bajas_mutualCountAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    NACIMIENTO?: true
+    CALLE?: true
+    LOCALIDAD?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    DOMI_COBR?: true
+    DOM_LAB?: true
+    ZONA?: true
+    ALTA?: true
+    BAJA?: true
+    VIGENCIA?: true
+    ALT_SEG?: true
+    VIG_SEG?: true
+    ENC_SEG?: true
+    VIG_AYUDA?: true
+    GRUPO?: true
+    SEXO?: true
+    ADHERENTES?: true
+    PRECIO?: true
+    OPERADOR?: true
+    ACTUALIZA?: true
+    PAMI?: true
+    OBRA_SOC?: true
+    SEGURO?: true
+    PRODUCTOR?: true
+    PROD_DEB?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    FEC_PLAN?: true
+    MOD_1?: true
+    PRO_1?: true
+    MOD_2?: true
+    PRO_2?: true
+    MOD_3?: true
+    PRO_3?: true
+    MOD_4?: true
+    PRO_4?: true
+    MOD_5?: true
+    TSEG?: true
+    PRO_5?: true
+    MOD_6?: true
+    PRO_6?: true
+    MOD_7?: true
+    PRO_7?: true
+    MOD_8?: true
+    PRO_8?: true
+    MOD_9?: true
+    PRO_9?: true
+    MOD_10?: true
+    PRO_10?: true
+    MOD_11?: true
+    PRO_11?: true
+    MOD_12?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    TRASPASO?: true
+    FEC_REAFIL?: true
+    NUM_REAFIL?: true
+    LEGAJO?: true
+    COD_POST?: true
+    VIG_OPT?: true
+    TELEFONO?: true
+    MOVIL?: true
+    DECL_JUR?: true
+    VIG_SUB?: true
+    VIG_CONSU?: true
+    VIG_SMEDI?: true
+    ANTICIPO?: true
+    CUOTAS?: true
+    MAIL?: true
+    idbaja?: true
+    EMPRESA?: true
+    _all?: true
+  }
+
+  export type Bajas_mutualAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which bajas_mutual to aggregate.
+     */
+    where?: bajas_mutualWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of bajas_mutuals to fetch.
+     */
+    orderBy?: bajas_mutualOrderByWithRelationInput | bajas_mutualOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: bajas_mutualWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` bajas_mutuals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` bajas_mutuals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned bajas_mutuals
+    **/
+    _count?: true | Bajas_mutualCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Bajas_mutualAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Bajas_mutualSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Bajas_mutualMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Bajas_mutualMaxAggregateInputType
+  }
+
+  export type GetBajas_mutualAggregateType<T extends Bajas_mutualAggregateArgs> = {
+        [P in keyof T & keyof AggregateBajas_mutual]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBajas_mutual[P]>
+      : GetScalarType<T[P], AggregateBajas_mutual[P]>
+  }
+
+
+
+
+  export type bajas_mutualGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: bajas_mutualWhereInput
+    orderBy?: bajas_mutualOrderByWithAggregationInput | bajas_mutualOrderByWithAggregationInput[]
+    by: Bajas_mutualScalarFieldEnum[] | Bajas_mutualScalarFieldEnum
+    having?: bajas_mutualScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Bajas_mutualCountAggregateInputType | true
+    _avg?: Bajas_mutualAvgAggregateInputType
+    _sum?: Bajas_mutualSumAggregateInputType
+    _min?: Bajas_mutualMinAggregateInputType
+    _max?: Bajas_mutualMaxAggregateInputType
+  }
+
+
+  export type Bajas_mutualGroupByOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    NACIMIENTO: Date | null
+    CALLE: string | null
+    LOCALIDAD: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    DOMI_COBR: string | null
+    DOM_LAB: string | null
+    ZONA: number | null
+    ALTA: Date | null
+    BAJA: Date | null
+    VIGENCIA: Date | null
+    ALT_SEG: Date | null
+    VIG_SEG: Date | null
+    ENC_SEG: number | null
+    VIG_AYUDA: Date | null
+    GRUPO: number | null
+    SEXO: string | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    OPERADOR: number | null
+    ACTUALIZA: string | null
+    PAMI: string | null
+    OBRA_SOC: number | null
+    SEGURO: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    FEC_PLAN: Date | null
+    MOD_1: Date | null
+    PRO_1: number | null
+    MOD_2: Date | null
+    PRO_2: number | null
+    MOD_3: Date | null
+    PRO_3: number | null
+    MOD_4: Date | null
+    PRO_4: number | null
+    MOD_5: Date | null
+    TSEG: string | null
+    PRO_5: number | null
+    MOD_6: Date | null
+    PRO_6: number | null
+    MOD_7: Date | null
+    PRO_7: number | null
+    MOD_8: Date | null
+    PRO_8: number | null
+    MOD_9: Date | null
+    PRO_9: number | null
+    MOD_10: Date | null
+    PRO_10: number | null
+    MOD_11: Date | null
+    PRO_11: number | null
+    MOD_12: Date | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    TRASPASO: Date | null
+    FEC_REAFIL: Date | null
+    NUM_REAFIL: number | null
+    LEGAJO: string | null
+    COD_POST: number | null
+    VIG_OPT: Date | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    DECL_JUR: Date | null
+    VIG_SUB: Date | null
+    VIG_CONSU: Date | null
+    VIG_SMEDI: Date | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    MAIL: string | null
+    idbaja: number
+    EMPRESA: string | null
+    _count: Bajas_mutualCountAggregateOutputType | null
+    _avg: Bajas_mutualAvgAggregateOutputType | null
+    _sum: Bajas_mutualSumAggregateOutputType | null
+    _min: Bajas_mutualMinAggregateOutputType | null
+    _max: Bajas_mutualMaxAggregateOutputType | null
+  }
+
+  type GetBajas_mutualGroupByPayload<T extends bajas_mutualGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Bajas_mutualGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Bajas_mutualGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Bajas_mutualGroupByOutputType[P]>
+            : GetScalarType<T[P], Bajas_mutualGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type bajas_mutualSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    NACIMIENTO?: boolean
+    CALLE?: boolean
+    LOCALIDAD?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    DOMI_COBR?: boolean
+    DOM_LAB?: boolean
+    ZONA?: boolean
+    ALTA?: boolean
+    BAJA?: boolean
+    VIGENCIA?: boolean
+    ALT_SEG?: boolean
+    VIG_SEG?: boolean
+    ENC_SEG?: boolean
+    VIG_AYUDA?: boolean
+    GRUPO?: boolean
+    SEXO?: boolean
+    ADHERENTES?: boolean
+    PRECIO?: boolean
+    OPERADOR?: boolean
+    ACTUALIZA?: boolean
+    PAMI?: boolean
+    OBRA_SOC?: boolean
+    SEGURO?: boolean
+    PRODUCTOR?: boolean
+    PROD_DEB?: boolean
+    PLAN?: boolean
+    SUB_PLAN?: boolean
+    FEC_PLAN?: boolean
+    MOD_1?: boolean
+    PRO_1?: boolean
+    MOD_2?: boolean
+    PRO_2?: boolean
+    MOD_3?: boolean
+    PRO_3?: boolean
+    MOD_4?: boolean
+    PRO_4?: boolean
+    MOD_5?: boolean
+    TSEG?: boolean
+    PRO_5?: boolean
+    MOD_6?: boolean
+    PRO_6?: boolean
+    MOD_7?: boolean
+    PRO_7?: boolean
+    MOD_8?: boolean
+    PRO_8?: boolean
+    MOD_9?: boolean
+    PRO_9?: boolean
+    MOD_10?: boolean
+    PRO_10?: boolean
+    MOD_11?: boolean
+    PRO_11?: boolean
+    MOD_12?: boolean
+    PRO_12?: boolean
+    TOT_MOD?: boolean
+    TRASPASO?: boolean
+    FEC_REAFIL?: boolean
+    NUM_REAFIL?: boolean
+    LEGAJO?: boolean
+    COD_POST?: boolean
+    VIG_OPT?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    DECL_JUR?: boolean
+    VIG_SUB?: boolean
+    VIG_CONSU?: boolean
+    VIG_SMEDI?: boolean
+    ANTICIPO?: boolean
+    CUOTAS?: boolean
+    MAIL?: boolean
+    idbaja?: boolean
+    EMPRESA?: boolean
+  }, ExtArgs["result"]["bajas_mutual"]>
+
+  export type bajas_mutualSelectScalar = {
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    NACIMIENTO?: boolean
+    CALLE?: boolean
+    LOCALIDAD?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    DOMI_COBR?: boolean
+    DOM_LAB?: boolean
+    ZONA?: boolean
+    ALTA?: boolean
+    BAJA?: boolean
+    VIGENCIA?: boolean
+    ALT_SEG?: boolean
+    VIG_SEG?: boolean
+    ENC_SEG?: boolean
+    VIG_AYUDA?: boolean
+    GRUPO?: boolean
+    SEXO?: boolean
+    ADHERENTES?: boolean
+    PRECIO?: boolean
+    OPERADOR?: boolean
+    ACTUALIZA?: boolean
+    PAMI?: boolean
+    OBRA_SOC?: boolean
+    SEGURO?: boolean
+    PRODUCTOR?: boolean
+    PROD_DEB?: boolean
+    PLAN?: boolean
+    SUB_PLAN?: boolean
+    FEC_PLAN?: boolean
+    MOD_1?: boolean
+    PRO_1?: boolean
+    MOD_2?: boolean
+    PRO_2?: boolean
+    MOD_3?: boolean
+    PRO_3?: boolean
+    MOD_4?: boolean
+    PRO_4?: boolean
+    MOD_5?: boolean
+    TSEG?: boolean
+    PRO_5?: boolean
+    MOD_6?: boolean
+    PRO_6?: boolean
+    MOD_7?: boolean
+    PRO_7?: boolean
+    MOD_8?: boolean
+    PRO_8?: boolean
+    MOD_9?: boolean
+    PRO_9?: boolean
+    MOD_10?: boolean
+    PRO_10?: boolean
+    MOD_11?: boolean
+    PRO_11?: boolean
+    MOD_12?: boolean
+    PRO_12?: boolean
+    TOT_MOD?: boolean
+    TRASPASO?: boolean
+    FEC_REAFIL?: boolean
+    NUM_REAFIL?: boolean
+    LEGAJO?: boolean
+    COD_POST?: boolean
+    VIG_OPT?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    DECL_JUR?: boolean
+    VIG_SUB?: boolean
+    VIG_CONSU?: boolean
+    VIG_SMEDI?: boolean
+    ANTICIPO?: boolean
+    CUOTAS?: boolean
+    MAIL?: boolean
+    idbaja?: boolean
+    EMPRESA?: boolean
+  }
+
+
+  type bajas_mutualGetPayload<S extends boolean | null | undefined | bajas_mutualArgs> = $Types.GetResult<bajas_mutualPayload, S>
+
+  type bajas_mutualCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<bajas_mutualFindManyArgs, 'select' | 'include'> & {
+      select?: Bajas_mutualCountAggregateInputType | true
+    }
+
+  export interface bajas_mutualDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['bajas_mutual'], meta: { name: 'bajas_mutual' } }
+    /**
+     * Find zero or one Bajas_mutual that matches the filter.
+     * @param {bajas_mutualFindUniqueArgs} args - Arguments to find a Bajas_mutual
+     * @example
+     * // Get one Bajas_mutual
+     * const bajas_mutual = await prisma.bajas_mutual.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends bajas_mutualFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, bajas_mutualFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'bajas_mutual'> extends True ? Prisma__bajas_mutualClient<$Types.GetResult<bajas_mutualPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__bajas_mutualClient<$Types.GetResult<bajas_mutualPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Bajas_mutual that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {bajas_mutualFindUniqueOrThrowArgs} args - Arguments to find a Bajas_mutual
+     * @example
+     * // Get one Bajas_mutual
+     * const bajas_mutual = await prisma.bajas_mutual.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends bajas_mutualFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, bajas_mutualFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__bajas_mutualClient<$Types.GetResult<bajas_mutualPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Bajas_mutual that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {bajas_mutualFindFirstArgs} args - Arguments to find a Bajas_mutual
+     * @example
+     * // Get one Bajas_mutual
+     * const bajas_mutual = await prisma.bajas_mutual.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends bajas_mutualFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, bajas_mutualFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'bajas_mutual'> extends True ? Prisma__bajas_mutualClient<$Types.GetResult<bajas_mutualPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__bajas_mutualClient<$Types.GetResult<bajas_mutualPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Bajas_mutual that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {bajas_mutualFindFirstOrThrowArgs} args - Arguments to find a Bajas_mutual
+     * @example
+     * // Get one Bajas_mutual
+     * const bajas_mutual = await prisma.bajas_mutual.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends bajas_mutualFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, bajas_mutualFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__bajas_mutualClient<$Types.GetResult<bajas_mutualPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Bajas_mutuals that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {bajas_mutualFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Bajas_mutuals
+     * const bajas_mutuals = await prisma.bajas_mutual.findMany()
+     * 
+     * // Get first 10 Bajas_mutuals
+     * const bajas_mutuals = await prisma.bajas_mutual.findMany({ take: 10 })
+     * 
+     * // Only select the `SUCURSAL`
+     * const bajas_mutualWithSUCURSALOnly = await prisma.bajas_mutual.findMany({ select: { SUCURSAL: true } })
+     * 
+    **/
+    findMany<T extends bajas_mutualFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, bajas_mutualFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<bajas_mutualPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Bajas_mutual.
+     * @param {bajas_mutualCreateArgs} args - Arguments to create a Bajas_mutual.
+     * @example
+     * // Create one Bajas_mutual
+     * const Bajas_mutual = await prisma.bajas_mutual.create({
+     *   data: {
+     *     // ... data to create a Bajas_mutual
+     *   }
+     * })
+     * 
+    **/
+    create<T extends bajas_mutualCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, bajas_mutualCreateArgs<ExtArgs>>
+    ): Prisma__bajas_mutualClient<$Types.GetResult<bajas_mutualPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Bajas_mutuals.
+     *     @param {bajas_mutualCreateManyArgs} args - Arguments to create many Bajas_mutuals.
+     *     @example
+     *     // Create many Bajas_mutuals
+     *     const bajas_mutual = await prisma.bajas_mutual.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends bajas_mutualCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, bajas_mutualCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Bajas_mutual.
+     * @param {bajas_mutualDeleteArgs} args - Arguments to delete one Bajas_mutual.
+     * @example
+     * // Delete one Bajas_mutual
+     * const Bajas_mutual = await prisma.bajas_mutual.delete({
+     *   where: {
+     *     // ... filter to delete one Bajas_mutual
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends bajas_mutualDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, bajas_mutualDeleteArgs<ExtArgs>>
+    ): Prisma__bajas_mutualClient<$Types.GetResult<bajas_mutualPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Bajas_mutual.
+     * @param {bajas_mutualUpdateArgs} args - Arguments to update one Bajas_mutual.
+     * @example
+     * // Update one Bajas_mutual
+     * const bajas_mutual = await prisma.bajas_mutual.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends bajas_mutualUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, bajas_mutualUpdateArgs<ExtArgs>>
+    ): Prisma__bajas_mutualClient<$Types.GetResult<bajas_mutualPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Bajas_mutuals.
+     * @param {bajas_mutualDeleteManyArgs} args - Arguments to filter Bajas_mutuals to delete.
+     * @example
+     * // Delete a few Bajas_mutuals
+     * const { count } = await prisma.bajas_mutual.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends bajas_mutualDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, bajas_mutualDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Bajas_mutuals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {bajas_mutualUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Bajas_mutuals
+     * const bajas_mutual = await prisma.bajas_mutual.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends bajas_mutualUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, bajas_mutualUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Bajas_mutual.
+     * @param {bajas_mutualUpsertArgs} args - Arguments to update or create a Bajas_mutual.
+     * @example
+     * // Update or create a Bajas_mutual
+     * const bajas_mutual = await prisma.bajas_mutual.upsert({
+     *   create: {
+     *     // ... data to create a Bajas_mutual
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Bajas_mutual we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends bajas_mutualUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, bajas_mutualUpsertArgs<ExtArgs>>
+    ): Prisma__bajas_mutualClient<$Types.GetResult<bajas_mutualPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Bajas_mutuals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {bajas_mutualCountArgs} args - Arguments to filter Bajas_mutuals to count.
+     * @example
+     * // Count the number of Bajas_mutuals
+     * const count = await prisma.bajas_mutual.count({
+     *   where: {
+     *     // ... the filter for the Bajas_mutuals we want to count
+     *   }
+     * })
+    **/
+    count<T extends bajas_mutualCountArgs>(
+      args?: Subset<T, bajas_mutualCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Bajas_mutualCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Bajas_mutual.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Bajas_mutualAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Bajas_mutualAggregateArgs>(args: Subset<T, Bajas_mutualAggregateArgs>): Prisma.PrismaPromise<GetBajas_mutualAggregateType<T>>
+
+    /**
+     * Group by Bajas_mutual.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {bajas_mutualGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends bajas_mutualGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: bajas_mutualGroupByArgs['orderBy'] }
+        : { orderBy?: bajas_mutualGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, bajas_mutualGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBajas_mutualGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for bajas_mutual.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__bajas_mutualClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * bajas_mutual base type for findUnique actions
+   */
+  export type bajas_mutualFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bajas_mutual
+     */
+    select?: bajas_mutualSelect<ExtArgs> | null
+    /**
+     * Filter, which bajas_mutual to fetch.
+     */
+    where: bajas_mutualWhereUniqueInput
+  }
+
+  /**
+   * bajas_mutual findUnique
+   */
+  export interface bajas_mutualFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends bajas_mutualFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * bajas_mutual findUniqueOrThrow
+   */
+  export type bajas_mutualFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bajas_mutual
+     */
+    select?: bajas_mutualSelect<ExtArgs> | null
+    /**
+     * Filter, which bajas_mutual to fetch.
+     */
+    where: bajas_mutualWhereUniqueInput
+  }
+
+
+  /**
+   * bajas_mutual base type for findFirst actions
+   */
+  export type bajas_mutualFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bajas_mutual
+     */
+    select?: bajas_mutualSelect<ExtArgs> | null
+    /**
+     * Filter, which bajas_mutual to fetch.
+     */
+    where?: bajas_mutualWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of bajas_mutuals to fetch.
+     */
+    orderBy?: bajas_mutualOrderByWithRelationInput | bajas_mutualOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for bajas_mutuals.
+     */
+    cursor?: bajas_mutualWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` bajas_mutuals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` bajas_mutuals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of bajas_mutuals.
+     */
+    distinct?: Bajas_mutualScalarFieldEnum | Bajas_mutualScalarFieldEnum[]
+  }
+
+  /**
+   * bajas_mutual findFirst
+   */
+  export interface bajas_mutualFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends bajas_mutualFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * bajas_mutual findFirstOrThrow
+   */
+  export type bajas_mutualFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bajas_mutual
+     */
+    select?: bajas_mutualSelect<ExtArgs> | null
+    /**
+     * Filter, which bajas_mutual to fetch.
+     */
+    where?: bajas_mutualWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of bajas_mutuals to fetch.
+     */
+    orderBy?: bajas_mutualOrderByWithRelationInput | bajas_mutualOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for bajas_mutuals.
+     */
+    cursor?: bajas_mutualWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` bajas_mutuals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` bajas_mutuals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of bajas_mutuals.
+     */
+    distinct?: Bajas_mutualScalarFieldEnum | Bajas_mutualScalarFieldEnum[]
+  }
+
+
+  /**
+   * bajas_mutual findMany
+   */
+  export type bajas_mutualFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bajas_mutual
+     */
+    select?: bajas_mutualSelect<ExtArgs> | null
+    /**
+     * Filter, which bajas_mutuals to fetch.
+     */
+    where?: bajas_mutualWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of bajas_mutuals to fetch.
+     */
+    orderBy?: bajas_mutualOrderByWithRelationInput | bajas_mutualOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing bajas_mutuals.
+     */
+    cursor?: bajas_mutualWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` bajas_mutuals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` bajas_mutuals.
+     */
+    skip?: number
+    distinct?: Bajas_mutualScalarFieldEnum | Bajas_mutualScalarFieldEnum[]
+  }
+
+
+  /**
+   * bajas_mutual create
+   */
+  export type bajas_mutualCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bajas_mutual
+     */
+    select?: bajas_mutualSelect<ExtArgs> | null
+    /**
+     * The data needed to create a bajas_mutual.
+     */
+    data?: XOR<bajas_mutualCreateInput, bajas_mutualUncheckedCreateInput>
+  }
+
+
+  /**
+   * bajas_mutual createMany
+   */
+  export type bajas_mutualCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many bajas_mutuals.
+     */
+    data: bajas_mutualCreateManyInput | bajas_mutualCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * bajas_mutual update
+   */
+  export type bajas_mutualUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bajas_mutual
+     */
+    select?: bajas_mutualSelect<ExtArgs> | null
+    /**
+     * The data needed to update a bajas_mutual.
+     */
+    data: XOR<bajas_mutualUpdateInput, bajas_mutualUncheckedUpdateInput>
+    /**
+     * Choose, which bajas_mutual to update.
+     */
+    where: bajas_mutualWhereUniqueInput
+  }
+
+
+  /**
+   * bajas_mutual updateMany
+   */
+  export type bajas_mutualUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update bajas_mutuals.
+     */
+    data: XOR<bajas_mutualUpdateManyMutationInput, bajas_mutualUncheckedUpdateManyInput>
+    /**
+     * Filter which bajas_mutuals to update
+     */
+    where?: bajas_mutualWhereInput
+  }
+
+
+  /**
+   * bajas_mutual upsert
+   */
+  export type bajas_mutualUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bajas_mutual
+     */
+    select?: bajas_mutualSelect<ExtArgs> | null
+    /**
+     * The filter to search for the bajas_mutual to update in case it exists.
+     */
+    where: bajas_mutualWhereUniqueInput
+    /**
+     * In case the bajas_mutual found by the `where` argument doesn't exist, create a new bajas_mutual with this data.
+     */
+    create: XOR<bajas_mutualCreateInput, bajas_mutualUncheckedCreateInput>
+    /**
+     * In case the bajas_mutual was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<bajas_mutualUpdateInput, bajas_mutualUncheckedUpdateInput>
+  }
+
+
+  /**
+   * bajas_mutual delete
+   */
+  export type bajas_mutualDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bajas_mutual
+     */
+    select?: bajas_mutualSelect<ExtArgs> | null
+    /**
+     * Filter which bajas_mutual to delete.
+     */
+    where: bajas_mutualWhereUniqueInput
+  }
+
+
+  /**
+   * bajas_mutual deleteMany
+   */
+  export type bajas_mutualDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which bajas_mutuals to delete
+     */
+    where?: bajas_mutualWhereInput
+  }
+
+
+  /**
+   * bajas_mutual without action
+   */
+  export type bajas_mutualArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bajas_mutual
+     */
+    select?: bajas_mutualSelect<ExtArgs> | null
   }
 
 
@@ -20896,1922 +22427,6 @@ export namespace Prisma {
 
 
   /**
-   * Model historia
-   */
-
-
-  export type AggregateHistoria = {
-    _count: HistoriaCountAggregateOutputType | null
-    _avg: HistoriaAvgAggregateOutputType | null
-    _sum: HistoriaSumAggregateOutputType | null
-    _min: HistoriaMinAggregateOutputType | null
-    _max: HistoriaMaxAggregateOutputType | null
-  }
-
-  export type HistoriaAvgAggregateOutputType = {
-    CONTRATO: number | null
-    ARCHIVO: number | null
-    idhistoria: number | null
-  }
-
-  export type HistoriaSumAggregateOutputType = {
-    CONTRATO: number | null
-    ARCHIVO: number | null
-    idhistoria: number | null
-  }
-
-  export type HistoriaMinAggregateOutputType = {
-    CONTRATO: number | null
-    OPERADOR: string | null
-    ARCHIVO: number | null
-    CAMPO: string | null
-    ANTERIOR: string | null
-    NUEVO: string | null
-    ACTUALIZA: string | null
-    CONTROL: string | null
-    idhistoria: number | null
-  }
-
-  export type HistoriaMaxAggregateOutputType = {
-    CONTRATO: number | null
-    OPERADOR: string | null
-    ARCHIVO: number | null
-    CAMPO: string | null
-    ANTERIOR: string | null
-    NUEVO: string | null
-    ACTUALIZA: string | null
-    CONTROL: string | null
-    idhistoria: number | null
-  }
-
-  export type HistoriaCountAggregateOutputType = {
-    CONTRATO: number
-    OPERADOR: number
-    ARCHIVO: number
-    CAMPO: number
-    ANTERIOR: number
-    NUEVO: number
-    ACTUALIZA: number
-    CONTROL: number
-    idhistoria: number
-    _all: number
-  }
-
-
-  export type HistoriaAvgAggregateInputType = {
-    CONTRATO?: true
-    ARCHIVO?: true
-    idhistoria?: true
-  }
-
-  export type HistoriaSumAggregateInputType = {
-    CONTRATO?: true
-    ARCHIVO?: true
-    idhistoria?: true
-  }
-
-  export type HistoriaMinAggregateInputType = {
-    CONTRATO?: true
-    OPERADOR?: true
-    ARCHIVO?: true
-    CAMPO?: true
-    ANTERIOR?: true
-    NUEVO?: true
-    ACTUALIZA?: true
-    CONTROL?: true
-    idhistoria?: true
-  }
-
-  export type HistoriaMaxAggregateInputType = {
-    CONTRATO?: true
-    OPERADOR?: true
-    ARCHIVO?: true
-    CAMPO?: true
-    ANTERIOR?: true
-    NUEVO?: true
-    ACTUALIZA?: true
-    CONTROL?: true
-    idhistoria?: true
-  }
-
-  export type HistoriaCountAggregateInputType = {
-    CONTRATO?: true
-    OPERADOR?: true
-    ARCHIVO?: true
-    CAMPO?: true
-    ANTERIOR?: true
-    NUEVO?: true
-    ACTUALIZA?: true
-    CONTROL?: true
-    idhistoria?: true
-    _all?: true
-  }
-
-  export type HistoriaAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which historia to aggregate.
-     */
-    where?: historiaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of historias to fetch.
-     */
-    orderBy?: historiaOrderByWithRelationInput | historiaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: historiaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` historias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` historias.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned historias
-    **/
-    _count?: true | HistoriaCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: HistoriaAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: HistoriaSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: HistoriaMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: HistoriaMaxAggregateInputType
-  }
-
-  export type GetHistoriaAggregateType<T extends HistoriaAggregateArgs> = {
-        [P in keyof T & keyof AggregateHistoria]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateHistoria[P]>
-      : GetScalarType<T[P], AggregateHistoria[P]>
-  }
-
-
-
-
-  export type historiaGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: historiaWhereInput
-    orderBy?: historiaOrderByWithAggregationInput | historiaOrderByWithAggregationInput[]
-    by: HistoriaScalarFieldEnum[] | HistoriaScalarFieldEnum
-    having?: historiaScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: HistoriaCountAggregateInputType | true
-    _avg?: HistoriaAvgAggregateInputType
-    _sum?: HistoriaSumAggregateInputType
-    _min?: HistoriaMinAggregateInputType
-    _max?: HistoriaMaxAggregateInputType
-  }
-
-
-  export type HistoriaGroupByOutputType = {
-    CONTRATO: number | null
-    OPERADOR: string | null
-    ARCHIVO: number | null
-    CAMPO: string | null
-    ANTERIOR: string | null
-    NUEVO: string | null
-    ACTUALIZA: string | null
-    CONTROL: string | null
-    idhistoria: number
-    _count: HistoriaCountAggregateOutputType | null
-    _avg: HistoriaAvgAggregateOutputType | null
-    _sum: HistoriaSumAggregateOutputType | null
-    _min: HistoriaMinAggregateOutputType | null
-    _max: HistoriaMaxAggregateOutputType | null
-  }
-
-  type GetHistoriaGroupByPayload<T extends historiaGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<HistoriaGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof HistoriaGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], HistoriaGroupByOutputType[P]>
-            : GetScalarType<T[P], HistoriaGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type historiaSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    CONTRATO?: boolean
-    OPERADOR?: boolean
-    ARCHIVO?: boolean
-    CAMPO?: boolean
-    ANTERIOR?: boolean
-    NUEVO?: boolean
-    ACTUALIZA?: boolean
-    CONTROL?: boolean
-    idhistoria?: boolean
-  }, ExtArgs["result"]["historia"]>
-
-  export type historiaSelectScalar = {
-    CONTRATO?: boolean
-    OPERADOR?: boolean
-    ARCHIVO?: boolean
-    CAMPO?: boolean
-    ANTERIOR?: boolean
-    NUEVO?: boolean
-    ACTUALIZA?: boolean
-    CONTROL?: boolean
-    idhistoria?: boolean
-  }
-
-
-  type historiaGetPayload<S extends boolean | null | undefined | historiaArgs> = $Types.GetResult<historiaPayload, S>
-
-  type historiaCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<historiaFindManyArgs, 'select' | 'include'> & {
-      select?: HistoriaCountAggregateInputType | true
-    }
-
-  export interface historiaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['historia'], meta: { name: 'historia' } }
-    /**
-     * Find zero or one Historia that matches the filter.
-     * @param {historiaFindUniqueArgs} args - Arguments to find a Historia
-     * @example
-     * // Get one Historia
-     * const historia = await prisma.historia.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends historiaFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, historiaFindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'historia'> extends True ? Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one Historia that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {historiaFindUniqueOrThrowArgs} args - Arguments to find a Historia
-     * @example
-     * // Get one Historia
-     * const historia = await prisma.historia.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends historiaFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, historiaFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first Historia that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiaFindFirstArgs} args - Arguments to find a Historia
-     * @example
-     * // Get one Historia
-     * const historia = await prisma.historia.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends historiaFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, historiaFindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'historia'> extends True ? Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first Historia that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiaFindFirstOrThrowArgs} args - Arguments to find a Historia
-     * @example
-     * // Get one Historia
-     * const historia = await prisma.historia.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends historiaFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, historiaFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more Historias that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiaFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Historias
-     * const historias = await prisma.historia.findMany()
-     * 
-     * // Get first 10 Historias
-     * const historias = await prisma.historia.findMany({ take: 10 })
-     * 
-     * // Only select the `CONTRATO`
-     * const historiaWithCONTRATOOnly = await prisma.historia.findMany({ select: { CONTRATO: true } })
-     * 
-    **/
-    findMany<T extends historiaFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, historiaFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<historiaPayload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a Historia.
-     * @param {historiaCreateArgs} args - Arguments to create a Historia.
-     * @example
-     * // Create one Historia
-     * const Historia = await prisma.historia.create({
-     *   data: {
-     *     // ... data to create a Historia
-     *   }
-     * })
-     * 
-    **/
-    create<T extends historiaCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, historiaCreateArgs<ExtArgs>>
-    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many Historias.
-     *     @param {historiaCreateManyArgs} args - Arguments to create many Historias.
-     *     @example
-     *     // Create many Historias
-     *     const historia = await prisma.historia.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends historiaCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, historiaCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Historia.
-     * @param {historiaDeleteArgs} args - Arguments to delete one Historia.
-     * @example
-     * // Delete one Historia
-     * const Historia = await prisma.historia.delete({
-     *   where: {
-     *     // ... filter to delete one Historia
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends historiaDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, historiaDeleteArgs<ExtArgs>>
-    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one Historia.
-     * @param {historiaUpdateArgs} args - Arguments to update one Historia.
-     * @example
-     * // Update one Historia
-     * const historia = await prisma.historia.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends historiaUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, historiaUpdateArgs<ExtArgs>>
-    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Historias.
-     * @param {historiaDeleteManyArgs} args - Arguments to filter Historias to delete.
-     * @example
-     * // Delete a few Historias
-     * const { count } = await prisma.historia.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends historiaDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, historiaDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Historias.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiaUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Historias
-     * const historia = await prisma.historia.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends historiaUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, historiaUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Historia.
-     * @param {historiaUpsertArgs} args - Arguments to update or create a Historia.
-     * @example
-     * // Update or create a Historia
-     * const historia = await prisma.historia.upsert({
-     *   create: {
-     *     // ... data to create a Historia
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Historia we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends historiaUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, historiaUpsertArgs<ExtArgs>>
-    ): Prisma__historiaClient<$Types.GetResult<historiaPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of Historias.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiaCountArgs} args - Arguments to filter Historias to count.
-     * @example
-     * // Count the number of Historias
-     * const count = await prisma.historia.count({
-     *   where: {
-     *     // ... the filter for the Historias we want to count
-     *   }
-     * })
-    **/
-    count<T extends historiaCountArgs>(
-      args?: Subset<T, historiaCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], HistoriaCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Historia.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {HistoriaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends HistoriaAggregateArgs>(args: Subset<T, HistoriaAggregateArgs>): Prisma.PrismaPromise<GetHistoriaAggregateType<T>>
-
-    /**
-     * Group by Historia.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiaGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends historiaGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: historiaGroupByArgs['orderBy'] }
-        : { orderBy?: historiaGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, historiaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHistoriaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for historia.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__historiaClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * historia base type for findUnique actions
-   */
-  export type historiaFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historia
-     */
-    select?: historiaSelect<ExtArgs> | null
-    /**
-     * Filter, which historia to fetch.
-     */
-    where: historiaWhereUniqueInput
-  }
-
-  /**
-   * historia findUnique
-   */
-  export interface historiaFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends historiaFindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * historia findUniqueOrThrow
-   */
-  export type historiaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historia
-     */
-    select?: historiaSelect<ExtArgs> | null
-    /**
-     * Filter, which historia to fetch.
-     */
-    where: historiaWhereUniqueInput
-  }
-
-
-  /**
-   * historia base type for findFirst actions
-   */
-  export type historiaFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historia
-     */
-    select?: historiaSelect<ExtArgs> | null
-    /**
-     * Filter, which historia to fetch.
-     */
-    where?: historiaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of historias to fetch.
-     */
-    orderBy?: historiaOrderByWithRelationInput | historiaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for historias.
-     */
-    cursor?: historiaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` historias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` historias.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of historias.
-     */
-    distinct?: HistoriaScalarFieldEnum | HistoriaScalarFieldEnum[]
-  }
-
-  /**
-   * historia findFirst
-   */
-  export interface historiaFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends historiaFindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * historia findFirstOrThrow
-   */
-  export type historiaFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historia
-     */
-    select?: historiaSelect<ExtArgs> | null
-    /**
-     * Filter, which historia to fetch.
-     */
-    where?: historiaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of historias to fetch.
-     */
-    orderBy?: historiaOrderByWithRelationInput | historiaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for historias.
-     */
-    cursor?: historiaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` historias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` historias.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of historias.
-     */
-    distinct?: HistoriaScalarFieldEnum | HistoriaScalarFieldEnum[]
-  }
-
-
-  /**
-   * historia findMany
-   */
-  export type historiaFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historia
-     */
-    select?: historiaSelect<ExtArgs> | null
-    /**
-     * Filter, which historias to fetch.
-     */
-    where?: historiaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of historias to fetch.
-     */
-    orderBy?: historiaOrderByWithRelationInput | historiaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing historias.
-     */
-    cursor?: historiaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` historias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` historias.
-     */
-    skip?: number
-    distinct?: HistoriaScalarFieldEnum | HistoriaScalarFieldEnum[]
-  }
-
-
-  /**
-   * historia create
-   */
-  export type historiaCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historia
-     */
-    select?: historiaSelect<ExtArgs> | null
-    /**
-     * The data needed to create a historia.
-     */
-    data?: XOR<historiaCreateInput, historiaUncheckedCreateInput>
-  }
-
-
-  /**
-   * historia createMany
-   */
-  export type historiaCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many historias.
-     */
-    data: historiaCreateManyInput | historiaCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * historia update
-   */
-  export type historiaUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historia
-     */
-    select?: historiaSelect<ExtArgs> | null
-    /**
-     * The data needed to update a historia.
-     */
-    data: XOR<historiaUpdateInput, historiaUncheckedUpdateInput>
-    /**
-     * Choose, which historia to update.
-     */
-    where: historiaWhereUniqueInput
-  }
-
-
-  /**
-   * historia updateMany
-   */
-  export type historiaUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update historias.
-     */
-    data: XOR<historiaUpdateManyMutationInput, historiaUncheckedUpdateManyInput>
-    /**
-     * Filter which historias to update
-     */
-    where?: historiaWhereInput
-  }
-
-
-  /**
-   * historia upsert
-   */
-  export type historiaUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historia
-     */
-    select?: historiaSelect<ExtArgs> | null
-    /**
-     * The filter to search for the historia to update in case it exists.
-     */
-    where: historiaWhereUniqueInput
-    /**
-     * In case the historia found by the `where` argument doesn't exist, create a new historia with this data.
-     */
-    create: XOR<historiaCreateInput, historiaUncheckedCreateInput>
-    /**
-     * In case the historia was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<historiaUpdateInput, historiaUncheckedUpdateInput>
-  }
-
-
-  /**
-   * historia delete
-   */
-  export type historiaDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historia
-     */
-    select?: historiaSelect<ExtArgs> | null
-    /**
-     * Filter which historia to delete.
-     */
-    where: historiaWhereUniqueInput
-  }
-
-
-  /**
-   * historia deleteMany
-   */
-  export type historiaDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which historias to delete
-     */
-    where?: historiaWhereInput
-  }
-
-
-  /**
-   * historia without action
-   */
-  export type historiaArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historia
-     */
-    select?: historiaSelect<ExtArgs> | null
-  }
-
-
-
-  /**
-   * Model historiam
-   */
-
-
-  export type AggregateHistoriam = {
-    _count: HistoriamCountAggregateOutputType | null
-    _avg: HistoriamAvgAggregateOutputType | null
-    _sum: HistoriamSumAggregateOutputType | null
-    _min: HistoriamMinAggregateOutputType | null
-    _max: HistoriamMaxAggregateOutputType | null
-  }
-
-  export type HistoriamAvgAggregateOutputType = {
-    CONTRATO: number | null
-    ARCHIVO: number | null
-    CAMPO: number | null
-    idhistoria: number | null
-  }
-
-  export type HistoriamSumAggregateOutputType = {
-    CONTRATO: number | null
-    ARCHIVO: number | null
-    CAMPO: number | null
-    idhistoria: number | null
-  }
-
-  export type HistoriamMinAggregateOutputType = {
-    CONTRATO: number | null
-    OPERADOR: string | null
-    ARCHIVO: number | null
-    CAMPO: number | null
-    ANTERIOR: string | null
-    NUEVO: string | null
-    ACTUALIZA: string | null
-    CONTROL: string | null
-    idhistoria: number | null
-  }
-
-  export type HistoriamMaxAggregateOutputType = {
-    CONTRATO: number | null
-    OPERADOR: string | null
-    ARCHIVO: number | null
-    CAMPO: number | null
-    ANTERIOR: string | null
-    NUEVO: string | null
-    ACTUALIZA: string | null
-    CONTROL: string | null
-    idhistoria: number | null
-  }
-
-  export type HistoriamCountAggregateOutputType = {
-    CONTRATO: number
-    OPERADOR: number
-    ARCHIVO: number
-    CAMPO: number
-    ANTERIOR: number
-    NUEVO: number
-    ACTUALIZA: number
-    CONTROL: number
-    idhistoria: number
-    _all: number
-  }
-
-
-  export type HistoriamAvgAggregateInputType = {
-    CONTRATO?: true
-    ARCHIVO?: true
-    CAMPO?: true
-    idhistoria?: true
-  }
-
-  export type HistoriamSumAggregateInputType = {
-    CONTRATO?: true
-    ARCHIVO?: true
-    CAMPO?: true
-    idhistoria?: true
-  }
-
-  export type HistoriamMinAggregateInputType = {
-    CONTRATO?: true
-    OPERADOR?: true
-    ARCHIVO?: true
-    CAMPO?: true
-    ANTERIOR?: true
-    NUEVO?: true
-    ACTUALIZA?: true
-    CONTROL?: true
-    idhistoria?: true
-  }
-
-  export type HistoriamMaxAggregateInputType = {
-    CONTRATO?: true
-    OPERADOR?: true
-    ARCHIVO?: true
-    CAMPO?: true
-    ANTERIOR?: true
-    NUEVO?: true
-    ACTUALIZA?: true
-    CONTROL?: true
-    idhistoria?: true
-  }
-
-  export type HistoriamCountAggregateInputType = {
-    CONTRATO?: true
-    OPERADOR?: true
-    ARCHIVO?: true
-    CAMPO?: true
-    ANTERIOR?: true
-    NUEVO?: true
-    ACTUALIZA?: true
-    CONTROL?: true
-    idhistoria?: true
-    _all?: true
-  }
-
-  export type HistoriamAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which historiam to aggregate.
-     */
-    where?: historiamWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of historiam to fetch.
-     */
-    orderBy?: historiamOrderByWithRelationInput | historiamOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: historiamWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` historiam from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` historiam.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned historiam
-    **/
-    _count?: true | HistoriamCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: HistoriamAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: HistoriamSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: HistoriamMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: HistoriamMaxAggregateInputType
-  }
-
-  export type GetHistoriamAggregateType<T extends HistoriamAggregateArgs> = {
-        [P in keyof T & keyof AggregateHistoriam]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateHistoriam[P]>
-      : GetScalarType<T[P], AggregateHistoriam[P]>
-  }
-
-
-
-
-  export type historiamGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: historiamWhereInput
-    orderBy?: historiamOrderByWithAggregationInput | historiamOrderByWithAggregationInput[]
-    by: HistoriamScalarFieldEnum[] | HistoriamScalarFieldEnum
-    having?: historiamScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: HistoriamCountAggregateInputType | true
-    _avg?: HistoriamAvgAggregateInputType
-    _sum?: HistoriamSumAggregateInputType
-    _min?: HistoriamMinAggregateInputType
-    _max?: HistoriamMaxAggregateInputType
-  }
-
-
-  export type HistoriamGroupByOutputType = {
-    CONTRATO: number | null
-    OPERADOR: string | null
-    ARCHIVO: number | null
-    CAMPO: number | null
-    ANTERIOR: string | null
-    NUEVO: string | null
-    ACTUALIZA: string | null
-    CONTROL: string | null
-    idhistoria: number
-    _count: HistoriamCountAggregateOutputType | null
-    _avg: HistoriamAvgAggregateOutputType | null
-    _sum: HistoriamSumAggregateOutputType | null
-    _min: HistoriamMinAggregateOutputType | null
-    _max: HistoriamMaxAggregateOutputType | null
-  }
-
-  type GetHistoriamGroupByPayload<T extends historiamGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<HistoriamGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof HistoriamGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], HistoriamGroupByOutputType[P]>
-            : GetScalarType<T[P], HistoriamGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type historiamSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    CONTRATO?: boolean
-    OPERADOR?: boolean
-    ARCHIVO?: boolean
-    CAMPO?: boolean
-    ANTERIOR?: boolean
-    NUEVO?: boolean
-    ACTUALIZA?: boolean
-    CONTROL?: boolean
-    idhistoria?: boolean
-  }, ExtArgs["result"]["historiam"]>
-
-  export type historiamSelectScalar = {
-    CONTRATO?: boolean
-    OPERADOR?: boolean
-    ARCHIVO?: boolean
-    CAMPO?: boolean
-    ANTERIOR?: boolean
-    NUEVO?: boolean
-    ACTUALIZA?: boolean
-    CONTROL?: boolean
-    idhistoria?: boolean
-  }
-
-
-  type historiamGetPayload<S extends boolean | null | undefined | historiamArgs> = $Types.GetResult<historiamPayload, S>
-
-  type historiamCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<historiamFindManyArgs, 'select' | 'include'> & {
-      select?: HistoriamCountAggregateInputType | true
-    }
-
-  export interface historiamDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['historiam'], meta: { name: 'historiam' } }
-    /**
-     * Find zero or one Historiam that matches the filter.
-     * @param {historiamFindUniqueArgs} args - Arguments to find a Historiam
-     * @example
-     * // Get one Historiam
-     * const historiam = await prisma.historiam.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends historiamFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, historiamFindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'historiam'> extends True ? Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one Historiam that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {historiamFindUniqueOrThrowArgs} args - Arguments to find a Historiam
-     * @example
-     * // Get one Historiam
-     * const historiam = await prisma.historiam.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends historiamFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, historiamFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first Historiam that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiamFindFirstArgs} args - Arguments to find a Historiam
-     * @example
-     * // Get one Historiam
-     * const historiam = await prisma.historiam.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends historiamFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, historiamFindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'historiam'> extends True ? Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first Historiam that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiamFindFirstOrThrowArgs} args - Arguments to find a Historiam
-     * @example
-     * // Get one Historiam
-     * const historiam = await prisma.historiam.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends historiamFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, historiamFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more Historiam that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiamFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Historiam
-     * const historiam = await prisma.historiam.findMany()
-     * 
-     * // Get first 10 Historiam
-     * const historiam = await prisma.historiam.findMany({ take: 10 })
-     * 
-     * // Only select the `CONTRATO`
-     * const historiamWithCONTRATOOnly = await prisma.historiam.findMany({ select: { CONTRATO: true } })
-     * 
-    **/
-    findMany<T extends historiamFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, historiamFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<historiamPayload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a Historiam.
-     * @param {historiamCreateArgs} args - Arguments to create a Historiam.
-     * @example
-     * // Create one Historiam
-     * const Historiam = await prisma.historiam.create({
-     *   data: {
-     *     // ... data to create a Historiam
-     *   }
-     * })
-     * 
-    **/
-    create<T extends historiamCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, historiamCreateArgs<ExtArgs>>
-    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many Historiam.
-     *     @param {historiamCreateManyArgs} args - Arguments to create many Historiam.
-     *     @example
-     *     // Create many Historiam
-     *     const historiam = await prisma.historiam.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends historiamCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, historiamCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Historiam.
-     * @param {historiamDeleteArgs} args - Arguments to delete one Historiam.
-     * @example
-     * // Delete one Historiam
-     * const Historiam = await prisma.historiam.delete({
-     *   where: {
-     *     // ... filter to delete one Historiam
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends historiamDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, historiamDeleteArgs<ExtArgs>>
-    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one Historiam.
-     * @param {historiamUpdateArgs} args - Arguments to update one Historiam.
-     * @example
-     * // Update one Historiam
-     * const historiam = await prisma.historiam.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends historiamUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, historiamUpdateArgs<ExtArgs>>
-    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Historiam.
-     * @param {historiamDeleteManyArgs} args - Arguments to filter Historiam to delete.
-     * @example
-     * // Delete a few Historiam
-     * const { count } = await prisma.historiam.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends historiamDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, historiamDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Historiam.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiamUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Historiam
-     * const historiam = await prisma.historiam.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends historiamUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, historiamUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Historiam.
-     * @param {historiamUpsertArgs} args - Arguments to update or create a Historiam.
-     * @example
-     * // Update or create a Historiam
-     * const historiam = await prisma.historiam.upsert({
-     *   create: {
-     *     // ... data to create a Historiam
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Historiam we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends historiamUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, historiamUpsertArgs<ExtArgs>>
-    ): Prisma__historiamClient<$Types.GetResult<historiamPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of Historiam.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiamCountArgs} args - Arguments to filter Historiam to count.
-     * @example
-     * // Count the number of Historiam
-     * const count = await prisma.historiam.count({
-     *   where: {
-     *     // ... the filter for the Historiam we want to count
-     *   }
-     * })
-    **/
-    count<T extends historiamCountArgs>(
-      args?: Subset<T, historiamCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], HistoriamCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Historiam.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {HistoriamAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends HistoriamAggregateArgs>(args: Subset<T, HistoriamAggregateArgs>): Prisma.PrismaPromise<GetHistoriamAggregateType<T>>
-
-    /**
-     * Group by Historiam.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {historiamGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends historiamGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: historiamGroupByArgs['orderBy'] }
-        : { orderBy?: historiamGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, historiamGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHistoriamGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for historiam.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__historiamClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * historiam base type for findUnique actions
-   */
-  export type historiamFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historiam
-     */
-    select?: historiamSelect<ExtArgs> | null
-    /**
-     * Filter, which historiam to fetch.
-     */
-    where: historiamWhereUniqueInput
-  }
-
-  /**
-   * historiam findUnique
-   */
-  export interface historiamFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends historiamFindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * historiam findUniqueOrThrow
-   */
-  export type historiamFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historiam
-     */
-    select?: historiamSelect<ExtArgs> | null
-    /**
-     * Filter, which historiam to fetch.
-     */
-    where: historiamWhereUniqueInput
-  }
-
-
-  /**
-   * historiam base type for findFirst actions
-   */
-  export type historiamFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historiam
-     */
-    select?: historiamSelect<ExtArgs> | null
-    /**
-     * Filter, which historiam to fetch.
-     */
-    where?: historiamWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of historiam to fetch.
-     */
-    orderBy?: historiamOrderByWithRelationInput | historiamOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for historiam.
-     */
-    cursor?: historiamWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` historiam from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` historiam.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of historiam.
-     */
-    distinct?: HistoriamScalarFieldEnum | HistoriamScalarFieldEnum[]
-  }
-
-  /**
-   * historiam findFirst
-   */
-  export interface historiamFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends historiamFindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * historiam findFirstOrThrow
-   */
-  export type historiamFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historiam
-     */
-    select?: historiamSelect<ExtArgs> | null
-    /**
-     * Filter, which historiam to fetch.
-     */
-    where?: historiamWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of historiam to fetch.
-     */
-    orderBy?: historiamOrderByWithRelationInput | historiamOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for historiam.
-     */
-    cursor?: historiamWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` historiam from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` historiam.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of historiam.
-     */
-    distinct?: HistoriamScalarFieldEnum | HistoriamScalarFieldEnum[]
-  }
-
-
-  /**
-   * historiam findMany
-   */
-  export type historiamFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historiam
-     */
-    select?: historiamSelect<ExtArgs> | null
-    /**
-     * Filter, which historiam to fetch.
-     */
-    where?: historiamWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of historiam to fetch.
-     */
-    orderBy?: historiamOrderByWithRelationInput | historiamOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing historiam.
-     */
-    cursor?: historiamWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` historiam from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` historiam.
-     */
-    skip?: number
-    distinct?: HistoriamScalarFieldEnum | HistoriamScalarFieldEnum[]
-  }
-
-
-  /**
-   * historiam create
-   */
-  export type historiamCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historiam
-     */
-    select?: historiamSelect<ExtArgs> | null
-    /**
-     * The data needed to create a historiam.
-     */
-    data?: XOR<historiamCreateInput, historiamUncheckedCreateInput>
-  }
-
-
-  /**
-   * historiam createMany
-   */
-  export type historiamCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many historiam.
-     */
-    data: historiamCreateManyInput | historiamCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * historiam update
-   */
-  export type historiamUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historiam
-     */
-    select?: historiamSelect<ExtArgs> | null
-    /**
-     * The data needed to update a historiam.
-     */
-    data: XOR<historiamUpdateInput, historiamUncheckedUpdateInput>
-    /**
-     * Choose, which historiam to update.
-     */
-    where: historiamWhereUniqueInput
-  }
-
-
-  /**
-   * historiam updateMany
-   */
-  export type historiamUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update historiam.
-     */
-    data: XOR<historiamUpdateManyMutationInput, historiamUncheckedUpdateManyInput>
-    /**
-     * Filter which historiam to update
-     */
-    where?: historiamWhereInput
-  }
-
-
-  /**
-   * historiam upsert
-   */
-  export type historiamUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historiam
-     */
-    select?: historiamSelect<ExtArgs> | null
-    /**
-     * The filter to search for the historiam to update in case it exists.
-     */
-    where: historiamWhereUniqueInput
-    /**
-     * In case the historiam found by the `where` argument doesn't exist, create a new historiam with this data.
-     */
-    create: XOR<historiamCreateInput, historiamUncheckedCreateInput>
-    /**
-     * In case the historiam was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<historiamUpdateInput, historiamUncheckedUpdateInput>
-  }
-
-
-  /**
-   * historiam delete
-   */
-  export type historiamDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historiam
-     */
-    select?: historiamSelect<ExtArgs> | null
-    /**
-     * Filter which historiam to delete.
-     */
-    where: historiamWhereUniqueInput
-  }
-
-
-  /**
-   * historiam deleteMany
-   */
-  export type historiamDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which historiam to delete
-     */
-    where?: historiamWhereInput
-  }
-
-
-  /**
-   * historiam without action
-   */
-  export type historiamArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the historiam
-     */
-    select?: historiamSelect<ExtArgs> | null
-  }
-
-
-
-  /**
    * Model liq_temporal
    */
 
@@ -25743,6 +25358,7 @@ export namespace Prisma {
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
+    OPERADOR: number | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
     PROD_DEB: number | null
@@ -25787,6 +25403,7 @@ export namespace Prisma {
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
+    OPERADOR: number | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
     PROD_DEB: number | null
@@ -25846,7 +25463,7 @@ export namespace Prisma {
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
-    OPERADOR: string | null
+    OPERADOR: number | null
     ACTUALIZA: string | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
@@ -25935,7 +25552,7 @@ export namespace Prisma {
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
-    OPERADOR: string | null
+    OPERADOR: number | null
     ACTUALIZA: string | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
@@ -26100,6 +25717,7 @@ export namespace Prisma {
     ADHERENTES?: true
     PRECIO?: true
     CUO_VIEJA?: true
+    OPERADOR?: true
     OBRA_SOC?: true
     PRODUCTOR?: true
     PROD_DEB?: true
@@ -26144,6 +25762,7 @@ export namespace Prisma {
     ADHERENTES?: true
     PRECIO?: true
     CUO_VIEJA?: true
+    OPERADOR?: true
     OBRA_SOC?: true
     PRODUCTOR?: true
     PROD_DEB?: true
@@ -26558,7 +26177,7 @@ export namespace Prisma {
     ADHERENTES: number | null
     PRECIO: number | null
     CUO_VIEJA: number | null
-    OPERADOR: string | null
+    OPERADOR: number | null
     ACTUALIZA: string | null
     OBRA_SOC: number | null
     PRODUCTOR: number | null
@@ -59633,1027 +59252,6 @@ export namespace Prisma {
 
 
   /**
-   * Model SO1
-   */
-
-
-  export type AggregateSO1 = {
-    _count: SO1CountAggregateOutputType | null
-    _avg: SO1AvgAggregateOutputType | null
-    _sum: SO1SumAggregateOutputType | null
-    _min: SO1MinAggregateOutputType | null
-    _max: SO1MaxAggregateOutputType | null
-  }
-
-  export type SO1AvgAggregateOutputType = {
-    CONTRATO: number | null
-    GRUPO: number | null
-    ADHS: number | null
-    ZONA: number | null
-    CUOTA: number | null
-    EDAD_PROM: number | null
-    PERMANEN: number | null
-    DEUDA: number | null
-  }
-
-  export type SO1SumAggregateOutputType = {
-    CONTRATO: number | null
-    GRUPO: number | null
-    ADHS: number | null
-    ZONA: number | null
-    CUOTA: number | null
-    EDAD_PROM: number | null
-    PERMANEN: number | null
-    DEUDA: number | null
-  }
-
-  export type SO1MinAggregateOutputType = {
-    CONTRATO: number | null
-    APE_NOM: string | null
-    ALTA: Date | null
-    GRUPO: number | null
-    ADHS: number | null
-    PLAN: string | null
-    SUB_PLAN: string | null
-    ZONA: number | null
-    CUOTA: number | null
-    EMPRESA: string | null
-    SUCURSAL: string | null
-    EDAD_PROM: number | null
-    PERMANEN: number | null
-    DEUDA: number | null
-  }
-
-  export type SO1MaxAggregateOutputType = {
-    CONTRATO: number | null
-    APE_NOM: string | null
-    ALTA: Date | null
-    GRUPO: number | null
-    ADHS: number | null
-    PLAN: string | null
-    SUB_PLAN: string | null
-    ZONA: number | null
-    CUOTA: number | null
-    EMPRESA: string | null
-    SUCURSAL: string | null
-    EDAD_PROM: number | null
-    PERMANEN: number | null
-    DEUDA: number | null
-  }
-
-  export type SO1CountAggregateOutputType = {
-    CONTRATO: number
-    APE_NOM: number
-    ALTA: number
-    GRUPO: number
-    ADHS: number
-    PLAN: number
-    SUB_PLAN: number
-    ZONA: number
-    CUOTA: number
-    EMPRESA: number
-    SUCURSAL: number
-    EDAD_PROM: number
-    PERMANEN: number
-    DEUDA: number
-    _all: number
-  }
-
-
-  export type SO1AvgAggregateInputType = {
-    CONTRATO?: true
-    GRUPO?: true
-    ADHS?: true
-    ZONA?: true
-    CUOTA?: true
-    EDAD_PROM?: true
-    PERMANEN?: true
-    DEUDA?: true
-  }
-
-  export type SO1SumAggregateInputType = {
-    CONTRATO?: true
-    GRUPO?: true
-    ADHS?: true
-    ZONA?: true
-    CUOTA?: true
-    EDAD_PROM?: true
-    PERMANEN?: true
-    DEUDA?: true
-  }
-
-  export type SO1MinAggregateInputType = {
-    CONTRATO?: true
-    APE_NOM?: true
-    ALTA?: true
-    GRUPO?: true
-    ADHS?: true
-    PLAN?: true
-    SUB_PLAN?: true
-    ZONA?: true
-    CUOTA?: true
-    EMPRESA?: true
-    SUCURSAL?: true
-    EDAD_PROM?: true
-    PERMANEN?: true
-    DEUDA?: true
-  }
-
-  export type SO1MaxAggregateInputType = {
-    CONTRATO?: true
-    APE_NOM?: true
-    ALTA?: true
-    GRUPO?: true
-    ADHS?: true
-    PLAN?: true
-    SUB_PLAN?: true
-    ZONA?: true
-    CUOTA?: true
-    EMPRESA?: true
-    SUCURSAL?: true
-    EDAD_PROM?: true
-    PERMANEN?: true
-    DEUDA?: true
-  }
-
-  export type SO1CountAggregateInputType = {
-    CONTRATO?: true
-    APE_NOM?: true
-    ALTA?: true
-    GRUPO?: true
-    ADHS?: true
-    PLAN?: true
-    SUB_PLAN?: true
-    ZONA?: true
-    CUOTA?: true
-    EMPRESA?: true
-    SUCURSAL?: true
-    EDAD_PROM?: true
-    PERMANEN?: true
-    DEUDA?: true
-    _all?: true
-  }
-
-  export type SO1AggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which SO1 to aggregate.
-     */
-    where?: SO1WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SO1s to fetch.
-     */
-    orderBy?: SO1OrderByWithRelationInput | SO1OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: SO1WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SO1s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SO1s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned SO1s
-    **/
-    _count?: true | SO1CountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: SO1AvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: SO1SumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: SO1MinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: SO1MaxAggregateInputType
-  }
-
-  export type GetSO1AggregateType<T extends SO1AggregateArgs> = {
-        [P in keyof T & keyof AggregateSO1]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSO1[P]>
-      : GetScalarType<T[P], AggregateSO1[P]>
-  }
-
-
-
-
-  export type SO1GroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: SO1WhereInput
-    orderBy?: SO1OrderByWithAggregationInput | SO1OrderByWithAggregationInput[]
-    by: SO1ScalarFieldEnum[] | SO1ScalarFieldEnum
-    having?: SO1ScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: SO1CountAggregateInputType | true
-    _avg?: SO1AvgAggregateInputType
-    _sum?: SO1SumAggregateInputType
-    _min?: SO1MinAggregateInputType
-    _max?: SO1MaxAggregateInputType
-  }
-
-
-  export type SO1GroupByOutputType = {
-    CONTRATO: number
-    APE_NOM: string | null
-    ALTA: Date | null
-    GRUPO: number | null
-    ADHS: number | null
-    PLAN: string | null
-    SUB_PLAN: string | null
-    ZONA: number | null
-    CUOTA: number | null
-    EMPRESA: string | null
-    SUCURSAL: string | null
-    EDAD_PROM: number | null
-    PERMANEN: number | null
-    DEUDA: number | null
-    _count: SO1CountAggregateOutputType | null
-    _avg: SO1AvgAggregateOutputType | null
-    _sum: SO1SumAggregateOutputType | null
-    _min: SO1MinAggregateOutputType | null
-    _max: SO1MaxAggregateOutputType | null
-  }
-
-  type GetSO1GroupByPayload<T extends SO1GroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<SO1GroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof SO1GroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], SO1GroupByOutputType[P]>
-            : GetScalarType<T[P], SO1GroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type SO1Select<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    CONTRATO?: boolean
-    APE_NOM?: boolean
-    ALTA?: boolean
-    GRUPO?: boolean
-    ADHS?: boolean
-    PLAN?: boolean
-    SUB_PLAN?: boolean
-    ZONA?: boolean
-    CUOTA?: boolean
-    EMPRESA?: boolean
-    SUCURSAL?: boolean
-    EDAD_PROM?: boolean
-    PERMANEN?: boolean
-    DEUDA?: boolean
-  }, ExtArgs["result"]["sO1"]>
-
-  export type SO1SelectScalar = {
-    CONTRATO?: boolean
-    APE_NOM?: boolean
-    ALTA?: boolean
-    GRUPO?: boolean
-    ADHS?: boolean
-    PLAN?: boolean
-    SUB_PLAN?: boolean
-    ZONA?: boolean
-    CUOTA?: boolean
-    EMPRESA?: boolean
-    SUCURSAL?: boolean
-    EDAD_PROM?: boolean
-    PERMANEN?: boolean
-    DEUDA?: boolean
-  }
-
-
-  type SO1GetPayload<S extends boolean | null | undefined | SO1Args> = $Types.GetResult<SO1Payload, S>
-
-  type SO1CountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<SO1FindManyArgs, 'select' | 'include'> & {
-      select?: SO1CountAggregateInputType | true
-    }
-
-  export interface SO1Delegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SO1'], meta: { name: 'SO1' } }
-    /**
-     * Find zero or one SO1 that matches the filter.
-     * @param {SO1FindUniqueArgs} args - Arguments to find a SO1
-     * @example
-     * // Get one SO1
-     * const sO1 = await prisma.sO1.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends SO1FindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, SO1FindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'SO1'> extends True ? Prisma__SO1Client<$Types.GetResult<SO1Payload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__SO1Client<$Types.GetResult<SO1Payload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one SO1 that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {SO1FindUniqueOrThrowArgs} args - Arguments to find a SO1
-     * @example
-     * // Get one SO1
-     * const sO1 = await prisma.sO1.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends SO1FindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, SO1FindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__SO1Client<$Types.GetResult<SO1Payload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first SO1 that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SO1FindFirstArgs} args - Arguments to find a SO1
-     * @example
-     * // Get one SO1
-     * const sO1 = await prisma.sO1.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends SO1FindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, SO1FindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'SO1'> extends True ? Prisma__SO1Client<$Types.GetResult<SO1Payload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__SO1Client<$Types.GetResult<SO1Payload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first SO1 that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SO1FindFirstOrThrowArgs} args - Arguments to find a SO1
-     * @example
-     * // Get one SO1
-     * const sO1 = await prisma.sO1.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends SO1FindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, SO1FindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__SO1Client<$Types.GetResult<SO1Payload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more SO1s that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SO1FindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all SO1s
-     * const sO1s = await prisma.sO1.findMany()
-     * 
-     * // Get first 10 SO1s
-     * const sO1s = await prisma.sO1.findMany({ take: 10 })
-     * 
-     * // Only select the `CONTRATO`
-     * const sO1WithCONTRATOOnly = await prisma.sO1.findMany({ select: { CONTRATO: true } })
-     * 
-    **/
-    findMany<T extends SO1FindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, SO1FindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<SO1Payload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a SO1.
-     * @param {SO1CreateArgs} args - Arguments to create a SO1.
-     * @example
-     * // Create one SO1
-     * const SO1 = await prisma.sO1.create({
-     *   data: {
-     *     // ... data to create a SO1
-     *   }
-     * })
-     * 
-    **/
-    create<T extends SO1CreateArgs<ExtArgs>>(
-      args: SelectSubset<T, SO1CreateArgs<ExtArgs>>
-    ): Prisma__SO1Client<$Types.GetResult<SO1Payload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many SO1s.
-     *     @param {SO1CreateManyArgs} args - Arguments to create many SO1s.
-     *     @example
-     *     // Create many SO1s
-     *     const sO1 = await prisma.sO1.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends SO1CreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, SO1CreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a SO1.
-     * @param {SO1DeleteArgs} args - Arguments to delete one SO1.
-     * @example
-     * // Delete one SO1
-     * const SO1 = await prisma.sO1.delete({
-     *   where: {
-     *     // ... filter to delete one SO1
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends SO1DeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, SO1DeleteArgs<ExtArgs>>
-    ): Prisma__SO1Client<$Types.GetResult<SO1Payload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one SO1.
-     * @param {SO1UpdateArgs} args - Arguments to update one SO1.
-     * @example
-     * // Update one SO1
-     * const sO1 = await prisma.sO1.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends SO1UpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, SO1UpdateArgs<ExtArgs>>
-    ): Prisma__SO1Client<$Types.GetResult<SO1Payload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more SO1s.
-     * @param {SO1DeleteManyArgs} args - Arguments to filter SO1s to delete.
-     * @example
-     * // Delete a few SO1s
-     * const { count } = await prisma.sO1.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends SO1DeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, SO1DeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more SO1s.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SO1UpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many SO1s
-     * const sO1 = await prisma.sO1.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends SO1UpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, SO1UpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one SO1.
-     * @param {SO1UpsertArgs} args - Arguments to update or create a SO1.
-     * @example
-     * // Update or create a SO1
-     * const sO1 = await prisma.sO1.upsert({
-     *   create: {
-     *     // ... data to create a SO1
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the SO1 we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends SO1UpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, SO1UpsertArgs<ExtArgs>>
-    ): Prisma__SO1Client<$Types.GetResult<SO1Payload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of SO1s.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SO1CountArgs} args - Arguments to filter SO1s to count.
-     * @example
-     * // Count the number of SO1s
-     * const count = await prisma.sO1.count({
-     *   where: {
-     *     // ... the filter for the SO1s we want to count
-     *   }
-     * })
-    **/
-    count<T extends SO1CountArgs>(
-      args?: Subset<T, SO1CountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], SO1CountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a SO1.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SO1AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends SO1AggregateArgs>(args: Subset<T, SO1AggregateArgs>): Prisma.PrismaPromise<GetSO1AggregateType<T>>
-
-    /**
-     * Group by SO1.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SO1GroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends SO1GroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SO1GroupByArgs['orderBy'] }
-        : { orderBy?: SO1GroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, SO1GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSO1GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for SO1.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__SO1Client<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * SO1 base type for findUnique actions
-   */
-  export type SO1FindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SO1
-     */
-    select?: SO1Select<ExtArgs> | null
-    /**
-     * Filter, which SO1 to fetch.
-     */
-    where: SO1WhereUniqueInput
-  }
-
-  /**
-   * SO1 findUnique
-   */
-  export interface SO1FindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends SO1FindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * SO1 findUniqueOrThrow
-   */
-  export type SO1FindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SO1
-     */
-    select?: SO1Select<ExtArgs> | null
-    /**
-     * Filter, which SO1 to fetch.
-     */
-    where: SO1WhereUniqueInput
-  }
-
-
-  /**
-   * SO1 base type for findFirst actions
-   */
-  export type SO1FindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SO1
-     */
-    select?: SO1Select<ExtArgs> | null
-    /**
-     * Filter, which SO1 to fetch.
-     */
-    where?: SO1WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SO1s to fetch.
-     */
-    orderBy?: SO1OrderByWithRelationInput | SO1OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for SO1s.
-     */
-    cursor?: SO1WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SO1s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SO1s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of SO1s.
-     */
-    distinct?: SO1ScalarFieldEnum | SO1ScalarFieldEnum[]
-  }
-
-  /**
-   * SO1 findFirst
-   */
-  export interface SO1FindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends SO1FindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * SO1 findFirstOrThrow
-   */
-  export type SO1FindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SO1
-     */
-    select?: SO1Select<ExtArgs> | null
-    /**
-     * Filter, which SO1 to fetch.
-     */
-    where?: SO1WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SO1s to fetch.
-     */
-    orderBy?: SO1OrderByWithRelationInput | SO1OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for SO1s.
-     */
-    cursor?: SO1WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SO1s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SO1s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of SO1s.
-     */
-    distinct?: SO1ScalarFieldEnum | SO1ScalarFieldEnum[]
-  }
-
-
-  /**
-   * SO1 findMany
-   */
-  export type SO1FindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SO1
-     */
-    select?: SO1Select<ExtArgs> | null
-    /**
-     * Filter, which SO1s to fetch.
-     */
-    where?: SO1WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SO1s to fetch.
-     */
-    orderBy?: SO1OrderByWithRelationInput | SO1OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing SO1s.
-     */
-    cursor?: SO1WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SO1s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SO1s.
-     */
-    skip?: number
-    distinct?: SO1ScalarFieldEnum | SO1ScalarFieldEnum[]
-  }
-
-
-  /**
-   * SO1 create
-   */
-  export type SO1CreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SO1
-     */
-    select?: SO1Select<ExtArgs> | null
-    /**
-     * The data needed to create a SO1.
-     */
-    data: XOR<SO1CreateInput, SO1UncheckedCreateInput>
-  }
-
-
-  /**
-   * SO1 createMany
-   */
-  export type SO1CreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many SO1s.
-     */
-    data: SO1CreateManyInput | SO1CreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * SO1 update
-   */
-  export type SO1UpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SO1
-     */
-    select?: SO1Select<ExtArgs> | null
-    /**
-     * The data needed to update a SO1.
-     */
-    data: XOR<SO1UpdateInput, SO1UncheckedUpdateInput>
-    /**
-     * Choose, which SO1 to update.
-     */
-    where: SO1WhereUniqueInput
-  }
-
-
-  /**
-   * SO1 updateMany
-   */
-  export type SO1UpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update SO1s.
-     */
-    data: XOR<SO1UpdateManyMutationInput, SO1UncheckedUpdateManyInput>
-    /**
-     * Filter which SO1s to update
-     */
-    where?: SO1WhereInput
-  }
-
-
-  /**
-   * SO1 upsert
-   */
-  export type SO1UpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SO1
-     */
-    select?: SO1Select<ExtArgs> | null
-    /**
-     * The filter to search for the SO1 to update in case it exists.
-     */
-    where: SO1WhereUniqueInput
-    /**
-     * In case the SO1 found by the `where` argument doesn't exist, create a new SO1 with this data.
-     */
-    create: XOR<SO1CreateInput, SO1UncheckedCreateInput>
-    /**
-     * In case the SO1 was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<SO1UpdateInput, SO1UncheckedUpdateInput>
-  }
-
-
-  /**
-   * SO1 delete
-   */
-  export type SO1DeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SO1
-     */
-    select?: SO1Select<ExtArgs> | null
-    /**
-     * Filter which SO1 to delete.
-     */
-    where: SO1WhereUniqueInput
-  }
-
-
-  /**
-   * SO1 deleteMany
-   */
-  export type SO1DeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which SO1s to delete
-     */
-    where?: SO1WhereInput
-  }
-
-
-  /**
-   * SO1 without action
-   */
-  export type SO1Args<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SO1
-     */
-    select?: SO1Select<ExtArgs> | null
-  }
-
-
-
-  /**
    * Model guardia
    */
 
@@ -63738,10 +62336,94 @@ export namespace Prisma {
     ANTICIPO: 'ANTICIPO',
     CUOTAS: 'CUOTAS',
     MAIL: 'MAIL',
-    idbajas: 'idbajas'
+    idbaja: 'idbaja',
+    EMPRESA: 'EMPRESA'
   };
 
   export type BajasScalarFieldEnum = (typeof BajasScalarFieldEnum)[keyof typeof BajasScalarFieldEnum]
+
+
+  export const Bajas_mutualScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    NACIMIENTO: 'NACIMIENTO',
+    CALLE: 'CALLE',
+    LOCALIDAD: 'LOCALIDAD',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    DOMI_COBR: 'DOMI_COBR',
+    DOM_LAB: 'DOM_LAB',
+    ZONA: 'ZONA',
+    ALTA: 'ALTA',
+    BAJA: 'BAJA',
+    VIGENCIA: 'VIGENCIA',
+    ALT_SEG: 'ALT_SEG',
+    VIG_SEG: 'VIG_SEG',
+    ENC_SEG: 'ENC_SEG',
+    VIG_AYUDA: 'VIG_AYUDA',
+    GRUPO: 'GRUPO',
+    SEXO: 'SEXO',
+    ADHERENTES: 'ADHERENTES',
+    PRECIO: 'PRECIO',
+    OPERADOR: 'OPERADOR',
+    ACTUALIZA: 'ACTUALIZA',
+    PAMI: 'PAMI',
+    OBRA_SOC: 'OBRA_SOC',
+    SEGURO: 'SEGURO',
+    PRODUCTOR: 'PRODUCTOR',
+    PROD_DEB: 'PROD_DEB',
+    PLAN: 'PLAN',
+    SUB_PLAN: 'SUB_PLAN',
+    FEC_PLAN: 'FEC_PLAN',
+    MOD_1: 'MOD_1',
+    PRO_1: 'PRO_1',
+    MOD_2: 'MOD_2',
+    PRO_2: 'PRO_2',
+    MOD_3: 'MOD_3',
+    PRO_3: 'PRO_3',
+    MOD_4: 'MOD_4',
+    PRO_4: 'PRO_4',
+    MOD_5: 'MOD_5',
+    TSEG: 'TSEG',
+    PRO_5: 'PRO_5',
+    MOD_6: 'MOD_6',
+    PRO_6: 'PRO_6',
+    MOD_7: 'MOD_7',
+    PRO_7: 'PRO_7',
+    MOD_8: 'MOD_8',
+    PRO_8: 'PRO_8',
+    MOD_9: 'MOD_9',
+    PRO_9: 'PRO_9',
+    MOD_10: 'MOD_10',
+    PRO_10: 'PRO_10',
+    MOD_11: 'MOD_11',
+    PRO_11: 'PRO_11',
+    MOD_12: 'MOD_12',
+    PRO_12: 'PRO_12',
+    TOT_MOD: 'TOT_MOD',
+    TRASPASO: 'TRASPASO',
+    FEC_REAFIL: 'FEC_REAFIL',
+    NUM_REAFIL: 'NUM_REAFIL',
+    LEGAJO: 'LEGAJO',
+    COD_POST: 'COD_POST',
+    VIG_OPT: 'VIG_OPT',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    DECL_JUR: 'DECL_JUR',
+    VIG_SUB: 'VIG_SUB',
+    VIG_CONSU: 'VIG_CONSU',
+    VIG_SMEDI: 'VIG_SMEDI',
+    ANTICIPO: 'ANTICIPO',
+    CUOTAS: 'CUOTAS',
+    MAIL: 'MAIL',
+    idbaja: 'idbaja',
+    EMPRESA: 'EMPRESA'
+  };
+
+  export type Bajas_mutualScalarFieldEnum = (typeof Bajas_mutualScalarFieldEnum)[keyof typeof Bajas_mutualScalarFieldEnum]
 
 
   export const BancosScalarFieldEnum: {
@@ -63851,36 +62533,6 @@ export namespace Prisma {
   };
 
   export type DebitosScalarFieldEnum = (typeof DebitosScalarFieldEnum)[keyof typeof DebitosScalarFieldEnum]
-
-
-  export const HistoriaScalarFieldEnum: {
-    CONTRATO: 'CONTRATO',
-    OPERADOR: 'OPERADOR',
-    ARCHIVO: 'ARCHIVO',
-    CAMPO: 'CAMPO',
-    ANTERIOR: 'ANTERIOR',
-    NUEVO: 'NUEVO',
-    ACTUALIZA: 'ACTUALIZA',
-    CONTROL: 'CONTROL',
-    idhistoria: 'idhistoria'
-  };
-
-  export type HistoriaScalarFieldEnum = (typeof HistoriaScalarFieldEnum)[keyof typeof HistoriaScalarFieldEnum]
-
-
-  export const HistoriamScalarFieldEnum: {
-    CONTRATO: 'CONTRATO',
-    OPERADOR: 'OPERADOR',
-    ARCHIVO: 'ARCHIVO',
-    CAMPO: 'CAMPO',
-    ANTERIOR: 'ANTERIOR',
-    NUEVO: 'NUEVO',
-    ACTUALIZA: 'ACTUALIZA',
-    CONTROL: 'CONTROL',
-    idhistoria: 'idhistoria'
-  };
-
-  export type HistoriamScalarFieldEnum = (typeof HistoriamScalarFieldEnum)[keyof typeof HistoriamScalarFieldEnum]
 
 
   export const Liq_temporalScalarFieldEnum: {
@@ -64835,26 +63487,6 @@ export namespace Prisma {
   export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
-  export const SO1ScalarFieldEnum: {
-    CONTRATO: 'CONTRATO',
-    APE_NOM: 'APE_NOM',
-    ALTA: 'ALTA',
-    GRUPO: 'GRUPO',
-    ADHS: 'ADHS',
-    PLAN: 'PLAN',
-    SUB_PLAN: 'SUB_PLAN',
-    ZONA: 'ZONA',
-    CUOTA: 'CUOTA',
-    EMPRESA: 'EMPRESA',
-    SUCURSAL: 'SUCURSAL',
-    EDAD_PROM: 'EDAD_PROM',
-    PERMANEN: 'PERMANEN',
-    DEUDA: 'DEUDA'
-  };
-
-  export type SO1ScalarFieldEnum = (typeof SO1ScalarFieldEnum)[keyof typeof SO1ScalarFieldEnum]
-
-
   export const GuardiaScalarFieldEnum: {
     g_id: 'g_id',
     g_fec: 'g_fec',
@@ -65497,7 +64129,8 @@ export namespace Prisma {
     ANTICIPO?: FloatNullableFilter | number | null
     CUOTAS?: IntNullableFilter | number | null
     MAIL?: StringNullableFilter | string | null
-    idbajas?: IntFilter | number
+    idbaja?: IntFilter | number
+    EMPRESA?: StringNullableFilter | string | null
   }
 
   export type bajasOrderByWithRelationInput = {
@@ -65576,11 +64209,12 @@ export namespace Prisma {
     ANTICIPO?: SortOrderInput | SortOrder
     CUOTAS?: SortOrderInput | SortOrder
     MAIL?: SortOrderInput | SortOrder
-    idbajas?: SortOrder
+    idbaja?: SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
   }
 
   export type bajasWhereUniqueInput = {
-    idbajas?: number
+    idbaja?: number
   }
 
   export type bajasOrderByWithAggregationInput = {
@@ -65659,7 +64293,8 @@ export namespace Prisma {
     ANTICIPO?: SortOrderInput | SortOrder
     CUOTAS?: SortOrderInput | SortOrder
     MAIL?: SortOrderInput | SortOrder
-    idbajas?: SortOrder
+    idbaja?: SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
     _count?: bajasCountOrderByAggregateInput
     _avg?: bajasAvgOrderByAggregateInput
     _max?: bajasMaxOrderByAggregateInput
@@ -65746,7 +64381,343 @@ export namespace Prisma {
     ANTICIPO?: FloatNullableWithAggregatesFilter | number | null
     CUOTAS?: IntNullableWithAggregatesFilter | number | null
     MAIL?: StringNullableWithAggregatesFilter | string | null
-    idbajas?: IntWithAggregatesFilter | number
+    idbaja?: IntWithAggregatesFilter | number
+    EMPRESA?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type bajas_mutualWhereInput = {
+    AND?: bajas_mutualWhereInput | bajas_mutualWhereInput[]
+    OR?: bajas_mutualWhereInput[]
+    NOT?: bajas_mutualWhereInput | bajas_mutualWhereInput[]
+    SUCURSAL?: StringNullableFilter | string | null
+    CONTRATO?: IntNullableFilter | number | null
+    NRO_DOC?: IntNullableFilter | number | null
+    APELLIDOS?: StringNullableFilter | string | null
+    NOMBRES?: StringNullableFilter | string | null
+    NACIMIENTO?: DateTimeNullableFilter | Date | string | null
+    CALLE?: StringNullableFilter | string | null
+    LOCALIDAD?: StringNullableFilter | string | null
+    NRO_CALLE?: IntNullableFilter | number | null
+    BARRIO?: StringNullableFilter | string | null
+    DOMI_COBR?: StringNullableFilter | string | null
+    DOM_LAB?: StringNullableFilter | string | null
+    ZONA?: IntNullableFilter | number | null
+    ALTA?: DateTimeNullableFilter | Date | string | null
+    BAJA?: DateTimeNullableFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableFilter | Date | string | null
+    ALT_SEG?: DateTimeNullableFilter | Date | string | null
+    VIG_SEG?: DateTimeNullableFilter | Date | string | null
+    ENC_SEG?: IntNullableFilter | number | null
+    VIG_AYUDA?: DateTimeNullableFilter | Date | string | null
+    GRUPO?: IntNullableFilter | number | null
+    SEXO?: StringNullableFilter | string | null
+    ADHERENTES?: IntNullableFilter | number | null
+    PRECIO?: FloatNullableFilter | number | null
+    OPERADOR?: IntNullableFilter | number | null
+    ACTUALIZA?: StringNullableFilter | string | null
+    PAMI?: StringNullableFilter | string | null
+    OBRA_SOC?: IntNullableFilter | number | null
+    SEGURO?: IntNullableFilter | number | null
+    PRODUCTOR?: IntNullableFilter | number | null
+    PROD_DEB?: IntNullableFilter | number | null
+    PLAN?: StringNullableFilter | string | null
+    SUB_PLAN?: StringNullableFilter | string | null
+    FEC_PLAN?: DateTimeNullableFilter | Date | string | null
+    MOD_1?: DateTimeNullableFilter | Date | string | null
+    PRO_1?: IntNullableFilter | number | null
+    MOD_2?: DateTimeNullableFilter | Date | string | null
+    PRO_2?: IntNullableFilter | number | null
+    MOD_3?: DateTimeNullableFilter | Date | string | null
+    PRO_3?: IntNullableFilter | number | null
+    MOD_4?: DateTimeNullableFilter | Date | string | null
+    PRO_4?: IntNullableFilter | number | null
+    MOD_5?: DateTimeNullableFilter | Date | string | null
+    TSEG?: StringNullableFilter | string | null
+    PRO_5?: IntNullableFilter | number | null
+    MOD_6?: DateTimeNullableFilter | Date | string | null
+    PRO_6?: IntNullableFilter | number | null
+    MOD_7?: DateTimeNullableFilter | Date | string | null
+    PRO_7?: IntNullableFilter | number | null
+    MOD_8?: DateTimeNullableFilter | Date | string | null
+    PRO_8?: IntNullableFilter | number | null
+    MOD_9?: DateTimeNullableFilter | Date | string | null
+    PRO_9?: IntNullableFilter | number | null
+    MOD_10?: DateTimeNullableFilter | Date | string | null
+    PRO_10?: IntNullableFilter | number | null
+    MOD_11?: DateTimeNullableFilter | Date | string | null
+    PRO_11?: IntNullableFilter | number | null
+    MOD_12?: DateTimeNullableFilter | Date | string | null
+    PRO_12?: IntNullableFilter | number | null
+    TOT_MOD?: FloatNullableFilter | number | null
+    TRASPASO?: DateTimeNullableFilter | Date | string | null
+    FEC_REAFIL?: DateTimeNullableFilter | Date | string | null
+    NUM_REAFIL?: IntNullableFilter | number | null
+    LEGAJO?: StringNullableFilter | string | null
+    COD_POST?: IntNullableFilter | number | null
+    VIG_OPT?: DateTimeNullableFilter | Date | string | null
+    TELEFONO?: StringNullableFilter | string | null
+    MOVIL?: StringNullableFilter | string | null
+    DECL_JUR?: DateTimeNullableFilter | Date | string | null
+    VIG_SUB?: DateTimeNullableFilter | Date | string | null
+    VIG_CONSU?: DateTimeNullableFilter | Date | string | null
+    VIG_SMEDI?: DateTimeNullableFilter | Date | string | null
+    ANTICIPO?: FloatNullableFilter | number | null
+    CUOTAS?: IntNullableFilter | number | null
+    MAIL?: StringNullableFilter | string | null
+    idbaja?: IntFilter | number
+    EMPRESA?: StringNullableFilter | string | null
+  }
+
+  export type bajas_mutualOrderByWithRelationInput = {
+    SUCURSAL?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrderInput | SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    NACIMIENTO?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    DOMI_COBR?: SortOrderInput | SortOrder
+    DOM_LAB?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    BAJA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    ALT_SEG?: SortOrderInput | SortOrder
+    VIG_SEG?: SortOrderInput | SortOrder
+    ENC_SEG?: SortOrderInput | SortOrder
+    VIG_AYUDA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    SEXO?: SortOrderInput | SortOrder
+    ADHERENTES?: SortOrderInput | SortOrder
+    PRECIO?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    PAMI?: SortOrderInput | SortOrder
+    OBRA_SOC?: SortOrderInput | SortOrder
+    SEGURO?: SortOrderInput | SortOrder
+    PRODUCTOR?: SortOrderInput | SortOrder
+    PROD_DEB?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    SUB_PLAN?: SortOrderInput | SortOrder
+    FEC_PLAN?: SortOrderInput | SortOrder
+    MOD_1?: SortOrderInput | SortOrder
+    PRO_1?: SortOrderInput | SortOrder
+    MOD_2?: SortOrderInput | SortOrder
+    PRO_2?: SortOrderInput | SortOrder
+    MOD_3?: SortOrderInput | SortOrder
+    PRO_3?: SortOrderInput | SortOrder
+    MOD_4?: SortOrderInput | SortOrder
+    PRO_4?: SortOrderInput | SortOrder
+    MOD_5?: SortOrderInput | SortOrder
+    TSEG?: SortOrderInput | SortOrder
+    PRO_5?: SortOrderInput | SortOrder
+    MOD_6?: SortOrderInput | SortOrder
+    PRO_6?: SortOrderInput | SortOrder
+    MOD_7?: SortOrderInput | SortOrder
+    PRO_7?: SortOrderInput | SortOrder
+    MOD_8?: SortOrderInput | SortOrder
+    PRO_8?: SortOrderInput | SortOrder
+    MOD_9?: SortOrderInput | SortOrder
+    PRO_9?: SortOrderInput | SortOrder
+    MOD_10?: SortOrderInput | SortOrder
+    PRO_10?: SortOrderInput | SortOrder
+    MOD_11?: SortOrderInput | SortOrder
+    PRO_11?: SortOrderInput | SortOrder
+    MOD_12?: SortOrderInput | SortOrder
+    PRO_12?: SortOrderInput | SortOrder
+    TOT_MOD?: SortOrderInput | SortOrder
+    TRASPASO?: SortOrderInput | SortOrder
+    FEC_REAFIL?: SortOrderInput | SortOrder
+    NUM_REAFIL?: SortOrderInput | SortOrder
+    LEGAJO?: SortOrderInput | SortOrder
+    COD_POST?: SortOrderInput | SortOrder
+    VIG_OPT?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    DECL_JUR?: SortOrderInput | SortOrder
+    VIG_SUB?: SortOrderInput | SortOrder
+    VIG_CONSU?: SortOrderInput | SortOrder
+    VIG_SMEDI?: SortOrderInput | SortOrder
+    ANTICIPO?: SortOrderInput | SortOrder
+    CUOTAS?: SortOrderInput | SortOrder
+    MAIL?: SortOrderInput | SortOrder
+    idbaja?: SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+  }
+
+  export type bajas_mutualWhereUniqueInput = {
+    idbaja?: number
+  }
+
+  export type bajas_mutualOrderByWithAggregationInput = {
+    SUCURSAL?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrderInput | SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    NACIMIENTO?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    DOMI_COBR?: SortOrderInput | SortOrder
+    DOM_LAB?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    BAJA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    ALT_SEG?: SortOrderInput | SortOrder
+    VIG_SEG?: SortOrderInput | SortOrder
+    ENC_SEG?: SortOrderInput | SortOrder
+    VIG_AYUDA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    SEXO?: SortOrderInput | SortOrder
+    ADHERENTES?: SortOrderInput | SortOrder
+    PRECIO?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    PAMI?: SortOrderInput | SortOrder
+    OBRA_SOC?: SortOrderInput | SortOrder
+    SEGURO?: SortOrderInput | SortOrder
+    PRODUCTOR?: SortOrderInput | SortOrder
+    PROD_DEB?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    SUB_PLAN?: SortOrderInput | SortOrder
+    FEC_PLAN?: SortOrderInput | SortOrder
+    MOD_1?: SortOrderInput | SortOrder
+    PRO_1?: SortOrderInput | SortOrder
+    MOD_2?: SortOrderInput | SortOrder
+    PRO_2?: SortOrderInput | SortOrder
+    MOD_3?: SortOrderInput | SortOrder
+    PRO_3?: SortOrderInput | SortOrder
+    MOD_4?: SortOrderInput | SortOrder
+    PRO_4?: SortOrderInput | SortOrder
+    MOD_5?: SortOrderInput | SortOrder
+    TSEG?: SortOrderInput | SortOrder
+    PRO_5?: SortOrderInput | SortOrder
+    MOD_6?: SortOrderInput | SortOrder
+    PRO_6?: SortOrderInput | SortOrder
+    MOD_7?: SortOrderInput | SortOrder
+    PRO_7?: SortOrderInput | SortOrder
+    MOD_8?: SortOrderInput | SortOrder
+    PRO_8?: SortOrderInput | SortOrder
+    MOD_9?: SortOrderInput | SortOrder
+    PRO_9?: SortOrderInput | SortOrder
+    MOD_10?: SortOrderInput | SortOrder
+    PRO_10?: SortOrderInput | SortOrder
+    MOD_11?: SortOrderInput | SortOrder
+    PRO_11?: SortOrderInput | SortOrder
+    MOD_12?: SortOrderInput | SortOrder
+    PRO_12?: SortOrderInput | SortOrder
+    TOT_MOD?: SortOrderInput | SortOrder
+    TRASPASO?: SortOrderInput | SortOrder
+    FEC_REAFIL?: SortOrderInput | SortOrder
+    NUM_REAFIL?: SortOrderInput | SortOrder
+    LEGAJO?: SortOrderInput | SortOrder
+    COD_POST?: SortOrderInput | SortOrder
+    VIG_OPT?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    DECL_JUR?: SortOrderInput | SortOrder
+    VIG_SUB?: SortOrderInput | SortOrder
+    VIG_CONSU?: SortOrderInput | SortOrder
+    VIG_SMEDI?: SortOrderInput | SortOrder
+    ANTICIPO?: SortOrderInput | SortOrder
+    CUOTAS?: SortOrderInput | SortOrder
+    MAIL?: SortOrderInput | SortOrder
+    idbaja?: SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+    _count?: bajas_mutualCountOrderByAggregateInput
+    _avg?: bajas_mutualAvgOrderByAggregateInput
+    _max?: bajas_mutualMaxOrderByAggregateInput
+    _min?: bajas_mutualMinOrderByAggregateInput
+    _sum?: bajas_mutualSumOrderByAggregateInput
+  }
+
+  export type bajas_mutualScalarWhereWithAggregatesInput = {
+    AND?: bajas_mutualScalarWhereWithAggregatesInput | bajas_mutualScalarWhereWithAggregatesInput[]
+    OR?: bajas_mutualScalarWhereWithAggregatesInput[]
+    NOT?: bajas_mutualScalarWhereWithAggregatesInput | bajas_mutualScalarWhereWithAggregatesInput[]
+    SUCURSAL?: StringNullableWithAggregatesFilter | string | null
+    CONTRATO?: IntNullableWithAggregatesFilter | number | null
+    NRO_DOC?: IntNullableWithAggregatesFilter | number | null
+    APELLIDOS?: StringNullableWithAggregatesFilter | string | null
+    NOMBRES?: StringNullableWithAggregatesFilter | string | null
+    NACIMIENTO?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    CALLE?: StringNullableWithAggregatesFilter | string | null
+    LOCALIDAD?: StringNullableWithAggregatesFilter | string | null
+    NRO_CALLE?: IntNullableWithAggregatesFilter | number | null
+    BARRIO?: StringNullableWithAggregatesFilter | string | null
+    DOMI_COBR?: StringNullableWithAggregatesFilter | string | null
+    DOM_LAB?: StringNullableWithAggregatesFilter | string | null
+    ZONA?: IntNullableWithAggregatesFilter | number | null
+    ALTA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    BAJA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    ALT_SEG?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_SEG?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    ENC_SEG?: IntNullableWithAggregatesFilter | number | null
+    VIG_AYUDA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    GRUPO?: IntNullableWithAggregatesFilter | number | null
+    SEXO?: StringNullableWithAggregatesFilter | string | null
+    ADHERENTES?: IntNullableWithAggregatesFilter | number | null
+    PRECIO?: FloatNullableWithAggregatesFilter | number | null
+    OPERADOR?: IntNullableWithAggregatesFilter | number | null
+    ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
+    PAMI?: StringNullableWithAggregatesFilter | string | null
+    OBRA_SOC?: IntNullableWithAggregatesFilter | number | null
+    SEGURO?: IntNullableWithAggregatesFilter | number | null
+    PRODUCTOR?: IntNullableWithAggregatesFilter | number | null
+    PROD_DEB?: IntNullableWithAggregatesFilter | number | null
+    PLAN?: StringNullableWithAggregatesFilter | string | null
+    SUB_PLAN?: StringNullableWithAggregatesFilter | string | null
+    FEC_PLAN?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    MOD_1?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_1?: IntNullableWithAggregatesFilter | number | null
+    MOD_2?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_2?: IntNullableWithAggregatesFilter | number | null
+    MOD_3?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_3?: IntNullableWithAggregatesFilter | number | null
+    MOD_4?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_4?: IntNullableWithAggregatesFilter | number | null
+    MOD_5?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    TSEG?: StringNullableWithAggregatesFilter | string | null
+    PRO_5?: IntNullableWithAggregatesFilter | number | null
+    MOD_6?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_6?: IntNullableWithAggregatesFilter | number | null
+    MOD_7?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_7?: IntNullableWithAggregatesFilter | number | null
+    MOD_8?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_8?: IntNullableWithAggregatesFilter | number | null
+    MOD_9?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_9?: IntNullableWithAggregatesFilter | number | null
+    MOD_10?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_10?: IntNullableWithAggregatesFilter | number | null
+    MOD_11?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_11?: IntNullableWithAggregatesFilter | number | null
+    MOD_12?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_12?: IntNullableWithAggregatesFilter | number | null
+    TOT_MOD?: FloatNullableWithAggregatesFilter | number | null
+    TRASPASO?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    FEC_REAFIL?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    NUM_REAFIL?: IntNullableWithAggregatesFilter | number | null
+    LEGAJO?: StringNullableWithAggregatesFilter | string | null
+    COD_POST?: IntNullableWithAggregatesFilter | number | null
+    VIG_OPT?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    TELEFONO?: StringNullableWithAggregatesFilter | string | null
+    MOVIL?: StringNullableWithAggregatesFilter | string | null
+    DECL_JUR?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_SUB?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_CONSU?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_SMEDI?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    ANTICIPO?: FloatNullableWithAggregatesFilter | number | null
+    CUOTAS?: IntNullableWithAggregatesFilter | number | null
+    MAIL?: StringNullableWithAggregatesFilter | string | null
+    idbaja?: IntWithAggregatesFilter | number
+    EMPRESA?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type bancosWhereInput = {
@@ -66209,132 +65180,6 @@ export namespace Prisma {
     dbt_estado?: StringNullableWithAggregatesFilter | string | null
   }
 
-  export type historiaWhereInput = {
-    AND?: historiaWhereInput | historiaWhereInput[]
-    OR?: historiaWhereInput[]
-    NOT?: historiaWhereInput | historiaWhereInput[]
-    CONTRATO?: IntNullableFilter | number | null
-    OPERADOR?: StringNullableFilter | string | null
-    ARCHIVO?: IntNullableFilter | number | null
-    CAMPO?: StringNullableFilter | string | null
-    ANTERIOR?: StringNullableFilter | string | null
-    NUEVO?: StringNullableFilter | string | null
-    ACTUALIZA?: StringNullableFilter | string | null
-    CONTROL?: StringNullableFilter | string | null
-    idhistoria?: IntFilter | number
-  }
-
-  export type historiaOrderByWithRelationInput = {
-    CONTRATO?: SortOrderInput | SortOrder
-    OPERADOR?: SortOrderInput | SortOrder
-    ARCHIVO?: SortOrderInput | SortOrder
-    CAMPO?: SortOrderInput | SortOrder
-    ANTERIOR?: SortOrderInput | SortOrder
-    NUEVO?: SortOrderInput | SortOrder
-    ACTUALIZA?: SortOrderInput | SortOrder
-    CONTROL?: SortOrderInput | SortOrder
-    idhistoria?: SortOrder
-  }
-
-  export type historiaWhereUniqueInput = {
-    idhistoria?: number
-  }
-
-  export type historiaOrderByWithAggregationInput = {
-    CONTRATO?: SortOrderInput | SortOrder
-    OPERADOR?: SortOrderInput | SortOrder
-    ARCHIVO?: SortOrderInput | SortOrder
-    CAMPO?: SortOrderInput | SortOrder
-    ANTERIOR?: SortOrderInput | SortOrder
-    NUEVO?: SortOrderInput | SortOrder
-    ACTUALIZA?: SortOrderInput | SortOrder
-    CONTROL?: SortOrderInput | SortOrder
-    idhistoria?: SortOrder
-    _count?: historiaCountOrderByAggregateInput
-    _avg?: historiaAvgOrderByAggregateInput
-    _max?: historiaMaxOrderByAggregateInput
-    _min?: historiaMinOrderByAggregateInput
-    _sum?: historiaSumOrderByAggregateInput
-  }
-
-  export type historiaScalarWhereWithAggregatesInput = {
-    AND?: historiaScalarWhereWithAggregatesInput | historiaScalarWhereWithAggregatesInput[]
-    OR?: historiaScalarWhereWithAggregatesInput[]
-    NOT?: historiaScalarWhereWithAggregatesInput | historiaScalarWhereWithAggregatesInput[]
-    CONTRATO?: IntNullableWithAggregatesFilter | number | null
-    OPERADOR?: StringNullableWithAggregatesFilter | string | null
-    ARCHIVO?: IntNullableWithAggregatesFilter | number | null
-    CAMPO?: StringNullableWithAggregatesFilter | string | null
-    ANTERIOR?: StringNullableWithAggregatesFilter | string | null
-    NUEVO?: StringNullableWithAggregatesFilter | string | null
-    ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
-    CONTROL?: StringNullableWithAggregatesFilter | string | null
-    idhistoria?: IntWithAggregatesFilter | number
-  }
-
-  export type historiamWhereInput = {
-    AND?: historiamWhereInput | historiamWhereInput[]
-    OR?: historiamWhereInput[]
-    NOT?: historiamWhereInput | historiamWhereInput[]
-    CONTRATO?: IntNullableFilter | number | null
-    OPERADOR?: StringNullableFilter | string | null
-    ARCHIVO?: IntNullableFilter | number | null
-    CAMPO?: IntNullableFilter | number | null
-    ANTERIOR?: StringNullableFilter | string | null
-    NUEVO?: StringNullableFilter | string | null
-    ACTUALIZA?: StringNullableFilter | string | null
-    CONTROL?: StringNullableFilter | string | null
-    idhistoria?: IntFilter | number
-  }
-
-  export type historiamOrderByWithRelationInput = {
-    CONTRATO?: SortOrderInput | SortOrder
-    OPERADOR?: SortOrderInput | SortOrder
-    ARCHIVO?: SortOrderInput | SortOrder
-    CAMPO?: SortOrderInput | SortOrder
-    ANTERIOR?: SortOrderInput | SortOrder
-    NUEVO?: SortOrderInput | SortOrder
-    ACTUALIZA?: SortOrderInput | SortOrder
-    CONTROL?: SortOrderInput | SortOrder
-    idhistoria?: SortOrder
-  }
-
-  export type historiamWhereUniqueInput = {
-    idhistoria?: number
-  }
-
-  export type historiamOrderByWithAggregationInput = {
-    CONTRATO?: SortOrderInput | SortOrder
-    OPERADOR?: SortOrderInput | SortOrder
-    ARCHIVO?: SortOrderInput | SortOrder
-    CAMPO?: SortOrderInput | SortOrder
-    ANTERIOR?: SortOrderInput | SortOrder
-    NUEVO?: SortOrderInput | SortOrder
-    ACTUALIZA?: SortOrderInput | SortOrder
-    CONTROL?: SortOrderInput | SortOrder
-    idhistoria?: SortOrder
-    _count?: historiamCountOrderByAggregateInput
-    _avg?: historiamAvgOrderByAggregateInput
-    _max?: historiamMaxOrderByAggregateInput
-    _min?: historiamMinOrderByAggregateInput
-    _sum?: historiamSumOrderByAggregateInput
-  }
-
-  export type historiamScalarWhereWithAggregatesInput = {
-    AND?: historiamScalarWhereWithAggregatesInput | historiamScalarWhereWithAggregatesInput[]
-    OR?: historiamScalarWhereWithAggregatesInput[]
-    NOT?: historiamScalarWhereWithAggregatesInput | historiamScalarWhereWithAggregatesInput[]
-    CONTRATO?: IntNullableWithAggregatesFilter | number | null
-    OPERADOR?: StringNullableWithAggregatesFilter | string | null
-    ARCHIVO?: IntNullableWithAggregatesFilter | number | null
-    CAMPO?: IntNullableWithAggregatesFilter | number | null
-    ANTERIOR?: StringNullableWithAggregatesFilter | string | null
-    NUEVO?: StringNullableWithAggregatesFilter | string | null
-    ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
-    CONTROL?: StringNullableWithAggregatesFilter | string | null
-    idhistoria?: IntWithAggregatesFilter | number
-  }
-
   export type liq_temporalWhereInput = {
     AND?: liq_temporalWhereInput | liq_temporalWhereInput[]
     OR?: liq_temporalWhereInput[]
@@ -66556,7 +65401,7 @@ export namespace Prisma {
     ADHERENTES?: IntNullableFilter | number | null
     PRECIO?: FloatNullableFilter | number | null
     CUO_VIEJA?: FloatNullableFilter | number | null
-    OPERADOR?: StringNullableFilter | string | null
+    OPERADOR?: IntNullableFilter | number | null
     ACTUALIZA?: StringNullableFilter | string | null
     OBRA_SOC?: IntNullableFilter | number | null
     PRODUCTOR?: IntNullableFilter | number | null
@@ -66835,7 +65680,7 @@ export namespace Prisma {
     ADHERENTES?: IntNullableWithAggregatesFilter | number | null
     PRECIO?: FloatNullableWithAggregatesFilter | number | null
     CUO_VIEJA?: FloatNullableWithAggregatesFilter | number | null
-    OPERADOR?: StringNullableWithAggregatesFilter | string | null
+    OPERADOR?: IntNullableWithAggregatesFilter | number | null
     ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
     OBRA_SOC?: IntNullableWithAggregatesFilter | number | null
     PRODUCTOR?: IntNullableWithAggregatesFilter | number | null
@@ -70243,89 +69088,6 @@ export namespace Prisma {
     usu_grupo?: StringNullableWithAggregatesFilter | string | null
   }
 
-  export type SO1WhereInput = {
-    AND?: SO1WhereInput | SO1WhereInput[]
-    OR?: SO1WhereInput[]
-    NOT?: SO1WhereInput | SO1WhereInput[]
-    CONTRATO?: IntFilter | number
-    APE_NOM?: StringNullableFilter | string | null
-    ALTA?: DateTimeNullableFilter | Date | string | null
-    GRUPO?: IntNullableFilter | number | null
-    ADHS?: IntNullableFilter | number | null
-    PLAN?: StringNullableFilter | string | null
-    SUB_PLAN?: StringNullableFilter | string | null
-    ZONA?: IntNullableFilter | number | null
-    CUOTA?: FloatNullableFilter | number | null
-    EMPRESA?: StringNullableFilter | string | null
-    SUCURSAL?: StringNullableFilter | string | null
-    EDAD_PROM?: FloatNullableFilter | number | null
-    PERMANEN?: FloatNullableFilter | number | null
-    DEUDA?: IntNullableFilter | number | null
-  }
-
-  export type SO1OrderByWithRelationInput = {
-    CONTRATO?: SortOrder
-    APE_NOM?: SortOrderInput | SortOrder
-    ALTA?: SortOrderInput | SortOrder
-    GRUPO?: SortOrderInput | SortOrder
-    ADHS?: SortOrderInput | SortOrder
-    PLAN?: SortOrderInput | SortOrder
-    SUB_PLAN?: SortOrderInput | SortOrder
-    ZONA?: SortOrderInput | SortOrder
-    CUOTA?: SortOrderInput | SortOrder
-    EMPRESA?: SortOrderInput | SortOrder
-    SUCURSAL?: SortOrderInput | SortOrder
-    EDAD_PROM?: SortOrderInput | SortOrder
-    PERMANEN?: SortOrderInput | SortOrder
-    DEUDA?: SortOrderInput | SortOrder
-  }
-
-  export type SO1WhereUniqueInput = {
-    CONTRATO?: number
-  }
-
-  export type SO1OrderByWithAggregationInput = {
-    CONTRATO?: SortOrder
-    APE_NOM?: SortOrderInput | SortOrder
-    ALTA?: SortOrderInput | SortOrder
-    GRUPO?: SortOrderInput | SortOrder
-    ADHS?: SortOrderInput | SortOrder
-    PLAN?: SortOrderInput | SortOrder
-    SUB_PLAN?: SortOrderInput | SortOrder
-    ZONA?: SortOrderInput | SortOrder
-    CUOTA?: SortOrderInput | SortOrder
-    EMPRESA?: SortOrderInput | SortOrder
-    SUCURSAL?: SortOrderInput | SortOrder
-    EDAD_PROM?: SortOrderInput | SortOrder
-    PERMANEN?: SortOrderInput | SortOrder
-    DEUDA?: SortOrderInput | SortOrder
-    _count?: SO1CountOrderByAggregateInput
-    _avg?: SO1AvgOrderByAggregateInput
-    _max?: SO1MaxOrderByAggregateInput
-    _min?: SO1MinOrderByAggregateInput
-    _sum?: SO1SumOrderByAggregateInput
-  }
-
-  export type SO1ScalarWhereWithAggregatesInput = {
-    AND?: SO1ScalarWhereWithAggregatesInput | SO1ScalarWhereWithAggregatesInput[]
-    OR?: SO1ScalarWhereWithAggregatesInput[]
-    NOT?: SO1ScalarWhereWithAggregatesInput | SO1ScalarWhereWithAggregatesInput[]
-    CONTRATO?: IntWithAggregatesFilter | number
-    APE_NOM?: StringNullableWithAggregatesFilter | string | null
-    ALTA?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    GRUPO?: IntNullableWithAggregatesFilter | number | null
-    ADHS?: IntNullableWithAggregatesFilter | number | null
-    PLAN?: StringNullableWithAggregatesFilter | string | null
-    SUB_PLAN?: StringNullableWithAggregatesFilter | string | null
-    ZONA?: IntNullableWithAggregatesFilter | number | null
-    CUOTA?: FloatNullableWithAggregatesFilter | number | null
-    EMPRESA?: StringNullableWithAggregatesFilter | string | null
-    SUCURSAL?: StringNullableWithAggregatesFilter | string | null
-    EDAD_PROM?: FloatNullableWithAggregatesFilter | number | null
-    PERMANEN?: FloatNullableWithAggregatesFilter | number | null
-    DEUDA?: IntNullableWithAggregatesFilter | number | null
-  }
-
   export type guardiaWhereInput = {
     AND?: guardiaWhereInput | guardiaWhereInput[]
     OR?: guardiaWhereInput[]
@@ -71353,6 +70115,7 @@ export namespace Prisma {
     ANTICIPO?: number | null
     CUOTAS?: number | null
     MAIL?: string | null
+    EMPRESA?: string | null
   }
 
   export type bajasUncheckedCreateInput = {
@@ -71431,7 +70194,8 @@ export namespace Prisma {
     ANTICIPO?: number | null
     CUOTAS?: number | null
     MAIL?: string | null
-    idbajas?: number
+    idbaja?: number
+    EMPRESA?: string | null
   }
 
   export type bajasUpdateInput = {
@@ -71510,6 +70274,7 @@ export namespace Prisma {
     ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
     MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type bajasUncheckedUpdateInput = {
@@ -71588,7 +70353,8 @@ export namespace Prisma {
     ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
     MAIL?: NullableStringFieldUpdateOperationsInput | string | null
-    idbajas?: IntFieldUpdateOperationsInput | number
+    idbaja?: IntFieldUpdateOperationsInput | number
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type bajasCreateManyInput = {
@@ -71667,7 +70433,8 @@ export namespace Prisma {
     ANTICIPO?: number | null
     CUOTAS?: number | null
     MAIL?: string | null
-    idbajas?: number
+    idbaja?: number
+    EMPRESA?: string | null
   }
 
   export type bajasUpdateManyMutationInput = {
@@ -71746,6 +70513,7 @@ export namespace Prisma {
     ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
     MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type bajasUncheckedUpdateManyInput = {
@@ -71824,7 +70592,565 @@ export namespace Prisma {
     ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
     MAIL?: NullableStringFieldUpdateOperationsInput | string | null
-    idbajas?: IntFieldUpdateOperationsInput | number
+    idbaja?: IntFieldUpdateOperationsInput | number
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type bajas_mutualCreateInput = {
+    SUCURSAL?: string | null
+    CONTRATO?: number | null
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    NACIMIENTO?: Date | string | null
+    CALLE?: string | null
+    LOCALIDAD?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    DOMI_COBR?: string | null
+    DOM_LAB?: string | null
+    ZONA?: number | null
+    ALTA?: Date | string | null
+    BAJA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    ALT_SEG?: Date | string | null
+    VIG_SEG?: Date | string | null
+    ENC_SEG?: number | null
+    VIG_AYUDA?: Date | string | null
+    GRUPO?: number | null
+    SEXO?: string | null
+    ADHERENTES?: number | null
+    PRECIO?: number | null
+    OPERADOR?: number | null
+    ACTUALIZA?: string | null
+    PAMI?: string | null
+    OBRA_SOC?: number | null
+    SEGURO?: number | null
+    PRODUCTOR?: number | null
+    PROD_DEB?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    FEC_PLAN?: Date | string | null
+    MOD_1?: Date | string | null
+    PRO_1?: number | null
+    MOD_2?: Date | string | null
+    PRO_2?: number | null
+    MOD_3?: Date | string | null
+    PRO_3?: number | null
+    MOD_4?: Date | string | null
+    PRO_4?: number | null
+    MOD_5?: Date | string | null
+    TSEG?: string | null
+    PRO_5?: number | null
+    MOD_6?: Date | string | null
+    PRO_6?: number | null
+    MOD_7?: Date | string | null
+    PRO_7?: number | null
+    MOD_8?: Date | string | null
+    PRO_8?: number | null
+    MOD_9?: Date | string | null
+    PRO_9?: number | null
+    MOD_10?: Date | string | null
+    PRO_10?: number | null
+    MOD_11?: Date | string | null
+    PRO_11?: number | null
+    MOD_12?: Date | string | null
+    PRO_12?: number | null
+    TOT_MOD?: number | null
+    TRASPASO?: Date | string | null
+    FEC_REAFIL?: Date | string | null
+    NUM_REAFIL?: number | null
+    LEGAJO?: string | null
+    COD_POST?: number | null
+    VIG_OPT?: Date | string | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    DECL_JUR?: Date | string | null
+    VIG_SUB?: Date | string | null
+    VIG_CONSU?: Date | string | null
+    VIG_SMEDI?: Date | string | null
+    ANTICIPO?: number | null
+    CUOTAS?: number | null
+    MAIL?: string | null
+    EMPRESA?: string | null
+  }
+
+  export type bajas_mutualUncheckedCreateInput = {
+    SUCURSAL?: string | null
+    CONTRATO?: number | null
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    NACIMIENTO?: Date | string | null
+    CALLE?: string | null
+    LOCALIDAD?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    DOMI_COBR?: string | null
+    DOM_LAB?: string | null
+    ZONA?: number | null
+    ALTA?: Date | string | null
+    BAJA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    ALT_SEG?: Date | string | null
+    VIG_SEG?: Date | string | null
+    ENC_SEG?: number | null
+    VIG_AYUDA?: Date | string | null
+    GRUPO?: number | null
+    SEXO?: string | null
+    ADHERENTES?: number | null
+    PRECIO?: number | null
+    OPERADOR?: number | null
+    ACTUALIZA?: string | null
+    PAMI?: string | null
+    OBRA_SOC?: number | null
+    SEGURO?: number | null
+    PRODUCTOR?: number | null
+    PROD_DEB?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    FEC_PLAN?: Date | string | null
+    MOD_1?: Date | string | null
+    PRO_1?: number | null
+    MOD_2?: Date | string | null
+    PRO_2?: number | null
+    MOD_3?: Date | string | null
+    PRO_3?: number | null
+    MOD_4?: Date | string | null
+    PRO_4?: number | null
+    MOD_5?: Date | string | null
+    TSEG?: string | null
+    PRO_5?: number | null
+    MOD_6?: Date | string | null
+    PRO_6?: number | null
+    MOD_7?: Date | string | null
+    PRO_7?: number | null
+    MOD_8?: Date | string | null
+    PRO_8?: number | null
+    MOD_9?: Date | string | null
+    PRO_9?: number | null
+    MOD_10?: Date | string | null
+    PRO_10?: number | null
+    MOD_11?: Date | string | null
+    PRO_11?: number | null
+    MOD_12?: Date | string | null
+    PRO_12?: number | null
+    TOT_MOD?: number | null
+    TRASPASO?: Date | string | null
+    FEC_REAFIL?: Date | string | null
+    NUM_REAFIL?: number | null
+    LEGAJO?: string | null
+    COD_POST?: number | null
+    VIG_OPT?: Date | string | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    DECL_JUR?: Date | string | null
+    VIG_SUB?: Date | string | null
+    VIG_CONSU?: Date | string | null
+    VIG_SMEDI?: Date | string | null
+    ANTICIPO?: number | null
+    CUOTAS?: number | null
+    MAIL?: string | null
+    idbaja?: number
+    EMPRESA?: string | null
+  }
+
+  export type bajas_mutualUpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_COBR?: NullableStringFieldUpdateOperationsInput | string | null
+    DOM_LAB?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
+    PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PROD_DEB?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    FEC_REAFIL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NUM_REAFIL?: NullableIntFieldUpdateOperationsInput | number | null
+    LEGAJO?: NullableStringFieldUpdateOperationsInput | string | null
+    COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
+    MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type bajas_mutualUncheckedUpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_COBR?: NullableStringFieldUpdateOperationsInput | string | null
+    DOM_LAB?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
+    PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PROD_DEB?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    FEC_REAFIL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NUM_REAFIL?: NullableIntFieldUpdateOperationsInput | number | null
+    LEGAJO?: NullableStringFieldUpdateOperationsInput | string | null
+    COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
+    MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    idbaja?: IntFieldUpdateOperationsInput | number
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type bajas_mutualCreateManyInput = {
+    SUCURSAL?: string | null
+    CONTRATO?: number | null
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    NACIMIENTO?: Date | string | null
+    CALLE?: string | null
+    LOCALIDAD?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    DOMI_COBR?: string | null
+    DOM_LAB?: string | null
+    ZONA?: number | null
+    ALTA?: Date | string | null
+    BAJA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    ALT_SEG?: Date | string | null
+    VIG_SEG?: Date | string | null
+    ENC_SEG?: number | null
+    VIG_AYUDA?: Date | string | null
+    GRUPO?: number | null
+    SEXO?: string | null
+    ADHERENTES?: number | null
+    PRECIO?: number | null
+    OPERADOR?: number | null
+    ACTUALIZA?: string | null
+    PAMI?: string | null
+    OBRA_SOC?: number | null
+    SEGURO?: number | null
+    PRODUCTOR?: number | null
+    PROD_DEB?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    FEC_PLAN?: Date | string | null
+    MOD_1?: Date | string | null
+    PRO_1?: number | null
+    MOD_2?: Date | string | null
+    PRO_2?: number | null
+    MOD_3?: Date | string | null
+    PRO_3?: number | null
+    MOD_4?: Date | string | null
+    PRO_4?: number | null
+    MOD_5?: Date | string | null
+    TSEG?: string | null
+    PRO_5?: number | null
+    MOD_6?: Date | string | null
+    PRO_6?: number | null
+    MOD_7?: Date | string | null
+    PRO_7?: number | null
+    MOD_8?: Date | string | null
+    PRO_8?: number | null
+    MOD_9?: Date | string | null
+    PRO_9?: number | null
+    MOD_10?: Date | string | null
+    PRO_10?: number | null
+    MOD_11?: Date | string | null
+    PRO_11?: number | null
+    MOD_12?: Date | string | null
+    PRO_12?: number | null
+    TOT_MOD?: number | null
+    TRASPASO?: Date | string | null
+    FEC_REAFIL?: Date | string | null
+    NUM_REAFIL?: number | null
+    LEGAJO?: string | null
+    COD_POST?: number | null
+    VIG_OPT?: Date | string | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    DECL_JUR?: Date | string | null
+    VIG_SUB?: Date | string | null
+    VIG_CONSU?: Date | string | null
+    VIG_SMEDI?: Date | string | null
+    ANTICIPO?: number | null
+    CUOTAS?: number | null
+    MAIL?: string | null
+    idbaja?: number
+    EMPRESA?: string | null
+  }
+
+  export type bajas_mutualUpdateManyMutationInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_COBR?: NullableStringFieldUpdateOperationsInput | string | null
+    DOM_LAB?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
+    PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PROD_DEB?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    FEC_REAFIL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NUM_REAFIL?: NullableIntFieldUpdateOperationsInput | number | null
+    LEGAJO?: NullableStringFieldUpdateOperationsInput | string | null
+    COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
+    MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type bajas_mutualUncheckedUpdateManyInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_COBR?: NullableStringFieldUpdateOperationsInput | string | null
+    DOM_LAB?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
+    PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    PAMI?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PROD_DEB?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    FEC_REAFIL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NUM_REAFIL?: NullableIntFieldUpdateOperationsInput | number | null
+    LEGAJO?: NullableStringFieldUpdateOperationsInput | string | null
+    COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
+    MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    idbaja?: IntFieldUpdateOperationsInput | number
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type bancosCreateInput = {
@@ -72401,168 +71727,6 @@ export namespace Prisma {
     dbt_estado?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type historiaCreateInput = {
-    CONTRATO?: number | null
-    OPERADOR?: string | null
-    ARCHIVO?: number | null
-    CAMPO?: string | null
-    ANTERIOR?: string | null
-    NUEVO?: string | null
-    ACTUALIZA?: string | null
-    CONTROL?: string | null
-  }
-
-  export type historiaUncheckedCreateInput = {
-    CONTRATO?: number | null
-    OPERADOR?: string | null
-    ARCHIVO?: number | null
-    CAMPO?: string | null
-    ANTERIOR?: string | null
-    NUEVO?: string | null
-    ACTUALIZA?: string | null
-    CONTROL?: string | null
-    idhistoria?: number
-  }
-
-  export type historiaUpdateInput = {
-    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
-    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
-    CAMPO?: NullableStringFieldUpdateOperationsInput | string | null
-    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
-    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
-    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
-    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type historiaUncheckedUpdateInput = {
-    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
-    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
-    CAMPO?: NullableStringFieldUpdateOperationsInput | string | null
-    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
-    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
-    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
-    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
-    idhistoria?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type historiaCreateManyInput = {
-    CONTRATO?: number | null
-    OPERADOR?: string | null
-    ARCHIVO?: number | null
-    CAMPO?: string | null
-    ANTERIOR?: string | null
-    NUEVO?: string | null
-    ACTUALIZA?: string | null
-    CONTROL?: string | null
-    idhistoria?: number
-  }
-
-  export type historiaUpdateManyMutationInput = {
-    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
-    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
-    CAMPO?: NullableStringFieldUpdateOperationsInput | string | null
-    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
-    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
-    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
-    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type historiaUncheckedUpdateManyInput = {
-    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
-    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
-    CAMPO?: NullableStringFieldUpdateOperationsInput | string | null
-    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
-    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
-    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
-    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
-    idhistoria?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type historiamCreateInput = {
-    CONTRATO?: number | null
-    OPERADOR?: string | null
-    ARCHIVO?: number | null
-    CAMPO?: number | null
-    ANTERIOR?: string | null
-    NUEVO?: string | null
-    ACTUALIZA?: string | null
-    CONTROL?: string | null
-  }
-
-  export type historiamUncheckedCreateInput = {
-    CONTRATO?: number | null
-    OPERADOR?: string | null
-    ARCHIVO?: number | null
-    CAMPO?: number | null
-    ANTERIOR?: string | null
-    NUEVO?: string | null
-    ACTUALIZA?: string | null
-    CONTROL?: string | null
-    idhistoria?: number
-  }
-
-  export type historiamUpdateInput = {
-    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
-    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
-    CAMPO?: NullableIntFieldUpdateOperationsInput | number | null
-    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
-    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
-    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
-    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type historiamUncheckedUpdateInput = {
-    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
-    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
-    CAMPO?: NullableIntFieldUpdateOperationsInput | number | null
-    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
-    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
-    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
-    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
-    idhistoria?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type historiamCreateManyInput = {
-    CONTRATO?: number | null
-    OPERADOR?: string | null
-    ARCHIVO?: number | null
-    CAMPO?: number | null
-    ANTERIOR?: string | null
-    NUEVO?: string | null
-    ACTUALIZA?: string | null
-    CONTROL?: string | null
-    idhistoria?: number
-  }
-
-  export type historiamUpdateManyMutationInput = {
-    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
-    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
-    CAMPO?: NullableIntFieldUpdateOperationsInput | number | null
-    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
-    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
-    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
-    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type historiamUncheckedUpdateManyInput = {
-    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
-    ARCHIVO?: NullableIntFieldUpdateOperationsInput | number | null
-    CAMPO?: NullableIntFieldUpdateOperationsInput | number | null
-    ANTERIOR?: NullableStringFieldUpdateOperationsInput | string | null
-    NUEVO?: NullableStringFieldUpdateOperationsInput | string | null
-    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
-    CONTROL?: NullableStringFieldUpdateOperationsInput | string | null
-    idhistoria?: IntFieldUpdateOperationsInput | number
-  }
-
   export type liq_temporalCreateInput = {
     liqtmp_id: number
     liqtmp_recup?: number | null
@@ -72841,7 +72005,7 @@ export namespace Prisma {
     ADHERENTES?: number | null
     PRECIO?: number | null
     CUO_VIEJA?: number | null
-    OPERADOR?: string | null
+    OPERADOR?: number | null
     ACTUALIZA?: string | null
     OBRA_SOC?: number | null
     PRODUCTOR?: number | null
@@ -72930,7 +72094,7 @@ export namespace Prisma {
     ADHERENTES?: number | null
     PRECIO?: number | null
     CUO_VIEJA?: number | null
-    OPERADOR?: string | null
+    OPERADOR?: number | null
     ACTUALIZA?: string | null
     OBRA_SOC?: number | null
     PRODUCTOR?: number | null
@@ -73019,7 +72183,7 @@ export namespace Prisma {
     ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
     PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
     ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
     OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
     PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
@@ -73108,7 +72272,7 @@ export namespace Prisma {
     ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
     PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
     ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
     OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
     PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
@@ -73197,7 +72361,7 @@ export namespace Prisma {
     ADHERENTES?: number | null
     PRECIO?: number | null
     CUO_VIEJA?: number | null
-    OPERADOR?: string | null
+    OPERADOR?: number | null
     ACTUALIZA?: string | null
     OBRA_SOC?: number | null
     PRODUCTOR?: number | null
@@ -73286,7 +72450,7 @@ export namespace Prisma {
     ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
     PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
     ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
     OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
     PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
@@ -73375,7 +72539,7 @@ export namespace Prisma {
     ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
     PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
     CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
-    OPERADOR?: NullableStringFieldUpdateOperationsInput | string | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
     ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
     OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
     PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
@@ -78456,125 +77620,6 @@ export namespace Prisma {
     usu_grupo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type SO1CreateInput = {
-    CONTRATO: number
-    APE_NOM?: string | null
-    ALTA?: Date | string | null
-    GRUPO?: number | null
-    ADHS?: number | null
-    PLAN?: string | null
-    SUB_PLAN?: string | null
-    ZONA?: number | null
-    CUOTA?: number | null
-    EMPRESA?: string | null
-    SUCURSAL?: string | null
-    EDAD_PROM?: number | null
-    PERMANEN?: number | null
-    DEUDA?: number | null
-  }
-
-  export type SO1UncheckedCreateInput = {
-    CONTRATO: number
-    APE_NOM?: string | null
-    ALTA?: Date | string | null
-    GRUPO?: number | null
-    ADHS?: number | null
-    PLAN?: string | null
-    SUB_PLAN?: string | null
-    ZONA?: number | null
-    CUOTA?: number | null
-    EMPRESA?: string | null
-    SUCURSAL?: string | null
-    EDAD_PROM?: number | null
-    PERMANEN?: number | null
-    DEUDA?: number | null
-  }
-
-  export type SO1UpdateInput = {
-    CONTRATO?: IntFieldUpdateOperationsInput | number
-    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
-    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
-    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
-    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
-    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
-    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
-    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
-    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
-    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
-    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
-    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
-    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type SO1UncheckedUpdateInput = {
-    CONTRATO?: IntFieldUpdateOperationsInput | number
-    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
-    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
-    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
-    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
-    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
-    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
-    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
-    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
-    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
-    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
-    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
-    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type SO1CreateManyInput = {
-    CONTRATO: number
-    APE_NOM?: string | null
-    ALTA?: Date | string | null
-    GRUPO?: number | null
-    ADHS?: number | null
-    PLAN?: string | null
-    SUB_PLAN?: string | null
-    ZONA?: number | null
-    CUOTA?: number | null
-    EMPRESA?: string | null
-    SUCURSAL?: string | null
-    EDAD_PROM?: number | null
-    PERMANEN?: number | null
-    DEUDA?: number | null
-  }
-
-  export type SO1UpdateManyMutationInput = {
-    CONTRATO?: IntFieldUpdateOperationsInput | number
-    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
-    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
-    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
-    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
-    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
-    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
-    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
-    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
-    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
-    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
-    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
-    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type SO1UncheckedUpdateManyInput = {
-    CONTRATO?: IntFieldUpdateOperationsInput | number
-    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
-    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
-    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
-    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
-    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
-    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
-    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
-    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
-    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
-    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
-    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
-    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
   export type guardiaCreateInput = {
     g_id: number
     g_fec?: Date | string | null
@@ -79525,7 +78570,8 @@ export namespace Prisma {
     ANTICIPO?: SortOrder
     CUOTAS?: SortOrder
     MAIL?: SortOrder
-    idbajas?: SortOrder
+    idbaja?: SortOrder
+    EMPRESA?: SortOrder
   }
 
   export type bajasAvgOrderByAggregateInput = {
@@ -79559,7 +78605,7 @@ export namespace Prisma {
     COD_POST?: SortOrder
     ANTICIPO?: SortOrder
     CUOTAS?: SortOrder
-    idbajas?: SortOrder
+    idbaja?: SortOrder
   }
 
   export type bajasMaxOrderByAggregateInput = {
@@ -79638,7 +78684,8 @@ export namespace Prisma {
     ANTICIPO?: SortOrder
     CUOTAS?: SortOrder
     MAIL?: SortOrder
-    idbajas?: SortOrder
+    idbaja?: SortOrder
+    EMPRESA?: SortOrder
   }
 
   export type bajasMinOrderByAggregateInput = {
@@ -79717,7 +78764,8 @@ export namespace Prisma {
     ANTICIPO?: SortOrder
     CUOTAS?: SortOrder
     MAIL?: SortOrder
-    idbajas?: SortOrder
+    idbaja?: SortOrder
+    EMPRESA?: SortOrder
   }
 
   export type bajasSumOrderByAggregateInput = {
@@ -79751,7 +78799,315 @@ export namespace Prisma {
     COD_POST?: SortOrder
     ANTICIPO?: SortOrder
     CUOTAS?: SortOrder
-    idbajas?: SortOrder
+    idbaja?: SortOrder
+  }
+
+  export type bajas_mutualCountOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    NACIMIENTO?: SortOrder
+    CALLE?: SortOrder
+    LOCALIDAD?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    DOMI_COBR?: SortOrder
+    DOM_LAB?: SortOrder
+    ZONA?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    VIGENCIA?: SortOrder
+    ALT_SEG?: SortOrder
+    VIG_SEG?: SortOrder
+    ENC_SEG?: SortOrder
+    VIG_AYUDA?: SortOrder
+    GRUPO?: SortOrder
+    SEXO?: SortOrder
+    ADHERENTES?: SortOrder
+    PRECIO?: SortOrder
+    OPERADOR?: SortOrder
+    ACTUALIZA?: SortOrder
+    PAMI?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PROD_DEB?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    FEC_PLAN?: SortOrder
+    MOD_1?: SortOrder
+    PRO_1?: SortOrder
+    MOD_2?: SortOrder
+    PRO_2?: SortOrder
+    MOD_3?: SortOrder
+    PRO_3?: SortOrder
+    MOD_4?: SortOrder
+    PRO_4?: SortOrder
+    MOD_5?: SortOrder
+    TSEG?: SortOrder
+    PRO_5?: SortOrder
+    MOD_6?: SortOrder
+    PRO_6?: SortOrder
+    MOD_7?: SortOrder
+    PRO_7?: SortOrder
+    MOD_8?: SortOrder
+    PRO_8?: SortOrder
+    MOD_9?: SortOrder
+    PRO_9?: SortOrder
+    MOD_10?: SortOrder
+    PRO_10?: SortOrder
+    MOD_11?: SortOrder
+    PRO_11?: SortOrder
+    MOD_12?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    TRASPASO?: SortOrder
+    FEC_REAFIL?: SortOrder
+    NUM_REAFIL?: SortOrder
+    LEGAJO?: SortOrder
+    COD_POST?: SortOrder
+    VIG_OPT?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    DECL_JUR?: SortOrder
+    VIG_SUB?: SortOrder
+    VIG_CONSU?: SortOrder
+    VIG_SMEDI?: SortOrder
+    ANTICIPO?: SortOrder
+    CUOTAS?: SortOrder
+    MAIL?: SortOrder
+    idbaja?: SortOrder
+    EMPRESA?: SortOrder
+  }
+
+  export type bajas_mutualAvgOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    NRO_CALLE?: SortOrder
+    ZONA?: SortOrder
+    ENC_SEG?: SortOrder
+    GRUPO?: SortOrder
+    ADHERENTES?: SortOrder
+    PRECIO?: SortOrder
+    OPERADOR?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PROD_DEB?: SortOrder
+    PRO_1?: SortOrder
+    PRO_2?: SortOrder
+    PRO_3?: SortOrder
+    PRO_4?: SortOrder
+    PRO_5?: SortOrder
+    PRO_6?: SortOrder
+    PRO_7?: SortOrder
+    PRO_8?: SortOrder
+    PRO_9?: SortOrder
+    PRO_10?: SortOrder
+    PRO_11?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    NUM_REAFIL?: SortOrder
+    COD_POST?: SortOrder
+    ANTICIPO?: SortOrder
+    CUOTAS?: SortOrder
+    idbaja?: SortOrder
+  }
+
+  export type bajas_mutualMaxOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    NACIMIENTO?: SortOrder
+    CALLE?: SortOrder
+    LOCALIDAD?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    DOMI_COBR?: SortOrder
+    DOM_LAB?: SortOrder
+    ZONA?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    VIGENCIA?: SortOrder
+    ALT_SEG?: SortOrder
+    VIG_SEG?: SortOrder
+    ENC_SEG?: SortOrder
+    VIG_AYUDA?: SortOrder
+    GRUPO?: SortOrder
+    SEXO?: SortOrder
+    ADHERENTES?: SortOrder
+    PRECIO?: SortOrder
+    OPERADOR?: SortOrder
+    ACTUALIZA?: SortOrder
+    PAMI?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PROD_DEB?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    FEC_PLAN?: SortOrder
+    MOD_1?: SortOrder
+    PRO_1?: SortOrder
+    MOD_2?: SortOrder
+    PRO_2?: SortOrder
+    MOD_3?: SortOrder
+    PRO_3?: SortOrder
+    MOD_4?: SortOrder
+    PRO_4?: SortOrder
+    MOD_5?: SortOrder
+    TSEG?: SortOrder
+    PRO_5?: SortOrder
+    MOD_6?: SortOrder
+    PRO_6?: SortOrder
+    MOD_7?: SortOrder
+    PRO_7?: SortOrder
+    MOD_8?: SortOrder
+    PRO_8?: SortOrder
+    MOD_9?: SortOrder
+    PRO_9?: SortOrder
+    MOD_10?: SortOrder
+    PRO_10?: SortOrder
+    MOD_11?: SortOrder
+    PRO_11?: SortOrder
+    MOD_12?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    TRASPASO?: SortOrder
+    FEC_REAFIL?: SortOrder
+    NUM_REAFIL?: SortOrder
+    LEGAJO?: SortOrder
+    COD_POST?: SortOrder
+    VIG_OPT?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    DECL_JUR?: SortOrder
+    VIG_SUB?: SortOrder
+    VIG_CONSU?: SortOrder
+    VIG_SMEDI?: SortOrder
+    ANTICIPO?: SortOrder
+    CUOTAS?: SortOrder
+    MAIL?: SortOrder
+    idbaja?: SortOrder
+    EMPRESA?: SortOrder
+  }
+
+  export type bajas_mutualMinOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    NACIMIENTO?: SortOrder
+    CALLE?: SortOrder
+    LOCALIDAD?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    DOMI_COBR?: SortOrder
+    DOM_LAB?: SortOrder
+    ZONA?: SortOrder
+    ALTA?: SortOrder
+    BAJA?: SortOrder
+    VIGENCIA?: SortOrder
+    ALT_SEG?: SortOrder
+    VIG_SEG?: SortOrder
+    ENC_SEG?: SortOrder
+    VIG_AYUDA?: SortOrder
+    GRUPO?: SortOrder
+    SEXO?: SortOrder
+    ADHERENTES?: SortOrder
+    PRECIO?: SortOrder
+    OPERADOR?: SortOrder
+    ACTUALIZA?: SortOrder
+    PAMI?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PROD_DEB?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    FEC_PLAN?: SortOrder
+    MOD_1?: SortOrder
+    PRO_1?: SortOrder
+    MOD_2?: SortOrder
+    PRO_2?: SortOrder
+    MOD_3?: SortOrder
+    PRO_3?: SortOrder
+    MOD_4?: SortOrder
+    PRO_4?: SortOrder
+    MOD_5?: SortOrder
+    TSEG?: SortOrder
+    PRO_5?: SortOrder
+    MOD_6?: SortOrder
+    PRO_6?: SortOrder
+    MOD_7?: SortOrder
+    PRO_7?: SortOrder
+    MOD_8?: SortOrder
+    PRO_8?: SortOrder
+    MOD_9?: SortOrder
+    PRO_9?: SortOrder
+    MOD_10?: SortOrder
+    PRO_10?: SortOrder
+    MOD_11?: SortOrder
+    PRO_11?: SortOrder
+    MOD_12?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    TRASPASO?: SortOrder
+    FEC_REAFIL?: SortOrder
+    NUM_REAFIL?: SortOrder
+    LEGAJO?: SortOrder
+    COD_POST?: SortOrder
+    VIG_OPT?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    DECL_JUR?: SortOrder
+    VIG_SUB?: SortOrder
+    VIG_CONSU?: SortOrder
+    VIG_SMEDI?: SortOrder
+    ANTICIPO?: SortOrder
+    CUOTAS?: SortOrder
+    MAIL?: SortOrder
+    idbaja?: SortOrder
+    EMPRESA?: SortOrder
+  }
+
+  export type bajas_mutualSumOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    NRO_CALLE?: SortOrder
+    ZONA?: SortOrder
+    ENC_SEG?: SortOrder
+    GRUPO?: SortOrder
+    ADHERENTES?: SortOrder
+    PRECIO?: SortOrder
+    OPERADOR?: SortOrder
+    OBRA_SOC?: SortOrder
+    SEGURO?: SortOrder
+    PRODUCTOR?: SortOrder
+    PROD_DEB?: SortOrder
+    PRO_1?: SortOrder
+    PRO_2?: SortOrder
+    PRO_3?: SortOrder
+    PRO_4?: SortOrder
+    PRO_5?: SortOrder
+    PRO_6?: SortOrder
+    PRO_7?: SortOrder
+    PRO_8?: SortOrder
+    PRO_9?: SortOrder
+    PRO_10?: SortOrder
+    PRO_11?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    NUM_REAFIL?: SortOrder
+    COD_POST?: SortOrder
+    ANTICIPO?: SortOrder
+    CUOTAS?: SortOrder
+    idbaja?: SortOrder
   }
 
   export type bancosCountOrderByAggregateInput = {
@@ -80111,104 +79467,6 @@ export namespace Prisma {
     dbt_id?: SortOrder
   }
 
-  export type historiaCountOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    OPERADOR?: SortOrder
-    ARCHIVO?: SortOrder
-    CAMPO?: SortOrder
-    ANTERIOR?: SortOrder
-    NUEVO?: SortOrder
-    ACTUALIZA?: SortOrder
-    CONTROL?: SortOrder
-    idhistoria?: SortOrder
-  }
-
-  export type historiaAvgOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    ARCHIVO?: SortOrder
-    idhistoria?: SortOrder
-  }
-
-  export type historiaMaxOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    OPERADOR?: SortOrder
-    ARCHIVO?: SortOrder
-    CAMPO?: SortOrder
-    ANTERIOR?: SortOrder
-    NUEVO?: SortOrder
-    ACTUALIZA?: SortOrder
-    CONTROL?: SortOrder
-    idhistoria?: SortOrder
-  }
-
-  export type historiaMinOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    OPERADOR?: SortOrder
-    ARCHIVO?: SortOrder
-    CAMPO?: SortOrder
-    ANTERIOR?: SortOrder
-    NUEVO?: SortOrder
-    ACTUALIZA?: SortOrder
-    CONTROL?: SortOrder
-    idhistoria?: SortOrder
-  }
-
-  export type historiaSumOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    ARCHIVO?: SortOrder
-    idhistoria?: SortOrder
-  }
-
-  export type historiamCountOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    OPERADOR?: SortOrder
-    ARCHIVO?: SortOrder
-    CAMPO?: SortOrder
-    ANTERIOR?: SortOrder
-    NUEVO?: SortOrder
-    ACTUALIZA?: SortOrder
-    CONTROL?: SortOrder
-    idhistoria?: SortOrder
-  }
-
-  export type historiamAvgOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    ARCHIVO?: SortOrder
-    CAMPO?: SortOrder
-    idhistoria?: SortOrder
-  }
-
-  export type historiamMaxOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    OPERADOR?: SortOrder
-    ARCHIVO?: SortOrder
-    CAMPO?: SortOrder
-    ANTERIOR?: SortOrder
-    NUEVO?: SortOrder
-    ACTUALIZA?: SortOrder
-    CONTROL?: SortOrder
-    idhistoria?: SortOrder
-  }
-
-  export type historiamMinOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    OPERADOR?: SortOrder
-    ARCHIVO?: SortOrder
-    CAMPO?: SortOrder
-    ANTERIOR?: SortOrder
-    NUEVO?: SortOrder
-    ACTUALIZA?: SortOrder
-    CONTROL?: SortOrder
-    idhistoria?: SortOrder
-  }
-
-  export type historiamSumOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    ARCHIVO?: SortOrder
-    CAMPO?: SortOrder
-    idhistoria?: SortOrder
-  }
-
   export type liq_temporalCountOrderByAggregateInput = {
     liqtmp_id?: SortOrder
     liqtmp_recup?: SortOrder
@@ -80529,6 +79787,7 @@ export namespace Prisma {
     ADHERENTES?: SortOrder
     PRECIO?: SortOrder
     CUO_VIEJA?: SortOrder
+    OPERADOR?: SortOrder
     OBRA_SOC?: SortOrder
     PRODUCTOR?: SortOrder
     PROD_DEB?: SortOrder
@@ -80751,6 +80010,7 @@ export namespace Prisma {
     ADHERENTES?: SortOrder
     PRECIO?: SortOrder
     CUO_VIEJA?: SortOrder
+    OPERADOR?: SortOrder
     OBRA_SOC?: SortOrder
     PRODUCTOR?: SortOrder
     PROD_DEB?: SortOrder
@@ -83852,79 +83112,6 @@ export namespace Prisma {
     usu_sem2?: SortOrder
     usu_sem3?: SortOrder
     usu_sem4?: SortOrder
-  }
-
-  export type SO1CountOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    APE_NOM?: SortOrder
-    ALTA?: SortOrder
-    GRUPO?: SortOrder
-    ADHS?: SortOrder
-    PLAN?: SortOrder
-    SUB_PLAN?: SortOrder
-    ZONA?: SortOrder
-    CUOTA?: SortOrder
-    EMPRESA?: SortOrder
-    SUCURSAL?: SortOrder
-    EDAD_PROM?: SortOrder
-    PERMANEN?: SortOrder
-    DEUDA?: SortOrder
-  }
-
-  export type SO1AvgOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    GRUPO?: SortOrder
-    ADHS?: SortOrder
-    ZONA?: SortOrder
-    CUOTA?: SortOrder
-    EDAD_PROM?: SortOrder
-    PERMANEN?: SortOrder
-    DEUDA?: SortOrder
-  }
-
-  export type SO1MaxOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    APE_NOM?: SortOrder
-    ALTA?: SortOrder
-    GRUPO?: SortOrder
-    ADHS?: SortOrder
-    PLAN?: SortOrder
-    SUB_PLAN?: SortOrder
-    ZONA?: SortOrder
-    CUOTA?: SortOrder
-    EMPRESA?: SortOrder
-    SUCURSAL?: SortOrder
-    EDAD_PROM?: SortOrder
-    PERMANEN?: SortOrder
-    DEUDA?: SortOrder
-  }
-
-  export type SO1MinOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    APE_NOM?: SortOrder
-    ALTA?: SortOrder
-    GRUPO?: SortOrder
-    ADHS?: SortOrder
-    PLAN?: SortOrder
-    SUB_PLAN?: SortOrder
-    ZONA?: SortOrder
-    CUOTA?: SortOrder
-    EMPRESA?: SortOrder
-    SUCURSAL?: SortOrder
-    EDAD_PROM?: SortOrder
-    PERMANEN?: SortOrder
-    DEUDA?: SortOrder
-  }
-
-  export type SO1SumOrderByAggregateInput = {
-    CONTRATO?: SortOrder
-    GRUPO?: SortOrder
-    ADHS?: SortOrder
-    ZONA?: SortOrder
-    CUOTA?: SortOrder
-    EDAD_PROM?: SortOrder
-    PERMANEN?: SortOrder
-    DEUDA?: SortOrder
   }
 
   export type guardiaCountOrderByAggregateInput = {

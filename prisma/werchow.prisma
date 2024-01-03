@@ -102,8 +102,6 @@ model SO {
   EDAD_PROM Float?
   PERMANEN  Float?
   DEUDA     Int?
-  ESTADO    String?   @db.VarChar(1)
-  PAGOS     Float?
 
   @@ignore
 }
@@ -145,8 +143,8 @@ model adherent {
   CLAVE      Int?
   CONTRATO   Int?
   NRO_DOC    Int?
-  APELLIDOS  String?   @db.VarChar(15)
-  NOMBRES    String?   @db.VarChar(20)
+  APELLIDOS  String?   @db.VarChar(100)
+  NOMBRES    String?   @db.VarChar(100)
   NACIMIENTO DateTime? @db.Date
   SEXO       String?   @db.VarChar(1)
   ALTA       DateTime? @db.Date
@@ -377,7 +375,8 @@ model bajas {
   ANTICIPO   Float?
   CUOTAS     Int?
   MAIL       String?   @db.VarChar(60)
-  idbajas    Int       @id @default(autoincrement())
+  idbaja     Int       @id @default(autoincrement())
+  EMPRESA    String?   @db.VarChar(255)
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
@@ -457,8 +456,8 @@ model bajas_mutual {
   ANTICIPO   Float?
   CUOTAS     Int?
   MAIL       String?   @db.VarChar(60)
-
-  @@ignore
+  idbaja     Int       @id @default(autoincrement())
+  EMPRESA    String?   @db.VarChar(255)
 }
 
 model bancos {
@@ -758,29 +757,34 @@ model grupos {
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model historia {
   CONTRATO   Int?
-  OPERADOR   String? @db.VarChar(255)
+  OPERADOR   Int?
   ARCHIVO    Int?
-  CAMPO      String? @db.VarChar(500)
-  ANTERIOR   String? @db.VarChar(500)
-  NUEVO      String? @db.VarChar(500)
-  ACTUALIZA  String? @db.VarChar(255)
-  CONTROL    String? @db.VarChar(9)
-  idhistoria Int     @id @default(autoincrement())
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
-model historiam {
-  CONTRATO   Int?
-  OPERADOR   String? @db.VarChar(255)
-  ARCHIVO    Int?
-  CAMPO      Int?
+  CAMPO      String? @db.VarChar(30)
   ANTERIOR   String? @db.VarChar(30)
   NUEVO      String? @db.VarChar(30)
   ACTUALIZA  String? @db.VarChar(13)
   CONTROL    String? @db.VarChar(9)
   idhistoria Int     @id @default(autoincrement())
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model historiam {
+  CONTRATO  Int?
+  OPERADOR  Int?
+  ARCHIVO   Int?
+  CAMPO     Int?
+  ANTERIOR  String? @db.VarChar(30)
+  NUEVO     String? @db.VarChar(30)
+  ACTUALIZA String? @db.VarChar(13)
+  CONTROL   String? @db.VarChar(9)
+
+  @@ignore
 }
 
 model liq_temporal {
@@ -824,15 +828,15 @@ model maestro {
   SUCURSAL   String?   @db.VarChar(1)
   CONTRATO   Int       @id
   NRO_DOC    Int?
-  APELLIDOS  String?   @db.VarChar(15)
-  NOMBRES    String?   @db.VarChar(20)
+  APELLIDOS  String?   @db.VarChar(100)
+  NOMBRES    String?   @db.VarChar(100)
   NACIMIENTO DateTime? @db.Date
-  CALLE      String?   @db.VarChar(30)
-  LOCALIDAD  String?   @db.VarChar(15)
+  CALLE      String?   @db.VarChar(100)
+  LOCALIDAD  String?   @db.VarChar(100)
   NRO_CALLE  Int?
-  BARRIO     String?   @db.VarChar(15)
-  DOMI_COBR  String?   @db.VarChar(30)
-  DOM_LAB    String?   @db.VarChar(30)
+  BARRIO     String?   @db.VarChar(100)
+  DOMI_COBR  String?   @db.VarChar(100)
+  DOM_LAB    String?   @db.VarChar(100)
   ZONA       Int?
   ALTA       DateTime? @db.Date
   VIGENCIA   DateTime? @db.Date
@@ -845,7 +849,7 @@ model maestro {
   ADHERENTES Int?
   PRECIO     Float?
   CUO_VIEJA  Float?
-  OPERADOR   String?   @db.VarChar(255)
+  OPERADOR   Int?
   ACTUALIZA  String?   @db.VarChar(13)
   OBRA_SOC   Int?
   PRODUCTOR  Int?
@@ -886,8 +890,8 @@ model maestro {
   EMPRESA    String?   @db.VarChar(1)
   EDAD       Int?
   COD_POST   Int?
-  TELEFONO   String?   @db.VarChar(20)
-  MOVIL      String?   @db.VarChar(20)
+  TELEFONO   String?   @db.VarChar(100)
+  MOVIL      String?   @db.VarChar(100)
   VIG_OPT    DateTime? @db.Date
   DECL_JUR   DateTime? @db.Date
   VIG_SUB    DateTime? @db.Date
@@ -906,7 +910,7 @@ model maestro {
   MAY_65     Int?
   INTEG      Int?
   EDAD_PROM  Float?
-  MAIL       String?   @db.VarChar(60)
+  MAIL       String?   @db.VarChar(100)
 }
 
 model maestro22 {
@@ -1530,7 +1534,7 @@ model mutual {
   APELLIDOS  String?   @db.VarChar(15)
   NOMBRES    String?   @db.VarChar(20)
   NACIMIENTO DateTime? @db.Date
-  CALLE      String?   @db.VarChar(30)
+  CALLE      String?   @db.VarChar(255)
   LOCALIDAD  String?   @db.VarChar(15)
   NRO_CALLE  Int?
   BARRIO     String?   @db.VarChar(15)
@@ -2518,23 +2522,6 @@ model zonas {
   TITULO2  String? @db.VarChar(80)
 
   @@ignore
-}
-
-model SO1 {
-  CONTRATO  Int       @id
-  APE_NOM   String?   @db.VarChar(30)
-  ALTA      DateTime? @db.Date
-  GRUPO     Int?
-  ADHS      Int?
-  PLAN      String?   @db.VarChar(2)
-  SUB_PLAN  String?   @db.VarChar(2)
-  ZONA      Int?
-  CUOTA     Float?
-  EMPRESA   String?   @db.VarChar(1)
-  SUCURSAL  String?   @db.VarChar(1)
-  EDAD_PROM Float?
-  PERMANEN  Float?
-  DEUDA     Int?
 }
 
 model guardia {

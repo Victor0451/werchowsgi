@@ -289,7 +289,88 @@ exports.Prisma.BajasScalarFieldEnum = {
   ANTICIPO: 'ANTICIPO',
   CUOTAS: 'CUOTAS',
   MAIL: 'MAIL',
-  idbajas: 'idbajas'
+  idbaja: 'idbaja',
+  EMPRESA: 'EMPRESA'
+};
+
+exports.Prisma.Bajas_mutualScalarFieldEnum = {
+  SUCURSAL: 'SUCURSAL',
+  CONTRATO: 'CONTRATO',
+  NRO_DOC: 'NRO_DOC',
+  APELLIDOS: 'APELLIDOS',
+  NOMBRES: 'NOMBRES',
+  NACIMIENTO: 'NACIMIENTO',
+  CALLE: 'CALLE',
+  LOCALIDAD: 'LOCALIDAD',
+  NRO_CALLE: 'NRO_CALLE',
+  BARRIO: 'BARRIO',
+  DOMI_COBR: 'DOMI_COBR',
+  DOM_LAB: 'DOM_LAB',
+  ZONA: 'ZONA',
+  ALTA: 'ALTA',
+  BAJA: 'BAJA',
+  VIGENCIA: 'VIGENCIA',
+  ALT_SEG: 'ALT_SEG',
+  VIG_SEG: 'VIG_SEG',
+  ENC_SEG: 'ENC_SEG',
+  VIG_AYUDA: 'VIG_AYUDA',
+  GRUPO: 'GRUPO',
+  SEXO: 'SEXO',
+  ADHERENTES: 'ADHERENTES',
+  PRECIO: 'PRECIO',
+  OPERADOR: 'OPERADOR',
+  ACTUALIZA: 'ACTUALIZA',
+  PAMI: 'PAMI',
+  OBRA_SOC: 'OBRA_SOC',
+  SEGURO: 'SEGURO',
+  PRODUCTOR: 'PRODUCTOR',
+  PROD_DEB: 'PROD_DEB',
+  PLAN: 'PLAN',
+  SUB_PLAN: 'SUB_PLAN',
+  FEC_PLAN: 'FEC_PLAN',
+  MOD_1: 'MOD_1',
+  PRO_1: 'PRO_1',
+  MOD_2: 'MOD_2',
+  PRO_2: 'PRO_2',
+  MOD_3: 'MOD_3',
+  PRO_3: 'PRO_3',
+  MOD_4: 'MOD_4',
+  PRO_4: 'PRO_4',
+  MOD_5: 'MOD_5',
+  TSEG: 'TSEG',
+  PRO_5: 'PRO_5',
+  MOD_6: 'MOD_6',
+  PRO_6: 'PRO_6',
+  MOD_7: 'MOD_7',
+  PRO_7: 'PRO_7',
+  MOD_8: 'MOD_8',
+  PRO_8: 'PRO_8',
+  MOD_9: 'MOD_9',
+  PRO_9: 'PRO_9',
+  MOD_10: 'MOD_10',
+  PRO_10: 'PRO_10',
+  MOD_11: 'MOD_11',
+  PRO_11: 'PRO_11',
+  MOD_12: 'MOD_12',
+  PRO_12: 'PRO_12',
+  TOT_MOD: 'TOT_MOD',
+  TRASPASO: 'TRASPASO',
+  FEC_REAFIL: 'FEC_REAFIL',
+  NUM_REAFIL: 'NUM_REAFIL',
+  LEGAJO: 'LEGAJO',
+  COD_POST: 'COD_POST',
+  VIG_OPT: 'VIG_OPT',
+  TELEFONO: 'TELEFONO',
+  MOVIL: 'MOVIL',
+  DECL_JUR: 'DECL_JUR',
+  VIG_SUB: 'VIG_SUB',
+  VIG_CONSU: 'VIG_CONSU',
+  VIG_SMEDI: 'VIG_SMEDI',
+  ANTICIPO: 'ANTICIPO',
+  CUOTAS: 'CUOTAS',
+  MAIL: 'MAIL',
+  idbaja: 'idbaja',
+  EMPRESA: 'EMPRESA'
 };
 
 exports.Prisma.BancosScalarFieldEnum = {
@@ -375,30 +456,6 @@ exports.Prisma.DebitosScalarFieldEnum = {
   dbt_id: 'dbt_id',
   dbt_descripcion: 'dbt_descripcion',
   dbt_estado: 'dbt_estado'
-};
-
-exports.Prisma.HistoriaScalarFieldEnum = {
-  CONTRATO: 'CONTRATO',
-  OPERADOR: 'OPERADOR',
-  ARCHIVO: 'ARCHIVO',
-  CAMPO: 'CAMPO',
-  ANTERIOR: 'ANTERIOR',
-  NUEVO: 'NUEVO',
-  ACTUALIZA: 'ACTUALIZA',
-  CONTROL: 'CONTROL',
-  idhistoria: 'idhistoria'
-};
-
-exports.Prisma.HistoriamScalarFieldEnum = {
-  CONTRATO: 'CONTRATO',
-  OPERADOR: 'OPERADOR',
-  ARCHIVO: 'ARCHIVO',
-  CAMPO: 'CAMPO',
-  ANTERIOR: 'ANTERIOR',
-  NUEVO: 'NUEVO',
-  ACTUALIZA: 'ACTUALIZA',
-  CONTROL: 'CONTROL',
-  idhistoria: 'idhistoria'
 };
 
 exports.Prisma.Liq_temporalScalarFieldEnum = {
@@ -1254,23 +1311,6 @@ exports.Prisma.UsuarioScalarFieldEnum = {
   usu_grupo: 'usu_grupo'
 };
 
-exports.Prisma.SO1ScalarFieldEnum = {
-  CONTRATO: 'CONTRATO',
-  APE_NOM: 'APE_NOM',
-  ALTA: 'ALTA',
-  GRUPO: 'GRUPO',
-  ADHS: 'ADHS',
-  PLAN: 'PLAN',
-  SUB_PLAN: 'SUB_PLAN',
-  ZONA: 'ZONA',
-  CUOTA: 'CUOTA',
-  EMPRESA: 'EMPRESA',
-  SUCURSAL: 'SUCURSAL',
-  EDAD_PROM: 'EDAD_PROM',
-  PERMANEN: 'PERMANEN',
-  DEUDA: 'DEUDA'
-};
-
 exports.Prisma.GuardiaScalarFieldEnum = {
   g_id: 'g_id',
   g_fec: 'g_fec',
@@ -1329,6 +1369,7 @@ exports.Prisma.ModelName = {
   alta_adhe: 'alta_adhe',
   anticipos: 'anticipos',
   bajas: 'bajas',
+  bajas_mutual: 'bajas_mutual',
   bancos: 'bancos',
   caja_sucursal: 'caja_sucursal',
   cajas: 'cajas',
@@ -1337,8 +1378,6 @@ exports.Prisma.ModelName = {
   cuota_prestamo: 'cuota_prestamo',
   cuotas_adeudadas: 'cuotas_adeudadas',
   debitos: 'debitos',
-  historia: 'historia',
-  historiam: 'historiam',
   liq_temporal: 'liq_temporal',
   liquidaciones: 'liquidaciones',
   localidad: 'localidad',
@@ -1372,7 +1411,6 @@ exports.Prisma.ModelName = {
   sucursal: 'sucursal',
   sueldos: 'sueldos',
   usuario: 'usuario',
-  SO1: 'SO1',
   guardia: 'guardia',
   listado_rus: 'listado_rus',
   poliza_5380: 'poliza_5380'

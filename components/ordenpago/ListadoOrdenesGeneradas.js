@@ -30,6 +30,7 @@ const ListadoOrdenesGeneradas = ({
   aprobarOrden,
   mandarMail,
   anularOrden,
+  conditionalRowStyles,
 }) => {
   let columns = [
     {
@@ -77,8 +78,14 @@ const ListadoOrdenesGeneradas = ({
         <>
           {row.estado === true && row.autorizado === false ? (
             <div>Pendiente</div>
-          ) : row.estado === true && row.autorizado === true ? (
-            <div>Autorizado</div>
+          ) : row.estado === true &&
+            row.autorizado === true &&
+            row.pagado === false ? (
+            <div>Autorizado, Sin Pagar</div>
+          ) : row.estado === true &&
+            row.autorizado === true &&
+            row.pagado === true ? (
+            <div>Autorizado y Pagado</div>
           ) : row.estado === false && row.autorizado === false ? (
             <div>Anulado</div>
           ) : null}
@@ -207,6 +214,7 @@ const ListadoOrdenesGeneradas = ({
                 pagination
                 subHeader
                 subHeaderComponent={subHeaderComponent}
+                conditionalRowStyles={conditionalRowStyles}
               />
             )}
           </>

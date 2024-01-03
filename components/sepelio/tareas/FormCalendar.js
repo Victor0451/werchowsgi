@@ -46,7 +46,6 @@ const FormCalendar = ({
     <Card className="h-full w-full p-4 ">
       <CardBody className="rounded-none">
         <Typography variant="h2">Registro de tareas</Typography>
-
         <div className="mt-5 mb-5 border-2 p-4">
           <Typography variant="h5" color="blue-gray">
             Opciones
@@ -71,7 +70,27 @@ const FormCalendar = ({
             </Button>
           </div>
         </div>
-
+        <Alert
+          className="mt-5 mb-5"
+          color="blue"
+          icon={<InformationCircleIcon strokeWidth={2} className="h-6 w-6" />}
+        >
+          Para crear una tarea, selecciona el dia y las horas que ocupara
+          haciendo click en la hora de inicio y si soltar, arrastrar el cursor
+          hasta la hora de fin. Esto abrira una ventana para poder ingresar el
+          detalle de la tarea, operador y su prioridad. Una vez finalizada la
+          carga de datos, hacer click en "Registrar Tarera".
+        </Alert>{" "}
+        <Alert
+          className="mt-5 mb-5"
+          color="blue"
+          icon={<InformationCircleIcon strokeWidth={2} className="h-6 w-6" />}
+        >
+          Para ver una tarea en detalle, solo debes hacer click en la tarea en
+          cuestion y esta se mostrara en una ventana de manera mas detallada.
+          Para editar y/o eliminar las tareas registradas, solo debes hacer
+          click en los botones "Editar" o "Eliminar" y seguir las indicaciones.
+        </Alert>
         {edit === true ? (
           <>
             <Alert
@@ -87,7 +106,7 @@ const FormCalendar = ({
 
             <Alert
               className="mt-5 mb-5"
-              color="blue"
+              color="orange"
               icon={
                 <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
               }
@@ -99,7 +118,6 @@ const FormCalendar = ({
             </Alert>
           </>
         ) : null}
-
         {delet === true ? (
           <>
             <Alert
@@ -115,7 +133,7 @@ const FormCalendar = ({
 
             <Alert
               className="mt-5 mb-5"
-              color="blue"
+              color="red"
               icon={
                 <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
               }
@@ -127,7 +145,6 @@ const FormCalendar = ({
             </Alert>
           </>
         ) : null}
-
         {eventSelected.length === 0 && reg === false ? (
           <FullCalendar
             plugins={[timeGridPlugin, interactionPlugin, dayGridPlugin]}

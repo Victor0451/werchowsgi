@@ -22,6 +22,7 @@ function Legajo(props) {
   let dniRef = React.createRef();
   let contratoRef = React.createRef();
   let cuotasRef = React.createRef();
+  let apellidoRef = React.createRef();
 
   const [errores, guardarErrores] = useState(null);
   const [alertas, guardarAlertas] = useState(null);
@@ -39,6 +40,8 @@ function Legajo(props) {
   const [historial, guardarHistorial] = useState([]);
   const [histCuotas, guardarHistCuotas] = useState([]);
   const [cuotaMensual, guardarCuotaMensual] = useState(0);
+  const [baja, guardarBaja] = useState(false);
+  const [listApe, guardarApellidos] = useState([]);
 
   const { usu } = useWerchow();
 
@@ -392,6 +395,7 @@ function Legajo(props) {
     guardarErrores(null);
     guardarAlertas(null);
     guardarShow(false);
+    guardarBaja(false);
 
     if (dniRef.current.value === "") {
       guardarErrores("Debes ingresar un numero de DNI");
@@ -421,19 +425,21 @@ function Legajo(props) {
             axios
               .get("/api/socios", {
                 params: {
-                  f: "mutual",
+                  f: "maestro baja",
                   dni: dniRef.current.value,
                 },
               })
-              .then((res2) => {
-                let re = JSON.parse(res2.data);
+              .then((res1) => {
+                let re = JSON.parse(res1.data);
 
                 if (re.length > 0) {
-                  let ficha = JSON.parse(res2.data);
+                  let ficha = JSON.parse(res1.data);
+
                   guardarFicha(ficha);
                   guardarShow(true);
+                  guardarBaja(true);
 
-                  traerAdhs("mutual adh", ficha[0].CONTRATO);
+                  traerAdhs("adh", ficha[0].CONTRATO);
                   traerInfo(ficha[0].CONTRATO);
                   descriGrupo(ficha[0].GRUPO);
                   traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
@@ -442,10 +448,10 @@ function Legajo(props) {
                   traerCuotas(ficha[0].CONTRATO);
                 } else {
                   guardarAlertas(
-                    "El DNI ingresado no esta registrado o pertenece a un adherente"
+                    "El DNI ingresado no esta registrado o pertenece a un socio de Werchow"
                   );
                   toast.info(
-                    "El DNI ingresado no esta registrado o pertenece a un adherente"
+                    "El DNI ingresado no esta registrado o pertenece a un socio de Werchow"
                   );
                 }
               })
@@ -466,14 +472,107 @@ function Legajo(props) {
     }
   };
 
-  const tarerSocioContrato = async () => {
-    let contrato = contratoRef.current.value;
+  const traerSocioMutual = async () => {
+    guardarErrores(null);
+    guardarAlertas(null);
+    guardarShow(false);
+    guardarBaja(false);
+
+    if (dniRef.current.value === "") {
+      guardarErrores("Debes ingresar un numero de DNI");
+    } else {
+      axios
+        .get("/api/socios", {
+          params: {
+            f: "mutual",
+            dni: dniRef.current.value,
+          },
+        })
+        .then((res2) => {
+          let re = JSON.parse(res2.data);
+
+          if (re.length > 0) {
+            let ficha = JSON.parse(res2.data);
+            guardarFicha(ficha);
+            guardarShow(true);
+
+            traerAdhs("mutual adh", ficha[0].CONTRATO);
+            traerInfo(ficha[0].CONTRATO);
+            descriGrupo(ficha[0].GRUPO);
+            traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
+            traerUsos(ficha[0].CONTRATO);
+            traerHistorial(ficha[0].CONTRATO);
+            traerCuotas(ficha[0].CONTRATO);
+          } else {
+            axios
+              .get("/api/socios", {
+                params: {
+                  f: "mutual baja",
+                  dni: dniRef.current.value,
+                },
+              })
+              .then((res3) => {
+                let re = JSON.parse(res3.data);
+
+                if (re.length > 0) {
+                  let ficha = JSON.parse(res3.data);
+
+                  guardarFicha(ficha);
+                  guardarShow(true);
+                  guardarBaja(true);
+
+                  traerAdhs("mutual adh", ficha[0].CONTRATO);
+                  traerInfo(ficha[0].CONTRATO);
+                  descriGrupo(ficha[0].GRUPO);
+                  traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
+                  traerUsos(ficha[0].CONTRATO);
+                  traerHistorial(ficha[0].CONTRATO);
+                  traerCuotas(ficha[0].CONTRATO);
+                } else {
+                  guardarAlertas(
+                    "El DNI ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
+                  );
+                  toast.info(
+                    "El DNI ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
+                  );
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error(
+                  "Ocurrio un error al tarer los datos del socio en Mutual"
+                );
+              });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error(
+            "Ocurrio un error al tarer los datos del socio en Mutual"
+          );
+        });
+    }
+  };
+
+  const tarerSocioContrato = async (hc) => {
+    guardarErrores(null);
+    guardarAlertas(null);
+    guardarShow(false);
+    guardarBaja(false);
+
+    let contrato;
+
+    if (!hc.view) {
+      contrato = hc;
+    } else if (hc.view) {
+      contrato = contratoRef.current.value;
+    }
 
     if (contrato === "") {
       guardarErrores("Debes ingresar un numero de socio");
     } else {
-      await axios
-        .get(`/api/socios`, {
+      axios
+        .get("/api/socios", {
           params: {
             f: "maestro contrato",
             ficha: contrato,
@@ -497,17 +596,109 @@ function Legajo(props) {
             axios
               .get("/api/socios", {
                 params: {
-                  f: "mutual contrato",
+                  f: "maestro baja contrato",
                   ficha: contrato,
                 },
               })
-              .then((res2) => {
-                let re = JSON.parse(res2.data);
+              .then((res1) => {
+                let re = JSON.parse(res1.data);
 
                 if (re.length > 0) {
-                  let ficha = JSON.parse(res2.data);
+                  let ficha = JSON.parse(res1.data);
+
                   guardarFicha(ficha);
                   guardarShow(true);
+                  guardarBaja(true);
+
+                  traerAdhs("adh", ficha[0].CONTRATO);
+                  traerInfo(ficha[0].CONTRATO);
+                  descriGrupo(ficha[0].GRUPO);
+                  traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
+                  traerUsos(ficha[0].CONTRATO);
+                  traerHistorial(ficha[0].CONTRATO);
+                  traerCuotas(ficha[0].CONTRATO);
+                } else {
+                  guardarAlertas(
+                    "El DNI ingresado no esta registrado o pertenece a un socio de Werchow"
+                  );
+                  toast.info(
+                    "El DNI ingresado no esta registrado o pertenece a un socio de Werchow"
+                  );
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error(
+                  "Ocurrio un error al tarer los datos del socio en Mutual"
+                );
+              });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error(
+            "Ocurrio un error al tarer los datos del socio en Werchow"
+          );
+        });
+    }
+  };
+
+  const tarerSocioContratoMutual = async (hc) => {
+    guardarErrores(null);
+    guardarAlertas(null);
+    guardarShow(false);
+    guardarBaja(false);
+
+    let contrato;
+
+    if (!hc.view) {
+      contrato = hc;
+    } else if (hc.view) {
+      contrato = contratoRef.current.value;
+    }
+
+    if (contrato === "") {
+      guardarErrores("Debes ingresar un numero de socio");
+    } else {
+      axios
+        .get("/api/socios", {
+          params: {
+            f: "mutual contrato",
+            ficha: contrato,
+          },
+        })
+        .then((res2) => {
+          let re = JSON.parse(res2.data);
+
+          if (re.length > 0) {
+            let ficha = JSON.parse(res2.data);
+            guardarFicha(ficha);
+            guardarShow(true);
+
+            traerAdhs("mutual adh", ficha[0].CONTRATO);
+            traerInfo(ficha[0].CONTRATO);
+            descriGrupo(ficha[0].GRUPO);
+            traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
+            traerUsos(ficha[0].CONTRATO);
+            traerHistorial(ficha[0].CONTRATO);
+            traerCuotas(ficha[0].CONTRATO);
+          } else {
+            axios
+              .get("/api/socios", {
+                params: {
+                  f: "mutual baja contrato",
+                  ficha: contrato,
+                },
+              })
+              .then((res3) => {
+                let re = JSON.parse(res3.data);
+
+                if (re.length > 0) {
+                  let ficha = JSON.parse(res3.data);
+
+                  guardarFicha(ficha);
+                  guardarShow(true);
+                  guardarBaja(true);
 
                   traerAdhs("mutual adh", ficha[0].CONTRATO);
                   traerInfo(ficha[0].CONTRATO);
@@ -518,10 +709,10 @@ function Legajo(props) {
                   traerCuotas(ficha[0].CONTRATO);
                 } else {
                   guardarAlertas(
-                    "El DNI ingresado no esta registrado o pertenece a un adherente"
+                    "El DNI ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
                   );
                   toast.info(
-                    "El DNI ingresado no esta registrado o pertenece a un adherente"
+                    "El DNI ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
                   );
                 }
               })
@@ -531,6 +722,82 @@ function Legajo(props) {
                   "Ocurrio un error al tarer los datos del socio en Mutual"
                 );
               });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error(
+            "Ocurrio un error al tarer los datos del socio en Mutual"
+          );
+        });
+    }
+  };
+
+  const traerApellido = async () => {
+    guardarErrores(null);
+    guardarAlertas(null);
+
+    let apellido = apellidoRef.current.value;
+
+    if (apellido === "") {
+      guardarErrores("Debes ingresar el apellido del titular");
+    } else {
+      axios
+        .get("/api/socios", {
+          params: {
+            f: "maestro apellido",
+            apellido: apellido,
+          },
+        })
+        .then((res0) => {
+          let re = JSON.parse(res0.data);
+          if (re.length > 0) {
+            guardarApellidos(re);
+          } else if (re.length === 0) {
+            guardarAlertas(
+              "El Apellido ingresado no esta registrado o pertenece a un socio de Werchow"
+            );
+            toast.info(
+              "El Apellido ingresado no esta registrado o pertenece a un socio de Werchow"
+            );
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error(
+            "Ocurrio un error al tarer los datos del socio en Werchow"
+          );
+        });
+    }
+  };
+
+  const traerApellidoMutual = async () => {
+    guardarErrores(null);
+    guardarAlertas(null);
+
+    let apellido = apellidoRef.current.value;
+
+    if (apellido === "") {
+      guardarErrores("Debes ingresar el apellido del titular");
+    } else {
+      axios
+        .get("/api/socios", {
+          params: {
+            f: "mutual apellido",
+            apellido: apellido,
+          },
+        })
+        .then((res0) => {
+          let re = JSON.parse(res0.data);
+          if (re.length > 0) {
+            guardarApellidos(re);
+          } else if (re.length === 0) {
+            guardarAlertas(
+              "El Apellido ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
+            );
+            toast.info(
+              "El Apellido ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
+            );
           }
         })
         .catch((error) => {
@@ -691,8 +958,6 @@ function Legajo(props) {
         },
       })
       .then((res) => {
-        console.log(res.data[0].IMPORTE);
-
         if (res.data) {
           guardarCuotaMensual(res.data[0].IMPORTE);
         }
@@ -716,6 +981,10 @@ function Legajo(props) {
             contratoRef={contratoRef}
             traerSocio={traerSocio}
             tarerSocioContrato={tarerSocioContrato}
+            traerSocioMutual={traerSocioMutual}
+            tarerSocioContratoMutual={tarerSocioContratoMutual}
+            traerApellido={traerApellido}
+            traerApellidoMutual={traerApellidoMutual}
             errores={errores}
             alertas={alertas}
             show={show}
@@ -743,6 +1012,9 @@ function Legajo(props) {
             historial={historial}
             histCuotas={histCuotas}
             cuotaMensual={cuotaMensual}
+            baja={baja}
+            apellidoRef={apellidoRef}
+            listApe={listApe}
           />
         </>
       )}

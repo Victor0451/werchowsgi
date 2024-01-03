@@ -35,7 +35,7 @@ export default function ExportarPadron({ listado }) {
 
   return (
     <Button color="green" onClick={descargarExcel}>
-      Export excel
+      Exportar Proveedores
     </Button>
   );
 }

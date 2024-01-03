@@ -11,6 +11,7 @@ import {
   Input,
   Textarea,
   Checkbox,
+  ButtonGroup,
 } from "@material-tailwind/react";
 
 import {
@@ -29,6 +30,7 @@ import ListadoUsos from "./ListadoUsos";
 import ListadoHistorial from "./ListadoHistorial";
 import Link from "next/link";
 import ModalActualizarCuota from "./ModalActualizarCuota";
+import ModalApellidos from "./ModalApellidos";
 
 const FormLegajoSocio = ({
   dniRef,
@@ -37,6 +39,10 @@ const FormLegajoSocio = ({
   alertas,
   traerSocio,
   tarerSocioContrato,
+  traerApellido,
+  traerApellidoMutual,
+  traerSocioMutual,
+  tarerSocioContratoMutual,
   show,
   ficha,
   archivos,
@@ -62,15 +68,33 @@ const FormLegajoSocio = ({
   historial,
   histCuotas,
   cuotaMensual,
+  baja,
+  apellidoRef,
+  listApe
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
       <CardBody className="rounded-none">
         {ficha ? (
-          <Typography variant="h2">
-            <u>Legajo Virtual</u>: {ficha.CONTRATO} - {ficha.APELLIDOS},{" "}
-            {ficha.NOMBRES}
-          </Typography>
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-10/12  px-3 mt-6 mb-6 md:mb-0">
+              <Typography variant="h2">
+                <u>Legajo Virtual</u>: {ficha.CONTRATO} - {ficha.APELLIDOS},{" "}
+                {ficha.NOMBRES}
+              </Typography>
+            </div>
+            <div className="w-full md:w-2/12 px-3 mt-6 mb-6 md:mb-0">
+              {ficha.EMPRESA === "WERCHOW" ? (
+                <>
+                  <img className="werchowlogo" src="/img/logo.png" />
+                </>
+              ) : ficha.EMPRESA === "MUTUAL" ? (
+                <>
+                  <img className="mutuallogo" src="/img/logom.jpg" />
+                </>
+              ) : null}
+            </div>
+          </div>
         ) : (
           <Typography variant="h2">
             <u>Legajo Virtual</u>
@@ -86,8 +110,8 @@ const FormLegajoSocio = ({
                     Ingrese el N° de Socio.
                   </Typography>
 
-                  <div className="grid md:grid-cols-2 md:gap-6">
-                    <div className="relative w-full mb-6 group">
+                  <div className="flex flex-wrap -mx-3 mb-6">
+                    <div className="w-full md:w-1/2  px-3 mt-6 mb-6 md:mb-0">
                       <Input
                         size="md"
                         label="N° Socio"
@@ -95,8 +119,13 @@ const FormLegajoSocio = ({
                         inputRef={contratoRef}
                       />
                     </div>
-                    <div className="relative w-full mb-6 group">
-                      <Button onClick={tarerSocioContrato}>Buscar</Button>
+                    <div className="w-full md:w-1/2  px-3 mt-6 mb-6 md:mb-0">
+                      <ButtonGroup>
+                        <Button onClick={tarerSocioContrato}>Werchow</Button>
+                        <Button onClick={tarerSocioContratoMutual}>
+                          Mutual
+                        </Button>
+                      </ButtonGroup>
                     </div>
                   </div>
 
@@ -129,14 +158,15 @@ const FormLegajoSocio = ({
                   ) : null}
                 </div>
               </div>
+
               <div className="relative w-full mb-6 group">
                 <div className="p-4 border-2 rounded-lg mt-6 ">
                   <Typography variant="h5" color="blue-gray" className="mb-6">
                     Ingrese el DNI del Titular.
                   </Typography>
 
-                  <div className="grid md:grid-cols-2 md:gap-6">
-                    <div className="relative w-full mb-6 group">
+                  <div className="flex flex-wrap -mx-3 mb-6">
+                    <div className="w-full md:w-1/2  px-3 mt-6 mb-6 md:mb-0">
                       <Input
                         size="md"
                         label="DNI"
@@ -144,8 +174,11 @@ const FormLegajoSocio = ({
                         inputRef={dniRef}
                       />
                     </div>
-                    <div className="relative w-full mb-6 group">
-                      <Button onClick={traerSocio}>Buscar</Button>
+                    <div className="w-full md:w-1/2  px-3 mt-6 mb-6 md:mb-0">
+                      <ButtonGroup>
+                        <Button onClick={traerSocio}>Werchow</Button>
+                        <Button onClick={traerSocioMutual}>Mutual</Button>
+                      </ButtonGroup>
                     </div>
                   </div>
 
@@ -179,6 +212,42 @@ const FormLegajoSocio = ({
                 </div>
               </div>
             </div>
+            <hr className="border-2  mb-5" />
+            <div className="p-4 border-2 rounded-lg mt-6 ">
+              <Typography variant="h5" color="blue-gray" className="mb-6">
+                Buscar por Apellido del Titular.
+              </Typography>
+
+              <div className="flex flex-wrap -mx-3 mb-6">
+                <div className="w-full md:w-1/2  px-3 mt-6 mb-6 md:mb-0">
+                  <Input
+                    size="md"
+                    label="Ingrese el apellido"
+                    type="text"
+                    inputRef={apellidoRef}
+                  />
+                </div>
+                <div className="w-full md:w-1/2  px-3 mt-6 mb-6 md:mb-0">
+                  <ButtonGroup>
+                    <ModalApellidos
+                      nombreBoton={"Werchow"}
+                      listado={listApe}
+                      fn={traerApellido}
+                      tarerSocioContrato={tarerSocioContrato}
+                      tarerSocioContratoMutual={tarerSocioContratoMutual}
+                    />
+                    <ModalApellidos
+                      nombreBoton={"Mutual"}
+                      listado={listApe}
+                      fn={traerApellidoMutual}
+                      tarerSocioContrato={tarerSocioContrato}
+                      tarerSocioContratoMutual={tarerSocioContratoMutual}
+                    />
+                  </ButtonGroup>
+                </div>
+              </div>
+            </div>
+
             <div className="relative w-full mb-6 group mt-10">
               <Alert
                 color="blue"
@@ -229,6 +298,34 @@ const FormLegajoSocio = ({
                   </Alert>
                 ) : null}
 
+                {baja === true ? (
+                  <Alert
+                    color="red"
+                    icon={
+                      <InformationCircleIcon
+                        strokeWidth={2}
+                        className="h-6 w-6"
+                      />
+                    }
+                    className="mt-5 mb-5"
+                  >
+                    <strong>¡CUIDADO!... Esta ficha esta dada de baja.</strong>
+                  </Alert>
+                ) : baja === false ? (
+                  <Alert
+                    color="green"
+                    icon={
+                      <InformationCircleIcon
+                        strokeWidth={2}
+                        className="h-6 w-6"
+                      />
+                    }
+                    className="mt-5 mb-5"
+                  >
+                    <strong>Esta ficha esta activa.</strong>
+                  </Alert>
+                ) : null}
+
                 <div className="mt-5 mb-5 border-2 p-4 rounded-xl">
                   <Typography variant="h5" color="blue-gray">
                     Opciones
@@ -262,7 +359,7 @@ const FormLegajoSocio = ({
                       }}
                       target="__blank"
                     >
-                      <Button color="#0288d1" size="sm">
+                      <Button className=" bg-gray-900" size="sm">
                         Agregar Adherentes
                       </Button>
                     </Link>

@@ -760,10 +760,12 @@ export type operadorPayload<ExtArgs extends $Extensions.Args = $Extensions.Defau
     contrasena: string
     createdAt: Date
     updatedAt: Date
-    puestom: number | null
     perfil: number | null
     estado: boolean | null
     puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
     codigo: number | null
     medicos: boolean | null
     sucursal: string | null
@@ -775,6 +777,7 @@ export type operadorPayload<ExtArgs extends $Extensions.Args = $Extensions.Defau
     campanas: boolean | null
     socios: boolean | null
     sepelio: boolean | null
+    cobranza: boolean | null
   }, ExtArgs["result"]["operador"]>
   composites: {}
 }
@@ -41370,17 +41373,21 @@ export namespace Prisma {
 
   export type OperadorAvgAggregateOutputType = {
     id: number | null
-    puestom: number | null
     perfil: number | null
     puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
     codigo: number | null
   }
 
   export type OperadorSumAggregateOutputType = {
     id: number | null
-    puestom: number | null
     perfil: number | null
     puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
     codigo: number | null
   }
 
@@ -41392,10 +41399,12 @@ export namespace Prisma {
     contrasena: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    puestom: number | null
     perfil: number | null
     estado: boolean | null
     puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
     codigo: number | null
     medicos: boolean | null
     sucursal: string | null
@@ -41407,6 +41416,7 @@ export namespace Prisma {
     campanas: boolean | null
     socios: boolean | null
     sepelio: boolean | null
+    cobranza: boolean | null
   }
 
   export type OperadorMaxAggregateOutputType = {
@@ -41417,10 +41427,12 @@ export namespace Prisma {
     contrasena: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    puestom: number | null
     perfil: number | null
     estado: boolean | null
     puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
     codigo: number | null
     medicos: boolean | null
     sucursal: string | null
@@ -41432,6 +41444,7 @@ export namespace Prisma {
     campanas: boolean | null
     socios: boolean | null
     sepelio: boolean | null
+    cobranza: boolean | null
   }
 
   export type OperadorCountAggregateOutputType = {
@@ -41442,10 +41455,12 @@ export namespace Prisma {
     contrasena: number
     createdAt: number
     updatedAt: number
-    puestom: number
     perfil: number
     estado: number
     puestow: number
+    seriew: number
+    puestom: number
+    seriem: number
     codigo: number
     medicos: number
     sucursal: number
@@ -41457,23 +41472,28 @@ export namespace Prisma {
     campanas: number
     socios: number
     sepelio: number
+    cobranza: number
     _all: number
   }
 
 
   export type OperadorAvgAggregateInputType = {
     id?: true
-    puestom?: true
     perfil?: true
     puestow?: true
+    seriew?: true
+    puestom?: true
+    seriem?: true
     codigo?: true
   }
 
   export type OperadorSumAggregateInputType = {
     id?: true
-    puestom?: true
     perfil?: true
     puestow?: true
+    seriew?: true
+    puestom?: true
+    seriem?: true
     codigo?: true
   }
 
@@ -41485,10 +41505,12 @@ export namespace Prisma {
     contrasena?: true
     createdAt?: true
     updatedAt?: true
-    puestom?: true
     perfil?: true
     estado?: true
     puestow?: true
+    seriew?: true
+    puestom?: true
+    seriem?: true
     codigo?: true
     medicos?: true
     sucursal?: true
@@ -41500,6 +41522,7 @@ export namespace Prisma {
     campanas?: true
     socios?: true
     sepelio?: true
+    cobranza?: true
   }
 
   export type OperadorMaxAggregateInputType = {
@@ -41510,10 +41533,12 @@ export namespace Prisma {
     contrasena?: true
     createdAt?: true
     updatedAt?: true
-    puestom?: true
     perfil?: true
     estado?: true
     puestow?: true
+    seriew?: true
+    puestom?: true
+    seriem?: true
     codigo?: true
     medicos?: true
     sucursal?: true
@@ -41525,6 +41550,7 @@ export namespace Prisma {
     campanas?: true
     socios?: true
     sepelio?: true
+    cobranza?: true
   }
 
   export type OperadorCountAggregateInputType = {
@@ -41535,10 +41561,12 @@ export namespace Prisma {
     contrasena?: true
     createdAt?: true
     updatedAt?: true
-    puestom?: true
     perfil?: true
     estado?: true
     puestow?: true
+    seriew?: true
+    puestom?: true
+    seriem?: true
     codigo?: true
     medicos?: true
     sucursal?: true
@@ -41550,6 +41578,7 @@ export namespace Prisma {
     campanas?: true
     socios?: true
     sepelio?: true
+    cobranza?: true
     _all?: true
   }
 
@@ -41648,10 +41677,12 @@ export namespace Prisma {
     contrasena: string
     createdAt: Date
     updatedAt: Date
-    puestom: number | null
     perfil: number | null
     estado: boolean | null
     puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
     codigo: number | null
     medicos: boolean | null
     sucursal: string | null
@@ -41663,6 +41694,7 @@ export namespace Prisma {
     campanas: boolean | null
     socios: boolean | null
     sepelio: boolean | null
+    cobranza: boolean | null
     _count: OperadorCountAggregateOutputType | null
     _avg: OperadorAvgAggregateOutputType | null
     _sum: OperadorSumAggregateOutputType | null
@@ -41692,10 +41724,12 @@ export namespace Prisma {
     contrasena?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    puestom?: boolean
     perfil?: boolean
     estado?: boolean
     puestow?: boolean
+    seriew?: boolean
+    puestom?: boolean
+    seriem?: boolean
     codigo?: boolean
     medicos?: boolean
     sucursal?: boolean
@@ -41707,6 +41741,7 @@ export namespace Prisma {
     campanas?: boolean
     socios?: boolean
     sepelio?: boolean
+    cobranza?: boolean
   }, ExtArgs["result"]["operador"]>
 
   export type operadorSelectScalar = {
@@ -41717,10 +41752,12 @@ export namespace Prisma {
     contrasena?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    puestom?: boolean
     perfil?: boolean
     estado?: boolean
     puestow?: boolean
+    seriew?: boolean
+    puestom?: boolean
+    seriem?: boolean
     codigo?: boolean
     medicos?: boolean
     sucursal?: boolean
@@ -41732,6 +41769,7 @@ export namespace Prisma {
     campanas?: boolean
     socios?: boolean
     sepelio?: boolean
+    cobranza?: boolean
   }
 
 
@@ -68597,10 +68635,12 @@ export namespace Prisma {
     contrasena: 'contrasena',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    puestom: 'puestom',
     perfil: 'perfil',
     estado: 'estado',
     puestow: 'puestow',
+    seriew: 'seriew',
+    puestom: 'puestom',
+    seriem: 'seriem',
     codigo: 'codigo',
     medicos: 'medicos',
     sucursal: 'sucursal',
@@ -68611,7 +68651,8 @@ export namespace Prisma {
     administracion: 'administracion',
     campanas: 'campanas',
     socios: 'socios',
-    sepelio: 'sepelio'
+    sepelio: 'sepelio',
+    cobranza: 'cobranza'
   };
 
   export type OperadorScalarFieldEnum = (typeof OperadorScalarFieldEnum)[keyof typeof OperadorScalarFieldEnum]
@@ -71246,10 +71287,12 @@ export namespace Prisma {
     contrasena?: StringFilter | string
     createdAt?: DateTimeFilter | Date | string
     updatedAt?: DateTimeFilter | Date | string
-    puestom?: IntNullableFilter | number | null
     perfil?: IntNullableFilter | number | null
     estado?: BoolNullableFilter | boolean | null
     puestow?: IntNullableFilter | number | null
+    seriew?: IntNullableFilter | number | null
+    puestom?: IntNullableFilter | number | null
+    seriem?: IntNullableFilter | number | null
     codigo?: IntNullableFilter | number | null
     medicos?: BoolNullableFilter | boolean | null
     sucursal?: StringNullableFilter | string | null
@@ -71261,6 +71304,7 @@ export namespace Prisma {
     campanas?: BoolNullableFilter | boolean | null
     socios?: BoolNullableFilter | boolean | null
     sepelio?: BoolNullableFilter | boolean | null
+    cobranza?: BoolNullableFilter | boolean | null
   }
 
   export type operadorOrderByWithRelationInput = {
@@ -71271,10 +71315,12 @@ export namespace Prisma {
     contrasena?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    puestom?: SortOrderInput | SortOrder
     perfil?: SortOrderInput | SortOrder
     estado?: SortOrderInput | SortOrder
     puestow?: SortOrderInput | SortOrder
+    seriew?: SortOrderInput | SortOrder
+    puestom?: SortOrderInput | SortOrder
+    seriem?: SortOrderInput | SortOrder
     codigo?: SortOrderInput | SortOrder
     medicos?: SortOrderInput | SortOrder
     sucursal?: SortOrderInput | SortOrder
@@ -71286,6 +71332,7 @@ export namespace Prisma {
     campanas?: SortOrderInput | SortOrder
     socios?: SortOrderInput | SortOrder
     sepelio?: SortOrderInput | SortOrder
+    cobranza?: SortOrderInput | SortOrder
   }
 
   export type operadorWhereUniqueInput = {
@@ -71300,10 +71347,12 @@ export namespace Prisma {
     contrasena?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    puestom?: SortOrderInput | SortOrder
     perfil?: SortOrderInput | SortOrder
     estado?: SortOrderInput | SortOrder
     puestow?: SortOrderInput | SortOrder
+    seriew?: SortOrderInput | SortOrder
+    puestom?: SortOrderInput | SortOrder
+    seriem?: SortOrderInput | SortOrder
     codigo?: SortOrderInput | SortOrder
     medicos?: SortOrderInput | SortOrder
     sucursal?: SortOrderInput | SortOrder
@@ -71315,6 +71364,7 @@ export namespace Prisma {
     campanas?: SortOrderInput | SortOrder
     socios?: SortOrderInput | SortOrder
     sepelio?: SortOrderInput | SortOrder
+    cobranza?: SortOrderInput | SortOrder
     _count?: operadorCountOrderByAggregateInput
     _avg?: operadorAvgOrderByAggregateInput
     _max?: operadorMaxOrderByAggregateInput
@@ -71333,10 +71383,12 @@ export namespace Prisma {
     contrasena?: StringWithAggregatesFilter | string
     createdAt?: DateTimeWithAggregatesFilter | Date | string
     updatedAt?: DateTimeWithAggregatesFilter | Date | string
-    puestom?: IntNullableWithAggregatesFilter | number | null
     perfil?: IntNullableWithAggregatesFilter | number | null
     estado?: BoolNullableWithAggregatesFilter | boolean | null
     puestow?: IntNullableWithAggregatesFilter | number | null
+    seriew?: IntNullableWithAggregatesFilter | number | null
+    puestom?: IntNullableWithAggregatesFilter | number | null
+    seriem?: IntNullableWithAggregatesFilter | number | null
     codigo?: IntNullableWithAggregatesFilter | number | null
     medicos?: BoolNullableWithAggregatesFilter | boolean | null
     sucursal?: StringNullableWithAggregatesFilter | string | null
@@ -71348,6 +71400,7 @@ export namespace Prisma {
     campanas?: BoolNullableWithAggregatesFilter | boolean | null
     socios?: BoolNullableWithAggregatesFilter | boolean | null
     sepelio?: BoolNullableWithAggregatesFilter | boolean | null
+    cobranza?: BoolNullableWithAggregatesFilter | boolean | null
   }
 
   export type ordenes_pagoWhereInput = {
@@ -75817,10 +75870,12 @@ export namespace Prisma {
     contrasena: string
     createdAt: Date | string
     updatedAt: Date | string
-    puestom?: number | null
     perfil?: number | null
     estado?: boolean | null
     puestow?: number | null
+    seriew?: number | null
+    puestom?: number | null
+    seriem?: number | null
     codigo?: number | null
     medicos?: boolean | null
     sucursal?: string | null
@@ -75832,6 +75887,7 @@ export namespace Prisma {
     campanas?: boolean | null
     socios?: boolean | null
     sepelio?: boolean | null
+    cobranza?: boolean | null
   }
 
   export type operadorUncheckedCreateInput = {
@@ -75842,10 +75898,12 @@ export namespace Prisma {
     contrasena: string
     createdAt: Date | string
     updatedAt: Date | string
-    puestom?: number | null
     perfil?: number | null
     estado?: boolean | null
     puestow?: number | null
+    seriew?: number | null
+    puestom?: number | null
+    seriem?: number | null
     codigo?: number | null
     medicos?: boolean | null
     sucursal?: string | null
@@ -75857,6 +75915,7 @@ export namespace Prisma {
     campanas?: boolean | null
     socios?: boolean | null
     sepelio?: boolean | null
+    cobranza?: boolean | null
   }
 
   export type operadorUpdateInput = {
@@ -75866,10 +75925,12 @@ export namespace Prisma {
     contrasena?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    puestom?: NullableIntFieldUpdateOperationsInput | number | null
     perfil?: NullableIntFieldUpdateOperationsInput | number | null
     estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
     puestow?: NullableIntFieldUpdateOperationsInput | number | null
+    seriew?: NullableIntFieldUpdateOperationsInput | number | null
+    puestom?: NullableIntFieldUpdateOperationsInput | number | null
+    seriem?: NullableIntFieldUpdateOperationsInput | number | null
     codigo?: NullableIntFieldUpdateOperationsInput | number | null
     medicos?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
@@ -75881,6 +75942,7 @@ export namespace Prisma {
     campanas?: NullableBoolFieldUpdateOperationsInput | boolean | null
     socios?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cobranza?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type operadorUncheckedUpdateInput = {
@@ -75891,10 +75953,12 @@ export namespace Prisma {
     contrasena?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    puestom?: NullableIntFieldUpdateOperationsInput | number | null
     perfil?: NullableIntFieldUpdateOperationsInput | number | null
     estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
     puestow?: NullableIntFieldUpdateOperationsInput | number | null
+    seriew?: NullableIntFieldUpdateOperationsInput | number | null
+    puestom?: NullableIntFieldUpdateOperationsInput | number | null
+    seriem?: NullableIntFieldUpdateOperationsInput | number | null
     codigo?: NullableIntFieldUpdateOperationsInput | number | null
     medicos?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
@@ -75906,6 +75970,7 @@ export namespace Prisma {
     campanas?: NullableBoolFieldUpdateOperationsInput | boolean | null
     socios?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cobranza?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type operadorCreateManyInput = {
@@ -75916,10 +75981,12 @@ export namespace Prisma {
     contrasena: string
     createdAt: Date | string
     updatedAt: Date | string
-    puestom?: number | null
     perfil?: number | null
     estado?: boolean | null
     puestow?: number | null
+    seriew?: number | null
+    puestom?: number | null
+    seriem?: number | null
     codigo?: number | null
     medicos?: boolean | null
     sucursal?: string | null
@@ -75931,6 +75998,7 @@ export namespace Prisma {
     campanas?: boolean | null
     socios?: boolean | null
     sepelio?: boolean | null
+    cobranza?: boolean | null
   }
 
   export type operadorUpdateManyMutationInput = {
@@ -75940,10 +76008,12 @@ export namespace Prisma {
     contrasena?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    puestom?: NullableIntFieldUpdateOperationsInput | number | null
     perfil?: NullableIntFieldUpdateOperationsInput | number | null
     estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
     puestow?: NullableIntFieldUpdateOperationsInput | number | null
+    seriew?: NullableIntFieldUpdateOperationsInput | number | null
+    puestom?: NullableIntFieldUpdateOperationsInput | number | null
+    seriem?: NullableIntFieldUpdateOperationsInput | number | null
     codigo?: NullableIntFieldUpdateOperationsInput | number | null
     medicos?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
@@ -75955,6 +76025,7 @@ export namespace Prisma {
     campanas?: NullableBoolFieldUpdateOperationsInput | boolean | null
     socios?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cobranza?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type operadorUncheckedUpdateManyInput = {
@@ -75965,10 +76036,12 @@ export namespace Prisma {
     contrasena?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    puestom?: NullableIntFieldUpdateOperationsInput | number | null
     perfil?: NullableIntFieldUpdateOperationsInput | number | null
     estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
     puestow?: NullableIntFieldUpdateOperationsInput | number | null
+    seriew?: NullableIntFieldUpdateOperationsInput | number | null
+    puestom?: NullableIntFieldUpdateOperationsInput | number | null
+    seriem?: NullableIntFieldUpdateOperationsInput | number | null
     codigo?: NullableIntFieldUpdateOperationsInput | number | null
     medicos?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
@@ -75980,6 +76053,7 @@ export namespace Prisma {
     campanas?: NullableBoolFieldUpdateOperationsInput | boolean | null
     socios?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cobranza?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type ordenes_pagoCreateInput = {
@@ -79951,10 +80025,12 @@ export namespace Prisma {
     contrasena?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    puestom?: SortOrder
     perfil?: SortOrder
     estado?: SortOrder
     puestow?: SortOrder
+    seriew?: SortOrder
+    puestom?: SortOrder
+    seriem?: SortOrder
     codigo?: SortOrder
     medicos?: SortOrder
     sucursal?: SortOrder
@@ -79966,13 +80042,16 @@ export namespace Prisma {
     campanas?: SortOrder
     socios?: SortOrder
     sepelio?: SortOrder
+    cobranza?: SortOrder
   }
 
   export type operadorAvgOrderByAggregateInput = {
     id?: SortOrder
-    puestom?: SortOrder
     perfil?: SortOrder
     puestow?: SortOrder
+    seriew?: SortOrder
+    puestom?: SortOrder
+    seriem?: SortOrder
     codigo?: SortOrder
   }
 
@@ -79984,10 +80063,12 @@ export namespace Prisma {
     contrasena?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    puestom?: SortOrder
     perfil?: SortOrder
     estado?: SortOrder
     puestow?: SortOrder
+    seriew?: SortOrder
+    puestom?: SortOrder
+    seriem?: SortOrder
     codigo?: SortOrder
     medicos?: SortOrder
     sucursal?: SortOrder
@@ -79999,6 +80080,7 @@ export namespace Prisma {
     campanas?: SortOrder
     socios?: SortOrder
     sepelio?: SortOrder
+    cobranza?: SortOrder
   }
 
   export type operadorMinOrderByAggregateInput = {
@@ -80009,10 +80091,12 @@ export namespace Prisma {
     contrasena?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    puestom?: SortOrder
     perfil?: SortOrder
     estado?: SortOrder
     puestow?: SortOrder
+    seriew?: SortOrder
+    puestom?: SortOrder
+    seriem?: SortOrder
     codigo?: SortOrder
     medicos?: SortOrder
     sucursal?: SortOrder
@@ -80024,13 +80108,16 @@ export namespace Prisma {
     campanas?: SortOrder
     socios?: SortOrder
     sepelio?: SortOrder
+    cobranza?: SortOrder
   }
 
   export type operadorSumOrderByAggregateInput = {
     id?: SortOrder
-    puestom?: SortOrder
     perfil?: SortOrder
     puestow?: SortOrder
+    seriew?: SortOrder
+    puestom?: SortOrder
+    seriem?: SortOrder
     codigo?: SortOrder
   }
 

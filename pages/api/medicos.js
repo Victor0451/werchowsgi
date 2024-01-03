@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       const consultas = await Serv.USOS.findMany({
         where: {
           PRESTADO: req.query.codigo,
-          SERVICIO: { notIn: ["ORDE", "ENFE", "FARM"] },
+          SERVICIO: { notIn: ["ORDE", "FARM"] },
           CONTROL: null,
         },
       });
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
       const consultas = await Serv.USOSFA.findMany({
         where: {
           PRESTADO: req.query.codigo,
-          SERVICIO: { notIn: ["ORDE", "ENFE", "FARM"] },
+          SERVICIO: { notIn: ["ORDE", "FARM"] },
           CONTROL: null,
         },
       });
