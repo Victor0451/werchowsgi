@@ -67,16 +67,14 @@ export default async function handler(req, res) {
       res.status(200).json(emple);
     }
     if (req.query.f && req.query.f === "list prest") {
-      const prest = await Werchow.prestamos.findMany({
-        where: {
-          ptm_op: parseInt(req.query.op),
-          ptm_fechasol: {
-            lte: new Date(req.query.desde),
-            gte: new Date(req.query.hasta),
-          },
-        },
-      });
-
+      const prest = await Werchow.$queryRaw`
+            SELECT *              
+            FROM prestamos
+            WHERE ptm_op = ${parseInt(req.query.op)}      
+           
+            ORDER BY ptm_fechasol DESC
+        
+        `;
       res.status(200).json(prest);
     }
     if (req.query.f && req.query.f === "list prest pendientes") {

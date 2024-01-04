@@ -24,12 +24,8 @@ function NuevaNoticia(props) {
 
   const handleChange = (f, value) => {
     if (f === "desti") {
-      console.log(value);
-
       guardarDestSel(value);
     } else if (f === "noti") {
-      console.log(value.target.value);
-
       guardarNotiSel(value.target.value);
     }
   };
@@ -56,7 +52,6 @@ function NuevaNoticia(props) {
                 f: "nueva noticia",
               };
 
-              console.log(data);
               axios
                 .post(`/api/noticias`, data)
                 .then((res) => {

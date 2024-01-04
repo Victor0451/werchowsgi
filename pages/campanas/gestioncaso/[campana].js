@@ -16,6 +16,7 @@ import {
   TabPanel,
   Alert,
   Typography,
+  CardBody,
 } from "@material-tailwind/react";
 import { BellIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
 import { registrarHistoria } from "../../../libs/funciones";
@@ -281,105 +282,115 @@ export default function Campana() {
           {!usu ? (
             <Redirect />
           ) : usu ? (
-            <Card className="h-full w-full">
-              <CardHeader
-                floated={false}
-                shadow={false}
-                className="rounded-none"
-              >
-                <AlertProgreso
-                  oper={usu.usuario}
-                  mes={moment().format("MM")}
-                  ano={moment().format("YYYY")}
-                  asignado={asignado}
-                  trabajado={trabajado}
-                  porcenTab={porcenTab}
-                />
+            <>
+              <Card className="h-full w-full">
+                <CardBody
+                  floated={false}
+                  shadow={false}
+                  className="rounded-none"
+                >
+                  <AlertProgreso
+                    oper={usu.usuario}
+                    mes={moment().format("MM")}
+                    ano={moment().format("YYYY")}
+                    asignado={asignado}
+                    trabajado={trabajado}
+                    porcenTab={porcenTab}
+                  />
+                </CardBody>
+              </Card>
 
-                <Tabs value="asignado">
-                  <TabsHeader>
-                    <Tab value={"asignado"}>
-                      <div className="flex items-start  gap-2">
-                        {React.createElement(BellIcon, {
-                          className: "w-5 h-5",
-                        })}
-                        Casos Asignados
-                      </div>
-                    </Tab>
-                    <Tab value={"trabajado"}>
-                      <div className="flex items-start gap-2">
-                        {React.createElement(BellIcon, {
-                          className: "w-5 h-5",
-                        })}
-                        Casos Trabajados
-                      </div>
-                    </Tab>
-                  </TabsHeader>
+              <Card className="h-full w-full mt-5" >
+                <CardBody
+                  floated={false}
+                  shadow={false}
+                  className="rounded-none"
+                >
+                  <Tabs value="asignado">
+                    <TabsHeader>
+                      <Tab value={"asignado"}>
+                        <div className="flex items-start  gap-2">
+                          {React.createElement(BellIcon, {
+                            className: "w-5 h-5",
+                          })}
+                          Casos Asignados
+                        </div>
+                      </Tab>
+                      <Tab value={"trabajado"}>
+                        <div className="flex items-start gap-2">
+                          {React.createElement(BellIcon, {
+                            className: "w-5 h-5",
+                          })}
+                          Casos Trabajados
+                        </div>
+                      </Tab>
+                    </TabsHeader>
 
-                  <hr />
+                    <hr />
 
-                  <TabsBody>
-                    <TabPanel value={"asignado"}>
-                      {noData === true ? (
-                        <Alert
-                          icon={
-                            <InformationCircleIcon
-                              strokeWidth={2}
-                              className="h-6 w-6"
-                            />
-                          }
-                        >
-                          No hay casos asignados.
-                        </Alert>
-                      ) : (
-                        <ListadoCasos
-                          listado={listado}
-                          camp={camp}
-                          RegistrarGestion={RegistrarGestion}
-                          handleChange={handleChange}
-                          errores={errores}
-                          usu={usu}
-                          historialBonif={historialBonif}
-                          historial={historial}
-                          historialAcciones={historialAcciones}
-                          historialAcc={historialAcc}
-                          noData={noData}
-                        />
-                      )}
-                    </TabPanel>
+                    <TabsBody>
+                      <TabPanel value={"asignado"}>
+                        {noData === true ? (
+                          <Alert
+                            icon={
+                              <InformationCircleIcon
+                                strokeWidth={2}
+                                className="h-6 w-6"
+                              />
+                            }
+                          >
+                            No hay casos asignados.
+                          </Alert>
+                        ) : (
+                          <ListadoCasos
+                            listado={listado}
+                            camp={camp}
+                            RegistrarGestion={RegistrarGestion}
+                            handleChange={handleChange}
+                            errores={errores}
+                            usu={usu}
+                            historialBonif={historialBonif}
+                            historial={historial}
+                            historialAcciones={historialAcciones}
+                            historialAcc={historialAcc}
+                            noData={noData}
+                          />
+                        )}
+                      </TabPanel>
 
-                    <TabPanel value={"trabajado"}>
-                      {noData2 === true ? (
-                        <Alert
-                          icon={
-                            <InformationCircleIcon
-                              strokeWidth={2}
-                              className="h-6 w-6"
-                            />
-                          }
-                        >
-                          No hay casos asignados.
-                        </Alert>
-                      ) : (
-                        <ListadoCasos
-                          listado={listadoTrab}
-                          camp={camp}
-                          RegistrarGestion={RegistrarGestion}
-                          handleChange={handleChange}
-                          errores={errores}
-                          usu={usu}
-                          historialBonif={historialBonif}
-                          historial={historial}
-                          historialAcciones={historialAcciones}
-                          historialAcc={historialAcc}
-                          noData={noData}
-                        />
-                      )}
-                    </TabPanel>
-                  </TabsBody>
-                </Tabs>
-              </CardHeader>
-            </Card>
+                      <TabPanel value={"trabajado"}>
+                        {noData2 === true ? (
+                          <Alert
+                            icon={
+                              <InformationCircleIcon
+                                strokeWidth={2}
+                                className="h-6 w-6"
+                              />
+                            }
+                          >
+                            No hay casos asignados.
+                          </Alert>
+                        ) : (
+                          <ListadoCasos
+                            listado={listadoTrab}
+                            camp={camp}
+                            RegistrarGestion={RegistrarGestion}
+                            handleChange={handleChange}
+                            errores={errores}
+                            usu={usu}
+                            historialBonif={historialBonif}
+                            historial={historial}
+                            historialAcciones={historialAcciones}
+                            historialAcc={historialAcc}
+                            noData={noData}
+                          />
+                        )}
+                      </TabPanel>
+                    </TabsBody>
+                  </Tabs>
+                </CardBody>
+              </Card>
+            </>
           ) : null}
         </>
       )}

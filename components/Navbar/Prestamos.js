@@ -35,10 +35,7 @@ const navListMenuItems = [
         title: "Listado Prestamos Empleados",
         url: "/prestamos/listadoprestamosempleados"
     },
-    {
-        title: "Reportes",
-        url: "/prestamos/reportes"
-    },
+    
 ];
 
 export const Prestamos = () => {

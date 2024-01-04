@@ -18,14 +18,14 @@ export const ListadoPrestamos = ({ listado, usu, estadoPrest }) => {
       name: "Fecha",
       selector: (row) => `${moment(row.ptm_fechasol).format("DD/MM/YYYY")}`,
       sortable: true,
-      grow: 0.1,
+      width: "110px",
     },
 
     {
       name: "Socio",
       selector: (row) => `${row.ptm_afi}`,
       sortable: true,
-      grow: 0.2,
+      width: "250px",
     },
 
     {
@@ -57,12 +57,12 @@ export const ListadoPrestamos = ({ listado, usu, estadoPrest }) => {
       name: "Estado",
       selector: (row) => `${row.ptm_estado}`,
       sortable: true,
-      grow: 0.1,
+      width: "110px",
     },
     {
       name: "Operador",
       button: true,
-      grow: 0.1,
+      width: "110px",
       cell: (row, index) => (
         <>
           {row.ptm_op === 4 ? (
