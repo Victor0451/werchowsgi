@@ -12,6 +12,14 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(servicios);
+    } else if (req.query.f && req.query.f === "check servicio") {
+      const servicios = await Sep.servicios.findFirst({
+        where: {
+          dni: parseInt(req.query.dni),
+        },
+      });
+
+      res.status(200).json(servicios);
     } else if (req.query.f && req.query.f === "traer servicios") {
       const servicios = await Sep.servicios.findMany({
         orderBy: {

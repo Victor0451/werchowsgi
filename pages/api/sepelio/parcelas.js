@@ -24,6 +24,28 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(parce);
+    } else if (req.query.f && req.query.f === "check parcela") {
+      const parce = await Sep.$queryRaw`
+        SELECT
+                pl.dni,
+                p.parcela,
+                p.mza,
+                p.lote,
+                pl.fecha
+        FROM parcelas as p
+        INNER JOIN parcelas_lugares as pl on p.idparcela = pl.idparcela
+        WHERE pl.dni = ${parseInt(req.query.dni)}
+               
+
+    `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(parce, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     }
   }
   if (req.method === "POST") {

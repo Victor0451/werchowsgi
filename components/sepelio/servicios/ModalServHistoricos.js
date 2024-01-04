@@ -16,8 +16,6 @@ import DataTable from "react-data-table-component";
 import FilterComponent from "../../Layouts/FilterComponent";
 
 export default function ModalServHistoricos({ listado, ServiciosHistoricos }) {
-  console.log(listado);
-
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(!open);

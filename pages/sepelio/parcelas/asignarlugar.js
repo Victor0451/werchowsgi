@@ -17,7 +17,7 @@ function AsignarLugares(props) {
   let dniRef = React.createRef();
 
   const [parcela, guardarParcela] = useState({});
-  const [ficha, guardarFicha] = useState({});
+  const [ficha, guardarFicha] = useState(null);
   const [alertas, guardarAlertas] = useState(null);
   const [errores, guardarErrores] = useState(null);
 
@@ -57,115 +57,155 @@ function AsignarLugares(props) {
   const traerDifunto = async () => {
     guardarErrores(null);
     guardarAlertas(null);
+    guardarFicha(null);
 
     if (dniRef.current.value === "") {
       guardarErrores("Debes ingresar un numero de DNI");
     } else {
       await axios
-        .get("/api/sepelio/servicios", {
+        .get("/api/sepelio/parcelas", {
           params: {
-            f: "servicios",
+            f: "check parcela",
             dni: dniRef.current.value,
           },
         })
         .then((res) => {
-          if (res.data.length > 0) {
-            toast.info("El DNI ingresado pertenece a un servicio registrado");
-            guardarAlertas(
-              "El DNI ingresado pertenece a un servicio registrado"
+          let re = JSON.parse(res.data);
+
+          if (re.length > 0) {
+            toast.info(
+              `El DNI ${re[0].dni}, ya tiene asignada la parcela: ${
+                re[0].parcela
+              }, manzana: ${re[0].mza}, lote: ${re[0].lote}, el dia ${moment(
+                re[0].fecha
+              ).format("DD/MM/YYYY")}`
             );
-          } else if (res.data.length === 0) {
+            guardarAlertas(
+              `El DNI ${re[0].dni}, ya tiene asignada la parcela: ${
+                re[0].parcela
+              }, manzana: ${re[0].mza}, lote: ${re[0].lote}, el dia ${moment(
+                re[0].fecha
+              ).format("DD/MM/YYYY")}`
+            );
+          } else if (re.length === 0) {
             axios
-              .get("/api/socios", {
+              .get("/api/sepelio/servicios", {
                 params: {
-                  f: "maestro",
+                  f: "check servicio",
                   dni: dniRef.current.value,
                 },
               })
-              .then((res0) => {
-                let re = JSON.parse(res0.data);
-                if (re.length > 0) {
-                  let ficha = JSON.parse(res0.data);
-                  guardarFicha(ficha);
-                } else if (re.length === 0) {
-                  axios
-                    .get("/api/socios", {
-                      params: {
-                        f: "adh",
-                        dni: dniRef.current.value,
-                      },
-                    })
-                    .then((res1) => {
-                      let re = JSON.parse(res1.data);
-
-                      if (re.length > 0) {
-                        guardarFicha(JSON.parse(res1.data));
-                      } else if (re.length === 0) {
-                        axios
-                          .get("/api/socios", {
-                            params: {
-                              f: "mutual",
-                              dni: dniRef.current.value,
-                            },
-                          })
-                          .then((res2) => {
-                            let re = JSON.parse(res2.data);
-
-                            if (re.length > 0) {
-                              let ficha = JSON.parse(res2.data);
-                              guardarFicha(ficha);
-                            } else if (re.length === 0) {
-                              axios
-                                .get("/api/socios", {
-                                  params: {
-                                    f: "mutual adh",
-                                    dni: dniRef.current.value,
-                                  },
-                                })
-                                .then((res3) => {
-                                  let re = JSON.parse(res3.data);
-
-                                  if (re.length > 0) {
-                                    guardarFicha(JSON.parse(res3.data));
-                                  } else if (re.length === 0) {
-                                    toast.info(
-                                      "El DNI ingresado no se encuentra registrado"
-                                    );
-                                    guardarAlertas(
-                                      "El DNI ingresado no se encuentra registrado"
-                                    );
-                                  }
-                                })
-                                .catch((error) => {
-                                  console.log(error);
-                                  toast.error(
-                                    "Ocurrio un error al tarer los datos del difunto en adherente mutual"
-                                  );
-                                });
-                            }
-                          })
-                          .catch((error) => {
-                            console.log(error);
-                            toast.error(
-                              "Ocurrio un error al tarer los datos del difunto en mutual"
-                            );
-                          });
-                      }
-                    })
-                    .catch((error) => {
-                      console.log(error);
-                      toast.error(
-                        "Ocurrio un error al tarer los datos del difunto en adherentes"
-                      );
-                    });
+              .then((res1) => {
+                if (res1.data) {
+                  guardarFicha(res1.data);
+                } else if (!res1.data) {
+                  toast.info(
+                    "El DNI ingresado no pertenece a un servicio registrado"
+                  );
+                  guardarAlertas(
+                    "El DNI ingresado no pertenece a un servicio registrado"
+                  );
                 }
               })
               .catch((error) => {
                 console.log(error);
                 toast.error(
-                  "Ocurrio un error al tarer los datos del difunto en maestro"
+                  "Ocurrio un error al tarer los datos del difunto en servicios"
                 );
               });
+
+            //   axios
+            //     .get("/api/socios", {
+            //       params: {
+            //         f: "maestro",
+            //         dni: dniRef.current.value,
+            //       },
+            //     })
+            //     .then((res0) => {
+            //       let re = JSON.parse(res0.data);
+            //       if (re.length > 0) {
+            //         let ficha = JSON.parse(res0.data);
+            //         guardarFicha(ficha);
+            //       } else if (re.length === 0) {
+            //         axios
+            //           .get("/api/socios", {
+            //             params: {
+            //               f: "maestro baja",
+            //               dni: dniRef.current.value,
+            //             },
+            //           })
+            //           .then((res1) => {
+            //             let re = JSON.parse(res1.data);
+
+            //             if (re.length > 0) {
+            //               guardarFicha(JSON.parse(res1.data));
+            //             } else if (re.length === 0) {
+            //               axios
+            //                 .get("/api/socios", {
+            //                   params: {
+            //                     f: "mae adh",
+            //                     dni: dniRef.current.value,
+            //                   },
+            //                 })
+            //                 .then((res2) => {
+            //                   let re = JSON.parse(res2.data);
+
+            //                   if (re.length > 0) {
+            //                     let ficha = JSON.parse(res2.data);
+            //                     guardarFicha(ficha);
+            //                   } else if (re.length === 0) {
+            //                     axios
+            //                       .get("/api/socios", {
+            //                         params: {
+            //                           f: "mae adh baja",
+            //                           dni: dniRef.current.value,
+            //                         },
+            //                       })
+            //                       .then((res3) => {
+            //                         console.log(res3);
+            //                         let re = JSON.parse(res3.data);
+
+            //                         if (re.length > 0) {
+            //                           guardarFicha(JSON.parse(res3.data));
+            //                         } else if (re.length === 0) {
+            //                           toast.info(
+            //                             "El DNI ingresado no se encuentra registrado"
+            //                           );
+            //                           guardarAlertas(
+            //                             "El DNI ingresado no se encuentra registrado"
+            //                           );
+            //                         }
+            //                       })
+            //                       .catch((error) => {
+            //                         console.log(error);
+            //                         toast.error(
+            //                           "Ocurrio un error al tarer los datos del difunto en adherente mutual"
+            //                         );
+            //                       });
+            //                   }
+            //                 })
+            //                 .catch((error) => {
+            //                   console.log(error);
+            //                   toast.error(
+            //                     "Ocurrio un error al tarer los datos del difunto en mutual"
+            //                   );
+            //                 });
+            //             }
+            //           })
+            //           .catch((error) => {
+            //             console.log(error);
+            //             toast.error(
+            //               "Ocurrio un error al tarer los datos del difunto en adherentes"
+            //             );
+            //           });
+            //       }
+            //     })
+            //     .catch((error) => {
+            //       console.log(error);
+            //       toast.error(
+            //         "Ocurrio un error al tarer los datos del difunto en maestro"
+            //       );
+            //     });
           }
         })
         .catch((error) => {
@@ -233,7 +273,7 @@ function AsignarLugares(props) {
           registrarHistoria(accion, usu.usuario);
 
           setTimeout(() => {
-            Router.push("/sepelio/parcelas/llistadoparcela");
+            Router.push("/sepelio/parcelas/listadoparcela");
           }, 1000);
         }
       })
@@ -255,7 +295,7 @@ function AsignarLugares(props) {
         <>
           <FormAsignarLugar
             parcela={parcela}
-            socio={ficha[0]}
+            socio={ficha}
             traerDifunto={traerDifunto}
             alertas={alertas}
             errores={errores}

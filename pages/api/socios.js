@@ -551,6 +551,45 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
+    } else if (req.query.f && req.query.f === "mae adh baja") {
+      const maeAdh = await Werchow.$queryRaw`
+            SELECT
+                a.CONTRATO, 
+                a.SUCURSAL, 
+                a.NRO_DOC, 
+                a.NACIMIENTO,             
+                a.SEXO,
+                a.APELLIDOS, 
+                a.NOMBRES, 
+                a.ALTA, 
+                a.VIGENCIA, 
+                a.NACIMIENTO,
+                m.GRUPO,
+                o.NOMBRE "OBRA_SOC",
+                o.CODIGO "COD_OBRA",                 
+                TIMESTAMPDIFF(YEAR,a.NACIMIENTO,CURDATE()) "EDAD",                
+                CASE 
+                    WHEN m.EMPRESA = "W" THEN  "WERCHOW"
+                    WHEN m.EMPRESA = "M" THEN  "MUTUAL"
+                    ELSE  null
+                END 'EMPRESA'    ,
+                "A" as "perfil",
+                a.EDAD 'FALLE'
+                FROM adherent as a
+                INNER JOIN maestro as m on a.CONTRATO = m.CONTRATO                  
+                INNER JOIN obra_soc as o on o.CODIGO = m.OBRA_SOC
+                WHERE a.NRO_DOC = ${req.query.dni}
+                AND BAJA IS NOT NULL
+
+    `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(maeAdh, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     } else if (req.query.f && req.query.f === "mut adh") {
       const mutAdh = await Werchow.$queryRaw`
             SELECT
@@ -580,6 +619,45 @@ export default async function handler(req, res) {
                 INNER JOIN obra_soc as o on o.CODIGO = m.OBRA_SOC
                 WHERE a.NRO_DOC = ${req.query.dni}
                 AND BAJA IS NULL
+
+    `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(mutAdh, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "mut adh baja") {
+      const mutAdh = await Werchow.$queryRaw`
+            SELECT
+                a.CONTRATO, 
+                a.SUCURSAL, 
+                a.NRO_DOC, 
+                a.NACIMIENTO,             
+                a.SEXO,
+                a.APELLIDOS, 
+                a.NOMBRES, 
+                a.ALTA, 
+                a.VIGENCIA, 
+                a.NACIMIENTO,
+                m.GRUPO,
+                o.NOMBRE "OBRA_SOC",
+                o.CODIGO "COD_OBRA",                 
+                TIMESTAMPDIFF(YEAR,a.NACIMIENTO,CURDATE()) "EDAD",                
+                CASE 
+                    WHEN m.EMPRESA = "W" THEN  "WERCHOW"
+                    WHEN m.EMPRESA = "M" THEN  "MUTUAL"
+                    ELSE  null
+                END 'EMPRESA'    ,
+                "A" as "perfil",
+                a.EDAD 'FALLE'
+                FROM mutual_adh as a
+                INNER JOIN mutual as m on a.CONTRATO = m.CONTRATO                  
+                INNER JOIN obra_soc as o on o.CODIGO = m.OBRA_SOC
+                WHERE a.NRO_DOC = ${req.query.dni}
+                AND BAJA IS NOT NULL
 
     `;
 

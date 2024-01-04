@@ -10,6 +10,7 @@ import {
   Option,
   Input,
   Textarea,
+  ButtonGroup,
 } from "@material-tailwind/react";
 import { TrashIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
@@ -23,6 +24,7 @@ const FormAsignarLugar = ({
   dniRef,
   asigLugar,
 }) => {
+  console.log(socio);
   return (
     <Card className="h-full w-full p-4 ">
       <CardBody className="rounded-none">
@@ -88,8 +90,8 @@ const FormAsignarLugar = ({
             Buscar Socio Fallecido
           </Typography>
 
-          <div className="grid md:grid-cols-3 md:gap-6">
-            <div className="relative z-0 w-full mb-6 group">
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-1/3  px-3 mt-6 mb-6 md:mb-0">
               <Input
                 size="md"
                 label="DNI Fallecido"
@@ -97,8 +99,10 @@ const FormAsignarLugar = ({
                 inputRef={dniRef}
               />
             </div>
-            <div className="relative z-0 w-full mb-6 group">
-              <Button onClick={traerDifunto}>Buscar</Button>
+            <div className="w-full md:w-1/2  px-3 mt-6 mb-6 md:mb-0">
+              <ButtonGroup>
+                <Button onClick={traerDifunto}>Buscar</Button>
+              </ButtonGroup>
             </div>
           </div>
 
@@ -126,17 +130,17 @@ const FormAsignarLugar = ({
             </Alert>
           ) : null}
 
-          <hr className="border-2 mt-5 mb-5" />
-
           {socio ? (
             <>
+              <hr className="border-2 mt-5 mb-5" />
+
               <div className="grid md:grid-cols-3 md:gap-6 mt-6 ">
                 <div className="relative w-full mb-6 group">
                   <Input
                     size="md"
                     label="Empresa"
                     type="text"
-                    defaultValue={socio.EMPRESA}
+                    defaultValue={socio.empresa}
                   />
                 </div>
 
@@ -145,7 +149,7 @@ const FormAsignarLugar = ({
                     size="md"
                     label="N° Socio"
                     type="number"
-                    defaultValue={socio.CONTRATO}
+                    defaultValue={socio.contrato}
                   />
                 </div>
 
@@ -154,7 +158,7 @@ const FormAsignarLugar = ({
                     size="md"
                     label="DNI"
                     type="number"
-                    defaultValue={socio.NRO_DOC}
+                    defaultValue={socio.dni}
                   />
                 </div>
 
@@ -163,7 +167,7 @@ const FormAsignarLugar = ({
                     size="md"
                     label="Obra Social"
                     type="text"
-                    defaultValue={socio.OBRA_SOC}
+                    defaultValue={socio.obra_soc}
                   />
                 </div>
 
@@ -172,7 +176,7 @@ const FormAsignarLugar = ({
                     size="md"
                     label="Apellido"
                     type="text"
-                    defaultValue={socio.APELLIDOS}
+                    defaultValue={socio.apellido}
                   />
                 </div>
 
@@ -181,7 +185,7 @@ const FormAsignarLugar = ({
                     size="md"
                     label="Nombre"
                     type="text"
-                    defaultValue={socio.NOMBRES}
+                    defaultValue={socio.nombre}
                   />
                 </div>
 
@@ -190,7 +194,7 @@ const FormAsignarLugar = ({
                     size="md"
                     label="Edad"
                     type="number"
-                    defaultValue={socio.EDAD}
+                    defaultValue={socio.edad}
                   />
                 </div>
               </div>

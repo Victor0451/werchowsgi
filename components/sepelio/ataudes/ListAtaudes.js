@@ -28,6 +28,7 @@ export const ListAtaudes = ({
   traerHistorial,
   historial,
   noData,
+  calcTotal,
 }) => {
   let columns = [
     {
@@ -196,7 +197,10 @@ export const ListAtaudes = ({
                   Ataudes
                 </Typography>
                 <Typography color="gray" className="mt-1 font-normal">
-                  <u>Total</u>: {listado.length}
+                  <u>Total Ataudes</u>: {listado.length}
+                </Typography>
+                <Typography color="gray" className="mt-1 font-normal">
+                  <u>Total Stock</u>: {calcTotal(listado)}
                 </Typography>
 
                 <DataTable

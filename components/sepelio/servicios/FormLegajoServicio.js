@@ -1,155 +1,350 @@
-import React from 'react'
+import React from "react";
 import {
-    Card,
-    CardHeader,
-    Typography,
-    Alert,
-    Button,
-    Select,
-    Option,
-    Input,
-
+  Card,
+  CardHeader,
+  Typography,
+  Alert,
+  Button,
+  Select,
+  Option,
+  Input,
 } from "@material-tailwind/react";
-import moment from 'moment';
-import { Archivo } from '../../archivos/Archivo'
-import { FormSubirArchivos } from '../../archivos/FormSubirArchivos';
+import moment from "moment";
+import { Archivo } from "../../archivos/Archivo";
+import { FormSubirArchivos } from "../../archivos/FormSubirArchivos";
+import {
+  CheckCircleIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/solid";
 
 export const FormLegajoServicio = ({
-    servicio,
-    archivos,
-    eliminarArchivos,
-    file,
-    handleUpload,
+  servicio,
+  archivos,
+  eliminarArchivos,
+  file,
+  handleUpload,
+  ataud,
+  parcela,
 }) => {
+    
+  return (
+    <Card className="h-full w-full p-4 ">
+      <CardHeader floated={false} shadow={false} className="rounded-none">
+        <Typography variant="h2">
+          <u>Legajo Virtual</u>: {servicio.idservicio} - {servicio.apellido},{" "}
+          {servicio.nombre}
+        </Typography>
 
-    return (
+        <div className="p-4 border-2 rounded-lg mt-6">
+          <Typography variant="h5" color="blue-gray" className="mb-6">
+            Informacion del Servicio
+          </Typography>
 
-        <Card className="h-full w-full p-4 ">
-            <CardHeader floated={false} shadow={false} className="rounded-none">
-                <Typography variant="h2"><u>Legajo Virtual</u>: {servicio.idservicio} - {servicio.apellido}, {servicio.nombre}</Typography>
+          <div className="grid md:grid-cols-4 md:gap-6">
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Fecha Recepcion"
+                type="text"
+                defaultValue={moment(servicio.fecha_recepcion).format(
+                  "DD/MM/YYYY"
+                )}
+                readOnly
+              />
+            </div>
 
-                <div className='p-4 border-2 rounded-lg mt-6'>
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Empresa"
+                type="text"
+                defaultValue={servicio.empresa}
+                readOnly
+              />
+            </div>
 
-                    <Typography variant="h5" color="blue-gray" className="mb-6">
-                        Informacion del Servicio
-                    </Typography>
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="N° Socio"
+                type="number"
+                defaultValue={servicio.contrato}
+                readOnly
+              />
+            </div>
 
-                    <div className="grid md:grid-cols-4 md:gap-6">
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="Fecha Recepcion" type="text" defaultValue={moment(servicio.fecha_recepcion).format('DD/MM/YYYY')} readOnly />
-                        </div>
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="DNI"
+                type="number"
+                defaultValue={servicio.dni}
+                readOnly
+              />
+            </div>
 
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="Empresa" type="text" defaultValue={servicio.empresa} readOnly />
-                        </div>
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Obra Social"
+                type="text"
+                defaultValue={servicio.obra_soc}
+                readOnly
+              />
+            </div>
 
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="N° Socio" type="number" defaultValue={servicio.contrato} readOnly />
-                        </div>
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Apellido"
+                type="text"
+                defaultValue={servicio.apellido}
+                readOnly
+              />
+            </div>
 
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="DNI" type="number" defaultValue={servicio.dni} readOnly />
-                        </div>
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Nombre"
+                type="text"
+                defaultValue={servicio.nombre}
+                readOnly
+              />
+            </div>
 
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="Obra Social" type="text" defaultValue={servicio.obra_soc} readOnly />
-                        </div>
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Edad"
+                type="number"
+                defaultValue={servicio.edad}
+                readOnly
+              />
+            </div>
 
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="Apellido" type="text" defaultValue={servicio.apellido} readOnly />
-                        </div>
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Fecha Fallecimiento"
+                type="text"
+                defaultValue={moment(servicio.fecha_fallecimiento).format(
+                  "DD/MM/YYYY"
+                )}
+                readOnly
+              />
+            </div>
 
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="Nombre" type="text" defaultValue={servicio.nombre} readOnly />
-                        </div>
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Lugar Fallecimiento"
+                type="text"
+                defaultValue={servicio.lugar_fallecimiento}
+                readOnly
+              />
+            </div>
 
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="Edad" type="number" defaultValue={servicio.edad} readOnly />
-                        </div>
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Altura"
+                type="text"
+                defaultValue={servicio.altura}
+                readOnly
+              />
+            </div>
 
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="Fecha Fallecimiento" type='text' defaultValue={moment(servicio.fecha_fallecimiento).format('DD/MM/YYYY')} readOnly />
-                        </div>
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Peso"
+                type="text"
+                defaultValue={servicio.peso}
+                readOnly
+              />
+            </div>
+          </div>
+        </div>
 
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="Lugar Fallecimiento" type="text" defaultValue={servicio.lugar_fallecimiento} readOnly />
-                        </div>
+        <hr className="mt-5 mb-5 border-2" />
 
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="Altura" type="text" defaultValue={servicio.altura} readOnly />
-                        </div>
+        {ataud.nombre ? (
+          <div className="p-4 border-2 rounded-lg mt-6">
+            <Typography variant="h5" color="blue-gray" className="mb-6">
+              Informacion del Ataud
+            </Typography>
 
-                        <div className="relative w-full mb-6 group">
-                            <Input size="md" label="Peso" type="text" defaultValue={servicio.peso} readOnly />
-                        </div>
+            <div className="grid md:grid-cols-4 md:gap-6">
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Tipo"
+                  type="text"
+                  defaultValue={ataud.tipo}
+                  readOnly
+                />
+              </div>
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Modelo"
+                  type="text"
+                  defaultValue={ataud.nombre}
+                  readOnly
+                />
+              </div>
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Medidas"
+                  type="text"
+                  defaultValue={ataud.medidas}
+                  readOnly
+                />
+              </div>
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Uso"
+                  type="text"
+                  defaultValue={ataud.uso}
+                  readOnly
+                />
+              </div>
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Fabricante"
+                  type="text"
+                  defaultValue={ataud.fabricante}
+                  readOnly
+                />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
+            <Typography variant="h5" color="blue-gray" className="mb-6">
+              Informacion del Ataud
+            </Typography>
 
-                    </div>
+            <Alert
+              color="blue"
+              icon={
+                <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
+              }
+            >
+              <strong>Este servicio no posee ataud registrado</strong>
+            </Alert>
+          </>
+        )}
 
+        <hr className="mt-5 mb-5 border-2" />
 
-                </div>
+        {parcela.dni ? (
+          <div className="p-4 border-2 rounded-lg mt-6">
+            <Typography variant="h5" color="blue-gray" className="mb-6">
+              Informacion de la Parcela
+            </Typography>
 
-                <hr className='mt-5 mb-5 border-2' />
+            <div className="grid md:grid-cols-4 md:gap-6">
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Parcela"
+                  type="text"
+                  defaultValue={parcela.parcela}
+                  readOnly
+                />
+              </div>
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Manzana"
+                  type="text"
+                  defaultValue={parcela.mza}
+                  readOnly
+                />
+              </div>
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Lote"
+                  type="text"
+                  defaultValue={parcela.lote}
+                  readOnly
+                />
+              </div>
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Fecha"
+                  type="text"
+                  defaultValue={moment(parcela.fecha).format("DD/MM/YYYY")}
+                  readOnly
+                />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
+            <Typography variant="h5" color="blue-gray" className="mb-6">
+              Informacion de la Parcela
+            </Typography>
 
-                <div className='p-4 border-2 rounded-lg mt-6'>
+            <Alert
+              color="blue"
+              icon={
+                <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
+              }
+            >
+              <strong>Este servicio no posee parcela asignada</strong>
+            </Alert>
+          </>
+        )}
 
-                    <Typography variant="h5" color="blue-gray" className="mb-6">
-                        Subir Archivos
-                    </Typography>
+        <hr className="mt-5 mb-5 border-2" />
 
-                    <div className="grid md:grid-cols-1 md:gap-6">
-                        <div className="relative z-0 w-full mb-6 group">
-                            <FormSubirArchivos
-                                file={file}
-                                handleUpload={handleUpload}
-                            />
-                        </div>
-                    </div>
+        <div className="p-4 border-2 rounded-lg mt-6">
+          <Typography variant="h5" color="blue-gray" className="mb-6">
+            Subir Archivos
+          </Typography>
 
+          <div className="grid md:grid-cols-1 md:gap-6">
+            <div className="relative z-0 w-full mb-6 group">
+              <FormSubirArchivos file={file} handleUpload={handleUpload} />
+            </div>
+          </div>
+        </div>
 
+        <hr className="mt-5 mb-5 border-2" />
 
-                </div>
+        <div className="p-4 border-2 rounded-lg mt-6">
+          <Typography variant="h5" color="blue-gray" className="mb-6">
+            Archivos
+          </Typography>
 
-                <hr className='mt-5 mb-5 border-2' />
-
-                <div className='p-4 border-2 rounded-lg mt-6'>
-
-                    <Typography variant="h5" color="blue-gray" className="mb-6">
-                        Archivos
-                    </Typography>
-
-                    <div className="grid md:grid-cols-3 md:gap-6">
-
-                        {
-                            archivos.length > 0 ? (
-                                <>
-                                    {
-                                        archivos.map((a, index) => (
-                                            <div key={index} className="relative z-0 w-full mb-6 group">
-
-                                                <Archivo
-                                                    url={'api/archivos/legajovirtualservicios/archivo/'}
-                                                    urlDesc={'api/archivos/legajovirtualservicios/descargararchivo/'}
-                                                    archivo={a.archivo}
-                                                    eliminarArchivos={eliminarArchivos}
-                                                />
-
-                                            </div>
-                                        ))
-                                    }
-                                </>
-                            ) : null
-
-
-                        }
-
-                    </div>
-
-
-
-                </div>
-
-            </CardHeader>
-        </Card >
-
-    )
-}
+          <div className="grid md:grid-cols-3 md:gap-6">
+            {archivos.length > 0 ? (
+              <>
+                {archivos.map((a, index) => (
+                  <div key={index} className="relative z-0 w-full mb-6 group">
+                    <Archivo
+                      url={"api/archivos/legajovirtualservicios/archivo/"}
+                      urlDesc={
+                        "api/archivos/legajovirtualservicios/descargararchivo/"
+                      }
+                      archivo={a.archivo}
+                      eliminarArchivos={eliminarArchivos}
+                    />
+                  </div>
+                ))}
+              </>
+            ) : null}
+          </div>
+        </div>
+      </CardHeader>
+    </Card>
+  );
+};
