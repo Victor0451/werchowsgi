@@ -8,7 +8,7 @@ import { Redirect } from "@/components/auth/Redirect";
 import useSWR from "swr";
 import { confirmAlert } from "react-confirm-alert";
 import moment from "moment";
-import { registrarHistoria, regHistorialSocio } from "@/libs/funciones";
+import { registrarHistoria } from "@/libs/funciones";
 import FormRegistrarCaja from "@/components/caja/sucursales/FormRegistrarCaja";
 import Router from "next/router";
 
@@ -17,8 +17,6 @@ function Sucursales(props) {
   let fechaMovRef = React.createRef();
   let importeRef = React.createRef();
 
-  const [archivos, guardarArchivos] = useState(null);
-  const [error, guardarError] = useState(null);
   const [errores, guardarErrores] = useState(null);
   const [ingreso, guardarIngreso] = useState([]);
   const [egreso, guardarEgreso] = useState([]);

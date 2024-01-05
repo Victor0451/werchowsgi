@@ -161,15 +161,14 @@ const FormRegistrarCaja = ({
                   <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
                 }
               >
-                SALDO: ${totales(ingreso, "I") - totales(egreso, "E")}
+                <strong>
+                  {" "}
+                  SALDO: ${totales(ingreso, "I") - totales(egreso, "E")}
+                </strong>
               </Alert>
             </div>
 
-            <hr className="border-2 mt-5 mb-5" />
-
-            <div className="w-full md:w-full px-3 mt-6 mb-6 md:mb-0">
-              <Typography variant="h5">Ingresos</Typography>
-
+            <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
               <Alert
                 className="mt-5 mb-5"
                 color="green"
@@ -177,20 +176,11 @@ const FormRegistrarCaja = ({
                   <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
                 }
               >
-                TOTAL INGRESOS: ${totales(ingreso, "I")}
+                <strong>TOTAL INGRESOS: ${totales(ingreso, "I")}</strong>
               </Alert>
             </div>
-            <div className="w-full md:w-full px-3 mt-6 mb-6 md:mb-0 border-2 rounded-xl p-2">
-              <ListadoMovimiento
-                listado={ingreso}
-                eliminarPrecarga={eliminarPrecarga}
-              />
-            </div>
 
-            <hr className="border-2 mt-5 mb-5" />
-
-            <div className="w-full md:w-full px-3 mt-6 mb-6 md:mb-0 ">
-              <Typography variant="h5">Egresos</Typography>
+            <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 ">
               <Alert
                 className="mt-5 mb-5"
                 color="red"
@@ -198,9 +188,24 @@ const FormRegistrarCaja = ({
                   <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
                 }
               >
-                TOTAL EGRESOS: ${totales(egreso, "E")}
+                <strong>TOTAL EGRESOS: ${totales(egreso, "E")}</strong>
               </Alert>
             </div>
+
+            <Typography variant="h5" className="mt-5">
+              Detalle Ingresos
+            </Typography>
+
+            <div className="w-full md:w-full px-3 mt-6 mb-6 md:mb-0 border-2 rounded-xl p-2">
+              <ListadoMovimiento
+                listado={ingreso}
+                eliminarPrecarga={eliminarPrecarga}
+              />
+            </div>
+
+            <Typography variant="h5" className="mt-5">
+              Detalle Egresos
+            </Typography>
 
             <div className="w-full md:w-full px-3 mt-6 mb-6 md:mb-0 border-2 rounded-xl p-2">
               <ListadoMovimiento

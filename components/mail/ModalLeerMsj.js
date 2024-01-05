@@ -13,6 +13,7 @@ import {
 import { EyeIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
 import moment from "moment";
 import { Archivo } from "../archivos/Archivo";
+import Link from "next/link";
 
 const ModalLeerMsj = ({ row, archivos, traerArchivos }) => {
   const [open, setOpen] = useState(false);
@@ -38,7 +39,7 @@ const ModalLeerMsj = ({ row, archivos, traerArchivos }) => {
         size="xl"
       >
         <DialogHeader>Mail</DialogHeader>
-        <DialogBody divider className="h-[50rem] overflow-scroll">
+        <DialogBody divider className="h-[45vw] overflow-scroll">
           <div className="grid md:grid-cols-2 md:gap-6">
             <div className="relative w-full mb-6 group">
               <div className="grid md:grid-cols-2 md:gap-6">
@@ -64,9 +65,21 @@ const ModalLeerMsj = ({ row, archivos, traerArchivos }) => {
           </div>
 
           <hr className="border-2 mt-5 mb-5" />
+
           <div className="p-4 border-2 rounded-lg mt-6">
             <Typography variant="h5" color="blue-gray" className="mb-6">
-              Adjuntos
+              Cajas Adjuntadas
+            </Typography>
+
+            <Link href={`${row.url_caja}`} target="_blank">
+              <strong>Este enlace te lleva a la caja adjuntada.</strong>
+            </Link>
+          </div>
+
+          <hr className="border-2 mt-5 mb-5" />
+          <div className="p-4 border-2 rounded-lg mt-6">
+            <Typography variant="h5" color="blue-gray" className="mb-6">
+              Archivos Adjuntos
             </Typography>
 
             <div className="grid md:grid-cols-3 md:gap-6">

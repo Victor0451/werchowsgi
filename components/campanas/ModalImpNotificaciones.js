@@ -51,7 +51,7 @@ export default function ModalImpNotificaciones({
                 size="xl"
             >
                 <DialogHeader>Notificaciones</DialogHeader>
-                <DialogBody divider className="h-[50rem] overflow-scroll">
+                <DialogBody divider className="h-[45vw] overflow-scroll">
 
                     {f === 'U' ? (
                         <div id="todo" ref={(el) => (componentRef = el)}>

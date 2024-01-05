@@ -50,7 +50,7 @@ export default function ModalHistorial({
         size="xl"
       >
         <DialogHeader>Historial de Acciones y Bonificaciones</DialogHeader>
-        <DialogBody divider className="h-[50rem] overflow-scroll">
+        <DialogBody divider className="h-[45vw] overflow-scroll">
           <div className="p-4 border-2 rounded-xl  mt-10 grid md:grid-cols-1 md:gap-6">
             <div className="relative w-full mb-6 group">
               <ListadoAcciones listado={historialAcc} />

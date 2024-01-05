@@ -39,7 +39,7 @@ export default function ModalAcciones({
                 size="xl"
             >
                 <DialogHeader>Detalle Caso</DialogHeader>
-                <DialogBody divider className="h-[50rem] overflow-scroll">
+                <DialogBody divider className="h-[45vw] overflow-scroll">
                     <FormAcciones
                         row={row}
                         RegistrarGestion={RegistrarGestion}

@@ -4,7 +4,7 @@ import DataTable from "react-data-table-component";
 import moment from "moment";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
-const ListadoMovimiento = ({ listado, eliminarPrecarga }) => {
+const ListadoMovimiento = ({ listado, eliminarPrecarga, f }) => {
   console.log(listado);
 
   let columns = [
@@ -44,11 +44,13 @@ const ListadoMovimiento = ({ listado, eliminarPrecarga }) => {
       grow: 0.1,
       cell: (row, index) => (
         <>
-          <TrashIcon
-            color="red"
-            className="butlist mt-px h-6 w-6 "
-            onClick={() => eliminarPrecarga(index, row.movimiento)}
-          />
+          {f && f === "vista" ? null : (
+            <TrashIcon
+              color="red"
+              className="butlist mt-px h-6 w-6 "
+              onClick={() => eliminarPrecarga(index, row.movimiento)}
+            />
+          )}
         </>
       ),
     },

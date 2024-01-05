@@ -2,8 +2,15 @@ import React, { useMemo } from "react";
 import DataTable from "react-data-table-component";
 import FilterComponent from "../../Layouts/FilterComponent";
 import moment from "moment";
+import ModalDetalleCaja from "./ModalDetalleCaja";
 
-const ListadoCajas = ({ listado }) => {
+const ListadoCajas = ({
+  listado,
+  traerMovimientos,
+  totales,
+  ingreso,
+  egreso,
+}) => {
   let columns = [
     {
       name: "#",
@@ -14,9 +21,19 @@ const ListadoCajas = ({ listado }) => {
 
     {
       name: "Empresa",
-      selector: (row) => `${row.empresa}`,
-      sortable: true,
-      grow: 0.2,
+      button: true,
+      grow: 0.3,
+      cell: (row, index) => (
+        <>
+          {row.empresa === "WSRL" ? (
+            <>Werchow S.R.L.</>
+          ) : row.empresa === "WSA" ? (
+            <>Werchow S.A.</>
+          ) : row.empresa === "M" ? (
+            <>Mutual San Valentin</>
+          ) : null}
+        </>
+      ),
     },
 
     {
@@ -53,7 +70,17 @@ const ListadoCajas = ({ listado }) => {
       name: "Acciones",
       button: true,
       grow: 0.1,
-      cell: (row, index) => <></>,
+      cell: (row, index) => (
+        <>
+          <ModalDetalleCaja
+            row={row}
+            traerMovimientos={traerMovimientos}
+            totales={totales}
+            ingreso={ingreso}
+            egreso={egreso}
+          />
+        </>
+      ),
     },
   ];
 

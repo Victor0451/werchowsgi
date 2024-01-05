@@ -52,6 +52,12 @@ function calendario(props) {
       allDay: selectInfo.allDay,
     };
 
+    if (datosEv.allDay === false) {
+      datosEv.allDay = 0;
+    } else if (datosEv.allDay === true) {
+      datosEv.allDay = 1;
+    }
+
     guardarDatosEv(datosEv);
   };
 
@@ -76,6 +82,7 @@ function calendario(props) {
   };
 
   const selEvent = (eventInfo) => {
+    console.log(eventInfo.event.extendedProps.idevents);
     if (edit === true && delet === false) {
       let evE = {
         id: eventInfo.event.extendedProps.idevents,
@@ -87,6 +94,12 @@ function calendario(props) {
         f: "editar evento",
         ft: "Modificacion",
       };
+
+      if (evE.allDay === false) {
+        evE.allDay = 0;
+      } else if (evE.allDay === true) {
+        evE.allDay = 1;
+      }
 
       putEvent(evE);
     } else if (edit === false && delet === false) {

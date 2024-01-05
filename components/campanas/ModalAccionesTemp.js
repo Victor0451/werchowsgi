@@ -39,7 +39,7 @@ export default function ModalAccionesTemp({
                 size="xl"
             >
                 <DialogHeader>Detalle Caso</DialogHeader>
-                <DialogBody divider className="h-[50rem] overflow-scroll">
+                <DialogBody divider className="h-[45vw] overflow-scroll">
                     <FormAccionesTemp
                         row={row}
                         RegistrarGestion={RegistrarGestion}

@@ -30,7 +30,7 @@ export default async function handler(req, res) {
       const cajasMail = await SGI.$queryRaw`
        SELECT 
                 CONCAT(empresa, '-' , idcaja, '-', fecha_carga) 'label',                
-                CONCAT('/gestion/sucursales/caja/caja?id=',idcaja) 'value'
+                CONCAT('/caja/sucursales/cajamail?id=',idcaja) 'value'
         FROM caja_sucursales
         WHERE operador_carga = ${req.query.op}
         ORDER BY idcaja DESC

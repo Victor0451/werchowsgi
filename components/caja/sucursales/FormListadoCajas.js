@@ -12,7 +12,7 @@ import {
   Input,
   Textarea,
   Checkbox,
-  Spinner
+  Spinner,
 } from "@material-tailwind/react";
 
 import {
@@ -24,7 +24,14 @@ import ListadoMovimiento from "./ListadoMovimiento";
 import Link from "next/link";
 import ListadoCajas from "./ListadoCajas";
 
-const FormListadoCajas = ({ cajas, noData }) => {
+const FormListadoCajas = ({
+  cajas,
+  noData,
+  traerMovimientos,
+  totales,
+  ingreso,
+  egreso,
+}) => {
   return (
     <Card className="h-full w-full p-4 ">
       <CardBody className="rounded-none">
@@ -63,7 +70,13 @@ const FormListadoCajas = ({ cajas, noData }) => {
                   <Spinner className="h-12 w-12" />
                 </div>
               ) : (
-                <ListadoCajas listado={cajas} />
+                <ListadoCajas
+                  listado={cajas}
+                  traerMovimientos={traerMovimientos}
+                  totales={totales}
+                  ingreso={ingreso}
+                  egreso={egreso}
+                />
               )}
             </>
           )}
