@@ -5,8 +5,6 @@ import moment from "moment";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
 const ListadoMovimiento = ({ listado, eliminarPrecarga, f }) => {
-  console.log(listado);
-
   let columns = [
     {
       name: "#",

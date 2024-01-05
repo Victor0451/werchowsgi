@@ -189,15 +189,15 @@ export default function Gasto() {
     if (flag === "empresa") {
       guardarEmpresaSel(value);
     } else if (flag === "concepto") {
-      guardarConceptosSel(value);
+      guardarConceptosSel(value.value);
     } else if (flag === "tipofactura") {
-      guardarFacturasSel(value);
+      guardarFacturasSel(value.value);
     } else if (flag === "proveedores") {
-      guardarProveedoresSel(value);
+      guardarProveedoresSel(value.value);
     } else if (flag === "servicio") {
-      guardarServiciosSel(value);
+      guardarServiciosSel(value.value);
     } else if (flag === "operador") {
-      guardarOperadoresSel(value);
+      guardarOperadoresSel(value.value);
     } else if (flag === "mediopago") {
       guardarMedioPagoSel(value);
     } else if (flag === "iva") {

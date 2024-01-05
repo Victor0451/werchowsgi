@@ -81,7 +81,7 @@ function listado(props) {
             if (arr[i].movimiento === "I") {
               guardarIngreso([...ingreso, arr[i]]);
             } else if (arr[i].movimiento === "E") {
-              guardarEgreso([...ingreso, arr[i]]);
+              guardarEgreso([...egreso, arr[i]]);
             }
           }
         }
@@ -92,7 +92,7 @@ function listado(props) {
       });
   };
 
-  useSWR("/api/caja", traerCajas);
+  useSWR("/api/caja/sucursales", traerCajas);
 
   if (isLoading === true) return <Skeleton />;
 

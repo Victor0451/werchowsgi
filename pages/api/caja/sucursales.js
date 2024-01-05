@@ -21,6 +21,22 @@ export default async function handler(req, res) {
         },
       });
       res.status(200).json(cajas);
+    } else if (req.query.f && req.query.f === "traer ingresos caja") {
+      const cajas = await SGI.movimiento_caja_sucursales.findMany({
+        where: {
+          idcaja: parseInt(req.query.idcaja),
+          movimiento: "I",
+        },
+      });
+      res.status(200).json(cajas);
+    } else if (req.query.f && req.query.f === "traer egresos caja") {
+      const cajas = await SGI.movimiento_caja_sucursales.findMany({
+        where: {
+          idcaja: parseInt(req.query.idcaja),
+          movimiento: "E",
+        },
+      });
+      res.status(200).json(cajas);
     }
   } else if (req.method === "POST") {
     if (req.body.f && req.body.f === "reg movimientos") {
