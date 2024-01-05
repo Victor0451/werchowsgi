@@ -94,9 +94,8 @@ export const FormAcciones = ({ row, handleChange, errores }) => {
 
         <Input
           size="md"
-          type={"text"}
+          type={"date"}
           label="Fecha"
-          value={moment().format("DD/MM/YYYY")}
           onChange={(e) => {
             handleChange("fecha accion", e.target.value);
           }}

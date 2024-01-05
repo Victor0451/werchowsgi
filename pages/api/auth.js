@@ -70,6 +70,7 @@ export default async function handler(req, res) {
                         socios: user.socios,
                         sepelio: user.sepelio,
                         administracion: user.administracion,
+                        gestion: user.gestion,
                         createdAt: user.createdAt,
                         updatedAt: user.updatedAt,
                       },

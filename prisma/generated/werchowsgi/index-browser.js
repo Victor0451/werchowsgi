@@ -553,7 +553,7 @@ exports.Prisma.OperadorScalarFieldEnum = {
   campanas: 'campanas',
   socios: 'socios',
   sepelio: 'sepelio',
-  cobranza: 'cobranza'
+  gestion: 'gestion'
 };
 
 exports.Prisma.Ordenes_pagoScalarFieldEnum = {
