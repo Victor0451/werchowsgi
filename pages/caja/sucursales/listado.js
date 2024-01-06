@@ -91,22 +91,34 @@ function listado(props) {
     await axios
       .get("/api/caja/sucursales", {
         params: {
-          f: "traer movimientos caja",
+          f: "traer ingresos caja",
           idcaja: idcaja,
         },
       })
       .then((res) => {
-        console.log(res.data);
         if (res.data.length > 0) {
           let arr = res.data;
 
-          for (let i = 0; i < arr.length; i++) {
-            if (arr[i].movimiento === "I") {
-              guardarIngreso([...ingreso, arr[i]]);
-            } else if (arr[i].movimiento === "E") {
-              guardarEgreso([...egreso, arr[i]]);
-            }
-          }
+          guardarIngreso(arr);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al generar la caja seleccionada");
+      });
+
+    await axios
+      .get("/api/caja/sucursales", {
+        params: {
+          f: "traer egresos caja",
+          idcaja: idcaja,
+        },
+      })
+      .then((res) => {
+        if (res.data.length > 0) {
+          let arr = res.data;
+
+          guardarEgreso(arr);
         }
       })
       .catch((error) => {

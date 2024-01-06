@@ -16,6 +16,13 @@ const ListadoCajas = ({
       name: "#",
       selector: (row, index) => `${index + 1}`,
       sortable: true,
+      width: "70px",
+    },
+
+    {
+      name: "ID Caja",
+      selector: (row) => `${row.idcaja}`,
+      sortable: true,
       grow: 0.1,
     },
 

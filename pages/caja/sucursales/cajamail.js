@@ -28,45 +28,48 @@ function CajaMail(props) {
   }
 
   const traerMovimientos = async () => {
-    await axios
-      .get("/api/caja/sucursales", {
-        params: {
-          f: "traer ingresos caja",
-          idcaja: jsCookie.get("id"),
-        },
-      })
-      .then((res) => {
-        if (res.data.length > 0) {
-          let arr = res.data;
+    console.log(jsCookie.get("id"));
+    if (jsCookie.get("id")) {
+      await axios
+        .get("/api/caja/sucursales", {
+          params: {
+            f: "traer ingresos caja",
+            idcaja: jsCookie.get("id"),
+          },
+        })
+        .then((res) => {
+          if (res.data.length > 0) {
+            let arr = res.data;
 
-          guardarIngreso(arr);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al generar la caja seleccionada");
-      });
+            guardarIngreso(arr);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar la caja seleccionada");
+        });
 
-    await axios
-      .get("/api/caja/sucursales", {
-        params: {
-          f: "traer egresos caja",
-          idcaja: jsCookie.get("id"),
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.length > 0) {
-          let arr = res.data;
+      await axios
+        .get("/api/caja/sucursales", {
+          params: {
+            f: "traer egresos caja",
+            idcaja: jsCookie.get("id"),
+          },
+        })
+        .then((res) => {
+          if (res.data.length > 0) {
+            let arr = res.data;
 
-          guardarEgreso(arr);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al generar la caja seleccionada");
-      });
+            guardarEgreso(arr);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar la caja seleccionada");
+        });
+    }
   };
+
   const totales = (arr, mov) => {
     let total = 0;
 
@@ -84,10 +87,6 @@ function CajaMail(props) {
       return total.toFixed(2);
     }
   };
-
-  //   useEffect(() => {
-  //     traerMovimientos();
-  //   }, []);
 
   useSWR("/api/caja/sucursales", traerMovimientos);
 

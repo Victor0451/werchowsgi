@@ -23,7 +23,6 @@ import ListadoMovimiento from "./ListadoMovimiento";
 import Link from "next/link";
 
 const FormCajaMail = ({ ingreso, egreso, totales }) => {
-    console.log(ingreso);
   return (
     <Card className="h-full w-full p-4 ">
       <CardBody className="rounded-none">
