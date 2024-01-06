@@ -14,6 +14,13 @@ export default async function handler(req, res) {
         },
       });
       res.status(200).json(cajas);
+    } else if (req.query.f && req.query.f === "traer cajas") {
+      const cajas = await SGI.caja_sucursales.findMany({
+        orderBy: {
+          fecha_carga: "desc",
+        },
+      });
+      res.status(200).json(cajas);
     } else if (req.query.f && req.query.f === "traer movimientos caja") {
       const cajas = await SGI.movimiento_caja_sucursales.findMany({
         where: {

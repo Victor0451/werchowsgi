@@ -174,27 +174,29 @@ export default function ModalPreIngreso({
               </Alert>
             ) : null}
           </div>
-        </DialogBody>
-        <DialogFooter>
-          <Button
-            variant="gradient"
-            color="green"
-            onClick={() => {
-              nuevoIngreso();
-            }}
-          >
-            <span>Registrar</span>
-          </Button>
 
-          <Button
-            variant="gradient"
-            color="red"
-            onClick={handleOpen}
-            className="ml-1"
-          >
-            <span>Cerrar</span>
-          </Button>
-        </DialogFooter>
+          <div className="flex justify-end mt-6">
+            <Button
+              variant="gradient"
+              color="green"
+              onClick={() => {
+                nuevoIngreso();
+              }}
+            >
+              <span>Registrar</span>
+            </Button>
+
+            <Button
+              variant="gradient"
+              color="red"
+              onClick={handleOpen}
+              className="ml-1"
+            >
+              <span>Cerrar</span>
+            </Button>
+          </div>
+        </DialogBody>
+        <DialogFooter></DialogFooter>
       </Dialog>
     </Fragment>
   );

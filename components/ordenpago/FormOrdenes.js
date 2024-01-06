@@ -170,7 +170,7 @@ function FormOrdenes({
                   Router.reload();
                 }}
               >
-                Canelar
+                Cancelar
               </Button>
             </div>
           </>

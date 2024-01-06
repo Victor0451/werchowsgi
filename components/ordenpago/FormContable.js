@@ -137,7 +137,7 @@ const FormContable = ({
               Router.reload();
             }}
           >
-            Canelar
+            Cancelar
           </Button>
         </div>
       </CardBody>

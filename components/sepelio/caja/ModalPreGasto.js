@@ -288,27 +288,28 @@ export default function ModalPreGasto({
               </Alert>
             ) : null}
           </div>
-        </DialogBody>
-        <DialogFooter>
-          <Button
-            variant="gradient"
-            color="green"
-            onClick={() => {
-              nuevoGasto();
-            }}
-          >
-            <span>Registrar</span>
-          </Button>
+          <div className="flex justify-end mt-6">
+            <Button
+              variant="gradient"
+              color="green"
+              onClick={() => {
+                nuevoGasto();
+              }}
+            >
+              <span>Registrar</span>
+            </Button>
 
-          <Button
-            variant="gradient"
-            color="red"
-            onClick={handleOpen}
-            className="ml-1"
-          >
-            <span>Cerrar</span>
-          </Button>
-        </DialogFooter>
+            <Button
+              variant="gradient"
+              color="red"
+              onClick={handleOpen}
+              className="ml-1"
+            >
+              <span>Cerrar</span>
+            </Button>
+          </div>
+        </DialogBody>
+        <DialogFooter></DialogFooter>
       </Dialog>
     </Fragment>
   );

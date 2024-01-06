@@ -174,7 +174,7 @@ function FormPracticas({
                   Router.reload();
                 }}
               >
-                Canelar
+                Cancelar
               </Button>
             </div>
           </>

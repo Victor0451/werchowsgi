@@ -23,27 +23,50 @@ function listado(props) {
   const { isLoading } = useUser();
 
   const traerCajas = async () => {
-    await axios
-      .get(`/api/caja/sucursales`, {
-        params: {
-          f: "traer cajas usuario",
-          user: usu.usuario,
-        },
-      })
-      .then((res) => {
-        if (res.data.length === 0) {
-          toast.info("No tienes cajas registradas");
+    if (usu.perfil === 1 || usu.perfil === 3) {
+      await axios
+        .get(`/api/caja/sucursales`, {
+          params: {
+            f: "traer cajas",
+          },
+        })
+        .then((res) => {
+          if (res.data.length === 0) {
+            toast.info("No tienes cajas registradas");
+            guardarNoData(true);
+          } else if (res.data.length > 0) {
+            guardarCajas(res.data);
+            guardarNoData(false);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar el listado de cajas");
           guardarNoData(true);
-        } else if (res.data.length > 0) {
-          guardarCajas(res.data);
-          guardarNoData(false);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al generar el listado de cajas");
-        guardarNoData(true);
-      });
+        });
+    } else {
+      await axios
+        .get(`/api/caja/sucursales`, {
+          params: {
+            f: "traer cajas usuario",
+            user: usu.usuario,
+          },
+        })
+        .then((res) => {
+          if (res.data.length === 0) {
+            toast.info("No tienes cajas registradas");
+            guardarNoData(true);
+          } else if (res.data.length > 0) {
+            guardarCajas(res.data);
+            guardarNoData(false);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar el listado de cajas");
+          guardarNoData(true);
+        });
+    }
   };
 
   const totales = (arr, mov) => {

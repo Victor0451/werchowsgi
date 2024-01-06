@@ -65,12 +65,12 @@ const FormOrdenPago = ({
             </li>
             <li>
               <u>Ordenes Medicas</u>: Para cargar{" "}
-              <strong>solamente ordenes medicas</strong>. Valido para
+              <strong>solamente Ordenes Medicas</strong>. Valido para
               prestadores de Casa Central, Sucursales y Clinica Otero
             </li>
             <li>
               <u>Practicas Medicas</u>: Para cargar{" "}
-              <strong>solamente practicas medicas</strong>. Valido para
+              <strong>solamente Practicas Medicas</strong>. Valido para
               prestadores de Casa Central, Sucursales y Clinica Otero
             </li>
           </ul>
