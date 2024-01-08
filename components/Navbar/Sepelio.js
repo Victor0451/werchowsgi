@@ -13,6 +13,7 @@ import {
   ArrowDownLeftIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { ip } from "../../config/config";
 
 export const Sepelio = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -46,6 +47,89 @@ export const Sepelio = () => {
           className="hidden  grid-cols-4 gap-3 overflow-visible lg:grid"
         >
           <ul className="col-span-4 flex w-full flex-col gap-1">
+            <Menu placement="right-start">
+              <MenuHandler>
+                <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
+                  <Typography color="black">Archivos (Descarga)</Typography>
+                  <ChevronDownIcon
+                    strokeWidth={2}
+                    className={`h-3 w-3 transition-transform `}
+                  />
+                </MenuItem>
+              </MenuHandler>
+              <MenuList>
+                <Link
+                  href={`${ip}api/archivos/sepelio/descargararchivo/inst-convenios-fadedsfya.pdf`}
+                >
+                  <MenuItem>
+                    <Typography color="black">
+                      Listado de Convenios FADEDSFYA
+                    </Typography>
+                  </MenuItem>
+                </Link>
+                <Link
+                  href={`${ip}api/archivos/sepelio/descargararchivo/conformidad_servicio_moroso.pdf`}
+                >
+                  <MenuItem>
+                    <Typography color="black">
+                      {" "}
+                      Conformidad de Servicio Para Morosos
+                    </Typography>
+                  </MenuItem>
+                </Link>
+                <Link
+                  href={`${ip}api/archivos/sepelio/descargararchivo/prot-inst-domicilio.pdf`}
+                >
+                  <MenuItem>
+                    <Typography color="black">
+                      {" "}
+                      Protocolo Inst. en domicilio
+                    </Typography>
+                  </MenuItem>
+                </Link>
+                <Link
+                  href={`${ip}api/archivos/sepelio/descargararchivo/aut-policia-servdom.pdf`}
+                >
+                  <MenuItem>
+                    <Typography color="black">
+                      {" "}
+                      Modelo de autorizacion policial para serv. en domicilio
+                    </Typography>
+                  </MenuItem>
+                </Link>
+                <Link
+                  href={`${ip}api/archivos/sepelio/descargararchivo/ISJ-SOLI.pdf`}
+                >
+                  <MenuItem>
+                    <Typography color="black">
+                      {" "}
+                      ISJ - Solicitud de Pago
+                    </Typography>
+                  </MenuItem>
+                </Link>
+                <Link
+                  href={`${ip}api/archivos/sepelio/descargararchivo/ISJ-DDJJ.pdf`}
+                >
+                  <MenuItem>
+                    <Typography color="black">
+                      {" "}
+                      ISJ - Declaracion Jurada
+                    </Typography>
+                  </MenuItem>
+                </Link>
+                <Link
+                  href={`${ip}api/archivos/sepelio/descargararchivo/sol-crem-divina-misericordia.pdf`}
+                >
+                  <MenuItem>
+                    <Typography color="black">
+                      {" "}
+                      Solicitud Cremacion Divina Misericordia
+                    </Typography>
+                  </MenuItem>
+                </Link>
+              </MenuList>
+            </Menu>
+
             <Menu placement="right-start">
               <MenuHandler>
                 <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
