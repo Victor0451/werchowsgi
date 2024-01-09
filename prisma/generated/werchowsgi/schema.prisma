@@ -979,3 +979,22 @@ model zonas {
 
   @@ignore
 }
+
+model gasto_luto {
+  idgastoluto Int  @id @default(autoincrement())
+  gasto1      Int?
+  gasto2      Int?
+}
+
+model mails_copy {
+  idmail      Int       @id @default(autoincrement())
+  fecha       DateTime? @db.DateTime(0)
+  envia       String?   @db.VarChar(255)
+  recibe      String?   @db.VarChar(255)
+  descrip     String?   @db.VarChar(1000)
+  codmail     String?   @db.VarChar(255)
+  asunto      String?   @db.VarChar(255)
+  leido       Boolean?
+  fecha_leido DateTime? @db.DateTime(0)
+  url_caja    String?   @db.VarChar(255)
+}

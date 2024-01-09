@@ -49,6 +49,7 @@ export default function nuevoservicio() {
   const [parceSel, guardarParceSel] = useState([]);
   const [adhs, guardarAdhs] = useState([]);
   const [adhSel, guardarAdhSel] = useState([]);
+  const [gl, guardarGastoLuto] = useState([]);
 
   const { usu } = useWerchow();
 
@@ -479,6 +480,8 @@ export default function nuevoservicio() {
         toast.error("Ocurrio un error al generar el listado");
         guardarNoData(true);
       });
+
+    gasLuto();
   };
 
   const regAtaud = (row) => {
@@ -511,6 +514,24 @@ export default function nuevoservicio() {
     };
 
     guardarAdhSel(ad);
+  };
+
+  const gasLuto = async (plan, alta, cantadh) => {
+    await axios
+      .get(`/api/sepelio/servicios`, {
+        params: {
+          f: "gasto luto",
+        },
+      })
+      .then((res) => {
+        if (res.data) {
+          guardarGastoLuto(res.data[0]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al registrar el historial");
+      });
   };
 
   useSWR("/api/sepelio/ataudes", traerDatos);
@@ -562,6 +583,7 @@ export default function nuevoservicio() {
             adhs={adhs}
             regAdh={regAdh}
             adhSel={adhSel}
+            gl={gl}
           />
         </>
       )}

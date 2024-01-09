@@ -70,7 +70,8 @@ const FormLegajoSocio = ({
   cuotaMensual,
   baja,
   apellidoRef,
-  listApe
+  listApe,
+  gl
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -266,6 +267,7 @@ const FormLegajoSocio = ({
               plan={`${ficha.PLAN}${ficha.SUB_PLAN}`}
               alta={ficha.ALTA}
               cantadh={0}
+              gl={gl}
             />
 
             <div>

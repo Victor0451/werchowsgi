@@ -204,7 +204,7 @@ export default function Legajo() {
       });
   };
 
-  useSWR("/api/sepelio/autos", traerInfo);
+  useSWR("/api/sepelio/servicios", traerInfo);
 
   if (isLoading === true) return <Skeleton />;
 

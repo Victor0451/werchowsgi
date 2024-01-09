@@ -96,22 +96,6 @@ export const regHistorialSocio = async (data) => {
     });
 };
 
-// CALCULO GASTO LUTO NUEVO
-
-export const gastoLuto = (plan, alta, cantadh) => {
-  // NUEVO CALCULO 09/2022
-
-  let inicio = moment(alta).format("YYYY-MM-DD");
-
-  let anti = moment().diff(inicio, "years");
-
-  if (anti <= 3) {
-    return 15000;
-  } else if (anti > 3) {
-    return 20000;
-  }
-};
-
 export function IconOutlined() {
   return (
     <svg

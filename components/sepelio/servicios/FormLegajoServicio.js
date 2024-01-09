@@ -26,7 +26,6 @@ export const FormLegajoServicio = ({
   ataud,
   parcela,
 }) => {
-    
   return (
     <Card className="h-full w-full p-4 ">
       <CardHeader floated={false} shadow={false} className="rounded-none">

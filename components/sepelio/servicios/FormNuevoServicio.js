@@ -65,6 +65,7 @@ export const FormNuevoServicio = ({
   adhs,
   regAdh,
   adhSel,
+  gl,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -155,11 +156,14 @@ export const FormNuevoServicio = ({
                 Formulario Solicitud de Servicio
               </Typography>
 
-              <GastoLuto
-                plan={`${ficha.PLAN}${ficha.SUB_PLAN}`}
-                alta={ficha.ALTA}
-                cantadh={0}
-              />
+              {ficha[0] ? (
+                <GastoLuto
+                  plan={`${ficha[0].PLAN}${ficha[0].SUB_PLAN}`}
+                  alta={ficha[0].ALTA}
+                  cantadh={0}
+                  gl={gl}
+                />
+              ) : null}
 
               <div className="border-2 rounded-xl mt-6 p-4">
                 {(ficha[0] && ficha[0].GRUPO === 666) ||

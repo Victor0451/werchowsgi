@@ -42,6 +42,7 @@ function Legajo(props) {
   const [cuotaMensual, guardarCuotaMensual] = useState(0);
   const [baja, guardarBaja] = useState(false);
   const [listApe, guardarApellidos] = useState([]);
+  const [gl, guardarGastoLuto] = useState([]);
 
   const { usu } = useWerchow();
 
@@ -968,6 +969,26 @@ function Legajo(props) {
       });
   };
 
+  const gasLuto = async (plan, alta, cantadh) => {
+    await axios
+      .get(`/api/sepelio/servicios`, {
+        params: {
+          f: "gasto luto",
+        },
+      })
+      .then((res) => {
+        if (res.data) {
+          guardarGastoLuto(res.data[0]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al registrar el historial");
+      });
+  };
+
+  useSWR("/api/sepelio/servicios", gasLuto);
+
   if (isLoading === true) return <Skeleton />;
 
   return (
@@ -1015,6 +1036,7 @@ function Legajo(props) {
             baja={baja}
             apellidoRef={apellidoRef}
             listApe={listApe}
+            gl={gl}
           />
         </>
       )}

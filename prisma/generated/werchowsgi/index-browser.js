@@ -855,6 +855,25 @@ exports.Prisma.CarteraScalarFieldEnum = {
   idcartera: 'idcartera'
 };
 
+exports.Prisma.Gasto_lutoScalarFieldEnum = {
+  idgastoluto: 'idgastoluto',
+  gasto1: 'gasto1',
+  gasto2: 'gasto2'
+};
+
+exports.Prisma.Mails_copyScalarFieldEnum = {
+  idmail: 'idmail',
+  fecha: 'fecha',
+  envia: 'envia',
+  recibe: 'recibe',
+  descrip: 'descrip',
+  codmail: 'codmail',
+  asunto: 'asunto',
+  leido: 'leido',
+  fecha_leido: 'fecha_leido',
+  url_caja: 'url_caja'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -929,7 +948,9 @@ exports.Prisma.ModelName = {
   prestamos_plan_cuotas: 'prestamos_plan_cuotas',
   prestamos_tasas: 'prestamos_tasas',
   certificado_estudiantes: 'certificado_estudiantes',
-  cartera: 'cartera'
+  cartera: 'cartera',
+  gasto_luto: 'gasto_luto',
+  mails_copy: 'mails_copy'
 };
 
 /**

@@ -4,7 +4,11 @@ import moment from "moment";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    if (req.query.f && req.query.f === "servicios") {
+    if (req.query.f && req.query.f === "gasto luto") {
+      const gastoLuto = await SGI.gasto_luto.findMany();
+
+      res.status(200).json(gastoLuto);
+    } else if (req.query.f && req.query.f === "servicios") {
       const servicios = await Sep.servicios.findMany({
         where: {
           dni: parseInt(req.query.dni),
