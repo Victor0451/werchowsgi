@@ -188,6 +188,21 @@ export default async function handler(req, res) {
         },
       });
       res.status(200).json(consulta);
+    } else if (req.query.f && req.query.f === "total gastos") {
+      const gastos = await Sep.$queryRaw`
+             select SUM(total) as total
+             from gastos_caja  
+             where idcaja = ${parseInt(req.query.idcaja)}
+      
+`;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(gastos, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     }
   }
   if (req.method === "POST") {
@@ -356,6 +371,29 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(cerrarCaja);
+    } else if (req.body.f && req.body.f === "reajustar caja") {
+      const reajusteCaja = await Sep.caja_sepelio.update({
+        data: {
+          gastos: parseFloat(req.body.gastos),
+          totalcaja: parseFloat(req.body.totalcaja),
+        },
+        where: {
+          idcaja: parseInt(req.body.idcaja),
+        },
+      });
+
+      res.status(200).json(reajusteCaja);
+    }
+  }
+  if (req.method === "DELETE") {
+    if (req.query.f && req.query.f === "eliminar gastos reg") {
+      const delGastos = await Sep.gastos_caja.delete({
+        where: {
+          idgastos: parseInt(req.query.idgastos),
+        },
+      });
+
+      res.status(200).json(delGastos);
     }
   }
 }

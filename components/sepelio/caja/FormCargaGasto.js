@@ -47,6 +47,9 @@ export const FormCargaGasto = ({
   cerrarCaja,
   errores,
   alertas,
+  eliminarGastosRegistrados,
+  calTotalGastos,
+  reajustarValoresCaja2,
 }) => {
   let columns = [
     {
@@ -269,11 +272,13 @@ export const FormCargaGasto = ({
               </strong>
             </Alert>
           ) : (
-            <div className="grid md:grid-cols-4 md:gap-6">
+            <div className="grid md:grid-cols-5 md:gap-6">
               <div className="relative w-full mb-6 group">
                 <ModalGastosCargados
                   traerGastosCaja={traerGastosCaja}
                   listado={gastosCaja}
+                  eliminarGastosRegistrados={eliminarGastosRegistrados}
+                  calTotalGastos={calTotalGastos}
                 />
               </div>
               <div className="relative w-full mb-6 group">
@@ -300,6 +305,14 @@ export const FormCargaGasto = ({
               <div className="relative w-full mb-6 group">
                 <Button color="orange" onClick={regGasto}>
                   Guardar Gastos
+                </Button>
+              </div>
+              <div className="relative w-full mb-6 group">
+                <Button
+                  className=" bg-gray-900"
+                  onClick={() => reajustarValoresCaja2(caja.idcaja)}
+                >
+                  Reajustar Caja
                 </Button>
               </div>
               <div className="relative w-full mb-6 group">

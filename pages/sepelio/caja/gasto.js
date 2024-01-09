@@ -9,7 +9,7 @@ import useSWR from "swr";
 import { confirmAlert } from "react-confirm-alert";
 import moment from "moment";
 import { registrarHistoria } from "@/libs/funciones";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import jsCookie from "js-cookie";
 import { FormCargaGasto } from "@/components/sepelio/caja/FormCargaGasto";
 
@@ -173,7 +173,6 @@ export default function Gasto() {
           },
         })
         .then((res) => {
-          console.log(res.data);
           if (res.status === 200) {
             guardarGastosCaja(res.data);
           }
@@ -427,6 +426,181 @@ export default function Gasto() {
     });
   };
 
+  const eliminarGastosRegistrados = async (id, fn, caja) => {
+    fn();
+
+    await confirmAlert({
+      title: "ATENCION",
+      message:
+        "¿Estas seguro que quieres eliminar el gasto registrado de esta caja?",
+      buttons: [
+        {
+          label: "Si",
+          onClick: () => {
+            axios
+              .delete(`/api/sepelio/caja`, {
+                params: {
+                  f: "eliminar gastos reg",
+                  idgastos: id,
+                },
+              })
+              .then((res) => {
+                if (res.status === 200) {
+                  fn();
+
+                  toast.success(
+                    "Se elimino el gasto correctamente, los valores de cara se reajustaran automaticamente"
+                  );
+
+                  setTimeout(() => {
+                    reajustarValoresCaja(caja);
+                  }, 500);
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error("Ocurrio un error al eliminar el gasto");
+              });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            fn();
+
+            toast.info("Accion cancelada. El gasto no fue eliminado");
+          },
+        },
+      ],
+    });
+  };
+
+  const reajustarValoresCaja = async (idcaja) => {
+    await axios
+      .get(`/api/sepelio/caja`, {
+        params: {
+          f: "total gastos",
+          idcaja: idcaja,
+        },
+      })
+      .then((res) => {
+        if (res.data) {
+          let re = JSON.parse(res.data);
+
+          let totalGasto = parseFloat(re[0].total.toFixed(2));
+
+          let habilitado = parseFloat(caja.monto);
+
+          let saldo = habilitado - totalGasto;
+
+          let data = {
+            gastos: totalGasto,
+            totalcaja: saldo,
+            idcaja: idcaja,
+            f: "reajustar caja",
+          };
+
+          axios
+            .put(`/api/sepelio/caja`, data)
+            .then((res1) => {
+              if (res1.status === 200) {
+                toast.success("Caja reajustada con exito");
+
+                setTimeout(() => {
+                  Router.reload();
+                }, 1000);
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              toast.error("Ocurrio un error al reajustar la caja");
+            });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al calcular los valores de la caja");
+      });
+  };
+
+  const reajustarValoresCaja2 = async (idcaja) => {
+    await confirmAlert({
+      title: "ATENCION",
+      message: "¿Seguro quieres reajustar los valores de la caja?",
+      buttons: [
+        {
+          label: "Si",
+          onClick: () => {
+            toast.success("Reajustando valores...");
+
+            axios
+              .get(`/api/sepelio/caja`, {
+                params: {
+                  f: "total gastos",
+                  idcaja: idcaja,
+                },
+              })
+              .then((res) => {
+                if (res.data) {
+                  let re = JSON.parse(res.data);
+
+                  let totalGasto = parseFloat(re[0].total.toFixed(2));
+
+                  let habilitado = parseFloat(caja.monto);
+
+                  let saldo = habilitado - totalGasto;
+
+                  let data = {
+                    gastos: totalGasto,
+                    totalcaja: saldo,
+                    idcaja: idcaja,
+                    f: "reajustar caja",
+                  };
+
+                  axios
+                    .put(`/api/sepelio/caja`, data)
+                    .then((res1) => {
+                      if (res1.status === 200) {
+                        toast.success("Caja reajustada con exito");
+
+                        setTimeout(() => {
+                          Router.reload();
+                        }, 1500);
+                      }
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                      toast.error("Ocurrio un error al reajustar la caja");
+                    });
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error(
+                  "Ocurrio un error al calcular los valores de la caja"
+                );
+              });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            toast.info("No se registro ningun gasto precargado");
+          },
+        },
+      ],
+    });
+  };
+  const calTotalGastos = (arr) => {
+    let total = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      total += arr[i].total;
+    }
+
+    return total.toFixed(2);
+  };
+
   useSWR("/api/sepelio/caja", traerCaja);
 
   if (isLoading === true) return <Skeleton />;
@@ -465,6 +639,9 @@ export default function Gasto() {
             cerrarCaja={cerrarCaja}
             errores={errores}
             alertas={alertas}
+            eliminarGastosRegistrados={eliminarGastosRegistrados}
+            calTotalGastos={calTotalGastos}
+            reajustarValoresCaja2={reajustarValoresCaja2}
           />
         </>
       )}
