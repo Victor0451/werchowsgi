@@ -531,7 +531,7 @@ export default function Gasto() {
         {
           label: "Si",
           onClick: () => {
-            toast.success("Reajustando valores...");
+            toast.info("Reajustando valores...");
 
             axios
               .get(`/api/sepelio/caja`, {

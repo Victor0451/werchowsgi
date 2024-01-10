@@ -4,7 +4,7 @@ import { FileUploader } from "react-drag-drop-files";
 import { Alert } from "@material-tailwind/react";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 
-const fileTypes = ["JPG", "PNG", "GIF"];
+const fileTypes = ["JPG", "JPEG", "PNG", "GIF", "PDF", "DOCX", "XLS", "XLSX"];
 
 export const FormSubirArchivos = ({ file, handleUpload }) => {
   return (
@@ -31,7 +31,8 @@ export const FormSubirArchivos = ({ file, handleUpload }) => {
         icon={<InformationCircleIcon strokeWidth={2} className="h-6 w-6" />}
         className="mt-6"
       >
-        Solo se permiten imagenes en JPG, PNG y GIF.
+        Se pueden subir archivos con formato "JPG", "JPEG", "PNG", "GIF", "PDF",
+        "DOCX", "XLS", "XLSX". PERO TATEN DE PRIORIZAR LAS IMAGENES.
       </Alert>
     </div>
   );
