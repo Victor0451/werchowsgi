@@ -399,7 +399,7 @@ export default function nuevoservicio() {
       guardarErrores("Debes seleccionar el ataud del difunto");
     } else {
       if (!servicio.idparcela) {
-        servicio.idataud = 0;
+        servicio.idparcela = 0;
       }
 
       if (ficha[0]) {
@@ -431,7 +431,7 @@ export default function nuevoservicio() {
             }
 
             setTimeout(() => {
-              Router.push("/sepelio/servicios/nuevoservicio");
+              Router.push("/sepelio/servicios/listadoservicio");
             }, 500);
           }
         })
