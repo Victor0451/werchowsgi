@@ -6,7 +6,12 @@ export default async function sendMail(req, res) {
   const mailData = {
     from: "werchowsgi@gmail.com",
     to: `vmlongo@werchow.com`,
-    //  cc: ["otero464@gmail.com", "grhumanos45@yahoo.com.ar", "santiagoiriarte@werchow.com", "contadoramoreno@werchow.com"],
+    cc: [
+      "otero464@gmail.com",
+      "grhumanos45@yahoo.com.ar",
+      "santiagoiriarte@werchow.com",
+      "contadoraevamoreno@hotmail.com",
+    ],
     subject: `Notificacion Tarea Registrada - WERCHOW SGI`,
     text: `descripcion: ${req.body.title}, inicia: ${req.body.start}, termina:${req.body.end}, prioridad: ${req.body.priority}, expediente: ${req.body.expediente}`,
     html: `

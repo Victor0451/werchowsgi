@@ -9,6 +9,7 @@ import { Skeleton } from "@/components/Layouts/Skeleton";
 import { Home } from "@/components/home/Home";
 import { toast } from "react-toastify";
 import useSWR from "swr";
+import moment from "moment";
 
 export default function Index() {
   let usuarioRef = React.createRef();
@@ -168,6 +169,57 @@ export default function Index() {
       .catch((error) => {
         console.log(error);
         toast.error("Ocurrio un error al traer las noticias");
+      });
+
+    prestamosPendientes(usu.perfil);
+  };
+
+  const mandarMail = (array) => {
+    fetch("/api/mail/sgi/prestamos", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(array),
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          jsCookie.set("env", true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const parImpar = (arr, per) => {
+    let numero = moment().format("DD");
+    let f = jsCookie.get("env");
+
+    if (per === 1 || per === 3) {
+      if (!f || f === "false") {
+        if (numero % 2 === 0 && arr.length > 0) {
+          mandarMail(arr);
+        }
+      }
+    }
+  };
+
+  const prestamosPendientes = async (per) => {
+    await axios
+      .get("/api/prestamos", {
+        params: {
+          f: "list prest pendientes",
+        },
+      })
+      .then((res) => {
+        if (res.data.length !== 0) {
+          parImpar(res.data, per);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 

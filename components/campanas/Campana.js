@@ -12,7 +12,7 @@ import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 export const Campana = ({ titulo, camp, empresa, operador }) => {
   return (
-    <Card className="mt-6  ">
+    <Card className="mt-6  ml-2">
       <CardBody>
         <ListBulletIcon className="text-blue-500 w-12 h-12 mb-4" />
         <Typography variant="h5" color="blue-gray" className="mb-2">
