@@ -67,6 +67,7 @@ export const FormNuevoServicio = ({
   adhSel,
   gl,
 }) => {
+  console.log(adhs.length);
   return (
     <Card className="h-full w-full p-4 ">
       <CardBody className="rounded-none">
@@ -252,59 +253,6 @@ export const FormNuevoServicio = ({
               </div>
 
               <hr className="border-2 mt-5 mb-5" />
-              {adhs.length > 0 ? (
-                <>
-                  <div className="border-2 rounded-xl mt-6 p-4">
-                    <Typography
-                      variant="h5"
-                      color="blue-gray"
-                      className="mt-6 mb-6"
-                    >
-                      Selecciona el nuevo titular:
-                    </Typography>
-
-                    <div className="grid md:grid-cols-4 md:gap-4">
-                      <div className="relative w-full mb-6 group">
-                        <Input
-                          size="md"
-                          label="Adherente"
-                          type="text"
-                          value={adhSel.adh}
-                          readOnly
-                        />
-                      </div>
-
-                      <div className="relative w-full mb-6 group">
-                        <Input
-                          size="md"
-                          label="DNI"
-                          type="text"
-                          value={adhSel.dni_nuevotitular}
-                          readOnly
-                        />
-                      </div>
-
-                      <div className="relative w-full mb-6 group">
-                        <ModalAdhs listado={adhs} usu={usu} regAdh={regAdh} />
-                      </div>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <Alert
-                  color="blue"
-                  icon={
-                    <InformationCircleIcon
-                      strokeWidth={2}
-                      className="h-6 w-6"
-                    />
-                  }
-                >
-                  <strong>No es necesario seleccionar nuevo titular.</strong>
-                </Alert>
-              )}
-
-              <hr className="border-2 mt-5 mb-5" />
 
               <div className="border-2 rounded-xl mt-6 p-4">
                 <Typography
@@ -442,6 +390,59 @@ export const FormNuevoServicio = ({
                   </div>
                 </div>
               </div>
+
+              <hr className="border-2 mt-5 mb-5" />
+              {adhs.length > 0 ? (
+                <>
+                  <div className="border-2 rounded-xl mt-6 p-4">
+                    <Typography
+                      variant="h5"
+                      color="blue-gray"
+                      className="mt-6 mb-6"
+                    >
+                      Selecciona el nuevo titular:
+                    </Typography>
+
+                    <div className="grid md:grid-cols-4 md:gap-4">
+                      <div className="relative w-full mb-6 group">
+                        <Input
+                          size="md"
+                          label="Adherente"
+                          type="text"
+                          value={adhSel.adh}
+                          readOnly
+                        />
+                      </div>
+
+                      <div className="relative w-full mb-6 group">
+                        <Input
+                          size="md"
+                          label="DNI"
+                          type="text"
+                          value={adhSel.dni_nuevotitular}
+                          readOnly
+                        />
+                      </div>
+
+                      <div className="relative w-full mb-6 group">
+                        <ModalAdhs listado={adhs} usu={usu} regAdh={regAdh} />
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <Alert
+                  color="blue"
+                  icon={
+                    <InformationCircleIcon
+                      strokeWidth={2}
+                      className="h-6 w-6"
+                    />
+                  }
+                >
+                  <strong>No es necesario seleccionar nuevo titular.</strong>
+                </Alert>
+              )}
 
               <hr className="border-2 mt-5 mb-5" />
 

@@ -32,7 +32,7 @@ export const FormSubirArchivos = ({ file, handleUpload }) => {
         className="mt-6"
       >
         Se pueden subir archivos con formato "JPG", "JPEG", "PNG", "GIF", "PDF",
-        "DOCX", "XLS", "XLSX". PERO TATEN DE PRIORIZAR LAS IMAGENES.
+        "DOCX", "XLS", "XLSX". PERO TRATEN DE PRIORIZAR LAS IMAGENES.
       </Alert>
     </div>
   );

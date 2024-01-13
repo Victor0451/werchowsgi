@@ -88,7 +88,7 @@ const FormAuditoria = ({
             <div className="border-2 p-2 rounded-xl ">
               {estO === 0 ? (
                 <Typography variant="h6" className=" text-center mt-5 mb-5">
-                  Usos Otero: Todas las ordenes estan punteadas
+                  Usos Sist. Web: Todas las ordenes estan punteadas
                 </Typography>
               ) : estO === 1 ? (
                 <div className="mt-5 mb-5 flex justify-center">
@@ -97,7 +97,7 @@ const FormAuditoria = ({
               ) : estO === 2 ? (
                 <>
                   <Typography variant="h6" className="mb-5">
-                    Usos Otero: {lisOtero.length}
+                    Usos Sist. Web: {lisOtero.length}
                   </Typography>
                   <ListadoOrdenesSinPuntear listado={lisOtero} />
                 </>

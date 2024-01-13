@@ -134,7 +134,7 @@ function auditoriaorden(props) {
     if (lisOtero.length > 0) {
       data.Ot = true;
     } else {
-      toast.warning("Sistema Otero no tiene usos para repuntear");
+      toast.warning("Sistema Web no tiene usos para repuntear");
     }
 
     if (lisFabian.length > 0) {

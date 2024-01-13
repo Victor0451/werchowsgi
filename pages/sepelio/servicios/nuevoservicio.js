@@ -64,9 +64,11 @@ export default function nuevoservicio() {
         },
       })
       .then((res) => {
-        if (res.data.length > 0) {
-          guardarAdhs(JSON.parse(res.data));
-        } else if (res.data.length === 0) {
+        let re = JSON.parse(res.data);
+
+        if (re.length > 0) {
+          guardarAdhs(re);
+        } else if (re.length === 0) {
           toast.info("El socio no posee adherentes");
         }
       })
@@ -114,7 +116,7 @@ export default function nuevoservicio() {
                   guardarFicha(ficha);
                   guardarShow(true);
 
-                  traerAdhs("mae adh", ficha[0].CONTRATO);
+                  traerAdhs("adh", ficha[0].CONTRATO);
                 } else if (re.length === 0) {
                   axios
                     .get("/api/socios", {
@@ -145,7 +147,7 @@ export default function nuevoservicio() {
                               guardarFicha(ficha);
                               guardarShow(true);
 
-                              traerAdhs("mut adh", ficha[0].CONTRATO);
+                              traerAdhs("mutual adh", ficha[0].CONTRATO);
                             } else if (re.length === 0) {
                               axios
                                 .get("/api/socios", {
