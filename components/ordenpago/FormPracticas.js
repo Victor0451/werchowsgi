@@ -12,26 +12,15 @@ import {
   IconButton,
   Textarea,
 } from "@material-tailwind/react";
-import {
-  CheckCircleIcon,
-  InformationCircleIcon,
-} from "@heroicons/react/24/solid";
 import moment from "moment";
 import Router from "next/router";
-import ListadoOrdenes from "./ListadoOrdenes";
 import Select from "react-select";
 
 function FormPracticas({
-  generacionOrden,
   norden,
   medicos,
   buscarOrdenes,
   handleChange,
-  listado,
-  listadoCheck,
-  checkOrden,
-  deleteCheckOrden,
-  totales,
   cuitPracRef,
   fechaPagPracRef,
 }) {
@@ -119,66 +108,6 @@ function FormPracticas({
             Canelar
           </Button>
         </div>
-
-        {listado.length > 0 ? (
-          <>
-            <div className="p-4 border-2 rounded-xl  mt-10 grid md:grid-cols-1 md:gap-6">
-              <div className="relative w-full mb-6 group">
-                <Typography variant="h5" color="blue-gray">
-                  Ordenes Sin Liquidar
-                </Typography>
-                <Typography color="gray" className="mt-1 font-normal">
-                  <u>Ordenes</u>: {listado.length}
-                </Typography>
-                <Typography color="gray" className="mt-1 font-normal">
-                  <u>Importe</u>: ${totales(listado)}
-                </Typography>
-                <ListadoOrdenes
-                  listado={listado}
-                  f={"List"}
-                  checkOrden={checkOrden}
-                />
-              </div>
-            </div>
-
-            <hr className="border-2 mt-5 mb-5" />
-
-            <div className="p-4 border-2 rounded-xl  grid md:grid-cols-1 md:gap-6">
-              <div className="relative w-full mb-6 group">
-                <Typography variant="h5" color="blue-gray">
-                  Ordenes Seleccionadas
-                </Typography>
-                <Typography color="gray" className="mt-1 font-normal">
-                  <u>Ordenes</u>: {listadoCheck.length}
-                </Typography>
-                <Typography color="gray" className="mt-1 font-normal">
-                  <u>Importe</u>: ${totales(listadoCheck)}
-                </Typography>
-                <ListadoOrdenes
-                  listado={listadoCheck}
-                  f={"Check"}
-                  deleteCheckOrden={deleteCheckOrden}
-                />
-              </div>
-            </div>
-
-            <div className="flex justify-end mt-6">
-              <Button onClick={() => generacionOrden("P")}>
-                Generar Orden
-              </Button>
-
-              <Button
-                className="ml-1"
-                color="red"
-                onClick={() => {
-                  Router.reload();
-                }}
-              >
-                Cancelar
-              </Button>
-            </div>
-          </>
-        ) : null}
       </CardBody>
     </Card>
   );

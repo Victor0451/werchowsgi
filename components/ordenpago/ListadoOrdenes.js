@@ -3,8 +3,19 @@ import DataTable from "react-data-table-component";
 import FilterComponent from "../Layouts/FilterComponent";
 import { ArrowLeftCircleIcon, TrashIcon } from "@heroicons/react/24/solid";
 import moment from "moment";
+import ModalModifImp from "./ModalModifImp";
 
-const ListadoOrdenes = ({ listado, checkOrden, deleteCheckOrden, f }) => {
+const ListadoOrdenes = ({
+  listado,
+  checkOrden,
+  deleteCheckOrden,
+  f,
+  updateImporte,
+  nuImpor,
+  alertas,
+  errores,
+  exito
+}) => {
   let columns = [
     {
       name: "Sucursal",
@@ -33,39 +44,39 @@ const ListadoOrdenes = ({ listado, checkOrden, deleteCheckOrden, f }) => {
       name: "Fecha",
       selector: (row) => `${moment(row.FECHA).format("DD/MM/YYYY")}`,
       sortable: true,
-      grow: 0.1,
+      width: "110px",
     },
 
     {
       name: "Contrato",
       selector: (row) => `${row.CONTRATO}`,
       sortable: true,
-      grow: 0.1,
+      width: "110px",
     },
 
     {
       name: "DNI",
       selector: (row) => `${row.NRO_DOC}`,
       sortable: true,
-      grow: 0.1,
+      width: "110px",
     },
     {
       name: "Servicio",
       selector: (row) => `${row.SERVICIO}`,
       sortable: true,
-      grow: 0.1,
+      width: "110px",
     },
     {
       name: "N° Orden",
       selector: (row) => `${row.ORDEN}`,
       sortable: true,
-      grow: 0.2,
+      width: "110px",
     },
     {
       name: "Importe",
       selector: (row) => `$${row.IMP_LIQ}`,
       sortable: true,
-      grow: 0.1,
+      width: "110px",
     },
 
     {
@@ -75,11 +86,21 @@ const ListadoOrdenes = ({ listado, checkOrden, deleteCheckOrden, f }) => {
       cell: (row, index) => (
         <>
           {f === "List" ? (
-            <ArrowLeftCircleIcon
-              color="green"
-              className="butlist mt-px h-6 w-6"
-              onClick={() => checkOrden(row)}
-            />
+            <>
+              <ArrowLeftCircleIcon
+                color="green"
+                className="butlist mt-px h-6 w-6"
+                onClick={() => checkOrden(row)}
+              />
+              <ModalModifImp
+                row={row}
+                nuImpor={nuImpor}
+                updateImporte={updateImporte}
+                alertas={alertas}
+                errores={errores}
+                exito={exito}
+              />
+            </>
           ) : f === "Check" ? (
             <TrashIcon
               color="red"

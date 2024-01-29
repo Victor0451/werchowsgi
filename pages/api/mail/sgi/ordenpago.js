@@ -10,7 +10,7 @@ export default async function sendMail(req, res) {
       "otero464@gmail.com",
       "grhumanos45@yahoo.com.ar",
       "santiagoiriarte@werchow.com",
-      "contadoraevamoreno@hotmail.com",
+      "contadoramoreno@werchow.com",
     ],
     subject: `Notificacion Nueva Orden de Pago N° ${req.body.norden}- WERCHOW SGI`,
     html: `

@@ -22,6 +22,7 @@ import FormContable from "./FormContable";
 import FormOrdenes from "./FormOrdenes";
 import FormPracticas from "./FormPracticas";
 import { IconSolid } from "../../libs/funciones";
+import ListadoOrdenes from "./ListadoOrdenes";
 
 const FormOrdenPago = ({
   vistas,
@@ -50,6 +51,11 @@ const FormOrdenPago = ({
   fechaPagPracRef,
   guardarListado,
   guardarListadoCheck,
+  nuImpor,
+  updateImporte,
+  alertas,
+  errores,
+  exito,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -100,34 +106,85 @@ const FormOrdenPago = ({
           />
         ) : ordenes === true ? (
           <FormOrdenes
-            generacionOrden={generacionOrden}
             norden={norden}
             medicos={medicos}
             cuitRef={cuitRef}
             fechaPagRef={fechaPagRef}
             buscarOrdenes={buscarOrdenes}
             handleChange={handleChange}
-            listado={listado}
-            listadoCheck={listadoCheck}
-            checkOrden={checkOrden}
-            deleteCheckOrden={deleteCheckOrden}
-            totales={totales}
           />
         ) : practicas === true ? (
           <FormPracticas
-            generacionOrden={generacionOrden}
             norden={norden}
             medicos={medicos}
             buscarOrdenes={buscarOrdenes}
             handleChange={handleChange}
-            listado={listado}
-            listadoCheck={listadoCheck}
-            checkOrden={checkOrden}
-            deleteCheckOrden={deleteCheckOrden}
-            totales={totales}
             cuitPracRef={cuitPracRef}
             fechaPagPracRef={fechaPagPracRef}
           />
+        ) : null}
+
+        {listado.length > 0 ? (
+          <Card className="h-full w-full p-4 mt-5 border-2 ">
+            <CardBody className="rounded-none">
+              <div className="border-2 rounded-xl p-4">
+                <Typography variant="h5" color="blue-gray">
+                  Ordenes Sin Liquidar
+                </Typography>
+                <Typography color="gray" className="mt-1 font-normal">
+                  <u>Ordenes</u>: {listado.length}
+                </Typography>
+                <Typography color="gray" className="mt-1 font-normal">
+                  <u>Importe</u>: ${totales(listado)}
+                </Typography>
+                <ListadoOrdenes
+                  listado={listado}
+                  f={"List"}
+                  checkOrden={checkOrden}
+                  nuImpor={nuImpor}
+                  updateImporte={updateImporte}
+                  alertas={alertas}
+                  errores={errores}
+                  exito={exito}
+                />
+              </div>
+
+              <hr className="border-2 mt-5 mb-5" />
+
+              <div className="border-2 rounded-xl p-4">
+                <Typography variant="h5" color="blue-gray">
+                  Ordenes Seleccionadas
+                </Typography>
+                <Typography color="gray" className="mt-1 font-normal">
+                  <u>Ordenes</u>: {listadoCheck.length}
+                </Typography>
+                <Typography color="gray" className="mt-1 font-normal">
+                  <u>Importe</u>: ${totales(listadoCheck)}
+                </Typography>
+                <ListadoOrdenes
+                  listado={listadoCheck}
+                  f={"Check"}
+                  deleteCheckOrden={deleteCheckOrden}
+                />
+              </div>
+
+              <div className="flex justify-end mt-6">
+                <Button onClick={() => generacionOrden("O")}>
+                  Generar Orden
+                </Button>
+
+                <Button
+                  className="ml-1"
+                  color="red"
+                  onClick={() => {
+                    Router.reload();
+                  }}
+                >
+                  Cancelar
+                </Button>
+              </div>
+            </CardBody>
+          </Card>
         ) : null}
       </CardBody>
     </Card>

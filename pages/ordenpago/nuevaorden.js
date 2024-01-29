@@ -24,6 +24,7 @@ function NuevaOrden(props) {
   let provContRef = React.createRef();
   let nfacturaContRef = React.createRef();
   let totalContRef = React.createRef();
+  let nuImpor = React.createRef();
 
   const [norden, guardarNOrden] = useState(null);
   const [medicos, guardarMedicos] = useState([]);
@@ -40,6 +41,9 @@ function NuevaOrden(props) {
   const [observConsulSel, guardarObservConsulSel] = useState("");
   const [observPractSel, guardarObservPracSel] = useState("");
   const [medicoSel, guardarMedicoSel] = useState("");
+  const [exito, guardarExito] = useState(null);
+  const [alertas, guardarAlertas] = useState(null);
+  const [errores, guardarErrores] = useState(null);
 
   const { usu } = useWerchow();
 
@@ -495,6 +499,52 @@ function NuevaOrden(props) {
       });
   };
 
+  const updateImporte = async (iduso, orden, serv, impVie) => {
+    guardarAlertas(null);
+    guardarErrores(null);
+    guardarExito(null);
+
+    let imp = nuImpor.current.value;
+
+    if (imp === "") {
+      toast.info("Debes ingresar un nuevo importe");
+      guardarAlertas("Debes ingresar un nuevo importe");
+    } else {
+      let sis = orden.substr(1, 1);
+
+      const data = {
+        importe: imp,
+        iduso: iduso,
+        sis: sis,
+        f: "modificar importe orden",
+      };
+
+      await axios
+        .put(`/api/ordenpago`, data)
+        .then((res) => {
+          if (res.status === 200) {
+            toast.success("El importe de la orden fue modificado con exito");
+            guardarExito("El importe de la orden fue modificado con exito");
+
+            if (serv === "ORDE") {
+              buscarOrdenes("C");
+            } else {
+              buscarOrdenes("P");
+            }
+
+            let accion = `Se modifico el importe de la orden medica N°: ${orden}. Importe Anterior: $${impVie}, nuevo Importe: $${imp}.`;
+
+            registrarHistoria(accion, usu.usuario);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al modificar el importe");
+          guardarErrores("Ocurrio un error al modificar el importe");
+        });
+    }
+  };
+
   useSWR("/api/ordenpago", traerDatos);
 
   if (isLoading === true) return <Skeleton />;
@@ -533,6 +583,11 @@ function NuevaOrden(props) {
             fechaPagPracRef={fechaPagPracRef}
             guardarListado={guardarListado}
             guardarListadoCheck={guardarListadoCheck}
+            nuImpor={nuImpor}
+            updateImporte={updateImporte}
+            alertas={alertas}
+            errores={errores}
+            exito={exito}
           />
         </>
       )}

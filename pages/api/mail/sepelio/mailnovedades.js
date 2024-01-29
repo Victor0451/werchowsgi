@@ -10,7 +10,7 @@ export default async function sendMail(req, res) {
       "otero464@gmail.com",
       "grhumanos45@yahoo.com.ar",
       "santiagoiriarte@werchow.com",
-      "contadoraevamoreno@hotmail.com",
+      "contadoramoreno@werchow.com",
     ],
     subject: `Notificacion Novedades de Autos - WERCHOW SGI`,
     text: `novedad: ${req.body.novedad}, patente: ${req.body.patente}, operador:${req.body.operador}, fecha: ${req.body.fecha}`,

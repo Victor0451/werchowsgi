@@ -429,6 +429,28 @@ export default async function handler(req, res) {
         `;
 
       res.status(200).json(actTotOrdePag);
+    } else if (req.body.f && req.body.f === "modificar importe orden") {
+      if (req.body.sis === "-") {
+        const modImp = await Serv.USOS.update({
+          data: {
+            IMP_LIQ: parseFloat(req.body.importe),
+          },
+          where: {
+            iduso: parseInt(req.body.iduso),
+          },
+        });
+        res.status(200).json(modImp);
+      } else {
+        const modImp = await Serv.USOSFA.update({
+          data: {
+            IMP_LIQ: req.body.importe,
+          },
+          where: {
+            iduso: parseInt(req.body.iduso),
+          },
+        });
+        res.status(200).json(modImp);
+      }
     }
   }
   if (req.method === "DELETE") {

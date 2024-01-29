@@ -380,12 +380,6 @@ function auditoriaorden(props) {
   };
 
   const eliminarDuplicado = async (row) => {
-    const data = {
-      f: "eliminar duplicado",
-      iduso: row.iduso,
-      sis: sis,
-    };
-
     await confirmAlert({
       title: "ATENCION",
       message: "¿Seguro quieres eliminar el uso duplicado?",

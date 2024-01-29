@@ -50,6 +50,7 @@ const Menu = ({
         ],
       });
     } else if (listadoCheck.length === 0) {
+      guardarListado([]);
       openDrawer();
     }
   };
