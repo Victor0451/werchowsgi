@@ -126,6 +126,8 @@ function NuevaOrden(props) {
   };
 
   const buscarOrdenes = async (f) => {
+    guardarTipoOrd(f);
+
     if (medicoSel === "") {
       toast.error(
         "Debes selecionar a un prestador para buscar el listado de consultas"
@@ -138,12 +140,10 @@ function NuevaOrden(props) {
       let resto = [];
       let todo = [];
 
-      guardarTipoOrd(f);
-
       guardarNomPrest(prestado);
       guardarCodPres(codigo);
 
-      if (f === "C") {
+      if (f === "O") {
         await axios
           .get(`/api/medicos`, {
             params: {

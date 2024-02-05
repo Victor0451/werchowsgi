@@ -91,7 +91,7 @@ function FormOrdenes({
         </div>
 
         <div className="flex justify-end mt-6">
-          <Button onClick={() => buscarOrdenes("C")}>Buscar Consultas</Button>
+          <Button onClick={() => buscarOrdenes("O")}>Buscar Consultas</Button>
 
           <Button
             className="ml-1"
