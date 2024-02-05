@@ -44,6 +44,7 @@ function NuevaOrden(props) {
   const [exito, guardarExito] = useState(null);
   const [alertas, guardarAlertas] = useState(null);
   const [errores, guardarErrores] = useState(null);
+  const [tipOrd, guardarTipoOrd] = useState(null);
 
   const { usu } = useWerchow();
 
@@ -136,6 +137,8 @@ function NuevaOrden(props) {
       let otero = [];
       let resto = [];
       let todo = [];
+
+      guardarTipoOrd(f);
 
       guardarNomPrest(prestado);
       guardarCodPres(codigo);
@@ -588,6 +591,7 @@ function NuevaOrden(props) {
             alertas={alertas}
             errores={errores}
             exito={exito}
+            tipOrd={tipOrd}
           />
         </>
       )}

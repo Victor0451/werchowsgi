@@ -56,6 +56,7 @@ const FormOrdenPago = ({
   alertas,
   errores,
   exito,
+  tipOrd,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -169,7 +170,7 @@ const FormOrdenPago = ({
               </div>
 
               <div className="flex justify-end mt-6">
-                <Button onClick={() => generacionOrden("O")}>
+                <Button onClick={() => generacionOrden(tipOrd)}>
                   Generar Orden
                 </Button>
 
