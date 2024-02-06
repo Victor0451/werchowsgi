@@ -80,8 +80,6 @@ export default function Index() {
       .then((res1) => {
         if (res1.data.length > 0) {
           guardarGestion(res1.data);
-        } else {
-          guardarAlertas("Este caso no posee gestiones registradas");
         }
       })
       .catch((error) => {
@@ -111,10 +109,6 @@ export default function Index() {
               guardarCaso(res.data);
 
               buscarGestion(res.data[0].idcaso, res.data[0].contrato);
-            } else {
-              guardarAlertas(
-                "El caso buscado no pertenece a una campaña activa"
-              );
             }
           })
           .catch((error) => {
@@ -139,10 +133,6 @@ export default function Index() {
               guardarCaso(res.data);
 
               buscarGestion(res.data[0].idcaso, res.data[0].contrato);
-            } else {
-              guardarAlertas(
-                "El caso buscado no pertenece a una campaña activa"
-              );
             }
           })
           .catch((error) => {

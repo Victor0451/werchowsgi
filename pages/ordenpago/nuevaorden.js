@@ -530,7 +530,7 @@ function NuevaOrden(props) {
             guardarExito("El importe de la orden fue modificado con exito");
 
             if (serv === "ORDE") {
-              buscarOrdenes("C");
+              buscarOrdenes("O");
             } else {
               buscarOrdenes("P");
             }

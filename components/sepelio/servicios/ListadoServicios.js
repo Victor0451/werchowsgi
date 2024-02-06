@@ -77,39 +77,23 @@ const ListadoServicios = ({
       grow: 0.1,
       cell: (row, index) => (
         <>
-          {usu.perfil === 1 || usu.perfil === 3 || usu.perfil === 4 ? (
-            <>
-              {row.estado === true ? (
-                <>
-                  <Link
-                    href={{
-                      pathname: "/sepelio/servicios/legajo",
-                      query: { idservicio: row.idservicio },
-                    }}
-                  >
-                    <FolderIcon
-                      color="orange"
-                      className="butlist mt-px h-6 w-6"
-                    />
-                  </Link>
+          <Link
+            href={{
+              pathname: "/sepelio/servicios/legajo",
+              query: { idservicio: row.idservicio },
+            }}
+          >
+            <FolderIcon color="orange" className="butlist mt-px h-6 w-6" />
+          </Link>
 
-                  <Link
-                    href={{
-                      pathname: "/sepelio/servicios/imprimir",
-                      query: { idservicio: row.idservicio },
-                    }}
-                  >
-                    <PrinterIcon
-                      color="black"
-                      className="butlist mt-px h-6 w-6"
-                    />
-                  </Link>
-                </>
-              ) : row.estado === false ? (
-                <>Vehiculo dado de baja, sin acciones</>
-              ) : null}
-            </>
-          ) : null}
+          <Link
+            href={{
+              pathname: "/sepelio/servicios/imprimir",
+              query: { idservicio: row.idservicio },
+            }}
+          >
+            <PrinterIcon color="black" className="butlist mt-px h-6 w-6" />
+          </Link>
         </>
       ),
     },

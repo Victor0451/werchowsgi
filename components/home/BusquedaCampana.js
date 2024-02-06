@@ -26,23 +26,23 @@ const BusquedaCampana = ({
   return (
     <Card className="h-full w-full">
       <CardBody floated={"false"} shadow={"false"} className="rounded-xl">
-        <Typography variant="h5" color="blue-gray" className="mb-6">
-          Busqueda en Campañas
-        </Typography>
         <div className="p-4 border-2 rounded-lg ">
-          <div className="grid md:grid-cols-4 md:gap-6 mt-6">
-            <div className="relative w-full mb-6 group">
+          <Typography variant="h5" color="blue-gray" className="mb-6">
+            Busqueda en Campañas
+          </Typography>
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
               <Input label="Contrato " inputRef={contratoRef} />
             </div>
-            <div className="relative w-full mb-6 group">
+            <div className="w-full md:w-1/6 px-3 mt-6 mb-6 md:mb-0">
               <Button className="" onClick={() => buscarCaso("HC")}>
                 Buscar
               </Button>
             </div>
-            <div className="relative w-full mb-6 group">
+            <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
               <Input label="DNI " inputRef={dniRef} />
             </div>
-            <div className="relative w-full mb-6 group">
+            <div className="w-full md:w-1/6 px-3 mt-6 mb-6 md:mb-0">
               <Button className="" onClick={() => buscarCaso("DNI")}>
                 Buscar
               </Button>
@@ -73,9 +73,16 @@ const BusquedaCampana = ({
         </div>
 
         {caso.length > 0 ? (
-          <div className="mt-5">
-            <InfoCaso caso={caso} gestion={gestion} />
-          </div>
+          <>
+            <hr className="mt-5 mb-5 border-2" />
+            <div className="mt-5 border-2 rounded-lg p-4">
+              <Typography variant="h5" color="blue-gray" className="mb-6">
+                Gestiones realizadas
+              </Typography>
+
+              <InfoCaso caso={caso} gestion={gestion} />
+            </div>
+          </>
         ) : null}
       </CardBody>
     </Card>
