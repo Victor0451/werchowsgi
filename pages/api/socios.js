@@ -1,4 +1,4 @@
-import { Werchow, SGI, Camp, Sep, Serv } from "../../libs/config";
+import { Werchow, SGI, Camp, Sep, Serv, Arch } from "../../libs/config";
 import moment from "moment";
 //import { PrismaClient as WerchowSepClient } from '../../../prisma/generated/werchowsep'
 
@@ -1153,16 +1153,25 @@ export default async function handler(req, res) {
       });
       res.status(200).json(nFicha);
     } else if (req.query.f && req.query.f === "traer historial") {
-      const historia = await Werchow.historia.findMany({
-        where: {
-          CONTRATO: parseInt(req.query.contrato),
-        },
-        orderBy: {
-          idhistoria: "desc",
-        },
-      });
+      const histCuota = await Werchow.$queryRaw`
+         
+      SELECT
+            *
+      FROM
+         historia
+      WHERE 
+         CONTRATO = ${parseInt(req.query.contrato)}                
 
-      res.status(200).json(historia);
+      ORDER BY idhistoria DESC
+        `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(histCuota, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     } else if (req.query.f && req.query.f === "traer cuota mensual") {
       const cuotaMensual = await Werchow.cuo_fija.findMany({
         where: {
@@ -1192,6 +1201,42 @@ export default async function handler(req, res) {
         .status(200)
         .json(
           JSON.stringify(histCuota, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "traer ganadores") {
+      const ganadores = await Arch.$queryRaw`
+         
+            SELECT
+               *
+            FROM
+               historial_ganadores
+                  
+            ORDER BY fecha DESC
+              `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(ganadores, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "traer ganadores becas") {
+      const ganadores = await Arch.$queryRaw`
+         
+            SELECT
+               *
+            FROM
+               historial_ganadores_beca
+                  
+            ORDER BY fecha DESC
+              `;
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(ganadores, (key, value) =>
             typeof value === "bigint" ? value.toString() : value
           )
         );

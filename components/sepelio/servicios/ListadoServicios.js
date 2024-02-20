@@ -66,7 +66,7 @@ const ListadoServicios = ({
     {
       name: "Fecha Fallec.",
       selector: (row) =>
-        `${moment(row.fecha_fallecimiento).format("DD/MM/YYYY")}`,
+        `${moment(row.fecha_fallecimiento).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.1,
     },

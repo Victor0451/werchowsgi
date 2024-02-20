@@ -32,7 +32,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   size="md"
                   label="Fecha Recepcion"
                   type="text"
-                  defaultValue={moment(servicio.fecha_recepcion).format(
+                  defaultValue={moment(servicio.fecha_recepcion).utcOffset("+0300").format(
                     "DD/MM/YYYY"
                   )}
                   readOnly
@@ -114,7 +114,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   size="md"
                   label="Fecha Fallecimiento"
                   type="text"
-                  defaultValue={moment(servicio.fecha_fallecimiento).format(
+                  defaultValue={moment(servicio.fecha_fallecimiento).utcOffset("+0300").format(
                     "DD/MM/YYYY"
                   )}
                   readOnly
@@ -207,7 +207,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   label="Fecha de Inumacion"
                   type="text"
                   readOnly
-                  defaultValue={moment(servicio.fecha_inhumacion).format(
+                  defaultValue={moment(servicio.fecha_inhumacion).utcOffset("+0300").format(
                     "DD/MM/YYYY"
                   )}
                 />

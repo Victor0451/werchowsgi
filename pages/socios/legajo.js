@@ -921,7 +921,10 @@ function Legajo(props) {
       })
       .then((res) => {
         if (res.data) {
-          guardarHistorial(res.data);
+
+          let list = JSON.parse(res.data)
+
+          guardarHistorial(list);
         }
       })
       .catch((error) => {

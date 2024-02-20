@@ -45,7 +45,7 @@ export const FormLegajoServicio = ({
                 size="md"
                 label="Fecha Recepcion"
                 type="text"
-                defaultValue={moment(servicio.fecha_recepcion).format(
+                defaultValue={moment(servicio.fecha_recepcion).utcOffset("+0300").format(
                   "DD/MM/YYYY"
                 )}
                 readOnly
@@ -127,7 +127,7 @@ export const FormLegajoServicio = ({
                 size="md"
                 label="Fecha Fallecimiento"
                 type="text"
-                defaultValue={moment(servicio.fecha_fallecimiento).format(
+                defaultValue={moment(servicio.fecha_fallecimiento).utcOffset("+0300").format(
                   "DD/MM/YYYY"
                 )}
                 readOnly
@@ -280,7 +280,7 @@ export const FormLegajoServicio = ({
                   size="md"
                   label="Fecha"
                   type="text"
-                  defaultValue={moment(parcela.fecha).format("DD/MM/YYYY")}
+                  defaultValue={moment(parcela.fecha).utcOffset("+0300").format("DD/MM/YYYY")}
                   readOnly
                 />
               </div>

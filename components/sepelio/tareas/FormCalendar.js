@@ -127,8 +127,8 @@ const FormCalendar = ({
                 <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
               }
             >
-              Activaste el modo eliminacion, ahora puedes editar la fecha y hora
-              de tus eventos registrados.
+              Activaste el modo eliminacion, ahora puedes eliminar tus eventos
+              registrados.
             </Alert>
 
             <Alert
@@ -138,10 +138,9 @@ const FormCalendar = ({
                 <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
               }
             >
-              Puedes cambiar la fecha y hora del evento simplemente
-              arrastrandolo y/o expandiendolo. Para registrar la modificacion
-              solo deberas hacer click en el evento y se te notificara cuando se
-              haya realizado exitosamente.
+              Puedes eliminar el evento simplemente haciendole click, este
+              desaparecera del calendario y te saldra un cartel de confirmacion
+              de dicha accion.
             </Alert>
           </>
         ) : null}

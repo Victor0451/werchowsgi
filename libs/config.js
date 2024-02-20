@@ -3,12 +3,14 @@ import { PrismaClient as WerchowsClient } from "../prisma/generated/werchow";
 import { PrismaClient as WerchowCampClient } from "../prisma/generated/werchowcamp";
 import { PrismaClient as WerchowSepClient } from "../prisma/generated/werchowsep";
 import { PrismaClient as WerchowServClient } from "../prisma/generated/werchowserv";
+import { PrismaClient as WerchowArchClient } from "../prisma/generated/werchowarch";
 
 let SGI;
 let Werchow;
 let Camp;
 let Sep;
 let Serv;
+let Arch;
 
 //check if we are running in production mode
 if (process.env.NODE_ENV === "production") {
@@ -17,6 +19,7 @@ if (process.env.NODE_ENV === "production") {
   Camp = new WerchowCampClient();
   Sep = new WerchowSepClient();
   Serv = new WerchowServClient();
+  Arch = new WerchowArchClient();
 } else {
   //check if there is already a connection to the database
   if (!global.Werchow) {
@@ -29,6 +32,8 @@ if (process.env.NODE_ENV === "production") {
     global.Sep = new WerchowSepClient();
   } else if (!global.Serv) {
     global.Serv = new WerchowServClient();
+  } else if (!global.Arch) {
+    global.Arch = new WerchowArchClient();
   }
 
   Werchow = global.Werchow;
@@ -36,6 +41,7 @@ if (process.env.NODE_ENV === "production") {
   Camp = global.Camp;
   Sep = global.Sep;
   Serv = global.Serv;
+  Arch = global.Arch;
 }
 
-export { Werchow, SGI, Camp, Sep, Serv };
+export { Werchow, SGI, Camp, Sep, Serv, Arch };
