@@ -11,6 +11,7 @@ import { Administracion } from "./Administracion";
 import { OrdenPago } from "./OrdenPago";
 import { Cobranza } from "./Cobranza";
 import { Gestion } from "./Gestion";
+import { ClubWerchow } from "./ClubWerchow";
 export const NavListItems = ({}) => {
   const { user, isLoading } = useUser();
   let usu = {};
@@ -29,6 +30,7 @@ export const NavListItems = ({}) => {
         {usu.prestamos === true ? <Prestamos /> : null}
         {usu.sepelio === true ? <Sepelio /> : null}
         {usu.socios === true ? <Socios /> : null}
+        {usu.clubwerchow === true ? <ClubWerchow /> : null}
         {usu.ventas === true ? <Ventas /> : null}
         {usu.ordenpago === true ? <OrdenPago /> : null}
       </ul>

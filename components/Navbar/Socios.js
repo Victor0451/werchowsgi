@@ -59,30 +59,6 @@ export const Socios = () => {
             <Menu placement="right-start">
               <MenuHandler>
                 <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
-                  <Typography color="black">Club Werchow</Typography>
-                  <ChevronDownIcon
-                    strokeWidth={2}
-                    className={`h-3 w-3 transition-transform `}
-                  />
-                </MenuItem>
-              </MenuHandler>
-              <MenuList>
-                <Link href={"#"}>
-                  <MenuItem>
-                    <Typography color="black">Realizar Sorteo</Typography>
-                  </MenuItem>
-                </Link>
-
-                <Link href={"/socios/clubwerchow/ganadores"}>
-                  <MenuItem>
-                    <Typography color="black">Listado de Ganadores</Typography>
-                  </MenuItem>
-                </Link>
-              </MenuList>
-            </Menu>
-            <Menu placement="right-start">
-              <MenuHandler>
-                <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
                   <Typography color="black">Solicitudes</Typography>
                   <ChevronDownIcon
                     strokeWidth={2}

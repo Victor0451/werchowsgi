@@ -1204,43 +1204,7 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
-    } else if (req.query.f && req.query.f === "traer ganadores") {
-      const ganadores = await Arch.$queryRaw`
-         
-            SELECT
-               *
-            FROM
-               historial_ganadores
-                  
-            ORDER BY fecha DESC
-              `;
-
-      res
-        .status(200)
-        .json(
-          JSON.stringify(ganadores, (key, value) =>
-            typeof value === "bigint" ? value.toString() : value
-          )
-        );
-    } else if (req.query.f && req.query.f === "traer ganadores becas") {
-      const ganadores = await Arch.$queryRaw`
-         
-            SELECT
-               *
-            FROM
-               historial_ganadores_beca
-                  
-            ORDER BY fecha DESC
-              `;
-
-      res
-        .status(200)
-        .json(
-          JSON.stringify(ganadores, (key, value) =>
-            typeof value === "bigint" ? value.toString() : value
-          )
-        );
-    }
+    } 
   }
   if (req.method === "POST") {
     if (req.body.f && req.body.f === "soli afi") {

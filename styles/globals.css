@@ -60,3 +60,18 @@ body {
 
 }
 
+.ruleta {
+  transform: rotate(720deg);
+  transition: transform 0.5s;
+}
+
+.ruleta:active {
+  transform: rotate(0deg);
+  transition: 0s;
+}
+
+.verticalScroll {
+  height: 500px !important;
+  overflow-y: scroll !important;
+}
+
