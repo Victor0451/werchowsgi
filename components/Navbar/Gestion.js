@@ -69,10 +69,10 @@ export const Gestion = () => {
                 </Link>
               </MenuList>
             </Menu>
-            {/* <Menu placement="right-start">
+            <Menu placement="right-start">
               <MenuHandler>
                 <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
-                  <Typography color="black">Cobranza Cuotas</Typography>
+                  <Typography color="black">Sepelio</Typography>
                   <ChevronDownIcon
                     strokeWidth={2}
                     className={`h-3 w-3 transition-transform `}
@@ -80,18 +80,13 @@ export const Gestion = () => {
                 </MenuItem>
               </MenuHandler>
               <MenuList>
-                <Link href={"/cobranza/werchow/socios"}>
+                <Link href={"sepelio/servicios/informeservicios"}>
                   <MenuItem>
-                    <Typography color="black">Werchow</Typography>
-                  </MenuItem>
-                </Link>
-                <Link href={"/cobranza/mutual/socios"}>
-                  <MenuItem>
-                    <Typography color="black">Mutual</Typography>
+                    <Typography color="black">Informes de Servicio</Typography>
                   </MenuItem>
                 </Link>
               </MenuList>
-            </Menu> */}
+            </Menu>
           </ul>
         </MenuList>
       </Menu>

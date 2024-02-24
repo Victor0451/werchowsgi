@@ -59,7 +59,6 @@ model ataudes {
   operador         String?   @db.VarChar(255)
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model auto_usos {
   FECHA     DateTime? @db.Date
   PATENTE   String?   @db.VarChar(7)
@@ -75,8 +74,6 @@ model auto_usos {
   KILO_SAL  Float?
   KILO_LLE  Float?
   idusos    Int       @id @default(autoincrement())
-
-  @@ignore
 }
 
 model autos {
@@ -130,6 +127,25 @@ model autos_pago_patente {
   operador String? @db.VarChar(255)
 }
 
+model caja_sa {
+  idcaja      Int       @id @default(autoincrement())
+  codigo      Int?
+  cuenta      String?   @db.VarChar(255)
+  tipo        String?   @db.VarChar(255)
+  serie       Int?
+  factura     Int?
+  importe     Float?    @db.Float
+  comentarios String?   @db.VarChar(255)
+  nro_caja    Int?
+  movim       String?   @db.VarChar(5)
+  fecha       DateTime? @db.Date
+  puesto      Int?
+  operador    Int?
+  cuit        String?   @db.VarChar(255)
+  proveedor   String?   @db.VarChar(255)
+  sucursal    String?   @db.VarChar(255)
+}
+
 model caja_sepelio {
   idcaja      Int       @id @default(autoincrement())
   operador    String?   @db.VarChar(255)
@@ -148,21 +164,37 @@ model caja_sepelio {
   ultimacarga DateTime? @db.DateTime(0)
 }
 
+model caja_srl {
+  idcaja      Int       @id @default(autoincrement())
+  codigo      Int?
+  cuenta      String?   @db.VarChar(255)
+  tipo        String?   @db.VarChar(255)
+  serie       Int?
+  factura     Int?
+  importe     Float?    @db.Float
+  comentarios String?   @db.VarChar(255)
+  nro_caja    Int?
+  movim       String?   @db.VarChar(5)
+  fecha       DateTime? @db.Date
+  puesto      Int?
+  operador    Int?
+  cuit        String?   @db.VarChar(255)
+  proveedor   String?   @db.VarChar(255)
+  sucursal    String?   @db.VarChar(255)
+}
+
 model conceptos {
   idconcepto Int     @id @default(autoincrement())
   concepto   String? @db.VarChar(255)
   tipo       String? @db.VarChar(5)
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model conceptos_sepelio_cuentas {
   idconcepto     Int?
   idempresa      Int?
   sc_descripcion String? @db.VarChar(255)
   sc_cuenta      Int?
   id             Int     @id @default(autoincrement())
-
-  @@ignore
 }
 
 model fabricante_ataud {
@@ -209,6 +241,15 @@ model gastos_caja {
   idservicio      Int?
 }
 
+model generacion_cajas {
+  idgeneracion Int       @id @default(autoincrement())
+  desde        DateTime? @db.Date
+  hasta        DateTime? @db.Date
+  empresa      String?   @db.VarChar(255)
+  operador     String?   @db.VarChar(255)
+  fecha        DateTime? @db.Date
+}
+
 model historial_autos {
   idhistorial Int       @id @default(autoincrement())
   patente     String?   @db.VarChar(255)
@@ -235,6 +276,18 @@ model honorarios {
   dias_habiles Int?
   finde        Int?
   feriado      Int?
+}
+
+model informe_tareas {
+  idtareas   Int       @id @default(autoincrement())
+  idinforme  Int?
+  idservicio Int?
+  operador   String?   @db.VarChar(255)
+  tarea      String?   @db.VarChar(255)
+  inicio     DateTime? @db.DateTime(0)
+  fin        DateTime? @db.DateTime(0)
+  horas      Int?
+  monto      Float?    @db.Float
 }
 
 model ingreso_caja {
@@ -266,7 +319,6 @@ model legajo_virtual_servicios {
   empresa      String?   @db.VarChar(255)
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model lic_conducir {
   NRO_DOC    Int?
   APELLIDOS  String?   @db.VarChar(15)
@@ -278,8 +330,6 @@ model lic_conducir {
   GRUPO      String?   @db.VarChar(1)
   FACTOR_RH  String?   @db.VarChar(1)
   id         Int       @id @default(autoincrement())
-
-  @@ignore
 }
 
 model novedades {
@@ -310,6 +360,17 @@ model parcelas {
   operador_asignacion String?  @db.VarChar(255)
   fecha_asignacion    String?  @db.VarChar(255)
   lugares             Int?
+}
+
+model parcelas_lugares {
+  idlugar    Int       @id @default(autoincrement())
+  idparcela  Int?
+  idservicio Int?
+  lugar      Int?
+  contrato   Int?
+  dni        Int?
+  fecha      DateTime? @db.Date
+  operador   String?   @db.VarChar(255)
 }
 
 model planificacion_guardias {
@@ -353,7 +414,6 @@ model proveedores {
   operador    String? @db.VarChar(255)
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model rodados {
   patente     String?   @db.Text
   descripcion String?   @db.Text
@@ -367,8 +427,6 @@ model rodados {
   desde       DateTime? @db.DateTime(0)
   hasta       DateTime? @db.DateTime(0)
   id          Int       @id @default(autoincrement())
-
-  @@ignore
 }
 
 model servicio_detalles {
@@ -399,6 +457,18 @@ model servicio_gastos {
   aprobado          Boolean?
   operadorap        String?   @db.VarChar(255)
   fecha_aprobacion  String?   @db.VarChar(255)
+}
+
+model servicio_informes {
+  idinforme          Int       @id @default(autoincrement())
+  idservicio         Int?
+  fecha              DateTime? @db.Date
+  aprobado           Boolean?
+  fecha_aprobado     DateTime? @db.Date
+  operador_aprobado  String?   @db.VarChar(255)
+  liquidado          Boolean?
+  fecha_liquidado    DateTime? @db.Date
+  operador_liquidado String?   @db.VarChar(255)
 }
 
 model servicio_venta {
@@ -535,14 +605,6 @@ model servicios_historico {
   id         Int       @id @default(autoincrement())
 }
 
-model servicios_liquidacion {
-  idliquidacion     Int       @id @default(autoincrement())
-  idservicio        Int?
-  total_liquidacion Int?
-  fecha_liquidacion DateTime? @db.DateTime(0)
-  operador          String?   @db.VarChar(255)
-}
-
 model tareas {
   idevents Int     @id @default(autoincrement())
   title    String? @db.VarChar(2000)
@@ -550,24 +612,6 @@ model tareas {
   start    String? @db.VarChar(255)
   end      String? @db.VarChar(255)
   priority Int?
-}
-
-model tareas_adicionales {
-  idtarea           Int       @id @default(autoincrement())
-  inicio            DateTime? @db.DateTime(0)
-  fin               DateTime? @db.DateTime(0)
-  tarea             String?   @db.VarChar(255)
-  operador          String?   @db.VarChar(255)
-  observaciones     String?   @db.VarChar(500)
-  horas             DateTime? @db.Time(0)
-  feriado           Int?      @db.TinyInt
-  liquidado         Boolean?
-  fecha_liquidacion String?   @db.VarChar(255)
-  operadorliq       String?   @db.VarChar(255)
-  aprobado          Boolean?
-  fecha_aprobacion  String?   @db.VarChar(255)
-  operadorap        String?   @db.VarChar(255)
-  mes_planificacion String?   @db.VarChar(255)
 }
 
 model tipo_detalle {
@@ -587,62 +631,4 @@ model visitantes {
   operador    String?   @db.VarChar(255)
   fecha       DateTime? @db.DateTime(0)
   temperatura String?   @db.VarChar(255)
-}
-
-model parcelas_lugares {
-  idlugar    Int       @id @default(autoincrement())
-  idparcela  Int?
-  idservicio Int?
-  lugar      Int?
-  contrato   Int?
-  dni        Int?
-  fecha      DateTime? @db.Date
-  operador   String?   @db.VarChar(255)
-}
-
-model caja_sa {
-  idcaja      Int       @id @default(autoincrement())
-  codigo      Int?
-  cuenta      String?   @db.VarChar(255)
-  tipo        String?   @db.VarChar(255)
-  serie       Int?
-  factura     Int?
-  importe     Float?    @db.Float
-  comentarios String?   @db.VarChar(255)
-  nro_caja    Int?
-  movim       String?   @db.VarChar(5)
-  fecha       DateTime? @db.Date
-  puesto      Int?
-  operador    Int?
-  cuit        String?   @db.VarChar(255)
-  proveedor   String?   @db.VarChar(255)
-  sucursal    String?   @db.VarChar(255)
-}
-
-model caja_srl {
-  idcaja      Int       @id @default(autoincrement())
-  codigo      Int?
-  cuenta      String?   @db.VarChar(255)
-  tipo        String?   @db.VarChar(255)
-  serie       Int?
-  factura     Int?
-  importe     Float?    @db.Float
-  comentarios String?   @db.VarChar(255)
-  nro_caja    Int?
-  movim       String?   @db.VarChar(5)
-  fecha       DateTime? @db.Date
-  puesto      Int?
-  operador    Int?
-  cuit        String?   @db.VarChar(255)
-  proveedor   String?   @db.VarChar(255)
-  sucursal    String?   @db.VarChar(255)
-}
-
-model generacion_cajas {
-  idgeneracion Int       @id @default(autoincrement())
-  desde        DateTime? @db.Date
-  hasta        DateTime? @db.Date
-  empresa      String?   @db.VarChar(255)
-  operador     String?   @db.VarChar(255)
-  fecha        DateTime? @db.Date
 }

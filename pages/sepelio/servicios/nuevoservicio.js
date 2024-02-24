@@ -426,6 +426,16 @@ export default function nuevoservicio() {
           if (res.status === 200) {
             toast.success("Servicio cargado correctamente");
 
+            let accionHis = `Se cargo el servicio ID: ${
+              req.data.idservicio
+            } del extinto: ${servicio.apellido}, ${servicio.nombre} - DNI: ${
+              servicio.dni
+            }, fallecido el dia ${moment(servicio.fecha_fallecimiento).format(
+              "DD/MM/YYYY"
+            )}.`;
+
+            registrarHistoria(accionHis, usu.usuario);
+
             updateStockAtaud();
 
             if (servicio.idparcela) {

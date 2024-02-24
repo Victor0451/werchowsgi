@@ -92,25 +92,6 @@ export default function Legajo() {
               });
 
             axios
-              .get(`/api/sepelio/ataudes`, {
-                params: {
-                  f: "traer ataud",
-                  id: res.data[0].idataud,
-                },
-              })
-              .then((res2) => {
-                if (res2.data) {
-                  guardarAtaud(res2.data);
-                } else if (!res2.data) {
-                  toast.info("Este servicio no posee ataud registrado");
-                }
-              })
-              .catch((error) => {
-                toast.error("Ocurrio un error al generar el listado");
-                console.log(error);
-              });
-
-            axios
               .get(`/api/sepelio/parcelas`, {
                 params: {
                   f: "check parcela",

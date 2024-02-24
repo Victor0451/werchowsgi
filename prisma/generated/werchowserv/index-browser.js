@@ -310,8 +310,6 @@ exports.Prisma.PRESTADOScalarFieldEnum = {
   MATRICULA: 'MATRICULA',
   COD_POST: 'COD_POST',
   AUSENTE: 'AUSENTE',
-  DESDE: 'DESDE',
-  HASTA: 'HASTA',
   CUIT: 'CUIT',
   FEC_NAC: 'FEC_NAC',
   LUGAR: 'LUGAR',
@@ -422,14 +420,17 @@ exports.Prisma.NosociosScalarFieldEnum = {
 
 exports.Prisma.Planes_odontologicosScalarFieldEnum = {
   idplan: 'idplan',
-  total: 'total',
+  plan: 'plan',
   pago_inicial: 'pago_inicial',
+  pago_cuota: 'pago_cuota',
+  pago_final: 'pago_final',
+  cuotas: 'cuotas',
   detalle: 'detalle',
-  estado: 'estado',
   visitas: 'visitas',
   fecha_plan: 'fecha_plan',
-  cuotas: 'cuotas',
-  plan: 'plan'
+  total: 'total',
+  estado: 'estado',
+  detalle_plan: 'detalle_plan'
 };
 
 exports.Prisma.Planes_socioScalarFieldEnum = {
@@ -446,7 +447,8 @@ exports.Prisma.Planes_socioScalarFieldEnum = {
   prestador_nombre: 'prestador_nombre',
   operador: 'operador',
   sucursal: 'sucursal',
-  plan: 'plan'
+  plan: 'plan',
+  contencion: 'contencion'
 };
 
 exports.Prisma.Planes_visitasScalarFieldEnum = {
@@ -478,6 +480,18 @@ exports.Prisma.PromocionesScalarFieldEnum = {
   pint2: 'pint2'
 };
 
+exports.Prisma.AusenciasScalarFieldEnum = {
+  idausencia: 'idausencia',
+  cod_pres: 'cod_pres',
+  prestador: 'prestador',
+  motivo: 'motivo',
+  desde: 'desde',
+  hasta: 'hasta',
+  observacion: 'observacion',
+  estado: 'estado',
+  operador: 'operador'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -507,7 +521,8 @@ exports.Prisma.ModelName = {
   planes_socio: 'planes_socio',
   planes_visitas: 'planes_visitas',
   pacientes: 'pacientes',
-  promociones: 'promociones'
+  promociones: 'promociones',
+  ausencias: 'ausencias'
 };
 
 /**

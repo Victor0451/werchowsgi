@@ -16,6 +16,7 @@ import {
   FolderIcon,
   InformationCircleIcon,
   PrinterIcon,
+  CurrencyDollarIcon,
 } from "@heroicons/react/24/solid";
 import moment from "moment";
 import Link from "next/link";
@@ -66,7 +67,9 @@ const ListadoServicios = ({
     {
       name: "Fecha Fallec.",
       selector: (row) =>
-        `${moment(row.fecha_fallecimiento).utcOffset("+0300").format("DD/MM/YYYY")}`,
+        `${moment(row.fecha_fallecimiento)
+          .utcOffset("+0300")
+          .format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.1,
     },
@@ -93,6 +96,17 @@ const ListadoServicios = ({
             }}
           >
             <PrinterIcon color="black" className="butlist mt-px h-6 w-6" />
+          </Link>
+          <Link
+            href={{
+              pathname: "/sepelio/servicios/informe",
+              query: { idservicio: row.idservicio },
+            }}
+          >
+            <CurrencyDollarIcon
+              color="green"
+              className="butlist mt-px h-6 w-6"
+            />
           </Link>
         </>
       ),

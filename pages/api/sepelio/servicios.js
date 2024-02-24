@@ -309,9 +309,55 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
+    } else if (req.query.f && req.query.f === "traer tareas") {
+      const tareas = await Sep.honorarios.findMany();
+
+      res.status(200).json(tareas);
+    } else if (req.query.f && req.query.f === "traer tareas reg") {
+      const tareasReg = await Sep.informe_tareas.findMany({
+        where: {
+          idservicio: parseInt(req.query.idservicio),
+        },
+      });
+
+      res.status(200).json(tareasReg);
+    } else if (req.query.f && req.query.f === "traer informe servicio") {
+      const tareasReg = await Sep.servicio_informes.findMany({
+        where: {
+          idservicio: parseInt(req.query.idservicio),
+        },
+      });
+
+      res.status(200).json(tareasReg);
+    } else if (req.query.f && req.query.f === "traer informes servicios") {
+      const servImp = await Sep.$queryRawUnsafe(
+        `                
+        SELECT
+          s.idservicio,
+          si.idinforme,
+          CONCAT(s.apellido, ', ', s.nombre) 'extinto',
+          s.fecha_fallecimiento,
+          si.fecha,
+          si.aprobado,
+          si.fecha_aprobado,
+          si.liquidado,
+          si.fecha_liquidado
+        FROM
+          servicio_informes AS si
+        INNER JOIN servicios AS s ON s.idservicio = si.idservicio       
+
+               `
+      );
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(servImp, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     }
-  }
-  if (req.method === "POST") {
+  } else if (req.method === "POST") {
     if (req.body.f && req.body.f === "nuevo servicio") {
       const regServ = await Sep.servicios.create({
         data: {
@@ -350,9 +396,34 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(regServ);
+    } else if (req.body.f && req.body.f === "reg informe servicio") {
+      const regInforme = await Sep.servicio_informes.create({
+        data: {
+          idservicio: parseInt(req.body.idservicio),
+          fecha: new Date(req.body.fecha),
+          liquidado: req.body.liquidado,
+          aprobado: req.body.aprobado,
+        },
+      });
+
+      res.status(200).json(regInforme);
+    } else if (req.body.f && req.body.f === "reg tarea informe") {
+      const regInforme = await Sep.informe_tareas.create({
+        data: {
+          idinforme: parseInt(req.body.idinforme),
+          idservicio: parseInt(req.body.idservicio),
+          operador: req.body.operador,
+          tarea: req.body.tarea,
+          inicio: new Date(req.body.inicio),
+          fin: new Date(req.body.fin),
+          horas: parseInt(req.body.horas),
+          monto: parseFloat(req.body.monto),
+        },
+      });
+
+      res.status(200).json(regInforme);
     }
-  }
-  if (req.method === "PUT") {
+  } else if (req.method === "PUT") {
     if (req.body.f && req.body.f === "renov poliza") {
       const regAuto = await Sep.autos.update({
         data: {
@@ -544,6 +615,56 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
+    } else if (req.body.f && req.body.f === "estado informe") {
+      const estadoInforme = await Sep.$queryRawUnsafe(
+        `                
+          UPDATE servicio_informes 
+          SET aprobado = ${req.body.estado},
+              fecha_aprobado = '${moment().format("YYYY-MM-DD")}',
+              operador_aprobado = '${req.body.usu}'
+          WHERE idinforme = ${req.body.id}
+
+          
+                       `
+      );
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(estadoInforme, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.body.f && req.body.f === "liquidar informe") {
+      const estadoInforme = await Sep.$queryRawUnsafe(
+        `                
+          UPDATE servicio_informes 
+          SET liquidado = ${req.body.liquidado},
+              fecha_liquidado = '${moment().format("YYYY-MM-DD")}',
+              operador_liquidado = '${req.body.usu}'
+          WHERE idinforme = ${req.body.id}
+
+          
+                       `
+      );
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(estadoInforme, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    }
+  } else if (req.method === "DELETE") {
+    if (req.query.f && req.query.f === "eliminar tarea") {
+      const delTarea = await Sep.informe_tareas.delete({
+        where: {
+          idtareas: parseInt(req.query.idtarea),
+        },
+      });
+
+      res.status(200).json(delTarea);
     }
   }
 }

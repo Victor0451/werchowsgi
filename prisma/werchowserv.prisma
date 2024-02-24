@@ -11,7 +11,7 @@ datasource db {
 
 model AUT_PRAC {
   ESP_PRAC   String?   @db.VarChar(3)
-  CODIGOS    String?   @db.VarChar(8)
+  CODIGOS    String?   @db.VarChar(20)
   DESCRIP    String?   @db.VarChar(1500)
   FECHA_ALT  DateTime? @db.Date
   ANULADO    Int?      @db.TinyInt
@@ -130,7 +130,7 @@ model ENFERMER {
   DESTINO    String?   @db.VarChar(5)
   IMPORTE    Float?
   ANULADO    Int?      @db.TinyInt
-  PRACTICA   Int?
+  PRACTICA   String?   @db.VarChar(255)
   OPERADOR   String?   @db.VarChar(255)
   OPE_ANU    Int?
   NRO_DNI    Int?
@@ -293,8 +293,6 @@ model PRESTADO {
   MATRICULA  String?   @db.VarChar(10)
   COD_POST   Int?
   AUSENTE    Int?      @db.TinyInt
-  DESDE      DateTime? @db.Date
-  HASTA      DateTime? @db.Date
   CUIT       String?   @db.VarChar(13)
   FEC_NAC    DateTime? @db.Date
   LUGAR      Int?
@@ -413,6 +411,18 @@ model adherent_provi {
   ESTADO     Boolean?
 }
 
+model ausencias {
+  idausencia  Int       @id @default(autoincrement())
+  cod_pres    String?   @db.VarChar(255)
+  prestador   String?   @db.VarChar(255)
+  motivo      String?   @db.VarChar(255)
+  desde       DateTime? @db.Date
+  hasta       DateTime? @db.Date
+  observacion String?   @db.VarChar(1000)
+  estado      Int?      @db.TinyInt
+  operador    String?   @db.VarChar(255)
+}
+
 model nosocios {
   idnosocio Int       @id @default(autoincrement())
   nosocio   String?   @db.VarChar(255)
@@ -427,16 +437,29 @@ model nosocios {
   otra_os   String?   @db.VarChar(255)
 }
 
+model pacientes {
+  idpaciente Int     @id @default(autoincrement())
+  paciente   String? @db.VarChar(500)
+  dni        Int?
+  obra_soc   String? @db.VarChar(255)
+  telefono   BigInt?
+  domicilio  String? @db.VarChar(1000)
+  mail       String? @db.VarChar(500)
+}
+
 model planes_odontologicos {
   idplan       Int       @id @default(autoincrement())
-  total        Float?    @db.Float
+  plan         String?   @db.VarChar(255)
   pago_inicial Float?    @db.Float
+  pago_cuota   Float?    @db.Float
+  pago_final   Float?    @db.Float
+  cuotas       Int?
   detalle      String?   @db.VarChar(255)
-  estado       Boolean?
   visitas      Int?
   fecha_plan   DateTime? @db.Date
-  cuotas       Int?
-  plan         String?   @db.VarChar(255)
+  total        Float?    @db.Float
+  estado       Boolean?
+  detalle_plan String?   @db.VarChar(1000)
 }
 
 model planes_socio {
@@ -454,6 +477,7 @@ model planes_socio {
   operador         String?   @db.VarChar(255)
   sucursal         String?   @db.VarChar(255)
   plan             String?   @db.VarChar(255)
+  contencion       Boolean?
 }
 
 model planes_visitas {
@@ -465,16 +489,6 @@ model planes_visitas {
   pagado   Boolean?
   operador String?   @db.VarChar(255)
   plan     String?   @db.VarChar(255)
-}
-
-model pacientes {
-  idpaciente Int     @id @default(autoincrement())
-  paciente   String? @db.VarChar(500)
-  dni        Int?
-  obra_soc   String? @db.VarChar(255)
-  telefono   BigInt?
-  domicilio  String? @db.VarChar(1000)
-  mail       String? @db.VarChar(500)
 }
 
 model promociones {

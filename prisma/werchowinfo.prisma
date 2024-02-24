@@ -1,0 +1,191 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "./generated/werchowinfo"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("WERCHOWINFO_URL")
+}
+
+model c1000 {
+  id         Int     @default(autoincrement())
+  zona       Int
+  total      Float?
+  fichas     BigInt? @default(0)
+  cobrado    Int?    @default(0)
+  fichascob  Int?    @default(0)
+  mes        Int?    @default(0)
+  ano        Int?    @default(0)
+  adelantado Int?
+  descr      String? @db.VarChar(255)
+
+  @@id([id, zona])
+  @@index([zona], map: "zona")
+}
+
+model c1000m {
+  zona       Int?
+  total      Float?
+  fichas     BigInt? @default(0)
+  cobrado    Int?    @default(0)
+  fichascob  Int?    @default(0)
+  mes        Int?    @default(0)
+  ano        Int?    @default(0)
+  adelantado Int?
+  descr      String? @db.VarChar(255)
+  id         Int     @id @default(autoincrement())
+
+  @@index([zona], map: "zona")
+}
+
+model cbanco {
+  id         Int     @id @default(autoincrement())
+  total      Int?
+  fichas     Int?
+  cobrado    Int?
+  fichascob  Int?
+  mes        Int?
+  ano        Int?
+  adelantado Int?
+  sucursal   String? @db.VarChar(1)
+  descr      String? @db.VarChar(255)
+}
+
+model cconvenio {
+  id_mora    Int     @id @default(autoincrement())
+  tipo       String? @db.VarChar(50)
+  total      Int?
+  fichas     Int?
+  cobrado    Int?
+  fichascob  Int?
+  mes        Int?
+  ano        Int?
+  adelantado Int?
+  sucursal   String? @db.VarChar(1)
+}
+
+model cpolicia {
+  id         Int     @id @default(autoincrement())
+  total      Int?
+  fichas     Int?
+  cobrado    Int?
+  fichascob  Int?
+  mes        Int?
+  ano        Int?
+  adelantado Int?
+  sucursal   String? @db.VarChar(1)
+  descr      String? @db.VarChar(255)
+}
+
+model cprestamos {
+  id       Int     @id @default(autoincrement())
+  total    Int?
+  cobrado  Int?
+  mes      Int?
+  ano      Int?
+  sucursal String? @db.VarChar(1)
+  descr    String? @db.VarChar(255)
+}
+
+model ctjt {
+  grupo      Int?
+  sucursal   String? @db.VarChar(45)
+  total      Float?
+  fichas     BigInt? @default(0)
+  cobrado    Int?    @default(0)
+  fichascob  Int?    @default(0)
+  mes        Int?    @default(0)
+  ano        Int?    @default(0)
+  adelantado Int?    @default(0)
+  id         Int     @id @default(autoincrement())
+  descr      String? @db.VarChar(255)
+
+  @@index([grupo], map: "grupo")
+}
+
+model ctjtm {
+  grupo      Int?
+  total      Float?
+  fichas     BigInt? @default(0)
+  cobrado    Int?    @default(0)
+  fichascob  Int?    @default(0)
+  mes        Int?    @default(0)
+  ano        Int?    @default(0)
+  sucursal   String? @db.VarChar(1)
+  adelantado Int?
+  descr      String? @db.VarChar(255)
+  id         Int     @id @default(autoincrement())
+
+  @@index([grupo], map: "grupo")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model de_poli {
+  LEGMOV    Int?
+  CONTRATO  Int?
+  COSMOV    Int?
+  CODMOV    Int?
+  IMPMOV    Float?
+  PRESTAMO  Float?
+  TOTSPLAN  Float?
+  CANTIDAD  Float?
+  UREGI     Int?
+  DOCUMENTO Int?
+  CLAVE     String? @db.VarChar(1)
+  CHEQUE    String? @db.VarChar(8)
+  CATEG     Int?
+
+  @@ignore
+}
+
+model m1000 {
+  idm1000             Int       @id @default(autoincrement())
+  zona                Int?
+  descr               String?   @db.VarChar(255)
+  fichasinicial       Int?
+  morainicial         Int?
+  fichasactual        String?   @db.VarChar(255)
+  moraactual          String?   @db.VarChar(255)
+  mes                 Int?
+  ano                 Int?
+  fecha_actualizacion DateTime? @db.Date
+  fecha_creacion      DateTime? @db.Date
+}
+
+model mtjt {
+  idmtjt              Int       @id @default(autoincrement())
+  grupo               Int?
+  descr               String?   @db.VarChar(255)
+  fichasinicial       Int?
+  morainicial         Int?
+  fichasactual        String?   @db.VarChar(255)
+  moraactual          String?   @db.VarChar(255)
+  mes                 Int?
+  ano                 Int?
+  fecha_actualizacion DateTime? @db.Date
+  fecha_creacion      DateTime? @db.Date
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model prespoli {
+  CONTRATO  Int?
+  APELLIDOS String?   @db.VarChar(20)
+  NOMBRES   String?   @db.VarChar(20)
+  DNI       Int?
+  LEGAJO    String?   @db.VarChar(5)
+  CUOTA     Float?
+  CUOTAS    Int?
+  TOTAL     Float?
+  IMP_PREST Float?
+  SOCIO     String?   @db.VarChar(10)
+  MES_INI   Int?
+  ANO_INI   Int?
+  CANCELADO Int?      @db.TinyInt
+  ALTA      DateTime? @db.Date
+  OBSERV    String?   @db.VarChar(60)
+  ID_PRES   Int?
+
+  @@ignore
+}

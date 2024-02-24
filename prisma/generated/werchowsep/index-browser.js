@@ -155,6 +155,23 @@ exports.Prisma.AtaudesScalarFieldEnum = {
   operador: 'operador'
 };
 
+exports.Prisma.Auto_usosScalarFieldEnum = {
+  FECHA: 'FECHA',
+  PATENTE: 'PATENTE',
+  DESCRIP: 'DESCRIP',
+  NOMB_OPE: 'NOMB_OPE',
+  CHOFER: 'CHOFER',
+  HORA1: 'HORA1',
+  HORA2: 'HORA2',
+  TAREA: 'TAREA',
+  OBSERVA_1: 'OBSERVA_1',
+  OBSERVA_2: 'OBSERVA_2',
+  OPE_LLEGA: 'OPE_LLEGA',
+  KILO_SAL: 'KILO_SAL',
+  KILO_LLE: 'KILO_LLE',
+  idusos: 'idusos'
+};
+
 exports.Prisma.AutosScalarFieldEnum = {
   patente: 'patente',
   auto: 'auto',
@@ -206,6 +223,25 @@ exports.Prisma.Autos_pago_patenteScalarFieldEnum = {
   operador: 'operador'
 };
 
+exports.Prisma.Caja_saScalarFieldEnum = {
+  idcaja: 'idcaja',
+  codigo: 'codigo',
+  cuenta: 'cuenta',
+  tipo: 'tipo',
+  serie: 'serie',
+  factura: 'factura',
+  importe: 'importe',
+  comentarios: 'comentarios',
+  nro_caja: 'nro_caja',
+  movim: 'movim',
+  fecha: 'fecha',
+  puesto: 'puesto',
+  operador: 'operador',
+  cuit: 'cuit',
+  proveedor: 'proveedor',
+  sucursal: 'sucursal'
+};
+
 exports.Prisma.Caja_sepelioScalarFieldEnum = {
   idcaja: 'idcaja',
   operador: 'operador',
@@ -224,10 +260,37 @@ exports.Prisma.Caja_sepelioScalarFieldEnum = {
   ultimacarga: 'ultimacarga'
 };
 
+exports.Prisma.Caja_srlScalarFieldEnum = {
+  idcaja: 'idcaja',
+  codigo: 'codigo',
+  cuenta: 'cuenta',
+  tipo: 'tipo',
+  serie: 'serie',
+  factura: 'factura',
+  importe: 'importe',
+  comentarios: 'comentarios',
+  nro_caja: 'nro_caja',
+  movim: 'movim',
+  fecha: 'fecha',
+  puesto: 'puesto',
+  operador: 'operador',
+  cuit: 'cuit',
+  proveedor: 'proveedor',
+  sucursal: 'sucursal'
+};
+
 exports.Prisma.ConceptosScalarFieldEnum = {
   idconcepto: 'idconcepto',
   concepto: 'concepto',
   tipo: 'tipo'
+};
+
+exports.Prisma.Conceptos_sepelio_cuentasScalarFieldEnum = {
+  idconcepto: 'idconcepto',
+  idempresa: 'idempresa',
+  sc_descripcion: 'sc_descripcion',
+  sc_cuenta: 'sc_cuenta',
+  id: 'id'
 };
 
 exports.Prisma.Fabricante_ataudScalarFieldEnum = {
@@ -274,6 +337,15 @@ exports.Prisma.Gastos_cajaScalarFieldEnum = {
   idservicio: 'idservicio'
 };
 
+exports.Prisma.Generacion_cajasScalarFieldEnum = {
+  idgeneracion: 'idgeneracion',
+  desde: 'desde',
+  hasta: 'hasta',
+  empresa: 'empresa',
+  operador: 'operador',
+  fecha: 'fecha'
+};
+
 exports.Prisma.Historial_autosScalarFieldEnum = {
   idhistorial: 'idhistorial',
   patente: 'patente',
@@ -300,6 +372,18 @@ exports.Prisma.HonorariosScalarFieldEnum = {
   dias_habiles: 'dias_habiles',
   finde: 'finde',
   feriado: 'feriado'
+};
+
+exports.Prisma.Informe_tareasScalarFieldEnum = {
+  idtareas: 'idtareas',
+  idinforme: 'idinforme',
+  idservicio: 'idservicio',
+  operador: 'operador',
+  tarea: 'tarea',
+  inicio: 'inicio',
+  fin: 'fin',
+  horas: 'horas',
+  monto: 'monto'
 };
 
 exports.Prisma.Ingreso_cajaScalarFieldEnum = {
@@ -331,6 +415,19 @@ exports.Prisma.Legajo_virtual_serviciosScalarFieldEnum = {
   empresa: 'empresa'
 };
 
+exports.Prisma.Lic_conducirScalarFieldEnum = {
+  NRO_DOC: 'NRO_DOC',
+  APELLIDOS: 'APELLIDOS',
+  NOMBRES: 'NOMBRES',
+  FEC_NAC: 'FEC_NAC',
+  NRO_CARNET: 'NRO_CARNET',
+  FEC_VENCI: 'FEC_VENCI',
+  CLASE: 'CLASE',
+  GRUPO: 'GRUPO',
+  FACTOR_RH: 'FACTOR_RH',
+  id: 'id'
+};
+
 exports.Prisma.NovedadesScalarFieldEnum = {
   idnovedad: 'idnovedad',
   novedad: 'novedad',
@@ -359,6 +456,17 @@ exports.Prisma.ParcelasScalarFieldEnum = {
   operador_asignacion: 'operador_asignacion',
   fecha_asignacion: 'fecha_asignacion',
   lugares: 'lugares'
+};
+
+exports.Prisma.Parcelas_lugaresScalarFieldEnum = {
+  idlugar: 'idlugar',
+  idparcela: 'idparcela',
+  idservicio: 'idservicio',
+  lugar: 'lugar',
+  contrato: 'contrato',
+  dni: 'dni',
+  fecha: 'fecha',
+  operador: 'operador'
 };
 
 exports.Prisma.Planificacion_guardiasScalarFieldEnum = {
@@ -402,6 +510,21 @@ exports.Prisma.ProveedoresScalarFieldEnum = {
   operador: 'operador'
 };
 
+exports.Prisma.RodadosScalarFieldEnum = {
+  patente: 'patente',
+  descripcion: 'descripcion',
+  km: 'km',
+  responsable: 'responsable',
+  n_poliza: 'n_poliza',
+  emp_poliza: 'emp_poliza',
+  n_motor: 'n_motor',
+  n_chasis: 'n_chasis',
+  ano_fabri: 'ano_fabri',
+  desde: 'desde',
+  hasta: 'hasta',
+  id: 'id'
+};
+
 exports.Prisma.Servicio_detallesScalarFieldEnum = {
   iddetalles: 'iddetalles',
   idservicio: 'idservicio',
@@ -430,6 +553,18 @@ exports.Prisma.Servicio_gastosScalarFieldEnum = {
   aprobado: 'aprobado',
   operadorap: 'operadorap',
   fecha_aprobacion: 'fecha_aprobacion'
+};
+
+exports.Prisma.Servicio_informesScalarFieldEnum = {
+  idinforme: 'idinforme',
+  idservicio: 'idservicio',
+  fecha: 'fecha',
+  aprobado: 'aprobado',
+  fecha_aprobado: 'fecha_aprobado',
+  operador_aprobado: 'operador_aprobado',
+  liquidado: 'liquidado',
+  fecha_liquidado: 'fecha_liquidado',
+  operador_liquidado: 'operador_liquidado'
 };
 
 exports.Prisma.Servicio_ventaScalarFieldEnum = {
@@ -566,14 +701,6 @@ exports.Prisma.Servicios_historicoScalarFieldEnum = {
   id: 'id'
 };
 
-exports.Prisma.Servicios_liquidacionScalarFieldEnum = {
-  idliquidacion: 'idliquidacion',
-  idservicio: 'idservicio',
-  total_liquidacion: 'total_liquidacion',
-  fecha_liquidacion: 'fecha_liquidacion',
-  operador: 'operador'
-};
-
 exports.Prisma.TareasScalarFieldEnum = {
   idevents: 'idevents',
   title: 'title',
@@ -581,24 +708,6 @@ exports.Prisma.TareasScalarFieldEnum = {
   start: 'start',
   end: 'end',
   priority: 'priority'
-};
-
-exports.Prisma.Tareas_adicionalesScalarFieldEnum = {
-  idtarea: 'idtarea',
-  inicio: 'inicio',
-  fin: 'fin',
-  tarea: 'tarea',
-  operador: 'operador',
-  observaciones: 'observaciones',
-  horas: 'horas',
-  feriado: 'feriado',
-  liquidado: 'liquidado',
-  fecha_liquidacion: 'fecha_liquidacion',
-  operadorliq: 'operadorliq',
-  aprobado: 'aprobado',
-  fecha_aprobacion: 'fecha_aprobacion',
-  operadorap: 'operadorap',
-  mes_planificacion: 'mes_planificacion'
 };
 
 exports.Prisma.Tipo_detalleScalarFieldEnum = {
@@ -620,64 +729,6 @@ exports.Prisma.VisitantesScalarFieldEnum = {
   temperatura: 'temperatura'
 };
 
-exports.Prisma.Parcelas_lugaresScalarFieldEnum = {
-  idlugar: 'idlugar',
-  idparcela: 'idparcela',
-  idservicio: 'idservicio',
-  lugar: 'lugar',
-  contrato: 'contrato',
-  dni: 'dni',
-  fecha: 'fecha',
-  operador: 'operador'
-};
-
-exports.Prisma.Caja_saScalarFieldEnum = {
-  idcaja: 'idcaja',
-  codigo: 'codigo',
-  cuenta: 'cuenta',
-  tipo: 'tipo',
-  serie: 'serie',
-  factura: 'factura',
-  importe: 'importe',
-  comentarios: 'comentarios',
-  nro_caja: 'nro_caja',
-  movim: 'movim',
-  fecha: 'fecha',
-  puesto: 'puesto',
-  operador: 'operador',
-  cuit: 'cuit',
-  proveedor: 'proveedor',
-  sucursal: 'sucursal'
-};
-
-exports.Prisma.Caja_srlScalarFieldEnum = {
-  idcaja: 'idcaja',
-  codigo: 'codigo',
-  cuenta: 'cuenta',
-  tipo: 'tipo',
-  serie: 'serie',
-  factura: 'factura',
-  importe: 'importe',
-  comentarios: 'comentarios',
-  nro_caja: 'nro_caja',
-  movim: 'movim',
-  fecha: 'fecha',
-  puesto: 'puesto',
-  operador: 'operador',
-  cuit: 'cuit',
-  proveedor: 'proveedor',
-  sucursal: 'sucursal'
-};
-
-exports.Prisma.Generacion_cajasScalarFieldEnum = {
-  idgeneracion: 'idgeneracion',
-  desde: 'desde',
-  hasta: 'hasta',
-  empresa: 'empresa',
-  operador: 'operador',
-  fecha: 'fecha'
-};
-
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -693,41 +744,45 @@ exports.Prisma.ModelName = {
   ataud_precio: 'ataud_precio',
   ataud_venta: 'ataud_venta',
   ataudes: 'ataudes',
+  auto_usos: 'auto_usos',
   autos: 'autos',
   autos_hoja_ruta: 'autos_hoja_ruta',
   autos_novedades: 'autos_novedades',
   autos_pago_patente: 'autos_pago_patente',
+  caja_sa: 'caja_sa',
   caja_sepelio: 'caja_sepelio',
+  caja_srl: 'caja_srl',
   conceptos: 'conceptos',
+  conceptos_sepelio_cuentas: 'conceptos_sepelio_cuentas',
   fabricante_ataud: 'fabricante_ataud',
   gasto_luto: 'gasto_luto',
   gastos_caja: 'gastos_caja',
+  generacion_cajas: 'generacion_cajas',
   historial_autos: 'historial_autos',
   historial_stock_ataud: 'historial_stock_ataud',
   honorarios: 'honorarios',
+  informe_tareas: 'informe_tareas',
   ingreso_caja: 'ingreso_caja',
   legajo_virtual_autos: 'legajo_virtual_autos',
   legajo_virtual_servicios: 'legajo_virtual_servicios',
+  lic_conducir: 'lic_conducir',
   novedades: 'novedades',
   operadorsep: 'operadorsep',
   parcelas: 'parcelas',
+  parcelas_lugares: 'parcelas_lugares',
   planificacion_guardias: 'planificacion_guardias',
   precio_servicio: 'precio_servicio',
   proveedores: 'proveedores',
+  rodados: 'rodados',
   servicio_detalles: 'servicio_detalles',
   servicio_gastos: 'servicio_gastos',
+  servicio_informes: 'servicio_informes',
   servicio_venta: 'servicio_venta',
   servicios: 'servicios',
   servicios_historico: 'servicios_historico',
-  servicios_liquidacion: 'servicios_liquidacion',
   tareas: 'tareas',
-  tareas_adicionales: 'tareas_adicionales',
   tipo_detalle: 'tipo_detalle',
-  visitantes: 'visitantes',
-  parcelas_lugares: 'parcelas_lugares',
-  caja_sa: 'caja_sa',
-  caja_srl: 'caja_srl',
-  generacion_cajas: 'generacion_cajas'
+  visitantes: 'visitantes'
 };
 
 /**

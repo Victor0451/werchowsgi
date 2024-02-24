@@ -118,7 +118,12 @@ export const Administracion = () => {
                 </Link>{" "}
                 <Link href={"/sepelio/administracion/servicios"}>
                   <MenuItem>
-                    <Typography color="black">Servicios</Typography>
+                    <Typography color="black">Servicios Sin Imp.</Typography>
+                  </MenuItem>
+                </Link>
+                <Link href={"sepelio/servicios/informeservicios"}>
+                  <MenuItem>
+                    <Typography color="black">Informes de Servicio</Typography>
                   </MenuItem>
                 </Link>
               </MenuList>

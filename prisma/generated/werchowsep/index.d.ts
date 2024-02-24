@@ -89,6 +89,32 @@ export type ataudesPayload<ExtArgs extends $Extensions.Args = $Extensions.Defaul
  * 
  */
 export type ataudes = runtime.Types.DefaultSelection<ataudesPayload>
+export type auto_usosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    FECHA: Date | null
+    PATENTE: string | null
+    DESCRIP: string | null
+    NOMB_OPE: string | null
+    CHOFER: string | null
+    HORA1: string | null
+    HORA2: string | null
+    TAREA: string | null
+    OBSERVA_1: string | null
+    OBSERVA_2: string | null
+    OPE_LLEGA: string | null
+    KILO_SAL: number | null
+    KILO_LLE: number | null
+    idusos: number
+  }, ExtArgs["result"]["auto_usos"]>
+  composites: {}
+}
+
+/**
+ * Model auto_usos
+ * 
+ */
+export type auto_usos = runtime.Types.DefaultSelection<auto_usosPayload>
 export type autosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -176,6 +202,34 @@ export type autos_pago_patentePayload<ExtArgs extends $Extensions.Args = $Extens
  * 
  */
 export type autos_pago_patente = runtime.Types.DefaultSelection<autos_pago_patentePayload>
+export type caja_saPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idcaja: number
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }, ExtArgs["result"]["caja_sa"]>
+  composites: {}
+}
+
+/**
+ * Model caja_sa
+ * 
+ */
+export type caja_sa = runtime.Types.DefaultSelection<caja_saPayload>
 export type caja_sepelioPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -203,6 +257,34 @@ export type caja_sepelioPayload<ExtArgs extends $Extensions.Args = $Extensions.D
  * 
  */
 export type caja_sepelio = runtime.Types.DefaultSelection<caja_sepelioPayload>
+export type caja_srlPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idcaja: number
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }, ExtArgs["result"]["caja_srl"]>
+  composites: {}
+}
+
+/**
+ * Model caja_srl
+ * 
+ */
+export type caja_srl = runtime.Types.DefaultSelection<caja_srlPayload>
 export type conceptosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -218,6 +300,23 @@ export type conceptosPayload<ExtArgs extends $Extensions.Args = $Extensions.Defa
  * 
  */
 export type conceptos = runtime.Types.DefaultSelection<conceptosPayload>
+export type conceptos_sepelio_cuentasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idconcepto: number | null
+    idempresa: number | null
+    sc_descripcion: string | null
+    sc_cuenta: number | null
+    id: number
+  }, ExtArgs["result"]["conceptos_sepelio_cuentas"]>
+  composites: {}
+}
+
+/**
+ * Model conceptos_sepelio_cuentas
+ * 
+ */
+export type conceptos_sepelio_cuentas = runtime.Types.DefaultSelection<conceptos_sepelio_cuentasPayload>
 export type fabricante_ataudPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -289,6 +388,24 @@ export type gastos_cajaPayload<ExtArgs extends $Extensions.Args = $Extensions.De
  * 
  */
 export type gastos_caja = runtime.Types.DefaultSelection<gastos_cajaPayload>
+export type generacion_cajasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idgeneracion: number
+    desde: Date | null
+    hasta: Date | null
+    empresa: string | null
+    operador: string | null
+    fecha: Date | null
+  }, ExtArgs["result"]["generacion_cajas"]>
+  composites: {}
+}
+
+/**
+ * Model generacion_cajas
+ * 
+ */
+export type generacion_cajas = runtime.Types.DefaultSelection<generacion_cajasPayload>
 export type historial_autosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -344,6 +461,27 @@ export type honorariosPayload<ExtArgs extends $Extensions.Args = $Extensions.Def
  * 
  */
 export type honorarios = runtime.Types.DefaultSelection<honorariosPayload>
+export type informe_tareasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idtareas: number
+    idinforme: number | null
+    idservicio: number | null
+    operador: string | null
+    tarea: string | null
+    inicio: Date | null
+    fin: Date | null
+    horas: number | null
+    monto: number | null
+  }, ExtArgs["result"]["informe_tareas"]>
+  composites: {}
+}
+
+/**
+ * Model informe_tareas
+ * 
+ */
+export type informe_tareas = runtime.Types.DefaultSelection<informe_tareasPayload>
 export type ingreso_cajaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -400,6 +538,28 @@ export type legajo_virtual_serviciosPayload<ExtArgs extends $Extensions.Args = $
  * 
  */
 export type legajo_virtual_servicios = runtime.Types.DefaultSelection<legajo_virtual_serviciosPayload>
+export type lic_conducirPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    FEC_NAC: Date | null
+    NRO_CARNET: string | null
+    FEC_VENCI: Date | null
+    CLASE: string | null
+    GRUPO: string | null
+    FACTOR_RH: string | null
+    id: number
+  }, ExtArgs["result"]["lic_conducir"]>
+  composites: {}
+}
+
+/**
+ * Model lic_conducir
+ * 
+ */
+export type lic_conducir = runtime.Types.DefaultSelection<lic_conducirPayload>
 export type novedadesPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -457,6 +617,26 @@ export type parcelasPayload<ExtArgs extends $Extensions.Args = $Extensions.Defau
  * 
  */
 export type parcelas = runtime.Types.DefaultSelection<parcelasPayload>
+export type parcelas_lugaresPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idlugar: number
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+    fecha: Date | null
+    operador: string | null
+  }, ExtArgs["result"]["parcelas_lugares"]>
+  composites: {}
+}
+
+/**
+ * Model parcelas_lugares
+ * 
+ */
+export type parcelas_lugares = runtime.Types.DefaultSelection<parcelas_lugaresPayload>
 export type planificacion_guardiasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -525,6 +705,30 @@ export type proveedoresPayload<ExtArgs extends $Extensions.Args = $Extensions.De
  * 
  */
 export type proveedores = runtime.Types.DefaultSelection<proveedoresPayload>
+export type rodadosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    patente: string | null
+    descripcion: string | null
+    km: string | null
+    responsable: string | null
+    n_poliza: string | null
+    emp_poliza: string | null
+    n_motor: string | null
+    n_chasis: string | null
+    ano_fabri: string | null
+    desde: Date | null
+    hasta: Date | null
+    id: number
+  }, ExtArgs["result"]["rodados"]>
+  composites: {}
+}
+
+/**
+ * Model rodados
+ * 
+ */
+export type rodados = runtime.Types.DefaultSelection<rodadosPayload>
 export type servicio_detallesPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -573,6 +777,27 @@ export type servicio_gastosPayload<ExtArgs extends $Extensions.Args = $Extension
  * 
  */
 export type servicio_gastos = runtime.Types.DefaultSelection<servicio_gastosPayload>
+export type servicio_informesPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idinforme: number
+    idservicio: number | null
+    fecha: Date | null
+    aprobado: boolean | null
+    fecha_aprobado: Date | null
+    operador_aprobado: string | null
+    liquidado: boolean | null
+    fecha_liquidado: Date | null
+    operador_liquidado: string | null
+  }, ExtArgs["result"]["servicio_informes"]>
+  composites: {}
+}
+
+/**
+ * Model servicio_informes
+ * 
+ */
+export type servicio_informes = runtime.Types.DefaultSelection<servicio_informesPayload>
 export type servicio_ventaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -734,23 +959,6 @@ export type servicios_historicoPayload<ExtArgs extends $Extensions.Args = $Exten
  * 
  */
 export type servicios_historico = runtime.Types.DefaultSelection<servicios_historicoPayload>
-export type servicios_liquidacionPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    idliquidacion: number
-    idservicio: number | null
-    total_liquidacion: number | null
-    fecha_liquidacion: Date | null
-    operador: string | null
-  }, ExtArgs["result"]["servicios_liquidacion"]>
-  composites: {}
-}
-
-/**
- * Model servicios_liquidacion
- * 
- */
-export type servicios_liquidacion = runtime.Types.DefaultSelection<servicios_liquidacionPayload>
 export type tareasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -769,33 +977,6 @@ export type tareasPayload<ExtArgs extends $Extensions.Args = $Extensions.Default
  * 
  */
 export type tareas = runtime.Types.DefaultSelection<tareasPayload>
-export type tareas_adicionalesPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    idtarea: number
-    inicio: Date | null
-    fin: Date | null
-    tarea: string | null
-    operador: string | null
-    observaciones: string | null
-    horas: Date | null
-    feriado: number | null
-    liquidado: boolean | null
-    fecha_liquidacion: string | null
-    operadorliq: string | null
-    aprobado: boolean | null
-    fecha_aprobacion: string | null
-    operadorap: string | null
-    mes_planificacion: string | null
-  }, ExtArgs["result"]["tareas_adicionales"]>
-  composites: {}
-}
-
-/**
- * Model tareas_adicionales
- * 
- */
-export type tareas_adicionales = runtime.Types.DefaultSelection<tareas_adicionalesPayload>
 export type tipo_detallePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -833,100 +1014,6 @@ export type visitantesPayload<ExtArgs extends $Extensions.Args = $Extensions.Def
  * 
  */
 export type visitantes = runtime.Types.DefaultSelection<visitantesPayload>
-export type parcelas_lugaresPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    idlugar: number
-    idparcela: number | null
-    idservicio: number | null
-    lugar: number | null
-    contrato: number | null
-    dni: number | null
-    fecha: Date | null
-    operador: string | null
-  }, ExtArgs["result"]["parcelas_lugares"]>
-  composites: {}
-}
-
-/**
- * Model parcelas_lugares
- * 
- */
-export type parcelas_lugares = runtime.Types.DefaultSelection<parcelas_lugaresPayload>
-export type caja_saPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    idcaja: number
-    codigo: number | null
-    cuenta: string | null
-    tipo: string | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    comentarios: string | null
-    nro_caja: number | null
-    movim: string | null
-    fecha: Date | null
-    puesto: number | null
-    operador: number | null
-    cuit: string | null
-    proveedor: string | null
-    sucursal: string | null
-  }, ExtArgs["result"]["caja_sa"]>
-  composites: {}
-}
-
-/**
- * Model caja_sa
- * 
- */
-export type caja_sa = runtime.Types.DefaultSelection<caja_saPayload>
-export type caja_srlPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    idcaja: number
-    codigo: number | null
-    cuenta: string | null
-    tipo: string | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    comentarios: string | null
-    nro_caja: number | null
-    movim: string | null
-    fecha: Date | null
-    puesto: number | null
-    operador: number | null
-    cuit: string | null
-    proveedor: string | null
-    sucursal: string | null
-  }, ExtArgs["result"]["caja_srl"]>
-  composites: {}
-}
-
-/**
- * Model caja_srl
- * 
- */
-export type caja_srl = runtime.Types.DefaultSelection<caja_srlPayload>
-export type generacion_cajasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    idgeneracion: number
-    desde: Date | null
-    hasta: Date | null
-    empresa: string | null
-    operador: string | null
-    fecha: Date | null
-  }, ExtArgs["result"]["generacion_cajas"]>
-  composites: {}
-}
-
-/**
- * Model generacion_cajas
- * 
- */
-export type generacion_cajas = runtime.Types.DefaultSelection<generacion_cajasPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1084,6 +1171,16 @@ export class PrismaClient<
   get ataudes(): Prisma.ataudesDelegate<GlobalReject, ExtArgs>;
 
   /**
+   * `prisma.auto_usos`: Exposes CRUD operations for the **auto_usos** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Auto_usos
+    * const auto_usos = await prisma.auto_usos.findMany()
+    * ```
+    */
+  get auto_usos(): Prisma.auto_usosDelegate<GlobalReject, ExtArgs>;
+
+  /**
    * `prisma.autos`: Exposes CRUD operations for the **autos** model.
     * Example usage:
     * ```ts
@@ -1124,6 +1221,16 @@ export class PrismaClient<
   get autos_pago_patente(): Prisma.autos_pago_patenteDelegate<GlobalReject, ExtArgs>;
 
   /**
+   * `prisma.caja_sa`: Exposes CRUD operations for the **caja_sa** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Caja_sas
+    * const caja_sas = await prisma.caja_sa.findMany()
+    * ```
+    */
+  get caja_sa(): Prisma.caja_saDelegate<GlobalReject, ExtArgs>;
+
+  /**
    * `prisma.caja_sepelio`: Exposes CRUD operations for the **caja_sepelio** model.
     * Example usage:
     * ```ts
@@ -1134,6 +1241,16 @@ export class PrismaClient<
   get caja_sepelio(): Prisma.caja_sepelioDelegate<GlobalReject, ExtArgs>;
 
   /**
+   * `prisma.caja_srl`: Exposes CRUD operations for the **caja_srl** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Caja_srls
+    * const caja_srls = await prisma.caja_srl.findMany()
+    * ```
+    */
+  get caja_srl(): Prisma.caja_srlDelegate<GlobalReject, ExtArgs>;
+
+  /**
    * `prisma.conceptos`: Exposes CRUD operations for the **conceptos** model.
     * Example usage:
     * ```ts
@@ -1142,6 +1259,16 @@ export class PrismaClient<
     * ```
     */
   get conceptos(): Prisma.conceptosDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.conceptos_sepelio_cuentas`: Exposes CRUD operations for the **conceptos_sepelio_cuentas** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Conceptos_sepelio_cuentas
+    * const conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.findMany()
+    * ```
+    */
+  get conceptos_sepelio_cuentas(): Prisma.conceptos_sepelio_cuentasDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.fabricante_ataud`: Exposes CRUD operations for the **fabricante_ataud** model.
@@ -1174,6 +1301,16 @@ export class PrismaClient<
   get gastos_caja(): Prisma.gastos_cajaDelegate<GlobalReject, ExtArgs>;
 
   /**
+   * `prisma.generacion_cajas`: Exposes CRUD operations for the **generacion_cajas** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Generacion_cajas
+    * const generacion_cajas = await prisma.generacion_cajas.findMany()
+    * ```
+    */
+  get generacion_cajas(): Prisma.generacion_cajasDelegate<GlobalReject, ExtArgs>;
+
+  /**
    * `prisma.historial_autos`: Exposes CRUD operations for the **historial_autos** model.
     * Example usage:
     * ```ts
@@ -1202,6 +1339,16 @@ export class PrismaClient<
     * ```
     */
   get honorarios(): Prisma.honorariosDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.informe_tareas`: Exposes CRUD operations for the **informe_tareas** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Informe_tareas
+    * const informe_tareas = await prisma.informe_tareas.findMany()
+    * ```
+    */
+  get informe_tareas(): Prisma.informe_tareasDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.ingreso_caja`: Exposes CRUD operations for the **ingreso_caja** model.
@@ -1234,6 +1381,16 @@ export class PrismaClient<
   get legajo_virtual_servicios(): Prisma.legajo_virtual_serviciosDelegate<GlobalReject, ExtArgs>;
 
   /**
+   * `prisma.lic_conducir`: Exposes CRUD operations for the **lic_conducir** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Lic_conducirs
+    * const lic_conducirs = await prisma.lic_conducir.findMany()
+    * ```
+    */
+  get lic_conducir(): Prisma.lic_conducirDelegate<GlobalReject, ExtArgs>;
+
+  /**
    * `prisma.novedades`: Exposes CRUD operations for the **novedades** model.
     * Example usage:
     * ```ts
@@ -1262,6 +1419,16 @@ export class PrismaClient<
     * ```
     */
   get parcelas(): Prisma.parcelasDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.parcelas_lugares`: Exposes CRUD operations for the **parcelas_lugares** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Parcelas_lugares
+    * const parcelas_lugares = await prisma.parcelas_lugares.findMany()
+    * ```
+    */
+  get parcelas_lugares(): Prisma.parcelas_lugaresDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.planificacion_guardias`: Exposes CRUD operations for the **planificacion_guardias** model.
@@ -1294,6 +1461,16 @@ export class PrismaClient<
   get proveedores(): Prisma.proveedoresDelegate<GlobalReject, ExtArgs>;
 
   /**
+   * `prisma.rodados`: Exposes CRUD operations for the **rodados** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Rodados
+    * const rodados = await prisma.rodados.findMany()
+    * ```
+    */
+  get rodados(): Prisma.rodadosDelegate<GlobalReject, ExtArgs>;
+
+  /**
    * `prisma.servicio_detalles`: Exposes CRUD operations for the **servicio_detalles** model.
     * Example usage:
     * ```ts
@@ -1312,6 +1489,16 @@ export class PrismaClient<
     * ```
     */
   get servicio_gastos(): Prisma.servicio_gastosDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.servicio_informes`: Exposes CRUD operations for the **servicio_informes** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Servicio_informes
+    * const servicio_informes = await prisma.servicio_informes.findMany()
+    * ```
+    */
+  get servicio_informes(): Prisma.servicio_informesDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.servicio_venta`: Exposes CRUD operations for the **servicio_venta** model.
@@ -1344,16 +1531,6 @@ export class PrismaClient<
   get servicios_historico(): Prisma.servicios_historicoDelegate<GlobalReject, ExtArgs>;
 
   /**
-   * `prisma.servicios_liquidacion`: Exposes CRUD operations for the **servicios_liquidacion** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Servicios_liquidacions
-    * const servicios_liquidacions = await prisma.servicios_liquidacion.findMany()
-    * ```
-    */
-  get servicios_liquidacion(): Prisma.servicios_liquidacionDelegate<GlobalReject, ExtArgs>;
-
-  /**
    * `prisma.tareas`: Exposes CRUD operations for the **tareas** model.
     * Example usage:
     * ```ts
@@ -1362,16 +1539,6 @@ export class PrismaClient<
     * ```
     */
   get tareas(): Prisma.tareasDelegate<GlobalReject, ExtArgs>;
-
-  /**
-   * `prisma.tareas_adicionales`: Exposes CRUD operations for the **tareas_adicionales** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Tareas_adicionales
-    * const tareas_adicionales = await prisma.tareas_adicionales.findMany()
-    * ```
-    */
-  get tareas_adicionales(): Prisma.tareas_adicionalesDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.tipo_detalle`: Exposes CRUD operations for the **tipo_detalle** model.
@@ -1392,46 +1559,6 @@ export class PrismaClient<
     * ```
     */
   get visitantes(): Prisma.visitantesDelegate<GlobalReject, ExtArgs>;
-
-  /**
-   * `prisma.parcelas_lugares`: Exposes CRUD operations for the **parcelas_lugares** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Parcelas_lugares
-    * const parcelas_lugares = await prisma.parcelas_lugares.findMany()
-    * ```
-    */
-  get parcelas_lugares(): Prisma.parcelas_lugaresDelegate<GlobalReject, ExtArgs>;
-
-  /**
-   * `prisma.caja_sa`: Exposes CRUD operations for the **caja_sa** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Caja_sas
-    * const caja_sas = await prisma.caja_sa.findMany()
-    * ```
-    */
-  get caja_sa(): Prisma.caja_saDelegate<GlobalReject, ExtArgs>;
-
-  /**
-   * `prisma.caja_srl`: Exposes CRUD operations for the **caja_srl** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Caja_srls
-    * const caja_srls = await prisma.caja_srl.findMany()
-    * ```
-    */
-  get caja_srl(): Prisma.caja_srlDelegate<GlobalReject, ExtArgs>;
-
-  /**
-   * `prisma.generacion_cajas`: Exposes CRUD operations for the **generacion_cajas** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Generacion_cajas
-    * const generacion_cajas = await prisma.generacion_cajas.findMany()
-    * ```
-    */
-  get generacion_cajas(): Prisma.generacion_cajasDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -1918,41 +2045,45 @@ export namespace Prisma {
     ataud_precio: 'ataud_precio',
     ataud_venta: 'ataud_venta',
     ataudes: 'ataudes',
+    auto_usos: 'auto_usos',
     autos: 'autos',
     autos_hoja_ruta: 'autos_hoja_ruta',
     autos_novedades: 'autos_novedades',
     autos_pago_patente: 'autos_pago_patente',
+    caja_sa: 'caja_sa',
     caja_sepelio: 'caja_sepelio',
+    caja_srl: 'caja_srl',
     conceptos: 'conceptos',
+    conceptos_sepelio_cuentas: 'conceptos_sepelio_cuentas',
     fabricante_ataud: 'fabricante_ataud',
     gasto_luto: 'gasto_luto',
     gastos_caja: 'gastos_caja',
+    generacion_cajas: 'generacion_cajas',
     historial_autos: 'historial_autos',
     historial_stock_ataud: 'historial_stock_ataud',
     honorarios: 'honorarios',
+    informe_tareas: 'informe_tareas',
     ingreso_caja: 'ingreso_caja',
     legajo_virtual_autos: 'legajo_virtual_autos',
     legajo_virtual_servicios: 'legajo_virtual_servicios',
+    lic_conducir: 'lic_conducir',
     novedades: 'novedades',
     operadorsep: 'operadorsep',
     parcelas: 'parcelas',
+    parcelas_lugares: 'parcelas_lugares',
     planificacion_guardias: 'planificacion_guardias',
     precio_servicio: 'precio_servicio',
     proveedores: 'proveedores',
+    rodados: 'rodados',
     servicio_detalles: 'servicio_detalles',
     servicio_gastos: 'servicio_gastos',
+    servicio_informes: 'servicio_informes',
     servicio_venta: 'servicio_venta',
     servicios: 'servicios',
     servicios_historico: 'servicios_historico',
-    servicios_liquidacion: 'servicios_liquidacion',
     tareas: 'tareas',
-    tareas_adicionales: 'tareas_adicionales',
     tipo_detalle: 'tipo_detalle',
-    visitantes: 'visitantes',
-    parcelas_lugares: 'parcelas_lugares',
-    caja_sa: 'caja_sa',
-    caja_srl: 'caja_srl',
-    generacion_cajas: 'generacion_cajas'
+    visitantes: 'visitantes'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1969,7 +2100,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sepelio' | 'conceptos' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'novedades' | 'operadorsep' | 'parcelas' | 'planificacion_guardias' | 'precio_servicio' | 'proveedores' | 'servicio_detalles' | 'servicio_gastos' | 'servicio_venta' | 'servicios' | 'servicios_historico' | 'servicios_liquidacion' | 'tareas' | 'tareas_adicionales' | 'tipo_detalle' | 'visitantes' | 'parcelas_lugares' | 'caja_sa' | 'caja_srl' | 'generacion_cajas'
+      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'auto_usos' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sa' | 'caja_sepelio' | 'caja_srl' | 'conceptos' | 'conceptos_sepelio_cuentas' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'generacion_cajas' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'informe_tareas' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'lic_conducir' | 'novedades' | 'operadorsep' | 'parcelas' | 'parcelas_lugares' | 'planificacion_guardias' | 'precio_servicio' | 'proveedores' | 'rodados' | 'servicio_detalles' | 'servicio_gastos' | 'servicio_informes' | 'servicio_venta' | 'servicios' | 'servicios_historico' | 'tareas' | 'tipo_detalle' | 'visitantes'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -2207,6 +2338,85 @@ export namespace Prisma {
             args: Prisma.ataudesCountArgs<ExtArgs>,
             result: $Utils.Optional<AtaudesCountAggregateOutputType> | number
             payload: ataudesPayload<ExtArgs>
+          }
+        }
+      }
+      auto_usos: {
+        operations: {
+          findUnique: {
+            args: Prisma.auto_usosFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auto_usosPayload> | null
+            payload: auto_usosPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.auto_usosFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auto_usosPayload>
+            payload: auto_usosPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.auto_usosFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auto_usosPayload> | null
+            payload: auto_usosPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.auto_usosFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auto_usosPayload>
+            payload: auto_usosPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.auto_usosFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auto_usosPayload>[]
+            payload: auto_usosPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.auto_usosCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auto_usosPayload>
+            payload: auto_usosPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.auto_usosCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: auto_usosPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.auto_usosDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auto_usosPayload>
+            payload: auto_usosPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.auto_usosUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auto_usosPayload>
+            payload: auto_usosPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.auto_usosDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: auto_usosPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.auto_usosUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: auto_usosPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.auto_usosUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auto_usosPayload>
+            payload: auto_usosPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Auto_usosAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAuto_usos>
+            payload: auto_usosPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.auto_usosGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Auto_usosGroupByOutputType>[]
+            payload: auto_usosPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.auto_usosCountArgs<ExtArgs>,
+            result: $Utils.Optional<Auto_usosCountAggregateOutputType> | number
+            payload: auto_usosPayload<ExtArgs>
           }
         }
       }
@@ -2526,6 +2736,85 @@ export namespace Prisma {
           }
         }
       }
+      caja_sa: {
+        operations: {
+          findUnique: {
+            args: Prisma.caja_saFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload> | null
+            payload: caja_saPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.caja_saFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.caja_saFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload> | null
+            payload: caja_saPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.caja_saFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.caja_saFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>[]
+            payload: caja_saPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.caja_saCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.caja_saCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_saPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.caja_saDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.caja_saUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.caja_saDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_saPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.caja_saUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_saPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.caja_saUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_saPayload>
+            payload: caja_saPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Caja_saAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCaja_sa>
+            payload: caja_saPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.caja_saGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Caja_saGroupByOutputType>[]
+            payload: caja_saPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.caja_saCountArgs<ExtArgs>,
+            result: $Utils.Optional<Caja_saCountAggregateOutputType> | number
+            payload: caja_saPayload<ExtArgs>
+          }
+        }
+      }
       caja_sepelio: {
         operations: {
           findUnique: {
@@ -2605,6 +2894,85 @@ export namespace Prisma {
           }
         }
       }
+      caja_srl: {
+        operations: {
+          findUnique: {
+            args: Prisma.caja_srlFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload> | null
+            payload: caja_srlPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.caja_srlFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.caja_srlFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload> | null
+            payload: caja_srlPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.caja_srlFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.caja_srlFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>[]
+            payload: caja_srlPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.caja_srlCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.caja_srlCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_srlPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.caja_srlDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.caja_srlUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.caja_srlDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_srlPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.caja_srlUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: caja_srlPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.caja_srlUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<caja_srlPayload>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Caja_srlAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCaja_srl>
+            payload: caja_srlPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.caja_srlGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Caja_srlGroupByOutputType>[]
+            payload: caja_srlPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.caja_srlCountArgs<ExtArgs>,
+            result: $Utils.Optional<Caja_srlCountAggregateOutputType> | number
+            payload: caja_srlPayload<ExtArgs>
+          }
+        }
+      }
       conceptos: {
         operations: {
           findUnique: {
@@ -2681,6 +3049,85 @@ export namespace Prisma {
             args: Prisma.conceptosCountArgs<ExtArgs>,
             result: $Utils.Optional<ConceptosCountAggregateOutputType> | number
             payload: conceptosPayload<ExtArgs>
+          }
+        }
+      }
+      conceptos_sepelio_cuentas: {
+        operations: {
+          findUnique: {
+            args: Prisma.conceptos_sepelio_cuentasFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_sepelio_cuentasPayload> | null
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.conceptos_sepelio_cuentasFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_sepelio_cuentasPayload>
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.conceptos_sepelio_cuentasFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_sepelio_cuentasPayload> | null
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.conceptos_sepelio_cuentasFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_sepelio_cuentasPayload>
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.conceptos_sepelio_cuentasFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_sepelio_cuentasPayload>[]
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.conceptos_sepelio_cuentasCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_sepelio_cuentasPayload>
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.conceptos_sepelio_cuentasCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.conceptos_sepelio_cuentasDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_sepelio_cuentasPayload>
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.conceptos_sepelio_cuentasUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_sepelio_cuentasPayload>
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.conceptos_sepelio_cuentasDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.conceptos_sepelio_cuentasUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.conceptos_sepelio_cuentasUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_sepelio_cuentasPayload>
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Conceptos_sepelio_cuentasAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateConceptos_sepelio_cuentas>
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.conceptos_sepelio_cuentasGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Conceptos_sepelio_cuentasGroupByOutputType>[]
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.conceptos_sepelio_cuentasCountArgs<ExtArgs>,
+            result: $Utils.Optional<Conceptos_sepelio_cuentasCountAggregateOutputType> | number
+            payload: conceptos_sepelio_cuentasPayload<ExtArgs>
           }
         }
       }
@@ -2921,6 +3368,85 @@ export namespace Prisma {
           }
         }
       }
+      generacion_cajas: {
+        operations: {
+          findUnique: {
+            args: Prisma.generacion_cajasFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload> | null
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.generacion_cajasFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.generacion_cajasFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload> | null
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.generacion_cajasFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.generacion_cajasFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>[]
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.generacion_cajasCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.generacion_cajasCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.generacion_cajasDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.generacion_cajasUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.generacion_cajasDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.generacion_cajasUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.generacion_cajasUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<generacion_cajasPayload>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Generacion_cajasAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateGeneracion_cajas>
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.generacion_cajasGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Generacion_cajasGroupByOutputType>[]
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.generacion_cajasCountArgs<ExtArgs>,
+            result: $Utils.Optional<Generacion_cajasCountAggregateOutputType> | number
+            payload: generacion_cajasPayload<ExtArgs>
+          }
+        }
+      }
       historial_autos: {
         operations: {
           findUnique: {
@@ -3155,6 +3681,85 @@ export namespace Prisma {
             args: Prisma.honorariosCountArgs<ExtArgs>,
             result: $Utils.Optional<HonorariosCountAggregateOutputType> | number
             payload: honorariosPayload<ExtArgs>
+          }
+        }
+      }
+      informe_tareas: {
+        operations: {
+          findUnique: {
+            args: Prisma.informe_tareasFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<informe_tareasPayload> | null
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.informe_tareasFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<informe_tareasPayload>
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.informe_tareasFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<informe_tareasPayload> | null
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.informe_tareasFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<informe_tareasPayload>
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.informe_tareasFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<informe_tareasPayload>[]
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.informe_tareasCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<informe_tareasPayload>
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.informe_tareasCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.informe_tareasDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<informe_tareasPayload>
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.informe_tareasUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<informe_tareasPayload>
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.informe_tareasDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.informe_tareasUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.informe_tareasUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<informe_tareasPayload>
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Informe_tareasAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateInforme_tareas>
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.informe_tareasGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Informe_tareasGroupByOutputType>[]
+            payload: informe_tareasPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.informe_tareasCountArgs<ExtArgs>,
+            result: $Utils.Optional<Informe_tareasCountAggregateOutputType> | number
+            payload: informe_tareasPayload<ExtArgs>
           }
         }
       }
@@ -3395,6 +4000,85 @@ export namespace Prisma {
           }
         }
       }
+      lic_conducir: {
+        operations: {
+          findUnique: {
+            args: Prisma.lic_conducirFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<lic_conducirPayload> | null
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.lic_conducirFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<lic_conducirPayload>
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.lic_conducirFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<lic_conducirPayload> | null
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.lic_conducirFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<lic_conducirPayload>
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.lic_conducirFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<lic_conducirPayload>[]
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.lic_conducirCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<lic_conducirPayload>
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.lic_conducirCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.lic_conducirDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<lic_conducirPayload>
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.lic_conducirUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<lic_conducirPayload>
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.lic_conducirDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.lic_conducirUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.lic_conducirUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<lic_conducirPayload>
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Lic_conducirAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateLic_conducir>
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.lic_conducirGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Lic_conducirGroupByOutputType>[]
+            payload: lic_conducirPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.lic_conducirCountArgs<ExtArgs>,
+            result: $Utils.Optional<Lic_conducirCountAggregateOutputType> | number
+            payload: lic_conducirPayload<ExtArgs>
+          }
+        }
+      }
       novedades: {
         operations: {
           findUnique: {
@@ -3629,6 +4313,85 @@ export namespace Prisma {
             args: Prisma.parcelasCountArgs<ExtArgs>,
             result: $Utils.Optional<ParcelasCountAggregateOutputType> | number
             payload: parcelasPayload<ExtArgs>
+          }
+        }
+      }
+      parcelas_lugares: {
+        operations: {
+          findUnique: {
+            args: Prisma.parcelas_lugaresFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload> | null
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.parcelas_lugaresFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload> | null
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.parcelas_lugaresFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.parcelas_lugaresFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>[]
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.parcelas_lugaresCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.parcelas_lugaresCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.parcelas_lugaresDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.parcelas_lugaresUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.parcelas_lugaresDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.parcelas_lugaresUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.parcelas_lugaresUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Parcelas_lugaresAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateParcelas_lugares>
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.parcelas_lugaresGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Parcelas_lugaresGroupByOutputType>[]
+            payload: parcelas_lugaresPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.parcelas_lugaresCountArgs<ExtArgs>,
+            result: $Utils.Optional<Parcelas_lugaresCountAggregateOutputType> | number
+            payload: parcelas_lugaresPayload<ExtArgs>
           }
         }
       }
@@ -3869,6 +4632,85 @@ export namespace Prisma {
           }
         }
       }
+      rodados: {
+        operations: {
+          findUnique: {
+            args: Prisma.rodadosFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<rodadosPayload> | null
+            payload: rodadosPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.rodadosFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<rodadosPayload>
+            payload: rodadosPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.rodadosFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<rodadosPayload> | null
+            payload: rodadosPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.rodadosFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<rodadosPayload>
+            payload: rodadosPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.rodadosFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<rodadosPayload>[]
+            payload: rodadosPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.rodadosCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<rodadosPayload>
+            payload: rodadosPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.rodadosCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: rodadosPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.rodadosDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<rodadosPayload>
+            payload: rodadosPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.rodadosUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<rodadosPayload>
+            payload: rodadosPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.rodadosDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: rodadosPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.rodadosUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: rodadosPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.rodadosUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<rodadosPayload>
+            payload: rodadosPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.RodadosAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateRodados>
+            payload: rodadosPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.rodadosGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<RodadosGroupByOutputType>[]
+            payload: rodadosPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.rodadosCountArgs<ExtArgs>,
+            result: $Utils.Optional<RodadosCountAggregateOutputType> | number
+            payload: rodadosPayload<ExtArgs>
+          }
+        }
+      }
       servicio_detalles: {
         operations: {
           findUnique: {
@@ -4024,6 +4866,85 @@ export namespace Prisma {
             args: Prisma.servicio_gastosCountArgs<ExtArgs>,
             result: $Utils.Optional<Servicio_gastosCountAggregateOutputType> | number
             payload: servicio_gastosPayload<ExtArgs>
+          }
+        }
+      }
+      servicio_informes: {
+        operations: {
+          findUnique: {
+            args: Prisma.servicio_informesFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_informesPayload> | null
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.servicio_informesFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_informesPayload>
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.servicio_informesFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_informesPayload> | null
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.servicio_informesFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_informesPayload>
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.servicio_informesFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_informesPayload>[]
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.servicio_informesCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_informesPayload>
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.servicio_informesCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.servicio_informesDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_informesPayload>
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.servicio_informesUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_informesPayload>
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.servicio_informesDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.servicio_informesUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.servicio_informesUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_informesPayload>
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Servicio_informesAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateServicio_informes>
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.servicio_informesGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Servicio_informesGroupByOutputType>[]
+            payload: servicio_informesPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.servicio_informesCountArgs<ExtArgs>,
+            result: $Utils.Optional<Servicio_informesCountAggregateOutputType> | number
+            payload: servicio_informesPayload<ExtArgs>
           }
         }
       }
@@ -4264,85 +5185,6 @@ export namespace Prisma {
           }
         }
       }
-      servicios_liquidacion: {
-        operations: {
-          findUnique: {
-            args: Prisma.servicios_liquidacionFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<servicios_liquidacionPayload> | null
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.servicios_liquidacionFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<servicios_liquidacionPayload>
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.servicios_liquidacionFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<servicios_liquidacionPayload> | null
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.servicios_liquidacionFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<servicios_liquidacionPayload>
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.servicios_liquidacionFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<servicios_liquidacionPayload>[]
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          create: {
-            args: Prisma.servicios_liquidacionCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<servicios_liquidacionPayload>
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.servicios_liquidacionCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.servicios_liquidacionDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<servicios_liquidacionPayload>
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          update: {
-            args: Prisma.servicios_liquidacionUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<servicios_liquidacionPayload>
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.servicios_liquidacionDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.servicios_liquidacionUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.servicios_liquidacionUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<servicios_liquidacionPayload>
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.Servicios_liquidacionAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateServicios_liquidacion>
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.servicios_liquidacionGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Servicios_liquidacionGroupByOutputType>[]
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-          count: {
-            args: Prisma.servicios_liquidacionCountArgs<ExtArgs>,
-            result: $Utils.Optional<Servicios_liquidacionCountAggregateOutputType> | number
-            payload: servicios_liquidacionPayload<ExtArgs>
-          }
-        }
-      }
       tareas: {
         operations: {
           findUnique: {
@@ -4419,85 +5261,6 @@ export namespace Prisma {
             args: Prisma.tareasCountArgs<ExtArgs>,
             result: $Utils.Optional<TareasCountAggregateOutputType> | number
             payload: tareasPayload<ExtArgs>
-          }
-        }
-      }
-      tareas_adicionales: {
-        operations: {
-          findUnique: {
-            args: Prisma.tareas_adicionalesFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<tareas_adicionalesPayload> | null
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.tareas_adicionalesFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<tareas_adicionalesPayload>
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.tareas_adicionalesFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<tareas_adicionalesPayload> | null
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.tareas_adicionalesFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<tareas_adicionalesPayload>
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.tareas_adicionalesFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<tareas_adicionalesPayload>[]
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          create: {
-            args: Prisma.tareas_adicionalesCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<tareas_adicionalesPayload>
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.tareas_adicionalesCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.tareas_adicionalesDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<tareas_adicionalesPayload>
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          update: {
-            args: Prisma.tareas_adicionalesUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<tareas_adicionalesPayload>
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.tareas_adicionalesDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.tareas_adicionalesUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.tareas_adicionalesUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<tareas_adicionalesPayload>
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.Tareas_adicionalesAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateTareas_adicionales>
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.tareas_adicionalesGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Tareas_adicionalesGroupByOutputType>[]
-            payload: tareas_adicionalesPayload<ExtArgs>
-          }
-          count: {
-            args: Prisma.tareas_adicionalesCountArgs<ExtArgs>,
-            result: $Utils.Optional<Tareas_adicionalesCountAggregateOutputType> | number
-            payload: tareas_adicionalesPayload<ExtArgs>
           }
         }
       }
@@ -4656,322 +5419,6 @@ export namespace Prisma {
             args: Prisma.visitantesCountArgs<ExtArgs>,
             result: $Utils.Optional<VisitantesCountAggregateOutputType> | number
             payload: visitantesPayload<ExtArgs>
-          }
-        }
-      }
-      parcelas_lugares: {
-        operations: {
-          findUnique: {
-            args: Prisma.parcelas_lugaresFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<parcelas_lugaresPayload> | null
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.parcelas_lugaresFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<parcelas_lugaresPayload> | null
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.parcelas_lugaresFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.parcelas_lugaresFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<parcelas_lugaresPayload>[]
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          create: {
-            args: Prisma.parcelas_lugaresCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.parcelas_lugaresCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.parcelas_lugaresDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          update: {
-            args: Prisma.parcelas_lugaresUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.parcelas_lugaresDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.parcelas_lugaresUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.parcelas_lugaresUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<parcelas_lugaresPayload>
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.Parcelas_lugaresAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateParcelas_lugares>
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.parcelas_lugaresGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Parcelas_lugaresGroupByOutputType>[]
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-          count: {
-            args: Prisma.parcelas_lugaresCountArgs<ExtArgs>,
-            result: $Utils.Optional<Parcelas_lugaresCountAggregateOutputType> | number
-            payload: parcelas_lugaresPayload<ExtArgs>
-          }
-        }
-      }
-      caja_sa: {
-        operations: {
-          findUnique: {
-            args: Prisma.caja_saFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_saPayload> | null
-            payload: caja_saPayload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.caja_saFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_saPayload>
-            payload: caja_saPayload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.caja_saFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_saPayload> | null
-            payload: caja_saPayload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.caja_saFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_saPayload>
-            payload: caja_saPayload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.caja_saFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_saPayload>[]
-            payload: caja_saPayload<ExtArgs>
-          }
-          create: {
-            args: Prisma.caja_saCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_saPayload>
-            payload: caja_saPayload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.caja_saCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: caja_saPayload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.caja_saDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_saPayload>
-            payload: caja_saPayload<ExtArgs>
-          }
-          update: {
-            args: Prisma.caja_saUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_saPayload>
-            payload: caja_saPayload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.caja_saDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: caja_saPayload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.caja_saUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: caja_saPayload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.caja_saUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_saPayload>
-            payload: caja_saPayload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.Caja_saAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateCaja_sa>
-            payload: caja_saPayload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.caja_saGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Caja_saGroupByOutputType>[]
-            payload: caja_saPayload<ExtArgs>
-          }
-          count: {
-            args: Prisma.caja_saCountArgs<ExtArgs>,
-            result: $Utils.Optional<Caja_saCountAggregateOutputType> | number
-            payload: caja_saPayload<ExtArgs>
-          }
-        }
-      }
-      caja_srl: {
-        operations: {
-          findUnique: {
-            args: Prisma.caja_srlFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_srlPayload> | null
-            payload: caja_srlPayload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.caja_srlFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_srlPayload>
-            payload: caja_srlPayload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.caja_srlFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_srlPayload> | null
-            payload: caja_srlPayload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.caja_srlFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_srlPayload>
-            payload: caja_srlPayload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.caja_srlFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_srlPayload>[]
-            payload: caja_srlPayload<ExtArgs>
-          }
-          create: {
-            args: Prisma.caja_srlCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_srlPayload>
-            payload: caja_srlPayload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.caja_srlCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: caja_srlPayload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.caja_srlDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_srlPayload>
-            payload: caja_srlPayload<ExtArgs>
-          }
-          update: {
-            args: Prisma.caja_srlUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_srlPayload>
-            payload: caja_srlPayload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.caja_srlDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: caja_srlPayload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.caja_srlUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: caja_srlPayload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.caja_srlUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<caja_srlPayload>
-            payload: caja_srlPayload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.Caja_srlAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateCaja_srl>
-            payload: caja_srlPayload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.caja_srlGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Caja_srlGroupByOutputType>[]
-            payload: caja_srlPayload<ExtArgs>
-          }
-          count: {
-            args: Prisma.caja_srlCountArgs<ExtArgs>,
-            result: $Utils.Optional<Caja_srlCountAggregateOutputType> | number
-            payload: caja_srlPayload<ExtArgs>
-          }
-        }
-      }
-      generacion_cajas: {
-        operations: {
-          findUnique: {
-            args: Prisma.generacion_cajasFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<generacion_cajasPayload> | null
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.generacion_cajasFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<generacion_cajasPayload>
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.generacion_cajasFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<generacion_cajasPayload> | null
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.generacion_cajasFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<generacion_cajasPayload>
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.generacion_cajasFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<generacion_cajasPayload>[]
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          create: {
-            args: Prisma.generacion_cajasCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<generacion_cajasPayload>
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.generacion_cajasCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.generacion_cajasDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<generacion_cajasPayload>
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          update: {
-            args: Prisma.generacion_cajasUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<generacion_cajasPayload>
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.generacion_cajasDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.generacion_cajasUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.generacion_cajasUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<generacion_cajasPayload>
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.Generacion_cajasAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateGeneracion_cajas>
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.generacion_cajasGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Generacion_cajasGroupByOutputType>[]
-            payload: generacion_cajasPayload<ExtArgs>
-          }
-          count: {
-            args: Prisma.generacion_cajasCountArgs<ExtArgs>,
-            result: $Utils.Optional<Generacion_cajasCountAggregateOutputType> | number
-            payload: generacion_cajasPayload<ExtArgs>
           }
         }
       }
@@ -8173,6 +8620,1007 @@ export namespace Prisma {
      * Select specific fields to fetch from the ataudes
      */
     select?: ataudesSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model auto_usos
+   */
+
+
+  export type AggregateAuto_usos = {
+    _count: Auto_usosCountAggregateOutputType | null
+    _avg: Auto_usosAvgAggregateOutputType | null
+    _sum: Auto_usosSumAggregateOutputType | null
+    _min: Auto_usosMinAggregateOutputType | null
+    _max: Auto_usosMaxAggregateOutputType | null
+  }
+
+  export type Auto_usosAvgAggregateOutputType = {
+    KILO_SAL: number | null
+    KILO_LLE: number | null
+    idusos: number | null
+  }
+
+  export type Auto_usosSumAggregateOutputType = {
+    KILO_SAL: number | null
+    KILO_LLE: number | null
+    idusos: number | null
+  }
+
+  export type Auto_usosMinAggregateOutputType = {
+    FECHA: Date | null
+    PATENTE: string | null
+    DESCRIP: string | null
+    NOMB_OPE: string | null
+    CHOFER: string | null
+    HORA1: string | null
+    HORA2: string | null
+    TAREA: string | null
+    OBSERVA_1: string | null
+    OBSERVA_2: string | null
+    OPE_LLEGA: string | null
+    KILO_SAL: number | null
+    KILO_LLE: number | null
+    idusos: number | null
+  }
+
+  export type Auto_usosMaxAggregateOutputType = {
+    FECHA: Date | null
+    PATENTE: string | null
+    DESCRIP: string | null
+    NOMB_OPE: string | null
+    CHOFER: string | null
+    HORA1: string | null
+    HORA2: string | null
+    TAREA: string | null
+    OBSERVA_1: string | null
+    OBSERVA_2: string | null
+    OPE_LLEGA: string | null
+    KILO_SAL: number | null
+    KILO_LLE: number | null
+    idusos: number | null
+  }
+
+  export type Auto_usosCountAggregateOutputType = {
+    FECHA: number
+    PATENTE: number
+    DESCRIP: number
+    NOMB_OPE: number
+    CHOFER: number
+    HORA1: number
+    HORA2: number
+    TAREA: number
+    OBSERVA_1: number
+    OBSERVA_2: number
+    OPE_LLEGA: number
+    KILO_SAL: number
+    KILO_LLE: number
+    idusos: number
+    _all: number
+  }
+
+
+  export type Auto_usosAvgAggregateInputType = {
+    KILO_SAL?: true
+    KILO_LLE?: true
+    idusos?: true
+  }
+
+  export type Auto_usosSumAggregateInputType = {
+    KILO_SAL?: true
+    KILO_LLE?: true
+    idusos?: true
+  }
+
+  export type Auto_usosMinAggregateInputType = {
+    FECHA?: true
+    PATENTE?: true
+    DESCRIP?: true
+    NOMB_OPE?: true
+    CHOFER?: true
+    HORA1?: true
+    HORA2?: true
+    TAREA?: true
+    OBSERVA_1?: true
+    OBSERVA_2?: true
+    OPE_LLEGA?: true
+    KILO_SAL?: true
+    KILO_LLE?: true
+    idusos?: true
+  }
+
+  export type Auto_usosMaxAggregateInputType = {
+    FECHA?: true
+    PATENTE?: true
+    DESCRIP?: true
+    NOMB_OPE?: true
+    CHOFER?: true
+    HORA1?: true
+    HORA2?: true
+    TAREA?: true
+    OBSERVA_1?: true
+    OBSERVA_2?: true
+    OPE_LLEGA?: true
+    KILO_SAL?: true
+    KILO_LLE?: true
+    idusos?: true
+  }
+
+  export type Auto_usosCountAggregateInputType = {
+    FECHA?: true
+    PATENTE?: true
+    DESCRIP?: true
+    NOMB_OPE?: true
+    CHOFER?: true
+    HORA1?: true
+    HORA2?: true
+    TAREA?: true
+    OBSERVA_1?: true
+    OBSERVA_2?: true
+    OPE_LLEGA?: true
+    KILO_SAL?: true
+    KILO_LLE?: true
+    idusos?: true
+    _all?: true
+  }
+
+  export type Auto_usosAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which auto_usos to aggregate.
+     */
+    where?: auto_usosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of auto_usos to fetch.
+     */
+    orderBy?: auto_usosOrderByWithRelationInput | auto_usosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: auto_usosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` auto_usos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` auto_usos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned auto_usos
+    **/
+    _count?: true | Auto_usosCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Auto_usosAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Auto_usosSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Auto_usosMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Auto_usosMaxAggregateInputType
+  }
+
+  export type GetAuto_usosAggregateType<T extends Auto_usosAggregateArgs> = {
+        [P in keyof T & keyof AggregateAuto_usos]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAuto_usos[P]>
+      : GetScalarType<T[P], AggregateAuto_usos[P]>
+  }
+
+
+
+
+  export type auto_usosGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: auto_usosWhereInput
+    orderBy?: auto_usosOrderByWithAggregationInput | auto_usosOrderByWithAggregationInput[]
+    by: Auto_usosScalarFieldEnum[] | Auto_usosScalarFieldEnum
+    having?: auto_usosScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Auto_usosCountAggregateInputType | true
+    _avg?: Auto_usosAvgAggregateInputType
+    _sum?: Auto_usosSumAggregateInputType
+    _min?: Auto_usosMinAggregateInputType
+    _max?: Auto_usosMaxAggregateInputType
+  }
+
+
+  export type Auto_usosGroupByOutputType = {
+    FECHA: Date | null
+    PATENTE: string | null
+    DESCRIP: string | null
+    NOMB_OPE: string | null
+    CHOFER: string | null
+    HORA1: string | null
+    HORA2: string | null
+    TAREA: string | null
+    OBSERVA_1: string | null
+    OBSERVA_2: string | null
+    OPE_LLEGA: string | null
+    KILO_SAL: number | null
+    KILO_LLE: number | null
+    idusos: number
+    _count: Auto_usosCountAggregateOutputType | null
+    _avg: Auto_usosAvgAggregateOutputType | null
+    _sum: Auto_usosSumAggregateOutputType | null
+    _min: Auto_usosMinAggregateOutputType | null
+    _max: Auto_usosMaxAggregateOutputType | null
+  }
+
+  type GetAuto_usosGroupByPayload<T extends auto_usosGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Auto_usosGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Auto_usosGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Auto_usosGroupByOutputType[P]>
+            : GetScalarType<T[P], Auto_usosGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type auto_usosSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    FECHA?: boolean
+    PATENTE?: boolean
+    DESCRIP?: boolean
+    NOMB_OPE?: boolean
+    CHOFER?: boolean
+    HORA1?: boolean
+    HORA2?: boolean
+    TAREA?: boolean
+    OBSERVA_1?: boolean
+    OBSERVA_2?: boolean
+    OPE_LLEGA?: boolean
+    KILO_SAL?: boolean
+    KILO_LLE?: boolean
+    idusos?: boolean
+  }, ExtArgs["result"]["auto_usos"]>
+
+  export type auto_usosSelectScalar = {
+    FECHA?: boolean
+    PATENTE?: boolean
+    DESCRIP?: boolean
+    NOMB_OPE?: boolean
+    CHOFER?: boolean
+    HORA1?: boolean
+    HORA2?: boolean
+    TAREA?: boolean
+    OBSERVA_1?: boolean
+    OBSERVA_2?: boolean
+    OPE_LLEGA?: boolean
+    KILO_SAL?: boolean
+    KILO_LLE?: boolean
+    idusos?: boolean
+  }
+
+
+  type auto_usosGetPayload<S extends boolean | null | undefined | auto_usosArgs> = $Types.GetResult<auto_usosPayload, S>
+
+  type auto_usosCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<auto_usosFindManyArgs, 'select' | 'include'> & {
+      select?: Auto_usosCountAggregateInputType | true
+    }
+
+  export interface auto_usosDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['auto_usos'], meta: { name: 'auto_usos' } }
+    /**
+     * Find zero or one Auto_usos that matches the filter.
+     * @param {auto_usosFindUniqueArgs} args - Arguments to find a Auto_usos
+     * @example
+     * // Get one Auto_usos
+     * const auto_usos = await prisma.auto_usos.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends auto_usosFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, auto_usosFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'auto_usos'> extends True ? Prisma__auto_usosClient<$Types.GetResult<auto_usosPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__auto_usosClient<$Types.GetResult<auto_usosPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Auto_usos that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {auto_usosFindUniqueOrThrowArgs} args - Arguments to find a Auto_usos
+     * @example
+     * // Get one Auto_usos
+     * const auto_usos = await prisma.auto_usos.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends auto_usosFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, auto_usosFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__auto_usosClient<$Types.GetResult<auto_usosPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Auto_usos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {auto_usosFindFirstArgs} args - Arguments to find a Auto_usos
+     * @example
+     * // Get one Auto_usos
+     * const auto_usos = await prisma.auto_usos.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends auto_usosFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, auto_usosFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'auto_usos'> extends True ? Prisma__auto_usosClient<$Types.GetResult<auto_usosPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__auto_usosClient<$Types.GetResult<auto_usosPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Auto_usos that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {auto_usosFindFirstOrThrowArgs} args - Arguments to find a Auto_usos
+     * @example
+     * // Get one Auto_usos
+     * const auto_usos = await prisma.auto_usos.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends auto_usosFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, auto_usosFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__auto_usosClient<$Types.GetResult<auto_usosPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Auto_usos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {auto_usosFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Auto_usos
+     * const auto_usos = await prisma.auto_usos.findMany()
+     * 
+     * // Get first 10 Auto_usos
+     * const auto_usos = await prisma.auto_usos.findMany({ take: 10 })
+     * 
+     * // Only select the `FECHA`
+     * const auto_usosWithFECHAOnly = await prisma.auto_usos.findMany({ select: { FECHA: true } })
+     * 
+    **/
+    findMany<T extends auto_usosFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, auto_usosFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<auto_usosPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Auto_usos.
+     * @param {auto_usosCreateArgs} args - Arguments to create a Auto_usos.
+     * @example
+     * // Create one Auto_usos
+     * const Auto_usos = await prisma.auto_usos.create({
+     *   data: {
+     *     // ... data to create a Auto_usos
+     *   }
+     * })
+     * 
+    **/
+    create<T extends auto_usosCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, auto_usosCreateArgs<ExtArgs>>
+    ): Prisma__auto_usosClient<$Types.GetResult<auto_usosPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Auto_usos.
+     *     @param {auto_usosCreateManyArgs} args - Arguments to create many Auto_usos.
+     *     @example
+     *     // Create many Auto_usos
+     *     const auto_usos = await prisma.auto_usos.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends auto_usosCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, auto_usosCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Auto_usos.
+     * @param {auto_usosDeleteArgs} args - Arguments to delete one Auto_usos.
+     * @example
+     * // Delete one Auto_usos
+     * const Auto_usos = await prisma.auto_usos.delete({
+     *   where: {
+     *     // ... filter to delete one Auto_usos
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends auto_usosDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, auto_usosDeleteArgs<ExtArgs>>
+    ): Prisma__auto_usosClient<$Types.GetResult<auto_usosPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Auto_usos.
+     * @param {auto_usosUpdateArgs} args - Arguments to update one Auto_usos.
+     * @example
+     * // Update one Auto_usos
+     * const auto_usos = await prisma.auto_usos.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends auto_usosUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, auto_usosUpdateArgs<ExtArgs>>
+    ): Prisma__auto_usosClient<$Types.GetResult<auto_usosPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Auto_usos.
+     * @param {auto_usosDeleteManyArgs} args - Arguments to filter Auto_usos to delete.
+     * @example
+     * // Delete a few Auto_usos
+     * const { count } = await prisma.auto_usos.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends auto_usosDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, auto_usosDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Auto_usos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {auto_usosUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Auto_usos
+     * const auto_usos = await prisma.auto_usos.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends auto_usosUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, auto_usosUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Auto_usos.
+     * @param {auto_usosUpsertArgs} args - Arguments to update or create a Auto_usos.
+     * @example
+     * // Update or create a Auto_usos
+     * const auto_usos = await prisma.auto_usos.upsert({
+     *   create: {
+     *     // ... data to create a Auto_usos
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Auto_usos we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends auto_usosUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, auto_usosUpsertArgs<ExtArgs>>
+    ): Prisma__auto_usosClient<$Types.GetResult<auto_usosPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Auto_usos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {auto_usosCountArgs} args - Arguments to filter Auto_usos to count.
+     * @example
+     * // Count the number of Auto_usos
+     * const count = await prisma.auto_usos.count({
+     *   where: {
+     *     // ... the filter for the Auto_usos we want to count
+     *   }
+     * })
+    **/
+    count<T extends auto_usosCountArgs>(
+      args?: Subset<T, auto_usosCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Auto_usosCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Auto_usos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Auto_usosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Auto_usosAggregateArgs>(args: Subset<T, Auto_usosAggregateArgs>): Prisma.PrismaPromise<GetAuto_usosAggregateType<T>>
+
+    /**
+     * Group by Auto_usos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {auto_usosGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends auto_usosGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: auto_usosGroupByArgs['orderBy'] }
+        : { orderBy?: auto_usosGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, auto_usosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAuto_usosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for auto_usos.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__auto_usosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * auto_usos base type for findUnique actions
+   */
+  export type auto_usosFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the auto_usos
+     */
+    select?: auto_usosSelect<ExtArgs> | null
+    /**
+     * Filter, which auto_usos to fetch.
+     */
+    where: auto_usosWhereUniqueInput
+  }
+
+  /**
+   * auto_usos findUnique
+   */
+  export interface auto_usosFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends auto_usosFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * auto_usos findUniqueOrThrow
+   */
+  export type auto_usosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the auto_usos
+     */
+    select?: auto_usosSelect<ExtArgs> | null
+    /**
+     * Filter, which auto_usos to fetch.
+     */
+    where: auto_usosWhereUniqueInput
+  }
+
+
+  /**
+   * auto_usos base type for findFirst actions
+   */
+  export type auto_usosFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the auto_usos
+     */
+    select?: auto_usosSelect<ExtArgs> | null
+    /**
+     * Filter, which auto_usos to fetch.
+     */
+    where?: auto_usosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of auto_usos to fetch.
+     */
+    orderBy?: auto_usosOrderByWithRelationInput | auto_usosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for auto_usos.
+     */
+    cursor?: auto_usosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` auto_usos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` auto_usos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of auto_usos.
+     */
+    distinct?: Auto_usosScalarFieldEnum | Auto_usosScalarFieldEnum[]
+  }
+
+  /**
+   * auto_usos findFirst
+   */
+  export interface auto_usosFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends auto_usosFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * auto_usos findFirstOrThrow
+   */
+  export type auto_usosFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the auto_usos
+     */
+    select?: auto_usosSelect<ExtArgs> | null
+    /**
+     * Filter, which auto_usos to fetch.
+     */
+    where?: auto_usosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of auto_usos to fetch.
+     */
+    orderBy?: auto_usosOrderByWithRelationInput | auto_usosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for auto_usos.
+     */
+    cursor?: auto_usosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` auto_usos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` auto_usos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of auto_usos.
+     */
+    distinct?: Auto_usosScalarFieldEnum | Auto_usosScalarFieldEnum[]
+  }
+
+
+  /**
+   * auto_usos findMany
+   */
+  export type auto_usosFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the auto_usos
+     */
+    select?: auto_usosSelect<ExtArgs> | null
+    /**
+     * Filter, which auto_usos to fetch.
+     */
+    where?: auto_usosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of auto_usos to fetch.
+     */
+    orderBy?: auto_usosOrderByWithRelationInput | auto_usosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing auto_usos.
+     */
+    cursor?: auto_usosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` auto_usos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` auto_usos.
+     */
+    skip?: number
+    distinct?: Auto_usosScalarFieldEnum | Auto_usosScalarFieldEnum[]
+  }
+
+
+  /**
+   * auto_usos create
+   */
+  export type auto_usosCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the auto_usos
+     */
+    select?: auto_usosSelect<ExtArgs> | null
+    /**
+     * The data needed to create a auto_usos.
+     */
+    data?: XOR<auto_usosCreateInput, auto_usosUncheckedCreateInput>
+  }
+
+
+  /**
+   * auto_usos createMany
+   */
+  export type auto_usosCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many auto_usos.
+     */
+    data: auto_usosCreateManyInput | auto_usosCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * auto_usos update
+   */
+  export type auto_usosUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the auto_usos
+     */
+    select?: auto_usosSelect<ExtArgs> | null
+    /**
+     * The data needed to update a auto_usos.
+     */
+    data: XOR<auto_usosUpdateInput, auto_usosUncheckedUpdateInput>
+    /**
+     * Choose, which auto_usos to update.
+     */
+    where: auto_usosWhereUniqueInput
+  }
+
+
+  /**
+   * auto_usos updateMany
+   */
+  export type auto_usosUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update auto_usos.
+     */
+    data: XOR<auto_usosUpdateManyMutationInput, auto_usosUncheckedUpdateManyInput>
+    /**
+     * Filter which auto_usos to update
+     */
+    where?: auto_usosWhereInput
+  }
+
+
+  /**
+   * auto_usos upsert
+   */
+  export type auto_usosUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the auto_usos
+     */
+    select?: auto_usosSelect<ExtArgs> | null
+    /**
+     * The filter to search for the auto_usos to update in case it exists.
+     */
+    where: auto_usosWhereUniqueInput
+    /**
+     * In case the auto_usos found by the `where` argument doesn't exist, create a new auto_usos with this data.
+     */
+    create: XOR<auto_usosCreateInput, auto_usosUncheckedCreateInput>
+    /**
+     * In case the auto_usos was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<auto_usosUpdateInput, auto_usosUncheckedUpdateInput>
+  }
+
+
+  /**
+   * auto_usos delete
+   */
+  export type auto_usosDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the auto_usos
+     */
+    select?: auto_usosSelect<ExtArgs> | null
+    /**
+     * Filter which auto_usos to delete.
+     */
+    where: auto_usosWhereUniqueInput
+  }
+
+
+  /**
+   * auto_usos deleteMany
+   */
+  export type auto_usosDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which auto_usos to delete
+     */
+    where?: auto_usosWhereInput
+  }
+
+
+  /**
+   * auto_usos without action
+   */
+  export type auto_usosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the auto_usos
+     */
+    select?: auto_usosSelect<ExtArgs> | null
   }
 
 
@@ -12037,6 +13485,1045 @@ export namespace Prisma {
 
 
   /**
+   * Model caja_sa
+   */
+
+
+  export type AggregateCaja_sa = {
+    _count: Caja_saCountAggregateOutputType | null
+    _avg: Caja_saAvgAggregateOutputType | null
+    _sum: Caja_saSumAggregateOutputType | null
+    _min: Caja_saMinAggregateOutputType | null
+    _max: Caja_saMaxAggregateOutputType | null
+  }
+
+  export type Caja_saAvgAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    nro_caja: number | null
+    puesto: number | null
+    operador: number | null
+  }
+
+  export type Caja_saSumAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    nro_caja: number | null
+    puesto: number | null
+    operador: number | null
+  }
+
+  export type Caja_saMinAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }
+
+  export type Caja_saMaxAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }
+
+  export type Caja_saCountAggregateOutputType = {
+    idcaja: number
+    codigo: number
+    cuenta: number
+    tipo: number
+    serie: number
+    factura: number
+    importe: number
+    comentarios: number
+    nro_caja: number
+    movim: number
+    fecha: number
+    puesto: number
+    operador: number
+    cuit: number
+    proveedor: number
+    sucursal: number
+    _all: number
+  }
+
+
+  export type Caja_saAvgAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    nro_caja?: true
+    puesto?: true
+    operador?: true
+  }
+
+  export type Caja_saSumAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    nro_caja?: true
+    puesto?: true
+    operador?: true
+  }
+
+  export type Caja_saMinAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+  }
+
+  export type Caja_saMaxAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+  }
+
+  export type Caja_saCountAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+    _all?: true
+  }
+
+  export type Caja_saAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which caja_sa to aggregate.
+     */
+    where?: caja_saWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_sas to fetch.
+     */
+    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: caja_saWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_sas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_sas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned caja_sas
+    **/
+    _count?: true | Caja_saCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Caja_saAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Caja_saSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Caja_saMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Caja_saMaxAggregateInputType
+  }
+
+  export type GetCaja_saAggregateType<T extends Caja_saAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaja_sa]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaja_sa[P]>
+      : GetScalarType<T[P], AggregateCaja_sa[P]>
+  }
+
+
+
+
+  export type caja_saGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: caja_saWhereInput
+    orderBy?: caja_saOrderByWithAggregationInput | caja_saOrderByWithAggregationInput[]
+    by: Caja_saScalarFieldEnum[] | Caja_saScalarFieldEnum
+    having?: caja_saScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Caja_saCountAggregateInputType | true
+    _avg?: Caja_saAvgAggregateInputType
+    _sum?: Caja_saSumAggregateInputType
+    _min?: Caja_saMinAggregateInputType
+    _max?: Caja_saMaxAggregateInputType
+  }
+
+
+  export type Caja_saGroupByOutputType = {
+    idcaja: number
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+    _count: Caja_saCountAggregateOutputType | null
+    _avg: Caja_saAvgAggregateOutputType | null
+    _sum: Caja_saSumAggregateOutputType | null
+    _min: Caja_saMinAggregateOutputType | null
+    _max: Caja_saMaxAggregateOutputType | null
+  }
+
+  type GetCaja_saGroupByPayload<T extends caja_saGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Caja_saGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Caja_saGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Caja_saGroupByOutputType[P]>
+            : GetScalarType<T[P], Caja_saGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type caja_saSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idcaja?: boolean
+    codigo?: boolean
+    cuenta?: boolean
+    tipo?: boolean
+    serie?: boolean
+    factura?: boolean
+    importe?: boolean
+    comentarios?: boolean
+    nro_caja?: boolean
+    movim?: boolean
+    fecha?: boolean
+    puesto?: boolean
+    operador?: boolean
+    cuit?: boolean
+    proveedor?: boolean
+    sucursal?: boolean
+  }, ExtArgs["result"]["caja_sa"]>
+
+  export type caja_saSelectScalar = {
+    idcaja?: boolean
+    codigo?: boolean
+    cuenta?: boolean
+    tipo?: boolean
+    serie?: boolean
+    factura?: boolean
+    importe?: boolean
+    comentarios?: boolean
+    nro_caja?: boolean
+    movim?: boolean
+    fecha?: boolean
+    puesto?: boolean
+    operador?: boolean
+    cuit?: boolean
+    proveedor?: boolean
+    sucursal?: boolean
+  }
+
+
+  type caja_saGetPayload<S extends boolean | null | undefined | caja_saArgs> = $Types.GetResult<caja_saPayload, S>
+
+  type caja_saCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<caja_saFindManyArgs, 'select' | 'include'> & {
+      select?: Caja_saCountAggregateInputType | true
+    }
+
+  export interface caja_saDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['caja_sa'], meta: { name: 'caja_sa' } }
+    /**
+     * Find zero or one Caja_sa that matches the filter.
+     * @param {caja_saFindUniqueArgs} args - Arguments to find a Caja_sa
+     * @example
+     * // Get one Caja_sa
+     * const caja_sa = await prisma.caja_sa.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends caja_saFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, caja_saFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'caja_sa'> extends True ? Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Caja_sa that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {caja_saFindUniqueOrThrowArgs} args - Arguments to find a Caja_sa
+     * @example
+     * // Get one Caja_sa
+     * const caja_sa = await prisma.caja_sa.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends caja_saFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_saFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Caja_sa that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saFindFirstArgs} args - Arguments to find a Caja_sa
+     * @example
+     * // Get one Caja_sa
+     * const caja_sa = await prisma.caja_sa.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends caja_saFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, caja_saFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'caja_sa'> extends True ? Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Caja_sa that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saFindFirstOrThrowArgs} args - Arguments to find a Caja_sa
+     * @example
+     * // Get one Caja_sa
+     * const caja_sa = await prisma.caja_sa.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends caja_saFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_saFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Caja_sas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Caja_sas
+     * const caja_sas = await prisma.caja_sa.findMany()
+     * 
+     * // Get first 10 Caja_sas
+     * const caja_sas = await prisma.caja_sa.findMany({ take: 10 })
+     * 
+     * // Only select the `idcaja`
+     * const caja_saWithIdcajaOnly = await prisma.caja_sa.findMany({ select: { idcaja: true } })
+     * 
+    **/
+    findMany<T extends caja_saFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_saFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Caja_sa.
+     * @param {caja_saCreateArgs} args - Arguments to create a Caja_sa.
+     * @example
+     * // Create one Caja_sa
+     * const Caja_sa = await prisma.caja_sa.create({
+     *   data: {
+     *     // ... data to create a Caja_sa
+     *   }
+     * })
+     * 
+    **/
+    create<T extends caja_saCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_saCreateArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Caja_sas.
+     *     @param {caja_saCreateManyArgs} args - Arguments to create many Caja_sas.
+     *     @example
+     *     // Create many Caja_sas
+     *     const caja_sa = await prisma.caja_sa.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends caja_saCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_saCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Caja_sa.
+     * @param {caja_saDeleteArgs} args - Arguments to delete one Caja_sa.
+     * @example
+     * // Delete one Caja_sa
+     * const Caja_sa = await prisma.caja_sa.delete({
+     *   where: {
+     *     // ... filter to delete one Caja_sa
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends caja_saDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_saDeleteArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Caja_sa.
+     * @param {caja_saUpdateArgs} args - Arguments to update one Caja_sa.
+     * @example
+     * // Update one Caja_sa
+     * const caja_sa = await prisma.caja_sa.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends caja_saUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_saUpdateArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Caja_sas.
+     * @param {caja_saDeleteManyArgs} args - Arguments to filter Caja_sas to delete.
+     * @example
+     * // Delete a few Caja_sas
+     * const { count } = await prisma.caja_sa.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends caja_saDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_saDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Caja_sas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Caja_sas
+     * const caja_sa = await prisma.caja_sa.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends caja_saUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_saUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Caja_sa.
+     * @param {caja_saUpsertArgs} args - Arguments to update or create a Caja_sa.
+     * @example
+     * // Update or create a Caja_sa
+     * const caja_sa = await prisma.caja_sa.upsert({
+     *   create: {
+     *     // ... data to create a Caja_sa
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Caja_sa we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends caja_saUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_saUpsertArgs<ExtArgs>>
+    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Caja_sas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saCountArgs} args - Arguments to filter Caja_sas to count.
+     * @example
+     * // Count the number of Caja_sas
+     * const count = await prisma.caja_sa.count({
+     *   where: {
+     *     // ... the filter for the Caja_sas we want to count
+     *   }
+     * })
+    **/
+    count<T extends caja_saCountArgs>(
+      args?: Subset<T, caja_saCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Caja_saCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Caja_sa.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Caja_saAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Caja_saAggregateArgs>(args: Subset<T, Caja_saAggregateArgs>): Prisma.PrismaPromise<GetCaja_saAggregateType<T>>
+
+    /**
+     * Group by Caja_sa.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_saGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends caja_saGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: caja_saGroupByArgs['orderBy'] }
+        : { orderBy?: caja_saGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, caja_saGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaja_saGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for caja_sa.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__caja_saClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * caja_sa base type for findUnique actions
+   */
+  export type caja_saFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_sa to fetch.
+     */
+    where: caja_saWhereUniqueInput
+  }
+
+  /**
+   * caja_sa findUnique
+   */
+  export interface caja_saFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_saFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * caja_sa findUniqueOrThrow
+   */
+  export type caja_saFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_sa to fetch.
+     */
+    where: caja_saWhereUniqueInput
+  }
+
+
+  /**
+   * caja_sa base type for findFirst actions
+   */
+  export type caja_saFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_sa to fetch.
+     */
+    where?: caja_saWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_sas to fetch.
+     */
+    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for caja_sas.
+     */
+    cursor?: caja_saWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_sas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_sas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of caja_sas.
+     */
+    distinct?: Caja_saScalarFieldEnum | Caja_saScalarFieldEnum[]
+  }
+
+  /**
+   * caja_sa findFirst
+   */
+  export interface caja_saFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_saFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * caja_sa findFirstOrThrow
+   */
+  export type caja_saFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_sa to fetch.
+     */
+    where?: caja_saWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_sas to fetch.
+     */
+    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for caja_sas.
+     */
+    cursor?: caja_saWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_sas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_sas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of caja_sas.
+     */
+    distinct?: Caja_saScalarFieldEnum | Caja_saScalarFieldEnum[]
+  }
+
+
+  /**
+   * caja_sa findMany
+   */
+  export type caja_saFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_sas to fetch.
+     */
+    where?: caja_saWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_sas to fetch.
+     */
+    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing caja_sas.
+     */
+    cursor?: caja_saWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_sas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_sas.
+     */
+    skip?: number
+    distinct?: Caja_saScalarFieldEnum | Caja_saScalarFieldEnum[]
+  }
+
+
+  /**
+   * caja_sa create
+   */
+  export type caja_saCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * The data needed to create a caja_sa.
+     */
+    data?: XOR<caja_saCreateInput, caja_saUncheckedCreateInput>
+  }
+
+
+  /**
+   * caja_sa createMany
+   */
+  export type caja_saCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many caja_sas.
+     */
+    data: caja_saCreateManyInput | caja_saCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * caja_sa update
+   */
+  export type caja_saUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * The data needed to update a caja_sa.
+     */
+    data: XOR<caja_saUpdateInput, caja_saUncheckedUpdateInput>
+    /**
+     * Choose, which caja_sa to update.
+     */
+    where: caja_saWhereUniqueInput
+  }
+
+
+  /**
+   * caja_sa updateMany
+   */
+  export type caja_saUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update caja_sas.
+     */
+    data: XOR<caja_saUpdateManyMutationInput, caja_saUncheckedUpdateManyInput>
+    /**
+     * Filter which caja_sas to update
+     */
+    where?: caja_saWhereInput
+  }
+
+
+  /**
+   * caja_sa upsert
+   */
+  export type caja_saUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * The filter to search for the caja_sa to update in case it exists.
+     */
+    where: caja_saWhereUniqueInput
+    /**
+     * In case the caja_sa found by the `where` argument doesn't exist, create a new caja_sa with this data.
+     */
+    create: XOR<caja_saCreateInput, caja_saUncheckedCreateInput>
+    /**
+     * In case the caja_sa was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<caja_saUpdateInput, caja_saUncheckedUpdateInput>
+  }
+
+
+  /**
+   * caja_sa delete
+   */
+  export type caja_saDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+    /**
+     * Filter which caja_sa to delete.
+     */
+    where: caja_saWhereUniqueInput
+  }
+
+
+  /**
+   * caja_sa deleteMany
+   */
+  export type caja_saDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which caja_sas to delete
+     */
+    where?: caja_saWhereInput
+  }
+
+
+  /**
+   * caja_sa without action
+   */
+  export type caja_saArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_sa
+     */
+    select?: caja_saSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Model caja_sepelio
    */
 
@@ -13059,6 +15546,1045 @@ export namespace Prisma {
 
 
   /**
+   * Model caja_srl
+   */
+
+
+  export type AggregateCaja_srl = {
+    _count: Caja_srlCountAggregateOutputType | null
+    _avg: Caja_srlAvgAggregateOutputType | null
+    _sum: Caja_srlSumAggregateOutputType | null
+    _min: Caja_srlMinAggregateOutputType | null
+    _max: Caja_srlMaxAggregateOutputType | null
+  }
+
+  export type Caja_srlAvgAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    nro_caja: number | null
+    puesto: number | null
+    operador: number | null
+  }
+
+  export type Caja_srlSumAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    nro_caja: number | null
+    puesto: number | null
+    operador: number | null
+  }
+
+  export type Caja_srlMinAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }
+
+  export type Caja_srlMaxAggregateOutputType = {
+    idcaja: number | null
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+  }
+
+  export type Caja_srlCountAggregateOutputType = {
+    idcaja: number
+    codigo: number
+    cuenta: number
+    tipo: number
+    serie: number
+    factura: number
+    importe: number
+    comentarios: number
+    nro_caja: number
+    movim: number
+    fecha: number
+    puesto: number
+    operador: number
+    cuit: number
+    proveedor: number
+    sucursal: number
+    _all: number
+  }
+
+
+  export type Caja_srlAvgAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    nro_caja?: true
+    puesto?: true
+    operador?: true
+  }
+
+  export type Caja_srlSumAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    nro_caja?: true
+    puesto?: true
+    operador?: true
+  }
+
+  export type Caja_srlMinAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+  }
+
+  export type Caja_srlMaxAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+  }
+
+  export type Caja_srlCountAggregateInputType = {
+    idcaja?: true
+    codigo?: true
+    cuenta?: true
+    tipo?: true
+    serie?: true
+    factura?: true
+    importe?: true
+    comentarios?: true
+    nro_caja?: true
+    movim?: true
+    fecha?: true
+    puesto?: true
+    operador?: true
+    cuit?: true
+    proveedor?: true
+    sucursal?: true
+    _all?: true
+  }
+
+  export type Caja_srlAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which caja_srl to aggregate.
+     */
+    where?: caja_srlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_srls to fetch.
+     */
+    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: caja_srlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_srls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_srls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned caja_srls
+    **/
+    _count?: true | Caja_srlCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Caja_srlAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Caja_srlSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Caja_srlMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Caja_srlMaxAggregateInputType
+  }
+
+  export type GetCaja_srlAggregateType<T extends Caja_srlAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaja_srl]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaja_srl[P]>
+      : GetScalarType<T[P], AggregateCaja_srl[P]>
+  }
+
+
+
+
+  export type caja_srlGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: caja_srlWhereInput
+    orderBy?: caja_srlOrderByWithAggregationInput | caja_srlOrderByWithAggregationInput[]
+    by: Caja_srlScalarFieldEnum[] | Caja_srlScalarFieldEnum
+    having?: caja_srlScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Caja_srlCountAggregateInputType | true
+    _avg?: Caja_srlAvgAggregateInputType
+    _sum?: Caja_srlSumAggregateInputType
+    _min?: Caja_srlMinAggregateInputType
+    _max?: Caja_srlMaxAggregateInputType
+  }
+
+
+  export type Caja_srlGroupByOutputType = {
+    idcaja: number
+    codigo: number | null
+    cuenta: string | null
+    tipo: string | null
+    serie: number | null
+    factura: number | null
+    importe: number | null
+    comentarios: string | null
+    nro_caja: number | null
+    movim: string | null
+    fecha: Date | null
+    puesto: number | null
+    operador: number | null
+    cuit: string | null
+    proveedor: string | null
+    sucursal: string | null
+    _count: Caja_srlCountAggregateOutputType | null
+    _avg: Caja_srlAvgAggregateOutputType | null
+    _sum: Caja_srlSumAggregateOutputType | null
+    _min: Caja_srlMinAggregateOutputType | null
+    _max: Caja_srlMaxAggregateOutputType | null
+  }
+
+  type GetCaja_srlGroupByPayload<T extends caja_srlGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Caja_srlGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Caja_srlGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Caja_srlGroupByOutputType[P]>
+            : GetScalarType<T[P], Caja_srlGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type caja_srlSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idcaja?: boolean
+    codigo?: boolean
+    cuenta?: boolean
+    tipo?: boolean
+    serie?: boolean
+    factura?: boolean
+    importe?: boolean
+    comentarios?: boolean
+    nro_caja?: boolean
+    movim?: boolean
+    fecha?: boolean
+    puesto?: boolean
+    operador?: boolean
+    cuit?: boolean
+    proveedor?: boolean
+    sucursal?: boolean
+  }, ExtArgs["result"]["caja_srl"]>
+
+  export type caja_srlSelectScalar = {
+    idcaja?: boolean
+    codigo?: boolean
+    cuenta?: boolean
+    tipo?: boolean
+    serie?: boolean
+    factura?: boolean
+    importe?: boolean
+    comentarios?: boolean
+    nro_caja?: boolean
+    movim?: boolean
+    fecha?: boolean
+    puesto?: boolean
+    operador?: boolean
+    cuit?: boolean
+    proveedor?: boolean
+    sucursal?: boolean
+  }
+
+
+  type caja_srlGetPayload<S extends boolean | null | undefined | caja_srlArgs> = $Types.GetResult<caja_srlPayload, S>
+
+  type caja_srlCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<caja_srlFindManyArgs, 'select' | 'include'> & {
+      select?: Caja_srlCountAggregateInputType | true
+    }
+
+  export interface caja_srlDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['caja_srl'], meta: { name: 'caja_srl' } }
+    /**
+     * Find zero or one Caja_srl that matches the filter.
+     * @param {caja_srlFindUniqueArgs} args - Arguments to find a Caja_srl
+     * @example
+     * // Get one Caja_srl
+     * const caja_srl = await prisma.caja_srl.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends caja_srlFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, caja_srlFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'caja_srl'> extends True ? Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Caja_srl that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {caja_srlFindUniqueOrThrowArgs} args - Arguments to find a Caja_srl
+     * @example
+     * // Get one Caja_srl
+     * const caja_srl = await prisma.caja_srl.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends caja_srlFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_srlFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Caja_srl that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlFindFirstArgs} args - Arguments to find a Caja_srl
+     * @example
+     * // Get one Caja_srl
+     * const caja_srl = await prisma.caja_srl.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends caja_srlFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, caja_srlFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'caja_srl'> extends True ? Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Caja_srl that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlFindFirstOrThrowArgs} args - Arguments to find a Caja_srl
+     * @example
+     * // Get one Caja_srl
+     * const caja_srl = await prisma.caja_srl.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends caja_srlFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_srlFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Caja_srls that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Caja_srls
+     * const caja_srls = await prisma.caja_srl.findMany()
+     * 
+     * // Get first 10 Caja_srls
+     * const caja_srls = await prisma.caja_srl.findMany({ take: 10 })
+     * 
+     * // Only select the `idcaja`
+     * const caja_srlWithIdcajaOnly = await prisma.caja_srl.findMany({ select: { idcaja: true } })
+     * 
+    **/
+    findMany<T extends caja_srlFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_srlFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Caja_srl.
+     * @param {caja_srlCreateArgs} args - Arguments to create a Caja_srl.
+     * @example
+     * // Create one Caja_srl
+     * const Caja_srl = await prisma.caja_srl.create({
+     *   data: {
+     *     // ... data to create a Caja_srl
+     *   }
+     * })
+     * 
+    **/
+    create<T extends caja_srlCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_srlCreateArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Caja_srls.
+     *     @param {caja_srlCreateManyArgs} args - Arguments to create many Caja_srls.
+     *     @example
+     *     // Create many Caja_srls
+     *     const caja_srl = await prisma.caja_srl.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends caja_srlCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_srlCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Caja_srl.
+     * @param {caja_srlDeleteArgs} args - Arguments to delete one Caja_srl.
+     * @example
+     * // Delete one Caja_srl
+     * const Caja_srl = await prisma.caja_srl.delete({
+     *   where: {
+     *     // ... filter to delete one Caja_srl
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends caja_srlDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_srlDeleteArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Caja_srl.
+     * @param {caja_srlUpdateArgs} args - Arguments to update one Caja_srl.
+     * @example
+     * // Update one Caja_srl
+     * const caja_srl = await prisma.caja_srl.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends caja_srlUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_srlUpdateArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Caja_srls.
+     * @param {caja_srlDeleteManyArgs} args - Arguments to filter Caja_srls to delete.
+     * @example
+     * // Delete a few Caja_srls
+     * const { count } = await prisma.caja_srl.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends caja_srlDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, caja_srlDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Caja_srls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Caja_srls
+     * const caja_srl = await prisma.caja_srl.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends caja_srlUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_srlUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Caja_srl.
+     * @param {caja_srlUpsertArgs} args - Arguments to update or create a Caja_srl.
+     * @example
+     * // Update or create a Caja_srl
+     * const caja_srl = await prisma.caja_srl.upsert({
+     *   create: {
+     *     // ... data to create a Caja_srl
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Caja_srl we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends caja_srlUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, caja_srlUpsertArgs<ExtArgs>>
+    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Caja_srls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlCountArgs} args - Arguments to filter Caja_srls to count.
+     * @example
+     * // Count the number of Caja_srls
+     * const count = await prisma.caja_srl.count({
+     *   where: {
+     *     // ... the filter for the Caja_srls we want to count
+     *   }
+     * })
+    **/
+    count<T extends caja_srlCountArgs>(
+      args?: Subset<T, caja_srlCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Caja_srlCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Caja_srl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Caja_srlAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Caja_srlAggregateArgs>(args: Subset<T, Caja_srlAggregateArgs>): Prisma.PrismaPromise<GetCaja_srlAggregateType<T>>
+
+    /**
+     * Group by Caja_srl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {caja_srlGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends caja_srlGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: caja_srlGroupByArgs['orderBy'] }
+        : { orderBy?: caja_srlGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, caja_srlGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaja_srlGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for caja_srl.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__caja_srlClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * caja_srl base type for findUnique actions
+   */
+  export type caja_srlFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_srl to fetch.
+     */
+    where: caja_srlWhereUniqueInput
+  }
+
+  /**
+   * caja_srl findUnique
+   */
+  export interface caja_srlFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_srlFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * caja_srl findUniqueOrThrow
+   */
+  export type caja_srlFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_srl to fetch.
+     */
+    where: caja_srlWhereUniqueInput
+  }
+
+
+  /**
+   * caja_srl base type for findFirst actions
+   */
+  export type caja_srlFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_srl to fetch.
+     */
+    where?: caja_srlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_srls to fetch.
+     */
+    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for caja_srls.
+     */
+    cursor?: caja_srlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_srls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_srls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of caja_srls.
+     */
+    distinct?: Caja_srlScalarFieldEnum | Caja_srlScalarFieldEnum[]
+  }
+
+  /**
+   * caja_srl findFirst
+   */
+  export interface caja_srlFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_srlFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * caja_srl findFirstOrThrow
+   */
+  export type caja_srlFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_srl to fetch.
+     */
+    where?: caja_srlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_srls to fetch.
+     */
+    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for caja_srls.
+     */
+    cursor?: caja_srlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_srls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_srls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of caja_srls.
+     */
+    distinct?: Caja_srlScalarFieldEnum | Caja_srlScalarFieldEnum[]
+  }
+
+
+  /**
+   * caja_srl findMany
+   */
+  export type caja_srlFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter, which caja_srls to fetch.
+     */
+    where?: caja_srlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of caja_srls to fetch.
+     */
+    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing caja_srls.
+     */
+    cursor?: caja_srlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` caja_srls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` caja_srls.
+     */
+    skip?: number
+    distinct?: Caja_srlScalarFieldEnum | Caja_srlScalarFieldEnum[]
+  }
+
+
+  /**
+   * caja_srl create
+   */
+  export type caja_srlCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * The data needed to create a caja_srl.
+     */
+    data?: XOR<caja_srlCreateInput, caja_srlUncheckedCreateInput>
+  }
+
+
+  /**
+   * caja_srl createMany
+   */
+  export type caja_srlCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many caja_srls.
+     */
+    data: caja_srlCreateManyInput | caja_srlCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * caja_srl update
+   */
+  export type caja_srlUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * The data needed to update a caja_srl.
+     */
+    data: XOR<caja_srlUpdateInput, caja_srlUncheckedUpdateInput>
+    /**
+     * Choose, which caja_srl to update.
+     */
+    where: caja_srlWhereUniqueInput
+  }
+
+
+  /**
+   * caja_srl updateMany
+   */
+  export type caja_srlUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update caja_srls.
+     */
+    data: XOR<caja_srlUpdateManyMutationInput, caja_srlUncheckedUpdateManyInput>
+    /**
+     * Filter which caja_srls to update
+     */
+    where?: caja_srlWhereInput
+  }
+
+
+  /**
+   * caja_srl upsert
+   */
+  export type caja_srlUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * The filter to search for the caja_srl to update in case it exists.
+     */
+    where: caja_srlWhereUniqueInput
+    /**
+     * In case the caja_srl found by the `where` argument doesn't exist, create a new caja_srl with this data.
+     */
+    create: XOR<caja_srlCreateInput, caja_srlUncheckedCreateInput>
+    /**
+     * In case the caja_srl was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<caja_srlUpdateInput, caja_srlUncheckedUpdateInput>
+  }
+
+
+  /**
+   * caja_srl delete
+   */
+  export type caja_srlDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+    /**
+     * Filter which caja_srl to delete.
+     */
+    where: caja_srlWhereUniqueInput
+  }
+
+
+  /**
+   * caja_srl deleteMany
+   */
+  export type caja_srlDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which caja_srls to delete
+     */
+    where?: caja_srlWhereInput
+  }
+
+
+  /**
+   * caja_srl without action
+   */
+  export type caja_srlArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the caja_srl
+     */
+    select?: caja_srlSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Model conceptos
    */
 
@@ -13948,6 +17474,930 @@ export namespace Prisma {
      * Select specific fields to fetch from the conceptos
      */
     select?: conceptosSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model conceptos_sepelio_cuentas
+   */
+
+
+  export type AggregateConceptos_sepelio_cuentas = {
+    _count: Conceptos_sepelio_cuentasCountAggregateOutputType | null
+    _avg: Conceptos_sepelio_cuentasAvgAggregateOutputType | null
+    _sum: Conceptos_sepelio_cuentasSumAggregateOutputType | null
+    _min: Conceptos_sepelio_cuentasMinAggregateOutputType | null
+    _max: Conceptos_sepelio_cuentasMaxAggregateOutputType | null
+  }
+
+  export type Conceptos_sepelio_cuentasAvgAggregateOutputType = {
+    idconcepto: number | null
+    idempresa: number | null
+    sc_cuenta: number | null
+    id: number | null
+  }
+
+  export type Conceptos_sepelio_cuentasSumAggregateOutputType = {
+    idconcepto: number | null
+    idempresa: number | null
+    sc_cuenta: number | null
+    id: number | null
+  }
+
+  export type Conceptos_sepelio_cuentasMinAggregateOutputType = {
+    idconcepto: number | null
+    idempresa: number | null
+    sc_descripcion: string | null
+    sc_cuenta: number | null
+    id: number | null
+  }
+
+  export type Conceptos_sepelio_cuentasMaxAggregateOutputType = {
+    idconcepto: number | null
+    idempresa: number | null
+    sc_descripcion: string | null
+    sc_cuenta: number | null
+    id: number | null
+  }
+
+  export type Conceptos_sepelio_cuentasCountAggregateOutputType = {
+    idconcepto: number
+    idempresa: number
+    sc_descripcion: number
+    sc_cuenta: number
+    id: number
+    _all: number
+  }
+
+
+  export type Conceptos_sepelio_cuentasAvgAggregateInputType = {
+    idconcepto?: true
+    idempresa?: true
+    sc_cuenta?: true
+    id?: true
+  }
+
+  export type Conceptos_sepelio_cuentasSumAggregateInputType = {
+    idconcepto?: true
+    idempresa?: true
+    sc_cuenta?: true
+    id?: true
+  }
+
+  export type Conceptos_sepelio_cuentasMinAggregateInputType = {
+    idconcepto?: true
+    idempresa?: true
+    sc_descripcion?: true
+    sc_cuenta?: true
+    id?: true
+  }
+
+  export type Conceptos_sepelio_cuentasMaxAggregateInputType = {
+    idconcepto?: true
+    idempresa?: true
+    sc_descripcion?: true
+    sc_cuenta?: true
+    id?: true
+  }
+
+  export type Conceptos_sepelio_cuentasCountAggregateInputType = {
+    idconcepto?: true
+    idempresa?: true
+    sc_descripcion?: true
+    sc_cuenta?: true
+    id?: true
+    _all?: true
+  }
+
+  export type Conceptos_sepelio_cuentasAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which conceptos_sepelio_cuentas to aggregate.
+     */
+    where?: conceptos_sepelio_cuentasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of conceptos_sepelio_cuentas to fetch.
+     */
+    orderBy?: conceptos_sepelio_cuentasOrderByWithRelationInput | conceptos_sepelio_cuentasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: conceptos_sepelio_cuentasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` conceptos_sepelio_cuentas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` conceptos_sepelio_cuentas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned conceptos_sepelio_cuentas
+    **/
+    _count?: true | Conceptos_sepelio_cuentasCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Conceptos_sepelio_cuentasAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Conceptos_sepelio_cuentasSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Conceptos_sepelio_cuentasMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Conceptos_sepelio_cuentasMaxAggregateInputType
+  }
+
+  export type GetConceptos_sepelio_cuentasAggregateType<T extends Conceptos_sepelio_cuentasAggregateArgs> = {
+        [P in keyof T & keyof AggregateConceptos_sepelio_cuentas]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateConceptos_sepelio_cuentas[P]>
+      : GetScalarType<T[P], AggregateConceptos_sepelio_cuentas[P]>
+  }
+
+
+
+
+  export type conceptos_sepelio_cuentasGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: conceptos_sepelio_cuentasWhereInput
+    orderBy?: conceptos_sepelio_cuentasOrderByWithAggregationInput | conceptos_sepelio_cuentasOrderByWithAggregationInput[]
+    by: Conceptos_sepelio_cuentasScalarFieldEnum[] | Conceptos_sepelio_cuentasScalarFieldEnum
+    having?: conceptos_sepelio_cuentasScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Conceptos_sepelio_cuentasCountAggregateInputType | true
+    _avg?: Conceptos_sepelio_cuentasAvgAggregateInputType
+    _sum?: Conceptos_sepelio_cuentasSumAggregateInputType
+    _min?: Conceptos_sepelio_cuentasMinAggregateInputType
+    _max?: Conceptos_sepelio_cuentasMaxAggregateInputType
+  }
+
+
+  export type Conceptos_sepelio_cuentasGroupByOutputType = {
+    idconcepto: number | null
+    idempresa: number | null
+    sc_descripcion: string | null
+    sc_cuenta: number | null
+    id: number
+    _count: Conceptos_sepelio_cuentasCountAggregateOutputType | null
+    _avg: Conceptos_sepelio_cuentasAvgAggregateOutputType | null
+    _sum: Conceptos_sepelio_cuentasSumAggregateOutputType | null
+    _min: Conceptos_sepelio_cuentasMinAggregateOutputType | null
+    _max: Conceptos_sepelio_cuentasMaxAggregateOutputType | null
+  }
+
+  type GetConceptos_sepelio_cuentasGroupByPayload<T extends conceptos_sepelio_cuentasGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Conceptos_sepelio_cuentasGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Conceptos_sepelio_cuentasGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Conceptos_sepelio_cuentasGroupByOutputType[P]>
+            : GetScalarType<T[P], Conceptos_sepelio_cuentasGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type conceptos_sepelio_cuentasSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idconcepto?: boolean
+    idempresa?: boolean
+    sc_descripcion?: boolean
+    sc_cuenta?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["conceptos_sepelio_cuentas"]>
+
+  export type conceptos_sepelio_cuentasSelectScalar = {
+    idconcepto?: boolean
+    idempresa?: boolean
+    sc_descripcion?: boolean
+    sc_cuenta?: boolean
+    id?: boolean
+  }
+
+
+  type conceptos_sepelio_cuentasGetPayload<S extends boolean | null | undefined | conceptos_sepelio_cuentasArgs> = $Types.GetResult<conceptos_sepelio_cuentasPayload, S>
+
+  type conceptos_sepelio_cuentasCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<conceptos_sepelio_cuentasFindManyArgs, 'select' | 'include'> & {
+      select?: Conceptos_sepelio_cuentasCountAggregateInputType | true
+    }
+
+  export interface conceptos_sepelio_cuentasDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['conceptos_sepelio_cuentas'], meta: { name: 'conceptos_sepelio_cuentas' } }
+    /**
+     * Find zero or one Conceptos_sepelio_cuentas that matches the filter.
+     * @param {conceptos_sepelio_cuentasFindUniqueArgs} args - Arguments to find a Conceptos_sepelio_cuentas
+     * @example
+     * // Get one Conceptos_sepelio_cuentas
+     * const conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends conceptos_sepelio_cuentasFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, conceptos_sepelio_cuentasFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'conceptos_sepelio_cuentas'> extends True ? Prisma__conceptos_sepelio_cuentasClient<$Types.GetResult<conceptos_sepelio_cuentasPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__conceptos_sepelio_cuentasClient<$Types.GetResult<conceptos_sepelio_cuentasPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Conceptos_sepelio_cuentas that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {conceptos_sepelio_cuentasFindUniqueOrThrowArgs} args - Arguments to find a Conceptos_sepelio_cuentas
+     * @example
+     * // Get one Conceptos_sepelio_cuentas
+     * const conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends conceptos_sepelio_cuentasFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, conceptos_sepelio_cuentasFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__conceptos_sepelio_cuentasClient<$Types.GetResult<conceptos_sepelio_cuentasPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Conceptos_sepelio_cuentas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_sepelio_cuentasFindFirstArgs} args - Arguments to find a Conceptos_sepelio_cuentas
+     * @example
+     * // Get one Conceptos_sepelio_cuentas
+     * const conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends conceptos_sepelio_cuentasFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, conceptos_sepelio_cuentasFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'conceptos_sepelio_cuentas'> extends True ? Prisma__conceptos_sepelio_cuentasClient<$Types.GetResult<conceptos_sepelio_cuentasPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__conceptos_sepelio_cuentasClient<$Types.GetResult<conceptos_sepelio_cuentasPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Conceptos_sepelio_cuentas that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_sepelio_cuentasFindFirstOrThrowArgs} args - Arguments to find a Conceptos_sepelio_cuentas
+     * @example
+     * // Get one Conceptos_sepelio_cuentas
+     * const conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends conceptos_sepelio_cuentasFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, conceptos_sepelio_cuentasFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__conceptos_sepelio_cuentasClient<$Types.GetResult<conceptos_sepelio_cuentasPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Conceptos_sepelio_cuentas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_sepelio_cuentasFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Conceptos_sepelio_cuentas
+     * const conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.findMany()
+     * 
+     * // Get first 10 Conceptos_sepelio_cuentas
+     * const conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.findMany({ take: 10 })
+     * 
+     * // Only select the `idconcepto`
+     * const conceptos_sepelio_cuentasWithIdconceptoOnly = await prisma.conceptos_sepelio_cuentas.findMany({ select: { idconcepto: true } })
+     * 
+    **/
+    findMany<T extends conceptos_sepelio_cuentasFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, conceptos_sepelio_cuentasFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<conceptos_sepelio_cuentasPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Conceptos_sepelio_cuentas.
+     * @param {conceptos_sepelio_cuentasCreateArgs} args - Arguments to create a Conceptos_sepelio_cuentas.
+     * @example
+     * // Create one Conceptos_sepelio_cuentas
+     * const Conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.create({
+     *   data: {
+     *     // ... data to create a Conceptos_sepelio_cuentas
+     *   }
+     * })
+     * 
+    **/
+    create<T extends conceptos_sepelio_cuentasCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, conceptos_sepelio_cuentasCreateArgs<ExtArgs>>
+    ): Prisma__conceptos_sepelio_cuentasClient<$Types.GetResult<conceptos_sepelio_cuentasPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Conceptos_sepelio_cuentas.
+     *     @param {conceptos_sepelio_cuentasCreateManyArgs} args - Arguments to create many Conceptos_sepelio_cuentas.
+     *     @example
+     *     // Create many Conceptos_sepelio_cuentas
+     *     const conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends conceptos_sepelio_cuentasCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, conceptos_sepelio_cuentasCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Conceptos_sepelio_cuentas.
+     * @param {conceptos_sepelio_cuentasDeleteArgs} args - Arguments to delete one Conceptos_sepelio_cuentas.
+     * @example
+     * // Delete one Conceptos_sepelio_cuentas
+     * const Conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.delete({
+     *   where: {
+     *     // ... filter to delete one Conceptos_sepelio_cuentas
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends conceptos_sepelio_cuentasDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, conceptos_sepelio_cuentasDeleteArgs<ExtArgs>>
+    ): Prisma__conceptos_sepelio_cuentasClient<$Types.GetResult<conceptos_sepelio_cuentasPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Conceptos_sepelio_cuentas.
+     * @param {conceptos_sepelio_cuentasUpdateArgs} args - Arguments to update one Conceptos_sepelio_cuentas.
+     * @example
+     * // Update one Conceptos_sepelio_cuentas
+     * const conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends conceptos_sepelio_cuentasUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, conceptos_sepelio_cuentasUpdateArgs<ExtArgs>>
+    ): Prisma__conceptos_sepelio_cuentasClient<$Types.GetResult<conceptos_sepelio_cuentasPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Conceptos_sepelio_cuentas.
+     * @param {conceptos_sepelio_cuentasDeleteManyArgs} args - Arguments to filter Conceptos_sepelio_cuentas to delete.
+     * @example
+     * // Delete a few Conceptos_sepelio_cuentas
+     * const { count } = await prisma.conceptos_sepelio_cuentas.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends conceptos_sepelio_cuentasDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, conceptos_sepelio_cuentasDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Conceptos_sepelio_cuentas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_sepelio_cuentasUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Conceptos_sepelio_cuentas
+     * const conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends conceptos_sepelio_cuentasUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, conceptos_sepelio_cuentasUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Conceptos_sepelio_cuentas.
+     * @param {conceptos_sepelio_cuentasUpsertArgs} args - Arguments to update or create a Conceptos_sepelio_cuentas.
+     * @example
+     * // Update or create a Conceptos_sepelio_cuentas
+     * const conceptos_sepelio_cuentas = await prisma.conceptos_sepelio_cuentas.upsert({
+     *   create: {
+     *     // ... data to create a Conceptos_sepelio_cuentas
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Conceptos_sepelio_cuentas we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends conceptos_sepelio_cuentasUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, conceptos_sepelio_cuentasUpsertArgs<ExtArgs>>
+    ): Prisma__conceptos_sepelio_cuentasClient<$Types.GetResult<conceptos_sepelio_cuentasPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Conceptos_sepelio_cuentas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_sepelio_cuentasCountArgs} args - Arguments to filter Conceptos_sepelio_cuentas to count.
+     * @example
+     * // Count the number of Conceptos_sepelio_cuentas
+     * const count = await prisma.conceptos_sepelio_cuentas.count({
+     *   where: {
+     *     // ... the filter for the Conceptos_sepelio_cuentas we want to count
+     *   }
+     * })
+    **/
+    count<T extends conceptos_sepelio_cuentasCountArgs>(
+      args?: Subset<T, conceptos_sepelio_cuentasCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Conceptos_sepelio_cuentasCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Conceptos_sepelio_cuentas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Conceptos_sepelio_cuentasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Conceptos_sepelio_cuentasAggregateArgs>(args: Subset<T, Conceptos_sepelio_cuentasAggregateArgs>): Prisma.PrismaPromise<GetConceptos_sepelio_cuentasAggregateType<T>>
+
+    /**
+     * Group by Conceptos_sepelio_cuentas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_sepelio_cuentasGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends conceptos_sepelio_cuentasGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: conceptos_sepelio_cuentasGroupByArgs['orderBy'] }
+        : { orderBy?: conceptos_sepelio_cuentasGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, conceptos_sepelio_cuentasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetConceptos_sepelio_cuentasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for conceptos_sepelio_cuentas.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__conceptos_sepelio_cuentasClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * conceptos_sepelio_cuentas base type for findUnique actions
+   */
+  export type conceptos_sepelio_cuentasFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_sepelio_cuentas
+     */
+    select?: conceptos_sepelio_cuentasSelect<ExtArgs> | null
+    /**
+     * Filter, which conceptos_sepelio_cuentas to fetch.
+     */
+    where: conceptos_sepelio_cuentasWhereUniqueInput
+  }
+
+  /**
+   * conceptos_sepelio_cuentas findUnique
+   */
+  export interface conceptos_sepelio_cuentasFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends conceptos_sepelio_cuentasFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * conceptos_sepelio_cuentas findUniqueOrThrow
+   */
+  export type conceptos_sepelio_cuentasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_sepelio_cuentas
+     */
+    select?: conceptos_sepelio_cuentasSelect<ExtArgs> | null
+    /**
+     * Filter, which conceptos_sepelio_cuentas to fetch.
+     */
+    where: conceptos_sepelio_cuentasWhereUniqueInput
+  }
+
+
+  /**
+   * conceptos_sepelio_cuentas base type for findFirst actions
+   */
+  export type conceptos_sepelio_cuentasFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_sepelio_cuentas
+     */
+    select?: conceptos_sepelio_cuentasSelect<ExtArgs> | null
+    /**
+     * Filter, which conceptos_sepelio_cuentas to fetch.
+     */
+    where?: conceptos_sepelio_cuentasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of conceptos_sepelio_cuentas to fetch.
+     */
+    orderBy?: conceptos_sepelio_cuentasOrderByWithRelationInput | conceptos_sepelio_cuentasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for conceptos_sepelio_cuentas.
+     */
+    cursor?: conceptos_sepelio_cuentasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` conceptos_sepelio_cuentas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` conceptos_sepelio_cuentas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of conceptos_sepelio_cuentas.
+     */
+    distinct?: Conceptos_sepelio_cuentasScalarFieldEnum | Conceptos_sepelio_cuentasScalarFieldEnum[]
+  }
+
+  /**
+   * conceptos_sepelio_cuentas findFirst
+   */
+  export interface conceptos_sepelio_cuentasFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends conceptos_sepelio_cuentasFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * conceptos_sepelio_cuentas findFirstOrThrow
+   */
+  export type conceptos_sepelio_cuentasFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_sepelio_cuentas
+     */
+    select?: conceptos_sepelio_cuentasSelect<ExtArgs> | null
+    /**
+     * Filter, which conceptos_sepelio_cuentas to fetch.
+     */
+    where?: conceptos_sepelio_cuentasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of conceptos_sepelio_cuentas to fetch.
+     */
+    orderBy?: conceptos_sepelio_cuentasOrderByWithRelationInput | conceptos_sepelio_cuentasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for conceptos_sepelio_cuentas.
+     */
+    cursor?: conceptos_sepelio_cuentasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` conceptos_sepelio_cuentas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` conceptos_sepelio_cuentas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of conceptos_sepelio_cuentas.
+     */
+    distinct?: Conceptos_sepelio_cuentasScalarFieldEnum | Conceptos_sepelio_cuentasScalarFieldEnum[]
+  }
+
+
+  /**
+   * conceptos_sepelio_cuentas findMany
+   */
+  export type conceptos_sepelio_cuentasFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_sepelio_cuentas
+     */
+    select?: conceptos_sepelio_cuentasSelect<ExtArgs> | null
+    /**
+     * Filter, which conceptos_sepelio_cuentas to fetch.
+     */
+    where?: conceptos_sepelio_cuentasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of conceptos_sepelio_cuentas to fetch.
+     */
+    orderBy?: conceptos_sepelio_cuentasOrderByWithRelationInput | conceptos_sepelio_cuentasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing conceptos_sepelio_cuentas.
+     */
+    cursor?: conceptos_sepelio_cuentasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` conceptos_sepelio_cuentas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` conceptos_sepelio_cuentas.
+     */
+    skip?: number
+    distinct?: Conceptos_sepelio_cuentasScalarFieldEnum | Conceptos_sepelio_cuentasScalarFieldEnum[]
+  }
+
+
+  /**
+   * conceptos_sepelio_cuentas create
+   */
+  export type conceptos_sepelio_cuentasCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_sepelio_cuentas
+     */
+    select?: conceptos_sepelio_cuentasSelect<ExtArgs> | null
+    /**
+     * The data needed to create a conceptos_sepelio_cuentas.
+     */
+    data?: XOR<conceptos_sepelio_cuentasCreateInput, conceptos_sepelio_cuentasUncheckedCreateInput>
+  }
+
+
+  /**
+   * conceptos_sepelio_cuentas createMany
+   */
+  export type conceptos_sepelio_cuentasCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many conceptos_sepelio_cuentas.
+     */
+    data: conceptos_sepelio_cuentasCreateManyInput | conceptos_sepelio_cuentasCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * conceptos_sepelio_cuentas update
+   */
+  export type conceptos_sepelio_cuentasUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_sepelio_cuentas
+     */
+    select?: conceptos_sepelio_cuentasSelect<ExtArgs> | null
+    /**
+     * The data needed to update a conceptos_sepelio_cuentas.
+     */
+    data: XOR<conceptos_sepelio_cuentasUpdateInput, conceptos_sepelio_cuentasUncheckedUpdateInput>
+    /**
+     * Choose, which conceptos_sepelio_cuentas to update.
+     */
+    where: conceptos_sepelio_cuentasWhereUniqueInput
+  }
+
+
+  /**
+   * conceptos_sepelio_cuentas updateMany
+   */
+  export type conceptos_sepelio_cuentasUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update conceptos_sepelio_cuentas.
+     */
+    data: XOR<conceptos_sepelio_cuentasUpdateManyMutationInput, conceptos_sepelio_cuentasUncheckedUpdateManyInput>
+    /**
+     * Filter which conceptos_sepelio_cuentas to update
+     */
+    where?: conceptos_sepelio_cuentasWhereInput
+  }
+
+
+  /**
+   * conceptos_sepelio_cuentas upsert
+   */
+  export type conceptos_sepelio_cuentasUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_sepelio_cuentas
+     */
+    select?: conceptos_sepelio_cuentasSelect<ExtArgs> | null
+    /**
+     * The filter to search for the conceptos_sepelio_cuentas to update in case it exists.
+     */
+    where: conceptos_sepelio_cuentasWhereUniqueInput
+    /**
+     * In case the conceptos_sepelio_cuentas found by the `where` argument doesn't exist, create a new conceptos_sepelio_cuentas with this data.
+     */
+    create: XOR<conceptos_sepelio_cuentasCreateInput, conceptos_sepelio_cuentasUncheckedCreateInput>
+    /**
+     * In case the conceptos_sepelio_cuentas was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<conceptos_sepelio_cuentasUpdateInput, conceptos_sepelio_cuentasUncheckedUpdateInput>
+  }
+
+
+  /**
+   * conceptos_sepelio_cuentas delete
+   */
+  export type conceptos_sepelio_cuentasDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_sepelio_cuentas
+     */
+    select?: conceptos_sepelio_cuentasSelect<ExtArgs> | null
+    /**
+     * Filter which conceptos_sepelio_cuentas to delete.
+     */
+    where: conceptos_sepelio_cuentasWhereUniqueInput
+  }
+
+
+  /**
+   * conceptos_sepelio_cuentas deleteMany
+   */
+  export type conceptos_sepelio_cuentasDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which conceptos_sepelio_cuentas to delete
+     */
+    where?: conceptos_sepelio_cuentasWhereInput
+  }
+
+
+  /**
+   * conceptos_sepelio_cuentas without action
+   */
+  export type conceptos_sepelio_cuentasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_sepelio_cuentas
+     */
+    select?: conceptos_sepelio_cuentasSelect<ExtArgs> | null
   }
 
 
@@ -16921,6 +21371,927 @@ export namespace Prisma {
 
 
   /**
+   * Model generacion_cajas
+   */
+
+
+  export type AggregateGeneracion_cajas = {
+    _count: Generacion_cajasCountAggregateOutputType | null
+    _avg: Generacion_cajasAvgAggregateOutputType | null
+    _sum: Generacion_cajasSumAggregateOutputType | null
+    _min: Generacion_cajasMinAggregateOutputType | null
+    _max: Generacion_cajasMaxAggregateOutputType | null
+  }
+
+  export type Generacion_cajasAvgAggregateOutputType = {
+    idgeneracion: number | null
+  }
+
+  export type Generacion_cajasSumAggregateOutputType = {
+    idgeneracion: number | null
+  }
+
+  export type Generacion_cajasMinAggregateOutputType = {
+    idgeneracion: number | null
+    desde: Date | null
+    hasta: Date | null
+    empresa: string | null
+    operador: string | null
+    fecha: Date | null
+  }
+
+  export type Generacion_cajasMaxAggregateOutputType = {
+    idgeneracion: number | null
+    desde: Date | null
+    hasta: Date | null
+    empresa: string | null
+    operador: string | null
+    fecha: Date | null
+  }
+
+  export type Generacion_cajasCountAggregateOutputType = {
+    idgeneracion: number
+    desde: number
+    hasta: number
+    empresa: number
+    operador: number
+    fecha: number
+    _all: number
+  }
+
+
+  export type Generacion_cajasAvgAggregateInputType = {
+    idgeneracion?: true
+  }
+
+  export type Generacion_cajasSumAggregateInputType = {
+    idgeneracion?: true
+  }
+
+  export type Generacion_cajasMinAggregateInputType = {
+    idgeneracion?: true
+    desde?: true
+    hasta?: true
+    empresa?: true
+    operador?: true
+    fecha?: true
+  }
+
+  export type Generacion_cajasMaxAggregateInputType = {
+    idgeneracion?: true
+    desde?: true
+    hasta?: true
+    empresa?: true
+    operador?: true
+    fecha?: true
+  }
+
+  export type Generacion_cajasCountAggregateInputType = {
+    idgeneracion?: true
+    desde?: true
+    hasta?: true
+    empresa?: true
+    operador?: true
+    fecha?: true
+    _all?: true
+  }
+
+  export type Generacion_cajasAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which generacion_cajas to aggregate.
+     */
+    where?: generacion_cajasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of generacion_cajas to fetch.
+     */
+    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: generacion_cajasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` generacion_cajas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` generacion_cajas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned generacion_cajas
+    **/
+    _count?: true | Generacion_cajasCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Generacion_cajasAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Generacion_cajasSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Generacion_cajasMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Generacion_cajasMaxAggregateInputType
+  }
+
+  export type GetGeneracion_cajasAggregateType<T extends Generacion_cajasAggregateArgs> = {
+        [P in keyof T & keyof AggregateGeneracion_cajas]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGeneracion_cajas[P]>
+      : GetScalarType<T[P], AggregateGeneracion_cajas[P]>
+  }
+
+
+
+
+  export type generacion_cajasGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: generacion_cajasWhereInput
+    orderBy?: generacion_cajasOrderByWithAggregationInput | generacion_cajasOrderByWithAggregationInput[]
+    by: Generacion_cajasScalarFieldEnum[] | Generacion_cajasScalarFieldEnum
+    having?: generacion_cajasScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Generacion_cajasCountAggregateInputType | true
+    _avg?: Generacion_cajasAvgAggregateInputType
+    _sum?: Generacion_cajasSumAggregateInputType
+    _min?: Generacion_cajasMinAggregateInputType
+    _max?: Generacion_cajasMaxAggregateInputType
+  }
+
+
+  export type Generacion_cajasGroupByOutputType = {
+    idgeneracion: number
+    desde: Date | null
+    hasta: Date | null
+    empresa: string | null
+    operador: string | null
+    fecha: Date | null
+    _count: Generacion_cajasCountAggregateOutputType | null
+    _avg: Generacion_cajasAvgAggregateOutputType | null
+    _sum: Generacion_cajasSumAggregateOutputType | null
+    _min: Generacion_cajasMinAggregateOutputType | null
+    _max: Generacion_cajasMaxAggregateOutputType | null
+  }
+
+  type GetGeneracion_cajasGroupByPayload<T extends generacion_cajasGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Generacion_cajasGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Generacion_cajasGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Generacion_cajasGroupByOutputType[P]>
+            : GetScalarType<T[P], Generacion_cajasGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type generacion_cajasSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idgeneracion?: boolean
+    desde?: boolean
+    hasta?: boolean
+    empresa?: boolean
+    operador?: boolean
+    fecha?: boolean
+  }, ExtArgs["result"]["generacion_cajas"]>
+
+  export type generacion_cajasSelectScalar = {
+    idgeneracion?: boolean
+    desde?: boolean
+    hasta?: boolean
+    empresa?: boolean
+    operador?: boolean
+    fecha?: boolean
+  }
+
+
+  type generacion_cajasGetPayload<S extends boolean | null | undefined | generacion_cajasArgs> = $Types.GetResult<generacion_cajasPayload, S>
+
+  type generacion_cajasCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<generacion_cajasFindManyArgs, 'select' | 'include'> & {
+      select?: Generacion_cajasCountAggregateInputType | true
+    }
+
+  export interface generacion_cajasDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['generacion_cajas'], meta: { name: 'generacion_cajas' } }
+    /**
+     * Find zero or one Generacion_cajas that matches the filter.
+     * @param {generacion_cajasFindUniqueArgs} args - Arguments to find a Generacion_cajas
+     * @example
+     * // Get one Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends generacion_cajasFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, generacion_cajasFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'generacion_cajas'> extends True ? Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Generacion_cajas that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {generacion_cajasFindUniqueOrThrowArgs} args - Arguments to find a Generacion_cajas
+     * @example
+     * // Get one Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends generacion_cajasFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, generacion_cajasFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Generacion_cajas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasFindFirstArgs} args - Arguments to find a Generacion_cajas
+     * @example
+     * // Get one Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends generacion_cajasFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, generacion_cajasFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'generacion_cajas'> extends True ? Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Generacion_cajas that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasFindFirstOrThrowArgs} args - Arguments to find a Generacion_cajas
+     * @example
+     * // Get one Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends generacion_cajasFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, generacion_cajasFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Generacion_cajas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findMany()
+     * 
+     * // Get first 10 Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.findMany({ take: 10 })
+     * 
+     * // Only select the `idgeneracion`
+     * const generacion_cajasWithIdgeneracionOnly = await prisma.generacion_cajas.findMany({ select: { idgeneracion: true } })
+     * 
+    **/
+    findMany<T extends generacion_cajasFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, generacion_cajasFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Generacion_cajas.
+     * @param {generacion_cajasCreateArgs} args - Arguments to create a Generacion_cajas.
+     * @example
+     * // Create one Generacion_cajas
+     * const Generacion_cajas = await prisma.generacion_cajas.create({
+     *   data: {
+     *     // ... data to create a Generacion_cajas
+     *   }
+     * })
+     * 
+    **/
+    create<T extends generacion_cajasCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, generacion_cajasCreateArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Generacion_cajas.
+     *     @param {generacion_cajasCreateManyArgs} args - Arguments to create many Generacion_cajas.
+     *     @example
+     *     // Create many Generacion_cajas
+     *     const generacion_cajas = await prisma.generacion_cajas.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends generacion_cajasCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, generacion_cajasCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Generacion_cajas.
+     * @param {generacion_cajasDeleteArgs} args - Arguments to delete one Generacion_cajas.
+     * @example
+     * // Delete one Generacion_cajas
+     * const Generacion_cajas = await prisma.generacion_cajas.delete({
+     *   where: {
+     *     // ... filter to delete one Generacion_cajas
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends generacion_cajasDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, generacion_cajasDeleteArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Generacion_cajas.
+     * @param {generacion_cajasUpdateArgs} args - Arguments to update one Generacion_cajas.
+     * @example
+     * // Update one Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends generacion_cajasUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, generacion_cajasUpdateArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Generacion_cajas.
+     * @param {generacion_cajasDeleteManyArgs} args - Arguments to filter Generacion_cajas to delete.
+     * @example
+     * // Delete a few Generacion_cajas
+     * const { count } = await prisma.generacion_cajas.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends generacion_cajasDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, generacion_cajasDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Generacion_cajas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends generacion_cajasUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, generacion_cajasUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Generacion_cajas.
+     * @param {generacion_cajasUpsertArgs} args - Arguments to update or create a Generacion_cajas.
+     * @example
+     * // Update or create a Generacion_cajas
+     * const generacion_cajas = await prisma.generacion_cajas.upsert({
+     *   create: {
+     *     // ... data to create a Generacion_cajas
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Generacion_cajas we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends generacion_cajasUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, generacion_cajasUpsertArgs<ExtArgs>>
+    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Generacion_cajas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasCountArgs} args - Arguments to filter Generacion_cajas to count.
+     * @example
+     * // Count the number of Generacion_cajas
+     * const count = await prisma.generacion_cajas.count({
+     *   where: {
+     *     // ... the filter for the Generacion_cajas we want to count
+     *   }
+     * })
+    **/
+    count<T extends generacion_cajasCountArgs>(
+      args?: Subset<T, generacion_cajasCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Generacion_cajasCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Generacion_cajas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Generacion_cajasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Generacion_cajasAggregateArgs>(args: Subset<T, Generacion_cajasAggregateArgs>): Prisma.PrismaPromise<GetGeneracion_cajasAggregateType<T>>
+
+    /**
+     * Group by Generacion_cajas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {generacion_cajasGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends generacion_cajasGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: generacion_cajasGroupByArgs['orderBy'] }
+        : { orderBy?: generacion_cajasGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, generacion_cajasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGeneracion_cajasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for generacion_cajas.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__generacion_cajasClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * generacion_cajas base type for findUnique actions
+   */
+  export type generacion_cajasFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter, which generacion_cajas to fetch.
+     */
+    where: generacion_cajasWhereUniqueInput
+  }
+
+  /**
+   * generacion_cajas findUnique
+   */
+  export interface generacion_cajasFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends generacion_cajasFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * generacion_cajas findUniqueOrThrow
+   */
+  export type generacion_cajasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter, which generacion_cajas to fetch.
+     */
+    where: generacion_cajasWhereUniqueInput
+  }
+
+
+  /**
+   * generacion_cajas base type for findFirst actions
+   */
+  export type generacion_cajasFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter, which generacion_cajas to fetch.
+     */
+    where?: generacion_cajasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of generacion_cajas to fetch.
+     */
+    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for generacion_cajas.
+     */
+    cursor?: generacion_cajasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` generacion_cajas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` generacion_cajas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of generacion_cajas.
+     */
+    distinct?: Generacion_cajasScalarFieldEnum | Generacion_cajasScalarFieldEnum[]
+  }
+
+  /**
+   * generacion_cajas findFirst
+   */
+  export interface generacion_cajasFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends generacion_cajasFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * generacion_cajas findFirstOrThrow
+   */
+  export type generacion_cajasFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter, which generacion_cajas to fetch.
+     */
+    where?: generacion_cajasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of generacion_cajas to fetch.
+     */
+    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for generacion_cajas.
+     */
+    cursor?: generacion_cajasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` generacion_cajas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` generacion_cajas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of generacion_cajas.
+     */
+    distinct?: Generacion_cajasScalarFieldEnum | Generacion_cajasScalarFieldEnum[]
+  }
+
+
+  /**
+   * generacion_cajas findMany
+   */
+  export type generacion_cajasFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter, which generacion_cajas to fetch.
+     */
+    where?: generacion_cajasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of generacion_cajas to fetch.
+     */
+    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing generacion_cajas.
+     */
+    cursor?: generacion_cajasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` generacion_cajas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` generacion_cajas.
+     */
+    skip?: number
+    distinct?: Generacion_cajasScalarFieldEnum | Generacion_cajasScalarFieldEnum[]
+  }
+
+
+  /**
+   * generacion_cajas create
+   */
+  export type generacion_cajasCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * The data needed to create a generacion_cajas.
+     */
+    data?: XOR<generacion_cajasCreateInput, generacion_cajasUncheckedCreateInput>
+  }
+
+
+  /**
+   * generacion_cajas createMany
+   */
+  export type generacion_cajasCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many generacion_cajas.
+     */
+    data: generacion_cajasCreateManyInput | generacion_cajasCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * generacion_cajas update
+   */
+  export type generacion_cajasUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * The data needed to update a generacion_cajas.
+     */
+    data: XOR<generacion_cajasUpdateInput, generacion_cajasUncheckedUpdateInput>
+    /**
+     * Choose, which generacion_cajas to update.
+     */
+    where: generacion_cajasWhereUniqueInput
+  }
+
+
+  /**
+   * generacion_cajas updateMany
+   */
+  export type generacion_cajasUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update generacion_cajas.
+     */
+    data: XOR<generacion_cajasUpdateManyMutationInput, generacion_cajasUncheckedUpdateManyInput>
+    /**
+     * Filter which generacion_cajas to update
+     */
+    where?: generacion_cajasWhereInput
+  }
+
+
+  /**
+   * generacion_cajas upsert
+   */
+  export type generacion_cajasUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * The filter to search for the generacion_cajas to update in case it exists.
+     */
+    where: generacion_cajasWhereUniqueInput
+    /**
+     * In case the generacion_cajas found by the `where` argument doesn't exist, create a new generacion_cajas with this data.
+     */
+    create: XOR<generacion_cajasCreateInput, generacion_cajasUncheckedCreateInput>
+    /**
+     * In case the generacion_cajas was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<generacion_cajasUpdateInput, generacion_cajasUncheckedUpdateInput>
+  }
+
+
+  /**
+   * generacion_cajas delete
+   */
+  export type generacion_cajasDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+    /**
+     * Filter which generacion_cajas to delete.
+     */
+    where: generacion_cajasWhereUniqueInput
+  }
+
+
+  /**
+   * generacion_cajas deleteMany
+   */
+  export type generacion_cajasDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which generacion_cajas to delete
+     */
+    where?: generacion_cajasWhereInput
+  }
+
+
+  /**
+   * generacion_cajas without action
+   */
+  export type generacion_cajasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the generacion_cajas
+     */
+    select?: generacion_cajasSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Model historial_autos
    */
 
@@ -19721,6 +25092,970 @@ export namespace Prisma {
 
 
   /**
+   * Model informe_tareas
+   */
+
+
+  export type AggregateInforme_tareas = {
+    _count: Informe_tareasCountAggregateOutputType | null
+    _avg: Informe_tareasAvgAggregateOutputType | null
+    _sum: Informe_tareasSumAggregateOutputType | null
+    _min: Informe_tareasMinAggregateOutputType | null
+    _max: Informe_tareasMaxAggregateOutputType | null
+  }
+
+  export type Informe_tareasAvgAggregateOutputType = {
+    idtareas: number | null
+    idinforme: number | null
+    idservicio: number | null
+    horas: number | null
+    monto: number | null
+  }
+
+  export type Informe_tareasSumAggregateOutputType = {
+    idtareas: number | null
+    idinforme: number | null
+    idservicio: number | null
+    horas: number | null
+    monto: number | null
+  }
+
+  export type Informe_tareasMinAggregateOutputType = {
+    idtareas: number | null
+    idinforme: number | null
+    idservicio: number | null
+    operador: string | null
+    tarea: string | null
+    inicio: Date | null
+    fin: Date | null
+    horas: number | null
+    monto: number | null
+  }
+
+  export type Informe_tareasMaxAggregateOutputType = {
+    idtareas: number | null
+    idinforme: number | null
+    idservicio: number | null
+    operador: string | null
+    tarea: string | null
+    inicio: Date | null
+    fin: Date | null
+    horas: number | null
+    monto: number | null
+  }
+
+  export type Informe_tareasCountAggregateOutputType = {
+    idtareas: number
+    idinforme: number
+    idservicio: number
+    operador: number
+    tarea: number
+    inicio: number
+    fin: number
+    horas: number
+    monto: number
+    _all: number
+  }
+
+
+  export type Informe_tareasAvgAggregateInputType = {
+    idtareas?: true
+    idinforme?: true
+    idservicio?: true
+    horas?: true
+    monto?: true
+  }
+
+  export type Informe_tareasSumAggregateInputType = {
+    idtareas?: true
+    idinforme?: true
+    idservicio?: true
+    horas?: true
+    monto?: true
+  }
+
+  export type Informe_tareasMinAggregateInputType = {
+    idtareas?: true
+    idinforme?: true
+    idservicio?: true
+    operador?: true
+    tarea?: true
+    inicio?: true
+    fin?: true
+    horas?: true
+    monto?: true
+  }
+
+  export type Informe_tareasMaxAggregateInputType = {
+    idtareas?: true
+    idinforme?: true
+    idservicio?: true
+    operador?: true
+    tarea?: true
+    inicio?: true
+    fin?: true
+    horas?: true
+    monto?: true
+  }
+
+  export type Informe_tareasCountAggregateInputType = {
+    idtareas?: true
+    idinforme?: true
+    idservicio?: true
+    operador?: true
+    tarea?: true
+    inicio?: true
+    fin?: true
+    horas?: true
+    monto?: true
+    _all?: true
+  }
+
+  export type Informe_tareasAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which informe_tareas to aggregate.
+     */
+    where?: informe_tareasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of informe_tareas to fetch.
+     */
+    orderBy?: informe_tareasOrderByWithRelationInput | informe_tareasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: informe_tareasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` informe_tareas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` informe_tareas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned informe_tareas
+    **/
+    _count?: true | Informe_tareasCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Informe_tareasAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Informe_tareasSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Informe_tareasMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Informe_tareasMaxAggregateInputType
+  }
+
+  export type GetInforme_tareasAggregateType<T extends Informe_tareasAggregateArgs> = {
+        [P in keyof T & keyof AggregateInforme_tareas]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInforme_tareas[P]>
+      : GetScalarType<T[P], AggregateInforme_tareas[P]>
+  }
+
+
+
+
+  export type informe_tareasGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: informe_tareasWhereInput
+    orderBy?: informe_tareasOrderByWithAggregationInput | informe_tareasOrderByWithAggregationInput[]
+    by: Informe_tareasScalarFieldEnum[] | Informe_tareasScalarFieldEnum
+    having?: informe_tareasScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Informe_tareasCountAggregateInputType | true
+    _avg?: Informe_tareasAvgAggregateInputType
+    _sum?: Informe_tareasSumAggregateInputType
+    _min?: Informe_tareasMinAggregateInputType
+    _max?: Informe_tareasMaxAggregateInputType
+  }
+
+
+  export type Informe_tareasGroupByOutputType = {
+    idtareas: number
+    idinforme: number | null
+    idservicio: number | null
+    operador: string | null
+    tarea: string | null
+    inicio: Date | null
+    fin: Date | null
+    horas: number | null
+    monto: number | null
+    _count: Informe_tareasCountAggregateOutputType | null
+    _avg: Informe_tareasAvgAggregateOutputType | null
+    _sum: Informe_tareasSumAggregateOutputType | null
+    _min: Informe_tareasMinAggregateOutputType | null
+    _max: Informe_tareasMaxAggregateOutputType | null
+  }
+
+  type GetInforme_tareasGroupByPayload<T extends informe_tareasGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Informe_tareasGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Informe_tareasGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Informe_tareasGroupByOutputType[P]>
+            : GetScalarType<T[P], Informe_tareasGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type informe_tareasSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idtareas?: boolean
+    idinforme?: boolean
+    idservicio?: boolean
+    operador?: boolean
+    tarea?: boolean
+    inicio?: boolean
+    fin?: boolean
+    horas?: boolean
+    monto?: boolean
+  }, ExtArgs["result"]["informe_tareas"]>
+
+  export type informe_tareasSelectScalar = {
+    idtareas?: boolean
+    idinforme?: boolean
+    idservicio?: boolean
+    operador?: boolean
+    tarea?: boolean
+    inicio?: boolean
+    fin?: boolean
+    horas?: boolean
+    monto?: boolean
+  }
+
+
+  type informe_tareasGetPayload<S extends boolean | null | undefined | informe_tareasArgs> = $Types.GetResult<informe_tareasPayload, S>
+
+  type informe_tareasCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<informe_tareasFindManyArgs, 'select' | 'include'> & {
+      select?: Informe_tareasCountAggregateInputType | true
+    }
+
+  export interface informe_tareasDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['informe_tareas'], meta: { name: 'informe_tareas' } }
+    /**
+     * Find zero or one Informe_tareas that matches the filter.
+     * @param {informe_tareasFindUniqueArgs} args - Arguments to find a Informe_tareas
+     * @example
+     * // Get one Informe_tareas
+     * const informe_tareas = await prisma.informe_tareas.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends informe_tareasFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, informe_tareasFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'informe_tareas'> extends True ? Prisma__informe_tareasClient<$Types.GetResult<informe_tareasPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__informe_tareasClient<$Types.GetResult<informe_tareasPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Informe_tareas that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {informe_tareasFindUniqueOrThrowArgs} args - Arguments to find a Informe_tareas
+     * @example
+     * // Get one Informe_tareas
+     * const informe_tareas = await prisma.informe_tareas.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends informe_tareasFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, informe_tareasFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__informe_tareasClient<$Types.GetResult<informe_tareasPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Informe_tareas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {informe_tareasFindFirstArgs} args - Arguments to find a Informe_tareas
+     * @example
+     * // Get one Informe_tareas
+     * const informe_tareas = await prisma.informe_tareas.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends informe_tareasFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, informe_tareasFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'informe_tareas'> extends True ? Prisma__informe_tareasClient<$Types.GetResult<informe_tareasPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__informe_tareasClient<$Types.GetResult<informe_tareasPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Informe_tareas that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {informe_tareasFindFirstOrThrowArgs} args - Arguments to find a Informe_tareas
+     * @example
+     * // Get one Informe_tareas
+     * const informe_tareas = await prisma.informe_tareas.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends informe_tareasFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, informe_tareasFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__informe_tareasClient<$Types.GetResult<informe_tareasPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Informe_tareas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {informe_tareasFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Informe_tareas
+     * const informe_tareas = await prisma.informe_tareas.findMany()
+     * 
+     * // Get first 10 Informe_tareas
+     * const informe_tareas = await prisma.informe_tareas.findMany({ take: 10 })
+     * 
+     * // Only select the `idtareas`
+     * const informe_tareasWithIdtareasOnly = await prisma.informe_tareas.findMany({ select: { idtareas: true } })
+     * 
+    **/
+    findMany<T extends informe_tareasFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, informe_tareasFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<informe_tareasPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Informe_tareas.
+     * @param {informe_tareasCreateArgs} args - Arguments to create a Informe_tareas.
+     * @example
+     * // Create one Informe_tareas
+     * const Informe_tareas = await prisma.informe_tareas.create({
+     *   data: {
+     *     // ... data to create a Informe_tareas
+     *   }
+     * })
+     * 
+    **/
+    create<T extends informe_tareasCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, informe_tareasCreateArgs<ExtArgs>>
+    ): Prisma__informe_tareasClient<$Types.GetResult<informe_tareasPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Informe_tareas.
+     *     @param {informe_tareasCreateManyArgs} args - Arguments to create many Informe_tareas.
+     *     @example
+     *     // Create many Informe_tareas
+     *     const informe_tareas = await prisma.informe_tareas.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends informe_tareasCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, informe_tareasCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Informe_tareas.
+     * @param {informe_tareasDeleteArgs} args - Arguments to delete one Informe_tareas.
+     * @example
+     * // Delete one Informe_tareas
+     * const Informe_tareas = await prisma.informe_tareas.delete({
+     *   where: {
+     *     // ... filter to delete one Informe_tareas
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends informe_tareasDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, informe_tareasDeleteArgs<ExtArgs>>
+    ): Prisma__informe_tareasClient<$Types.GetResult<informe_tareasPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Informe_tareas.
+     * @param {informe_tareasUpdateArgs} args - Arguments to update one Informe_tareas.
+     * @example
+     * // Update one Informe_tareas
+     * const informe_tareas = await prisma.informe_tareas.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends informe_tareasUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, informe_tareasUpdateArgs<ExtArgs>>
+    ): Prisma__informe_tareasClient<$Types.GetResult<informe_tareasPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Informe_tareas.
+     * @param {informe_tareasDeleteManyArgs} args - Arguments to filter Informe_tareas to delete.
+     * @example
+     * // Delete a few Informe_tareas
+     * const { count } = await prisma.informe_tareas.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends informe_tareasDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, informe_tareasDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Informe_tareas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {informe_tareasUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Informe_tareas
+     * const informe_tareas = await prisma.informe_tareas.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends informe_tareasUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, informe_tareasUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Informe_tareas.
+     * @param {informe_tareasUpsertArgs} args - Arguments to update or create a Informe_tareas.
+     * @example
+     * // Update or create a Informe_tareas
+     * const informe_tareas = await prisma.informe_tareas.upsert({
+     *   create: {
+     *     // ... data to create a Informe_tareas
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Informe_tareas we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends informe_tareasUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, informe_tareasUpsertArgs<ExtArgs>>
+    ): Prisma__informe_tareasClient<$Types.GetResult<informe_tareasPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Informe_tareas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {informe_tareasCountArgs} args - Arguments to filter Informe_tareas to count.
+     * @example
+     * // Count the number of Informe_tareas
+     * const count = await prisma.informe_tareas.count({
+     *   where: {
+     *     // ... the filter for the Informe_tareas we want to count
+     *   }
+     * })
+    **/
+    count<T extends informe_tareasCountArgs>(
+      args?: Subset<T, informe_tareasCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Informe_tareasCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Informe_tareas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Informe_tareasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Informe_tareasAggregateArgs>(args: Subset<T, Informe_tareasAggregateArgs>): Prisma.PrismaPromise<GetInforme_tareasAggregateType<T>>
+
+    /**
+     * Group by Informe_tareas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {informe_tareasGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends informe_tareasGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: informe_tareasGroupByArgs['orderBy'] }
+        : { orderBy?: informe_tareasGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, informe_tareasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInforme_tareasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for informe_tareas.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__informe_tareasClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * informe_tareas base type for findUnique actions
+   */
+  export type informe_tareasFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the informe_tareas
+     */
+    select?: informe_tareasSelect<ExtArgs> | null
+    /**
+     * Filter, which informe_tareas to fetch.
+     */
+    where: informe_tareasWhereUniqueInput
+  }
+
+  /**
+   * informe_tareas findUnique
+   */
+  export interface informe_tareasFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends informe_tareasFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * informe_tareas findUniqueOrThrow
+   */
+  export type informe_tareasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the informe_tareas
+     */
+    select?: informe_tareasSelect<ExtArgs> | null
+    /**
+     * Filter, which informe_tareas to fetch.
+     */
+    where: informe_tareasWhereUniqueInput
+  }
+
+
+  /**
+   * informe_tareas base type for findFirst actions
+   */
+  export type informe_tareasFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the informe_tareas
+     */
+    select?: informe_tareasSelect<ExtArgs> | null
+    /**
+     * Filter, which informe_tareas to fetch.
+     */
+    where?: informe_tareasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of informe_tareas to fetch.
+     */
+    orderBy?: informe_tareasOrderByWithRelationInput | informe_tareasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for informe_tareas.
+     */
+    cursor?: informe_tareasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` informe_tareas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` informe_tareas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of informe_tareas.
+     */
+    distinct?: Informe_tareasScalarFieldEnum | Informe_tareasScalarFieldEnum[]
+  }
+
+  /**
+   * informe_tareas findFirst
+   */
+  export interface informe_tareasFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends informe_tareasFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * informe_tareas findFirstOrThrow
+   */
+  export type informe_tareasFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the informe_tareas
+     */
+    select?: informe_tareasSelect<ExtArgs> | null
+    /**
+     * Filter, which informe_tareas to fetch.
+     */
+    where?: informe_tareasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of informe_tareas to fetch.
+     */
+    orderBy?: informe_tareasOrderByWithRelationInput | informe_tareasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for informe_tareas.
+     */
+    cursor?: informe_tareasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` informe_tareas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` informe_tareas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of informe_tareas.
+     */
+    distinct?: Informe_tareasScalarFieldEnum | Informe_tareasScalarFieldEnum[]
+  }
+
+
+  /**
+   * informe_tareas findMany
+   */
+  export type informe_tareasFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the informe_tareas
+     */
+    select?: informe_tareasSelect<ExtArgs> | null
+    /**
+     * Filter, which informe_tareas to fetch.
+     */
+    where?: informe_tareasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of informe_tareas to fetch.
+     */
+    orderBy?: informe_tareasOrderByWithRelationInput | informe_tareasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing informe_tareas.
+     */
+    cursor?: informe_tareasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` informe_tareas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` informe_tareas.
+     */
+    skip?: number
+    distinct?: Informe_tareasScalarFieldEnum | Informe_tareasScalarFieldEnum[]
+  }
+
+
+  /**
+   * informe_tareas create
+   */
+  export type informe_tareasCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the informe_tareas
+     */
+    select?: informe_tareasSelect<ExtArgs> | null
+    /**
+     * The data needed to create a informe_tareas.
+     */
+    data?: XOR<informe_tareasCreateInput, informe_tareasUncheckedCreateInput>
+  }
+
+
+  /**
+   * informe_tareas createMany
+   */
+  export type informe_tareasCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many informe_tareas.
+     */
+    data: informe_tareasCreateManyInput | informe_tareasCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * informe_tareas update
+   */
+  export type informe_tareasUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the informe_tareas
+     */
+    select?: informe_tareasSelect<ExtArgs> | null
+    /**
+     * The data needed to update a informe_tareas.
+     */
+    data: XOR<informe_tareasUpdateInput, informe_tareasUncheckedUpdateInput>
+    /**
+     * Choose, which informe_tareas to update.
+     */
+    where: informe_tareasWhereUniqueInput
+  }
+
+
+  /**
+   * informe_tareas updateMany
+   */
+  export type informe_tareasUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update informe_tareas.
+     */
+    data: XOR<informe_tareasUpdateManyMutationInput, informe_tareasUncheckedUpdateManyInput>
+    /**
+     * Filter which informe_tareas to update
+     */
+    where?: informe_tareasWhereInput
+  }
+
+
+  /**
+   * informe_tareas upsert
+   */
+  export type informe_tareasUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the informe_tareas
+     */
+    select?: informe_tareasSelect<ExtArgs> | null
+    /**
+     * The filter to search for the informe_tareas to update in case it exists.
+     */
+    where: informe_tareasWhereUniqueInput
+    /**
+     * In case the informe_tareas found by the `where` argument doesn't exist, create a new informe_tareas with this data.
+     */
+    create: XOR<informe_tareasCreateInput, informe_tareasUncheckedCreateInput>
+    /**
+     * In case the informe_tareas was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<informe_tareasUpdateInput, informe_tareasUncheckedUpdateInput>
+  }
+
+
+  /**
+   * informe_tareas delete
+   */
+  export type informe_tareasDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the informe_tareas
+     */
+    select?: informe_tareasSelect<ExtArgs> | null
+    /**
+     * Filter which informe_tareas to delete.
+     */
+    where: informe_tareasWhereUniqueInput
+  }
+
+
+  /**
+   * informe_tareas deleteMany
+   */
+  export type informe_tareasDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which informe_tareas to delete
+     */
+    where?: informe_tareasWhereInput
+  }
+
+
+  /**
+   * informe_tareas without action
+   */
+  export type informe_tareasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the informe_tareas
+     */
+    select?: informe_tareasSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Model ingreso_caja
    */
 
@@ -22513,6 +28848,967 @@ export namespace Prisma {
      * Select specific fields to fetch from the legajo_virtual_servicios
      */
     select?: legajo_virtual_serviciosSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model lic_conducir
+   */
+
+
+  export type AggregateLic_conducir = {
+    _count: Lic_conducirCountAggregateOutputType | null
+    _avg: Lic_conducirAvgAggregateOutputType | null
+    _sum: Lic_conducirSumAggregateOutputType | null
+    _min: Lic_conducirMinAggregateOutputType | null
+    _max: Lic_conducirMaxAggregateOutputType | null
+  }
+
+  export type Lic_conducirAvgAggregateOutputType = {
+    NRO_DOC: number | null
+    id: number | null
+  }
+
+  export type Lic_conducirSumAggregateOutputType = {
+    NRO_DOC: number | null
+    id: number | null
+  }
+
+  export type Lic_conducirMinAggregateOutputType = {
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    FEC_NAC: Date | null
+    NRO_CARNET: string | null
+    FEC_VENCI: Date | null
+    CLASE: string | null
+    GRUPO: string | null
+    FACTOR_RH: string | null
+    id: number | null
+  }
+
+  export type Lic_conducirMaxAggregateOutputType = {
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    FEC_NAC: Date | null
+    NRO_CARNET: string | null
+    FEC_VENCI: Date | null
+    CLASE: string | null
+    GRUPO: string | null
+    FACTOR_RH: string | null
+    id: number | null
+  }
+
+  export type Lic_conducirCountAggregateOutputType = {
+    NRO_DOC: number
+    APELLIDOS: number
+    NOMBRES: number
+    FEC_NAC: number
+    NRO_CARNET: number
+    FEC_VENCI: number
+    CLASE: number
+    GRUPO: number
+    FACTOR_RH: number
+    id: number
+    _all: number
+  }
+
+
+  export type Lic_conducirAvgAggregateInputType = {
+    NRO_DOC?: true
+    id?: true
+  }
+
+  export type Lic_conducirSumAggregateInputType = {
+    NRO_DOC?: true
+    id?: true
+  }
+
+  export type Lic_conducirMinAggregateInputType = {
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    FEC_NAC?: true
+    NRO_CARNET?: true
+    FEC_VENCI?: true
+    CLASE?: true
+    GRUPO?: true
+    FACTOR_RH?: true
+    id?: true
+  }
+
+  export type Lic_conducirMaxAggregateInputType = {
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    FEC_NAC?: true
+    NRO_CARNET?: true
+    FEC_VENCI?: true
+    CLASE?: true
+    GRUPO?: true
+    FACTOR_RH?: true
+    id?: true
+  }
+
+  export type Lic_conducirCountAggregateInputType = {
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    FEC_NAC?: true
+    NRO_CARNET?: true
+    FEC_VENCI?: true
+    CLASE?: true
+    GRUPO?: true
+    FACTOR_RH?: true
+    id?: true
+    _all?: true
+  }
+
+  export type Lic_conducirAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which lic_conducir to aggregate.
+     */
+    where?: lic_conducirWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lic_conducirs to fetch.
+     */
+    orderBy?: lic_conducirOrderByWithRelationInput | lic_conducirOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: lic_conducirWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lic_conducirs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lic_conducirs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned lic_conducirs
+    **/
+    _count?: true | Lic_conducirCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Lic_conducirAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Lic_conducirSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Lic_conducirMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Lic_conducirMaxAggregateInputType
+  }
+
+  export type GetLic_conducirAggregateType<T extends Lic_conducirAggregateArgs> = {
+        [P in keyof T & keyof AggregateLic_conducir]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLic_conducir[P]>
+      : GetScalarType<T[P], AggregateLic_conducir[P]>
+  }
+
+
+
+
+  export type lic_conducirGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: lic_conducirWhereInput
+    orderBy?: lic_conducirOrderByWithAggregationInput | lic_conducirOrderByWithAggregationInput[]
+    by: Lic_conducirScalarFieldEnum[] | Lic_conducirScalarFieldEnum
+    having?: lic_conducirScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Lic_conducirCountAggregateInputType | true
+    _avg?: Lic_conducirAvgAggregateInputType
+    _sum?: Lic_conducirSumAggregateInputType
+    _min?: Lic_conducirMinAggregateInputType
+    _max?: Lic_conducirMaxAggregateInputType
+  }
+
+
+  export type Lic_conducirGroupByOutputType = {
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    FEC_NAC: Date | null
+    NRO_CARNET: string | null
+    FEC_VENCI: Date | null
+    CLASE: string | null
+    GRUPO: string | null
+    FACTOR_RH: string | null
+    id: number
+    _count: Lic_conducirCountAggregateOutputType | null
+    _avg: Lic_conducirAvgAggregateOutputType | null
+    _sum: Lic_conducirSumAggregateOutputType | null
+    _min: Lic_conducirMinAggregateOutputType | null
+    _max: Lic_conducirMaxAggregateOutputType | null
+  }
+
+  type GetLic_conducirGroupByPayload<T extends lic_conducirGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Lic_conducirGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Lic_conducirGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Lic_conducirGroupByOutputType[P]>
+            : GetScalarType<T[P], Lic_conducirGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type lic_conducirSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    FEC_NAC?: boolean
+    NRO_CARNET?: boolean
+    FEC_VENCI?: boolean
+    CLASE?: boolean
+    GRUPO?: boolean
+    FACTOR_RH?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["lic_conducir"]>
+
+  export type lic_conducirSelectScalar = {
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    FEC_NAC?: boolean
+    NRO_CARNET?: boolean
+    FEC_VENCI?: boolean
+    CLASE?: boolean
+    GRUPO?: boolean
+    FACTOR_RH?: boolean
+    id?: boolean
+  }
+
+
+  type lic_conducirGetPayload<S extends boolean | null | undefined | lic_conducirArgs> = $Types.GetResult<lic_conducirPayload, S>
+
+  type lic_conducirCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<lic_conducirFindManyArgs, 'select' | 'include'> & {
+      select?: Lic_conducirCountAggregateInputType | true
+    }
+
+  export interface lic_conducirDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['lic_conducir'], meta: { name: 'lic_conducir' } }
+    /**
+     * Find zero or one Lic_conducir that matches the filter.
+     * @param {lic_conducirFindUniqueArgs} args - Arguments to find a Lic_conducir
+     * @example
+     * // Get one Lic_conducir
+     * const lic_conducir = await prisma.lic_conducir.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends lic_conducirFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, lic_conducirFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'lic_conducir'> extends True ? Prisma__lic_conducirClient<$Types.GetResult<lic_conducirPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__lic_conducirClient<$Types.GetResult<lic_conducirPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Lic_conducir that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {lic_conducirFindUniqueOrThrowArgs} args - Arguments to find a Lic_conducir
+     * @example
+     * // Get one Lic_conducir
+     * const lic_conducir = await prisma.lic_conducir.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends lic_conducirFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, lic_conducirFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__lic_conducirClient<$Types.GetResult<lic_conducirPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Lic_conducir that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lic_conducirFindFirstArgs} args - Arguments to find a Lic_conducir
+     * @example
+     * // Get one Lic_conducir
+     * const lic_conducir = await prisma.lic_conducir.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends lic_conducirFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, lic_conducirFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'lic_conducir'> extends True ? Prisma__lic_conducirClient<$Types.GetResult<lic_conducirPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__lic_conducirClient<$Types.GetResult<lic_conducirPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Lic_conducir that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lic_conducirFindFirstOrThrowArgs} args - Arguments to find a Lic_conducir
+     * @example
+     * // Get one Lic_conducir
+     * const lic_conducir = await prisma.lic_conducir.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends lic_conducirFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, lic_conducirFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__lic_conducirClient<$Types.GetResult<lic_conducirPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Lic_conducirs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lic_conducirFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Lic_conducirs
+     * const lic_conducirs = await prisma.lic_conducir.findMany()
+     * 
+     * // Get first 10 Lic_conducirs
+     * const lic_conducirs = await prisma.lic_conducir.findMany({ take: 10 })
+     * 
+     * // Only select the `NRO_DOC`
+     * const lic_conducirWithNRO_DOCOnly = await prisma.lic_conducir.findMany({ select: { NRO_DOC: true } })
+     * 
+    **/
+    findMany<T extends lic_conducirFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, lic_conducirFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<lic_conducirPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Lic_conducir.
+     * @param {lic_conducirCreateArgs} args - Arguments to create a Lic_conducir.
+     * @example
+     * // Create one Lic_conducir
+     * const Lic_conducir = await prisma.lic_conducir.create({
+     *   data: {
+     *     // ... data to create a Lic_conducir
+     *   }
+     * })
+     * 
+    **/
+    create<T extends lic_conducirCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, lic_conducirCreateArgs<ExtArgs>>
+    ): Prisma__lic_conducirClient<$Types.GetResult<lic_conducirPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Lic_conducirs.
+     *     @param {lic_conducirCreateManyArgs} args - Arguments to create many Lic_conducirs.
+     *     @example
+     *     // Create many Lic_conducirs
+     *     const lic_conducir = await prisma.lic_conducir.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends lic_conducirCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, lic_conducirCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Lic_conducir.
+     * @param {lic_conducirDeleteArgs} args - Arguments to delete one Lic_conducir.
+     * @example
+     * // Delete one Lic_conducir
+     * const Lic_conducir = await prisma.lic_conducir.delete({
+     *   where: {
+     *     // ... filter to delete one Lic_conducir
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends lic_conducirDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, lic_conducirDeleteArgs<ExtArgs>>
+    ): Prisma__lic_conducirClient<$Types.GetResult<lic_conducirPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Lic_conducir.
+     * @param {lic_conducirUpdateArgs} args - Arguments to update one Lic_conducir.
+     * @example
+     * // Update one Lic_conducir
+     * const lic_conducir = await prisma.lic_conducir.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends lic_conducirUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, lic_conducirUpdateArgs<ExtArgs>>
+    ): Prisma__lic_conducirClient<$Types.GetResult<lic_conducirPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Lic_conducirs.
+     * @param {lic_conducirDeleteManyArgs} args - Arguments to filter Lic_conducirs to delete.
+     * @example
+     * // Delete a few Lic_conducirs
+     * const { count } = await prisma.lic_conducir.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends lic_conducirDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, lic_conducirDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Lic_conducirs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lic_conducirUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Lic_conducirs
+     * const lic_conducir = await prisma.lic_conducir.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends lic_conducirUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, lic_conducirUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Lic_conducir.
+     * @param {lic_conducirUpsertArgs} args - Arguments to update or create a Lic_conducir.
+     * @example
+     * // Update or create a Lic_conducir
+     * const lic_conducir = await prisma.lic_conducir.upsert({
+     *   create: {
+     *     // ... data to create a Lic_conducir
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Lic_conducir we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends lic_conducirUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, lic_conducirUpsertArgs<ExtArgs>>
+    ): Prisma__lic_conducirClient<$Types.GetResult<lic_conducirPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Lic_conducirs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lic_conducirCountArgs} args - Arguments to filter Lic_conducirs to count.
+     * @example
+     * // Count the number of Lic_conducirs
+     * const count = await prisma.lic_conducir.count({
+     *   where: {
+     *     // ... the filter for the Lic_conducirs we want to count
+     *   }
+     * })
+    **/
+    count<T extends lic_conducirCountArgs>(
+      args?: Subset<T, lic_conducirCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Lic_conducirCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Lic_conducir.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Lic_conducirAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Lic_conducirAggregateArgs>(args: Subset<T, Lic_conducirAggregateArgs>): Prisma.PrismaPromise<GetLic_conducirAggregateType<T>>
+
+    /**
+     * Group by Lic_conducir.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lic_conducirGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends lic_conducirGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: lic_conducirGroupByArgs['orderBy'] }
+        : { orderBy?: lic_conducirGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, lic_conducirGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLic_conducirGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for lic_conducir.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__lic_conducirClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * lic_conducir base type for findUnique actions
+   */
+  export type lic_conducirFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lic_conducir
+     */
+    select?: lic_conducirSelect<ExtArgs> | null
+    /**
+     * Filter, which lic_conducir to fetch.
+     */
+    where: lic_conducirWhereUniqueInput
+  }
+
+  /**
+   * lic_conducir findUnique
+   */
+  export interface lic_conducirFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends lic_conducirFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * lic_conducir findUniqueOrThrow
+   */
+  export type lic_conducirFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lic_conducir
+     */
+    select?: lic_conducirSelect<ExtArgs> | null
+    /**
+     * Filter, which lic_conducir to fetch.
+     */
+    where: lic_conducirWhereUniqueInput
+  }
+
+
+  /**
+   * lic_conducir base type for findFirst actions
+   */
+  export type lic_conducirFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lic_conducir
+     */
+    select?: lic_conducirSelect<ExtArgs> | null
+    /**
+     * Filter, which lic_conducir to fetch.
+     */
+    where?: lic_conducirWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lic_conducirs to fetch.
+     */
+    orderBy?: lic_conducirOrderByWithRelationInput | lic_conducirOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for lic_conducirs.
+     */
+    cursor?: lic_conducirWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lic_conducirs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lic_conducirs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of lic_conducirs.
+     */
+    distinct?: Lic_conducirScalarFieldEnum | Lic_conducirScalarFieldEnum[]
+  }
+
+  /**
+   * lic_conducir findFirst
+   */
+  export interface lic_conducirFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends lic_conducirFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * lic_conducir findFirstOrThrow
+   */
+  export type lic_conducirFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lic_conducir
+     */
+    select?: lic_conducirSelect<ExtArgs> | null
+    /**
+     * Filter, which lic_conducir to fetch.
+     */
+    where?: lic_conducirWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lic_conducirs to fetch.
+     */
+    orderBy?: lic_conducirOrderByWithRelationInput | lic_conducirOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for lic_conducirs.
+     */
+    cursor?: lic_conducirWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lic_conducirs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lic_conducirs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of lic_conducirs.
+     */
+    distinct?: Lic_conducirScalarFieldEnum | Lic_conducirScalarFieldEnum[]
+  }
+
+
+  /**
+   * lic_conducir findMany
+   */
+  export type lic_conducirFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lic_conducir
+     */
+    select?: lic_conducirSelect<ExtArgs> | null
+    /**
+     * Filter, which lic_conducirs to fetch.
+     */
+    where?: lic_conducirWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lic_conducirs to fetch.
+     */
+    orderBy?: lic_conducirOrderByWithRelationInput | lic_conducirOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing lic_conducirs.
+     */
+    cursor?: lic_conducirWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lic_conducirs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lic_conducirs.
+     */
+    skip?: number
+    distinct?: Lic_conducirScalarFieldEnum | Lic_conducirScalarFieldEnum[]
+  }
+
+
+  /**
+   * lic_conducir create
+   */
+  export type lic_conducirCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lic_conducir
+     */
+    select?: lic_conducirSelect<ExtArgs> | null
+    /**
+     * The data needed to create a lic_conducir.
+     */
+    data?: XOR<lic_conducirCreateInput, lic_conducirUncheckedCreateInput>
+  }
+
+
+  /**
+   * lic_conducir createMany
+   */
+  export type lic_conducirCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many lic_conducirs.
+     */
+    data: lic_conducirCreateManyInput | lic_conducirCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * lic_conducir update
+   */
+  export type lic_conducirUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lic_conducir
+     */
+    select?: lic_conducirSelect<ExtArgs> | null
+    /**
+     * The data needed to update a lic_conducir.
+     */
+    data: XOR<lic_conducirUpdateInput, lic_conducirUncheckedUpdateInput>
+    /**
+     * Choose, which lic_conducir to update.
+     */
+    where: lic_conducirWhereUniqueInput
+  }
+
+
+  /**
+   * lic_conducir updateMany
+   */
+  export type lic_conducirUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update lic_conducirs.
+     */
+    data: XOR<lic_conducirUpdateManyMutationInput, lic_conducirUncheckedUpdateManyInput>
+    /**
+     * Filter which lic_conducirs to update
+     */
+    where?: lic_conducirWhereInput
+  }
+
+
+  /**
+   * lic_conducir upsert
+   */
+  export type lic_conducirUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lic_conducir
+     */
+    select?: lic_conducirSelect<ExtArgs> | null
+    /**
+     * The filter to search for the lic_conducir to update in case it exists.
+     */
+    where: lic_conducirWhereUniqueInput
+    /**
+     * In case the lic_conducir found by the `where` argument doesn't exist, create a new lic_conducir with this data.
+     */
+    create: XOR<lic_conducirCreateInput, lic_conducirUncheckedCreateInput>
+    /**
+     * In case the lic_conducir was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<lic_conducirUpdateInput, lic_conducirUncheckedUpdateInput>
+  }
+
+
+  /**
+   * lic_conducir delete
+   */
+  export type lic_conducirDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lic_conducir
+     */
+    select?: lic_conducirSelect<ExtArgs> | null
+    /**
+     * Filter which lic_conducir to delete.
+     */
+    where: lic_conducirWhereUniqueInput
+  }
+
+
+  /**
+   * lic_conducir deleteMany
+   */
+  export type lic_conducirDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which lic_conducirs to delete
+     */
+    where?: lic_conducirWhereInput
+  }
+
+
+  /**
+   * lic_conducir without action
+   */
+  export type lic_conducirArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lic_conducir
+     */
+    select?: lic_conducirSelect<ExtArgs> | null
   }
 
 
@@ -25327,6 +32623,965 @@ export namespace Prisma {
      * Select specific fields to fetch from the parcelas
      */
     select?: parcelasSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model parcelas_lugares
+   */
+
+
+  export type AggregateParcelas_lugares = {
+    _count: Parcelas_lugaresCountAggregateOutputType | null
+    _avg: Parcelas_lugaresAvgAggregateOutputType | null
+    _sum: Parcelas_lugaresSumAggregateOutputType | null
+    _min: Parcelas_lugaresMinAggregateOutputType | null
+    _max: Parcelas_lugaresMaxAggregateOutputType | null
+  }
+
+  export type Parcelas_lugaresAvgAggregateOutputType = {
+    idlugar: number | null
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+  }
+
+  export type Parcelas_lugaresSumAggregateOutputType = {
+    idlugar: number | null
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+  }
+
+  export type Parcelas_lugaresMinAggregateOutputType = {
+    idlugar: number | null
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+    fecha: Date | null
+    operador: string | null
+  }
+
+  export type Parcelas_lugaresMaxAggregateOutputType = {
+    idlugar: number | null
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+    fecha: Date | null
+    operador: string | null
+  }
+
+  export type Parcelas_lugaresCountAggregateOutputType = {
+    idlugar: number
+    idparcela: number
+    idservicio: number
+    lugar: number
+    contrato: number
+    dni: number
+    fecha: number
+    operador: number
+    _all: number
+  }
+
+
+  export type Parcelas_lugaresAvgAggregateInputType = {
+    idlugar?: true
+    idparcela?: true
+    idservicio?: true
+    lugar?: true
+    contrato?: true
+    dni?: true
+  }
+
+  export type Parcelas_lugaresSumAggregateInputType = {
+    idlugar?: true
+    idparcela?: true
+    idservicio?: true
+    lugar?: true
+    contrato?: true
+    dni?: true
+  }
+
+  export type Parcelas_lugaresMinAggregateInputType = {
+    idlugar?: true
+    idparcela?: true
+    idservicio?: true
+    lugar?: true
+    contrato?: true
+    dni?: true
+    fecha?: true
+    operador?: true
+  }
+
+  export type Parcelas_lugaresMaxAggregateInputType = {
+    idlugar?: true
+    idparcela?: true
+    idservicio?: true
+    lugar?: true
+    contrato?: true
+    dni?: true
+    fecha?: true
+    operador?: true
+  }
+
+  export type Parcelas_lugaresCountAggregateInputType = {
+    idlugar?: true
+    idparcela?: true
+    idservicio?: true
+    lugar?: true
+    contrato?: true
+    dni?: true
+    fecha?: true
+    operador?: true
+    _all?: true
+  }
+
+  export type Parcelas_lugaresAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which parcelas_lugares to aggregate.
+     */
+    where?: parcelas_lugaresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parcelas_lugares to fetch.
+     */
+    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: parcelas_lugaresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parcelas_lugares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parcelas_lugares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned parcelas_lugares
+    **/
+    _count?: true | Parcelas_lugaresCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Parcelas_lugaresAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Parcelas_lugaresSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Parcelas_lugaresMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Parcelas_lugaresMaxAggregateInputType
+  }
+
+  export type GetParcelas_lugaresAggregateType<T extends Parcelas_lugaresAggregateArgs> = {
+        [P in keyof T & keyof AggregateParcelas_lugares]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateParcelas_lugares[P]>
+      : GetScalarType<T[P], AggregateParcelas_lugares[P]>
+  }
+
+
+
+
+  export type parcelas_lugaresGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: parcelas_lugaresWhereInput
+    orderBy?: parcelas_lugaresOrderByWithAggregationInput | parcelas_lugaresOrderByWithAggregationInput[]
+    by: Parcelas_lugaresScalarFieldEnum[] | Parcelas_lugaresScalarFieldEnum
+    having?: parcelas_lugaresScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Parcelas_lugaresCountAggregateInputType | true
+    _avg?: Parcelas_lugaresAvgAggregateInputType
+    _sum?: Parcelas_lugaresSumAggregateInputType
+    _min?: Parcelas_lugaresMinAggregateInputType
+    _max?: Parcelas_lugaresMaxAggregateInputType
+  }
+
+
+  export type Parcelas_lugaresGroupByOutputType = {
+    idlugar: number
+    idparcela: number | null
+    idservicio: number | null
+    lugar: number | null
+    contrato: number | null
+    dni: number | null
+    fecha: Date | null
+    operador: string | null
+    _count: Parcelas_lugaresCountAggregateOutputType | null
+    _avg: Parcelas_lugaresAvgAggregateOutputType | null
+    _sum: Parcelas_lugaresSumAggregateOutputType | null
+    _min: Parcelas_lugaresMinAggregateOutputType | null
+    _max: Parcelas_lugaresMaxAggregateOutputType | null
+  }
+
+  type GetParcelas_lugaresGroupByPayload<T extends parcelas_lugaresGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Parcelas_lugaresGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Parcelas_lugaresGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Parcelas_lugaresGroupByOutputType[P]>
+            : GetScalarType<T[P], Parcelas_lugaresGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type parcelas_lugaresSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idlugar?: boolean
+    idparcela?: boolean
+    idservicio?: boolean
+    lugar?: boolean
+    contrato?: boolean
+    dni?: boolean
+    fecha?: boolean
+    operador?: boolean
+  }, ExtArgs["result"]["parcelas_lugares"]>
+
+  export type parcelas_lugaresSelectScalar = {
+    idlugar?: boolean
+    idparcela?: boolean
+    idservicio?: boolean
+    lugar?: boolean
+    contrato?: boolean
+    dni?: boolean
+    fecha?: boolean
+    operador?: boolean
+  }
+
+
+  type parcelas_lugaresGetPayload<S extends boolean | null | undefined | parcelas_lugaresArgs> = $Types.GetResult<parcelas_lugaresPayload, S>
+
+  type parcelas_lugaresCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<parcelas_lugaresFindManyArgs, 'select' | 'include'> & {
+      select?: Parcelas_lugaresCountAggregateInputType | true
+    }
+
+  export interface parcelas_lugaresDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['parcelas_lugares'], meta: { name: 'parcelas_lugares' } }
+    /**
+     * Find zero or one Parcelas_lugares that matches the filter.
+     * @param {parcelas_lugaresFindUniqueArgs} args - Arguments to find a Parcelas_lugares
+     * @example
+     * // Get one Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends parcelas_lugaresFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, parcelas_lugaresFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'parcelas_lugares'> extends True ? Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Parcelas_lugares that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {parcelas_lugaresFindUniqueOrThrowArgs} args - Arguments to find a Parcelas_lugares
+     * @example
+     * // Get one Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Parcelas_lugares that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresFindFirstArgs} args - Arguments to find a Parcelas_lugares
+     * @example
+     * // Get one Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends parcelas_lugaresFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, parcelas_lugaresFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'parcelas_lugares'> extends True ? Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Parcelas_lugares that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresFindFirstOrThrowArgs} args - Arguments to find a Parcelas_lugares
+     * @example
+     * // Get one Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends parcelas_lugaresFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, parcelas_lugaresFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Parcelas_lugares that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findMany()
+     * 
+     * // Get first 10 Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.findMany({ take: 10 })
+     * 
+     * // Only select the `idlugar`
+     * const parcelas_lugaresWithIdlugarOnly = await prisma.parcelas_lugares.findMany({ select: { idlugar: true } })
+     * 
+    **/
+    findMany<T extends parcelas_lugaresFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, parcelas_lugaresFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Parcelas_lugares.
+     * @param {parcelas_lugaresCreateArgs} args - Arguments to create a Parcelas_lugares.
+     * @example
+     * // Create one Parcelas_lugares
+     * const Parcelas_lugares = await prisma.parcelas_lugares.create({
+     *   data: {
+     *     // ... data to create a Parcelas_lugares
+     *   }
+     * })
+     * 
+    **/
+    create<T extends parcelas_lugaresCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, parcelas_lugaresCreateArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Parcelas_lugares.
+     *     @param {parcelas_lugaresCreateManyArgs} args - Arguments to create many Parcelas_lugares.
+     *     @example
+     *     // Create many Parcelas_lugares
+     *     const parcelas_lugares = await prisma.parcelas_lugares.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends parcelas_lugaresCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, parcelas_lugaresCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Parcelas_lugares.
+     * @param {parcelas_lugaresDeleteArgs} args - Arguments to delete one Parcelas_lugares.
+     * @example
+     * // Delete one Parcelas_lugares
+     * const Parcelas_lugares = await prisma.parcelas_lugares.delete({
+     *   where: {
+     *     // ... filter to delete one Parcelas_lugares
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends parcelas_lugaresDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, parcelas_lugaresDeleteArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Parcelas_lugares.
+     * @param {parcelas_lugaresUpdateArgs} args - Arguments to update one Parcelas_lugares.
+     * @example
+     * // Update one Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends parcelas_lugaresUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, parcelas_lugaresUpdateArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Parcelas_lugares.
+     * @param {parcelas_lugaresDeleteManyArgs} args - Arguments to filter Parcelas_lugares to delete.
+     * @example
+     * // Delete a few Parcelas_lugares
+     * const { count } = await prisma.parcelas_lugares.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends parcelas_lugaresDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, parcelas_lugaresDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Parcelas_lugares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends parcelas_lugaresUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, parcelas_lugaresUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Parcelas_lugares.
+     * @param {parcelas_lugaresUpsertArgs} args - Arguments to update or create a Parcelas_lugares.
+     * @example
+     * // Update or create a Parcelas_lugares
+     * const parcelas_lugares = await prisma.parcelas_lugares.upsert({
+     *   create: {
+     *     // ... data to create a Parcelas_lugares
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Parcelas_lugares we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends parcelas_lugaresUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, parcelas_lugaresUpsertArgs<ExtArgs>>
+    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Parcelas_lugares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresCountArgs} args - Arguments to filter Parcelas_lugares to count.
+     * @example
+     * // Count the number of Parcelas_lugares
+     * const count = await prisma.parcelas_lugares.count({
+     *   where: {
+     *     // ... the filter for the Parcelas_lugares we want to count
+     *   }
+     * })
+    **/
+    count<T extends parcelas_lugaresCountArgs>(
+      args?: Subset<T, parcelas_lugaresCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Parcelas_lugaresCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Parcelas_lugares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Parcelas_lugaresAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Parcelas_lugaresAggregateArgs>(args: Subset<T, Parcelas_lugaresAggregateArgs>): Prisma.PrismaPromise<GetParcelas_lugaresAggregateType<T>>
+
+    /**
+     * Group by Parcelas_lugares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parcelas_lugaresGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends parcelas_lugaresGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: parcelas_lugaresGroupByArgs['orderBy'] }
+        : { orderBy?: parcelas_lugaresGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, parcelas_lugaresGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetParcelas_lugaresGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for parcelas_lugares.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__parcelas_lugaresClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * parcelas_lugares base type for findUnique actions
+   */
+  export type parcelas_lugaresFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter, which parcelas_lugares to fetch.
+     */
+    where: parcelas_lugaresWhereUniqueInput
+  }
+
+  /**
+   * parcelas_lugares findUnique
+   */
+  export interface parcelas_lugaresFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends parcelas_lugaresFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * parcelas_lugares findUniqueOrThrow
+   */
+  export type parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter, which parcelas_lugares to fetch.
+     */
+    where: parcelas_lugaresWhereUniqueInput
+  }
+
+
+  /**
+   * parcelas_lugares base type for findFirst actions
+   */
+  export type parcelas_lugaresFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter, which parcelas_lugares to fetch.
+     */
+    where?: parcelas_lugaresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parcelas_lugares to fetch.
+     */
+    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for parcelas_lugares.
+     */
+    cursor?: parcelas_lugaresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parcelas_lugares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parcelas_lugares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of parcelas_lugares.
+     */
+    distinct?: Parcelas_lugaresScalarFieldEnum | Parcelas_lugaresScalarFieldEnum[]
+  }
+
+  /**
+   * parcelas_lugares findFirst
+   */
+  export interface parcelas_lugaresFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends parcelas_lugaresFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * parcelas_lugares findFirstOrThrow
+   */
+  export type parcelas_lugaresFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter, which parcelas_lugares to fetch.
+     */
+    where?: parcelas_lugaresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parcelas_lugares to fetch.
+     */
+    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for parcelas_lugares.
+     */
+    cursor?: parcelas_lugaresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parcelas_lugares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parcelas_lugares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of parcelas_lugares.
+     */
+    distinct?: Parcelas_lugaresScalarFieldEnum | Parcelas_lugaresScalarFieldEnum[]
+  }
+
+
+  /**
+   * parcelas_lugares findMany
+   */
+  export type parcelas_lugaresFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter, which parcelas_lugares to fetch.
+     */
+    where?: parcelas_lugaresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parcelas_lugares to fetch.
+     */
+    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing parcelas_lugares.
+     */
+    cursor?: parcelas_lugaresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parcelas_lugares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parcelas_lugares.
+     */
+    skip?: number
+    distinct?: Parcelas_lugaresScalarFieldEnum | Parcelas_lugaresScalarFieldEnum[]
+  }
+
+
+  /**
+   * parcelas_lugares create
+   */
+  export type parcelas_lugaresCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * The data needed to create a parcelas_lugares.
+     */
+    data?: XOR<parcelas_lugaresCreateInput, parcelas_lugaresUncheckedCreateInput>
+  }
+
+
+  /**
+   * parcelas_lugares createMany
+   */
+  export type parcelas_lugaresCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many parcelas_lugares.
+     */
+    data: parcelas_lugaresCreateManyInput | parcelas_lugaresCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * parcelas_lugares update
+   */
+  export type parcelas_lugaresUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * The data needed to update a parcelas_lugares.
+     */
+    data: XOR<parcelas_lugaresUpdateInput, parcelas_lugaresUncheckedUpdateInput>
+    /**
+     * Choose, which parcelas_lugares to update.
+     */
+    where: parcelas_lugaresWhereUniqueInput
+  }
+
+
+  /**
+   * parcelas_lugares updateMany
+   */
+  export type parcelas_lugaresUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update parcelas_lugares.
+     */
+    data: XOR<parcelas_lugaresUpdateManyMutationInput, parcelas_lugaresUncheckedUpdateManyInput>
+    /**
+     * Filter which parcelas_lugares to update
+     */
+    where?: parcelas_lugaresWhereInput
+  }
+
+
+  /**
+   * parcelas_lugares upsert
+   */
+  export type parcelas_lugaresUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * The filter to search for the parcelas_lugares to update in case it exists.
+     */
+    where: parcelas_lugaresWhereUniqueInput
+    /**
+     * In case the parcelas_lugares found by the `where` argument doesn't exist, create a new parcelas_lugares with this data.
+     */
+    create: XOR<parcelas_lugaresCreateInput, parcelas_lugaresUncheckedCreateInput>
+    /**
+     * In case the parcelas_lugares was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<parcelas_lugaresUpdateInput, parcelas_lugaresUncheckedUpdateInput>
+  }
+
+
+  /**
+   * parcelas_lugares delete
+   */
+  export type parcelas_lugaresDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
+    /**
+     * Filter which parcelas_lugares to delete.
+     */
+    where: parcelas_lugaresWhereUniqueInput
+  }
+
+
+  /**
+   * parcelas_lugares deleteMany
+   */
+  export type parcelas_lugaresDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which parcelas_lugares to delete
+     */
+    where?: parcelas_lugaresWhereInput
+  }
+
+
+  /**
+   * parcelas_lugares without action
+   */
+  export type parcelas_lugaresArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parcelas_lugares
+     */
+    select?: parcelas_lugaresSelect<ExtArgs> | null
   }
 
 
@@ -28261,6 +36516,981 @@ export namespace Prisma {
 
 
   /**
+   * Model rodados
+   */
+
+
+  export type AggregateRodados = {
+    _count: RodadosCountAggregateOutputType | null
+    _avg: RodadosAvgAggregateOutputType | null
+    _sum: RodadosSumAggregateOutputType | null
+    _min: RodadosMinAggregateOutputType | null
+    _max: RodadosMaxAggregateOutputType | null
+  }
+
+  export type RodadosAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type RodadosSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type RodadosMinAggregateOutputType = {
+    patente: string | null
+    descripcion: string | null
+    km: string | null
+    responsable: string | null
+    n_poliza: string | null
+    emp_poliza: string | null
+    n_motor: string | null
+    n_chasis: string | null
+    ano_fabri: string | null
+    desde: Date | null
+    hasta: Date | null
+    id: number | null
+  }
+
+  export type RodadosMaxAggregateOutputType = {
+    patente: string | null
+    descripcion: string | null
+    km: string | null
+    responsable: string | null
+    n_poliza: string | null
+    emp_poliza: string | null
+    n_motor: string | null
+    n_chasis: string | null
+    ano_fabri: string | null
+    desde: Date | null
+    hasta: Date | null
+    id: number | null
+  }
+
+  export type RodadosCountAggregateOutputType = {
+    patente: number
+    descripcion: number
+    km: number
+    responsable: number
+    n_poliza: number
+    emp_poliza: number
+    n_motor: number
+    n_chasis: number
+    ano_fabri: number
+    desde: number
+    hasta: number
+    id: number
+    _all: number
+  }
+
+
+  export type RodadosAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type RodadosSumAggregateInputType = {
+    id?: true
+  }
+
+  export type RodadosMinAggregateInputType = {
+    patente?: true
+    descripcion?: true
+    km?: true
+    responsable?: true
+    n_poliza?: true
+    emp_poliza?: true
+    n_motor?: true
+    n_chasis?: true
+    ano_fabri?: true
+    desde?: true
+    hasta?: true
+    id?: true
+  }
+
+  export type RodadosMaxAggregateInputType = {
+    patente?: true
+    descripcion?: true
+    km?: true
+    responsable?: true
+    n_poliza?: true
+    emp_poliza?: true
+    n_motor?: true
+    n_chasis?: true
+    ano_fabri?: true
+    desde?: true
+    hasta?: true
+    id?: true
+  }
+
+  export type RodadosCountAggregateInputType = {
+    patente?: true
+    descripcion?: true
+    km?: true
+    responsable?: true
+    n_poliza?: true
+    emp_poliza?: true
+    n_motor?: true
+    n_chasis?: true
+    ano_fabri?: true
+    desde?: true
+    hasta?: true
+    id?: true
+    _all?: true
+  }
+
+  export type RodadosAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which rodados to aggregate.
+     */
+    where?: rodadosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of rodados to fetch.
+     */
+    orderBy?: rodadosOrderByWithRelationInput | rodadosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: rodadosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` rodados from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` rodados.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned rodados
+    **/
+    _count?: true | RodadosCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RodadosAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RodadosSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RodadosMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RodadosMaxAggregateInputType
+  }
+
+  export type GetRodadosAggregateType<T extends RodadosAggregateArgs> = {
+        [P in keyof T & keyof AggregateRodados]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRodados[P]>
+      : GetScalarType<T[P], AggregateRodados[P]>
+  }
+
+
+
+
+  export type rodadosGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: rodadosWhereInput
+    orderBy?: rodadosOrderByWithAggregationInput | rodadosOrderByWithAggregationInput[]
+    by: RodadosScalarFieldEnum[] | RodadosScalarFieldEnum
+    having?: rodadosScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RodadosCountAggregateInputType | true
+    _avg?: RodadosAvgAggregateInputType
+    _sum?: RodadosSumAggregateInputType
+    _min?: RodadosMinAggregateInputType
+    _max?: RodadosMaxAggregateInputType
+  }
+
+
+  export type RodadosGroupByOutputType = {
+    patente: string | null
+    descripcion: string | null
+    km: string | null
+    responsable: string | null
+    n_poliza: string | null
+    emp_poliza: string | null
+    n_motor: string | null
+    n_chasis: string | null
+    ano_fabri: string | null
+    desde: Date | null
+    hasta: Date | null
+    id: number
+    _count: RodadosCountAggregateOutputType | null
+    _avg: RodadosAvgAggregateOutputType | null
+    _sum: RodadosSumAggregateOutputType | null
+    _min: RodadosMinAggregateOutputType | null
+    _max: RodadosMaxAggregateOutputType | null
+  }
+
+  type GetRodadosGroupByPayload<T extends rodadosGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RodadosGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RodadosGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RodadosGroupByOutputType[P]>
+            : GetScalarType<T[P], RodadosGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type rodadosSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    patente?: boolean
+    descripcion?: boolean
+    km?: boolean
+    responsable?: boolean
+    n_poliza?: boolean
+    emp_poliza?: boolean
+    n_motor?: boolean
+    n_chasis?: boolean
+    ano_fabri?: boolean
+    desde?: boolean
+    hasta?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["rodados"]>
+
+  export type rodadosSelectScalar = {
+    patente?: boolean
+    descripcion?: boolean
+    km?: boolean
+    responsable?: boolean
+    n_poliza?: boolean
+    emp_poliza?: boolean
+    n_motor?: boolean
+    n_chasis?: boolean
+    ano_fabri?: boolean
+    desde?: boolean
+    hasta?: boolean
+    id?: boolean
+  }
+
+
+  type rodadosGetPayload<S extends boolean | null | undefined | rodadosArgs> = $Types.GetResult<rodadosPayload, S>
+
+  type rodadosCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<rodadosFindManyArgs, 'select' | 'include'> & {
+      select?: RodadosCountAggregateInputType | true
+    }
+
+  export interface rodadosDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['rodados'], meta: { name: 'rodados' } }
+    /**
+     * Find zero or one Rodados that matches the filter.
+     * @param {rodadosFindUniqueArgs} args - Arguments to find a Rodados
+     * @example
+     * // Get one Rodados
+     * const rodados = await prisma.rodados.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends rodadosFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, rodadosFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'rodados'> extends True ? Prisma__rodadosClient<$Types.GetResult<rodadosPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__rodadosClient<$Types.GetResult<rodadosPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Rodados that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {rodadosFindUniqueOrThrowArgs} args - Arguments to find a Rodados
+     * @example
+     * // Get one Rodados
+     * const rodados = await prisma.rodados.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends rodadosFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, rodadosFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__rodadosClient<$Types.GetResult<rodadosPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Rodados that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rodadosFindFirstArgs} args - Arguments to find a Rodados
+     * @example
+     * // Get one Rodados
+     * const rodados = await prisma.rodados.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends rodadosFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, rodadosFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'rodados'> extends True ? Prisma__rodadosClient<$Types.GetResult<rodadosPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__rodadosClient<$Types.GetResult<rodadosPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Rodados that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rodadosFindFirstOrThrowArgs} args - Arguments to find a Rodados
+     * @example
+     * // Get one Rodados
+     * const rodados = await prisma.rodados.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends rodadosFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, rodadosFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__rodadosClient<$Types.GetResult<rodadosPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Rodados that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rodadosFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Rodados
+     * const rodados = await prisma.rodados.findMany()
+     * 
+     * // Get first 10 Rodados
+     * const rodados = await prisma.rodados.findMany({ take: 10 })
+     * 
+     * // Only select the `patente`
+     * const rodadosWithPatenteOnly = await prisma.rodados.findMany({ select: { patente: true } })
+     * 
+    **/
+    findMany<T extends rodadosFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, rodadosFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<rodadosPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Rodados.
+     * @param {rodadosCreateArgs} args - Arguments to create a Rodados.
+     * @example
+     * // Create one Rodados
+     * const Rodados = await prisma.rodados.create({
+     *   data: {
+     *     // ... data to create a Rodados
+     *   }
+     * })
+     * 
+    **/
+    create<T extends rodadosCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, rodadosCreateArgs<ExtArgs>>
+    ): Prisma__rodadosClient<$Types.GetResult<rodadosPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Rodados.
+     *     @param {rodadosCreateManyArgs} args - Arguments to create many Rodados.
+     *     @example
+     *     // Create many Rodados
+     *     const rodados = await prisma.rodados.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends rodadosCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, rodadosCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Rodados.
+     * @param {rodadosDeleteArgs} args - Arguments to delete one Rodados.
+     * @example
+     * // Delete one Rodados
+     * const Rodados = await prisma.rodados.delete({
+     *   where: {
+     *     // ... filter to delete one Rodados
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends rodadosDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, rodadosDeleteArgs<ExtArgs>>
+    ): Prisma__rodadosClient<$Types.GetResult<rodadosPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Rodados.
+     * @param {rodadosUpdateArgs} args - Arguments to update one Rodados.
+     * @example
+     * // Update one Rodados
+     * const rodados = await prisma.rodados.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends rodadosUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, rodadosUpdateArgs<ExtArgs>>
+    ): Prisma__rodadosClient<$Types.GetResult<rodadosPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Rodados.
+     * @param {rodadosDeleteManyArgs} args - Arguments to filter Rodados to delete.
+     * @example
+     * // Delete a few Rodados
+     * const { count } = await prisma.rodados.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends rodadosDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, rodadosDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Rodados.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rodadosUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Rodados
+     * const rodados = await prisma.rodados.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends rodadosUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, rodadosUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Rodados.
+     * @param {rodadosUpsertArgs} args - Arguments to update or create a Rodados.
+     * @example
+     * // Update or create a Rodados
+     * const rodados = await prisma.rodados.upsert({
+     *   create: {
+     *     // ... data to create a Rodados
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Rodados we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends rodadosUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, rodadosUpsertArgs<ExtArgs>>
+    ): Prisma__rodadosClient<$Types.GetResult<rodadosPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Rodados.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rodadosCountArgs} args - Arguments to filter Rodados to count.
+     * @example
+     * // Count the number of Rodados
+     * const count = await prisma.rodados.count({
+     *   where: {
+     *     // ... the filter for the Rodados we want to count
+     *   }
+     * })
+    **/
+    count<T extends rodadosCountArgs>(
+      args?: Subset<T, rodadosCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RodadosCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Rodados.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RodadosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RodadosAggregateArgs>(args: Subset<T, RodadosAggregateArgs>): Prisma.PrismaPromise<GetRodadosAggregateType<T>>
+
+    /**
+     * Group by Rodados.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rodadosGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends rodadosGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: rodadosGroupByArgs['orderBy'] }
+        : { orderBy?: rodadosGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, rodadosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRodadosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for rodados.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__rodadosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * rodados base type for findUnique actions
+   */
+  export type rodadosFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rodados
+     */
+    select?: rodadosSelect<ExtArgs> | null
+    /**
+     * Filter, which rodados to fetch.
+     */
+    where: rodadosWhereUniqueInput
+  }
+
+  /**
+   * rodados findUnique
+   */
+  export interface rodadosFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends rodadosFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * rodados findUniqueOrThrow
+   */
+  export type rodadosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rodados
+     */
+    select?: rodadosSelect<ExtArgs> | null
+    /**
+     * Filter, which rodados to fetch.
+     */
+    where: rodadosWhereUniqueInput
+  }
+
+
+  /**
+   * rodados base type for findFirst actions
+   */
+  export type rodadosFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rodados
+     */
+    select?: rodadosSelect<ExtArgs> | null
+    /**
+     * Filter, which rodados to fetch.
+     */
+    where?: rodadosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of rodados to fetch.
+     */
+    orderBy?: rodadosOrderByWithRelationInput | rodadosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for rodados.
+     */
+    cursor?: rodadosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` rodados from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` rodados.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of rodados.
+     */
+    distinct?: RodadosScalarFieldEnum | RodadosScalarFieldEnum[]
+  }
+
+  /**
+   * rodados findFirst
+   */
+  export interface rodadosFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends rodadosFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * rodados findFirstOrThrow
+   */
+  export type rodadosFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rodados
+     */
+    select?: rodadosSelect<ExtArgs> | null
+    /**
+     * Filter, which rodados to fetch.
+     */
+    where?: rodadosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of rodados to fetch.
+     */
+    orderBy?: rodadosOrderByWithRelationInput | rodadosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for rodados.
+     */
+    cursor?: rodadosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` rodados from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` rodados.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of rodados.
+     */
+    distinct?: RodadosScalarFieldEnum | RodadosScalarFieldEnum[]
+  }
+
+
+  /**
+   * rodados findMany
+   */
+  export type rodadosFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rodados
+     */
+    select?: rodadosSelect<ExtArgs> | null
+    /**
+     * Filter, which rodados to fetch.
+     */
+    where?: rodadosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of rodados to fetch.
+     */
+    orderBy?: rodadosOrderByWithRelationInput | rodadosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing rodados.
+     */
+    cursor?: rodadosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` rodados from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` rodados.
+     */
+    skip?: number
+    distinct?: RodadosScalarFieldEnum | RodadosScalarFieldEnum[]
+  }
+
+
+  /**
+   * rodados create
+   */
+  export type rodadosCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rodados
+     */
+    select?: rodadosSelect<ExtArgs> | null
+    /**
+     * The data needed to create a rodados.
+     */
+    data?: XOR<rodadosCreateInput, rodadosUncheckedCreateInput>
+  }
+
+
+  /**
+   * rodados createMany
+   */
+  export type rodadosCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many rodados.
+     */
+    data: rodadosCreateManyInput | rodadosCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * rodados update
+   */
+  export type rodadosUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rodados
+     */
+    select?: rodadosSelect<ExtArgs> | null
+    /**
+     * The data needed to update a rodados.
+     */
+    data: XOR<rodadosUpdateInput, rodadosUncheckedUpdateInput>
+    /**
+     * Choose, which rodados to update.
+     */
+    where: rodadosWhereUniqueInput
+  }
+
+
+  /**
+   * rodados updateMany
+   */
+  export type rodadosUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update rodados.
+     */
+    data: XOR<rodadosUpdateManyMutationInput, rodadosUncheckedUpdateManyInput>
+    /**
+     * Filter which rodados to update
+     */
+    where?: rodadosWhereInput
+  }
+
+
+  /**
+   * rodados upsert
+   */
+  export type rodadosUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rodados
+     */
+    select?: rodadosSelect<ExtArgs> | null
+    /**
+     * The filter to search for the rodados to update in case it exists.
+     */
+    where: rodadosWhereUniqueInput
+    /**
+     * In case the rodados found by the `where` argument doesn't exist, create a new rodados with this data.
+     */
+    create: XOR<rodadosCreateInput, rodadosUncheckedCreateInput>
+    /**
+     * In case the rodados was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<rodadosUpdateInput, rodadosUncheckedUpdateInput>
+  }
+
+
+  /**
+   * rodados delete
+   */
+  export type rodadosDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rodados
+     */
+    select?: rodadosSelect<ExtArgs> | null
+    /**
+     * Filter which rodados to delete.
+     */
+    where: rodadosWhereUniqueInput
+  }
+
+
+  /**
+   * rodados deleteMany
+   */
+  export type rodadosDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which rodados to delete
+     */
+    where?: rodadosWhereInput
+  }
+
+
+  /**
+   * rodados without action
+   */
+  export type rodadosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rodados
+     */
+    select?: rodadosSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Model servicio_detalles
    */
 
@@ -30214,6 +39444,958 @@ export namespace Prisma {
      * Select specific fields to fetch from the servicio_gastos
      */
     select?: servicio_gastosSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model servicio_informes
+   */
+
+
+  export type AggregateServicio_informes = {
+    _count: Servicio_informesCountAggregateOutputType | null
+    _avg: Servicio_informesAvgAggregateOutputType | null
+    _sum: Servicio_informesSumAggregateOutputType | null
+    _min: Servicio_informesMinAggregateOutputType | null
+    _max: Servicio_informesMaxAggregateOutputType | null
+  }
+
+  export type Servicio_informesAvgAggregateOutputType = {
+    idinforme: number | null
+    idservicio: number | null
+  }
+
+  export type Servicio_informesSumAggregateOutputType = {
+    idinforme: number | null
+    idservicio: number | null
+  }
+
+  export type Servicio_informesMinAggregateOutputType = {
+    idinforme: number | null
+    idservicio: number | null
+    fecha: Date | null
+    aprobado: boolean | null
+    fecha_aprobado: Date | null
+    operador_aprobado: string | null
+    liquidado: boolean | null
+    fecha_liquidado: Date | null
+    operador_liquidado: string | null
+  }
+
+  export type Servicio_informesMaxAggregateOutputType = {
+    idinforme: number | null
+    idservicio: number | null
+    fecha: Date | null
+    aprobado: boolean | null
+    fecha_aprobado: Date | null
+    operador_aprobado: string | null
+    liquidado: boolean | null
+    fecha_liquidado: Date | null
+    operador_liquidado: string | null
+  }
+
+  export type Servicio_informesCountAggregateOutputType = {
+    idinforme: number
+    idservicio: number
+    fecha: number
+    aprobado: number
+    fecha_aprobado: number
+    operador_aprobado: number
+    liquidado: number
+    fecha_liquidado: number
+    operador_liquidado: number
+    _all: number
+  }
+
+
+  export type Servicio_informesAvgAggregateInputType = {
+    idinforme?: true
+    idservicio?: true
+  }
+
+  export type Servicio_informesSumAggregateInputType = {
+    idinforme?: true
+    idservicio?: true
+  }
+
+  export type Servicio_informesMinAggregateInputType = {
+    idinforme?: true
+    idservicio?: true
+    fecha?: true
+    aprobado?: true
+    fecha_aprobado?: true
+    operador_aprobado?: true
+    liquidado?: true
+    fecha_liquidado?: true
+    operador_liquidado?: true
+  }
+
+  export type Servicio_informesMaxAggregateInputType = {
+    idinforme?: true
+    idservicio?: true
+    fecha?: true
+    aprobado?: true
+    fecha_aprobado?: true
+    operador_aprobado?: true
+    liquidado?: true
+    fecha_liquidado?: true
+    operador_liquidado?: true
+  }
+
+  export type Servicio_informesCountAggregateInputType = {
+    idinforme?: true
+    idservicio?: true
+    fecha?: true
+    aprobado?: true
+    fecha_aprobado?: true
+    operador_aprobado?: true
+    liquidado?: true
+    fecha_liquidado?: true
+    operador_liquidado?: true
+    _all?: true
+  }
+
+  export type Servicio_informesAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which servicio_informes to aggregate.
+     */
+    where?: servicio_informesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicio_informes to fetch.
+     */
+    orderBy?: servicio_informesOrderByWithRelationInput | servicio_informesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: servicio_informesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicio_informes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicio_informes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned servicio_informes
+    **/
+    _count?: true | Servicio_informesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Servicio_informesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Servicio_informesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Servicio_informesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Servicio_informesMaxAggregateInputType
+  }
+
+  export type GetServicio_informesAggregateType<T extends Servicio_informesAggregateArgs> = {
+        [P in keyof T & keyof AggregateServicio_informes]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateServicio_informes[P]>
+      : GetScalarType<T[P], AggregateServicio_informes[P]>
+  }
+
+
+
+
+  export type servicio_informesGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: servicio_informesWhereInput
+    orderBy?: servicio_informesOrderByWithAggregationInput | servicio_informesOrderByWithAggregationInput[]
+    by: Servicio_informesScalarFieldEnum[] | Servicio_informesScalarFieldEnum
+    having?: servicio_informesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Servicio_informesCountAggregateInputType | true
+    _avg?: Servicio_informesAvgAggregateInputType
+    _sum?: Servicio_informesSumAggregateInputType
+    _min?: Servicio_informesMinAggregateInputType
+    _max?: Servicio_informesMaxAggregateInputType
+  }
+
+
+  export type Servicio_informesGroupByOutputType = {
+    idinforme: number
+    idservicio: number | null
+    fecha: Date | null
+    aprobado: boolean | null
+    fecha_aprobado: Date | null
+    operador_aprobado: string | null
+    liquidado: boolean | null
+    fecha_liquidado: Date | null
+    operador_liquidado: string | null
+    _count: Servicio_informesCountAggregateOutputType | null
+    _avg: Servicio_informesAvgAggregateOutputType | null
+    _sum: Servicio_informesSumAggregateOutputType | null
+    _min: Servicio_informesMinAggregateOutputType | null
+    _max: Servicio_informesMaxAggregateOutputType | null
+  }
+
+  type GetServicio_informesGroupByPayload<T extends servicio_informesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Servicio_informesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Servicio_informesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Servicio_informesGroupByOutputType[P]>
+            : GetScalarType<T[P], Servicio_informesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type servicio_informesSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idinforme?: boolean
+    idservicio?: boolean
+    fecha?: boolean
+    aprobado?: boolean
+    fecha_aprobado?: boolean
+    operador_aprobado?: boolean
+    liquidado?: boolean
+    fecha_liquidado?: boolean
+    operador_liquidado?: boolean
+  }, ExtArgs["result"]["servicio_informes"]>
+
+  export type servicio_informesSelectScalar = {
+    idinforme?: boolean
+    idservicio?: boolean
+    fecha?: boolean
+    aprobado?: boolean
+    fecha_aprobado?: boolean
+    operador_aprobado?: boolean
+    liquidado?: boolean
+    fecha_liquidado?: boolean
+    operador_liquidado?: boolean
+  }
+
+
+  type servicio_informesGetPayload<S extends boolean | null | undefined | servicio_informesArgs> = $Types.GetResult<servicio_informesPayload, S>
+
+  type servicio_informesCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<servicio_informesFindManyArgs, 'select' | 'include'> & {
+      select?: Servicio_informesCountAggregateInputType | true
+    }
+
+  export interface servicio_informesDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['servicio_informes'], meta: { name: 'servicio_informes' } }
+    /**
+     * Find zero or one Servicio_informes that matches the filter.
+     * @param {servicio_informesFindUniqueArgs} args - Arguments to find a Servicio_informes
+     * @example
+     * // Get one Servicio_informes
+     * const servicio_informes = await prisma.servicio_informes.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends servicio_informesFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, servicio_informesFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'servicio_informes'> extends True ? Prisma__servicio_informesClient<$Types.GetResult<servicio_informesPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__servicio_informesClient<$Types.GetResult<servicio_informesPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Servicio_informes that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {servicio_informesFindUniqueOrThrowArgs} args - Arguments to find a Servicio_informes
+     * @example
+     * // Get one Servicio_informes
+     * const servicio_informes = await prisma.servicio_informes.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends servicio_informesFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicio_informesFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__servicio_informesClient<$Types.GetResult<servicio_informesPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Servicio_informes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_informesFindFirstArgs} args - Arguments to find a Servicio_informes
+     * @example
+     * // Get one Servicio_informes
+     * const servicio_informes = await prisma.servicio_informes.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends servicio_informesFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, servicio_informesFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'servicio_informes'> extends True ? Prisma__servicio_informesClient<$Types.GetResult<servicio_informesPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__servicio_informesClient<$Types.GetResult<servicio_informesPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Servicio_informes that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_informesFindFirstOrThrowArgs} args - Arguments to find a Servicio_informes
+     * @example
+     * // Get one Servicio_informes
+     * const servicio_informes = await prisma.servicio_informes.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends servicio_informesFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicio_informesFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__servicio_informesClient<$Types.GetResult<servicio_informesPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Servicio_informes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_informesFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Servicio_informes
+     * const servicio_informes = await prisma.servicio_informes.findMany()
+     * 
+     * // Get first 10 Servicio_informes
+     * const servicio_informes = await prisma.servicio_informes.findMany({ take: 10 })
+     * 
+     * // Only select the `idinforme`
+     * const servicio_informesWithIdinformeOnly = await prisma.servicio_informes.findMany({ select: { idinforme: true } })
+     * 
+    **/
+    findMany<T extends servicio_informesFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicio_informesFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<servicio_informesPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Servicio_informes.
+     * @param {servicio_informesCreateArgs} args - Arguments to create a Servicio_informes.
+     * @example
+     * // Create one Servicio_informes
+     * const Servicio_informes = await prisma.servicio_informes.create({
+     *   data: {
+     *     // ... data to create a Servicio_informes
+     *   }
+     * })
+     * 
+    **/
+    create<T extends servicio_informesCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, servicio_informesCreateArgs<ExtArgs>>
+    ): Prisma__servicio_informesClient<$Types.GetResult<servicio_informesPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Servicio_informes.
+     *     @param {servicio_informesCreateManyArgs} args - Arguments to create many Servicio_informes.
+     *     @example
+     *     // Create many Servicio_informes
+     *     const servicio_informes = await prisma.servicio_informes.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends servicio_informesCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicio_informesCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Servicio_informes.
+     * @param {servicio_informesDeleteArgs} args - Arguments to delete one Servicio_informes.
+     * @example
+     * // Delete one Servicio_informes
+     * const Servicio_informes = await prisma.servicio_informes.delete({
+     *   where: {
+     *     // ... filter to delete one Servicio_informes
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends servicio_informesDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, servicio_informesDeleteArgs<ExtArgs>>
+    ): Prisma__servicio_informesClient<$Types.GetResult<servicio_informesPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Servicio_informes.
+     * @param {servicio_informesUpdateArgs} args - Arguments to update one Servicio_informes.
+     * @example
+     * // Update one Servicio_informes
+     * const servicio_informes = await prisma.servicio_informes.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends servicio_informesUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, servicio_informesUpdateArgs<ExtArgs>>
+    ): Prisma__servicio_informesClient<$Types.GetResult<servicio_informesPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Servicio_informes.
+     * @param {servicio_informesDeleteManyArgs} args - Arguments to filter Servicio_informes to delete.
+     * @example
+     * // Delete a few Servicio_informes
+     * const { count } = await prisma.servicio_informes.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends servicio_informesDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicio_informesDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Servicio_informes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_informesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Servicio_informes
+     * const servicio_informes = await prisma.servicio_informes.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends servicio_informesUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, servicio_informesUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Servicio_informes.
+     * @param {servicio_informesUpsertArgs} args - Arguments to update or create a Servicio_informes.
+     * @example
+     * // Update or create a Servicio_informes
+     * const servicio_informes = await prisma.servicio_informes.upsert({
+     *   create: {
+     *     // ... data to create a Servicio_informes
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Servicio_informes we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends servicio_informesUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, servicio_informesUpsertArgs<ExtArgs>>
+    ): Prisma__servicio_informesClient<$Types.GetResult<servicio_informesPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Servicio_informes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_informesCountArgs} args - Arguments to filter Servicio_informes to count.
+     * @example
+     * // Count the number of Servicio_informes
+     * const count = await prisma.servicio_informes.count({
+     *   where: {
+     *     // ... the filter for the Servicio_informes we want to count
+     *   }
+     * })
+    **/
+    count<T extends servicio_informesCountArgs>(
+      args?: Subset<T, servicio_informesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Servicio_informesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Servicio_informes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Servicio_informesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Servicio_informesAggregateArgs>(args: Subset<T, Servicio_informesAggregateArgs>): Prisma.PrismaPromise<GetServicio_informesAggregateType<T>>
+
+    /**
+     * Group by Servicio_informes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_informesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends servicio_informesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: servicio_informesGroupByArgs['orderBy'] }
+        : { orderBy?: servicio_informesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, servicio_informesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServicio_informesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for servicio_informes.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__servicio_informesClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * servicio_informes base type for findUnique actions
+   */
+  export type servicio_informesFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_informes
+     */
+    select?: servicio_informesSelect<ExtArgs> | null
+    /**
+     * Filter, which servicio_informes to fetch.
+     */
+    where: servicio_informesWhereUniqueInput
+  }
+
+  /**
+   * servicio_informes findUnique
+   */
+  export interface servicio_informesFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends servicio_informesFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * servicio_informes findUniqueOrThrow
+   */
+  export type servicio_informesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_informes
+     */
+    select?: servicio_informesSelect<ExtArgs> | null
+    /**
+     * Filter, which servicio_informes to fetch.
+     */
+    where: servicio_informesWhereUniqueInput
+  }
+
+
+  /**
+   * servicio_informes base type for findFirst actions
+   */
+  export type servicio_informesFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_informes
+     */
+    select?: servicio_informesSelect<ExtArgs> | null
+    /**
+     * Filter, which servicio_informes to fetch.
+     */
+    where?: servicio_informesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicio_informes to fetch.
+     */
+    orderBy?: servicio_informesOrderByWithRelationInput | servicio_informesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for servicio_informes.
+     */
+    cursor?: servicio_informesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicio_informes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicio_informes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of servicio_informes.
+     */
+    distinct?: Servicio_informesScalarFieldEnum | Servicio_informesScalarFieldEnum[]
+  }
+
+  /**
+   * servicio_informes findFirst
+   */
+  export interface servicio_informesFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends servicio_informesFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * servicio_informes findFirstOrThrow
+   */
+  export type servicio_informesFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_informes
+     */
+    select?: servicio_informesSelect<ExtArgs> | null
+    /**
+     * Filter, which servicio_informes to fetch.
+     */
+    where?: servicio_informesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicio_informes to fetch.
+     */
+    orderBy?: servicio_informesOrderByWithRelationInput | servicio_informesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for servicio_informes.
+     */
+    cursor?: servicio_informesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicio_informes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicio_informes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of servicio_informes.
+     */
+    distinct?: Servicio_informesScalarFieldEnum | Servicio_informesScalarFieldEnum[]
+  }
+
+
+  /**
+   * servicio_informes findMany
+   */
+  export type servicio_informesFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_informes
+     */
+    select?: servicio_informesSelect<ExtArgs> | null
+    /**
+     * Filter, which servicio_informes to fetch.
+     */
+    where?: servicio_informesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicio_informes to fetch.
+     */
+    orderBy?: servicio_informesOrderByWithRelationInput | servicio_informesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing servicio_informes.
+     */
+    cursor?: servicio_informesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicio_informes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicio_informes.
+     */
+    skip?: number
+    distinct?: Servicio_informesScalarFieldEnum | Servicio_informesScalarFieldEnum[]
+  }
+
+
+  /**
+   * servicio_informes create
+   */
+  export type servicio_informesCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_informes
+     */
+    select?: servicio_informesSelect<ExtArgs> | null
+    /**
+     * The data needed to create a servicio_informes.
+     */
+    data?: XOR<servicio_informesCreateInput, servicio_informesUncheckedCreateInput>
+  }
+
+
+  /**
+   * servicio_informes createMany
+   */
+  export type servicio_informesCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many servicio_informes.
+     */
+    data: servicio_informesCreateManyInput | servicio_informesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * servicio_informes update
+   */
+  export type servicio_informesUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_informes
+     */
+    select?: servicio_informesSelect<ExtArgs> | null
+    /**
+     * The data needed to update a servicio_informes.
+     */
+    data: XOR<servicio_informesUpdateInput, servicio_informesUncheckedUpdateInput>
+    /**
+     * Choose, which servicio_informes to update.
+     */
+    where: servicio_informesWhereUniqueInput
+  }
+
+
+  /**
+   * servicio_informes updateMany
+   */
+  export type servicio_informesUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update servicio_informes.
+     */
+    data: XOR<servicio_informesUpdateManyMutationInput, servicio_informesUncheckedUpdateManyInput>
+    /**
+     * Filter which servicio_informes to update
+     */
+    where?: servicio_informesWhereInput
+  }
+
+
+  /**
+   * servicio_informes upsert
+   */
+  export type servicio_informesUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_informes
+     */
+    select?: servicio_informesSelect<ExtArgs> | null
+    /**
+     * The filter to search for the servicio_informes to update in case it exists.
+     */
+    where: servicio_informesWhereUniqueInput
+    /**
+     * In case the servicio_informes found by the `where` argument doesn't exist, create a new servicio_informes with this data.
+     */
+    create: XOR<servicio_informesCreateInput, servicio_informesUncheckedCreateInput>
+    /**
+     * In case the servicio_informes was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<servicio_informesUpdateInput, servicio_informesUncheckedUpdateInput>
+  }
+
+
+  /**
+   * servicio_informes delete
+   */
+  export type servicio_informesDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_informes
+     */
+    select?: servicio_informesSelect<ExtArgs> | null
+    /**
+     * Filter which servicio_informes to delete.
+     */
+    where: servicio_informesWhereUniqueInput
+  }
+
+
+  /**
+   * servicio_informes deleteMany
+   */
+  export type servicio_informesDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which servicio_informes to delete
+     */
+    where?: servicio_informesWhereInput
+  }
+
+
+  /**
+   * servicio_informes without action
+   */
+  export type servicio_informesArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_informes
+     */
+    select?: servicio_informesSelect<ExtArgs> | null
   }
 
 
@@ -34101,926 +44283,6 @@ export namespace Prisma {
 
 
   /**
-   * Model servicios_liquidacion
-   */
-
-
-  export type AggregateServicios_liquidacion = {
-    _count: Servicios_liquidacionCountAggregateOutputType | null
-    _avg: Servicios_liquidacionAvgAggregateOutputType | null
-    _sum: Servicios_liquidacionSumAggregateOutputType | null
-    _min: Servicios_liquidacionMinAggregateOutputType | null
-    _max: Servicios_liquidacionMaxAggregateOutputType | null
-  }
-
-  export type Servicios_liquidacionAvgAggregateOutputType = {
-    idliquidacion: number | null
-    idservicio: number | null
-    total_liquidacion: number | null
-  }
-
-  export type Servicios_liquidacionSumAggregateOutputType = {
-    idliquidacion: number | null
-    idservicio: number | null
-    total_liquidacion: number | null
-  }
-
-  export type Servicios_liquidacionMinAggregateOutputType = {
-    idliquidacion: number | null
-    idservicio: number | null
-    total_liquidacion: number | null
-    fecha_liquidacion: Date | null
-    operador: string | null
-  }
-
-  export type Servicios_liquidacionMaxAggregateOutputType = {
-    idliquidacion: number | null
-    idservicio: number | null
-    total_liquidacion: number | null
-    fecha_liquidacion: Date | null
-    operador: string | null
-  }
-
-  export type Servicios_liquidacionCountAggregateOutputType = {
-    idliquidacion: number
-    idservicio: number
-    total_liquidacion: number
-    fecha_liquidacion: number
-    operador: number
-    _all: number
-  }
-
-
-  export type Servicios_liquidacionAvgAggregateInputType = {
-    idliquidacion?: true
-    idservicio?: true
-    total_liquidacion?: true
-  }
-
-  export type Servicios_liquidacionSumAggregateInputType = {
-    idliquidacion?: true
-    idservicio?: true
-    total_liquidacion?: true
-  }
-
-  export type Servicios_liquidacionMinAggregateInputType = {
-    idliquidacion?: true
-    idservicio?: true
-    total_liquidacion?: true
-    fecha_liquidacion?: true
-    operador?: true
-  }
-
-  export type Servicios_liquidacionMaxAggregateInputType = {
-    idliquidacion?: true
-    idservicio?: true
-    total_liquidacion?: true
-    fecha_liquidacion?: true
-    operador?: true
-  }
-
-  export type Servicios_liquidacionCountAggregateInputType = {
-    idliquidacion?: true
-    idservicio?: true
-    total_liquidacion?: true
-    fecha_liquidacion?: true
-    operador?: true
-    _all?: true
-  }
-
-  export type Servicios_liquidacionAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which servicios_liquidacion to aggregate.
-     */
-    where?: servicios_liquidacionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of servicios_liquidacions to fetch.
-     */
-    orderBy?: servicios_liquidacionOrderByWithRelationInput | servicios_liquidacionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: servicios_liquidacionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` servicios_liquidacions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` servicios_liquidacions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned servicios_liquidacions
-    **/
-    _count?: true | Servicios_liquidacionCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Servicios_liquidacionAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Servicios_liquidacionSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Servicios_liquidacionMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Servicios_liquidacionMaxAggregateInputType
-  }
-
-  export type GetServicios_liquidacionAggregateType<T extends Servicios_liquidacionAggregateArgs> = {
-        [P in keyof T & keyof AggregateServicios_liquidacion]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateServicios_liquidacion[P]>
-      : GetScalarType<T[P], AggregateServicios_liquidacion[P]>
-  }
-
-
-
-
-  export type servicios_liquidacionGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: servicios_liquidacionWhereInput
-    orderBy?: servicios_liquidacionOrderByWithAggregationInput | servicios_liquidacionOrderByWithAggregationInput[]
-    by: Servicios_liquidacionScalarFieldEnum[] | Servicios_liquidacionScalarFieldEnum
-    having?: servicios_liquidacionScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Servicios_liquidacionCountAggregateInputType | true
-    _avg?: Servicios_liquidacionAvgAggregateInputType
-    _sum?: Servicios_liquidacionSumAggregateInputType
-    _min?: Servicios_liquidacionMinAggregateInputType
-    _max?: Servicios_liquidacionMaxAggregateInputType
-  }
-
-
-  export type Servicios_liquidacionGroupByOutputType = {
-    idliquidacion: number
-    idservicio: number | null
-    total_liquidacion: number | null
-    fecha_liquidacion: Date | null
-    operador: string | null
-    _count: Servicios_liquidacionCountAggregateOutputType | null
-    _avg: Servicios_liquidacionAvgAggregateOutputType | null
-    _sum: Servicios_liquidacionSumAggregateOutputType | null
-    _min: Servicios_liquidacionMinAggregateOutputType | null
-    _max: Servicios_liquidacionMaxAggregateOutputType | null
-  }
-
-  type GetServicios_liquidacionGroupByPayload<T extends servicios_liquidacionGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Servicios_liquidacionGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Servicios_liquidacionGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Servicios_liquidacionGroupByOutputType[P]>
-            : GetScalarType<T[P], Servicios_liquidacionGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type servicios_liquidacionSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    idliquidacion?: boolean
-    idservicio?: boolean
-    total_liquidacion?: boolean
-    fecha_liquidacion?: boolean
-    operador?: boolean
-  }, ExtArgs["result"]["servicios_liquidacion"]>
-
-  export type servicios_liquidacionSelectScalar = {
-    idliquidacion?: boolean
-    idservicio?: boolean
-    total_liquidacion?: boolean
-    fecha_liquidacion?: boolean
-    operador?: boolean
-  }
-
-
-  type servicios_liquidacionGetPayload<S extends boolean | null | undefined | servicios_liquidacionArgs> = $Types.GetResult<servicios_liquidacionPayload, S>
-
-  type servicios_liquidacionCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<servicios_liquidacionFindManyArgs, 'select' | 'include'> & {
-      select?: Servicios_liquidacionCountAggregateInputType | true
-    }
-
-  export interface servicios_liquidacionDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['servicios_liquidacion'], meta: { name: 'servicios_liquidacion' } }
-    /**
-     * Find zero or one Servicios_liquidacion that matches the filter.
-     * @param {servicios_liquidacionFindUniqueArgs} args - Arguments to find a Servicios_liquidacion
-     * @example
-     * // Get one Servicios_liquidacion
-     * const servicios_liquidacion = await prisma.servicios_liquidacion.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends servicios_liquidacionFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, servicios_liquidacionFindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'servicios_liquidacion'> extends True ? Prisma__servicios_liquidacionClient<$Types.GetResult<servicios_liquidacionPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__servicios_liquidacionClient<$Types.GetResult<servicios_liquidacionPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one Servicios_liquidacion that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {servicios_liquidacionFindUniqueOrThrowArgs} args - Arguments to find a Servicios_liquidacion
-     * @example
-     * // Get one Servicios_liquidacion
-     * const servicios_liquidacion = await prisma.servicios_liquidacion.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends servicios_liquidacionFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, servicios_liquidacionFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__servicios_liquidacionClient<$Types.GetResult<servicios_liquidacionPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first Servicios_liquidacion that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicios_liquidacionFindFirstArgs} args - Arguments to find a Servicios_liquidacion
-     * @example
-     * // Get one Servicios_liquidacion
-     * const servicios_liquidacion = await prisma.servicios_liquidacion.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends servicios_liquidacionFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, servicios_liquidacionFindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'servicios_liquidacion'> extends True ? Prisma__servicios_liquidacionClient<$Types.GetResult<servicios_liquidacionPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__servicios_liquidacionClient<$Types.GetResult<servicios_liquidacionPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first Servicios_liquidacion that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicios_liquidacionFindFirstOrThrowArgs} args - Arguments to find a Servicios_liquidacion
-     * @example
-     * // Get one Servicios_liquidacion
-     * const servicios_liquidacion = await prisma.servicios_liquidacion.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends servicios_liquidacionFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, servicios_liquidacionFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__servicios_liquidacionClient<$Types.GetResult<servicios_liquidacionPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more Servicios_liquidacions that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicios_liquidacionFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Servicios_liquidacions
-     * const servicios_liquidacions = await prisma.servicios_liquidacion.findMany()
-     * 
-     * // Get first 10 Servicios_liquidacions
-     * const servicios_liquidacions = await prisma.servicios_liquidacion.findMany({ take: 10 })
-     * 
-     * // Only select the `idliquidacion`
-     * const servicios_liquidacionWithIdliquidacionOnly = await prisma.servicios_liquidacion.findMany({ select: { idliquidacion: true } })
-     * 
-    **/
-    findMany<T extends servicios_liquidacionFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, servicios_liquidacionFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<servicios_liquidacionPayload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a Servicios_liquidacion.
-     * @param {servicios_liquidacionCreateArgs} args - Arguments to create a Servicios_liquidacion.
-     * @example
-     * // Create one Servicios_liquidacion
-     * const Servicios_liquidacion = await prisma.servicios_liquidacion.create({
-     *   data: {
-     *     // ... data to create a Servicios_liquidacion
-     *   }
-     * })
-     * 
-    **/
-    create<T extends servicios_liquidacionCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, servicios_liquidacionCreateArgs<ExtArgs>>
-    ): Prisma__servicios_liquidacionClient<$Types.GetResult<servicios_liquidacionPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many Servicios_liquidacions.
-     *     @param {servicios_liquidacionCreateManyArgs} args - Arguments to create many Servicios_liquidacions.
-     *     @example
-     *     // Create many Servicios_liquidacions
-     *     const servicios_liquidacion = await prisma.servicios_liquidacion.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends servicios_liquidacionCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, servicios_liquidacionCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Servicios_liquidacion.
-     * @param {servicios_liquidacionDeleteArgs} args - Arguments to delete one Servicios_liquidacion.
-     * @example
-     * // Delete one Servicios_liquidacion
-     * const Servicios_liquidacion = await prisma.servicios_liquidacion.delete({
-     *   where: {
-     *     // ... filter to delete one Servicios_liquidacion
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends servicios_liquidacionDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, servicios_liquidacionDeleteArgs<ExtArgs>>
-    ): Prisma__servicios_liquidacionClient<$Types.GetResult<servicios_liquidacionPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one Servicios_liquidacion.
-     * @param {servicios_liquidacionUpdateArgs} args - Arguments to update one Servicios_liquidacion.
-     * @example
-     * // Update one Servicios_liquidacion
-     * const servicios_liquidacion = await prisma.servicios_liquidacion.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends servicios_liquidacionUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, servicios_liquidacionUpdateArgs<ExtArgs>>
-    ): Prisma__servicios_liquidacionClient<$Types.GetResult<servicios_liquidacionPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Servicios_liquidacions.
-     * @param {servicios_liquidacionDeleteManyArgs} args - Arguments to filter Servicios_liquidacions to delete.
-     * @example
-     * // Delete a few Servicios_liquidacions
-     * const { count } = await prisma.servicios_liquidacion.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends servicios_liquidacionDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, servicios_liquidacionDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Servicios_liquidacions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicios_liquidacionUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Servicios_liquidacions
-     * const servicios_liquidacion = await prisma.servicios_liquidacion.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends servicios_liquidacionUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, servicios_liquidacionUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Servicios_liquidacion.
-     * @param {servicios_liquidacionUpsertArgs} args - Arguments to update or create a Servicios_liquidacion.
-     * @example
-     * // Update or create a Servicios_liquidacion
-     * const servicios_liquidacion = await prisma.servicios_liquidacion.upsert({
-     *   create: {
-     *     // ... data to create a Servicios_liquidacion
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Servicios_liquidacion we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends servicios_liquidacionUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, servicios_liquidacionUpsertArgs<ExtArgs>>
-    ): Prisma__servicios_liquidacionClient<$Types.GetResult<servicios_liquidacionPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of Servicios_liquidacions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicios_liquidacionCountArgs} args - Arguments to filter Servicios_liquidacions to count.
-     * @example
-     * // Count the number of Servicios_liquidacions
-     * const count = await prisma.servicios_liquidacion.count({
-     *   where: {
-     *     // ... the filter for the Servicios_liquidacions we want to count
-     *   }
-     * })
-    **/
-    count<T extends servicios_liquidacionCountArgs>(
-      args?: Subset<T, servicios_liquidacionCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Servicios_liquidacionCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Servicios_liquidacion.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Servicios_liquidacionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Servicios_liquidacionAggregateArgs>(args: Subset<T, Servicios_liquidacionAggregateArgs>): Prisma.PrismaPromise<GetServicios_liquidacionAggregateType<T>>
-
-    /**
-     * Group by Servicios_liquidacion.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicios_liquidacionGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends servicios_liquidacionGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: servicios_liquidacionGroupByArgs['orderBy'] }
-        : { orderBy?: servicios_liquidacionGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, servicios_liquidacionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServicios_liquidacionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for servicios_liquidacion.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__servicios_liquidacionClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * servicios_liquidacion base type for findUnique actions
-   */
-  export type servicios_liquidacionFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the servicios_liquidacion
-     */
-    select?: servicios_liquidacionSelect<ExtArgs> | null
-    /**
-     * Filter, which servicios_liquidacion to fetch.
-     */
-    where: servicios_liquidacionWhereUniqueInput
-  }
-
-  /**
-   * servicios_liquidacion findUnique
-   */
-  export interface servicios_liquidacionFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends servicios_liquidacionFindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * servicios_liquidacion findUniqueOrThrow
-   */
-  export type servicios_liquidacionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the servicios_liquidacion
-     */
-    select?: servicios_liquidacionSelect<ExtArgs> | null
-    /**
-     * Filter, which servicios_liquidacion to fetch.
-     */
-    where: servicios_liquidacionWhereUniqueInput
-  }
-
-
-  /**
-   * servicios_liquidacion base type for findFirst actions
-   */
-  export type servicios_liquidacionFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the servicios_liquidacion
-     */
-    select?: servicios_liquidacionSelect<ExtArgs> | null
-    /**
-     * Filter, which servicios_liquidacion to fetch.
-     */
-    where?: servicios_liquidacionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of servicios_liquidacions to fetch.
-     */
-    orderBy?: servicios_liquidacionOrderByWithRelationInput | servicios_liquidacionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for servicios_liquidacions.
-     */
-    cursor?: servicios_liquidacionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` servicios_liquidacions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` servicios_liquidacions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of servicios_liquidacions.
-     */
-    distinct?: Servicios_liquidacionScalarFieldEnum | Servicios_liquidacionScalarFieldEnum[]
-  }
-
-  /**
-   * servicios_liquidacion findFirst
-   */
-  export interface servicios_liquidacionFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends servicios_liquidacionFindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * servicios_liquidacion findFirstOrThrow
-   */
-  export type servicios_liquidacionFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the servicios_liquidacion
-     */
-    select?: servicios_liquidacionSelect<ExtArgs> | null
-    /**
-     * Filter, which servicios_liquidacion to fetch.
-     */
-    where?: servicios_liquidacionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of servicios_liquidacions to fetch.
-     */
-    orderBy?: servicios_liquidacionOrderByWithRelationInput | servicios_liquidacionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for servicios_liquidacions.
-     */
-    cursor?: servicios_liquidacionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` servicios_liquidacions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` servicios_liquidacions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of servicios_liquidacions.
-     */
-    distinct?: Servicios_liquidacionScalarFieldEnum | Servicios_liquidacionScalarFieldEnum[]
-  }
-
-
-  /**
-   * servicios_liquidacion findMany
-   */
-  export type servicios_liquidacionFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the servicios_liquidacion
-     */
-    select?: servicios_liquidacionSelect<ExtArgs> | null
-    /**
-     * Filter, which servicios_liquidacions to fetch.
-     */
-    where?: servicios_liquidacionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of servicios_liquidacions to fetch.
-     */
-    orderBy?: servicios_liquidacionOrderByWithRelationInput | servicios_liquidacionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing servicios_liquidacions.
-     */
-    cursor?: servicios_liquidacionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` servicios_liquidacions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` servicios_liquidacions.
-     */
-    skip?: number
-    distinct?: Servicios_liquidacionScalarFieldEnum | Servicios_liquidacionScalarFieldEnum[]
-  }
-
-
-  /**
-   * servicios_liquidacion create
-   */
-  export type servicios_liquidacionCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the servicios_liquidacion
-     */
-    select?: servicios_liquidacionSelect<ExtArgs> | null
-    /**
-     * The data needed to create a servicios_liquidacion.
-     */
-    data?: XOR<servicios_liquidacionCreateInput, servicios_liquidacionUncheckedCreateInput>
-  }
-
-
-  /**
-   * servicios_liquidacion createMany
-   */
-  export type servicios_liquidacionCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many servicios_liquidacions.
-     */
-    data: servicios_liquidacionCreateManyInput | servicios_liquidacionCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * servicios_liquidacion update
-   */
-  export type servicios_liquidacionUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the servicios_liquidacion
-     */
-    select?: servicios_liquidacionSelect<ExtArgs> | null
-    /**
-     * The data needed to update a servicios_liquidacion.
-     */
-    data: XOR<servicios_liquidacionUpdateInput, servicios_liquidacionUncheckedUpdateInput>
-    /**
-     * Choose, which servicios_liquidacion to update.
-     */
-    where: servicios_liquidacionWhereUniqueInput
-  }
-
-
-  /**
-   * servicios_liquidacion updateMany
-   */
-  export type servicios_liquidacionUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update servicios_liquidacions.
-     */
-    data: XOR<servicios_liquidacionUpdateManyMutationInput, servicios_liquidacionUncheckedUpdateManyInput>
-    /**
-     * Filter which servicios_liquidacions to update
-     */
-    where?: servicios_liquidacionWhereInput
-  }
-
-
-  /**
-   * servicios_liquidacion upsert
-   */
-  export type servicios_liquidacionUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the servicios_liquidacion
-     */
-    select?: servicios_liquidacionSelect<ExtArgs> | null
-    /**
-     * The filter to search for the servicios_liquidacion to update in case it exists.
-     */
-    where: servicios_liquidacionWhereUniqueInput
-    /**
-     * In case the servicios_liquidacion found by the `where` argument doesn't exist, create a new servicios_liquidacion with this data.
-     */
-    create: XOR<servicios_liquidacionCreateInput, servicios_liquidacionUncheckedCreateInput>
-    /**
-     * In case the servicios_liquidacion was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<servicios_liquidacionUpdateInput, servicios_liquidacionUncheckedUpdateInput>
-  }
-
-
-  /**
-   * servicios_liquidacion delete
-   */
-  export type servicios_liquidacionDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the servicios_liquidacion
-     */
-    select?: servicios_liquidacionSelect<ExtArgs> | null
-    /**
-     * Filter which servicios_liquidacion to delete.
-     */
-    where: servicios_liquidacionWhereUniqueInput
-  }
-
-
-  /**
-   * servicios_liquidacion deleteMany
-   */
-  export type servicios_liquidacionDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which servicios_liquidacions to delete
-     */
-    where?: servicios_liquidacionWhereInput
-  }
-
-
-  /**
-   * servicios_liquidacion without action
-   */
-  export type servicios_liquidacionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the servicios_liquidacion
-     */
-    select?: servicios_liquidacionSelect<ExtArgs> | null
-  }
-
-
-
-  /**
    * Model tareas
    */
 
@@ -35945,1012 +45207,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the tareas
      */
     select?: tareasSelect<ExtArgs> | null
-  }
-
-
-
-  /**
-   * Model tareas_adicionales
-   */
-
-
-  export type AggregateTareas_adicionales = {
-    _count: Tareas_adicionalesCountAggregateOutputType | null
-    _avg: Tareas_adicionalesAvgAggregateOutputType | null
-    _sum: Tareas_adicionalesSumAggregateOutputType | null
-    _min: Tareas_adicionalesMinAggregateOutputType | null
-    _max: Tareas_adicionalesMaxAggregateOutputType | null
-  }
-
-  export type Tareas_adicionalesAvgAggregateOutputType = {
-    idtarea: number | null
-    feriado: number | null
-  }
-
-  export type Tareas_adicionalesSumAggregateOutputType = {
-    idtarea: number | null
-    feriado: number | null
-  }
-
-  export type Tareas_adicionalesMinAggregateOutputType = {
-    idtarea: number | null
-    inicio: Date | null
-    fin: Date | null
-    tarea: string | null
-    operador: string | null
-    observaciones: string | null
-    horas: Date | null
-    feriado: number | null
-    liquidado: boolean | null
-    fecha_liquidacion: string | null
-    operadorliq: string | null
-    aprobado: boolean | null
-    fecha_aprobacion: string | null
-    operadorap: string | null
-    mes_planificacion: string | null
-  }
-
-  export type Tareas_adicionalesMaxAggregateOutputType = {
-    idtarea: number | null
-    inicio: Date | null
-    fin: Date | null
-    tarea: string | null
-    operador: string | null
-    observaciones: string | null
-    horas: Date | null
-    feriado: number | null
-    liquidado: boolean | null
-    fecha_liquidacion: string | null
-    operadorliq: string | null
-    aprobado: boolean | null
-    fecha_aprobacion: string | null
-    operadorap: string | null
-    mes_planificacion: string | null
-  }
-
-  export type Tareas_adicionalesCountAggregateOutputType = {
-    idtarea: number
-    inicio: number
-    fin: number
-    tarea: number
-    operador: number
-    observaciones: number
-    horas: number
-    feriado: number
-    liquidado: number
-    fecha_liquidacion: number
-    operadorliq: number
-    aprobado: number
-    fecha_aprobacion: number
-    operadorap: number
-    mes_planificacion: number
-    _all: number
-  }
-
-
-  export type Tareas_adicionalesAvgAggregateInputType = {
-    idtarea?: true
-    feriado?: true
-  }
-
-  export type Tareas_adicionalesSumAggregateInputType = {
-    idtarea?: true
-    feriado?: true
-  }
-
-  export type Tareas_adicionalesMinAggregateInputType = {
-    idtarea?: true
-    inicio?: true
-    fin?: true
-    tarea?: true
-    operador?: true
-    observaciones?: true
-    horas?: true
-    feriado?: true
-    liquidado?: true
-    fecha_liquidacion?: true
-    operadorliq?: true
-    aprobado?: true
-    fecha_aprobacion?: true
-    operadorap?: true
-    mes_planificacion?: true
-  }
-
-  export type Tareas_adicionalesMaxAggregateInputType = {
-    idtarea?: true
-    inicio?: true
-    fin?: true
-    tarea?: true
-    operador?: true
-    observaciones?: true
-    horas?: true
-    feriado?: true
-    liquidado?: true
-    fecha_liquidacion?: true
-    operadorliq?: true
-    aprobado?: true
-    fecha_aprobacion?: true
-    operadorap?: true
-    mes_planificacion?: true
-  }
-
-  export type Tareas_adicionalesCountAggregateInputType = {
-    idtarea?: true
-    inicio?: true
-    fin?: true
-    tarea?: true
-    operador?: true
-    observaciones?: true
-    horas?: true
-    feriado?: true
-    liquidado?: true
-    fecha_liquidacion?: true
-    operadorliq?: true
-    aprobado?: true
-    fecha_aprobacion?: true
-    operadorap?: true
-    mes_planificacion?: true
-    _all?: true
-  }
-
-  export type Tareas_adicionalesAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which tareas_adicionales to aggregate.
-     */
-    where?: tareas_adicionalesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tareas_adicionales to fetch.
-     */
-    orderBy?: tareas_adicionalesOrderByWithRelationInput | tareas_adicionalesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: tareas_adicionalesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tareas_adicionales from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tareas_adicionales.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned tareas_adicionales
-    **/
-    _count?: true | Tareas_adicionalesCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Tareas_adicionalesAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Tareas_adicionalesSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Tareas_adicionalesMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Tareas_adicionalesMaxAggregateInputType
-  }
-
-  export type GetTareas_adicionalesAggregateType<T extends Tareas_adicionalesAggregateArgs> = {
-        [P in keyof T & keyof AggregateTareas_adicionales]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateTareas_adicionales[P]>
-      : GetScalarType<T[P], AggregateTareas_adicionales[P]>
-  }
-
-
-
-
-  export type tareas_adicionalesGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: tareas_adicionalesWhereInput
-    orderBy?: tareas_adicionalesOrderByWithAggregationInput | tareas_adicionalesOrderByWithAggregationInput[]
-    by: Tareas_adicionalesScalarFieldEnum[] | Tareas_adicionalesScalarFieldEnum
-    having?: tareas_adicionalesScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Tareas_adicionalesCountAggregateInputType | true
-    _avg?: Tareas_adicionalesAvgAggregateInputType
-    _sum?: Tareas_adicionalesSumAggregateInputType
-    _min?: Tareas_adicionalesMinAggregateInputType
-    _max?: Tareas_adicionalesMaxAggregateInputType
-  }
-
-
-  export type Tareas_adicionalesGroupByOutputType = {
-    idtarea: number
-    inicio: Date | null
-    fin: Date | null
-    tarea: string | null
-    operador: string | null
-    observaciones: string | null
-    horas: Date | null
-    feriado: number | null
-    liquidado: boolean | null
-    fecha_liquidacion: string | null
-    operadorliq: string | null
-    aprobado: boolean | null
-    fecha_aprobacion: string | null
-    operadorap: string | null
-    mes_planificacion: string | null
-    _count: Tareas_adicionalesCountAggregateOutputType | null
-    _avg: Tareas_adicionalesAvgAggregateOutputType | null
-    _sum: Tareas_adicionalesSumAggregateOutputType | null
-    _min: Tareas_adicionalesMinAggregateOutputType | null
-    _max: Tareas_adicionalesMaxAggregateOutputType | null
-  }
-
-  type GetTareas_adicionalesGroupByPayload<T extends tareas_adicionalesGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Tareas_adicionalesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Tareas_adicionalesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Tareas_adicionalesGroupByOutputType[P]>
-            : GetScalarType<T[P], Tareas_adicionalesGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type tareas_adicionalesSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    idtarea?: boolean
-    inicio?: boolean
-    fin?: boolean
-    tarea?: boolean
-    operador?: boolean
-    observaciones?: boolean
-    horas?: boolean
-    feriado?: boolean
-    liquidado?: boolean
-    fecha_liquidacion?: boolean
-    operadorliq?: boolean
-    aprobado?: boolean
-    fecha_aprobacion?: boolean
-    operadorap?: boolean
-    mes_planificacion?: boolean
-  }, ExtArgs["result"]["tareas_adicionales"]>
-
-  export type tareas_adicionalesSelectScalar = {
-    idtarea?: boolean
-    inicio?: boolean
-    fin?: boolean
-    tarea?: boolean
-    operador?: boolean
-    observaciones?: boolean
-    horas?: boolean
-    feriado?: boolean
-    liquidado?: boolean
-    fecha_liquidacion?: boolean
-    operadorliq?: boolean
-    aprobado?: boolean
-    fecha_aprobacion?: boolean
-    operadorap?: boolean
-    mes_planificacion?: boolean
-  }
-
-
-  type tareas_adicionalesGetPayload<S extends boolean | null | undefined | tareas_adicionalesArgs> = $Types.GetResult<tareas_adicionalesPayload, S>
-
-  type tareas_adicionalesCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<tareas_adicionalesFindManyArgs, 'select' | 'include'> & {
-      select?: Tareas_adicionalesCountAggregateInputType | true
-    }
-
-  export interface tareas_adicionalesDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tareas_adicionales'], meta: { name: 'tareas_adicionales' } }
-    /**
-     * Find zero or one Tareas_adicionales that matches the filter.
-     * @param {tareas_adicionalesFindUniqueArgs} args - Arguments to find a Tareas_adicionales
-     * @example
-     * // Get one Tareas_adicionales
-     * const tareas_adicionales = await prisma.tareas_adicionales.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends tareas_adicionalesFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, tareas_adicionalesFindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'tareas_adicionales'> extends True ? Prisma__tareas_adicionalesClient<$Types.GetResult<tareas_adicionalesPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__tareas_adicionalesClient<$Types.GetResult<tareas_adicionalesPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one Tareas_adicionales that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {tareas_adicionalesFindUniqueOrThrowArgs} args - Arguments to find a Tareas_adicionales
-     * @example
-     * // Get one Tareas_adicionales
-     * const tareas_adicionales = await prisma.tareas_adicionales.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends tareas_adicionalesFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, tareas_adicionalesFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__tareas_adicionalesClient<$Types.GetResult<tareas_adicionalesPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first Tareas_adicionales that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tareas_adicionalesFindFirstArgs} args - Arguments to find a Tareas_adicionales
-     * @example
-     * // Get one Tareas_adicionales
-     * const tareas_adicionales = await prisma.tareas_adicionales.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends tareas_adicionalesFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, tareas_adicionalesFindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'tareas_adicionales'> extends True ? Prisma__tareas_adicionalesClient<$Types.GetResult<tareas_adicionalesPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__tareas_adicionalesClient<$Types.GetResult<tareas_adicionalesPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first Tareas_adicionales that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tareas_adicionalesFindFirstOrThrowArgs} args - Arguments to find a Tareas_adicionales
-     * @example
-     * // Get one Tareas_adicionales
-     * const tareas_adicionales = await prisma.tareas_adicionales.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends tareas_adicionalesFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, tareas_adicionalesFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__tareas_adicionalesClient<$Types.GetResult<tareas_adicionalesPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more Tareas_adicionales that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tareas_adicionalesFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Tareas_adicionales
-     * const tareas_adicionales = await prisma.tareas_adicionales.findMany()
-     * 
-     * // Get first 10 Tareas_adicionales
-     * const tareas_adicionales = await prisma.tareas_adicionales.findMany({ take: 10 })
-     * 
-     * // Only select the `idtarea`
-     * const tareas_adicionalesWithIdtareaOnly = await prisma.tareas_adicionales.findMany({ select: { idtarea: true } })
-     * 
-    **/
-    findMany<T extends tareas_adicionalesFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, tareas_adicionalesFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<tareas_adicionalesPayload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a Tareas_adicionales.
-     * @param {tareas_adicionalesCreateArgs} args - Arguments to create a Tareas_adicionales.
-     * @example
-     * // Create one Tareas_adicionales
-     * const Tareas_adicionales = await prisma.tareas_adicionales.create({
-     *   data: {
-     *     // ... data to create a Tareas_adicionales
-     *   }
-     * })
-     * 
-    **/
-    create<T extends tareas_adicionalesCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, tareas_adicionalesCreateArgs<ExtArgs>>
-    ): Prisma__tareas_adicionalesClient<$Types.GetResult<tareas_adicionalesPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many Tareas_adicionales.
-     *     @param {tareas_adicionalesCreateManyArgs} args - Arguments to create many Tareas_adicionales.
-     *     @example
-     *     // Create many Tareas_adicionales
-     *     const tareas_adicionales = await prisma.tareas_adicionales.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends tareas_adicionalesCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, tareas_adicionalesCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Tareas_adicionales.
-     * @param {tareas_adicionalesDeleteArgs} args - Arguments to delete one Tareas_adicionales.
-     * @example
-     * // Delete one Tareas_adicionales
-     * const Tareas_adicionales = await prisma.tareas_adicionales.delete({
-     *   where: {
-     *     // ... filter to delete one Tareas_adicionales
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends tareas_adicionalesDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, tareas_adicionalesDeleteArgs<ExtArgs>>
-    ): Prisma__tareas_adicionalesClient<$Types.GetResult<tareas_adicionalesPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one Tareas_adicionales.
-     * @param {tareas_adicionalesUpdateArgs} args - Arguments to update one Tareas_adicionales.
-     * @example
-     * // Update one Tareas_adicionales
-     * const tareas_adicionales = await prisma.tareas_adicionales.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends tareas_adicionalesUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, tareas_adicionalesUpdateArgs<ExtArgs>>
-    ): Prisma__tareas_adicionalesClient<$Types.GetResult<tareas_adicionalesPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Tareas_adicionales.
-     * @param {tareas_adicionalesDeleteManyArgs} args - Arguments to filter Tareas_adicionales to delete.
-     * @example
-     * // Delete a few Tareas_adicionales
-     * const { count } = await prisma.tareas_adicionales.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends tareas_adicionalesDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, tareas_adicionalesDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Tareas_adicionales.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tareas_adicionalesUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Tareas_adicionales
-     * const tareas_adicionales = await prisma.tareas_adicionales.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends tareas_adicionalesUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, tareas_adicionalesUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Tareas_adicionales.
-     * @param {tareas_adicionalesUpsertArgs} args - Arguments to update or create a Tareas_adicionales.
-     * @example
-     * // Update or create a Tareas_adicionales
-     * const tareas_adicionales = await prisma.tareas_adicionales.upsert({
-     *   create: {
-     *     // ... data to create a Tareas_adicionales
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Tareas_adicionales we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends tareas_adicionalesUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, tareas_adicionalesUpsertArgs<ExtArgs>>
-    ): Prisma__tareas_adicionalesClient<$Types.GetResult<tareas_adicionalesPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of Tareas_adicionales.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tareas_adicionalesCountArgs} args - Arguments to filter Tareas_adicionales to count.
-     * @example
-     * // Count the number of Tareas_adicionales
-     * const count = await prisma.tareas_adicionales.count({
-     *   where: {
-     *     // ... the filter for the Tareas_adicionales we want to count
-     *   }
-     * })
-    **/
-    count<T extends tareas_adicionalesCountArgs>(
-      args?: Subset<T, tareas_adicionalesCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Tareas_adicionalesCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Tareas_adicionales.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Tareas_adicionalesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Tareas_adicionalesAggregateArgs>(args: Subset<T, Tareas_adicionalesAggregateArgs>): Prisma.PrismaPromise<GetTareas_adicionalesAggregateType<T>>
-
-    /**
-     * Group by Tareas_adicionales.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tareas_adicionalesGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends tareas_adicionalesGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: tareas_adicionalesGroupByArgs['orderBy'] }
-        : { orderBy?: tareas_adicionalesGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, tareas_adicionalesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTareas_adicionalesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for tareas_adicionales.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__tareas_adicionalesClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * tareas_adicionales base type for findUnique actions
-   */
-  export type tareas_adicionalesFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tareas_adicionales
-     */
-    select?: tareas_adicionalesSelect<ExtArgs> | null
-    /**
-     * Filter, which tareas_adicionales to fetch.
-     */
-    where: tareas_adicionalesWhereUniqueInput
-  }
-
-  /**
-   * tareas_adicionales findUnique
-   */
-  export interface tareas_adicionalesFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends tareas_adicionalesFindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * tareas_adicionales findUniqueOrThrow
-   */
-  export type tareas_adicionalesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tareas_adicionales
-     */
-    select?: tareas_adicionalesSelect<ExtArgs> | null
-    /**
-     * Filter, which tareas_adicionales to fetch.
-     */
-    where: tareas_adicionalesWhereUniqueInput
-  }
-
-
-  /**
-   * tareas_adicionales base type for findFirst actions
-   */
-  export type tareas_adicionalesFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tareas_adicionales
-     */
-    select?: tareas_adicionalesSelect<ExtArgs> | null
-    /**
-     * Filter, which tareas_adicionales to fetch.
-     */
-    where?: tareas_adicionalesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tareas_adicionales to fetch.
-     */
-    orderBy?: tareas_adicionalesOrderByWithRelationInput | tareas_adicionalesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for tareas_adicionales.
-     */
-    cursor?: tareas_adicionalesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tareas_adicionales from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tareas_adicionales.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of tareas_adicionales.
-     */
-    distinct?: Tareas_adicionalesScalarFieldEnum | Tareas_adicionalesScalarFieldEnum[]
-  }
-
-  /**
-   * tareas_adicionales findFirst
-   */
-  export interface tareas_adicionalesFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends tareas_adicionalesFindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * tareas_adicionales findFirstOrThrow
-   */
-  export type tareas_adicionalesFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tareas_adicionales
-     */
-    select?: tareas_adicionalesSelect<ExtArgs> | null
-    /**
-     * Filter, which tareas_adicionales to fetch.
-     */
-    where?: tareas_adicionalesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tareas_adicionales to fetch.
-     */
-    orderBy?: tareas_adicionalesOrderByWithRelationInput | tareas_adicionalesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for tareas_adicionales.
-     */
-    cursor?: tareas_adicionalesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tareas_adicionales from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tareas_adicionales.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of tareas_adicionales.
-     */
-    distinct?: Tareas_adicionalesScalarFieldEnum | Tareas_adicionalesScalarFieldEnum[]
-  }
-
-
-  /**
-   * tareas_adicionales findMany
-   */
-  export type tareas_adicionalesFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tareas_adicionales
-     */
-    select?: tareas_adicionalesSelect<ExtArgs> | null
-    /**
-     * Filter, which tareas_adicionales to fetch.
-     */
-    where?: tareas_adicionalesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tareas_adicionales to fetch.
-     */
-    orderBy?: tareas_adicionalesOrderByWithRelationInput | tareas_adicionalesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing tareas_adicionales.
-     */
-    cursor?: tareas_adicionalesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tareas_adicionales from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tareas_adicionales.
-     */
-    skip?: number
-    distinct?: Tareas_adicionalesScalarFieldEnum | Tareas_adicionalesScalarFieldEnum[]
-  }
-
-
-  /**
-   * tareas_adicionales create
-   */
-  export type tareas_adicionalesCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tareas_adicionales
-     */
-    select?: tareas_adicionalesSelect<ExtArgs> | null
-    /**
-     * The data needed to create a tareas_adicionales.
-     */
-    data?: XOR<tareas_adicionalesCreateInput, tareas_adicionalesUncheckedCreateInput>
-  }
-
-
-  /**
-   * tareas_adicionales createMany
-   */
-  export type tareas_adicionalesCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many tareas_adicionales.
-     */
-    data: tareas_adicionalesCreateManyInput | tareas_adicionalesCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * tareas_adicionales update
-   */
-  export type tareas_adicionalesUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tareas_adicionales
-     */
-    select?: tareas_adicionalesSelect<ExtArgs> | null
-    /**
-     * The data needed to update a tareas_adicionales.
-     */
-    data: XOR<tareas_adicionalesUpdateInput, tareas_adicionalesUncheckedUpdateInput>
-    /**
-     * Choose, which tareas_adicionales to update.
-     */
-    where: tareas_adicionalesWhereUniqueInput
-  }
-
-
-  /**
-   * tareas_adicionales updateMany
-   */
-  export type tareas_adicionalesUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update tareas_adicionales.
-     */
-    data: XOR<tareas_adicionalesUpdateManyMutationInput, tareas_adicionalesUncheckedUpdateManyInput>
-    /**
-     * Filter which tareas_adicionales to update
-     */
-    where?: tareas_adicionalesWhereInput
-  }
-
-
-  /**
-   * tareas_adicionales upsert
-   */
-  export type tareas_adicionalesUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tareas_adicionales
-     */
-    select?: tareas_adicionalesSelect<ExtArgs> | null
-    /**
-     * The filter to search for the tareas_adicionales to update in case it exists.
-     */
-    where: tareas_adicionalesWhereUniqueInput
-    /**
-     * In case the tareas_adicionales found by the `where` argument doesn't exist, create a new tareas_adicionales with this data.
-     */
-    create: XOR<tareas_adicionalesCreateInput, tareas_adicionalesUncheckedCreateInput>
-    /**
-     * In case the tareas_adicionales was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<tareas_adicionalesUpdateInput, tareas_adicionalesUncheckedUpdateInput>
-  }
-
-
-  /**
-   * tareas_adicionales delete
-   */
-  export type tareas_adicionalesDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tareas_adicionales
-     */
-    select?: tareas_adicionalesSelect<ExtArgs> | null
-    /**
-     * Filter which tareas_adicionales to delete.
-     */
-    where: tareas_adicionalesWhereUniqueInput
-  }
-
-
-  /**
-   * tareas_adicionales deleteMany
-   */
-  export type tareas_adicionalesDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which tareas_adicionales to delete
-     */
-    where?: tareas_adicionalesWhereInput
-  }
-
-
-  /**
-   * tareas_adicionales without action
-   */
-  export type tareas_adicionalesArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tareas_adicionales
-     */
-    select?: tareas_adicionalesSelect<ExtArgs> | null
   }
 
 
@@ -38819,3964 +47075,6 @@ export namespace Prisma {
 
 
   /**
-   * Model parcelas_lugares
-   */
-
-
-  export type AggregateParcelas_lugares = {
-    _count: Parcelas_lugaresCountAggregateOutputType | null
-    _avg: Parcelas_lugaresAvgAggregateOutputType | null
-    _sum: Parcelas_lugaresSumAggregateOutputType | null
-    _min: Parcelas_lugaresMinAggregateOutputType | null
-    _max: Parcelas_lugaresMaxAggregateOutputType | null
-  }
-
-  export type Parcelas_lugaresAvgAggregateOutputType = {
-    idlugar: number | null
-    idparcela: number | null
-    idservicio: number | null
-    lugar: number | null
-    contrato: number | null
-    dni: number | null
-  }
-
-  export type Parcelas_lugaresSumAggregateOutputType = {
-    idlugar: number | null
-    idparcela: number | null
-    idservicio: number | null
-    lugar: number | null
-    contrato: number | null
-    dni: number | null
-  }
-
-  export type Parcelas_lugaresMinAggregateOutputType = {
-    idlugar: number | null
-    idparcela: number | null
-    idservicio: number | null
-    lugar: number | null
-    contrato: number | null
-    dni: number | null
-    fecha: Date | null
-    operador: string | null
-  }
-
-  export type Parcelas_lugaresMaxAggregateOutputType = {
-    idlugar: number | null
-    idparcela: number | null
-    idservicio: number | null
-    lugar: number | null
-    contrato: number | null
-    dni: number | null
-    fecha: Date | null
-    operador: string | null
-  }
-
-  export type Parcelas_lugaresCountAggregateOutputType = {
-    idlugar: number
-    idparcela: number
-    idservicio: number
-    lugar: number
-    contrato: number
-    dni: number
-    fecha: number
-    operador: number
-    _all: number
-  }
-
-
-  export type Parcelas_lugaresAvgAggregateInputType = {
-    idlugar?: true
-    idparcela?: true
-    idservicio?: true
-    lugar?: true
-    contrato?: true
-    dni?: true
-  }
-
-  export type Parcelas_lugaresSumAggregateInputType = {
-    idlugar?: true
-    idparcela?: true
-    idservicio?: true
-    lugar?: true
-    contrato?: true
-    dni?: true
-  }
-
-  export type Parcelas_lugaresMinAggregateInputType = {
-    idlugar?: true
-    idparcela?: true
-    idservicio?: true
-    lugar?: true
-    contrato?: true
-    dni?: true
-    fecha?: true
-    operador?: true
-  }
-
-  export type Parcelas_lugaresMaxAggregateInputType = {
-    idlugar?: true
-    idparcela?: true
-    idservicio?: true
-    lugar?: true
-    contrato?: true
-    dni?: true
-    fecha?: true
-    operador?: true
-  }
-
-  export type Parcelas_lugaresCountAggregateInputType = {
-    idlugar?: true
-    idparcela?: true
-    idservicio?: true
-    lugar?: true
-    contrato?: true
-    dni?: true
-    fecha?: true
-    operador?: true
-    _all?: true
-  }
-
-  export type Parcelas_lugaresAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which parcelas_lugares to aggregate.
-     */
-    where?: parcelas_lugaresWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of parcelas_lugares to fetch.
-     */
-    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: parcelas_lugaresWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` parcelas_lugares from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` parcelas_lugares.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned parcelas_lugares
-    **/
-    _count?: true | Parcelas_lugaresCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Parcelas_lugaresAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Parcelas_lugaresSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Parcelas_lugaresMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Parcelas_lugaresMaxAggregateInputType
-  }
-
-  export type GetParcelas_lugaresAggregateType<T extends Parcelas_lugaresAggregateArgs> = {
-        [P in keyof T & keyof AggregateParcelas_lugares]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateParcelas_lugares[P]>
-      : GetScalarType<T[P], AggregateParcelas_lugares[P]>
-  }
-
-
-
-
-  export type parcelas_lugaresGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: parcelas_lugaresWhereInput
-    orderBy?: parcelas_lugaresOrderByWithAggregationInput | parcelas_lugaresOrderByWithAggregationInput[]
-    by: Parcelas_lugaresScalarFieldEnum[] | Parcelas_lugaresScalarFieldEnum
-    having?: parcelas_lugaresScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Parcelas_lugaresCountAggregateInputType | true
-    _avg?: Parcelas_lugaresAvgAggregateInputType
-    _sum?: Parcelas_lugaresSumAggregateInputType
-    _min?: Parcelas_lugaresMinAggregateInputType
-    _max?: Parcelas_lugaresMaxAggregateInputType
-  }
-
-
-  export type Parcelas_lugaresGroupByOutputType = {
-    idlugar: number
-    idparcela: number | null
-    idservicio: number | null
-    lugar: number | null
-    contrato: number | null
-    dni: number | null
-    fecha: Date | null
-    operador: string | null
-    _count: Parcelas_lugaresCountAggregateOutputType | null
-    _avg: Parcelas_lugaresAvgAggregateOutputType | null
-    _sum: Parcelas_lugaresSumAggregateOutputType | null
-    _min: Parcelas_lugaresMinAggregateOutputType | null
-    _max: Parcelas_lugaresMaxAggregateOutputType | null
-  }
-
-  type GetParcelas_lugaresGroupByPayload<T extends parcelas_lugaresGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Parcelas_lugaresGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Parcelas_lugaresGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Parcelas_lugaresGroupByOutputType[P]>
-            : GetScalarType<T[P], Parcelas_lugaresGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type parcelas_lugaresSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    idlugar?: boolean
-    idparcela?: boolean
-    idservicio?: boolean
-    lugar?: boolean
-    contrato?: boolean
-    dni?: boolean
-    fecha?: boolean
-    operador?: boolean
-  }, ExtArgs["result"]["parcelas_lugares"]>
-
-  export type parcelas_lugaresSelectScalar = {
-    idlugar?: boolean
-    idparcela?: boolean
-    idservicio?: boolean
-    lugar?: boolean
-    contrato?: boolean
-    dni?: boolean
-    fecha?: boolean
-    operador?: boolean
-  }
-
-
-  type parcelas_lugaresGetPayload<S extends boolean | null | undefined | parcelas_lugaresArgs> = $Types.GetResult<parcelas_lugaresPayload, S>
-
-  type parcelas_lugaresCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<parcelas_lugaresFindManyArgs, 'select' | 'include'> & {
-      select?: Parcelas_lugaresCountAggregateInputType | true
-    }
-
-  export interface parcelas_lugaresDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['parcelas_lugares'], meta: { name: 'parcelas_lugares' } }
-    /**
-     * Find zero or one Parcelas_lugares that matches the filter.
-     * @param {parcelas_lugaresFindUniqueArgs} args - Arguments to find a Parcelas_lugares
-     * @example
-     * // Get one Parcelas_lugares
-     * const parcelas_lugares = await prisma.parcelas_lugares.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends parcelas_lugaresFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, parcelas_lugaresFindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'parcelas_lugares'> extends True ? Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one Parcelas_lugares that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {parcelas_lugaresFindUniqueOrThrowArgs} args - Arguments to find a Parcelas_lugares
-     * @example
-     * // Get one Parcelas_lugares
-     * const parcelas_lugares = await prisma.parcelas_lugares.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first Parcelas_lugares that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {parcelas_lugaresFindFirstArgs} args - Arguments to find a Parcelas_lugares
-     * @example
-     * // Get one Parcelas_lugares
-     * const parcelas_lugares = await prisma.parcelas_lugares.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends parcelas_lugaresFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, parcelas_lugaresFindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'parcelas_lugares'> extends True ? Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first Parcelas_lugares that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {parcelas_lugaresFindFirstOrThrowArgs} args - Arguments to find a Parcelas_lugares
-     * @example
-     * // Get one Parcelas_lugares
-     * const parcelas_lugares = await prisma.parcelas_lugares.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends parcelas_lugaresFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, parcelas_lugaresFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more Parcelas_lugares that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {parcelas_lugaresFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Parcelas_lugares
-     * const parcelas_lugares = await prisma.parcelas_lugares.findMany()
-     * 
-     * // Get first 10 Parcelas_lugares
-     * const parcelas_lugares = await prisma.parcelas_lugares.findMany({ take: 10 })
-     * 
-     * // Only select the `idlugar`
-     * const parcelas_lugaresWithIdlugarOnly = await prisma.parcelas_lugares.findMany({ select: { idlugar: true } })
-     * 
-    **/
-    findMany<T extends parcelas_lugaresFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, parcelas_lugaresFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a Parcelas_lugares.
-     * @param {parcelas_lugaresCreateArgs} args - Arguments to create a Parcelas_lugares.
-     * @example
-     * // Create one Parcelas_lugares
-     * const Parcelas_lugares = await prisma.parcelas_lugares.create({
-     *   data: {
-     *     // ... data to create a Parcelas_lugares
-     *   }
-     * })
-     * 
-    **/
-    create<T extends parcelas_lugaresCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, parcelas_lugaresCreateArgs<ExtArgs>>
-    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many Parcelas_lugares.
-     *     @param {parcelas_lugaresCreateManyArgs} args - Arguments to create many Parcelas_lugares.
-     *     @example
-     *     // Create many Parcelas_lugares
-     *     const parcelas_lugares = await prisma.parcelas_lugares.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends parcelas_lugaresCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, parcelas_lugaresCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Parcelas_lugares.
-     * @param {parcelas_lugaresDeleteArgs} args - Arguments to delete one Parcelas_lugares.
-     * @example
-     * // Delete one Parcelas_lugares
-     * const Parcelas_lugares = await prisma.parcelas_lugares.delete({
-     *   where: {
-     *     // ... filter to delete one Parcelas_lugares
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends parcelas_lugaresDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, parcelas_lugaresDeleteArgs<ExtArgs>>
-    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one Parcelas_lugares.
-     * @param {parcelas_lugaresUpdateArgs} args - Arguments to update one Parcelas_lugares.
-     * @example
-     * // Update one Parcelas_lugares
-     * const parcelas_lugares = await prisma.parcelas_lugares.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends parcelas_lugaresUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, parcelas_lugaresUpdateArgs<ExtArgs>>
-    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Parcelas_lugares.
-     * @param {parcelas_lugaresDeleteManyArgs} args - Arguments to filter Parcelas_lugares to delete.
-     * @example
-     * // Delete a few Parcelas_lugares
-     * const { count } = await prisma.parcelas_lugares.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends parcelas_lugaresDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, parcelas_lugaresDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Parcelas_lugares.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {parcelas_lugaresUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Parcelas_lugares
-     * const parcelas_lugares = await prisma.parcelas_lugares.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends parcelas_lugaresUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, parcelas_lugaresUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Parcelas_lugares.
-     * @param {parcelas_lugaresUpsertArgs} args - Arguments to update or create a Parcelas_lugares.
-     * @example
-     * // Update or create a Parcelas_lugares
-     * const parcelas_lugares = await prisma.parcelas_lugares.upsert({
-     *   create: {
-     *     // ... data to create a Parcelas_lugares
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Parcelas_lugares we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends parcelas_lugaresUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, parcelas_lugaresUpsertArgs<ExtArgs>>
-    ): Prisma__parcelas_lugaresClient<$Types.GetResult<parcelas_lugaresPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of Parcelas_lugares.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {parcelas_lugaresCountArgs} args - Arguments to filter Parcelas_lugares to count.
-     * @example
-     * // Count the number of Parcelas_lugares
-     * const count = await prisma.parcelas_lugares.count({
-     *   where: {
-     *     // ... the filter for the Parcelas_lugares we want to count
-     *   }
-     * })
-    **/
-    count<T extends parcelas_lugaresCountArgs>(
-      args?: Subset<T, parcelas_lugaresCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Parcelas_lugaresCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Parcelas_lugares.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Parcelas_lugaresAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Parcelas_lugaresAggregateArgs>(args: Subset<T, Parcelas_lugaresAggregateArgs>): Prisma.PrismaPromise<GetParcelas_lugaresAggregateType<T>>
-
-    /**
-     * Group by Parcelas_lugares.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {parcelas_lugaresGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends parcelas_lugaresGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: parcelas_lugaresGroupByArgs['orderBy'] }
-        : { orderBy?: parcelas_lugaresGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, parcelas_lugaresGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetParcelas_lugaresGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for parcelas_lugares.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__parcelas_lugaresClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * parcelas_lugares base type for findUnique actions
-   */
-  export type parcelas_lugaresFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the parcelas_lugares
-     */
-    select?: parcelas_lugaresSelect<ExtArgs> | null
-    /**
-     * Filter, which parcelas_lugares to fetch.
-     */
-    where: parcelas_lugaresWhereUniqueInput
-  }
-
-  /**
-   * parcelas_lugares findUnique
-   */
-  export interface parcelas_lugaresFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends parcelas_lugaresFindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * parcelas_lugares findUniqueOrThrow
-   */
-  export type parcelas_lugaresFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the parcelas_lugares
-     */
-    select?: parcelas_lugaresSelect<ExtArgs> | null
-    /**
-     * Filter, which parcelas_lugares to fetch.
-     */
-    where: parcelas_lugaresWhereUniqueInput
-  }
-
-
-  /**
-   * parcelas_lugares base type for findFirst actions
-   */
-  export type parcelas_lugaresFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the parcelas_lugares
-     */
-    select?: parcelas_lugaresSelect<ExtArgs> | null
-    /**
-     * Filter, which parcelas_lugares to fetch.
-     */
-    where?: parcelas_lugaresWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of parcelas_lugares to fetch.
-     */
-    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for parcelas_lugares.
-     */
-    cursor?: parcelas_lugaresWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` parcelas_lugares from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` parcelas_lugares.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of parcelas_lugares.
-     */
-    distinct?: Parcelas_lugaresScalarFieldEnum | Parcelas_lugaresScalarFieldEnum[]
-  }
-
-  /**
-   * parcelas_lugares findFirst
-   */
-  export interface parcelas_lugaresFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends parcelas_lugaresFindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * parcelas_lugares findFirstOrThrow
-   */
-  export type parcelas_lugaresFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the parcelas_lugares
-     */
-    select?: parcelas_lugaresSelect<ExtArgs> | null
-    /**
-     * Filter, which parcelas_lugares to fetch.
-     */
-    where?: parcelas_lugaresWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of parcelas_lugares to fetch.
-     */
-    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for parcelas_lugares.
-     */
-    cursor?: parcelas_lugaresWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` parcelas_lugares from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` parcelas_lugares.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of parcelas_lugares.
-     */
-    distinct?: Parcelas_lugaresScalarFieldEnum | Parcelas_lugaresScalarFieldEnum[]
-  }
-
-
-  /**
-   * parcelas_lugares findMany
-   */
-  export type parcelas_lugaresFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the parcelas_lugares
-     */
-    select?: parcelas_lugaresSelect<ExtArgs> | null
-    /**
-     * Filter, which parcelas_lugares to fetch.
-     */
-    where?: parcelas_lugaresWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of parcelas_lugares to fetch.
-     */
-    orderBy?: parcelas_lugaresOrderByWithRelationInput | parcelas_lugaresOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing parcelas_lugares.
-     */
-    cursor?: parcelas_lugaresWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` parcelas_lugares from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` parcelas_lugares.
-     */
-    skip?: number
-    distinct?: Parcelas_lugaresScalarFieldEnum | Parcelas_lugaresScalarFieldEnum[]
-  }
-
-
-  /**
-   * parcelas_lugares create
-   */
-  export type parcelas_lugaresCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the parcelas_lugares
-     */
-    select?: parcelas_lugaresSelect<ExtArgs> | null
-    /**
-     * The data needed to create a parcelas_lugares.
-     */
-    data?: XOR<parcelas_lugaresCreateInput, parcelas_lugaresUncheckedCreateInput>
-  }
-
-
-  /**
-   * parcelas_lugares createMany
-   */
-  export type parcelas_lugaresCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many parcelas_lugares.
-     */
-    data: parcelas_lugaresCreateManyInput | parcelas_lugaresCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * parcelas_lugares update
-   */
-  export type parcelas_lugaresUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the parcelas_lugares
-     */
-    select?: parcelas_lugaresSelect<ExtArgs> | null
-    /**
-     * The data needed to update a parcelas_lugares.
-     */
-    data: XOR<parcelas_lugaresUpdateInput, parcelas_lugaresUncheckedUpdateInput>
-    /**
-     * Choose, which parcelas_lugares to update.
-     */
-    where: parcelas_lugaresWhereUniqueInput
-  }
-
-
-  /**
-   * parcelas_lugares updateMany
-   */
-  export type parcelas_lugaresUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update parcelas_lugares.
-     */
-    data: XOR<parcelas_lugaresUpdateManyMutationInput, parcelas_lugaresUncheckedUpdateManyInput>
-    /**
-     * Filter which parcelas_lugares to update
-     */
-    where?: parcelas_lugaresWhereInput
-  }
-
-
-  /**
-   * parcelas_lugares upsert
-   */
-  export type parcelas_lugaresUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the parcelas_lugares
-     */
-    select?: parcelas_lugaresSelect<ExtArgs> | null
-    /**
-     * The filter to search for the parcelas_lugares to update in case it exists.
-     */
-    where: parcelas_lugaresWhereUniqueInput
-    /**
-     * In case the parcelas_lugares found by the `where` argument doesn't exist, create a new parcelas_lugares with this data.
-     */
-    create: XOR<parcelas_lugaresCreateInput, parcelas_lugaresUncheckedCreateInput>
-    /**
-     * In case the parcelas_lugares was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<parcelas_lugaresUpdateInput, parcelas_lugaresUncheckedUpdateInput>
-  }
-
-
-  /**
-   * parcelas_lugares delete
-   */
-  export type parcelas_lugaresDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the parcelas_lugares
-     */
-    select?: parcelas_lugaresSelect<ExtArgs> | null
-    /**
-     * Filter which parcelas_lugares to delete.
-     */
-    where: parcelas_lugaresWhereUniqueInput
-  }
-
-
-  /**
-   * parcelas_lugares deleteMany
-   */
-  export type parcelas_lugaresDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which parcelas_lugares to delete
-     */
-    where?: parcelas_lugaresWhereInput
-  }
-
-
-  /**
-   * parcelas_lugares without action
-   */
-  export type parcelas_lugaresArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the parcelas_lugares
-     */
-    select?: parcelas_lugaresSelect<ExtArgs> | null
-  }
-
-
-
-  /**
-   * Model caja_sa
-   */
-
-
-  export type AggregateCaja_sa = {
-    _count: Caja_saCountAggregateOutputType | null
-    _avg: Caja_saAvgAggregateOutputType | null
-    _sum: Caja_saSumAggregateOutputType | null
-    _min: Caja_saMinAggregateOutputType | null
-    _max: Caja_saMaxAggregateOutputType | null
-  }
-
-  export type Caja_saAvgAggregateOutputType = {
-    idcaja: number | null
-    codigo: number | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    nro_caja: number | null
-    puesto: number | null
-    operador: number | null
-  }
-
-  export type Caja_saSumAggregateOutputType = {
-    idcaja: number | null
-    codigo: number | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    nro_caja: number | null
-    puesto: number | null
-    operador: number | null
-  }
-
-  export type Caja_saMinAggregateOutputType = {
-    idcaja: number | null
-    codigo: number | null
-    cuenta: string | null
-    tipo: string | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    comentarios: string | null
-    nro_caja: number | null
-    movim: string | null
-    fecha: Date | null
-    puesto: number | null
-    operador: number | null
-    cuit: string | null
-    proveedor: string | null
-    sucursal: string | null
-  }
-
-  export type Caja_saMaxAggregateOutputType = {
-    idcaja: number | null
-    codigo: number | null
-    cuenta: string | null
-    tipo: string | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    comentarios: string | null
-    nro_caja: number | null
-    movim: string | null
-    fecha: Date | null
-    puesto: number | null
-    operador: number | null
-    cuit: string | null
-    proveedor: string | null
-    sucursal: string | null
-  }
-
-  export type Caja_saCountAggregateOutputType = {
-    idcaja: number
-    codigo: number
-    cuenta: number
-    tipo: number
-    serie: number
-    factura: number
-    importe: number
-    comentarios: number
-    nro_caja: number
-    movim: number
-    fecha: number
-    puesto: number
-    operador: number
-    cuit: number
-    proveedor: number
-    sucursal: number
-    _all: number
-  }
-
-
-  export type Caja_saAvgAggregateInputType = {
-    idcaja?: true
-    codigo?: true
-    serie?: true
-    factura?: true
-    importe?: true
-    nro_caja?: true
-    puesto?: true
-    operador?: true
-  }
-
-  export type Caja_saSumAggregateInputType = {
-    idcaja?: true
-    codigo?: true
-    serie?: true
-    factura?: true
-    importe?: true
-    nro_caja?: true
-    puesto?: true
-    operador?: true
-  }
-
-  export type Caja_saMinAggregateInputType = {
-    idcaja?: true
-    codigo?: true
-    cuenta?: true
-    tipo?: true
-    serie?: true
-    factura?: true
-    importe?: true
-    comentarios?: true
-    nro_caja?: true
-    movim?: true
-    fecha?: true
-    puesto?: true
-    operador?: true
-    cuit?: true
-    proveedor?: true
-    sucursal?: true
-  }
-
-  export type Caja_saMaxAggregateInputType = {
-    idcaja?: true
-    codigo?: true
-    cuenta?: true
-    tipo?: true
-    serie?: true
-    factura?: true
-    importe?: true
-    comentarios?: true
-    nro_caja?: true
-    movim?: true
-    fecha?: true
-    puesto?: true
-    operador?: true
-    cuit?: true
-    proveedor?: true
-    sucursal?: true
-  }
-
-  export type Caja_saCountAggregateInputType = {
-    idcaja?: true
-    codigo?: true
-    cuenta?: true
-    tipo?: true
-    serie?: true
-    factura?: true
-    importe?: true
-    comentarios?: true
-    nro_caja?: true
-    movim?: true
-    fecha?: true
-    puesto?: true
-    operador?: true
-    cuit?: true
-    proveedor?: true
-    sucursal?: true
-    _all?: true
-  }
-
-  export type Caja_saAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which caja_sa to aggregate.
-     */
-    where?: caja_saWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of caja_sas to fetch.
-     */
-    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: caja_saWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` caja_sas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` caja_sas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned caja_sas
-    **/
-    _count?: true | Caja_saCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Caja_saAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Caja_saSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Caja_saMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Caja_saMaxAggregateInputType
-  }
-
-  export type GetCaja_saAggregateType<T extends Caja_saAggregateArgs> = {
-        [P in keyof T & keyof AggregateCaja_sa]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCaja_sa[P]>
-      : GetScalarType<T[P], AggregateCaja_sa[P]>
-  }
-
-
-
-
-  export type caja_saGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: caja_saWhereInput
-    orderBy?: caja_saOrderByWithAggregationInput | caja_saOrderByWithAggregationInput[]
-    by: Caja_saScalarFieldEnum[] | Caja_saScalarFieldEnum
-    having?: caja_saScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Caja_saCountAggregateInputType | true
-    _avg?: Caja_saAvgAggregateInputType
-    _sum?: Caja_saSumAggregateInputType
-    _min?: Caja_saMinAggregateInputType
-    _max?: Caja_saMaxAggregateInputType
-  }
-
-
-  export type Caja_saGroupByOutputType = {
-    idcaja: number
-    codigo: number | null
-    cuenta: string | null
-    tipo: string | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    comentarios: string | null
-    nro_caja: number | null
-    movim: string | null
-    fecha: Date | null
-    puesto: number | null
-    operador: number | null
-    cuit: string | null
-    proveedor: string | null
-    sucursal: string | null
-    _count: Caja_saCountAggregateOutputType | null
-    _avg: Caja_saAvgAggregateOutputType | null
-    _sum: Caja_saSumAggregateOutputType | null
-    _min: Caja_saMinAggregateOutputType | null
-    _max: Caja_saMaxAggregateOutputType | null
-  }
-
-  type GetCaja_saGroupByPayload<T extends caja_saGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Caja_saGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Caja_saGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Caja_saGroupByOutputType[P]>
-            : GetScalarType<T[P], Caja_saGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type caja_saSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    idcaja?: boolean
-    codigo?: boolean
-    cuenta?: boolean
-    tipo?: boolean
-    serie?: boolean
-    factura?: boolean
-    importe?: boolean
-    comentarios?: boolean
-    nro_caja?: boolean
-    movim?: boolean
-    fecha?: boolean
-    puesto?: boolean
-    operador?: boolean
-    cuit?: boolean
-    proveedor?: boolean
-    sucursal?: boolean
-  }, ExtArgs["result"]["caja_sa"]>
-
-  export type caja_saSelectScalar = {
-    idcaja?: boolean
-    codigo?: boolean
-    cuenta?: boolean
-    tipo?: boolean
-    serie?: boolean
-    factura?: boolean
-    importe?: boolean
-    comentarios?: boolean
-    nro_caja?: boolean
-    movim?: boolean
-    fecha?: boolean
-    puesto?: boolean
-    operador?: boolean
-    cuit?: boolean
-    proveedor?: boolean
-    sucursal?: boolean
-  }
-
-
-  type caja_saGetPayload<S extends boolean | null | undefined | caja_saArgs> = $Types.GetResult<caja_saPayload, S>
-
-  type caja_saCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<caja_saFindManyArgs, 'select' | 'include'> & {
-      select?: Caja_saCountAggregateInputType | true
-    }
-
-  export interface caja_saDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['caja_sa'], meta: { name: 'caja_sa' } }
-    /**
-     * Find zero or one Caja_sa that matches the filter.
-     * @param {caja_saFindUniqueArgs} args - Arguments to find a Caja_sa
-     * @example
-     * // Get one Caja_sa
-     * const caja_sa = await prisma.caja_sa.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends caja_saFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, caja_saFindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'caja_sa'> extends True ? Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one Caja_sa that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {caja_saFindUniqueOrThrowArgs} args - Arguments to find a Caja_sa
-     * @example
-     * // Get one Caja_sa
-     * const caja_sa = await prisma.caja_sa.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends caja_saFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, caja_saFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first Caja_sa that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_saFindFirstArgs} args - Arguments to find a Caja_sa
-     * @example
-     * // Get one Caja_sa
-     * const caja_sa = await prisma.caja_sa.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends caja_saFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, caja_saFindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'caja_sa'> extends True ? Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first Caja_sa that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_saFindFirstOrThrowArgs} args - Arguments to find a Caja_sa
-     * @example
-     * // Get one Caja_sa
-     * const caja_sa = await prisma.caja_sa.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends caja_saFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, caja_saFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more Caja_sas that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_saFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Caja_sas
-     * const caja_sas = await prisma.caja_sa.findMany()
-     * 
-     * // Get first 10 Caja_sas
-     * const caja_sas = await prisma.caja_sa.findMany({ take: 10 })
-     * 
-     * // Only select the `idcaja`
-     * const caja_saWithIdcajaOnly = await prisma.caja_sa.findMany({ select: { idcaja: true } })
-     * 
-    **/
-    findMany<T extends caja_saFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, caja_saFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a Caja_sa.
-     * @param {caja_saCreateArgs} args - Arguments to create a Caja_sa.
-     * @example
-     * // Create one Caja_sa
-     * const Caja_sa = await prisma.caja_sa.create({
-     *   data: {
-     *     // ... data to create a Caja_sa
-     *   }
-     * })
-     * 
-    **/
-    create<T extends caja_saCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, caja_saCreateArgs<ExtArgs>>
-    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many Caja_sas.
-     *     @param {caja_saCreateManyArgs} args - Arguments to create many Caja_sas.
-     *     @example
-     *     // Create many Caja_sas
-     *     const caja_sa = await prisma.caja_sa.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends caja_saCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, caja_saCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Caja_sa.
-     * @param {caja_saDeleteArgs} args - Arguments to delete one Caja_sa.
-     * @example
-     * // Delete one Caja_sa
-     * const Caja_sa = await prisma.caja_sa.delete({
-     *   where: {
-     *     // ... filter to delete one Caja_sa
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends caja_saDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, caja_saDeleteArgs<ExtArgs>>
-    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one Caja_sa.
-     * @param {caja_saUpdateArgs} args - Arguments to update one Caja_sa.
-     * @example
-     * // Update one Caja_sa
-     * const caja_sa = await prisma.caja_sa.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends caja_saUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, caja_saUpdateArgs<ExtArgs>>
-    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Caja_sas.
-     * @param {caja_saDeleteManyArgs} args - Arguments to filter Caja_sas to delete.
-     * @example
-     * // Delete a few Caja_sas
-     * const { count } = await prisma.caja_sa.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends caja_saDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, caja_saDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Caja_sas.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_saUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Caja_sas
-     * const caja_sa = await prisma.caja_sa.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends caja_saUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, caja_saUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Caja_sa.
-     * @param {caja_saUpsertArgs} args - Arguments to update or create a Caja_sa.
-     * @example
-     * // Update or create a Caja_sa
-     * const caja_sa = await prisma.caja_sa.upsert({
-     *   create: {
-     *     // ... data to create a Caja_sa
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Caja_sa we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends caja_saUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, caja_saUpsertArgs<ExtArgs>>
-    ): Prisma__caja_saClient<$Types.GetResult<caja_saPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of Caja_sas.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_saCountArgs} args - Arguments to filter Caja_sas to count.
-     * @example
-     * // Count the number of Caja_sas
-     * const count = await prisma.caja_sa.count({
-     *   where: {
-     *     // ... the filter for the Caja_sas we want to count
-     *   }
-     * })
-    **/
-    count<T extends caja_saCountArgs>(
-      args?: Subset<T, caja_saCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Caja_saCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Caja_sa.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Caja_saAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Caja_saAggregateArgs>(args: Subset<T, Caja_saAggregateArgs>): Prisma.PrismaPromise<GetCaja_saAggregateType<T>>
-
-    /**
-     * Group by Caja_sa.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_saGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends caja_saGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: caja_saGroupByArgs['orderBy'] }
-        : { orderBy?: caja_saGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, caja_saGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaja_saGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for caja_sa.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__caja_saClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * caja_sa base type for findUnique actions
-   */
-  export type caja_saFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_sa
-     */
-    select?: caja_saSelect<ExtArgs> | null
-    /**
-     * Filter, which caja_sa to fetch.
-     */
-    where: caja_saWhereUniqueInput
-  }
-
-  /**
-   * caja_sa findUnique
-   */
-  export interface caja_saFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_saFindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * caja_sa findUniqueOrThrow
-   */
-  export type caja_saFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_sa
-     */
-    select?: caja_saSelect<ExtArgs> | null
-    /**
-     * Filter, which caja_sa to fetch.
-     */
-    where: caja_saWhereUniqueInput
-  }
-
-
-  /**
-   * caja_sa base type for findFirst actions
-   */
-  export type caja_saFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_sa
-     */
-    select?: caja_saSelect<ExtArgs> | null
-    /**
-     * Filter, which caja_sa to fetch.
-     */
-    where?: caja_saWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of caja_sas to fetch.
-     */
-    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for caja_sas.
-     */
-    cursor?: caja_saWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` caja_sas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` caja_sas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of caja_sas.
-     */
-    distinct?: Caja_saScalarFieldEnum | Caja_saScalarFieldEnum[]
-  }
-
-  /**
-   * caja_sa findFirst
-   */
-  export interface caja_saFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_saFindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * caja_sa findFirstOrThrow
-   */
-  export type caja_saFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_sa
-     */
-    select?: caja_saSelect<ExtArgs> | null
-    /**
-     * Filter, which caja_sa to fetch.
-     */
-    where?: caja_saWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of caja_sas to fetch.
-     */
-    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for caja_sas.
-     */
-    cursor?: caja_saWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` caja_sas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` caja_sas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of caja_sas.
-     */
-    distinct?: Caja_saScalarFieldEnum | Caja_saScalarFieldEnum[]
-  }
-
-
-  /**
-   * caja_sa findMany
-   */
-  export type caja_saFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_sa
-     */
-    select?: caja_saSelect<ExtArgs> | null
-    /**
-     * Filter, which caja_sas to fetch.
-     */
-    where?: caja_saWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of caja_sas to fetch.
-     */
-    orderBy?: caja_saOrderByWithRelationInput | caja_saOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing caja_sas.
-     */
-    cursor?: caja_saWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` caja_sas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` caja_sas.
-     */
-    skip?: number
-    distinct?: Caja_saScalarFieldEnum | Caja_saScalarFieldEnum[]
-  }
-
-
-  /**
-   * caja_sa create
-   */
-  export type caja_saCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_sa
-     */
-    select?: caja_saSelect<ExtArgs> | null
-    /**
-     * The data needed to create a caja_sa.
-     */
-    data?: XOR<caja_saCreateInput, caja_saUncheckedCreateInput>
-  }
-
-
-  /**
-   * caja_sa createMany
-   */
-  export type caja_saCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many caja_sas.
-     */
-    data: caja_saCreateManyInput | caja_saCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * caja_sa update
-   */
-  export type caja_saUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_sa
-     */
-    select?: caja_saSelect<ExtArgs> | null
-    /**
-     * The data needed to update a caja_sa.
-     */
-    data: XOR<caja_saUpdateInput, caja_saUncheckedUpdateInput>
-    /**
-     * Choose, which caja_sa to update.
-     */
-    where: caja_saWhereUniqueInput
-  }
-
-
-  /**
-   * caja_sa updateMany
-   */
-  export type caja_saUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update caja_sas.
-     */
-    data: XOR<caja_saUpdateManyMutationInput, caja_saUncheckedUpdateManyInput>
-    /**
-     * Filter which caja_sas to update
-     */
-    where?: caja_saWhereInput
-  }
-
-
-  /**
-   * caja_sa upsert
-   */
-  export type caja_saUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_sa
-     */
-    select?: caja_saSelect<ExtArgs> | null
-    /**
-     * The filter to search for the caja_sa to update in case it exists.
-     */
-    where: caja_saWhereUniqueInput
-    /**
-     * In case the caja_sa found by the `where` argument doesn't exist, create a new caja_sa with this data.
-     */
-    create: XOR<caja_saCreateInput, caja_saUncheckedCreateInput>
-    /**
-     * In case the caja_sa was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<caja_saUpdateInput, caja_saUncheckedUpdateInput>
-  }
-
-
-  /**
-   * caja_sa delete
-   */
-  export type caja_saDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_sa
-     */
-    select?: caja_saSelect<ExtArgs> | null
-    /**
-     * Filter which caja_sa to delete.
-     */
-    where: caja_saWhereUniqueInput
-  }
-
-
-  /**
-   * caja_sa deleteMany
-   */
-  export type caja_saDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which caja_sas to delete
-     */
-    where?: caja_saWhereInput
-  }
-
-
-  /**
-   * caja_sa without action
-   */
-  export type caja_saArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_sa
-     */
-    select?: caja_saSelect<ExtArgs> | null
-  }
-
-
-
-  /**
-   * Model caja_srl
-   */
-
-
-  export type AggregateCaja_srl = {
-    _count: Caja_srlCountAggregateOutputType | null
-    _avg: Caja_srlAvgAggregateOutputType | null
-    _sum: Caja_srlSumAggregateOutputType | null
-    _min: Caja_srlMinAggregateOutputType | null
-    _max: Caja_srlMaxAggregateOutputType | null
-  }
-
-  export type Caja_srlAvgAggregateOutputType = {
-    idcaja: number | null
-    codigo: number | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    nro_caja: number | null
-    puesto: number | null
-    operador: number | null
-  }
-
-  export type Caja_srlSumAggregateOutputType = {
-    idcaja: number | null
-    codigo: number | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    nro_caja: number | null
-    puesto: number | null
-    operador: number | null
-  }
-
-  export type Caja_srlMinAggregateOutputType = {
-    idcaja: number | null
-    codigo: number | null
-    cuenta: string | null
-    tipo: string | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    comentarios: string | null
-    nro_caja: number | null
-    movim: string | null
-    fecha: Date | null
-    puesto: number | null
-    operador: number | null
-    cuit: string | null
-    proveedor: string | null
-    sucursal: string | null
-  }
-
-  export type Caja_srlMaxAggregateOutputType = {
-    idcaja: number | null
-    codigo: number | null
-    cuenta: string | null
-    tipo: string | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    comentarios: string | null
-    nro_caja: number | null
-    movim: string | null
-    fecha: Date | null
-    puesto: number | null
-    operador: number | null
-    cuit: string | null
-    proveedor: string | null
-    sucursal: string | null
-  }
-
-  export type Caja_srlCountAggregateOutputType = {
-    idcaja: number
-    codigo: number
-    cuenta: number
-    tipo: number
-    serie: number
-    factura: number
-    importe: number
-    comentarios: number
-    nro_caja: number
-    movim: number
-    fecha: number
-    puesto: number
-    operador: number
-    cuit: number
-    proveedor: number
-    sucursal: number
-    _all: number
-  }
-
-
-  export type Caja_srlAvgAggregateInputType = {
-    idcaja?: true
-    codigo?: true
-    serie?: true
-    factura?: true
-    importe?: true
-    nro_caja?: true
-    puesto?: true
-    operador?: true
-  }
-
-  export type Caja_srlSumAggregateInputType = {
-    idcaja?: true
-    codigo?: true
-    serie?: true
-    factura?: true
-    importe?: true
-    nro_caja?: true
-    puesto?: true
-    operador?: true
-  }
-
-  export type Caja_srlMinAggregateInputType = {
-    idcaja?: true
-    codigo?: true
-    cuenta?: true
-    tipo?: true
-    serie?: true
-    factura?: true
-    importe?: true
-    comentarios?: true
-    nro_caja?: true
-    movim?: true
-    fecha?: true
-    puesto?: true
-    operador?: true
-    cuit?: true
-    proveedor?: true
-    sucursal?: true
-  }
-
-  export type Caja_srlMaxAggregateInputType = {
-    idcaja?: true
-    codigo?: true
-    cuenta?: true
-    tipo?: true
-    serie?: true
-    factura?: true
-    importe?: true
-    comentarios?: true
-    nro_caja?: true
-    movim?: true
-    fecha?: true
-    puesto?: true
-    operador?: true
-    cuit?: true
-    proveedor?: true
-    sucursal?: true
-  }
-
-  export type Caja_srlCountAggregateInputType = {
-    idcaja?: true
-    codigo?: true
-    cuenta?: true
-    tipo?: true
-    serie?: true
-    factura?: true
-    importe?: true
-    comentarios?: true
-    nro_caja?: true
-    movim?: true
-    fecha?: true
-    puesto?: true
-    operador?: true
-    cuit?: true
-    proveedor?: true
-    sucursal?: true
-    _all?: true
-  }
-
-  export type Caja_srlAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which caja_srl to aggregate.
-     */
-    where?: caja_srlWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of caja_srls to fetch.
-     */
-    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: caja_srlWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` caja_srls from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` caja_srls.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned caja_srls
-    **/
-    _count?: true | Caja_srlCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Caja_srlAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Caja_srlSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Caja_srlMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Caja_srlMaxAggregateInputType
-  }
-
-  export type GetCaja_srlAggregateType<T extends Caja_srlAggregateArgs> = {
-        [P in keyof T & keyof AggregateCaja_srl]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCaja_srl[P]>
-      : GetScalarType<T[P], AggregateCaja_srl[P]>
-  }
-
-
-
-
-  export type caja_srlGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: caja_srlWhereInput
-    orderBy?: caja_srlOrderByWithAggregationInput | caja_srlOrderByWithAggregationInput[]
-    by: Caja_srlScalarFieldEnum[] | Caja_srlScalarFieldEnum
-    having?: caja_srlScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Caja_srlCountAggregateInputType | true
-    _avg?: Caja_srlAvgAggregateInputType
-    _sum?: Caja_srlSumAggregateInputType
-    _min?: Caja_srlMinAggregateInputType
-    _max?: Caja_srlMaxAggregateInputType
-  }
-
-
-  export type Caja_srlGroupByOutputType = {
-    idcaja: number
-    codigo: number | null
-    cuenta: string | null
-    tipo: string | null
-    serie: number | null
-    factura: number | null
-    importe: number | null
-    comentarios: string | null
-    nro_caja: number | null
-    movim: string | null
-    fecha: Date | null
-    puesto: number | null
-    operador: number | null
-    cuit: string | null
-    proveedor: string | null
-    sucursal: string | null
-    _count: Caja_srlCountAggregateOutputType | null
-    _avg: Caja_srlAvgAggregateOutputType | null
-    _sum: Caja_srlSumAggregateOutputType | null
-    _min: Caja_srlMinAggregateOutputType | null
-    _max: Caja_srlMaxAggregateOutputType | null
-  }
-
-  type GetCaja_srlGroupByPayload<T extends caja_srlGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Caja_srlGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Caja_srlGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Caja_srlGroupByOutputType[P]>
-            : GetScalarType<T[P], Caja_srlGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type caja_srlSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    idcaja?: boolean
-    codigo?: boolean
-    cuenta?: boolean
-    tipo?: boolean
-    serie?: boolean
-    factura?: boolean
-    importe?: boolean
-    comentarios?: boolean
-    nro_caja?: boolean
-    movim?: boolean
-    fecha?: boolean
-    puesto?: boolean
-    operador?: boolean
-    cuit?: boolean
-    proveedor?: boolean
-    sucursal?: boolean
-  }, ExtArgs["result"]["caja_srl"]>
-
-  export type caja_srlSelectScalar = {
-    idcaja?: boolean
-    codigo?: boolean
-    cuenta?: boolean
-    tipo?: boolean
-    serie?: boolean
-    factura?: boolean
-    importe?: boolean
-    comentarios?: boolean
-    nro_caja?: boolean
-    movim?: boolean
-    fecha?: boolean
-    puesto?: boolean
-    operador?: boolean
-    cuit?: boolean
-    proveedor?: boolean
-    sucursal?: boolean
-  }
-
-
-  type caja_srlGetPayload<S extends boolean | null | undefined | caja_srlArgs> = $Types.GetResult<caja_srlPayload, S>
-
-  type caja_srlCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<caja_srlFindManyArgs, 'select' | 'include'> & {
-      select?: Caja_srlCountAggregateInputType | true
-    }
-
-  export interface caja_srlDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['caja_srl'], meta: { name: 'caja_srl' } }
-    /**
-     * Find zero or one Caja_srl that matches the filter.
-     * @param {caja_srlFindUniqueArgs} args - Arguments to find a Caja_srl
-     * @example
-     * // Get one Caja_srl
-     * const caja_srl = await prisma.caja_srl.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends caja_srlFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, caja_srlFindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'caja_srl'> extends True ? Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one Caja_srl that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {caja_srlFindUniqueOrThrowArgs} args - Arguments to find a Caja_srl
-     * @example
-     * // Get one Caja_srl
-     * const caja_srl = await prisma.caja_srl.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends caja_srlFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, caja_srlFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first Caja_srl that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_srlFindFirstArgs} args - Arguments to find a Caja_srl
-     * @example
-     * // Get one Caja_srl
-     * const caja_srl = await prisma.caja_srl.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends caja_srlFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, caja_srlFindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'caja_srl'> extends True ? Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first Caja_srl that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_srlFindFirstOrThrowArgs} args - Arguments to find a Caja_srl
-     * @example
-     * // Get one Caja_srl
-     * const caja_srl = await prisma.caja_srl.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends caja_srlFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, caja_srlFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more Caja_srls that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_srlFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Caja_srls
-     * const caja_srls = await prisma.caja_srl.findMany()
-     * 
-     * // Get first 10 Caja_srls
-     * const caja_srls = await prisma.caja_srl.findMany({ take: 10 })
-     * 
-     * // Only select the `idcaja`
-     * const caja_srlWithIdcajaOnly = await prisma.caja_srl.findMany({ select: { idcaja: true } })
-     * 
-    **/
-    findMany<T extends caja_srlFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, caja_srlFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a Caja_srl.
-     * @param {caja_srlCreateArgs} args - Arguments to create a Caja_srl.
-     * @example
-     * // Create one Caja_srl
-     * const Caja_srl = await prisma.caja_srl.create({
-     *   data: {
-     *     // ... data to create a Caja_srl
-     *   }
-     * })
-     * 
-    **/
-    create<T extends caja_srlCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, caja_srlCreateArgs<ExtArgs>>
-    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many Caja_srls.
-     *     @param {caja_srlCreateManyArgs} args - Arguments to create many Caja_srls.
-     *     @example
-     *     // Create many Caja_srls
-     *     const caja_srl = await prisma.caja_srl.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends caja_srlCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, caja_srlCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Caja_srl.
-     * @param {caja_srlDeleteArgs} args - Arguments to delete one Caja_srl.
-     * @example
-     * // Delete one Caja_srl
-     * const Caja_srl = await prisma.caja_srl.delete({
-     *   where: {
-     *     // ... filter to delete one Caja_srl
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends caja_srlDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, caja_srlDeleteArgs<ExtArgs>>
-    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one Caja_srl.
-     * @param {caja_srlUpdateArgs} args - Arguments to update one Caja_srl.
-     * @example
-     * // Update one Caja_srl
-     * const caja_srl = await prisma.caja_srl.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends caja_srlUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, caja_srlUpdateArgs<ExtArgs>>
-    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Caja_srls.
-     * @param {caja_srlDeleteManyArgs} args - Arguments to filter Caja_srls to delete.
-     * @example
-     * // Delete a few Caja_srls
-     * const { count } = await prisma.caja_srl.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends caja_srlDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, caja_srlDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Caja_srls.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_srlUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Caja_srls
-     * const caja_srl = await prisma.caja_srl.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends caja_srlUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, caja_srlUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Caja_srl.
-     * @param {caja_srlUpsertArgs} args - Arguments to update or create a Caja_srl.
-     * @example
-     * // Update or create a Caja_srl
-     * const caja_srl = await prisma.caja_srl.upsert({
-     *   create: {
-     *     // ... data to create a Caja_srl
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Caja_srl we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends caja_srlUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, caja_srlUpsertArgs<ExtArgs>>
-    ): Prisma__caja_srlClient<$Types.GetResult<caja_srlPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of Caja_srls.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_srlCountArgs} args - Arguments to filter Caja_srls to count.
-     * @example
-     * // Count the number of Caja_srls
-     * const count = await prisma.caja_srl.count({
-     *   where: {
-     *     // ... the filter for the Caja_srls we want to count
-     *   }
-     * })
-    **/
-    count<T extends caja_srlCountArgs>(
-      args?: Subset<T, caja_srlCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Caja_srlCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Caja_srl.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Caja_srlAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Caja_srlAggregateArgs>(args: Subset<T, Caja_srlAggregateArgs>): Prisma.PrismaPromise<GetCaja_srlAggregateType<T>>
-
-    /**
-     * Group by Caja_srl.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {caja_srlGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends caja_srlGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: caja_srlGroupByArgs['orderBy'] }
-        : { orderBy?: caja_srlGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, caja_srlGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaja_srlGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for caja_srl.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__caja_srlClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * caja_srl base type for findUnique actions
-   */
-  export type caja_srlFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_srl
-     */
-    select?: caja_srlSelect<ExtArgs> | null
-    /**
-     * Filter, which caja_srl to fetch.
-     */
-    where: caja_srlWhereUniqueInput
-  }
-
-  /**
-   * caja_srl findUnique
-   */
-  export interface caja_srlFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_srlFindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * caja_srl findUniqueOrThrow
-   */
-  export type caja_srlFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_srl
-     */
-    select?: caja_srlSelect<ExtArgs> | null
-    /**
-     * Filter, which caja_srl to fetch.
-     */
-    where: caja_srlWhereUniqueInput
-  }
-
-
-  /**
-   * caja_srl base type for findFirst actions
-   */
-  export type caja_srlFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_srl
-     */
-    select?: caja_srlSelect<ExtArgs> | null
-    /**
-     * Filter, which caja_srl to fetch.
-     */
-    where?: caja_srlWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of caja_srls to fetch.
-     */
-    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for caja_srls.
-     */
-    cursor?: caja_srlWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` caja_srls from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` caja_srls.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of caja_srls.
-     */
-    distinct?: Caja_srlScalarFieldEnum | Caja_srlScalarFieldEnum[]
-  }
-
-  /**
-   * caja_srl findFirst
-   */
-  export interface caja_srlFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends caja_srlFindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * caja_srl findFirstOrThrow
-   */
-  export type caja_srlFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_srl
-     */
-    select?: caja_srlSelect<ExtArgs> | null
-    /**
-     * Filter, which caja_srl to fetch.
-     */
-    where?: caja_srlWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of caja_srls to fetch.
-     */
-    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for caja_srls.
-     */
-    cursor?: caja_srlWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` caja_srls from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` caja_srls.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of caja_srls.
-     */
-    distinct?: Caja_srlScalarFieldEnum | Caja_srlScalarFieldEnum[]
-  }
-
-
-  /**
-   * caja_srl findMany
-   */
-  export type caja_srlFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_srl
-     */
-    select?: caja_srlSelect<ExtArgs> | null
-    /**
-     * Filter, which caja_srls to fetch.
-     */
-    where?: caja_srlWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of caja_srls to fetch.
-     */
-    orderBy?: caja_srlOrderByWithRelationInput | caja_srlOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing caja_srls.
-     */
-    cursor?: caja_srlWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` caja_srls from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` caja_srls.
-     */
-    skip?: number
-    distinct?: Caja_srlScalarFieldEnum | Caja_srlScalarFieldEnum[]
-  }
-
-
-  /**
-   * caja_srl create
-   */
-  export type caja_srlCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_srl
-     */
-    select?: caja_srlSelect<ExtArgs> | null
-    /**
-     * The data needed to create a caja_srl.
-     */
-    data?: XOR<caja_srlCreateInput, caja_srlUncheckedCreateInput>
-  }
-
-
-  /**
-   * caja_srl createMany
-   */
-  export type caja_srlCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many caja_srls.
-     */
-    data: caja_srlCreateManyInput | caja_srlCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * caja_srl update
-   */
-  export type caja_srlUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_srl
-     */
-    select?: caja_srlSelect<ExtArgs> | null
-    /**
-     * The data needed to update a caja_srl.
-     */
-    data: XOR<caja_srlUpdateInput, caja_srlUncheckedUpdateInput>
-    /**
-     * Choose, which caja_srl to update.
-     */
-    where: caja_srlWhereUniqueInput
-  }
-
-
-  /**
-   * caja_srl updateMany
-   */
-  export type caja_srlUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update caja_srls.
-     */
-    data: XOR<caja_srlUpdateManyMutationInput, caja_srlUncheckedUpdateManyInput>
-    /**
-     * Filter which caja_srls to update
-     */
-    where?: caja_srlWhereInput
-  }
-
-
-  /**
-   * caja_srl upsert
-   */
-  export type caja_srlUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_srl
-     */
-    select?: caja_srlSelect<ExtArgs> | null
-    /**
-     * The filter to search for the caja_srl to update in case it exists.
-     */
-    where: caja_srlWhereUniqueInput
-    /**
-     * In case the caja_srl found by the `where` argument doesn't exist, create a new caja_srl with this data.
-     */
-    create: XOR<caja_srlCreateInput, caja_srlUncheckedCreateInput>
-    /**
-     * In case the caja_srl was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<caja_srlUpdateInput, caja_srlUncheckedUpdateInput>
-  }
-
-
-  /**
-   * caja_srl delete
-   */
-  export type caja_srlDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_srl
-     */
-    select?: caja_srlSelect<ExtArgs> | null
-    /**
-     * Filter which caja_srl to delete.
-     */
-    where: caja_srlWhereUniqueInput
-  }
-
-
-  /**
-   * caja_srl deleteMany
-   */
-  export type caja_srlDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which caja_srls to delete
-     */
-    where?: caja_srlWhereInput
-  }
-
-
-  /**
-   * caja_srl without action
-   */
-  export type caja_srlArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the caja_srl
-     */
-    select?: caja_srlSelect<ExtArgs> | null
-  }
-
-
-
-  /**
-   * Model generacion_cajas
-   */
-
-
-  export type AggregateGeneracion_cajas = {
-    _count: Generacion_cajasCountAggregateOutputType | null
-    _avg: Generacion_cajasAvgAggregateOutputType | null
-    _sum: Generacion_cajasSumAggregateOutputType | null
-    _min: Generacion_cajasMinAggregateOutputType | null
-    _max: Generacion_cajasMaxAggregateOutputType | null
-  }
-
-  export type Generacion_cajasAvgAggregateOutputType = {
-    idgeneracion: number | null
-  }
-
-  export type Generacion_cajasSumAggregateOutputType = {
-    idgeneracion: number | null
-  }
-
-  export type Generacion_cajasMinAggregateOutputType = {
-    idgeneracion: number | null
-    desde: Date | null
-    hasta: Date | null
-    empresa: string | null
-    operador: string | null
-    fecha: Date | null
-  }
-
-  export type Generacion_cajasMaxAggregateOutputType = {
-    idgeneracion: number | null
-    desde: Date | null
-    hasta: Date | null
-    empresa: string | null
-    operador: string | null
-    fecha: Date | null
-  }
-
-  export type Generacion_cajasCountAggregateOutputType = {
-    idgeneracion: number
-    desde: number
-    hasta: number
-    empresa: number
-    operador: number
-    fecha: number
-    _all: number
-  }
-
-
-  export type Generacion_cajasAvgAggregateInputType = {
-    idgeneracion?: true
-  }
-
-  export type Generacion_cajasSumAggregateInputType = {
-    idgeneracion?: true
-  }
-
-  export type Generacion_cajasMinAggregateInputType = {
-    idgeneracion?: true
-    desde?: true
-    hasta?: true
-    empresa?: true
-    operador?: true
-    fecha?: true
-  }
-
-  export type Generacion_cajasMaxAggregateInputType = {
-    idgeneracion?: true
-    desde?: true
-    hasta?: true
-    empresa?: true
-    operador?: true
-    fecha?: true
-  }
-
-  export type Generacion_cajasCountAggregateInputType = {
-    idgeneracion?: true
-    desde?: true
-    hasta?: true
-    empresa?: true
-    operador?: true
-    fecha?: true
-    _all?: true
-  }
-
-  export type Generacion_cajasAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which generacion_cajas to aggregate.
-     */
-    where?: generacion_cajasWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of generacion_cajas to fetch.
-     */
-    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: generacion_cajasWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` generacion_cajas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` generacion_cajas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned generacion_cajas
-    **/
-    _count?: true | Generacion_cajasCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Generacion_cajasAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Generacion_cajasSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Generacion_cajasMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Generacion_cajasMaxAggregateInputType
-  }
-
-  export type GetGeneracion_cajasAggregateType<T extends Generacion_cajasAggregateArgs> = {
-        [P in keyof T & keyof AggregateGeneracion_cajas]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateGeneracion_cajas[P]>
-      : GetScalarType<T[P], AggregateGeneracion_cajas[P]>
-  }
-
-
-
-
-  export type generacion_cajasGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: generacion_cajasWhereInput
-    orderBy?: generacion_cajasOrderByWithAggregationInput | generacion_cajasOrderByWithAggregationInput[]
-    by: Generacion_cajasScalarFieldEnum[] | Generacion_cajasScalarFieldEnum
-    having?: generacion_cajasScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Generacion_cajasCountAggregateInputType | true
-    _avg?: Generacion_cajasAvgAggregateInputType
-    _sum?: Generacion_cajasSumAggregateInputType
-    _min?: Generacion_cajasMinAggregateInputType
-    _max?: Generacion_cajasMaxAggregateInputType
-  }
-
-
-  export type Generacion_cajasGroupByOutputType = {
-    idgeneracion: number
-    desde: Date | null
-    hasta: Date | null
-    empresa: string | null
-    operador: string | null
-    fecha: Date | null
-    _count: Generacion_cajasCountAggregateOutputType | null
-    _avg: Generacion_cajasAvgAggregateOutputType | null
-    _sum: Generacion_cajasSumAggregateOutputType | null
-    _min: Generacion_cajasMinAggregateOutputType | null
-    _max: Generacion_cajasMaxAggregateOutputType | null
-  }
-
-  type GetGeneracion_cajasGroupByPayload<T extends generacion_cajasGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Generacion_cajasGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Generacion_cajasGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Generacion_cajasGroupByOutputType[P]>
-            : GetScalarType<T[P], Generacion_cajasGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type generacion_cajasSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    idgeneracion?: boolean
-    desde?: boolean
-    hasta?: boolean
-    empresa?: boolean
-    operador?: boolean
-    fecha?: boolean
-  }, ExtArgs["result"]["generacion_cajas"]>
-
-  export type generacion_cajasSelectScalar = {
-    idgeneracion?: boolean
-    desde?: boolean
-    hasta?: boolean
-    empresa?: boolean
-    operador?: boolean
-    fecha?: boolean
-  }
-
-
-  type generacion_cajasGetPayload<S extends boolean | null | undefined | generacion_cajasArgs> = $Types.GetResult<generacion_cajasPayload, S>
-
-  type generacion_cajasCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<generacion_cajasFindManyArgs, 'select' | 'include'> & {
-      select?: Generacion_cajasCountAggregateInputType | true
-    }
-
-  export interface generacion_cajasDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['generacion_cajas'], meta: { name: 'generacion_cajas' } }
-    /**
-     * Find zero or one Generacion_cajas that matches the filter.
-     * @param {generacion_cajasFindUniqueArgs} args - Arguments to find a Generacion_cajas
-     * @example
-     * // Get one Generacion_cajas
-     * const generacion_cajas = await prisma.generacion_cajas.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends generacion_cajasFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, generacion_cajasFindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'generacion_cajas'> extends True ? Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one Generacion_cajas that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {generacion_cajasFindUniqueOrThrowArgs} args - Arguments to find a Generacion_cajas
-     * @example
-     * // Get one Generacion_cajas
-     * const generacion_cajas = await prisma.generacion_cajas.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends generacion_cajasFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, generacion_cajasFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first Generacion_cajas that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {generacion_cajasFindFirstArgs} args - Arguments to find a Generacion_cajas
-     * @example
-     * // Get one Generacion_cajas
-     * const generacion_cajas = await prisma.generacion_cajas.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends generacion_cajasFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, generacion_cajasFindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'generacion_cajas'> extends True ? Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first Generacion_cajas that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {generacion_cajasFindFirstOrThrowArgs} args - Arguments to find a Generacion_cajas
-     * @example
-     * // Get one Generacion_cajas
-     * const generacion_cajas = await prisma.generacion_cajas.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends generacion_cajasFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, generacion_cajasFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more Generacion_cajas that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {generacion_cajasFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Generacion_cajas
-     * const generacion_cajas = await prisma.generacion_cajas.findMany()
-     * 
-     * // Get first 10 Generacion_cajas
-     * const generacion_cajas = await prisma.generacion_cajas.findMany({ take: 10 })
-     * 
-     * // Only select the `idgeneracion`
-     * const generacion_cajasWithIdgeneracionOnly = await prisma.generacion_cajas.findMany({ select: { idgeneracion: true } })
-     * 
-    **/
-    findMany<T extends generacion_cajasFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, generacion_cajasFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a Generacion_cajas.
-     * @param {generacion_cajasCreateArgs} args - Arguments to create a Generacion_cajas.
-     * @example
-     * // Create one Generacion_cajas
-     * const Generacion_cajas = await prisma.generacion_cajas.create({
-     *   data: {
-     *     // ... data to create a Generacion_cajas
-     *   }
-     * })
-     * 
-    **/
-    create<T extends generacion_cajasCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, generacion_cajasCreateArgs<ExtArgs>>
-    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many Generacion_cajas.
-     *     @param {generacion_cajasCreateManyArgs} args - Arguments to create many Generacion_cajas.
-     *     @example
-     *     // Create many Generacion_cajas
-     *     const generacion_cajas = await prisma.generacion_cajas.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends generacion_cajasCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, generacion_cajasCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Generacion_cajas.
-     * @param {generacion_cajasDeleteArgs} args - Arguments to delete one Generacion_cajas.
-     * @example
-     * // Delete one Generacion_cajas
-     * const Generacion_cajas = await prisma.generacion_cajas.delete({
-     *   where: {
-     *     // ... filter to delete one Generacion_cajas
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends generacion_cajasDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, generacion_cajasDeleteArgs<ExtArgs>>
-    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one Generacion_cajas.
-     * @param {generacion_cajasUpdateArgs} args - Arguments to update one Generacion_cajas.
-     * @example
-     * // Update one Generacion_cajas
-     * const generacion_cajas = await prisma.generacion_cajas.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends generacion_cajasUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, generacion_cajasUpdateArgs<ExtArgs>>
-    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Generacion_cajas.
-     * @param {generacion_cajasDeleteManyArgs} args - Arguments to filter Generacion_cajas to delete.
-     * @example
-     * // Delete a few Generacion_cajas
-     * const { count } = await prisma.generacion_cajas.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends generacion_cajasDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, generacion_cajasDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Generacion_cajas.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {generacion_cajasUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Generacion_cajas
-     * const generacion_cajas = await prisma.generacion_cajas.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends generacion_cajasUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, generacion_cajasUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Generacion_cajas.
-     * @param {generacion_cajasUpsertArgs} args - Arguments to update or create a Generacion_cajas.
-     * @example
-     * // Update or create a Generacion_cajas
-     * const generacion_cajas = await prisma.generacion_cajas.upsert({
-     *   create: {
-     *     // ... data to create a Generacion_cajas
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Generacion_cajas we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends generacion_cajasUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, generacion_cajasUpsertArgs<ExtArgs>>
-    ): Prisma__generacion_cajasClient<$Types.GetResult<generacion_cajasPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of Generacion_cajas.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {generacion_cajasCountArgs} args - Arguments to filter Generacion_cajas to count.
-     * @example
-     * // Count the number of Generacion_cajas
-     * const count = await prisma.generacion_cajas.count({
-     *   where: {
-     *     // ... the filter for the Generacion_cajas we want to count
-     *   }
-     * })
-    **/
-    count<T extends generacion_cajasCountArgs>(
-      args?: Subset<T, generacion_cajasCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Generacion_cajasCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Generacion_cajas.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Generacion_cajasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Generacion_cajasAggregateArgs>(args: Subset<T, Generacion_cajasAggregateArgs>): Prisma.PrismaPromise<GetGeneracion_cajasAggregateType<T>>
-
-    /**
-     * Group by Generacion_cajas.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {generacion_cajasGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends generacion_cajasGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: generacion_cajasGroupByArgs['orderBy'] }
-        : { orderBy?: generacion_cajasGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, generacion_cajasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGeneracion_cajasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for generacion_cajas.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__generacion_cajasClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * generacion_cajas base type for findUnique actions
-   */
-  export type generacion_cajasFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the generacion_cajas
-     */
-    select?: generacion_cajasSelect<ExtArgs> | null
-    /**
-     * Filter, which generacion_cajas to fetch.
-     */
-    where: generacion_cajasWhereUniqueInput
-  }
-
-  /**
-   * generacion_cajas findUnique
-   */
-  export interface generacion_cajasFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends generacion_cajasFindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * generacion_cajas findUniqueOrThrow
-   */
-  export type generacion_cajasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the generacion_cajas
-     */
-    select?: generacion_cajasSelect<ExtArgs> | null
-    /**
-     * Filter, which generacion_cajas to fetch.
-     */
-    where: generacion_cajasWhereUniqueInput
-  }
-
-
-  /**
-   * generacion_cajas base type for findFirst actions
-   */
-  export type generacion_cajasFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the generacion_cajas
-     */
-    select?: generacion_cajasSelect<ExtArgs> | null
-    /**
-     * Filter, which generacion_cajas to fetch.
-     */
-    where?: generacion_cajasWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of generacion_cajas to fetch.
-     */
-    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for generacion_cajas.
-     */
-    cursor?: generacion_cajasWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` generacion_cajas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` generacion_cajas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of generacion_cajas.
-     */
-    distinct?: Generacion_cajasScalarFieldEnum | Generacion_cajasScalarFieldEnum[]
-  }
-
-  /**
-   * generacion_cajas findFirst
-   */
-  export interface generacion_cajasFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends generacion_cajasFindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * generacion_cajas findFirstOrThrow
-   */
-  export type generacion_cajasFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the generacion_cajas
-     */
-    select?: generacion_cajasSelect<ExtArgs> | null
-    /**
-     * Filter, which generacion_cajas to fetch.
-     */
-    where?: generacion_cajasWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of generacion_cajas to fetch.
-     */
-    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for generacion_cajas.
-     */
-    cursor?: generacion_cajasWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` generacion_cajas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` generacion_cajas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of generacion_cajas.
-     */
-    distinct?: Generacion_cajasScalarFieldEnum | Generacion_cajasScalarFieldEnum[]
-  }
-
-
-  /**
-   * generacion_cajas findMany
-   */
-  export type generacion_cajasFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the generacion_cajas
-     */
-    select?: generacion_cajasSelect<ExtArgs> | null
-    /**
-     * Filter, which generacion_cajas to fetch.
-     */
-    where?: generacion_cajasWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of generacion_cajas to fetch.
-     */
-    orderBy?: generacion_cajasOrderByWithRelationInput | generacion_cajasOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing generacion_cajas.
-     */
-    cursor?: generacion_cajasWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` generacion_cajas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` generacion_cajas.
-     */
-    skip?: number
-    distinct?: Generacion_cajasScalarFieldEnum | Generacion_cajasScalarFieldEnum[]
-  }
-
-
-  /**
-   * generacion_cajas create
-   */
-  export type generacion_cajasCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the generacion_cajas
-     */
-    select?: generacion_cajasSelect<ExtArgs> | null
-    /**
-     * The data needed to create a generacion_cajas.
-     */
-    data?: XOR<generacion_cajasCreateInput, generacion_cajasUncheckedCreateInput>
-  }
-
-
-  /**
-   * generacion_cajas createMany
-   */
-  export type generacion_cajasCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many generacion_cajas.
-     */
-    data: generacion_cajasCreateManyInput | generacion_cajasCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * generacion_cajas update
-   */
-  export type generacion_cajasUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the generacion_cajas
-     */
-    select?: generacion_cajasSelect<ExtArgs> | null
-    /**
-     * The data needed to update a generacion_cajas.
-     */
-    data: XOR<generacion_cajasUpdateInput, generacion_cajasUncheckedUpdateInput>
-    /**
-     * Choose, which generacion_cajas to update.
-     */
-    where: generacion_cajasWhereUniqueInput
-  }
-
-
-  /**
-   * generacion_cajas updateMany
-   */
-  export type generacion_cajasUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update generacion_cajas.
-     */
-    data: XOR<generacion_cajasUpdateManyMutationInput, generacion_cajasUncheckedUpdateManyInput>
-    /**
-     * Filter which generacion_cajas to update
-     */
-    where?: generacion_cajasWhereInput
-  }
-
-
-  /**
-   * generacion_cajas upsert
-   */
-  export type generacion_cajasUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the generacion_cajas
-     */
-    select?: generacion_cajasSelect<ExtArgs> | null
-    /**
-     * The filter to search for the generacion_cajas to update in case it exists.
-     */
-    where: generacion_cajasWhereUniqueInput
-    /**
-     * In case the generacion_cajas found by the `where` argument doesn't exist, create a new generacion_cajas with this data.
-     */
-    create: XOR<generacion_cajasCreateInput, generacion_cajasUncheckedCreateInput>
-    /**
-     * In case the generacion_cajas was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<generacion_cajasUpdateInput, generacion_cajasUncheckedUpdateInput>
-  }
-
-
-  /**
-   * generacion_cajas delete
-   */
-  export type generacion_cajasDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the generacion_cajas
-     */
-    select?: generacion_cajasSelect<ExtArgs> | null
-    /**
-     * Filter which generacion_cajas to delete.
-     */
-    where: generacion_cajasWhereUniqueInput
-  }
-
-
-  /**
-   * generacion_cajas deleteMany
-   */
-  export type generacion_cajasDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which generacion_cajas to delete
-     */
-    where?: generacion_cajasWhereInput
-  }
-
-
-  /**
-   * generacion_cajas without action
-   */
-  export type generacion_cajasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the generacion_cajas
-     */
-    select?: generacion_cajasSelect<ExtArgs> | null
-  }
-
-
-
-  /**
    * Enums
    */
 
@@ -42849,6 +47147,26 @@ export namespace Prisma {
   export type AtaudesScalarFieldEnum = (typeof AtaudesScalarFieldEnum)[keyof typeof AtaudesScalarFieldEnum]
 
 
+  export const Auto_usosScalarFieldEnum: {
+    FECHA: 'FECHA',
+    PATENTE: 'PATENTE',
+    DESCRIP: 'DESCRIP',
+    NOMB_OPE: 'NOMB_OPE',
+    CHOFER: 'CHOFER',
+    HORA1: 'HORA1',
+    HORA2: 'HORA2',
+    TAREA: 'TAREA',
+    OBSERVA_1: 'OBSERVA_1',
+    OBSERVA_2: 'OBSERVA_2',
+    OPE_LLEGA: 'OPE_LLEGA',
+    KILO_SAL: 'KILO_SAL',
+    KILO_LLE: 'KILO_LLE',
+    idusos: 'idusos'
+  };
+
+  export type Auto_usosScalarFieldEnum = (typeof Auto_usosScalarFieldEnum)[keyof typeof Auto_usosScalarFieldEnum]
+
+
   export const AutosScalarFieldEnum: {
     patente: 'patente',
     auto: 'auto',
@@ -42912,6 +47230,28 @@ export namespace Prisma {
   export type Autos_pago_patenteScalarFieldEnum = (typeof Autos_pago_patenteScalarFieldEnum)[keyof typeof Autos_pago_patenteScalarFieldEnum]
 
 
+  export const Caja_saScalarFieldEnum: {
+    idcaja: 'idcaja',
+    codigo: 'codigo',
+    cuenta: 'cuenta',
+    tipo: 'tipo',
+    serie: 'serie',
+    factura: 'factura',
+    importe: 'importe',
+    comentarios: 'comentarios',
+    nro_caja: 'nro_caja',
+    movim: 'movim',
+    fecha: 'fecha',
+    puesto: 'puesto',
+    operador: 'operador',
+    cuit: 'cuit',
+    proveedor: 'proveedor',
+    sucursal: 'sucursal'
+  };
+
+  export type Caja_saScalarFieldEnum = (typeof Caja_saScalarFieldEnum)[keyof typeof Caja_saScalarFieldEnum]
+
+
   export const Caja_sepelioScalarFieldEnum: {
     idcaja: 'idcaja',
     operador: 'operador',
@@ -42933,6 +47273,28 @@ export namespace Prisma {
   export type Caja_sepelioScalarFieldEnum = (typeof Caja_sepelioScalarFieldEnum)[keyof typeof Caja_sepelioScalarFieldEnum]
 
 
+  export const Caja_srlScalarFieldEnum: {
+    idcaja: 'idcaja',
+    codigo: 'codigo',
+    cuenta: 'cuenta',
+    tipo: 'tipo',
+    serie: 'serie',
+    factura: 'factura',
+    importe: 'importe',
+    comentarios: 'comentarios',
+    nro_caja: 'nro_caja',
+    movim: 'movim',
+    fecha: 'fecha',
+    puesto: 'puesto',
+    operador: 'operador',
+    cuit: 'cuit',
+    proveedor: 'proveedor',
+    sucursal: 'sucursal'
+  };
+
+  export type Caja_srlScalarFieldEnum = (typeof Caja_srlScalarFieldEnum)[keyof typeof Caja_srlScalarFieldEnum]
+
+
   export const ConceptosScalarFieldEnum: {
     idconcepto: 'idconcepto',
     concepto: 'concepto',
@@ -42940,6 +47302,17 @@ export namespace Prisma {
   };
 
   export type ConceptosScalarFieldEnum = (typeof ConceptosScalarFieldEnum)[keyof typeof ConceptosScalarFieldEnum]
+
+
+  export const Conceptos_sepelio_cuentasScalarFieldEnum: {
+    idconcepto: 'idconcepto',
+    idempresa: 'idempresa',
+    sc_descripcion: 'sc_descripcion',
+    sc_cuenta: 'sc_cuenta',
+    id: 'id'
+  };
+
+  export type Conceptos_sepelio_cuentasScalarFieldEnum = (typeof Conceptos_sepelio_cuentasScalarFieldEnum)[keyof typeof Conceptos_sepelio_cuentasScalarFieldEnum]
 
 
   export const Fabricante_ataudScalarFieldEnum: {
@@ -42995,6 +47368,18 @@ export namespace Prisma {
   export type Gastos_cajaScalarFieldEnum = (typeof Gastos_cajaScalarFieldEnum)[keyof typeof Gastos_cajaScalarFieldEnum]
 
 
+  export const Generacion_cajasScalarFieldEnum: {
+    idgeneracion: 'idgeneracion',
+    desde: 'desde',
+    hasta: 'hasta',
+    empresa: 'empresa',
+    operador: 'operador',
+    fecha: 'fecha'
+  };
+
+  export type Generacion_cajasScalarFieldEnum = (typeof Generacion_cajasScalarFieldEnum)[keyof typeof Generacion_cajasScalarFieldEnum]
+
+
   export const Historial_autosScalarFieldEnum: {
     idhistorial: 'idhistorial',
     patente: 'patente',
@@ -43030,6 +47415,21 @@ export namespace Prisma {
   };
 
   export type HonorariosScalarFieldEnum = (typeof HonorariosScalarFieldEnum)[keyof typeof HonorariosScalarFieldEnum]
+
+
+  export const Informe_tareasScalarFieldEnum: {
+    idtareas: 'idtareas',
+    idinforme: 'idinforme',
+    idservicio: 'idservicio',
+    operador: 'operador',
+    tarea: 'tarea',
+    inicio: 'inicio',
+    fin: 'fin',
+    horas: 'horas',
+    monto: 'monto'
+  };
+
+  export type Informe_tareasScalarFieldEnum = (typeof Informe_tareasScalarFieldEnum)[keyof typeof Informe_tareasScalarFieldEnum]
 
 
   export const Ingreso_cajaScalarFieldEnum: {
@@ -43070,6 +47470,22 @@ export namespace Prisma {
   export type Legajo_virtual_serviciosScalarFieldEnum = (typeof Legajo_virtual_serviciosScalarFieldEnum)[keyof typeof Legajo_virtual_serviciosScalarFieldEnum]
 
 
+  export const Lic_conducirScalarFieldEnum: {
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    FEC_NAC: 'FEC_NAC',
+    NRO_CARNET: 'NRO_CARNET',
+    FEC_VENCI: 'FEC_VENCI',
+    CLASE: 'CLASE',
+    GRUPO: 'GRUPO',
+    FACTOR_RH: 'FACTOR_RH',
+    id: 'id'
+  };
+
+  export type Lic_conducirScalarFieldEnum = (typeof Lic_conducirScalarFieldEnum)[keyof typeof Lic_conducirScalarFieldEnum]
+
+
   export const NovedadesScalarFieldEnum: {
     idnovedad: 'idnovedad',
     novedad: 'novedad',
@@ -43107,6 +47523,20 @@ export namespace Prisma {
   };
 
   export type ParcelasScalarFieldEnum = (typeof ParcelasScalarFieldEnum)[keyof typeof ParcelasScalarFieldEnum]
+
+
+  export const Parcelas_lugaresScalarFieldEnum: {
+    idlugar: 'idlugar',
+    idparcela: 'idparcela',
+    idservicio: 'idservicio',
+    lugar: 'lugar',
+    contrato: 'contrato',
+    dni: 'dni',
+    fecha: 'fecha',
+    operador: 'operador'
+  };
+
+  export type Parcelas_lugaresScalarFieldEnum = (typeof Parcelas_lugaresScalarFieldEnum)[keyof typeof Parcelas_lugaresScalarFieldEnum]
 
 
   export const Planificacion_guardiasScalarFieldEnum: {
@@ -43159,6 +47589,24 @@ export namespace Prisma {
   export type ProveedoresScalarFieldEnum = (typeof ProveedoresScalarFieldEnum)[keyof typeof ProveedoresScalarFieldEnum]
 
 
+  export const RodadosScalarFieldEnum: {
+    patente: 'patente',
+    descripcion: 'descripcion',
+    km: 'km',
+    responsable: 'responsable',
+    n_poliza: 'n_poliza',
+    emp_poliza: 'emp_poliza',
+    n_motor: 'n_motor',
+    n_chasis: 'n_chasis',
+    ano_fabri: 'ano_fabri',
+    desde: 'desde',
+    hasta: 'hasta',
+    id: 'id'
+  };
+
+  export type RodadosScalarFieldEnum = (typeof RodadosScalarFieldEnum)[keyof typeof RodadosScalarFieldEnum]
+
+
   export const Servicio_detallesScalarFieldEnum: {
     iddetalles: 'iddetalles',
     idservicio: 'idservicio',
@@ -43193,6 +47641,21 @@ export namespace Prisma {
   };
 
   export type Servicio_gastosScalarFieldEnum = (typeof Servicio_gastosScalarFieldEnum)[keyof typeof Servicio_gastosScalarFieldEnum]
+
+
+  export const Servicio_informesScalarFieldEnum: {
+    idinforme: 'idinforme',
+    idservicio: 'idservicio',
+    fecha: 'fecha',
+    aprobado: 'aprobado',
+    fecha_aprobado: 'fecha_aprobado',
+    operador_aprobado: 'operador_aprobado',
+    liquidado: 'liquidado',
+    fecha_liquidado: 'fecha_liquidado',
+    operador_liquidado: 'operador_liquidado'
+  };
+
+  export type Servicio_informesScalarFieldEnum = (typeof Servicio_informesScalarFieldEnum)[keyof typeof Servicio_informesScalarFieldEnum]
 
 
   export const Servicio_ventaScalarFieldEnum: {
@@ -43338,17 +47801,6 @@ export namespace Prisma {
   export type Servicios_historicoScalarFieldEnum = (typeof Servicios_historicoScalarFieldEnum)[keyof typeof Servicios_historicoScalarFieldEnum]
 
 
-  export const Servicios_liquidacionScalarFieldEnum: {
-    idliquidacion: 'idliquidacion',
-    idservicio: 'idservicio',
-    total_liquidacion: 'total_liquidacion',
-    fecha_liquidacion: 'fecha_liquidacion',
-    operador: 'operador'
-  };
-
-  export type Servicios_liquidacionScalarFieldEnum = (typeof Servicios_liquidacionScalarFieldEnum)[keyof typeof Servicios_liquidacionScalarFieldEnum]
-
-
   export const TareasScalarFieldEnum: {
     idevents: 'idevents',
     title: 'title',
@@ -43359,27 +47811,6 @@ export namespace Prisma {
   };
 
   export type TareasScalarFieldEnum = (typeof TareasScalarFieldEnum)[keyof typeof TareasScalarFieldEnum]
-
-
-  export const Tareas_adicionalesScalarFieldEnum: {
-    idtarea: 'idtarea',
-    inicio: 'inicio',
-    fin: 'fin',
-    tarea: 'tarea',
-    operador: 'operador',
-    observaciones: 'observaciones',
-    horas: 'horas',
-    feriado: 'feriado',
-    liquidado: 'liquidado',
-    fecha_liquidacion: 'fecha_liquidacion',
-    operadorliq: 'operadorliq',
-    aprobado: 'aprobado',
-    fecha_aprobacion: 'fecha_aprobacion',
-    operadorap: 'operadorap',
-    mes_planificacion: 'mes_planificacion'
-  };
-
-  export type Tareas_adicionalesScalarFieldEnum = (typeof Tareas_adicionalesScalarFieldEnum)[keyof typeof Tareas_adicionalesScalarFieldEnum]
 
 
   export const Tipo_detalleScalarFieldEnum: {
@@ -43405,76 +47836,6 @@ export namespace Prisma {
   };
 
   export type VisitantesScalarFieldEnum = (typeof VisitantesScalarFieldEnum)[keyof typeof VisitantesScalarFieldEnum]
-
-
-  export const Parcelas_lugaresScalarFieldEnum: {
-    idlugar: 'idlugar',
-    idparcela: 'idparcela',
-    idservicio: 'idservicio',
-    lugar: 'lugar',
-    contrato: 'contrato',
-    dni: 'dni',
-    fecha: 'fecha',
-    operador: 'operador'
-  };
-
-  export type Parcelas_lugaresScalarFieldEnum = (typeof Parcelas_lugaresScalarFieldEnum)[keyof typeof Parcelas_lugaresScalarFieldEnum]
-
-
-  export const Caja_saScalarFieldEnum: {
-    idcaja: 'idcaja',
-    codigo: 'codigo',
-    cuenta: 'cuenta',
-    tipo: 'tipo',
-    serie: 'serie',
-    factura: 'factura',
-    importe: 'importe',
-    comentarios: 'comentarios',
-    nro_caja: 'nro_caja',
-    movim: 'movim',
-    fecha: 'fecha',
-    puesto: 'puesto',
-    operador: 'operador',
-    cuit: 'cuit',
-    proveedor: 'proveedor',
-    sucursal: 'sucursal'
-  };
-
-  export type Caja_saScalarFieldEnum = (typeof Caja_saScalarFieldEnum)[keyof typeof Caja_saScalarFieldEnum]
-
-
-  export const Caja_srlScalarFieldEnum: {
-    idcaja: 'idcaja',
-    codigo: 'codigo',
-    cuenta: 'cuenta',
-    tipo: 'tipo',
-    serie: 'serie',
-    factura: 'factura',
-    importe: 'importe',
-    comentarios: 'comentarios',
-    nro_caja: 'nro_caja',
-    movim: 'movim',
-    fecha: 'fecha',
-    puesto: 'puesto',
-    operador: 'operador',
-    cuit: 'cuit',
-    proveedor: 'proveedor',
-    sucursal: 'sucursal'
-  };
-
-  export type Caja_srlScalarFieldEnum = (typeof Caja_srlScalarFieldEnum)[keyof typeof Caja_srlScalarFieldEnum]
-
-
-  export const Generacion_cajasScalarFieldEnum: {
-    idgeneracion: 'idgeneracion',
-    desde: 'desde',
-    hasta: 'hasta',
-    empresa: 'empresa',
-    operador: 'operador',
-    fecha: 'fecha'
-  };
-
-  export type Generacion_cajasScalarFieldEnum = (typeof Generacion_cajasScalarFieldEnum)[keyof typeof Generacion_cajasScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -43743,6 +48104,89 @@ export namespace Prisma {
     operador?: StringNullableWithAggregatesFilter | string | null
   }
 
+  export type auto_usosWhereInput = {
+    AND?: auto_usosWhereInput | auto_usosWhereInput[]
+    OR?: auto_usosWhereInput[]
+    NOT?: auto_usosWhereInput | auto_usosWhereInput[]
+    FECHA?: DateTimeNullableFilter | Date | string | null
+    PATENTE?: StringNullableFilter | string | null
+    DESCRIP?: StringNullableFilter | string | null
+    NOMB_OPE?: StringNullableFilter | string | null
+    CHOFER?: StringNullableFilter | string | null
+    HORA1?: StringNullableFilter | string | null
+    HORA2?: StringNullableFilter | string | null
+    TAREA?: StringNullableFilter | string | null
+    OBSERVA_1?: StringNullableFilter | string | null
+    OBSERVA_2?: StringNullableFilter | string | null
+    OPE_LLEGA?: StringNullableFilter | string | null
+    KILO_SAL?: FloatNullableFilter | number | null
+    KILO_LLE?: FloatNullableFilter | number | null
+    idusos?: IntFilter | number
+  }
+
+  export type auto_usosOrderByWithRelationInput = {
+    FECHA?: SortOrderInput | SortOrder
+    PATENTE?: SortOrderInput | SortOrder
+    DESCRIP?: SortOrderInput | SortOrder
+    NOMB_OPE?: SortOrderInput | SortOrder
+    CHOFER?: SortOrderInput | SortOrder
+    HORA1?: SortOrderInput | SortOrder
+    HORA2?: SortOrderInput | SortOrder
+    TAREA?: SortOrderInput | SortOrder
+    OBSERVA_1?: SortOrderInput | SortOrder
+    OBSERVA_2?: SortOrderInput | SortOrder
+    OPE_LLEGA?: SortOrderInput | SortOrder
+    KILO_SAL?: SortOrderInput | SortOrder
+    KILO_LLE?: SortOrderInput | SortOrder
+    idusos?: SortOrder
+  }
+
+  export type auto_usosWhereUniqueInput = {
+    idusos?: number
+  }
+
+  export type auto_usosOrderByWithAggregationInput = {
+    FECHA?: SortOrderInput | SortOrder
+    PATENTE?: SortOrderInput | SortOrder
+    DESCRIP?: SortOrderInput | SortOrder
+    NOMB_OPE?: SortOrderInput | SortOrder
+    CHOFER?: SortOrderInput | SortOrder
+    HORA1?: SortOrderInput | SortOrder
+    HORA2?: SortOrderInput | SortOrder
+    TAREA?: SortOrderInput | SortOrder
+    OBSERVA_1?: SortOrderInput | SortOrder
+    OBSERVA_2?: SortOrderInput | SortOrder
+    OPE_LLEGA?: SortOrderInput | SortOrder
+    KILO_SAL?: SortOrderInput | SortOrder
+    KILO_LLE?: SortOrderInput | SortOrder
+    idusos?: SortOrder
+    _count?: auto_usosCountOrderByAggregateInput
+    _avg?: auto_usosAvgOrderByAggregateInput
+    _max?: auto_usosMaxOrderByAggregateInput
+    _min?: auto_usosMinOrderByAggregateInput
+    _sum?: auto_usosSumOrderByAggregateInput
+  }
+
+  export type auto_usosScalarWhereWithAggregatesInput = {
+    AND?: auto_usosScalarWhereWithAggregatesInput | auto_usosScalarWhereWithAggregatesInput[]
+    OR?: auto_usosScalarWhereWithAggregatesInput[]
+    NOT?: auto_usosScalarWhereWithAggregatesInput | auto_usosScalarWhereWithAggregatesInput[]
+    FECHA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PATENTE?: StringNullableWithAggregatesFilter | string | null
+    DESCRIP?: StringNullableWithAggregatesFilter | string | null
+    NOMB_OPE?: StringNullableWithAggregatesFilter | string | null
+    CHOFER?: StringNullableWithAggregatesFilter | string | null
+    HORA1?: StringNullableWithAggregatesFilter | string | null
+    HORA2?: StringNullableWithAggregatesFilter | string | null
+    TAREA?: StringNullableWithAggregatesFilter | string | null
+    OBSERVA_1?: StringNullableWithAggregatesFilter | string | null
+    OBSERVA_2?: StringNullableWithAggregatesFilter | string | null
+    OPE_LLEGA?: StringNullableWithAggregatesFilter | string | null
+    KILO_SAL?: FloatNullableWithAggregatesFilter | number | null
+    KILO_LLE?: FloatNullableWithAggregatesFilter | number | null
+    idusos?: IntWithAggregatesFilter | number
+  }
+
   export type autosWhereInput = {
     AND?: autosWhereInput | autosWhereInput[]
     OR?: autosWhereInput[]
@@ -44007,6 +48451,97 @@ export namespace Prisma {
     operador?: StringNullableWithAggregatesFilter | string | null
   }
 
+  export type caja_saWhereInput = {
+    AND?: caja_saWhereInput | caja_saWhereInput[]
+    OR?: caja_saWhereInput[]
+    NOT?: caja_saWhereInput | caja_saWhereInput[]
+    idcaja?: IntFilter | number
+    codigo?: IntNullableFilter | number | null
+    cuenta?: StringNullableFilter | string | null
+    tipo?: StringNullableFilter | string | null
+    serie?: IntNullableFilter | number | null
+    factura?: IntNullableFilter | number | null
+    importe?: FloatNullableFilter | number | null
+    comentarios?: StringNullableFilter | string | null
+    nro_caja?: IntNullableFilter | number | null
+    movim?: StringNullableFilter | string | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+    puesto?: IntNullableFilter | number | null
+    operador?: IntNullableFilter | number | null
+    cuit?: StringNullableFilter | string | null
+    proveedor?: StringNullableFilter | string | null
+    sucursal?: StringNullableFilter | string | null
+  }
+
+  export type caja_saOrderByWithRelationInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrderInput | SortOrder
+    cuenta?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    serie?: SortOrderInput | SortOrder
+    factura?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    comentarios?: SortOrderInput | SortOrder
+    nro_caja?: SortOrderInput | SortOrder
+    movim?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    puesto?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    cuit?: SortOrderInput | SortOrder
+    proveedor?: SortOrderInput | SortOrder
+    sucursal?: SortOrderInput | SortOrder
+  }
+
+  export type caja_saWhereUniqueInput = {
+    idcaja?: number
+  }
+
+  export type caja_saOrderByWithAggregationInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrderInput | SortOrder
+    cuenta?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    serie?: SortOrderInput | SortOrder
+    factura?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    comentarios?: SortOrderInput | SortOrder
+    nro_caja?: SortOrderInput | SortOrder
+    movim?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    puesto?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    cuit?: SortOrderInput | SortOrder
+    proveedor?: SortOrderInput | SortOrder
+    sucursal?: SortOrderInput | SortOrder
+    _count?: caja_saCountOrderByAggregateInput
+    _avg?: caja_saAvgOrderByAggregateInput
+    _max?: caja_saMaxOrderByAggregateInput
+    _min?: caja_saMinOrderByAggregateInput
+    _sum?: caja_saSumOrderByAggregateInput
+  }
+
+  export type caja_saScalarWhereWithAggregatesInput = {
+    AND?: caja_saScalarWhereWithAggregatesInput | caja_saScalarWhereWithAggregatesInput[]
+    OR?: caja_saScalarWhereWithAggregatesInput[]
+    NOT?: caja_saScalarWhereWithAggregatesInput | caja_saScalarWhereWithAggregatesInput[]
+    idcaja?: IntWithAggregatesFilter | number
+    codigo?: IntNullableWithAggregatesFilter | number | null
+    cuenta?: StringNullableWithAggregatesFilter | string | null
+    tipo?: StringNullableWithAggregatesFilter | string | null
+    serie?: IntNullableWithAggregatesFilter | number | null
+    factura?: IntNullableWithAggregatesFilter | number | null
+    importe?: FloatNullableWithAggregatesFilter | number | null
+    comentarios?: StringNullableWithAggregatesFilter | string | null
+    nro_caja?: IntNullableWithAggregatesFilter | number | null
+    movim?: StringNullableWithAggregatesFilter | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    puesto?: IntNullableWithAggregatesFilter | number | null
+    operador?: IntNullableWithAggregatesFilter | number | null
+    cuit?: StringNullableWithAggregatesFilter | string | null
+    proveedor?: StringNullableWithAggregatesFilter | string | null
+    sucursal?: StringNullableWithAggregatesFilter | string | null
+  }
+
   export type caja_sepelioWhereInput = {
     AND?: caja_sepelioWhereInput | caja_sepelioWhereInput[]
     OR?: caja_sepelioWhereInput[]
@@ -44094,6 +48629,97 @@ export namespace Prisma {
     ultimacarga?: DateTimeNullableWithAggregatesFilter | Date | string | null
   }
 
+  export type caja_srlWhereInput = {
+    AND?: caja_srlWhereInput | caja_srlWhereInput[]
+    OR?: caja_srlWhereInput[]
+    NOT?: caja_srlWhereInput | caja_srlWhereInput[]
+    idcaja?: IntFilter | number
+    codigo?: IntNullableFilter | number | null
+    cuenta?: StringNullableFilter | string | null
+    tipo?: StringNullableFilter | string | null
+    serie?: IntNullableFilter | number | null
+    factura?: IntNullableFilter | number | null
+    importe?: FloatNullableFilter | number | null
+    comentarios?: StringNullableFilter | string | null
+    nro_caja?: IntNullableFilter | number | null
+    movim?: StringNullableFilter | string | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+    puesto?: IntNullableFilter | number | null
+    operador?: IntNullableFilter | number | null
+    cuit?: StringNullableFilter | string | null
+    proveedor?: StringNullableFilter | string | null
+    sucursal?: StringNullableFilter | string | null
+  }
+
+  export type caja_srlOrderByWithRelationInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrderInput | SortOrder
+    cuenta?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    serie?: SortOrderInput | SortOrder
+    factura?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    comentarios?: SortOrderInput | SortOrder
+    nro_caja?: SortOrderInput | SortOrder
+    movim?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    puesto?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    cuit?: SortOrderInput | SortOrder
+    proveedor?: SortOrderInput | SortOrder
+    sucursal?: SortOrderInput | SortOrder
+  }
+
+  export type caja_srlWhereUniqueInput = {
+    idcaja?: number
+  }
+
+  export type caja_srlOrderByWithAggregationInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrderInput | SortOrder
+    cuenta?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    serie?: SortOrderInput | SortOrder
+    factura?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    comentarios?: SortOrderInput | SortOrder
+    nro_caja?: SortOrderInput | SortOrder
+    movim?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    puesto?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    cuit?: SortOrderInput | SortOrder
+    proveedor?: SortOrderInput | SortOrder
+    sucursal?: SortOrderInput | SortOrder
+    _count?: caja_srlCountOrderByAggregateInput
+    _avg?: caja_srlAvgOrderByAggregateInput
+    _max?: caja_srlMaxOrderByAggregateInput
+    _min?: caja_srlMinOrderByAggregateInput
+    _sum?: caja_srlSumOrderByAggregateInput
+  }
+
+  export type caja_srlScalarWhereWithAggregatesInput = {
+    AND?: caja_srlScalarWhereWithAggregatesInput | caja_srlScalarWhereWithAggregatesInput[]
+    OR?: caja_srlScalarWhereWithAggregatesInput[]
+    NOT?: caja_srlScalarWhereWithAggregatesInput | caja_srlScalarWhereWithAggregatesInput[]
+    idcaja?: IntWithAggregatesFilter | number
+    codigo?: IntNullableWithAggregatesFilter | number | null
+    cuenta?: StringNullableWithAggregatesFilter | string | null
+    tipo?: StringNullableWithAggregatesFilter | string | null
+    serie?: IntNullableWithAggregatesFilter | number | null
+    factura?: IntNullableWithAggregatesFilter | number | null
+    importe?: FloatNullableWithAggregatesFilter | number | null
+    comentarios?: StringNullableWithAggregatesFilter | string | null
+    nro_caja?: IntNullableWithAggregatesFilter | number | null
+    movim?: StringNullableWithAggregatesFilter | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    puesto?: IntNullableWithAggregatesFilter | number | null
+    operador?: IntNullableWithAggregatesFilter | number | null
+    cuit?: StringNullableWithAggregatesFilter | string | null
+    proveedor?: StringNullableWithAggregatesFilter | string | null
+    sucursal?: StringNullableWithAggregatesFilter | string | null
+  }
+
   export type conceptosWhereInput = {
     AND?: conceptosWhereInput | conceptosWhereInput[]
     OR?: conceptosWhereInput[]
@@ -44131,6 +48757,53 @@ export namespace Prisma {
     idconcepto?: IntWithAggregatesFilter | number
     concepto?: StringNullableWithAggregatesFilter | string | null
     tipo?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type conceptos_sepelio_cuentasWhereInput = {
+    AND?: conceptos_sepelio_cuentasWhereInput | conceptos_sepelio_cuentasWhereInput[]
+    OR?: conceptos_sepelio_cuentasWhereInput[]
+    NOT?: conceptos_sepelio_cuentasWhereInput | conceptos_sepelio_cuentasWhereInput[]
+    idconcepto?: IntNullableFilter | number | null
+    idempresa?: IntNullableFilter | number | null
+    sc_descripcion?: StringNullableFilter | string | null
+    sc_cuenta?: IntNullableFilter | number | null
+    id?: IntFilter | number
+  }
+
+  export type conceptos_sepelio_cuentasOrderByWithRelationInput = {
+    idconcepto?: SortOrderInput | SortOrder
+    idempresa?: SortOrderInput | SortOrder
+    sc_descripcion?: SortOrderInput | SortOrder
+    sc_cuenta?: SortOrderInput | SortOrder
+    id?: SortOrder
+  }
+
+  export type conceptos_sepelio_cuentasWhereUniqueInput = {
+    id?: number
+  }
+
+  export type conceptos_sepelio_cuentasOrderByWithAggregationInput = {
+    idconcepto?: SortOrderInput | SortOrder
+    idempresa?: SortOrderInput | SortOrder
+    sc_descripcion?: SortOrderInput | SortOrder
+    sc_cuenta?: SortOrderInput | SortOrder
+    id?: SortOrder
+    _count?: conceptos_sepelio_cuentasCountOrderByAggregateInput
+    _avg?: conceptos_sepelio_cuentasAvgOrderByAggregateInput
+    _max?: conceptos_sepelio_cuentasMaxOrderByAggregateInput
+    _min?: conceptos_sepelio_cuentasMinOrderByAggregateInput
+    _sum?: conceptos_sepelio_cuentasSumOrderByAggregateInput
+  }
+
+  export type conceptos_sepelio_cuentasScalarWhereWithAggregatesInput = {
+    AND?: conceptos_sepelio_cuentasScalarWhereWithAggregatesInput | conceptos_sepelio_cuentasScalarWhereWithAggregatesInput[]
+    OR?: conceptos_sepelio_cuentasScalarWhereWithAggregatesInput[]
+    NOT?: conceptos_sepelio_cuentasScalarWhereWithAggregatesInput | conceptos_sepelio_cuentasScalarWhereWithAggregatesInput[]
+    idconcepto?: IntNullableWithAggregatesFilter | number | null
+    idempresa?: IntNullableWithAggregatesFilter | number | null
+    sc_descripcion?: StringNullableWithAggregatesFilter | string | null
+    sc_cuenta?: IntNullableWithAggregatesFilter | number | null
+    id?: IntWithAggregatesFilter | number
   }
 
   export type fabricante_ataudWhereInput = {
@@ -44354,6 +49027,57 @@ export namespace Prisma {
     idservicio?: IntNullableWithAggregatesFilter | number | null
   }
 
+  export type generacion_cajasWhereInput = {
+    AND?: generacion_cajasWhereInput | generacion_cajasWhereInput[]
+    OR?: generacion_cajasWhereInput[]
+    NOT?: generacion_cajasWhereInput | generacion_cajasWhereInput[]
+    idgeneracion?: IntFilter | number
+    desde?: DateTimeNullableFilter | Date | string | null
+    hasta?: DateTimeNullableFilter | Date | string | null
+    empresa?: StringNullableFilter | string | null
+    operador?: StringNullableFilter | string | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+  }
+
+  export type generacion_cajasOrderByWithRelationInput = {
+    idgeneracion?: SortOrder
+    desde?: SortOrderInput | SortOrder
+    hasta?: SortOrderInput | SortOrder
+    empresa?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+  }
+
+  export type generacion_cajasWhereUniqueInput = {
+    idgeneracion?: number
+  }
+
+  export type generacion_cajasOrderByWithAggregationInput = {
+    idgeneracion?: SortOrder
+    desde?: SortOrderInput | SortOrder
+    hasta?: SortOrderInput | SortOrder
+    empresa?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    _count?: generacion_cajasCountOrderByAggregateInput
+    _avg?: generacion_cajasAvgOrderByAggregateInput
+    _max?: generacion_cajasMaxOrderByAggregateInput
+    _min?: generacion_cajasMinOrderByAggregateInput
+    _sum?: generacion_cajasSumOrderByAggregateInput
+  }
+
+  export type generacion_cajasScalarWhereWithAggregatesInput = {
+    AND?: generacion_cajasScalarWhereWithAggregatesInput | generacion_cajasScalarWhereWithAggregatesInput[]
+    OR?: generacion_cajasScalarWhereWithAggregatesInput[]
+    NOT?: generacion_cajasScalarWhereWithAggregatesInput | generacion_cajasScalarWhereWithAggregatesInput[]
+    idgeneracion?: IntWithAggregatesFilter | number
+    desde?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    hasta?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    empresa?: StringNullableWithAggregatesFilter | string | null
+    operador?: StringNullableWithAggregatesFilter | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+  }
+
   export type historial_autosWhereInput = {
     AND?: historial_autosWhereInput | historial_autosWhereInput[]
     OR?: historial_autosWhereInput[]
@@ -44509,6 +49233,69 @@ export namespace Prisma {
     dias_habiles?: IntNullableWithAggregatesFilter | number | null
     finde?: IntNullableWithAggregatesFilter | number | null
     feriado?: IntNullableWithAggregatesFilter | number | null
+  }
+
+  export type informe_tareasWhereInput = {
+    AND?: informe_tareasWhereInput | informe_tareasWhereInput[]
+    OR?: informe_tareasWhereInput[]
+    NOT?: informe_tareasWhereInput | informe_tareasWhereInput[]
+    idtareas?: IntFilter | number
+    idinforme?: IntNullableFilter | number | null
+    idservicio?: IntNullableFilter | number | null
+    operador?: StringNullableFilter | string | null
+    tarea?: StringNullableFilter | string | null
+    inicio?: DateTimeNullableFilter | Date | string | null
+    fin?: DateTimeNullableFilter | Date | string | null
+    horas?: IntNullableFilter | number | null
+    monto?: FloatNullableFilter | number | null
+  }
+
+  export type informe_tareasOrderByWithRelationInput = {
+    idtareas?: SortOrder
+    idinforme?: SortOrderInput | SortOrder
+    idservicio?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    tarea?: SortOrderInput | SortOrder
+    inicio?: SortOrderInput | SortOrder
+    fin?: SortOrderInput | SortOrder
+    horas?: SortOrderInput | SortOrder
+    monto?: SortOrderInput | SortOrder
+  }
+
+  export type informe_tareasWhereUniqueInput = {
+    idtareas?: number
+  }
+
+  export type informe_tareasOrderByWithAggregationInput = {
+    idtareas?: SortOrder
+    idinforme?: SortOrderInput | SortOrder
+    idservicio?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    tarea?: SortOrderInput | SortOrder
+    inicio?: SortOrderInput | SortOrder
+    fin?: SortOrderInput | SortOrder
+    horas?: SortOrderInput | SortOrder
+    monto?: SortOrderInput | SortOrder
+    _count?: informe_tareasCountOrderByAggregateInput
+    _avg?: informe_tareasAvgOrderByAggregateInput
+    _max?: informe_tareasMaxOrderByAggregateInput
+    _min?: informe_tareasMinOrderByAggregateInput
+    _sum?: informe_tareasSumOrderByAggregateInput
+  }
+
+  export type informe_tareasScalarWhereWithAggregatesInput = {
+    AND?: informe_tareasScalarWhereWithAggregatesInput | informe_tareasScalarWhereWithAggregatesInput[]
+    OR?: informe_tareasScalarWhereWithAggregatesInput[]
+    NOT?: informe_tareasScalarWhereWithAggregatesInput | informe_tareasScalarWhereWithAggregatesInput[]
+    idtareas?: IntWithAggregatesFilter | number
+    idinforme?: IntNullableWithAggregatesFilter | number | null
+    idservicio?: IntNullableWithAggregatesFilter | number | null
+    operador?: StringNullableWithAggregatesFilter | string | null
+    tarea?: StringNullableWithAggregatesFilter | string | null
+    inicio?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    fin?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    horas?: IntNullableWithAggregatesFilter | number | null
+    monto?: FloatNullableWithAggregatesFilter | number | null
   }
 
   export type ingreso_cajaWhereInput = {
@@ -44670,6 +49457,73 @@ export namespace Prisma {
     archivo?: StringNullableWithAggregatesFilter | string | null
     fecha_subida?: DateTimeNullableWithAggregatesFilter | Date | string | null
     empresa?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type lic_conducirWhereInput = {
+    AND?: lic_conducirWhereInput | lic_conducirWhereInput[]
+    OR?: lic_conducirWhereInput[]
+    NOT?: lic_conducirWhereInput | lic_conducirWhereInput[]
+    NRO_DOC?: IntNullableFilter | number | null
+    APELLIDOS?: StringNullableFilter | string | null
+    NOMBRES?: StringNullableFilter | string | null
+    FEC_NAC?: DateTimeNullableFilter | Date | string | null
+    NRO_CARNET?: StringNullableFilter | string | null
+    FEC_VENCI?: DateTimeNullableFilter | Date | string | null
+    CLASE?: StringNullableFilter | string | null
+    GRUPO?: StringNullableFilter | string | null
+    FACTOR_RH?: StringNullableFilter | string | null
+    id?: IntFilter | number
+  }
+
+  export type lic_conducirOrderByWithRelationInput = {
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    FEC_NAC?: SortOrderInput | SortOrder
+    NRO_CARNET?: SortOrderInput | SortOrder
+    FEC_VENCI?: SortOrderInput | SortOrder
+    CLASE?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    FACTOR_RH?: SortOrderInput | SortOrder
+    id?: SortOrder
+  }
+
+  export type lic_conducirWhereUniqueInput = {
+    id?: number
+  }
+
+  export type lic_conducirOrderByWithAggregationInput = {
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    FEC_NAC?: SortOrderInput | SortOrder
+    NRO_CARNET?: SortOrderInput | SortOrder
+    FEC_VENCI?: SortOrderInput | SortOrder
+    CLASE?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    FACTOR_RH?: SortOrderInput | SortOrder
+    id?: SortOrder
+    _count?: lic_conducirCountOrderByAggregateInput
+    _avg?: lic_conducirAvgOrderByAggregateInput
+    _max?: lic_conducirMaxOrderByAggregateInput
+    _min?: lic_conducirMinOrderByAggregateInput
+    _sum?: lic_conducirSumOrderByAggregateInput
+  }
+
+  export type lic_conducirScalarWhereWithAggregatesInput = {
+    AND?: lic_conducirScalarWhereWithAggregatesInput | lic_conducirScalarWhereWithAggregatesInput[]
+    OR?: lic_conducirScalarWhereWithAggregatesInput[]
+    NOT?: lic_conducirScalarWhereWithAggregatesInput | lic_conducirScalarWhereWithAggregatesInput[]
+    NRO_DOC?: IntNullableWithAggregatesFilter | number | null
+    APELLIDOS?: StringNullableWithAggregatesFilter | string | null
+    NOMBRES?: StringNullableWithAggregatesFilter | string | null
+    FEC_NAC?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    NRO_CARNET?: StringNullableWithAggregatesFilter | string | null
+    FEC_VENCI?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    CLASE?: StringNullableWithAggregatesFilter | string | null
+    GRUPO?: StringNullableWithAggregatesFilter | string | null
+    FACTOR_RH?: StringNullableWithAggregatesFilter | string | null
+    id?: IntWithAggregatesFilter | number
   }
 
   export type novedadesWhereInput = {
@@ -44835,6 +49689,65 @@ export namespace Prisma {
     operador_asignacion?: StringNullableWithAggregatesFilter | string | null
     fecha_asignacion?: StringNullableWithAggregatesFilter | string | null
     lugares?: IntNullableWithAggregatesFilter | number | null
+  }
+
+  export type parcelas_lugaresWhereInput = {
+    AND?: parcelas_lugaresWhereInput | parcelas_lugaresWhereInput[]
+    OR?: parcelas_lugaresWhereInput[]
+    NOT?: parcelas_lugaresWhereInput | parcelas_lugaresWhereInput[]
+    idlugar?: IntFilter | number
+    idparcela?: IntNullableFilter | number | null
+    idservicio?: IntNullableFilter | number | null
+    lugar?: IntNullableFilter | number | null
+    contrato?: IntNullableFilter | number | null
+    dni?: IntNullableFilter | number | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+    operador?: StringNullableFilter | string | null
+  }
+
+  export type parcelas_lugaresOrderByWithRelationInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrderInput | SortOrder
+    idservicio?: SortOrderInput | SortOrder
+    lugar?: SortOrderInput | SortOrder
+    contrato?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+  }
+
+  export type parcelas_lugaresWhereUniqueInput = {
+    idlugar?: number
+  }
+
+  export type parcelas_lugaresOrderByWithAggregationInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrderInput | SortOrder
+    idservicio?: SortOrderInput | SortOrder
+    lugar?: SortOrderInput | SortOrder
+    contrato?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    _count?: parcelas_lugaresCountOrderByAggregateInput
+    _avg?: parcelas_lugaresAvgOrderByAggregateInput
+    _max?: parcelas_lugaresMaxOrderByAggregateInput
+    _min?: parcelas_lugaresMinOrderByAggregateInput
+    _sum?: parcelas_lugaresSumOrderByAggregateInput
+  }
+
+  export type parcelas_lugaresScalarWhereWithAggregatesInput = {
+    AND?: parcelas_lugaresScalarWhereWithAggregatesInput | parcelas_lugaresScalarWhereWithAggregatesInput[]
+    OR?: parcelas_lugaresScalarWhereWithAggregatesInput[]
+    NOT?: parcelas_lugaresScalarWhereWithAggregatesInput | parcelas_lugaresScalarWhereWithAggregatesInput[]
+    idlugar?: IntWithAggregatesFilter | number
+    idparcela?: IntNullableWithAggregatesFilter | number | null
+    idservicio?: IntNullableWithAggregatesFilter | number | null
+    lugar?: IntNullableWithAggregatesFilter | number | null
+    contrato?: IntNullableWithAggregatesFilter | number | null
+    dni?: IntNullableWithAggregatesFilter | number | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    operador?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type planificacion_guardiasWhereInput = {
@@ -45046,6 +49959,81 @@ export namespace Prisma {
     operador?: StringNullableWithAggregatesFilter | string | null
   }
 
+  export type rodadosWhereInput = {
+    AND?: rodadosWhereInput | rodadosWhereInput[]
+    OR?: rodadosWhereInput[]
+    NOT?: rodadosWhereInput | rodadosWhereInput[]
+    patente?: StringNullableFilter | string | null
+    descripcion?: StringNullableFilter | string | null
+    km?: StringNullableFilter | string | null
+    responsable?: StringNullableFilter | string | null
+    n_poliza?: StringNullableFilter | string | null
+    emp_poliza?: StringNullableFilter | string | null
+    n_motor?: StringNullableFilter | string | null
+    n_chasis?: StringNullableFilter | string | null
+    ano_fabri?: StringNullableFilter | string | null
+    desde?: DateTimeNullableFilter | Date | string | null
+    hasta?: DateTimeNullableFilter | Date | string | null
+    id?: IntFilter | number
+  }
+
+  export type rodadosOrderByWithRelationInput = {
+    patente?: SortOrderInput | SortOrder
+    descripcion?: SortOrderInput | SortOrder
+    km?: SortOrderInput | SortOrder
+    responsable?: SortOrderInput | SortOrder
+    n_poliza?: SortOrderInput | SortOrder
+    emp_poliza?: SortOrderInput | SortOrder
+    n_motor?: SortOrderInput | SortOrder
+    n_chasis?: SortOrderInput | SortOrder
+    ano_fabri?: SortOrderInput | SortOrder
+    desde?: SortOrderInput | SortOrder
+    hasta?: SortOrderInput | SortOrder
+    id?: SortOrder
+  }
+
+  export type rodadosWhereUniqueInput = {
+    id?: number
+  }
+
+  export type rodadosOrderByWithAggregationInput = {
+    patente?: SortOrderInput | SortOrder
+    descripcion?: SortOrderInput | SortOrder
+    km?: SortOrderInput | SortOrder
+    responsable?: SortOrderInput | SortOrder
+    n_poliza?: SortOrderInput | SortOrder
+    emp_poliza?: SortOrderInput | SortOrder
+    n_motor?: SortOrderInput | SortOrder
+    n_chasis?: SortOrderInput | SortOrder
+    ano_fabri?: SortOrderInput | SortOrder
+    desde?: SortOrderInput | SortOrder
+    hasta?: SortOrderInput | SortOrder
+    id?: SortOrder
+    _count?: rodadosCountOrderByAggregateInput
+    _avg?: rodadosAvgOrderByAggregateInput
+    _max?: rodadosMaxOrderByAggregateInput
+    _min?: rodadosMinOrderByAggregateInput
+    _sum?: rodadosSumOrderByAggregateInput
+  }
+
+  export type rodadosScalarWhereWithAggregatesInput = {
+    AND?: rodadosScalarWhereWithAggregatesInput | rodadosScalarWhereWithAggregatesInput[]
+    OR?: rodadosScalarWhereWithAggregatesInput[]
+    NOT?: rodadosScalarWhereWithAggregatesInput | rodadosScalarWhereWithAggregatesInput[]
+    patente?: StringNullableWithAggregatesFilter | string | null
+    descripcion?: StringNullableWithAggregatesFilter | string | null
+    km?: StringNullableWithAggregatesFilter | string | null
+    responsable?: StringNullableWithAggregatesFilter | string | null
+    n_poliza?: StringNullableWithAggregatesFilter | string | null
+    emp_poliza?: StringNullableWithAggregatesFilter | string | null
+    n_motor?: StringNullableWithAggregatesFilter | string | null
+    n_chasis?: StringNullableWithAggregatesFilter | string | null
+    ano_fabri?: StringNullableWithAggregatesFilter | string | null
+    desde?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    hasta?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    id?: IntWithAggregatesFilter | number
+  }
+
   export type servicio_detallesWhereInput = {
     AND?: servicio_detallesWhereInput | servicio_detallesWhereInput[]
     OR?: servicio_detallesWhereInput[]
@@ -45194,6 +50182,69 @@ export namespace Prisma {
     aprobado?: BoolNullableWithAggregatesFilter | boolean | null
     operadorap?: StringNullableWithAggregatesFilter | string | null
     fecha_aprobacion?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type servicio_informesWhereInput = {
+    AND?: servicio_informesWhereInput | servicio_informesWhereInput[]
+    OR?: servicio_informesWhereInput[]
+    NOT?: servicio_informesWhereInput | servicio_informesWhereInput[]
+    idinforme?: IntFilter | number
+    idservicio?: IntNullableFilter | number | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+    aprobado?: BoolNullableFilter | boolean | null
+    fecha_aprobado?: DateTimeNullableFilter | Date | string | null
+    operador_aprobado?: StringNullableFilter | string | null
+    liquidado?: BoolNullableFilter | boolean | null
+    fecha_liquidado?: DateTimeNullableFilter | Date | string | null
+    operador_liquidado?: StringNullableFilter | string | null
+  }
+
+  export type servicio_informesOrderByWithRelationInput = {
+    idinforme?: SortOrder
+    idservicio?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    aprobado?: SortOrderInput | SortOrder
+    fecha_aprobado?: SortOrderInput | SortOrder
+    operador_aprobado?: SortOrderInput | SortOrder
+    liquidado?: SortOrderInput | SortOrder
+    fecha_liquidado?: SortOrderInput | SortOrder
+    operador_liquidado?: SortOrderInput | SortOrder
+  }
+
+  export type servicio_informesWhereUniqueInput = {
+    idinforme?: number
+  }
+
+  export type servicio_informesOrderByWithAggregationInput = {
+    idinforme?: SortOrder
+    idservicio?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    aprobado?: SortOrderInput | SortOrder
+    fecha_aprobado?: SortOrderInput | SortOrder
+    operador_aprobado?: SortOrderInput | SortOrder
+    liquidado?: SortOrderInput | SortOrder
+    fecha_liquidado?: SortOrderInput | SortOrder
+    operador_liquidado?: SortOrderInput | SortOrder
+    _count?: servicio_informesCountOrderByAggregateInput
+    _avg?: servicio_informesAvgOrderByAggregateInput
+    _max?: servicio_informesMaxOrderByAggregateInput
+    _min?: servicio_informesMinOrderByAggregateInput
+    _sum?: servicio_informesSumOrderByAggregateInput
+  }
+
+  export type servicio_informesScalarWhereWithAggregatesInput = {
+    AND?: servicio_informesScalarWhereWithAggregatesInput | servicio_informesScalarWhereWithAggregatesInput[]
+    OR?: servicio_informesScalarWhereWithAggregatesInput[]
+    NOT?: servicio_informesScalarWhereWithAggregatesInput | servicio_informesScalarWhereWithAggregatesInput[]
+    idinforme?: IntWithAggregatesFilter | number
+    idservicio?: IntNullableWithAggregatesFilter | number | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    aprobado?: BoolNullableWithAggregatesFilter | boolean | null
+    fecha_aprobado?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    operador_aprobado?: StringNullableWithAggregatesFilter | string | null
+    liquidado?: BoolNullableWithAggregatesFilter | boolean | null
+    fecha_liquidado?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    operador_liquidado?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type servicio_ventaWhereInput = {
@@ -45777,53 +50828,6 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter | number
   }
 
-  export type servicios_liquidacionWhereInput = {
-    AND?: servicios_liquidacionWhereInput | servicios_liquidacionWhereInput[]
-    OR?: servicios_liquidacionWhereInput[]
-    NOT?: servicios_liquidacionWhereInput | servicios_liquidacionWhereInput[]
-    idliquidacion?: IntFilter | number
-    idservicio?: IntNullableFilter | number | null
-    total_liquidacion?: IntNullableFilter | number | null
-    fecha_liquidacion?: DateTimeNullableFilter | Date | string | null
-    operador?: StringNullableFilter | string | null
-  }
-
-  export type servicios_liquidacionOrderByWithRelationInput = {
-    idliquidacion?: SortOrder
-    idservicio?: SortOrderInput | SortOrder
-    total_liquidacion?: SortOrderInput | SortOrder
-    fecha_liquidacion?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-  }
-
-  export type servicios_liquidacionWhereUniqueInput = {
-    idliquidacion?: number
-  }
-
-  export type servicios_liquidacionOrderByWithAggregationInput = {
-    idliquidacion?: SortOrder
-    idservicio?: SortOrderInput | SortOrder
-    total_liquidacion?: SortOrderInput | SortOrder
-    fecha_liquidacion?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    _count?: servicios_liquidacionCountOrderByAggregateInput
-    _avg?: servicios_liquidacionAvgOrderByAggregateInput
-    _max?: servicios_liquidacionMaxOrderByAggregateInput
-    _min?: servicios_liquidacionMinOrderByAggregateInput
-    _sum?: servicios_liquidacionSumOrderByAggregateInput
-  }
-
-  export type servicios_liquidacionScalarWhereWithAggregatesInput = {
-    AND?: servicios_liquidacionScalarWhereWithAggregatesInput | servicios_liquidacionScalarWhereWithAggregatesInput[]
-    OR?: servicios_liquidacionScalarWhereWithAggregatesInput[]
-    NOT?: servicios_liquidacionScalarWhereWithAggregatesInput | servicios_liquidacionScalarWhereWithAggregatesInput[]
-    idliquidacion?: IntWithAggregatesFilter | number
-    idservicio?: IntNullableWithAggregatesFilter | number | null
-    total_liquidacion?: IntNullableWithAggregatesFilter | number | null
-    fecha_liquidacion?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    operador?: StringNullableWithAggregatesFilter | string | null
-  }
-
   export type tareasWhereInput = {
     AND?: tareasWhereInput | tareasWhereInput[]
     OR?: tareasWhereInput[]
@@ -45873,93 +50877,6 @@ export namespace Prisma {
     start?: StringNullableWithAggregatesFilter | string | null
     end?: StringNullableWithAggregatesFilter | string | null
     priority?: IntNullableWithAggregatesFilter | number | null
-  }
-
-  export type tareas_adicionalesWhereInput = {
-    AND?: tareas_adicionalesWhereInput | tareas_adicionalesWhereInput[]
-    OR?: tareas_adicionalesWhereInput[]
-    NOT?: tareas_adicionalesWhereInput | tareas_adicionalesWhereInput[]
-    idtarea?: IntFilter | number
-    inicio?: DateTimeNullableFilter | Date | string | null
-    fin?: DateTimeNullableFilter | Date | string | null
-    tarea?: StringNullableFilter | string | null
-    operador?: StringNullableFilter | string | null
-    observaciones?: StringNullableFilter | string | null
-    horas?: DateTimeNullableFilter | Date | string | null
-    feriado?: IntNullableFilter | number | null
-    liquidado?: BoolNullableFilter | boolean | null
-    fecha_liquidacion?: StringNullableFilter | string | null
-    operadorliq?: StringNullableFilter | string | null
-    aprobado?: BoolNullableFilter | boolean | null
-    fecha_aprobacion?: StringNullableFilter | string | null
-    operadorap?: StringNullableFilter | string | null
-    mes_planificacion?: StringNullableFilter | string | null
-  }
-
-  export type tareas_adicionalesOrderByWithRelationInput = {
-    idtarea?: SortOrder
-    inicio?: SortOrderInput | SortOrder
-    fin?: SortOrderInput | SortOrder
-    tarea?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    observaciones?: SortOrderInput | SortOrder
-    horas?: SortOrderInput | SortOrder
-    feriado?: SortOrderInput | SortOrder
-    liquidado?: SortOrderInput | SortOrder
-    fecha_liquidacion?: SortOrderInput | SortOrder
-    operadorliq?: SortOrderInput | SortOrder
-    aprobado?: SortOrderInput | SortOrder
-    fecha_aprobacion?: SortOrderInput | SortOrder
-    operadorap?: SortOrderInput | SortOrder
-    mes_planificacion?: SortOrderInput | SortOrder
-  }
-
-  export type tareas_adicionalesWhereUniqueInput = {
-    idtarea?: number
-  }
-
-  export type tareas_adicionalesOrderByWithAggregationInput = {
-    idtarea?: SortOrder
-    inicio?: SortOrderInput | SortOrder
-    fin?: SortOrderInput | SortOrder
-    tarea?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    observaciones?: SortOrderInput | SortOrder
-    horas?: SortOrderInput | SortOrder
-    feriado?: SortOrderInput | SortOrder
-    liquidado?: SortOrderInput | SortOrder
-    fecha_liquidacion?: SortOrderInput | SortOrder
-    operadorliq?: SortOrderInput | SortOrder
-    aprobado?: SortOrderInput | SortOrder
-    fecha_aprobacion?: SortOrderInput | SortOrder
-    operadorap?: SortOrderInput | SortOrder
-    mes_planificacion?: SortOrderInput | SortOrder
-    _count?: tareas_adicionalesCountOrderByAggregateInput
-    _avg?: tareas_adicionalesAvgOrderByAggregateInput
-    _max?: tareas_adicionalesMaxOrderByAggregateInput
-    _min?: tareas_adicionalesMinOrderByAggregateInput
-    _sum?: tareas_adicionalesSumOrderByAggregateInput
-  }
-
-  export type tareas_adicionalesScalarWhereWithAggregatesInput = {
-    AND?: tareas_adicionalesScalarWhereWithAggregatesInput | tareas_adicionalesScalarWhereWithAggregatesInput[]
-    OR?: tareas_adicionalesScalarWhereWithAggregatesInput[]
-    NOT?: tareas_adicionalesScalarWhereWithAggregatesInput | tareas_adicionalesScalarWhereWithAggregatesInput[]
-    idtarea?: IntWithAggregatesFilter | number
-    inicio?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    fin?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    tarea?: StringNullableWithAggregatesFilter | string | null
-    operador?: StringNullableWithAggregatesFilter | string | null
-    observaciones?: StringNullableWithAggregatesFilter | string | null
-    horas?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    feriado?: IntNullableWithAggregatesFilter | number | null
-    liquidado?: BoolNullableWithAggregatesFilter | boolean | null
-    fecha_liquidacion?: StringNullableWithAggregatesFilter | string | null
-    operadorliq?: StringNullableWithAggregatesFilter | string | null
-    aprobado?: BoolNullableWithAggregatesFilter | boolean | null
-    fecha_aprobacion?: StringNullableWithAggregatesFilter | string | null
-    operadorap?: StringNullableWithAggregatesFilter | string | null
-    mes_planificacion?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type tipo_detalleWhereInput = {
@@ -46066,298 +50983,6 @@ export namespace Prisma {
     operador?: StringNullableWithAggregatesFilter | string | null
     fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
     temperatura?: StringNullableWithAggregatesFilter | string | null
-  }
-
-  export type parcelas_lugaresWhereInput = {
-    AND?: parcelas_lugaresWhereInput | parcelas_lugaresWhereInput[]
-    OR?: parcelas_lugaresWhereInput[]
-    NOT?: parcelas_lugaresWhereInput | parcelas_lugaresWhereInput[]
-    idlugar?: IntFilter | number
-    idparcela?: IntNullableFilter | number | null
-    idservicio?: IntNullableFilter | number | null
-    lugar?: IntNullableFilter | number | null
-    contrato?: IntNullableFilter | number | null
-    dni?: IntNullableFilter | number | null
-    fecha?: DateTimeNullableFilter | Date | string | null
-    operador?: StringNullableFilter | string | null
-  }
-
-  export type parcelas_lugaresOrderByWithRelationInput = {
-    idlugar?: SortOrder
-    idparcela?: SortOrderInput | SortOrder
-    idservicio?: SortOrderInput | SortOrder
-    lugar?: SortOrderInput | SortOrder
-    contrato?: SortOrderInput | SortOrder
-    dni?: SortOrderInput | SortOrder
-    fecha?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-  }
-
-  export type parcelas_lugaresWhereUniqueInput = {
-    idlugar?: number
-  }
-
-  export type parcelas_lugaresOrderByWithAggregationInput = {
-    idlugar?: SortOrder
-    idparcela?: SortOrderInput | SortOrder
-    idservicio?: SortOrderInput | SortOrder
-    lugar?: SortOrderInput | SortOrder
-    contrato?: SortOrderInput | SortOrder
-    dni?: SortOrderInput | SortOrder
-    fecha?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    _count?: parcelas_lugaresCountOrderByAggregateInput
-    _avg?: parcelas_lugaresAvgOrderByAggregateInput
-    _max?: parcelas_lugaresMaxOrderByAggregateInput
-    _min?: parcelas_lugaresMinOrderByAggregateInput
-    _sum?: parcelas_lugaresSumOrderByAggregateInput
-  }
-
-  export type parcelas_lugaresScalarWhereWithAggregatesInput = {
-    AND?: parcelas_lugaresScalarWhereWithAggregatesInput | parcelas_lugaresScalarWhereWithAggregatesInput[]
-    OR?: parcelas_lugaresScalarWhereWithAggregatesInput[]
-    NOT?: parcelas_lugaresScalarWhereWithAggregatesInput | parcelas_lugaresScalarWhereWithAggregatesInput[]
-    idlugar?: IntWithAggregatesFilter | number
-    idparcela?: IntNullableWithAggregatesFilter | number | null
-    idservicio?: IntNullableWithAggregatesFilter | number | null
-    lugar?: IntNullableWithAggregatesFilter | number | null
-    contrato?: IntNullableWithAggregatesFilter | number | null
-    dni?: IntNullableWithAggregatesFilter | number | null
-    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    operador?: StringNullableWithAggregatesFilter | string | null
-  }
-
-  export type caja_saWhereInput = {
-    AND?: caja_saWhereInput | caja_saWhereInput[]
-    OR?: caja_saWhereInput[]
-    NOT?: caja_saWhereInput | caja_saWhereInput[]
-    idcaja?: IntFilter | number
-    codigo?: IntNullableFilter | number | null
-    cuenta?: StringNullableFilter | string | null
-    tipo?: StringNullableFilter | string | null
-    serie?: IntNullableFilter | number | null
-    factura?: IntNullableFilter | number | null
-    importe?: FloatNullableFilter | number | null
-    comentarios?: StringNullableFilter | string | null
-    nro_caja?: IntNullableFilter | number | null
-    movim?: StringNullableFilter | string | null
-    fecha?: DateTimeNullableFilter | Date | string | null
-    puesto?: IntNullableFilter | number | null
-    operador?: IntNullableFilter | number | null
-    cuit?: StringNullableFilter | string | null
-    proveedor?: StringNullableFilter | string | null
-    sucursal?: StringNullableFilter | string | null
-  }
-
-  export type caja_saOrderByWithRelationInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrderInput | SortOrder
-    cuenta?: SortOrderInput | SortOrder
-    tipo?: SortOrderInput | SortOrder
-    serie?: SortOrderInput | SortOrder
-    factura?: SortOrderInput | SortOrder
-    importe?: SortOrderInput | SortOrder
-    comentarios?: SortOrderInput | SortOrder
-    nro_caja?: SortOrderInput | SortOrder
-    movim?: SortOrderInput | SortOrder
-    fecha?: SortOrderInput | SortOrder
-    puesto?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    cuit?: SortOrderInput | SortOrder
-    proveedor?: SortOrderInput | SortOrder
-    sucursal?: SortOrderInput | SortOrder
-  }
-
-  export type caja_saWhereUniqueInput = {
-    idcaja?: number
-  }
-
-  export type caja_saOrderByWithAggregationInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrderInput | SortOrder
-    cuenta?: SortOrderInput | SortOrder
-    tipo?: SortOrderInput | SortOrder
-    serie?: SortOrderInput | SortOrder
-    factura?: SortOrderInput | SortOrder
-    importe?: SortOrderInput | SortOrder
-    comentarios?: SortOrderInput | SortOrder
-    nro_caja?: SortOrderInput | SortOrder
-    movim?: SortOrderInput | SortOrder
-    fecha?: SortOrderInput | SortOrder
-    puesto?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    cuit?: SortOrderInput | SortOrder
-    proveedor?: SortOrderInput | SortOrder
-    sucursal?: SortOrderInput | SortOrder
-    _count?: caja_saCountOrderByAggregateInput
-    _avg?: caja_saAvgOrderByAggregateInput
-    _max?: caja_saMaxOrderByAggregateInput
-    _min?: caja_saMinOrderByAggregateInput
-    _sum?: caja_saSumOrderByAggregateInput
-  }
-
-  export type caja_saScalarWhereWithAggregatesInput = {
-    AND?: caja_saScalarWhereWithAggregatesInput | caja_saScalarWhereWithAggregatesInput[]
-    OR?: caja_saScalarWhereWithAggregatesInput[]
-    NOT?: caja_saScalarWhereWithAggregatesInput | caja_saScalarWhereWithAggregatesInput[]
-    idcaja?: IntWithAggregatesFilter | number
-    codigo?: IntNullableWithAggregatesFilter | number | null
-    cuenta?: StringNullableWithAggregatesFilter | string | null
-    tipo?: StringNullableWithAggregatesFilter | string | null
-    serie?: IntNullableWithAggregatesFilter | number | null
-    factura?: IntNullableWithAggregatesFilter | number | null
-    importe?: FloatNullableWithAggregatesFilter | number | null
-    comentarios?: StringNullableWithAggregatesFilter | string | null
-    nro_caja?: IntNullableWithAggregatesFilter | number | null
-    movim?: StringNullableWithAggregatesFilter | string | null
-    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    puesto?: IntNullableWithAggregatesFilter | number | null
-    operador?: IntNullableWithAggregatesFilter | number | null
-    cuit?: StringNullableWithAggregatesFilter | string | null
-    proveedor?: StringNullableWithAggregatesFilter | string | null
-    sucursal?: StringNullableWithAggregatesFilter | string | null
-  }
-
-  export type caja_srlWhereInput = {
-    AND?: caja_srlWhereInput | caja_srlWhereInput[]
-    OR?: caja_srlWhereInput[]
-    NOT?: caja_srlWhereInput | caja_srlWhereInput[]
-    idcaja?: IntFilter | number
-    codigo?: IntNullableFilter | number | null
-    cuenta?: StringNullableFilter | string | null
-    tipo?: StringNullableFilter | string | null
-    serie?: IntNullableFilter | number | null
-    factura?: IntNullableFilter | number | null
-    importe?: FloatNullableFilter | number | null
-    comentarios?: StringNullableFilter | string | null
-    nro_caja?: IntNullableFilter | number | null
-    movim?: StringNullableFilter | string | null
-    fecha?: DateTimeNullableFilter | Date | string | null
-    puesto?: IntNullableFilter | number | null
-    operador?: IntNullableFilter | number | null
-    cuit?: StringNullableFilter | string | null
-    proveedor?: StringNullableFilter | string | null
-    sucursal?: StringNullableFilter | string | null
-  }
-
-  export type caja_srlOrderByWithRelationInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrderInput | SortOrder
-    cuenta?: SortOrderInput | SortOrder
-    tipo?: SortOrderInput | SortOrder
-    serie?: SortOrderInput | SortOrder
-    factura?: SortOrderInput | SortOrder
-    importe?: SortOrderInput | SortOrder
-    comentarios?: SortOrderInput | SortOrder
-    nro_caja?: SortOrderInput | SortOrder
-    movim?: SortOrderInput | SortOrder
-    fecha?: SortOrderInput | SortOrder
-    puesto?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    cuit?: SortOrderInput | SortOrder
-    proveedor?: SortOrderInput | SortOrder
-    sucursal?: SortOrderInput | SortOrder
-  }
-
-  export type caja_srlWhereUniqueInput = {
-    idcaja?: number
-  }
-
-  export type caja_srlOrderByWithAggregationInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrderInput | SortOrder
-    cuenta?: SortOrderInput | SortOrder
-    tipo?: SortOrderInput | SortOrder
-    serie?: SortOrderInput | SortOrder
-    factura?: SortOrderInput | SortOrder
-    importe?: SortOrderInput | SortOrder
-    comentarios?: SortOrderInput | SortOrder
-    nro_caja?: SortOrderInput | SortOrder
-    movim?: SortOrderInput | SortOrder
-    fecha?: SortOrderInput | SortOrder
-    puesto?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    cuit?: SortOrderInput | SortOrder
-    proveedor?: SortOrderInput | SortOrder
-    sucursal?: SortOrderInput | SortOrder
-    _count?: caja_srlCountOrderByAggregateInput
-    _avg?: caja_srlAvgOrderByAggregateInput
-    _max?: caja_srlMaxOrderByAggregateInput
-    _min?: caja_srlMinOrderByAggregateInput
-    _sum?: caja_srlSumOrderByAggregateInput
-  }
-
-  export type caja_srlScalarWhereWithAggregatesInput = {
-    AND?: caja_srlScalarWhereWithAggregatesInput | caja_srlScalarWhereWithAggregatesInput[]
-    OR?: caja_srlScalarWhereWithAggregatesInput[]
-    NOT?: caja_srlScalarWhereWithAggregatesInput | caja_srlScalarWhereWithAggregatesInput[]
-    idcaja?: IntWithAggregatesFilter | number
-    codigo?: IntNullableWithAggregatesFilter | number | null
-    cuenta?: StringNullableWithAggregatesFilter | string | null
-    tipo?: StringNullableWithAggregatesFilter | string | null
-    serie?: IntNullableWithAggregatesFilter | number | null
-    factura?: IntNullableWithAggregatesFilter | number | null
-    importe?: FloatNullableWithAggregatesFilter | number | null
-    comentarios?: StringNullableWithAggregatesFilter | string | null
-    nro_caja?: IntNullableWithAggregatesFilter | number | null
-    movim?: StringNullableWithAggregatesFilter | string | null
-    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    puesto?: IntNullableWithAggregatesFilter | number | null
-    operador?: IntNullableWithAggregatesFilter | number | null
-    cuit?: StringNullableWithAggregatesFilter | string | null
-    proveedor?: StringNullableWithAggregatesFilter | string | null
-    sucursal?: StringNullableWithAggregatesFilter | string | null
-  }
-
-  export type generacion_cajasWhereInput = {
-    AND?: generacion_cajasWhereInput | generacion_cajasWhereInput[]
-    OR?: generacion_cajasWhereInput[]
-    NOT?: generacion_cajasWhereInput | generacion_cajasWhereInput[]
-    idgeneracion?: IntFilter | number
-    desde?: DateTimeNullableFilter | Date | string | null
-    hasta?: DateTimeNullableFilter | Date | string | null
-    empresa?: StringNullableFilter | string | null
-    operador?: StringNullableFilter | string | null
-    fecha?: DateTimeNullableFilter | Date | string | null
-  }
-
-  export type generacion_cajasOrderByWithRelationInput = {
-    idgeneracion?: SortOrder
-    desde?: SortOrderInput | SortOrder
-    hasta?: SortOrderInput | SortOrder
-    empresa?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    fecha?: SortOrderInput | SortOrder
-  }
-
-  export type generacion_cajasWhereUniqueInput = {
-    idgeneracion?: number
-  }
-
-  export type generacion_cajasOrderByWithAggregationInput = {
-    idgeneracion?: SortOrder
-    desde?: SortOrderInput | SortOrder
-    hasta?: SortOrderInput | SortOrder
-    empresa?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    fecha?: SortOrderInput | SortOrder
-    _count?: generacion_cajasCountOrderByAggregateInput
-    _avg?: generacion_cajasAvgOrderByAggregateInput
-    _max?: generacion_cajasMaxOrderByAggregateInput
-    _min?: generacion_cajasMinOrderByAggregateInput
-    _sum?: generacion_cajasSumOrderByAggregateInput
-  }
-
-  export type generacion_cajasScalarWhereWithAggregatesInput = {
-    AND?: generacion_cajasScalarWhereWithAggregatesInput | generacion_cajasScalarWhereWithAggregatesInput[]
-    OR?: generacion_cajasScalarWhereWithAggregatesInput[]
-    NOT?: generacion_cajasScalarWhereWithAggregatesInput | generacion_cajasScalarWhereWithAggregatesInput[]
-    idgeneracion?: IntWithAggregatesFilter | number
-    desde?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    hasta?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    empresa?: StringNullableWithAggregatesFilter | string | null
-    operador?: StringNullableWithAggregatesFilter | string | null
-    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
   }
 
   export type ataud_precioCreateInput = {
@@ -46699,6 +51324,122 @@ export namespace Prisma {
     observaciones?: NullableStringFieldUpdateOperationsInput | string | null
     estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type auto_usosCreateInput = {
+    FECHA?: Date | string | null
+    PATENTE?: string | null
+    DESCRIP?: string | null
+    NOMB_OPE?: string | null
+    CHOFER?: string | null
+    HORA1?: string | null
+    HORA2?: string | null
+    TAREA?: string | null
+    OBSERVA_1?: string | null
+    OBSERVA_2?: string | null
+    OPE_LLEGA?: string | null
+    KILO_SAL?: number | null
+    KILO_LLE?: number | null
+  }
+
+  export type auto_usosUncheckedCreateInput = {
+    FECHA?: Date | string | null
+    PATENTE?: string | null
+    DESCRIP?: string | null
+    NOMB_OPE?: string | null
+    CHOFER?: string | null
+    HORA1?: string | null
+    HORA2?: string | null
+    TAREA?: string | null
+    OBSERVA_1?: string | null
+    OBSERVA_2?: string | null
+    OPE_LLEGA?: string | null
+    KILO_SAL?: number | null
+    KILO_LLE?: number | null
+    idusos?: number
+  }
+
+  export type auto_usosUpdateInput = {
+    FECHA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PATENTE?: NullableStringFieldUpdateOperationsInput | string | null
+    DESCRIP?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMB_OPE?: NullableStringFieldUpdateOperationsInput | string | null
+    CHOFER?: NullableStringFieldUpdateOperationsInput | string | null
+    HORA1?: NullableStringFieldUpdateOperationsInput | string | null
+    HORA2?: NullableStringFieldUpdateOperationsInput | string | null
+    TAREA?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA_1?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA_2?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_LLEGA?: NullableStringFieldUpdateOperationsInput | string | null
+    KILO_SAL?: NullableFloatFieldUpdateOperationsInput | number | null
+    KILO_LLE?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type auto_usosUncheckedUpdateInput = {
+    FECHA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PATENTE?: NullableStringFieldUpdateOperationsInput | string | null
+    DESCRIP?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMB_OPE?: NullableStringFieldUpdateOperationsInput | string | null
+    CHOFER?: NullableStringFieldUpdateOperationsInput | string | null
+    HORA1?: NullableStringFieldUpdateOperationsInput | string | null
+    HORA2?: NullableStringFieldUpdateOperationsInput | string | null
+    TAREA?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA_1?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA_2?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_LLEGA?: NullableStringFieldUpdateOperationsInput | string | null
+    KILO_SAL?: NullableFloatFieldUpdateOperationsInput | number | null
+    KILO_LLE?: NullableFloatFieldUpdateOperationsInput | number | null
+    idusos?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type auto_usosCreateManyInput = {
+    FECHA?: Date | string | null
+    PATENTE?: string | null
+    DESCRIP?: string | null
+    NOMB_OPE?: string | null
+    CHOFER?: string | null
+    HORA1?: string | null
+    HORA2?: string | null
+    TAREA?: string | null
+    OBSERVA_1?: string | null
+    OBSERVA_2?: string | null
+    OPE_LLEGA?: string | null
+    KILO_SAL?: number | null
+    KILO_LLE?: number | null
+    idusos?: number
+  }
+
+  export type auto_usosUpdateManyMutationInput = {
+    FECHA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PATENTE?: NullableStringFieldUpdateOperationsInput | string | null
+    DESCRIP?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMB_OPE?: NullableStringFieldUpdateOperationsInput | string | null
+    CHOFER?: NullableStringFieldUpdateOperationsInput | string | null
+    HORA1?: NullableStringFieldUpdateOperationsInput | string | null
+    HORA2?: NullableStringFieldUpdateOperationsInput | string | null
+    TAREA?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA_1?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA_2?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_LLEGA?: NullableStringFieldUpdateOperationsInput | string | null
+    KILO_SAL?: NullableFloatFieldUpdateOperationsInput | number | null
+    KILO_LLE?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type auto_usosUncheckedUpdateManyInput = {
+    FECHA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PATENTE?: NullableStringFieldUpdateOperationsInput | string | null
+    DESCRIP?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMB_OPE?: NullableStringFieldUpdateOperationsInput | string | null
+    CHOFER?: NullableStringFieldUpdateOperationsInput | string | null
+    HORA1?: NullableStringFieldUpdateOperationsInput | string | null
+    HORA2?: NullableStringFieldUpdateOperationsInput | string | null
+    TAREA?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA_1?: NullableStringFieldUpdateOperationsInput | string | null
+    OBSERVA_2?: NullableStringFieldUpdateOperationsInput | string | null
+    OPE_LLEGA?: NullableStringFieldUpdateOperationsInput | string | null
+    KILO_SAL?: NullableFloatFieldUpdateOperationsInput | number | null
+    KILO_LLE?: NullableFloatFieldUpdateOperationsInput | number | null
+    idusos?: IntFieldUpdateOperationsInput | number
   }
 
   export type autosCreateInput = {
@@ -47046,6 +51787,136 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type caja_saCreateInput = {
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_saUncheckedCreateInput = {
+    idcaja?: number
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_saUpdateInput = {
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_saUncheckedUpdateInput = {
+    idcaja?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_saCreateManyInput = {
+    idcaja?: number
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_saUpdateManyMutationInput = {
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_saUncheckedUpdateManyInput = {
+    idcaja?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type caja_sepelioCreateInput = {
     operador?: string | null
     detalle?: string | null
@@ -47169,6 +52040,136 @@ export namespace Prisma {
     ultimacarga?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type caja_srlCreateInput = {
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_srlUncheckedCreateInput = {
+    idcaja?: number
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_srlUpdateInput = {
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_srlUncheckedUpdateInput = {
+    idcaja?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_srlCreateManyInput = {
+    idcaja?: number
+    codigo?: number | null
+    cuenta?: string | null
+    tipo?: string | null
+    serie?: number | null
+    factura?: number | null
+    importe?: number | null
+    comentarios?: string | null
+    nro_caja?: number | null
+    movim?: string | null
+    fecha?: Date | string | null
+    puesto?: number | null
+    operador?: number | null
+    cuit?: string | null
+    proveedor?: string | null
+    sucursal?: string | null
+  }
+
+  export type caja_srlUpdateManyMutationInput = {
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type caja_srlUncheckedUpdateManyInput = {
+    idcaja?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    serie?: NullableIntFieldUpdateOperationsInput | number | null
+    factura?: NullableIntFieldUpdateOperationsInput | number | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
+    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
+    movim?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    puesto?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableIntFieldUpdateOperationsInput | number | null
+    cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type conceptosCreateInput = {
     concepto?: string | null
     tipo?: string | null
@@ -47206,6 +52207,59 @@ export namespace Prisma {
     idconcepto?: IntFieldUpdateOperationsInput | number
     concepto?: NullableStringFieldUpdateOperationsInput | string | null
     tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type conceptos_sepelio_cuentasCreateInput = {
+    idconcepto?: number | null
+    idempresa?: number | null
+    sc_descripcion?: string | null
+    sc_cuenta?: number | null
+  }
+
+  export type conceptos_sepelio_cuentasUncheckedCreateInput = {
+    idconcepto?: number | null
+    idempresa?: number | null
+    sc_descripcion?: string | null
+    sc_cuenta?: number | null
+    id?: number
+  }
+
+  export type conceptos_sepelio_cuentasUpdateInput = {
+    idconcepto?: NullableIntFieldUpdateOperationsInput | number | null
+    idempresa?: NullableIntFieldUpdateOperationsInput | number | null
+    sc_descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    sc_cuenta?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type conceptos_sepelio_cuentasUncheckedUpdateInput = {
+    idconcepto?: NullableIntFieldUpdateOperationsInput | number | null
+    idempresa?: NullableIntFieldUpdateOperationsInput | number | null
+    sc_descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    sc_cuenta?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type conceptos_sepelio_cuentasCreateManyInput = {
+    idconcepto?: number | null
+    idempresa?: number | null
+    sc_descripcion?: string | null
+    sc_cuenta?: number | null
+    id?: number
+  }
+
+  export type conceptos_sepelio_cuentasUpdateManyMutationInput = {
+    idconcepto?: NullableIntFieldUpdateOperationsInput | number | null
+    idempresa?: NullableIntFieldUpdateOperationsInput | number | null
+    sc_descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    sc_cuenta?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type conceptos_sepelio_cuentasUncheckedUpdateManyInput = {
+    idconcepto?: NullableIntFieldUpdateOperationsInput | number | null
+    idempresa?: NullableIntFieldUpdateOperationsInput | number | null
+    sc_descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    sc_cuenta?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type fabricante_ataudCreateInput = {
@@ -47507,6 +52561,66 @@ export namespace Prisma {
     idservicio?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
+  export type generacion_cajasCreateInput = {
+    desde?: Date | string | null
+    hasta?: Date | string | null
+    empresa?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
+  }
+
+  export type generacion_cajasUncheckedCreateInput = {
+    idgeneracion?: number
+    desde?: Date | string | null
+    hasta?: Date | string | null
+    empresa?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
+  }
+
+  export type generacion_cajasUpdateInput = {
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type generacion_cajasUncheckedUpdateInput = {
+    idgeneracion?: IntFieldUpdateOperationsInput | number
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type generacion_cajasCreateManyInput = {
+    idgeneracion?: number
+    desde?: Date | string | null
+    hasta?: Date | string | null
+    empresa?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
+  }
+
+  export type generacion_cajasUpdateManyMutationInput = {
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type generacion_cajasUncheckedUpdateManyInput = {
+    idgeneracion?: IntFieldUpdateOperationsInput | number
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type historial_autosCreateInput = {
     patente?: string | null
     idauto?: number | null
@@ -47692,6 +52806,87 @@ export namespace Prisma {
     dias_habiles?: NullableIntFieldUpdateOperationsInput | number | null
     finde?: NullableIntFieldUpdateOperationsInput | number | null
     feriado?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type informe_tareasCreateInput = {
+    idinforme?: number | null
+    idservicio?: number | null
+    operador?: string | null
+    tarea?: string | null
+    inicio?: Date | string | null
+    fin?: Date | string | null
+    horas?: number | null
+    monto?: number | null
+  }
+
+  export type informe_tareasUncheckedCreateInput = {
+    idtareas?: number
+    idinforme?: number | null
+    idservicio?: number | null
+    operador?: string | null
+    tarea?: string | null
+    inicio?: Date | string | null
+    fin?: Date | string | null
+    horas?: number | null
+    monto?: number | null
+  }
+
+  export type informe_tareasUpdateInput = {
+    idinforme?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    tarea?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
+    monto?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type informe_tareasUncheckedUpdateInput = {
+    idtareas?: IntFieldUpdateOperationsInput | number
+    idinforme?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    tarea?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
+    monto?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type informe_tareasCreateManyInput = {
+    idtareas?: number
+    idinforme?: number | null
+    idservicio?: number | null
+    operador?: string | null
+    tarea?: string | null
+    inicio?: Date | string | null
+    fin?: Date | string | null
+    horas?: number | null
+    monto?: number | null
+  }
+
+  export type informe_tareasUpdateManyMutationInput = {
+    idinforme?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    tarea?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
+    monto?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type informe_tareasUncheckedUpdateManyInput = {
+    idtareas?: IntFieldUpdateOperationsInput | number
+    idinforme?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    tarea?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
+    monto?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ingreso_cajaCreateInput = {
@@ -47886,6 +53081,94 @@ export namespace Prisma {
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_subida?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     empresa?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type lic_conducirCreateInput = {
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    FEC_NAC?: Date | string | null
+    NRO_CARNET?: string | null
+    FEC_VENCI?: Date | string | null
+    CLASE?: string | null
+    GRUPO?: string | null
+    FACTOR_RH?: string | null
+  }
+
+  export type lic_conducirUncheckedCreateInput = {
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    FEC_NAC?: Date | string | null
+    NRO_CARNET?: string | null
+    FEC_VENCI?: Date | string | null
+    CLASE?: string | null
+    GRUPO?: string | null
+    FACTOR_RH?: string | null
+    id?: number
+  }
+
+  export type lic_conducirUpdateInput = {
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_NAC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NRO_CARNET?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_VENCI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CLASE?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableStringFieldUpdateOperationsInput | string | null
+    FACTOR_RH?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type lic_conducirUncheckedUpdateInput = {
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_NAC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NRO_CARNET?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_VENCI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CLASE?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableStringFieldUpdateOperationsInput | string | null
+    FACTOR_RH?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type lic_conducirCreateManyInput = {
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    FEC_NAC?: Date | string | null
+    NRO_CARNET?: string | null
+    FEC_VENCI?: Date | string | null
+    CLASE?: string | null
+    GRUPO?: string | null
+    FACTOR_RH?: string | null
+    id?: number
+  }
+
+  export type lic_conducirUpdateManyMutationInput = {
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_NAC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NRO_CARNET?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_VENCI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CLASE?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableStringFieldUpdateOperationsInput | string | null
+    FACTOR_RH?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type lic_conducirUncheckedUpdateManyInput = {
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_NAC?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NRO_CARNET?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_VENCI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CLASE?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableStringFieldUpdateOperationsInput | string | null
+    FACTOR_RH?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type novedadesCreateInput = {
@@ -48087,6 +53370,80 @@ export namespace Prisma {
     operador_asignacion?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_asignacion?: NullableStringFieldUpdateOperationsInput | string | null
     lugares?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type parcelas_lugaresCreateInput = {
+    idparcela?: number | null
+    idservicio?: number | null
+    lugar?: number | null
+    contrato?: number | null
+    dni?: number | null
+    fecha?: Date | string | null
+    operador?: string | null
+  }
+
+  export type parcelas_lugaresUncheckedCreateInput = {
+    idlugar?: number
+    idparcela?: number | null
+    idservicio?: number | null
+    lugar?: number | null
+    contrato?: number | null
+    dni?: number | null
+    fecha?: Date | string | null
+    operador?: string | null
+  }
+
+  export type parcelas_lugaresUpdateInput = {
+    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    lugar?: NullableIntFieldUpdateOperationsInput | number | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type parcelas_lugaresUncheckedUpdateInput = {
+    idlugar?: IntFieldUpdateOperationsInput | number
+    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    lugar?: NullableIntFieldUpdateOperationsInput | number | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type parcelas_lugaresCreateManyInput = {
+    idlugar?: number
+    idparcela?: number | null
+    idservicio?: number | null
+    lugar?: number | null
+    contrato?: number | null
+    dni?: number | null
+    fecha?: Date | string | null
+    operador?: string | null
+  }
+
+  export type parcelas_lugaresUpdateManyMutationInput = {
+    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    lugar?: NullableIntFieldUpdateOperationsInput | number | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type parcelas_lugaresUncheckedUpdateManyInput = {
+    idlugar?: IntFieldUpdateOperationsInput | number
+    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    lugar?: NullableIntFieldUpdateOperationsInput | number | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type planificacion_guardiasCreateInput = {
@@ -48367,6 +53724,108 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type rodadosCreateInput = {
+    patente?: string | null
+    descripcion?: string | null
+    km?: string | null
+    responsable?: string | null
+    n_poliza?: string | null
+    emp_poliza?: string | null
+    n_motor?: string | null
+    n_chasis?: string | null
+    ano_fabri?: string | null
+    desde?: Date | string | null
+    hasta?: Date | string | null
+  }
+
+  export type rodadosUncheckedCreateInput = {
+    patente?: string | null
+    descripcion?: string | null
+    km?: string | null
+    responsable?: string | null
+    n_poliza?: string | null
+    emp_poliza?: string | null
+    n_motor?: string | null
+    n_chasis?: string | null
+    ano_fabri?: string | null
+    desde?: Date | string | null
+    hasta?: Date | string | null
+    id?: number
+  }
+
+  export type rodadosUpdateInput = {
+    patente?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    km?: NullableStringFieldUpdateOperationsInput | string | null
+    responsable?: NullableStringFieldUpdateOperationsInput | string | null
+    n_poliza?: NullableStringFieldUpdateOperationsInput | string | null
+    emp_poliza?: NullableStringFieldUpdateOperationsInput | string | null
+    n_motor?: NullableStringFieldUpdateOperationsInput | string | null
+    n_chasis?: NullableStringFieldUpdateOperationsInput | string | null
+    ano_fabri?: NullableStringFieldUpdateOperationsInput | string | null
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type rodadosUncheckedUpdateInput = {
+    patente?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    km?: NullableStringFieldUpdateOperationsInput | string | null
+    responsable?: NullableStringFieldUpdateOperationsInput | string | null
+    n_poliza?: NullableStringFieldUpdateOperationsInput | string | null
+    emp_poliza?: NullableStringFieldUpdateOperationsInput | string | null
+    n_motor?: NullableStringFieldUpdateOperationsInput | string | null
+    n_chasis?: NullableStringFieldUpdateOperationsInput | string | null
+    ano_fabri?: NullableStringFieldUpdateOperationsInput | string | null
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rodadosCreateManyInput = {
+    patente?: string | null
+    descripcion?: string | null
+    km?: string | null
+    responsable?: string | null
+    n_poliza?: string | null
+    emp_poliza?: string | null
+    n_motor?: string | null
+    n_chasis?: string | null
+    ano_fabri?: string | null
+    desde?: Date | string | null
+    hasta?: Date | string | null
+    id?: number
+  }
+
+  export type rodadosUpdateManyMutationInput = {
+    patente?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    km?: NullableStringFieldUpdateOperationsInput | string | null
+    responsable?: NullableStringFieldUpdateOperationsInput | string | null
+    n_poliza?: NullableStringFieldUpdateOperationsInput | string | null
+    emp_poliza?: NullableStringFieldUpdateOperationsInput | string | null
+    n_motor?: NullableStringFieldUpdateOperationsInput | string | null
+    n_chasis?: NullableStringFieldUpdateOperationsInput | string | null
+    ano_fabri?: NullableStringFieldUpdateOperationsInput | string | null
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type rodadosUncheckedUpdateManyInput = {
+    patente?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    km?: NullableStringFieldUpdateOperationsInput | string | null
+    responsable?: NullableStringFieldUpdateOperationsInput | string | null
+    n_poliza?: NullableStringFieldUpdateOperationsInput | string | null
+    emp_poliza?: NullableStringFieldUpdateOperationsInput | string | null
+    n_motor?: NullableStringFieldUpdateOperationsInput | string | null
+    n_chasis?: NullableStringFieldUpdateOperationsInput | string | null
+    ano_fabri?: NullableStringFieldUpdateOperationsInput | string | null
+    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
   export type servicio_detallesCreateInput = {
     idservicio?: number | null
     detalle?: string | null
@@ -48569,6 +54028,87 @@ export namespace Prisma {
     aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
     operadorap?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_aprobacion?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type servicio_informesCreateInput = {
+    idservicio?: number | null
+    fecha?: Date | string | null
+    aprobado?: boolean | null
+    fecha_aprobado?: Date | string | null
+    operador_aprobado?: string | null
+    liquidado?: boolean | null
+    fecha_liquidado?: Date | string | null
+    operador_liquidado?: string | null
+  }
+
+  export type servicio_informesUncheckedCreateInput = {
+    idinforme?: number
+    idservicio?: number | null
+    fecha?: Date | string | null
+    aprobado?: boolean | null
+    fecha_aprobado?: Date | string | null
+    operador_aprobado?: string | null
+    liquidado?: boolean | null
+    fecha_liquidado?: Date | string | null
+    operador_liquidado?: string | null
+  }
+
+  export type servicio_informesUpdateInput = {
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_aprobado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador_aprobado?: NullableStringFieldUpdateOperationsInput | string | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador_liquidado?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type servicio_informesUncheckedUpdateInput = {
+    idinforme?: IntFieldUpdateOperationsInput | number
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_aprobado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador_aprobado?: NullableStringFieldUpdateOperationsInput | string | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador_liquidado?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type servicio_informesCreateManyInput = {
+    idinforme?: number
+    idservicio?: number | null
+    fecha?: Date | string | null
+    aprobado?: boolean | null
+    fecha_aprobado?: Date | string | null
+    operador_aprobado?: string | null
+    liquidado?: boolean | null
+    fecha_liquidado?: Date | string | null
+    operador_liquidado?: string | null
+  }
+
+  export type servicio_informesUpdateManyMutationInput = {
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_aprobado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador_aprobado?: NullableStringFieldUpdateOperationsInput | string | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador_liquidado?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type servicio_informesUncheckedUpdateManyInput = {
+    idinforme?: IntFieldUpdateOperationsInput | number
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_aprobado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador_aprobado?: NullableStringFieldUpdateOperationsInput | string | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador_liquidado?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type servicio_ventaCreateInput = {
@@ -49500,59 +55040,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
   }
 
-  export type servicios_liquidacionCreateInput = {
-    idservicio?: number | null
-    total_liquidacion?: number | null
-    fecha_liquidacion?: Date | string | null
-    operador?: string | null
-  }
-
-  export type servicios_liquidacionUncheckedCreateInput = {
-    idliquidacion?: number
-    idservicio?: number | null
-    total_liquidacion?: number | null
-    fecha_liquidacion?: Date | string | null
-    operador?: string | null
-  }
-
-  export type servicios_liquidacionUpdateInput = {
-    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
-    total_liquidacion?: NullableIntFieldUpdateOperationsInput | number | null
-    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type servicios_liquidacionUncheckedUpdateInput = {
-    idliquidacion?: IntFieldUpdateOperationsInput | number
-    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
-    total_liquidacion?: NullableIntFieldUpdateOperationsInput | number | null
-    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type servicios_liquidacionCreateManyInput = {
-    idliquidacion?: number
-    idservicio?: number | null
-    total_liquidacion?: number | null
-    fecha_liquidacion?: Date | string | null
-    operador?: string | null
-  }
-
-  export type servicios_liquidacionUpdateManyMutationInput = {
-    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
-    total_liquidacion?: NullableIntFieldUpdateOperationsInput | number | null
-    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type servicios_liquidacionUncheckedUpdateManyInput = {
-    idliquidacion?: IntFieldUpdateOperationsInput | number
-    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
-    total_liquidacion?: NullableIntFieldUpdateOperationsInput | number | null
-    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type tareasCreateInput = {
     title?: string | null
     allDay?: number | null
@@ -49611,129 +55098,6 @@ export namespace Prisma {
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type tareas_adicionalesCreateInput = {
-    inicio?: Date | string | null
-    fin?: Date | string | null
-    tarea?: string | null
-    operador?: string | null
-    observaciones?: string | null
-    horas?: Date | string | null
-    feriado?: number | null
-    liquidado?: boolean | null
-    fecha_liquidacion?: string | null
-    operadorliq?: string | null
-    aprobado?: boolean | null
-    fecha_aprobacion?: string | null
-    operadorap?: string | null
-    mes_planificacion?: string | null
-  }
-
-  export type tareas_adicionalesUncheckedCreateInput = {
-    idtarea?: number
-    inicio?: Date | string | null
-    fin?: Date | string | null
-    tarea?: string | null
-    operador?: string | null
-    observaciones?: string | null
-    horas?: Date | string | null
-    feriado?: number | null
-    liquidado?: boolean | null
-    fecha_liquidacion?: string | null
-    operadorliq?: string | null
-    aprobado?: boolean | null
-    fecha_aprobacion?: string | null
-    operadorap?: string | null
-    mes_planificacion?: string | null
-  }
-
-  export type tareas_adicionalesUpdateInput = {
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    observaciones?: NullableStringFieldUpdateOperationsInput | string | null
-    horas?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    feriado?: NullableIntFieldUpdateOperationsInput | number | null
-    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_liquidacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
-    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_aprobacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
-    mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type tareas_adicionalesUncheckedUpdateInput = {
-    idtarea?: IntFieldUpdateOperationsInput | number
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    observaciones?: NullableStringFieldUpdateOperationsInput | string | null
-    horas?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    feriado?: NullableIntFieldUpdateOperationsInput | number | null
-    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_liquidacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
-    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_aprobacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
-    mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type tareas_adicionalesCreateManyInput = {
-    idtarea?: number
-    inicio?: Date | string | null
-    fin?: Date | string | null
-    tarea?: string | null
-    operador?: string | null
-    observaciones?: string | null
-    horas?: Date | string | null
-    feriado?: number | null
-    liquidado?: boolean | null
-    fecha_liquidacion?: string | null
-    operadorliq?: string | null
-    aprobado?: boolean | null
-    fecha_aprobacion?: string | null
-    operadorap?: string | null
-    mes_planificacion?: string | null
-  }
-
-  export type tareas_adicionalesUpdateManyMutationInput = {
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    observaciones?: NullableStringFieldUpdateOperationsInput | string | null
-    horas?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    feriado?: NullableIntFieldUpdateOperationsInput | number | null
-    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_liquidacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
-    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_aprobacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
-    mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type tareas_adicionalesUncheckedUpdateManyInput = {
-    idtarea?: IntFieldUpdateOperationsInput | number
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    observaciones?: NullableStringFieldUpdateOperationsInput | string | null
-    horas?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    feriado?: NullableIntFieldUpdateOperationsInput | number | null
-    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_liquidacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
-    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_aprobacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
-    mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type tipo_detalleCreateInput = {
@@ -49861,400 +55225,6 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     temperatura?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type parcelas_lugaresCreateInput = {
-    idparcela?: number | null
-    idservicio?: number | null
-    lugar?: number | null
-    contrato?: number | null
-    dni?: number | null
-    fecha?: Date | string | null
-    operador?: string | null
-  }
-
-  export type parcelas_lugaresUncheckedCreateInput = {
-    idlugar?: number
-    idparcela?: number | null
-    idservicio?: number | null
-    lugar?: number | null
-    contrato?: number | null
-    dni?: number | null
-    fecha?: Date | string | null
-    operador?: string | null
-  }
-
-  export type parcelas_lugaresUpdateInput = {
-    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
-    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
-    lugar?: NullableIntFieldUpdateOperationsInput | number | null
-    contrato?: NullableIntFieldUpdateOperationsInput | number | null
-    dni?: NullableIntFieldUpdateOperationsInput | number | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type parcelas_lugaresUncheckedUpdateInput = {
-    idlugar?: IntFieldUpdateOperationsInput | number
-    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
-    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
-    lugar?: NullableIntFieldUpdateOperationsInput | number | null
-    contrato?: NullableIntFieldUpdateOperationsInput | number | null
-    dni?: NullableIntFieldUpdateOperationsInput | number | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type parcelas_lugaresCreateManyInput = {
-    idlugar?: number
-    idparcela?: number | null
-    idservicio?: number | null
-    lugar?: number | null
-    contrato?: number | null
-    dni?: number | null
-    fecha?: Date | string | null
-    operador?: string | null
-  }
-
-  export type parcelas_lugaresUpdateManyMutationInput = {
-    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
-    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
-    lugar?: NullableIntFieldUpdateOperationsInput | number | null
-    contrato?: NullableIntFieldUpdateOperationsInput | number | null
-    dni?: NullableIntFieldUpdateOperationsInput | number | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type parcelas_lugaresUncheckedUpdateManyInput = {
-    idlugar?: IntFieldUpdateOperationsInput | number
-    idparcela?: NullableIntFieldUpdateOperationsInput | number | null
-    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
-    lugar?: NullableIntFieldUpdateOperationsInput | number | null
-    contrato?: NullableIntFieldUpdateOperationsInput | number | null
-    dni?: NullableIntFieldUpdateOperationsInput | number | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type caja_saCreateInput = {
-    codigo?: number | null
-    cuenta?: string | null
-    tipo?: string | null
-    serie?: number | null
-    factura?: number | null
-    importe?: number | null
-    comentarios?: string | null
-    nro_caja?: number | null
-    movim?: string | null
-    fecha?: Date | string | null
-    puesto?: number | null
-    operador?: number | null
-    cuit?: string | null
-    proveedor?: string | null
-    sucursal?: string | null
-  }
-
-  export type caja_saUncheckedCreateInput = {
-    idcaja?: number
-    codigo?: number | null
-    cuenta?: string | null
-    tipo?: string | null
-    serie?: number | null
-    factura?: number | null
-    importe?: number | null
-    comentarios?: string | null
-    nro_caja?: number | null
-    movim?: string | null
-    fecha?: Date | string | null
-    puesto?: number | null
-    operador?: number | null
-    cuit?: string | null
-    proveedor?: string | null
-    sucursal?: string | null
-  }
-
-  export type caja_saUpdateInput = {
-    codigo?: NullableIntFieldUpdateOperationsInput | number | null
-    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
-    tipo?: NullableStringFieldUpdateOperationsInput | string | null
-    serie?: NullableIntFieldUpdateOperationsInput | number | null
-    factura?: NullableIntFieldUpdateOperationsInput | number | null
-    importe?: NullableFloatFieldUpdateOperationsInput | number | null
-    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
-    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
-    movim?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    puesto?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableIntFieldUpdateOperationsInput | number | null
-    cuit?: NullableStringFieldUpdateOperationsInput | string | null
-    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type caja_saUncheckedUpdateInput = {
-    idcaja?: IntFieldUpdateOperationsInput | number
-    codigo?: NullableIntFieldUpdateOperationsInput | number | null
-    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
-    tipo?: NullableStringFieldUpdateOperationsInput | string | null
-    serie?: NullableIntFieldUpdateOperationsInput | number | null
-    factura?: NullableIntFieldUpdateOperationsInput | number | null
-    importe?: NullableFloatFieldUpdateOperationsInput | number | null
-    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
-    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
-    movim?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    puesto?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableIntFieldUpdateOperationsInput | number | null
-    cuit?: NullableStringFieldUpdateOperationsInput | string | null
-    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type caja_saCreateManyInput = {
-    idcaja?: number
-    codigo?: number | null
-    cuenta?: string | null
-    tipo?: string | null
-    serie?: number | null
-    factura?: number | null
-    importe?: number | null
-    comentarios?: string | null
-    nro_caja?: number | null
-    movim?: string | null
-    fecha?: Date | string | null
-    puesto?: number | null
-    operador?: number | null
-    cuit?: string | null
-    proveedor?: string | null
-    sucursal?: string | null
-  }
-
-  export type caja_saUpdateManyMutationInput = {
-    codigo?: NullableIntFieldUpdateOperationsInput | number | null
-    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
-    tipo?: NullableStringFieldUpdateOperationsInput | string | null
-    serie?: NullableIntFieldUpdateOperationsInput | number | null
-    factura?: NullableIntFieldUpdateOperationsInput | number | null
-    importe?: NullableFloatFieldUpdateOperationsInput | number | null
-    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
-    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
-    movim?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    puesto?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableIntFieldUpdateOperationsInput | number | null
-    cuit?: NullableStringFieldUpdateOperationsInput | string | null
-    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type caja_saUncheckedUpdateManyInput = {
-    idcaja?: IntFieldUpdateOperationsInput | number
-    codigo?: NullableIntFieldUpdateOperationsInput | number | null
-    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
-    tipo?: NullableStringFieldUpdateOperationsInput | string | null
-    serie?: NullableIntFieldUpdateOperationsInput | number | null
-    factura?: NullableIntFieldUpdateOperationsInput | number | null
-    importe?: NullableFloatFieldUpdateOperationsInput | number | null
-    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
-    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
-    movim?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    puesto?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableIntFieldUpdateOperationsInput | number | null
-    cuit?: NullableStringFieldUpdateOperationsInput | string | null
-    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type caja_srlCreateInput = {
-    codigo?: number | null
-    cuenta?: string | null
-    tipo?: string | null
-    serie?: number | null
-    factura?: number | null
-    importe?: number | null
-    comentarios?: string | null
-    nro_caja?: number | null
-    movim?: string | null
-    fecha?: Date | string | null
-    puesto?: number | null
-    operador?: number | null
-    cuit?: string | null
-    proveedor?: string | null
-    sucursal?: string | null
-  }
-
-  export type caja_srlUncheckedCreateInput = {
-    idcaja?: number
-    codigo?: number | null
-    cuenta?: string | null
-    tipo?: string | null
-    serie?: number | null
-    factura?: number | null
-    importe?: number | null
-    comentarios?: string | null
-    nro_caja?: number | null
-    movim?: string | null
-    fecha?: Date | string | null
-    puesto?: number | null
-    operador?: number | null
-    cuit?: string | null
-    proveedor?: string | null
-    sucursal?: string | null
-  }
-
-  export type caja_srlUpdateInput = {
-    codigo?: NullableIntFieldUpdateOperationsInput | number | null
-    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
-    tipo?: NullableStringFieldUpdateOperationsInput | string | null
-    serie?: NullableIntFieldUpdateOperationsInput | number | null
-    factura?: NullableIntFieldUpdateOperationsInput | number | null
-    importe?: NullableFloatFieldUpdateOperationsInput | number | null
-    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
-    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
-    movim?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    puesto?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableIntFieldUpdateOperationsInput | number | null
-    cuit?: NullableStringFieldUpdateOperationsInput | string | null
-    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type caja_srlUncheckedUpdateInput = {
-    idcaja?: IntFieldUpdateOperationsInput | number
-    codigo?: NullableIntFieldUpdateOperationsInput | number | null
-    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
-    tipo?: NullableStringFieldUpdateOperationsInput | string | null
-    serie?: NullableIntFieldUpdateOperationsInput | number | null
-    factura?: NullableIntFieldUpdateOperationsInput | number | null
-    importe?: NullableFloatFieldUpdateOperationsInput | number | null
-    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
-    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
-    movim?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    puesto?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableIntFieldUpdateOperationsInput | number | null
-    cuit?: NullableStringFieldUpdateOperationsInput | string | null
-    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type caja_srlCreateManyInput = {
-    idcaja?: number
-    codigo?: number | null
-    cuenta?: string | null
-    tipo?: string | null
-    serie?: number | null
-    factura?: number | null
-    importe?: number | null
-    comentarios?: string | null
-    nro_caja?: number | null
-    movim?: string | null
-    fecha?: Date | string | null
-    puesto?: number | null
-    operador?: number | null
-    cuit?: string | null
-    proveedor?: string | null
-    sucursal?: string | null
-  }
-
-  export type caja_srlUpdateManyMutationInput = {
-    codigo?: NullableIntFieldUpdateOperationsInput | number | null
-    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
-    tipo?: NullableStringFieldUpdateOperationsInput | string | null
-    serie?: NullableIntFieldUpdateOperationsInput | number | null
-    factura?: NullableIntFieldUpdateOperationsInput | number | null
-    importe?: NullableFloatFieldUpdateOperationsInput | number | null
-    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
-    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
-    movim?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    puesto?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableIntFieldUpdateOperationsInput | number | null
-    cuit?: NullableStringFieldUpdateOperationsInput | string | null
-    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type caja_srlUncheckedUpdateManyInput = {
-    idcaja?: IntFieldUpdateOperationsInput | number
-    codigo?: NullableIntFieldUpdateOperationsInput | number | null
-    cuenta?: NullableStringFieldUpdateOperationsInput | string | null
-    tipo?: NullableStringFieldUpdateOperationsInput | string | null
-    serie?: NullableIntFieldUpdateOperationsInput | number | null
-    factura?: NullableIntFieldUpdateOperationsInput | number | null
-    importe?: NullableFloatFieldUpdateOperationsInput | number | null
-    comentarios?: NullableStringFieldUpdateOperationsInput | string | null
-    nro_caja?: NullableIntFieldUpdateOperationsInput | number | null
-    movim?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    puesto?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableIntFieldUpdateOperationsInput | number | null
-    cuit?: NullableStringFieldUpdateOperationsInput | string | null
-    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type generacion_cajasCreateInput = {
-    desde?: Date | string | null
-    hasta?: Date | string | null
-    empresa?: string | null
-    operador?: string | null
-    fecha?: Date | string | null
-  }
-
-  export type generacion_cajasUncheckedCreateInput = {
-    idgeneracion?: number
-    desde?: Date | string | null
-    hasta?: Date | string | null
-    empresa?: string | null
-    operador?: string | null
-    fecha?: Date | string | null
-  }
-
-  export type generacion_cajasUpdateInput = {
-    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    empresa?: NullableStringFieldUpdateOperationsInput | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type generacion_cajasUncheckedUpdateInput = {
-    idgeneracion?: IntFieldUpdateOperationsInput | number
-    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    empresa?: NullableStringFieldUpdateOperationsInput | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type generacion_cajasCreateManyInput = {
-    idgeneracion?: number
-    desde?: Date | string | null
-    hasta?: Date | string | null
-    empresa?: string | null
-    operador?: string | null
-    fecha?: Date | string | null
-  }
-
-  export type generacion_cajasUpdateManyMutationInput = {
-    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    empresa?: NullableStringFieldUpdateOperationsInput | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type generacion_cajasUncheckedUpdateManyInput = {
-    idgeneracion?: IntFieldUpdateOperationsInput | number
-    desde?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasta?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    empresa?: NullableStringFieldUpdateOperationsInput | string | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type IntFilter = {
@@ -50610,6 +55580,69 @@ export namespace Prisma {
     stock?: SortOrder
   }
 
+  export type auto_usosCountOrderByAggregateInput = {
+    FECHA?: SortOrder
+    PATENTE?: SortOrder
+    DESCRIP?: SortOrder
+    NOMB_OPE?: SortOrder
+    CHOFER?: SortOrder
+    HORA1?: SortOrder
+    HORA2?: SortOrder
+    TAREA?: SortOrder
+    OBSERVA_1?: SortOrder
+    OBSERVA_2?: SortOrder
+    OPE_LLEGA?: SortOrder
+    KILO_SAL?: SortOrder
+    KILO_LLE?: SortOrder
+    idusos?: SortOrder
+  }
+
+  export type auto_usosAvgOrderByAggregateInput = {
+    KILO_SAL?: SortOrder
+    KILO_LLE?: SortOrder
+    idusos?: SortOrder
+  }
+
+  export type auto_usosMaxOrderByAggregateInput = {
+    FECHA?: SortOrder
+    PATENTE?: SortOrder
+    DESCRIP?: SortOrder
+    NOMB_OPE?: SortOrder
+    CHOFER?: SortOrder
+    HORA1?: SortOrder
+    HORA2?: SortOrder
+    TAREA?: SortOrder
+    OBSERVA_1?: SortOrder
+    OBSERVA_2?: SortOrder
+    OPE_LLEGA?: SortOrder
+    KILO_SAL?: SortOrder
+    KILO_LLE?: SortOrder
+    idusos?: SortOrder
+  }
+
+  export type auto_usosMinOrderByAggregateInput = {
+    FECHA?: SortOrder
+    PATENTE?: SortOrder
+    DESCRIP?: SortOrder
+    NOMB_OPE?: SortOrder
+    CHOFER?: SortOrder
+    HORA1?: SortOrder
+    HORA2?: SortOrder
+    TAREA?: SortOrder
+    OBSERVA_1?: SortOrder
+    OBSERVA_2?: SortOrder
+    OPE_LLEGA?: SortOrder
+    KILO_SAL?: SortOrder
+    KILO_LLE?: SortOrder
+    idusos?: SortOrder
+  }
+
+  export type auto_usosSumOrderByAggregateInput = {
+    KILO_SAL?: SortOrder
+    KILO_LLE?: SortOrder
+    idusos?: SortOrder
+  }
+
   export type autosCountOrderByAggregateInput = {
     patente?: SortOrder
     auto?: SortOrder
@@ -50815,6 +55848,85 @@ export namespace Prisma {
     idauto?: SortOrder
   }
 
+  export type caja_saCountOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_saAvgOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    nro_caja?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type caja_saMaxOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_saMinOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_saSumOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    nro_caja?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+  }
+
   export type caja_sepelioCountOrderByAggregateInput = {
     idcaja?: SortOrder
     operador?: SortOrder
@@ -50887,6 +55999,85 @@ export namespace Prisma {
     ptoventa?: SortOrder
   }
 
+  export type caja_srlCountOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_srlAvgOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    nro_caja?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type caja_srlMaxOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_srlMinOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    cuenta?: SortOrder
+    tipo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    comentarios?: SortOrder
+    nro_caja?: SortOrder
+    movim?: SortOrder
+    fecha?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+    cuit?: SortOrder
+    proveedor?: SortOrder
+    sucursal?: SortOrder
+  }
+
+  export type caja_srlSumOrderByAggregateInput = {
+    idcaja?: SortOrder
+    codigo?: SortOrder
+    serie?: SortOrder
+    factura?: SortOrder
+    importe?: SortOrder
+    nro_caja?: SortOrder
+    puesto?: SortOrder
+    operador?: SortOrder
+  }
+
   export type conceptosCountOrderByAggregateInput = {
     idconcepto?: SortOrder
     concepto?: SortOrder
@@ -50911,6 +56102,44 @@ export namespace Prisma {
 
   export type conceptosSumOrderByAggregateInput = {
     idconcepto?: SortOrder
+  }
+
+  export type conceptos_sepelio_cuentasCountOrderByAggregateInput = {
+    idconcepto?: SortOrder
+    idempresa?: SortOrder
+    sc_descripcion?: SortOrder
+    sc_cuenta?: SortOrder
+    id?: SortOrder
+  }
+
+  export type conceptos_sepelio_cuentasAvgOrderByAggregateInput = {
+    idconcepto?: SortOrder
+    idempresa?: SortOrder
+    sc_cuenta?: SortOrder
+    id?: SortOrder
+  }
+
+  export type conceptos_sepelio_cuentasMaxOrderByAggregateInput = {
+    idconcepto?: SortOrder
+    idempresa?: SortOrder
+    sc_descripcion?: SortOrder
+    sc_cuenta?: SortOrder
+    id?: SortOrder
+  }
+
+  export type conceptos_sepelio_cuentasMinOrderByAggregateInput = {
+    idconcepto?: SortOrder
+    idempresa?: SortOrder
+    sc_descripcion?: SortOrder
+    sc_cuenta?: SortOrder
+    id?: SortOrder
+  }
+
+  export type conceptos_sepelio_cuentasSumOrderByAggregateInput = {
+    idconcepto?: SortOrder
+    idempresa?: SortOrder
+    sc_cuenta?: SortOrder
+    id?: SortOrder
   }
 
   export type fabricante_ataudCountOrderByAggregateInput = {
@@ -51095,6 +56324,41 @@ export namespace Prisma {
     idservicio?: SortOrder
   }
 
+  export type generacion_cajasCountOrderByAggregateInput = {
+    idgeneracion?: SortOrder
+    desde?: SortOrder
+    hasta?: SortOrder
+    empresa?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
+  }
+
+  export type generacion_cajasAvgOrderByAggregateInput = {
+    idgeneracion?: SortOrder
+  }
+
+  export type generacion_cajasMaxOrderByAggregateInput = {
+    idgeneracion?: SortOrder
+    desde?: SortOrder
+    hasta?: SortOrder
+    empresa?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
+  }
+
+  export type generacion_cajasMinOrderByAggregateInput = {
+    idgeneracion?: SortOrder
+    desde?: SortOrder
+    hasta?: SortOrder
+    empresa?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
+  }
+
+  export type generacion_cajasSumOrderByAggregateInput = {
+    idgeneracion?: SortOrder
+  }
+
   export type historial_autosCountOrderByAggregateInput = {
     idhistorial?: SortOrder
     patente?: SortOrder
@@ -51217,6 +56481,58 @@ export namespace Prisma {
     feriado?: SortOrder
   }
 
+  export type informe_tareasCountOrderByAggregateInput = {
+    idtareas?: SortOrder
+    idinforme?: SortOrder
+    idservicio?: SortOrder
+    operador?: SortOrder
+    tarea?: SortOrder
+    inicio?: SortOrder
+    fin?: SortOrder
+    horas?: SortOrder
+    monto?: SortOrder
+  }
+
+  export type informe_tareasAvgOrderByAggregateInput = {
+    idtareas?: SortOrder
+    idinforme?: SortOrder
+    idservicio?: SortOrder
+    horas?: SortOrder
+    monto?: SortOrder
+  }
+
+  export type informe_tareasMaxOrderByAggregateInput = {
+    idtareas?: SortOrder
+    idinforme?: SortOrder
+    idservicio?: SortOrder
+    operador?: SortOrder
+    tarea?: SortOrder
+    inicio?: SortOrder
+    fin?: SortOrder
+    horas?: SortOrder
+    monto?: SortOrder
+  }
+
+  export type informe_tareasMinOrderByAggregateInput = {
+    idtareas?: SortOrder
+    idinforme?: SortOrder
+    idservicio?: SortOrder
+    operador?: SortOrder
+    tarea?: SortOrder
+    inicio?: SortOrder
+    fin?: SortOrder
+    horas?: SortOrder
+    monto?: SortOrder
+  }
+
+  export type informe_tareasSumOrderByAggregateInput = {
+    idtareas?: SortOrder
+    idinforme?: SortOrder
+    idservicio?: SortOrder
+    horas?: SortOrder
+    monto?: SortOrder
+  }
+
   export type ingreso_cajaCountOrderByAggregateInput = {
     idingreso?: SortOrder
     idcaja?: SortOrder
@@ -51334,6 +56650,55 @@ export namespace Prisma {
   export type legajo_virtual_serviciosSumOrderByAggregateInput = {
     idlegajo?: SortOrder
     servicio?: SortOrder
+  }
+
+  export type lic_conducirCountOrderByAggregateInput = {
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    FEC_NAC?: SortOrder
+    NRO_CARNET?: SortOrder
+    FEC_VENCI?: SortOrder
+    CLASE?: SortOrder
+    GRUPO?: SortOrder
+    FACTOR_RH?: SortOrder
+    id?: SortOrder
+  }
+
+  export type lic_conducirAvgOrderByAggregateInput = {
+    NRO_DOC?: SortOrder
+    id?: SortOrder
+  }
+
+  export type lic_conducirMaxOrderByAggregateInput = {
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    FEC_NAC?: SortOrder
+    NRO_CARNET?: SortOrder
+    FEC_VENCI?: SortOrder
+    CLASE?: SortOrder
+    GRUPO?: SortOrder
+    FACTOR_RH?: SortOrder
+    id?: SortOrder
+  }
+
+  export type lic_conducirMinOrderByAggregateInput = {
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    FEC_NAC?: SortOrder
+    NRO_CARNET?: SortOrder
+    FEC_VENCI?: SortOrder
+    CLASE?: SortOrder
+    GRUPO?: SortOrder
+    FACTOR_RH?: SortOrder
+    id?: SortOrder
+  }
+
+  export type lic_conducirSumOrderByAggregateInput = {
+    NRO_DOC?: SortOrder
+    id?: SortOrder
   }
 
   export type novedadesCountOrderByAggregateInput = {
@@ -51460,6 +56825,57 @@ export namespace Prisma {
     mza?: SortOrder
     lote?: SortOrder
     lugares?: SortOrder
+  }
+
+  export type parcelas_lugaresCountOrderByAggregateInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrder
+    idservicio?: SortOrder
+    lugar?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+    fecha?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type parcelas_lugaresAvgOrderByAggregateInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrder
+    idservicio?: SortOrder
+    lugar?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+  }
+
+  export type parcelas_lugaresMaxOrderByAggregateInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrder
+    idservicio?: SortOrder
+    lugar?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+    fecha?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type parcelas_lugaresMinOrderByAggregateInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrder
+    idservicio?: SortOrder
+    lugar?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+    fecha?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type parcelas_lugaresSumOrderByAggregateInput = {
+    idlugar?: SortOrder
+    idparcela?: SortOrder
+    idservicio?: SortOrder
+    lugar?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
   }
 
   export type planificacion_guardiasCountOrderByAggregateInput = {
@@ -51629,6 +57045,59 @@ export namespace Prisma {
     estado?: SortOrder
   }
 
+  export type rodadosCountOrderByAggregateInput = {
+    patente?: SortOrder
+    descripcion?: SortOrder
+    km?: SortOrder
+    responsable?: SortOrder
+    n_poliza?: SortOrder
+    emp_poliza?: SortOrder
+    n_motor?: SortOrder
+    n_chasis?: SortOrder
+    ano_fabri?: SortOrder
+    desde?: SortOrder
+    hasta?: SortOrder
+    id?: SortOrder
+  }
+
+  export type rodadosAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type rodadosMaxOrderByAggregateInput = {
+    patente?: SortOrder
+    descripcion?: SortOrder
+    km?: SortOrder
+    responsable?: SortOrder
+    n_poliza?: SortOrder
+    emp_poliza?: SortOrder
+    n_motor?: SortOrder
+    n_chasis?: SortOrder
+    ano_fabri?: SortOrder
+    desde?: SortOrder
+    hasta?: SortOrder
+    id?: SortOrder
+  }
+
+  export type rodadosMinOrderByAggregateInput = {
+    patente?: SortOrder
+    descripcion?: SortOrder
+    km?: SortOrder
+    responsable?: SortOrder
+    n_poliza?: SortOrder
+    emp_poliza?: SortOrder
+    n_motor?: SortOrder
+    n_chasis?: SortOrder
+    ano_fabri?: SortOrder
+    desde?: SortOrder
+    hasta?: SortOrder
+    id?: SortOrder
+  }
+
+  export type rodadosSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type servicio_detallesCountOrderByAggregateInput = {
     iddetalles?: SortOrder
     idservicio?: SortOrder
@@ -51736,6 +57205,52 @@ export namespace Prisma {
 
   export type servicio_gastosSumOrderByAggregateInput = {
     idgastos?: SortOrder
+    idservicio?: SortOrder
+  }
+
+  export type servicio_informesCountOrderByAggregateInput = {
+    idinforme?: SortOrder
+    idservicio?: SortOrder
+    fecha?: SortOrder
+    aprobado?: SortOrder
+    fecha_aprobado?: SortOrder
+    operador_aprobado?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidado?: SortOrder
+    operador_liquidado?: SortOrder
+  }
+
+  export type servicio_informesAvgOrderByAggregateInput = {
+    idinforme?: SortOrder
+    idservicio?: SortOrder
+  }
+
+  export type servicio_informesMaxOrderByAggregateInput = {
+    idinforme?: SortOrder
+    idservicio?: SortOrder
+    fecha?: SortOrder
+    aprobado?: SortOrder
+    fecha_aprobado?: SortOrder
+    operador_aprobado?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidado?: SortOrder
+    operador_liquidado?: SortOrder
+  }
+
+  export type servicio_informesMinOrderByAggregateInput = {
+    idinforme?: SortOrder
+    idservicio?: SortOrder
+    fecha?: SortOrder
+    aprobado?: SortOrder
+    fecha_aprobado?: SortOrder
+    operador_aprobado?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidado?: SortOrder
+    operador_liquidado?: SortOrder
+  }
+
+  export type servicio_informesSumOrderByAggregateInput = {
+    idinforme?: SortOrder
     idservicio?: SortOrder
   }
 
@@ -52243,42 +57758,6 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type servicios_liquidacionCountOrderByAggregateInput = {
-    idliquidacion?: SortOrder
-    idservicio?: SortOrder
-    total_liquidacion?: SortOrder
-    fecha_liquidacion?: SortOrder
-    operador?: SortOrder
-  }
-
-  export type servicios_liquidacionAvgOrderByAggregateInput = {
-    idliquidacion?: SortOrder
-    idservicio?: SortOrder
-    total_liquidacion?: SortOrder
-  }
-
-  export type servicios_liquidacionMaxOrderByAggregateInput = {
-    idliquidacion?: SortOrder
-    idservicio?: SortOrder
-    total_liquidacion?: SortOrder
-    fecha_liquidacion?: SortOrder
-    operador?: SortOrder
-  }
-
-  export type servicios_liquidacionMinOrderByAggregateInput = {
-    idliquidacion?: SortOrder
-    idservicio?: SortOrder
-    total_liquidacion?: SortOrder
-    fecha_liquidacion?: SortOrder
-    operador?: SortOrder
-  }
-
-  export type servicios_liquidacionSumOrderByAggregateInput = {
-    idliquidacion?: SortOrder
-    idservicio?: SortOrder
-    total_liquidacion?: SortOrder
-  }
-
   export type tareasCountOrderByAggregateInput = {
     idevents?: SortOrder
     title?: SortOrder
@@ -52316,70 +57795,6 @@ export namespace Prisma {
     idevents?: SortOrder
     allDay?: SortOrder
     priority?: SortOrder
-  }
-
-  export type tareas_adicionalesCountOrderByAggregateInput = {
-    idtarea?: SortOrder
-    inicio?: SortOrder
-    fin?: SortOrder
-    tarea?: SortOrder
-    operador?: SortOrder
-    observaciones?: SortOrder
-    horas?: SortOrder
-    feriado?: SortOrder
-    liquidado?: SortOrder
-    fecha_liquidacion?: SortOrder
-    operadorliq?: SortOrder
-    aprobado?: SortOrder
-    fecha_aprobacion?: SortOrder
-    operadorap?: SortOrder
-    mes_planificacion?: SortOrder
-  }
-
-  export type tareas_adicionalesAvgOrderByAggregateInput = {
-    idtarea?: SortOrder
-    feriado?: SortOrder
-  }
-
-  export type tareas_adicionalesMaxOrderByAggregateInput = {
-    idtarea?: SortOrder
-    inicio?: SortOrder
-    fin?: SortOrder
-    tarea?: SortOrder
-    operador?: SortOrder
-    observaciones?: SortOrder
-    horas?: SortOrder
-    feriado?: SortOrder
-    liquidado?: SortOrder
-    fecha_liquidacion?: SortOrder
-    operadorliq?: SortOrder
-    aprobado?: SortOrder
-    fecha_aprobacion?: SortOrder
-    operadorap?: SortOrder
-    mes_planificacion?: SortOrder
-  }
-
-  export type tareas_adicionalesMinOrderByAggregateInput = {
-    idtarea?: SortOrder
-    inicio?: SortOrder
-    fin?: SortOrder
-    tarea?: SortOrder
-    operador?: SortOrder
-    observaciones?: SortOrder
-    horas?: SortOrder
-    feriado?: SortOrder
-    liquidado?: SortOrder
-    fecha_liquidacion?: SortOrder
-    operadorliq?: SortOrder
-    aprobado?: SortOrder
-    fecha_aprobacion?: SortOrder
-    operadorap?: SortOrder
-    mes_planificacion?: SortOrder
-  }
-
-  export type tareas_adicionalesSumOrderByAggregateInput = {
-    idtarea?: SortOrder
-    feriado?: SortOrder
   }
 
   export type tipo_detalleCountOrderByAggregateInput = {
@@ -52459,250 +57874,6 @@ export namespace Prisma {
     idservicio?: SortOrder
     dni?: SortOrder
     telefono?: SortOrder
-  }
-
-  export type parcelas_lugaresCountOrderByAggregateInput = {
-    idlugar?: SortOrder
-    idparcela?: SortOrder
-    idservicio?: SortOrder
-    lugar?: SortOrder
-    contrato?: SortOrder
-    dni?: SortOrder
-    fecha?: SortOrder
-    operador?: SortOrder
-  }
-
-  export type parcelas_lugaresAvgOrderByAggregateInput = {
-    idlugar?: SortOrder
-    idparcela?: SortOrder
-    idservicio?: SortOrder
-    lugar?: SortOrder
-    contrato?: SortOrder
-    dni?: SortOrder
-  }
-
-  export type parcelas_lugaresMaxOrderByAggregateInput = {
-    idlugar?: SortOrder
-    idparcela?: SortOrder
-    idservicio?: SortOrder
-    lugar?: SortOrder
-    contrato?: SortOrder
-    dni?: SortOrder
-    fecha?: SortOrder
-    operador?: SortOrder
-  }
-
-  export type parcelas_lugaresMinOrderByAggregateInput = {
-    idlugar?: SortOrder
-    idparcela?: SortOrder
-    idservicio?: SortOrder
-    lugar?: SortOrder
-    contrato?: SortOrder
-    dni?: SortOrder
-    fecha?: SortOrder
-    operador?: SortOrder
-  }
-
-  export type parcelas_lugaresSumOrderByAggregateInput = {
-    idlugar?: SortOrder
-    idparcela?: SortOrder
-    idservicio?: SortOrder
-    lugar?: SortOrder
-    contrato?: SortOrder
-    dni?: SortOrder
-  }
-
-  export type caja_saCountOrderByAggregateInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrder
-    cuenta?: SortOrder
-    tipo?: SortOrder
-    serie?: SortOrder
-    factura?: SortOrder
-    importe?: SortOrder
-    comentarios?: SortOrder
-    nro_caja?: SortOrder
-    movim?: SortOrder
-    fecha?: SortOrder
-    puesto?: SortOrder
-    operador?: SortOrder
-    cuit?: SortOrder
-    proveedor?: SortOrder
-    sucursal?: SortOrder
-  }
-
-  export type caja_saAvgOrderByAggregateInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrder
-    serie?: SortOrder
-    factura?: SortOrder
-    importe?: SortOrder
-    nro_caja?: SortOrder
-    puesto?: SortOrder
-    operador?: SortOrder
-  }
-
-  export type caja_saMaxOrderByAggregateInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrder
-    cuenta?: SortOrder
-    tipo?: SortOrder
-    serie?: SortOrder
-    factura?: SortOrder
-    importe?: SortOrder
-    comentarios?: SortOrder
-    nro_caja?: SortOrder
-    movim?: SortOrder
-    fecha?: SortOrder
-    puesto?: SortOrder
-    operador?: SortOrder
-    cuit?: SortOrder
-    proveedor?: SortOrder
-    sucursal?: SortOrder
-  }
-
-  export type caja_saMinOrderByAggregateInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrder
-    cuenta?: SortOrder
-    tipo?: SortOrder
-    serie?: SortOrder
-    factura?: SortOrder
-    importe?: SortOrder
-    comentarios?: SortOrder
-    nro_caja?: SortOrder
-    movim?: SortOrder
-    fecha?: SortOrder
-    puesto?: SortOrder
-    operador?: SortOrder
-    cuit?: SortOrder
-    proveedor?: SortOrder
-    sucursal?: SortOrder
-  }
-
-  export type caja_saSumOrderByAggregateInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrder
-    serie?: SortOrder
-    factura?: SortOrder
-    importe?: SortOrder
-    nro_caja?: SortOrder
-    puesto?: SortOrder
-    operador?: SortOrder
-  }
-
-  export type caja_srlCountOrderByAggregateInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrder
-    cuenta?: SortOrder
-    tipo?: SortOrder
-    serie?: SortOrder
-    factura?: SortOrder
-    importe?: SortOrder
-    comentarios?: SortOrder
-    nro_caja?: SortOrder
-    movim?: SortOrder
-    fecha?: SortOrder
-    puesto?: SortOrder
-    operador?: SortOrder
-    cuit?: SortOrder
-    proveedor?: SortOrder
-    sucursal?: SortOrder
-  }
-
-  export type caja_srlAvgOrderByAggregateInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrder
-    serie?: SortOrder
-    factura?: SortOrder
-    importe?: SortOrder
-    nro_caja?: SortOrder
-    puesto?: SortOrder
-    operador?: SortOrder
-  }
-
-  export type caja_srlMaxOrderByAggregateInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrder
-    cuenta?: SortOrder
-    tipo?: SortOrder
-    serie?: SortOrder
-    factura?: SortOrder
-    importe?: SortOrder
-    comentarios?: SortOrder
-    nro_caja?: SortOrder
-    movim?: SortOrder
-    fecha?: SortOrder
-    puesto?: SortOrder
-    operador?: SortOrder
-    cuit?: SortOrder
-    proveedor?: SortOrder
-    sucursal?: SortOrder
-  }
-
-  export type caja_srlMinOrderByAggregateInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrder
-    cuenta?: SortOrder
-    tipo?: SortOrder
-    serie?: SortOrder
-    factura?: SortOrder
-    importe?: SortOrder
-    comentarios?: SortOrder
-    nro_caja?: SortOrder
-    movim?: SortOrder
-    fecha?: SortOrder
-    puesto?: SortOrder
-    operador?: SortOrder
-    cuit?: SortOrder
-    proveedor?: SortOrder
-    sucursal?: SortOrder
-  }
-
-  export type caja_srlSumOrderByAggregateInput = {
-    idcaja?: SortOrder
-    codigo?: SortOrder
-    serie?: SortOrder
-    factura?: SortOrder
-    importe?: SortOrder
-    nro_caja?: SortOrder
-    puesto?: SortOrder
-    operador?: SortOrder
-  }
-
-  export type generacion_cajasCountOrderByAggregateInput = {
-    idgeneracion?: SortOrder
-    desde?: SortOrder
-    hasta?: SortOrder
-    empresa?: SortOrder
-    operador?: SortOrder
-    fecha?: SortOrder
-  }
-
-  export type generacion_cajasAvgOrderByAggregateInput = {
-    idgeneracion?: SortOrder
-  }
-
-  export type generacion_cajasMaxOrderByAggregateInput = {
-    idgeneracion?: SortOrder
-    desde?: SortOrder
-    hasta?: SortOrder
-    empresa?: SortOrder
-    operador?: SortOrder
-    fecha?: SortOrder
-  }
-
-  export type generacion_cajasMinOrderByAggregateInput = {
-    idgeneracion?: SortOrder
-    desde?: SortOrder
-    hasta?: SortOrder
-    empresa?: SortOrder
-    operador?: SortOrder
-    fecha?: SortOrder
-  }
-
-  export type generacion_cajasSumOrderByAggregateInput = {
-    idgeneracion?: SortOrder
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
