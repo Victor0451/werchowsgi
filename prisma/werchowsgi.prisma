@@ -850,14 +850,14 @@ model turno_bajas {
 }
 
 model vacaciones {
-  id       String    @id @db.VarChar(255)
-  start    DateTime? @db.DateTime(0)
-  end      DateTime? @db.DateTime(0)
-  allDay   Int?      @db.TinyInt
-  priority Int?      @db.TinyInt
-  title    String?   @db.VarChar(500)
-  user     String?   @db.VarChar(255)
-  detail   String?   @db.VarChar(1000)
+  idvacaciones Int       @id @default(autoincrement())
+  empleado     String?   @db.VarChar(255)
+  inicio       DateTime? @db.Date
+  fin          DateTime? @db.Date
+  dias         Int?
+  observacion  String?   @db.VarChar(1000)
+  operador     String?   @db.VarChar(255)
+  fecha        DateTime? @db.Date
 }
 
 model motivos_atencion {

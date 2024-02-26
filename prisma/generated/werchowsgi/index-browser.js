@@ -797,14 +797,14 @@ exports.Prisma.Turno_bajasScalarFieldEnum = {
 };
 
 exports.Prisma.VacacionesScalarFieldEnum = {
-  id: 'id',
-  start: 'start',
-  end: 'end',
-  allDay: 'allDay',
-  priority: 'priority',
-  title: 'title',
-  user: 'user',
-  detail: 'detail'
+  idvacaciones: 'idvacaciones',
+  empleado: 'empleado',
+  inicio: 'inicio',
+  fin: 'fin',
+  dias: 'dias',
+  observacion: 'observacion',
+  operador: 'operador',
+  fecha: 'fecha'
 };
 
 exports.Prisma.Motivos_atencionScalarFieldEnum = {

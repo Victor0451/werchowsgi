@@ -149,6 +149,24 @@ export const Administracion = () => {
             <Menu placement="right-start">
               <MenuHandler>
                 <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
+                  <Typography color="black">Personal</Typography>
+                  <ChevronDownIcon
+                    strokeWidth={2}
+                    className={`h-3 w-3 transition-transform `}
+                  />
+                </MenuItem>
+              </MenuHandler>
+              <MenuList>
+                <Link href={"/administracion/personal/vacaciones"}>
+                  <MenuItem>
+                    <Typography color="black">Vacaciones</Typography>
+                  </MenuItem>
+                </Link>{" "}
+              </MenuList>
+            </Menu>
+            <Menu placement="right-start">
+              <MenuHandler>
+                <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
                   <Typography color="black">Prestamos</Typography>
                   <ChevronDownIcon
                     strokeWidth={2}

@@ -18,6 +18,7 @@ import {
 } from "@heroicons/react/24/solid";
 import moment from "moment";
 import Select from "react-select";
+import Link from "next/link";
 
 const FormNuevoSocio = ({
   nFicha,
@@ -310,9 +311,11 @@ const FormNuevoSocio = ({
             Registrar
           </Button>
 
-          <Button className="ml-1" color="red">
-            Cerrar
-          </Button>
+          <Link href={"/"}>
+            <Button className="ml-1" color="red">
+              Cerrar
+            </Button>
+          </Link>
         </div>
       </CardBody>
     </Card>

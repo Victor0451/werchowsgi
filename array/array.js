@@ -19,11 +19,12 @@ export const acciones = [
 ];
 
 export const nueavaaccion = [
-  { value: 21, label: "LLAMAR DE NUEVO" },
+  { value: 22, label: "LLAMAR DE NUEVO" },
   { value: 11, label: "SE ENVIA COBRADOR" },
   { value: 12, label: "PASA POR OFICINA" },
   { value: 16, label: "DEBITO" },
   { value: 17, label: "CREDITO" },
+  { value: 23, label: "CASO CERRADO" },
 ];
 
 export const sucursales = [
@@ -47,7 +48,6 @@ export const meses = [
   { value: 11, label: "NOVIEMBRE" },
   { value: 12, label: "DICIEMBRE" },
 ];
-
 
 export const meses2 = [
   { value: "01", label: "ENERO" },
@@ -78,7 +78,6 @@ export const meses3 = [
   { value: 11, label: "11" },
   { value: 12, label: "12" },
 ];
-
 
 export const mesventas = [
   { value: "ENERO", label: "ENERO" },

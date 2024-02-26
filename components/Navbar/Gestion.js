@@ -14,7 +14,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-export const Gestion = () => {
+export const Gestion = ({ usu }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const triggers = {
@@ -87,6 +87,30 @@ export const Gestion = () => {
                 </Link>
               </MenuList>
             </Menu>
+            {usu.usuario === "joaquini" ||
+            usu.usuario === "emoreno" ||
+            usu.usuario === "isantiago" ||
+            usu.usuario === "jcmorales" ||
+            usu.usuario === "nquintana" ? (
+              <Menu placement="right-start">
+                <MenuHandler>
+                  <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
+                    <Typography color="black">Personal</Typography>
+                    <ChevronDownIcon
+                      strokeWidth={2}
+                      className={`h-3 w-3 transition-transform `}
+                    />
+                  </MenuItem>
+                </MenuHandler>
+                <MenuList>
+                  <Link href={"/administracion/personal/vacaciones"}>
+                    <MenuItem>
+                      <Typography color="black">Vacaciones</Typography>
+                    </MenuItem>
+                  </Link>{" "}
+                </MenuList>
+              </Menu>
+            ) : null}
           </ul>
         </MenuList>
       </Menu>

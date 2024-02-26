@@ -1219,14 +1219,14 @@ export type turno_bajas = runtime.Types.DefaultSelection<turno_bajasPayload>
 export type vacacionesPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
-    id: string
-    start: Date | null
-    end: Date | null
-    allDay: number | null
-    priority: number | null
-    title: string | null
-    user: string | null
-    detail: string | null
+    idvacaciones: number
+    empleado: string | null
+    inicio: Date | null
+    fin: Date | null
+    dias: number | null
+    observacion: string | null
+    operador: string | null
+    fecha: Date | null
   }, ExtArgs["result"]["vacaciones"]>
   composites: {}
 }
@@ -62697,91 +62697,91 @@ export namespace Prisma {
   }
 
   export type VacacionesAvgAggregateOutputType = {
-    allDay: number | null
-    priority: number | null
+    idvacaciones: number | null
+    dias: number | null
   }
 
   export type VacacionesSumAggregateOutputType = {
-    allDay: number | null
-    priority: number | null
+    idvacaciones: number | null
+    dias: number | null
   }
 
   export type VacacionesMinAggregateOutputType = {
-    id: string | null
-    start: Date | null
-    end: Date | null
-    allDay: number | null
-    priority: number | null
-    title: string | null
-    user: string | null
-    detail: string | null
+    idvacaciones: number | null
+    empleado: string | null
+    inicio: Date | null
+    fin: Date | null
+    dias: number | null
+    observacion: string | null
+    operador: string | null
+    fecha: Date | null
   }
 
   export type VacacionesMaxAggregateOutputType = {
-    id: string | null
-    start: Date | null
-    end: Date | null
-    allDay: number | null
-    priority: number | null
-    title: string | null
-    user: string | null
-    detail: string | null
+    idvacaciones: number | null
+    empleado: string | null
+    inicio: Date | null
+    fin: Date | null
+    dias: number | null
+    observacion: string | null
+    operador: string | null
+    fecha: Date | null
   }
 
   export type VacacionesCountAggregateOutputType = {
-    id: number
-    start: number
-    end: number
-    allDay: number
-    priority: number
-    title: number
-    user: number
-    detail: number
+    idvacaciones: number
+    empleado: number
+    inicio: number
+    fin: number
+    dias: number
+    observacion: number
+    operador: number
+    fecha: number
     _all: number
   }
 
 
   export type VacacionesAvgAggregateInputType = {
-    allDay?: true
-    priority?: true
+    idvacaciones?: true
+    dias?: true
   }
 
   export type VacacionesSumAggregateInputType = {
-    allDay?: true
-    priority?: true
+    idvacaciones?: true
+    dias?: true
   }
 
   export type VacacionesMinAggregateInputType = {
-    id?: true
-    start?: true
-    end?: true
-    allDay?: true
-    priority?: true
-    title?: true
-    user?: true
-    detail?: true
+    idvacaciones?: true
+    empleado?: true
+    inicio?: true
+    fin?: true
+    dias?: true
+    observacion?: true
+    operador?: true
+    fecha?: true
   }
 
   export type VacacionesMaxAggregateInputType = {
-    id?: true
-    start?: true
-    end?: true
-    allDay?: true
-    priority?: true
-    title?: true
-    user?: true
-    detail?: true
+    idvacaciones?: true
+    empleado?: true
+    inicio?: true
+    fin?: true
+    dias?: true
+    observacion?: true
+    operador?: true
+    fecha?: true
   }
 
   export type VacacionesCountAggregateInputType = {
-    id?: true
-    start?: true
-    end?: true
-    allDay?: true
-    priority?: true
-    title?: true
-    user?: true
-    detail?: true
+    idvacaciones?: true
+    empleado?: true
+    inicio?: true
+    fin?: true
+    dias?: true
+    observacion?: true
+    operador?: true
+    fecha?: true
     _all?: true
   }
 
@@ -62873,14 +62873,14 @@ export namespace Prisma {
 
 
   export type VacacionesGroupByOutputType = {
-    id: string
-    start: Date | null
-    end: Date | null
-    allDay: number | null
-    priority: number | null
-    title: string | null
-    user: string | null
-    detail: string | null
+    idvacaciones: number
+    empleado: string | null
+    inicio: Date | null
+    fin: Date | null
+    dias: number | null
+    observacion: string | null
+    operador: string | null
+    fecha: Date | null
     _count: VacacionesCountAggregateOutputType | null
     _avg: VacacionesAvgAggregateOutputType | null
     _sum: VacacionesSumAggregateOutputType | null
@@ -62903,25 +62903,25 @@ export namespace Prisma {
 
 
   export type vacacionesSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    start?: boolean
-    end?: boolean
-    allDay?: boolean
-    priority?: boolean
-    title?: boolean
-    user?: boolean
-    detail?: boolean
+    idvacaciones?: boolean
+    empleado?: boolean
+    inicio?: boolean
+    fin?: boolean
+    dias?: boolean
+    observacion?: boolean
+    operador?: boolean
+    fecha?: boolean
   }, ExtArgs["result"]["vacaciones"]>
 
   export type vacacionesSelectScalar = {
-    id?: boolean
-    start?: boolean
-    end?: boolean
-    allDay?: boolean
-    priority?: boolean
-    title?: boolean
-    user?: boolean
-    detail?: boolean
+    idvacaciones?: boolean
+    empleado?: boolean
+    inicio?: boolean
+    fin?: boolean
+    dias?: boolean
+    observacion?: boolean
+    operador?: boolean
+    fecha?: boolean
   }
 
 
@@ -63012,8 +63012,8 @@ export namespace Prisma {
      * // Get first 10 Vacaciones
      * const vacaciones = await prisma.vacaciones.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const vacacionesWithIdOnly = await prisma.vacaciones.findMany({ select: { id: true } })
+     * // Only select the `idvacaciones`
+     * const vacacionesWithIdvacacionesOnly = await prisma.vacaciones.findMany({ select: { idvacaciones: true } })
      * 
     **/
     findMany<T extends vacacionesFindManyArgs<ExtArgs>>(
@@ -63515,7 +63515,7 @@ export namespace Prisma {
     /**
      * The data needed to create a vacaciones.
      */
-    data: XOR<vacacionesCreateInput, vacacionesUncheckedCreateInput>
+    data?: XOR<vacacionesCreateInput, vacacionesUncheckedCreateInput>
   }
 
 
@@ -71038,14 +71038,14 @@ export namespace Prisma {
 
 
   export const VacacionesScalarFieldEnum: {
-    id: 'id',
-    start: 'start',
-    end: 'end',
-    allDay: 'allDay',
-    priority: 'priority',
-    title: 'title',
-    user: 'user',
-    detail: 'detail'
+    idvacaciones: 'idvacaciones',
+    empleado: 'empleado',
+    inicio: 'inicio',
+    fin: 'fin',
+    dias: 'dias',
+    observacion: 'observacion',
+    operador: 'operador',
+    fecha: 'fecha'
   };
 
   export type VacacionesScalarFieldEnum = (typeof VacacionesScalarFieldEnum)[keyof typeof VacacionesScalarFieldEnum]
@@ -74783,40 +74783,40 @@ export namespace Prisma {
     AND?: vacacionesWhereInput | vacacionesWhereInput[]
     OR?: vacacionesWhereInput[]
     NOT?: vacacionesWhereInput | vacacionesWhereInput[]
-    id?: StringFilter | string
-    start?: DateTimeNullableFilter | Date | string | null
-    end?: DateTimeNullableFilter | Date | string | null
-    allDay?: IntNullableFilter | number | null
-    priority?: IntNullableFilter | number | null
-    title?: StringNullableFilter | string | null
-    user?: StringNullableFilter | string | null
-    detail?: StringNullableFilter | string | null
+    idvacaciones?: IntFilter | number
+    empleado?: StringNullableFilter | string | null
+    inicio?: DateTimeNullableFilter | Date | string | null
+    fin?: DateTimeNullableFilter | Date | string | null
+    dias?: IntNullableFilter | number | null
+    observacion?: StringNullableFilter | string | null
+    operador?: StringNullableFilter | string | null
+    fecha?: DateTimeNullableFilter | Date | string | null
   }
 
   export type vacacionesOrderByWithRelationInput = {
-    id?: SortOrder
-    start?: SortOrderInput | SortOrder
-    end?: SortOrderInput | SortOrder
-    allDay?: SortOrderInput | SortOrder
-    priority?: SortOrderInput | SortOrder
-    title?: SortOrderInput | SortOrder
-    user?: SortOrderInput | SortOrder
-    detail?: SortOrderInput | SortOrder
+    idvacaciones?: SortOrder
+    empleado?: SortOrderInput | SortOrder
+    inicio?: SortOrderInput | SortOrder
+    fin?: SortOrderInput | SortOrder
+    dias?: SortOrderInput | SortOrder
+    observacion?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
   }
 
   export type vacacionesWhereUniqueInput = {
-    id?: string
+    idvacaciones?: number
   }
 
   export type vacacionesOrderByWithAggregationInput = {
-    id?: SortOrder
-    start?: SortOrderInput | SortOrder
-    end?: SortOrderInput | SortOrder
-    allDay?: SortOrderInput | SortOrder
-    priority?: SortOrderInput | SortOrder
-    title?: SortOrderInput | SortOrder
-    user?: SortOrderInput | SortOrder
-    detail?: SortOrderInput | SortOrder
+    idvacaciones?: SortOrder
+    empleado?: SortOrderInput | SortOrder
+    inicio?: SortOrderInput | SortOrder
+    fin?: SortOrderInput | SortOrder
+    dias?: SortOrderInput | SortOrder
+    observacion?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
     _count?: vacacionesCountOrderByAggregateInput
     _avg?: vacacionesAvgOrderByAggregateInput
     _max?: vacacionesMaxOrderByAggregateInput
@@ -74828,14 +74828,14 @@ export namespace Prisma {
     AND?: vacacionesScalarWhereWithAggregatesInput | vacacionesScalarWhereWithAggregatesInput[]
     OR?: vacacionesScalarWhereWithAggregatesInput[]
     NOT?: vacacionesScalarWhereWithAggregatesInput | vacacionesScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter | string
-    start?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    end?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    allDay?: IntNullableWithAggregatesFilter | number | null
-    priority?: IntNullableWithAggregatesFilter | number | null
-    title?: StringNullableWithAggregatesFilter | string | null
-    user?: StringNullableWithAggregatesFilter | string | null
-    detail?: StringNullableWithAggregatesFilter | string | null
+    idvacaciones?: IntWithAggregatesFilter | number
+    empleado?: StringNullableWithAggregatesFilter | string | null
+    inicio?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    fin?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    dias?: IntNullableWithAggregatesFilter | number | null
+    observacion?: StringNullableWithAggregatesFilter | string | null
+    operador?: StringNullableWithAggregatesFilter | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
   }
 
   export type motivos_atencionWhereInput = {
@@ -79884,80 +79884,77 @@ export namespace Prisma {
   }
 
   export type vacacionesCreateInput = {
-    id: string
-    start?: Date | string | null
-    end?: Date | string | null
-    allDay?: number | null
-    priority?: number | null
-    title?: string | null
-    user?: string | null
-    detail?: string | null
+    empleado?: string | null
+    inicio?: Date | string | null
+    fin?: Date | string | null
+    dias?: number | null
+    observacion?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
   }
 
   export type vacacionesUncheckedCreateInput = {
-    id: string
-    start?: Date | string | null
-    end?: Date | string | null
-    allDay?: number | null
-    priority?: number | null
-    title?: string | null
-    user?: string | null
-    detail?: string | null
+    idvacaciones?: number
+    empleado?: string | null
+    inicio?: Date | string | null
+    fin?: Date | string | null
+    dias?: number | null
+    observacion?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
   }
 
   export type vacacionesUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    allDay?: NullableIntFieldUpdateOperationsInput | number | null
-    priority?: NullableIntFieldUpdateOperationsInput | number | null
-    title?: NullableStringFieldUpdateOperationsInput | string | null
-    user?: NullableStringFieldUpdateOperationsInput | string | null
-    detail?: NullableStringFieldUpdateOperationsInput | string | null
+    empleado?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dias?: NullableIntFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vacacionesUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    allDay?: NullableIntFieldUpdateOperationsInput | number | null
-    priority?: NullableIntFieldUpdateOperationsInput | number | null
-    title?: NullableStringFieldUpdateOperationsInput | string | null
-    user?: NullableStringFieldUpdateOperationsInput | string | null
-    detail?: NullableStringFieldUpdateOperationsInput | string | null
+    idvacaciones?: IntFieldUpdateOperationsInput | number
+    empleado?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dias?: NullableIntFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vacacionesCreateManyInput = {
-    id: string
-    start?: Date | string | null
-    end?: Date | string | null
-    allDay?: number | null
-    priority?: number | null
-    title?: string | null
-    user?: string | null
-    detail?: string | null
+    idvacaciones?: number
+    empleado?: string | null
+    inicio?: Date | string | null
+    fin?: Date | string | null
+    dias?: number | null
+    observacion?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
   }
 
   export type vacacionesUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    allDay?: NullableIntFieldUpdateOperationsInput | number | null
-    priority?: NullableIntFieldUpdateOperationsInput | number | null
-    title?: NullableStringFieldUpdateOperationsInput | string | null
-    user?: NullableStringFieldUpdateOperationsInput | string | null
-    detail?: NullableStringFieldUpdateOperationsInput | string | null
+    empleado?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dias?: NullableIntFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vacacionesUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    allDay?: NullableIntFieldUpdateOperationsInput | number | null
-    priority?: NullableIntFieldUpdateOperationsInput | number | null
-    title?: NullableStringFieldUpdateOperationsInput | string | null
-    user?: NullableStringFieldUpdateOperationsInput | string | null
-    detail?: NullableStringFieldUpdateOperationsInput | string | null
+    idvacaciones?: IntFieldUpdateOperationsInput | number
+    empleado?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dias?: NullableIntFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type motivos_atencionCreateInput = {
@@ -83454,46 +83451,46 @@ export namespace Prisma {
   }
 
   export type vacacionesCountOrderByAggregateInput = {
-    id?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    allDay?: SortOrder
-    priority?: SortOrder
-    title?: SortOrder
-    user?: SortOrder
-    detail?: SortOrder
+    idvacaciones?: SortOrder
+    empleado?: SortOrder
+    inicio?: SortOrder
+    fin?: SortOrder
+    dias?: SortOrder
+    observacion?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
   }
 
   export type vacacionesAvgOrderByAggregateInput = {
-    allDay?: SortOrder
-    priority?: SortOrder
+    idvacaciones?: SortOrder
+    dias?: SortOrder
   }
 
   export type vacacionesMaxOrderByAggregateInput = {
-    id?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    allDay?: SortOrder
-    priority?: SortOrder
-    title?: SortOrder
-    user?: SortOrder
-    detail?: SortOrder
+    idvacaciones?: SortOrder
+    empleado?: SortOrder
+    inicio?: SortOrder
+    fin?: SortOrder
+    dias?: SortOrder
+    observacion?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
   }
 
   export type vacacionesMinOrderByAggregateInput = {
-    id?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    allDay?: SortOrder
-    priority?: SortOrder
-    title?: SortOrder
-    user?: SortOrder
-    detail?: SortOrder
+    idvacaciones?: SortOrder
+    empleado?: SortOrder
+    inicio?: SortOrder
+    fin?: SortOrder
+    dias?: SortOrder
+    observacion?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
   }
 
   export type vacacionesSumOrderByAggregateInput = {
-    allDay?: SortOrder
-    priority?: SortOrder
+    idvacaciones?: SortOrder
+    dias?: SortOrder
   }
 
   export type motivos_atencionCountOrderByAggregateInput = {
