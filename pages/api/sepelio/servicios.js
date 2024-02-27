@@ -186,7 +186,7 @@ export default async function handler(req, res) {
                   FROM
                     werchow.adherent AS m
                   WHERE
-                    m.NRO_DOC = s.dni_nuevotitular
+                    m.NRO_DOC = s.dni_nuevotitular LIMIT 1
                  ) 
                   WHEN s.empresa = 'Werchow'
                   AND s.dni_nuevotitular NOT IN (1, 11111111)

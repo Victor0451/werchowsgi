@@ -15,7 +15,7 @@ import FormAdminServicios from "@/components/sepelio/administracion/servicios/Fo
 
 function servicios(props) {
   const [listado, guardarListado] = useState([]);
-  const [noData, guardarNoData] = useState(false);
+  const [noData, guardarNoData] = useState(true);
 
   const { usu } = useWerchow();
 
@@ -98,8 +98,6 @@ function servicios(props) {
         toast.error("Ocurrio un error al ejecutar la funcion");
       });
   };
-
-  useSWR("/api/sepelio/servicios", servSinImpac);
 
   if (isLoading === true) return <Skeleton />;
 
