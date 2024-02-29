@@ -16,7 +16,7 @@ import { TrashIcon } from "@heroicons/react/24/solid";
 import moment from "moment";
 import Link from "next/link";
 
-const ListadoTareas = ({ listado, delTarea, calcTotal, f }) => {
+const ListadoGastos = ({ listado, delTarea, calcTotal, f, delGasto }) => {
   let columns = [
     {
       name: "#",
@@ -24,44 +24,21 @@ const ListadoTareas = ({ listado, delTarea, calcTotal, f }) => {
       grow: 0.1,
       cell: (row, index) => <>{index + 1}</>,
     },
+
     {
-      name: "Operador",
-      selector: (row) => `${row.operador}`,
+      name: "Gasto",
+      selector: (row) => `${row.gasto}`,
       sortable: true,
       grow: 0.2,
     },
 
     {
-      name: "Tarea",
-      selector: (row) => `${row.tarea}`,
+      name: "Importe",
+      selector: (row) => `${row.importe}`,
       sortable: true,
       grow: 0.2,
     },
 
-    {
-      name: "Inicio",
-      selector: (row) => `${moment(row.inicio).format("DD/MM/YYYY HH:mm")}`,
-      sortable: true,
-      grow: 0.2,
-    },
-    {
-      name: "Fin",
-      selector: (row) => `${moment(row.fin).format("DD/MM/YYYY HH:mm")}`,
-      sortable: true,
-      grow: 0.2,
-    },
-    {
-      name: "Horas",
-      selector: (row) => `${row.horas}`,
-      sortable: true,
-      grow: 0.2,
-    },
-    {
-      name: "Monto",
-      selector: (row) => `$${row.monto}`,
-      sortable: true,
-      grow: 0.2,
-    },
     {
       name: "Acciones",
       button: true,
@@ -72,7 +49,7 @@ const ListadoTareas = ({ listado, delTarea, calcTotal, f }) => {
             <TrashIcon
               color="red"
               className="butlist mt-px h-6 w-6"
-              onClick={() => delTarea(row.idtareas)}
+              onClick={() => delGasto(row.idgastos)}
             />
           )}
         </>
@@ -112,14 +89,14 @@ const ListadoTareas = ({ listado, delTarea, calcTotal, f }) => {
   return (
     <Card className="h-full w-full p-4 border-2 ">
       <CardHeader floated={false} shadow={false} className="rounded-none">
-        <Typography variant="h4">Tareas Registradas</Typography>
+        <Typography variant="h4">Gastos Registradas</Typography>
 
         <div className="">
           <Typography color="gray" className="mt-1 font-normal">
             <u>Total</u>: {listado.length}
           </Typography>
           <Typography color="gray" className="mt-1 font-normal">
-            <u>Total a Pagar</u>: ${calcTotal(listado, "t")}
+            <u>Total a Pagar</u>: ${calcTotal(listado, "g")}
           </Typography>
 
           <>
@@ -139,4 +116,4 @@ const ListadoTareas = ({ listado, delTarea, calcTotal, f }) => {
   );
 };
 
-export default ListadoTareas;
+export default ListadoGastos;

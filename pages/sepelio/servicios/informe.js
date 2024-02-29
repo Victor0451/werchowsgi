@@ -19,16 +19,22 @@ import FormInformeServicio from "@/components/sepelio/servicios/FormInformeServi
 function informe(props) {
   let inicioRef = React.createRef();
   let finRef = React.createRef();
+  let importeRef = React.createRef();
 
   const [servicio, guardarServicio] = useState(null);
   const [operadores, guardarOperadores] = useState([]);
   const [tareas, guardarTareas] = useState([]);
+  const [gastos, guardarGastos] = useState([]);
   const [tarReg, guardarTarReg] = useState([]);
-  const [noData, guardarNoData] = useState(false);
+  const [gasReg, guardarGasReg] = useState([]);
   const [informe, guardarInforme] = useState([]);
   const [opSel, guardarOpSel] = useState("");
+  const [hoLabSel, guardarHoLabSel] = useState(false);
   const [tareaSel, guardartareaSel] = useState("");
+  const [gastoSel, guardarGastoSel] = useState("");
   const [errores, guardarErrores] = useState(null);
+  const [gl, guardarGastoLuto] = useState([]);
+
 
   const { usu } = useWerchow();
 
@@ -98,6 +104,24 @@ function informe(props) {
       await axios
         .get("/api/sepelio/servicios", {
           params: {
+            f: "traer gastos",
+          },
+        })
+        .then((res) => {
+          if (res.data.length > 0) {
+            guardarGastos(res.data);
+          } else if (res.data.length === 0) {
+            toast.info("No hay gastos registrados");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al traer el listado de gastos");
+        });
+
+      await axios
+        .get("/api/sepelio/servicios", {
+          params: {
             f: "traer informe servicio",
             idservicio: jsCookie.get("idservicio"),
           },
@@ -139,6 +163,8 @@ function informe(props) {
           console.log(error);
           toast.error("Ocurrio un error al traer el listado de tareas");
         });
+
+      gasLuto();
     }
   };
 
@@ -159,6 +185,23 @@ function informe(props) {
         console.log(error);
         toast.error("Ocurrio un error al generar el listado");
       });
+
+    await axios
+      .get("/api/sepelio/servicios", {
+        params: {
+          f: "traer gastos reg",
+          idservicio: id,
+        },
+      })
+      .then((res) => {
+        if (res.data.length > 0) {
+          guardarGasReg(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al generar el listado");
+      });
   };
 
   const regTarea = async () => {
@@ -171,6 +214,7 @@ function informe(props) {
       fin: finRef.current.value,
       horas: 0,
       monto: 0,
+      horario_laboral: hoLabSel,
       f: "reg tarea informe",
     };
 
@@ -191,13 +235,17 @@ function informe(props) {
 
       for (let i = 0; i < tareas.length; i++) {
         if (data.tarea === tareas[i].trabajo) {
-          if (
-            moment(data.inicio).format("dd") === "Sa" ||
-            moment(data.inicio).format("dd") === "Su"
-          ) {
-            data.monto = data.horas * parseFloat(tareas[i].finde);
-          } else {
-            data.monto = data.horas * parseFloat(tareas[i].dias_habiles);
+          if (data.horario_laboral === false) {
+            if (
+              moment(data.inicio).format("dd") === "Sa" ||
+              moment(data.inicio).format("dd") === "Su"
+            ) {
+              data.monto = data.horas * parseFloat(tareas[i].finde);
+            } else {
+              data.monto = data.horas * parseFloat(tareas[i].dias_habiles);
+            }
+          } else if (data.horario_laboral === true) {
+            data.monto = 0;
           }
         }
       }
@@ -221,10 +269,45 @@ function informe(props) {
     }
   };
 
+  const regGastos = async () => {
+    guardarErrores(null);
+
+    let data = {
+      idinforme: informe.idinforme,
+      idservicio: servicio.idservicio,
+      gasto: gastoSel,
+      importe: importeRef.current.value,
+      f: "reg gasto informe",
+    };
+
+    if (data.gasto === "") {
+      guardarErrores("Debes seleccionar un gasto");
+    } else if (data.importe === "") {
+      guardarErrores("Debes ingresar el importe del gasto");
+    } else {
+      await axios
+        .post("/api/sepelio/servicios", data)
+        .then((res) => {
+          if (res.status === 200) {
+            toast.success("Tarea registrada");
+            let accionHis = `Se cargo el gasto ID ${res.data.idgastos} - ${data.gasto} por un monto de $${data.importe} en el informe de servicio ID ${data.idinforme}.`;
+
+            registrarHistoria(accionHis, usu.usuario);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al registrar la tarea");
+        });
+
+      tareasReg(data.idservicio);
+    }
+  };
+
   const delTarea = async (id) => {
     await confirmAlert({
       title: "ATENCION",
-      message: "¿Seguro quieres eliminar la tarea?",
+      message: "¿Seguro quieres eliminar la tarea seleccionada?",
       buttons: [
         {
           label: "Si",
@@ -254,7 +337,47 @@ function informe(props) {
         {
           label: "No",
           onClick: () => {
-            toast.info("La tarea no fue eliminada");
+            toast.info("La tarea seleccionada, no fue eliminada");
+          },
+        },
+      ],
+    });
+  };
+
+  const delGasto = async (id) => {
+    await confirmAlert({
+      title: "ATENCION",
+      message: "¿Seguro quieres eliminar el gasto seleccionado?",
+      buttons: [
+        {
+          label: "Si",
+          onClick: () => {
+            axios
+              .delete(`/api/sepelio/servicios`, {
+                params: {
+                  f: "eliminar gasto",
+                  idgastos: id,
+                },
+              })
+              .then((res) => {
+                if (res.status === 200) {
+                  toast.success("Gasto Eliminado");
+                  let accionHis = `Se elimino el gasto ID ${id} en el informe de sepelio ID ${informe.idinforme}.`;
+
+                  registrarHistoria(accionHis, usu.usuario);
+                  tareasReg(parseInt(jsCookie.get("idservicio")));
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error("Ocurrio un error al eliminar el gasto");
+              });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            toast.info("El gasto seleccionado, no fue eliminado");
           },
         },
       ],
@@ -266,17 +389,45 @@ function informe(props) {
       guardartareaSel(value);
     } else if (flag === "operador") {
       guardarOpSel(value);
+    } else if (flag === "check") {
+      guardarHoLabSel(value.target.checked);
+    } else if (flag === "gasto") {
+      guardarGastoSel(value);
     }
   };
 
-  const calcTotal = (arr) => {
+  const calcTotal = (arr, f) => {
     let total = 0;
 
-    for (let i = 0; i < arr.length; i++) {
-      total += arr[i].monto;
+    if (f === "t") {
+      for (let i = 0; i < arr.length; i++) {
+        total += parseFloat(arr[i].monto);
+      }
+    } else if (f === "g") {
+      for (let i = 0; i < arr.length; i++) {
+        total += parseFloat(arr[i].importe);
+      }
     }
 
     return total.toFixed(2);
+  };
+
+  const gasLuto = async (plan, alta, cantadh) => {
+    await axios
+      .get(`/api/sepelio/servicios`, {
+        params: {
+          f: "gasto luto",
+        },
+      })
+      .then((res) => {
+        if (res.data) {
+          guardarGastoLuto(res.data[0]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al registrar el historial");
+      });
   };
 
   useSWR("/api/sepelio/servicios", traerInfo);
@@ -304,6 +455,12 @@ function informe(props) {
                 delTarea={delTarea}
                 calcTotal={calcTotal}
                 f={router.query.f}
+                gastos={gastos}
+                importeRef={importeRef}
+                gasReg={gasReg}
+                regGastos={regGastos}
+                delGasto={delGasto}
+                gl={gl}
               />
             </>
           ) : (

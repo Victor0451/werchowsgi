@@ -8,6 +8,7 @@ import {
   Select,
   Option,
   Input,
+  Checkbox,
 } from "@material-tailwind/react";
 import moment from "moment";
 import {
@@ -15,6 +16,8 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/solid";
 import ListadoTareas from "./ListadoTareas";
+import ListadoGastos from "./ListadoGastos";
+import GastoLuto from "@/components/Layouts/GastoLuto";
 
 const FormInformeServicio = ({
   servicio,
@@ -27,8 +30,14 @@ const FormInformeServicio = ({
   inicioRef,
   finRef,
   delTarea,
+  delGasto,
   calcTotal,
   f,
+  gastos,
+  importeRef,
+  gasReg,
+  regGastos,
+  gl,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -37,6 +46,13 @@ const FormInformeServicio = ({
           <u>Servicio N°</u>: {servicio.idservicio} - {servicio.apellido},{" "}
           {servicio.nombre}
         </Typography>
+
+        <GastoLuto
+          plan={`${servicio.PLAN}${servicio.SUB_PLAN}`}
+          alta={servicio.ALTA}
+          cantadh={0}
+          gl={gl}
+        />
 
         <div className="p-4 border-2 rounded-lg mt-6">
           <Typography variant="h5" color="blue-gray" className="mb-6">
@@ -169,9 +185,7 @@ const FormInformeServicio = ({
             </div>
           </div>
         </div>
-
         <hr className="border-2 mt-6 mb-6" />
-
         <div className="p-4 border-2 rounded-lg mt-6">
           {f && f === "vista" ? null : (
             <>
@@ -229,7 +243,26 @@ const FormInformeServicio = ({
                 <div className="relative w-full mb-6 group">
                   <Input type="datetime-local" label="Fin" inputRef={finRef} />
                 </div>
+                <div className="relative w-full mb-6 group">
+                  <Checkbox
+                    label="En Horario Laboral"
+                    ripple={true}
+                    onChange={(e) => handleChange("check", e)}
+                  />
+                </div>
               </div>
+              <Alert
+                color="blue"
+                icon={
+                  <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
+                }
+                className="mt-5 mb-5"
+              >
+                Por defecto el sistema liquida la tarea contemplando que el
+                operador NO ESTA EN HORARIO LABORAL. En caso contrario, marcar
+                el check con la leyenda "En Horario Laboral".
+              </Alert>
+
               <div className="mt-4 flex justify-end mb-6 group">
                 <Button onClick={regTarea}>Registrar</Button>
               </div>
@@ -258,6 +291,85 @@ const FormInformeServicio = ({
             calcTotal={calcTotal}
             f={f}
           />
+        </div>
+        <hr className="border-2 mt-6 mb-6" />
+
+        <div className="p-4 border-2 rounded-lg mt-6">
+          {f && f === "vista" ? null : (
+            <>
+              <Typography variant="h5" color="blue-gray" className="mb-6">
+                Gastos Realizados en Servicio
+              </Typography>
+
+              <div className="grid md:grid-cols-4 md:gap-6">
+                <div className="relative w-full mb-6 group">
+                  <Select
+                    label="Gastos"
+                    animate={{
+                      mount: { y: 0 },
+                      unmount: { y: 25 },
+                    }}
+                    onChange={(value) => {
+                      handleChange("gasto", value);
+                    }}
+                  >
+                    {gastos.map((f, index) => (
+                      <Option key={index} value={f.gastos}>
+                        {f.gastos}
+                      </Option>
+                    ))}
+                  </Select>
+                </div>
+                <div className="relative w-full mb-6 group">
+                  <Input type="number" label="Monto" inputRef={importeRef} />
+                </div>
+
+                <div className="relative w-full mb-6 group">
+                  <Button onClick={regGastos}>Registrar</Button>
+                </div>
+              </div>
+
+              {errores ? (
+                <Alert
+                  color="red"
+                  icon={
+                    <InformationCircleIcon
+                      strokeWidth={2}
+                      className="h-6 w-6"
+                    />
+                  }
+                >
+                  {errores}
+                </Alert>
+              ) : null}
+
+              <hr className="border-2 mt-6 mb-6" />
+            </>
+          )}
+
+          <ListadoGastos
+            listado={gasReg}
+            calcTotal={calcTotal}
+            f={f}
+            delGasto={delGasto}
+          />
+        </div>
+
+        <div class="text-center py-4 lg:px-4">
+          <div
+            class="p-2 bg-blue-400 items-center text-white leading-none lg:rounded-full flex lg:inline-flex"
+            role="alert"
+          >
+            <span class="flex rounded-full bg-blue-500 uppercase px-2 py-1 text-xs font-bold mr-3">
+              <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
+            </span>
+            <span class="font-semibold mr-2 text-left flex-auto">
+              {" "}
+              ESTE SERVICIO GENERO UN GASTO TOTAL DE: $
+              {parseFloat(calcTotal(tarReg, "t")) +
+                parseFloat(calcTotal(gasReg, "g"))}
+            </span>
+          </div>
         </div>
       </CardHeader>
     </Card>

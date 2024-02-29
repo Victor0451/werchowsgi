@@ -313,8 +313,20 @@ export default async function handler(req, res) {
       const tareas = await Sep.honorarios.findMany();
 
       res.status(200).json(tareas);
+    } else if (req.query.f && req.query.f === "traer gastos") {
+      const gastos = await Sep.servicios_gastos.findMany();
+
+      res.status(200).json(gastos);
     } else if (req.query.f && req.query.f === "traer tareas reg") {
       const tareasReg = await Sep.informe_tareas.findMany({
+        where: {
+          idservicio: parseInt(req.query.idservicio),
+        },
+      });
+
+      res.status(200).json(tareasReg);
+    } else if (req.query.f && req.query.f === "traer gastos reg") {
+      const tareasReg = await Sep.informe_gastos.findMany({
         where: {
           idservicio: parseInt(req.query.idservicio),
         },
@@ -341,7 +353,21 @@ export default async function handler(req, res) {
           si.aprobado,
           si.fecha_aprobado,
           si.liquidado,
-          si.fecha_liquidado
+          si.fecha_liquidado,
+          si.operador_liquidado,
+          si.operador_aprobado,
+          (
+            SELECT SUM(it.monto)
+            FROM informe_tareas as it
+            WHERE it.idinforme = si.idinforme
+
+          ) as 'tareas',
+          (
+            SELECT SUM(it.importe)
+            FROM informe_gastos as it
+            WHERE it.idinforme = si.idinforme
+
+          ) as 'gastos'
         FROM
           servicio_informes AS si
         INNER JOIN servicios AS s ON s.idservicio = si.idservicio       
@@ -422,6 +448,17 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(regInforme);
+    } else if (req.body.f && req.body.f === "reg gasto informe") {
+      const regGato = await Sep.informe_gastos.create({
+        data: {
+          idinforme: parseInt(req.body.idinforme),
+          idservicio: parseInt(req.body.idservicio),
+          gasto: req.body.gasto,
+          importe: parseFloat(req.body.importe),
+        },
+      });
+
+      res.status(200).json(regGato);
     }
   } else if (req.method === "PUT") {
     if (req.body.f && req.body.f === "renov poliza") {
@@ -665,6 +702,14 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(delTarea);
+    } else if (req.query.f && req.query.f === "eliminar gasto") {
+      const delGasto = await Sep.informe_gastos.delete({
+        where: {
+          idgastos: parseInt(req.query.idgastos),
+        },
+      });
+
+      res.status(200).json(delGasto);
     }
   }
 }

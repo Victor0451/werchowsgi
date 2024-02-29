@@ -29,19 +29,19 @@ const ListadoInformes = ({ listado, estadoInforme, liquidarInforme }) => {
       width: "80px",
       cell: (row, index) => <>{index + 1}</>,
     },
-    {
-      name: "ID Servicio",
-      selector: (row) => `${row.idservicio}`,
-      sortable: true,
-      width: "80px",
-    },
+    // {
+    //   name: "ID Servicio",
+    //   selector: (row) => `${row.idservicio}`,
+    //   sortable: true,
+    //   width: "80px",
+    // },
 
-    {
-      name: "ID Informe",
-      selector: (row) => `${row.idinforme}`,
-      sortable: true,
-      width: "80px",
-    },
+    // {
+    //   name: "ID Informe",
+    //   selector: (row) => `${row.idinforme}`,
+    //   sortable: true,
+    //   width: "80px",
+    // },
     {
       name: "Fecha",
       selector: (row) => `${moment(row.fecha).format("DD/MM/YYYY")}`,
@@ -52,7 +52,26 @@ const ListadoInformes = ({ listado, estadoInforme, liquidarInforme }) => {
       name: "Extinto",
       selector: (row) => `${row.extinto}`,
       sortable: true,
-      width: "200px",
+      width: "250px",
+    },
+
+    {
+      name: "Total Gastos",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {row.tareas && row.gastos ? (
+            <div>{row.tareas + row.gastos}</div>
+          ) : row.tareas && !row.gastos ? (
+            <div>{row.tareas}</div>
+          ) : !row.tareas && row.gastos ? (
+            <div>{row.gastos}</div>
+          ) : !row.tareas && !row.gastos ? (
+            <div>0</div>
+          ) : null}
+        </>
+      ),
     },
 
     {
@@ -216,7 +235,7 @@ const ListadoInformes = ({ listado, estadoInforme, liquidarInforme }) => {
         </Typography>
 
         <div className="mt-6 border-2 rounded-xl p-4">
-          <Typography variant="h4">Listado de Informenes</Typography>
+          <Typography variant="h4">Listado de Informes</Typography>
           <Typography color="gray" className="mt-1 font-normal">
             <u>Total</u>: {listado.length}
           </Typography>

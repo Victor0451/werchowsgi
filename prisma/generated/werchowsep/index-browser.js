@@ -525,36 +525,6 @@ exports.Prisma.RodadosScalarFieldEnum = {
   id: 'id'
 };
 
-exports.Prisma.Servicio_detallesScalarFieldEnum = {
-  iddetalles: 'iddetalles',
-  idservicio: 'idservicio',
-  detalle: 'detalle',
-  lugar: 'lugar',
-  monto: 'monto',
-  patente: 'patente',
-  operador: 'operador',
-  fecha: 'fecha',
-  observacion: 'observacion'
-};
-
-exports.Prisma.Servicio_gastosScalarFieldEnum = {
-  idgastos: 'idgastos',
-  idservicio: 'idservicio',
-  tipo_gasto: 'tipo_gasto',
-  horas: 'horas',
-  operador: 'operador',
-  observaciones: 'observaciones',
-  inicio: 'inicio',
-  fin: 'fin',
-  feriado: 'feriado',
-  liquidado: 'liquidado',
-  operadorliq: 'operadorliq',
-  fecha_liquidacion: 'fecha_liquidacion',
-  aprobado: 'aprobado',
-  operadorap: 'operadorap',
-  fecha_aprobacion: 'fecha_aprobacion'
-};
-
 exports.Prisma.Servicio_informesScalarFieldEnum = {
   idinforme: 'idinforme',
   idservicio: 'idservicio',
@@ -710,12 +680,6 @@ exports.Prisma.TareasScalarFieldEnum = {
   priority: 'priority'
 };
 
-exports.Prisma.Tipo_detalleScalarFieldEnum = {
-  idtipodetalle: 'idtipodetalle',
-  tipo_detalle: 'tipo_detalle',
-  observacion: 'observacion'
-};
-
 exports.Prisma.VisitantesScalarFieldEnum = {
   idvisitante: 'idvisitante',
   idservicio: 'idservicio',
@@ -727,6 +691,20 @@ exports.Prisma.VisitantesScalarFieldEnum = {
   operador: 'operador',
   fecha: 'fecha',
   temperatura: 'temperatura'
+};
+
+exports.Prisma.Informe_gastosScalarFieldEnum = {
+  idgastos: 'idgastos',
+  idinforme: 'idinforme',
+  idservicio: 'idservicio',
+  gasto: 'gasto',
+  importe: 'importe'
+};
+
+exports.Prisma.Servicios_gastosScalarFieldEnum = {
+  idgastos: 'idgastos',
+  gastos: 'gastos',
+  observacion: 'observacion'
 };
 
 exports.Prisma.SortOrder = {
@@ -774,15 +752,14 @@ exports.Prisma.ModelName = {
   precio_servicio: 'precio_servicio',
   proveedores: 'proveedores',
   rodados: 'rodados',
-  servicio_detalles: 'servicio_detalles',
-  servicio_gastos: 'servicio_gastos',
   servicio_informes: 'servicio_informes',
   servicio_venta: 'servicio_venta',
   servicios: 'servicios',
   servicios_historico: 'servicios_historico',
   tareas: 'tareas',
-  tipo_detalle: 'tipo_detalle',
-  visitantes: 'visitantes'
+  visitantes: 'visitantes',
+  informe_gastos: 'informe_gastos',
+  servicios_gastos: 'servicios_gastos'
 };
 
 /**

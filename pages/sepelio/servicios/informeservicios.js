@@ -33,6 +33,7 @@ const InformeServicios = () => {
       .then((res) => {
         if (res.data) {
           let list = JSON.parse(res.data);
+          console.log(list);
           guardarInformes(list);
           guardarNoData(false);
         } else if (!res.data) {
