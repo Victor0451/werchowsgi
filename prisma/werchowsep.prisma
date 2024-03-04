@@ -598,11 +598,12 @@ model visitantes {
 }
 
 model informe_gastos {
-  idgastos   Int     @id @default(autoincrement())
-  idinforme  Int?
-  idservicio Int?
-  gasto      String? @db.VarChar(255)
-  importe    Float?  @db.Float
+  idgastos    Int     @id @default(autoincrement())
+  idinforme   Int?
+  idservicio  Int?
+  gasto       String? @db.VarChar(255)
+  observacion String? @db.VarChar(1000)
+  importe     Float?  @db.Float
 }
 
 model servicios_gastos {

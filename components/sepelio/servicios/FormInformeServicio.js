@@ -9,6 +9,7 @@ import {
   Option,
   Input,
   Checkbox,
+  Textarea,
 } from "@material-tailwind/react";
 import moment from "moment";
 import {
@@ -301,7 +302,7 @@ const FormInformeServicio = ({
                 Gastos Realizados en Servicio
               </Typography>
 
-              <div className="grid md:grid-cols-4 md:gap-6">
+              <div className="grid md:grid-cols-3 md:gap-6">
                 <div className="relative w-full mb-6 group">
                   <Select
                     label="Gastos"
@@ -323,10 +324,17 @@ const FormInformeServicio = ({
                 <div className="relative w-full mb-6 group">
                   <Input type="number" label="Monto" inputRef={importeRef} />
                 </div>
-
                 <div className="relative w-full mb-6 group">
-                  <Button onClick={regGastos}>Registrar</Button>
+                  <Textarea
+                    rows={5}
+                    label="Observacion"
+                    onChange={(e) => handleChange("gasto obse", e.target.value)}
+                  />
                 </div>
+              </div>
+
+              <div className="mt-4 flex justify-end mb-6 group">
+                <Button onClick={regGastos}>Registrar</Button>
               </div>
 
               {errores ? (

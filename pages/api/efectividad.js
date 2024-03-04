@@ -47,22 +47,48 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer cbanco") {
-      const cbanco = await Info.cbanco.findMany({
-        where: {
-          mes: parseInt(req.query.mes),
-          ano: parseInt(req.query.ano),
-        },
-      });
-      res.status(200).json(cbanco);
+      const cbanco = await Info.$queryRaw`
+         
+      SELECT
+        *
+      FROM
+         cbanco
+      WHERE 
+          mes = ${parseInt(req.query.mes)}
+      AND           
+          ano = ${parseInt(req.query.ano)}
+             
+      
+        `;
+      res
+        .status(200)
+        .json(
+          JSON.stringify(cbanco, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     }
     if (req.query.f && req.query.f === "traer cpolicia") {
-      const cpolicia = await Info.cpolicia.findMany({
-        where: {
-          mes: parseInt(req.query.mes),
-          ano: parseInt(req.query.ano),
-        },
-      });
-      res.status(200).json(cpolicia);
+      const cpolicia = await Info.$queryRaw`
+         
+      SELECT
+        *
+      FROM
+         cpolicia
+      WHERE 
+          mes = ${parseInt(req.query.mes)}
+      AND           
+          ano = ${parseInt(req.query.ano)}
+             
+      
+        `;
+      res
+        .status(200)
+        .json(
+          JSON.stringify(cpolicia, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     }
   } else if (req.method === "POST") {
     // if (req.body.f && req.body.f === "nueva noticia") {

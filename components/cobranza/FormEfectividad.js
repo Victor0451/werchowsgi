@@ -14,6 +14,7 @@ import moment from "moment";
 import { IconSolid } from "../../libs/funciones";
 import Select from "react-select";
 import { meses, anos } from "../../array/array";
+import TablaEfectividad from "./TablaEfectividad";
 
 const FormEfectividad = ({
   handleChange,
@@ -78,158 +79,25 @@ const FormEfectividad = ({
             <hr className="border-2 mt-5 mb-5" />
 
             <div className="p-4 border-2 rounded-lg mt-6 ">
-              <table className="w-full min-w-max table-auto text-left">
-                <thead>
-                  <tr>
-                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal leading-none opacity-70"
-                      >
-                        Zona
-                      </Typography>
-                    </th>
-                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal leading-none opacity-70"
-                      >
-                        Detalle
-                      </Typography>
-                    </th>
-                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal leading-none opacity-70"
-                      >
-                        Fichas
-                      </Typography>
-                    </th>
-                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal leading-none opacity-70"
-                      >
-                        Emitido
-                      </Typography>
-                    </th>
-                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal leading-none opacity-70"
-                      >
-                        Fichas Cob.
-                      </Typography>
-                    </th>
-                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal leading-none opacity-70"
-                      >
-                        Cobrado
-                      </Typography>
-                    </th>
-                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal leading-none opacity-70"
-                      >
-                        Adelantado
-                      </Typography>
-                    </th>
-                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal leading-none opacity-70"
-                      >
-                        %
-                      </Typography>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cCob.map((c, index) => (
-                    <tr key={index} className="even:bg-blue-gray-50/50">
-                      <td className="p-4">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className=" font-thin"
-                        >
-                          {c.zona}
-                        </Typography>
-                      </td>
-                      <td className="p-4">
-                        <Typography variant="small" color="blue-gray">
-                          {c.descr}
-                        </Typography>
-                      </td>
-                      <td className="p-4">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {c.fichas}
-                        </Typography>
-                      </td>
-                      <td className="p-4">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {c.total}
-                        </Typography>
-                      </td>
-                      <td className="p-4">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {c.fichascob}
-                        </Typography>
-                      </td>
-                      <td className="p-4">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {c.cobrado}
-                        </Typography>
-                      </td>
-                      <td className="p-4">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {c.adelantado}
-                        </Typography>
-                      </td>
-                      <td className="p-4">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {c.cobrado / c.total} %
-                        </Typography>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <TablaEfectividad arr={cCob} titulo={"Cobradores"} />
+            </div>
+
+            <hr className="border-2 mt-6" />
+
+            <div className="p-4 border-2 rounded-lg mt-6 ">
+              <TablaEfectividad arr={cOf} titulo={"Oficinas"} />
+            </div>
+
+            <hr className="border-2 mt-6" />
+
+            <div className="p-4 border-2 rounded-lg mt-6 ">
+              <TablaEfectividad arr={cbanco} titulo={"Bancos"} />
+            </div>
+
+            <hr className="border-2 mt-6" />
+
+            <div className="p-4 border-2 rounded-lg mt-6 ">
+              <TablaEfectividad arr={cpolicia} titulo={"Policia"} />
             </div>
           </>
         ) : null}

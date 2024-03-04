@@ -455,6 +455,7 @@ export default async function handler(req, res) {
           idservicio: parseInt(req.body.idservicio),
           gasto: req.body.gasto,
           importe: parseFloat(req.body.importe),
+          observacion: req.body.observacion,
         },
       });
 

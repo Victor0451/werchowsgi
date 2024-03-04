@@ -34,6 +34,7 @@ function informe(props) {
   const [gastoSel, guardarGastoSel] = useState("");
   const [errores, guardarErrores] = useState(null);
   const [gl, guardarGastoLuto] = useState([]);
+  const [gasObseSel, guardarGasObseSel] = useState("");
 
   const { usu } = useWerchow();
 
@@ -277,6 +278,7 @@ function informe(props) {
       idservicio: servicio.idservicio,
       gasto: gastoSel,
       importe: importeRef.current.value,
+      observacion: gasObseSel,
       f: "reg gasto informe",
     };
 
@@ -393,6 +395,8 @@ function informe(props) {
       guardarHoLabSel(value.target.checked);
     } else if (flag === "gasto") {
       guardarGastoSel(value);
+    } else if (flag === "gasto obse") {
+      guardarGasObseSel(value);
     }
   };
 

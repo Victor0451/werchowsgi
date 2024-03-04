@@ -21,7 +21,7 @@ const ListadoGastos = ({ listado, delTarea, calcTotal, f, delGasto }) => {
     {
       name: "#",
       button: true,
-      grow: 0.1,
+      width: "80px",
       cell: (row, index) => <>{index + 1}</>,
     },
 
@@ -29,14 +29,29 @@ const ListadoGastos = ({ listado, delTarea, calcTotal, f, delGasto }) => {
       name: "Gasto",
       selector: (row) => `${row.gasto}`,
       sortable: true,
-      grow: 0.2,
+      width: "180px",
+    },
+
+    {
+      name: "Observacion",
+      button: true,
+      width: "450px",
+      cell: (row, index) => (
+        <>
+          {!row.observacion ? (
+            <div>---</div>
+          ) : row.observacion ? (
+            <div>{row.observacion}</div>
+          ) : null}
+        </>
+      ),
     },
 
     {
       name: "Importe",
       selector: (row) => `${row.importe}`,
       sortable: true,
-      grow: 0.2,
+      width: "100px",
     },
 
     {

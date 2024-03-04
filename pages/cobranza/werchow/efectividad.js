@@ -80,47 +80,47 @@ function efectividad(props) {
           toast.error("Ocurrio un error al generar c1000");
         });
 
-      // await axios
-      //   .get(`/api/efectividad`, {
-      //     params: {
-      //       mes: mesSel,
-      //       ano: anoSel,
-      //       f: "traer cbanco",
-      //     },
-      //   })
-      //   .then((res) => {
-      //     if (res.data) {
-      //       let list = JSON.parse(res.data);
-      //       guardarCbanco(list);
-      //     } else {
-      //       toast.info("Aun no se genero la cartera cbanco en este mes");
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //     toast.error("Ocurrio un error al generar cbanco");
-      //   });
+      await axios
+        .get(`/api/efectividad`, {
+          params: {
+            mes: mesSel,
+            ano: anoSel,
+            f: "traer cbanco",
+          },
+        })
+        .then((res) => {
+          if (res.data) {
+            let list = JSON.parse(res.data);
+            guardarCbanco(list);
+          } else {
+            toast.info("Aun no se genero la cartera cbanco en este mes");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar cbanco");
+        });
 
-      // await axios
-      //   .get(`/api/efectividad`, {
-      //     params: {
-      //       mes: mesSel,
-      //       ano: anoSel,
-      //       f: "traer cpolicia",
-      //     },
-      //   })
-      //   .then((res) => {
-      //     if (res.data) {
-      //       let list = JSON.parse(res.data);
-      //       guardarCpolicia(list);
-      //     } else {
-      //       toast.info("Aun no se genero la cartera cpolicia en este mes");
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //     toast.error("Ocurrio un error al generar cpolicia");
-      //   });
+      await axios
+        .get(`/api/efectividad`, {
+          params: {
+            mes: mesSel,
+            ano: anoSel,
+            f: "traer cpolicia",
+          },
+        })
+        .then((res) => {
+          if (res.data) {
+            let list = JSON.parse(res.data);
+            guardarCpolicia(list);
+          } else {
+            toast.info("Aun no se genero la cartera cpolicia en este mes");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar cpolicia");
+        });
     }
   };
 

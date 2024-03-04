@@ -698,6 +698,7 @@ exports.Prisma.Informe_gastosScalarFieldEnum = {
   idinforme: 'idinforme',
   idservicio: 'idservicio',
   gasto: 'gasto',
+  observacion: 'observacion',
   importe: 'importe'
 };
 
