@@ -35,7 +35,6 @@ function informe(props) {
   const [errores, guardarErrores] = useState(null);
   const [gl, guardarGastoLuto] = useState([]);
 
-
   const { usu } = useWerchow();
 
   const { isLoading } = useUser();
@@ -237,7 +236,8 @@ function informe(props) {
         if (data.tarea === tareas[i].trabajo) {
           if (data.horario_laboral === false) {
             if (
-              moment(data.inicio).format("dd") === "Sa" ||
+              (moment(data.inicio).format("dd") === "Sa" &&
+                moment(data.inicio).format("HH") > 14) ||
               moment(data.inicio).format("dd") === "Su"
             ) {
               data.monto = data.horas * parseFloat(tareas[i].finde);
