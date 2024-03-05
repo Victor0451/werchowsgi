@@ -304,14 +304,9 @@ export const Sepelio = () => {
                 </MenuItem>
               </MenuHandler>
               <MenuList>
-                <Link href={"/sepelio/guardias/planificacion"}>
+                <Link href={"/sepelio/guardias/liquidacion"}>
                   <MenuItem>
-                    <Typography color="black">Planificacion</Typography>
-                  </MenuItem>
-                </Link>
-                <Link href={"/sepelio/guardias/calendario"}>
-                  <MenuItem>
-                    <Typography color="black">Calendario</Typography>
+                    <Typography color="black">Liquidacion</Typography>
                   </MenuItem>
                 </Link>
               </MenuList>

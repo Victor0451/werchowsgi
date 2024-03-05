@@ -80,9 +80,14 @@ export const Gestion = ({ usu }) => {
                 </MenuItem>
               </MenuHandler>
               <MenuList>
-                <Link href={"sepelio/servicios/informeservicios"}>
+                <Link href={"/sepelio/servicios/informeservicios"}>
                   <MenuItem>
                     <Typography color="black">Informes de Servicio</Typography>
+                  </MenuItem>
+                </Link>
+                <Link href={"/sepelio/guardias/auditoria"}>
+                  <MenuItem>
+                    <Typography color="black">Auditoria Guardias</Typography>
                   </MenuItem>
                 </Link>
               </MenuList>

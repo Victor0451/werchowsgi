@@ -373,25 +373,6 @@ model parcelas_lugares {
   operador   String?   @db.VarChar(255)
 }
 
-model planificacion_guardias {
-  idturno           Int       @id @default(autoincrement())
-  lugar             String?   @db.VarChar(255)
-  inicio            DateTime? @db.DateTime(0)
-  fin               DateTime? @db.DateTime(0)
-  horas             Int?
-  operador          String?   @db.VarChar(255)
-  mes_planificacion String?   @db.VarChar(255)
-  feriado           Boolean?
-  tarea             String?   @db.VarChar(255)
-  liquidado         Boolean?
-  fecha_liquidacion String?   @db.VarChar(255)
-  operadorliq       String?   @db.VarChar(255)
-  aprobado          Boolean?
-  fecha_aprobacion  String?   @db.VarChar(255)
-  operadorap        String?   @db.VarChar(255)
-  ano_planificacion Int?
-}
-
 model precio_servicio {
   idprecio             Int       @id @default(autoincrement())
   codigo               Int?
@@ -610,4 +591,23 @@ model servicios_gastos {
   idgastos    Int     @id @default(autoincrement())
   gastos      String? @db.VarChar(255)
   observacion String? @db.VarChar(255)
+}
+
+model liquidacion_guardias {
+  idturno           Int       @id @default(autoincrement())
+  lugar             String?   @db.VarChar(255)
+  inicio            DateTime? @db.DateTime(0)
+  fin               DateTime? @db.DateTime(0)
+  horas             Int?
+  operador          String?   @db.VarChar(255)
+  mes               Int?
+  ano               Int?
+  feriado           Boolean?
+  liquidado         Int?
+  fecha_liquidacion DateTime? @db.Date
+  operadorliq       String?   @db.VarChar(255)
+  aprobado          Int?
+  fecha_aprobacion  DateTime? @db.Date
+  operadorap        String?   @db.VarChar(255)
+  importe           Float?    @db.Float
 }

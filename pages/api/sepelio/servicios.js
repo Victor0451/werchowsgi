@@ -313,6 +313,14 @@ export default async function handler(req, res) {
       const tareas = await Sep.honorarios.findMany();
 
       res.status(200).json(tareas);
+    } else if (req.query.f && req.query.f === "traer valor guardia") {
+      const tareas = await Sep.honorarios.findMany({
+        where: {
+          trabajo: "Guardia oficina",
+        },
+      });
+
+      res.status(200).json(tareas);
     } else if (req.query.f && req.query.f === "traer gastos") {
       const gastos = await Sep.servicios_gastos.findMany();
 

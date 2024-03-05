@@ -637,34 +637,6 @@ export type parcelas_lugaresPayload<ExtArgs extends $Extensions.Args = $Extensio
  * 
  */
 export type parcelas_lugares = runtime.Types.DefaultSelection<parcelas_lugaresPayload>
-export type planificacion_guardiasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    idturno: number
-    lugar: string | null
-    inicio: Date | null
-    fin: Date | null
-    horas: number | null
-    operador: string | null
-    mes_planificacion: string | null
-    feriado: boolean | null
-    tarea: string | null
-    liquidado: boolean | null
-    fecha_liquidacion: string | null
-    operadorliq: string | null
-    aprobado: boolean | null
-    fecha_aprobacion: string | null
-    operadorap: string | null
-    ano_planificacion: number | null
-  }, ExtArgs["result"]["planificacion_guardias"]>
-  composites: {}
-}
-
-/**
- * Model planificacion_guardias
- * 
- */
-export type planificacion_guardias = runtime.Types.DefaultSelection<planificacion_guardiasPayload>
 export type precio_servicioPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -984,6 +956,34 @@ export type servicios_gastosPayload<ExtArgs extends $Extensions.Args = $Extensio
  * 
  */
 export type servicios_gastos = runtime.Types.DefaultSelection<servicios_gastosPayload>
+export type liquidacion_guardiasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idturno: number
+    lugar: string | null
+    inicio: Date | null
+    fin: Date | null
+    horas: number | null
+    operador: string | null
+    mes: number | null
+    ano: number | null
+    feriado: boolean | null
+    liquidado: number | null
+    fecha_liquidacion: Date | null
+    operadorliq: string | null
+    aprobado: number | null
+    fecha_aprobacion: Date | null
+    operadorap: string | null
+    importe: number | null
+  }, ExtArgs["result"]["liquidacion_guardias"]>
+  composites: {}
+}
+
+/**
+ * Model liquidacion_guardias
+ * 
+ */
+export type liquidacion_guardias = runtime.Types.DefaultSelection<liquidacion_guardiasPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1401,16 +1401,6 @@ export class PrismaClient<
   get parcelas_lugares(): Prisma.parcelas_lugaresDelegate<GlobalReject, ExtArgs>;
 
   /**
-   * `prisma.planificacion_guardias`: Exposes CRUD operations for the **planificacion_guardias** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Planificacion_guardias
-    * const planificacion_guardias = await prisma.planificacion_guardias.findMany()
-    * ```
-    */
-  get planificacion_guardias(): Prisma.planificacion_guardiasDelegate<GlobalReject, ExtArgs>;
-
-  /**
    * `prisma.precio_servicio`: Exposes CRUD operations for the **precio_servicio** model.
     * Example usage:
     * ```ts
@@ -1519,6 +1509,16 @@ export class PrismaClient<
     * ```
     */
   get servicios_gastos(): Prisma.servicios_gastosDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.liquidacion_guardias`: Exposes CRUD operations for the **liquidacion_guardias** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Liquidacion_guardias
+    * const liquidacion_guardias = await prisma.liquidacion_guardias.findMany()
+    * ```
+    */
+  get liquidacion_guardias(): Prisma.liquidacion_guardiasDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -2031,7 +2031,6 @@ export namespace Prisma {
     operadorsep: 'operadorsep',
     parcelas: 'parcelas',
     parcelas_lugares: 'parcelas_lugares',
-    planificacion_guardias: 'planificacion_guardias',
     precio_servicio: 'precio_servicio',
     proveedores: 'proveedores',
     rodados: 'rodados',
@@ -2042,7 +2041,8 @@ export namespace Prisma {
     tareas: 'tareas',
     visitantes: 'visitantes',
     informe_gastos: 'informe_gastos',
-    servicios_gastos: 'servicios_gastos'
+    servicios_gastos: 'servicios_gastos',
+    liquidacion_guardias: 'liquidacion_guardias'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2059,7 +2059,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'auto_usos' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sa' | 'caja_sepelio' | 'caja_srl' | 'conceptos' | 'conceptos_sepelio_cuentas' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'generacion_cajas' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'informe_tareas' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'lic_conducir' | 'novedades' | 'operadorsep' | 'parcelas' | 'parcelas_lugares' | 'planificacion_guardias' | 'precio_servicio' | 'proveedores' | 'rodados' | 'servicio_informes' | 'servicio_venta' | 'servicios' | 'servicios_historico' | 'tareas' | 'visitantes' | 'informe_gastos' | 'servicios_gastos'
+      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'auto_usos' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sa' | 'caja_sepelio' | 'caja_srl' | 'conceptos' | 'conceptos_sepelio_cuentas' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'generacion_cajas' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'informe_tareas' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'lic_conducir' | 'novedades' | 'operadorsep' | 'parcelas' | 'parcelas_lugares' | 'precio_servicio' | 'proveedores' | 'rodados' | 'servicio_informes' | 'servicio_venta' | 'servicios' | 'servicios_historico' | 'tareas' | 'visitantes' | 'informe_gastos' | 'servicios_gastos' | 'liquidacion_guardias'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -4354,85 +4354,6 @@ export namespace Prisma {
           }
         }
       }
-      planificacion_guardias: {
-        operations: {
-          findUnique: {
-            args: Prisma.planificacion_guardiasFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<planificacion_guardiasPayload> | null
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.planificacion_guardiasFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<planificacion_guardiasPayload>
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.planificacion_guardiasFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<planificacion_guardiasPayload> | null
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.planificacion_guardiasFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<planificacion_guardiasPayload>
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.planificacion_guardiasFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<planificacion_guardiasPayload>[]
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          create: {
-            args: Prisma.planificacion_guardiasCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<planificacion_guardiasPayload>
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.planificacion_guardiasCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.planificacion_guardiasDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<planificacion_guardiasPayload>
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          update: {
-            args: Prisma.planificacion_guardiasUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<planificacion_guardiasPayload>
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.planificacion_guardiasDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.planificacion_guardiasUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.planificacion_guardiasUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<planificacion_guardiasPayload>
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.Planificacion_guardiasAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregatePlanificacion_guardias>
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.planificacion_guardiasGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Planificacion_guardiasGroupByOutputType>[]
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-          count: {
-            args: Prisma.planificacion_guardiasCountArgs<ExtArgs>,
-            result: $Utils.Optional<Planificacion_guardiasCountAggregateOutputType> | number
-            payload: planificacion_guardiasPayload<ExtArgs>
-          }
-        }
-      }
       precio_servicio: {
         operations: {
           findUnique: {
@@ -5299,6 +5220,85 @@ export namespace Prisma {
             args: Prisma.servicios_gastosCountArgs<ExtArgs>,
             result: $Utils.Optional<Servicios_gastosCountAggregateOutputType> | number
             payload: servicios_gastosPayload<ExtArgs>
+          }
+        }
+      }
+      liquidacion_guardias: {
+        operations: {
+          findUnique: {
+            args: Prisma.liquidacion_guardiasFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_guardiasPayload> | null
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.liquidacion_guardiasFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_guardiasPayload>
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.liquidacion_guardiasFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_guardiasPayload> | null
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.liquidacion_guardiasFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_guardiasPayload>
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.liquidacion_guardiasFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_guardiasPayload>[]
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.liquidacion_guardiasCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_guardiasPayload>
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.liquidacion_guardiasCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.liquidacion_guardiasDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_guardiasPayload>
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.liquidacion_guardiasUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_guardiasPayload>
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.liquidacion_guardiasDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.liquidacion_guardiasUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.liquidacion_guardiasUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_guardiasPayload>
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Liquidacion_guardiasAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateLiquidacion_guardias>
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.liquidacion_guardiasGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Liquidacion_guardiasGroupByOutputType>[]
+            payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.liquidacion_guardiasCountArgs<ExtArgs>,
+            result: $Utils.Optional<Liquidacion_guardiasCountAggregateOutputType> | number
+            payload: liquidacion_guardiasPayload<ExtArgs>
           }
         }
       }
@@ -33467,1025 +33467,6 @@ export namespace Prisma {
 
 
   /**
-   * Model planificacion_guardias
-   */
-
-
-  export type AggregatePlanificacion_guardias = {
-    _count: Planificacion_guardiasCountAggregateOutputType | null
-    _avg: Planificacion_guardiasAvgAggregateOutputType | null
-    _sum: Planificacion_guardiasSumAggregateOutputType | null
-    _min: Planificacion_guardiasMinAggregateOutputType | null
-    _max: Planificacion_guardiasMaxAggregateOutputType | null
-  }
-
-  export type Planificacion_guardiasAvgAggregateOutputType = {
-    idturno: number | null
-    horas: number | null
-    ano_planificacion: number | null
-  }
-
-  export type Planificacion_guardiasSumAggregateOutputType = {
-    idturno: number | null
-    horas: number | null
-    ano_planificacion: number | null
-  }
-
-  export type Planificacion_guardiasMinAggregateOutputType = {
-    idturno: number | null
-    lugar: string | null
-    inicio: Date | null
-    fin: Date | null
-    horas: number | null
-    operador: string | null
-    mes_planificacion: string | null
-    feriado: boolean | null
-    tarea: string | null
-    liquidado: boolean | null
-    fecha_liquidacion: string | null
-    operadorliq: string | null
-    aprobado: boolean | null
-    fecha_aprobacion: string | null
-    operadorap: string | null
-    ano_planificacion: number | null
-  }
-
-  export type Planificacion_guardiasMaxAggregateOutputType = {
-    idturno: number | null
-    lugar: string | null
-    inicio: Date | null
-    fin: Date | null
-    horas: number | null
-    operador: string | null
-    mes_planificacion: string | null
-    feriado: boolean | null
-    tarea: string | null
-    liquidado: boolean | null
-    fecha_liquidacion: string | null
-    operadorliq: string | null
-    aprobado: boolean | null
-    fecha_aprobacion: string | null
-    operadorap: string | null
-    ano_planificacion: number | null
-  }
-
-  export type Planificacion_guardiasCountAggregateOutputType = {
-    idturno: number
-    lugar: number
-    inicio: number
-    fin: number
-    horas: number
-    operador: number
-    mes_planificacion: number
-    feriado: number
-    tarea: number
-    liquidado: number
-    fecha_liquidacion: number
-    operadorliq: number
-    aprobado: number
-    fecha_aprobacion: number
-    operadorap: number
-    ano_planificacion: number
-    _all: number
-  }
-
-
-  export type Planificacion_guardiasAvgAggregateInputType = {
-    idturno?: true
-    horas?: true
-    ano_planificacion?: true
-  }
-
-  export type Planificacion_guardiasSumAggregateInputType = {
-    idturno?: true
-    horas?: true
-    ano_planificacion?: true
-  }
-
-  export type Planificacion_guardiasMinAggregateInputType = {
-    idturno?: true
-    lugar?: true
-    inicio?: true
-    fin?: true
-    horas?: true
-    operador?: true
-    mes_planificacion?: true
-    feriado?: true
-    tarea?: true
-    liquidado?: true
-    fecha_liquidacion?: true
-    operadorliq?: true
-    aprobado?: true
-    fecha_aprobacion?: true
-    operadorap?: true
-    ano_planificacion?: true
-  }
-
-  export type Planificacion_guardiasMaxAggregateInputType = {
-    idturno?: true
-    lugar?: true
-    inicio?: true
-    fin?: true
-    horas?: true
-    operador?: true
-    mes_planificacion?: true
-    feriado?: true
-    tarea?: true
-    liquidado?: true
-    fecha_liquidacion?: true
-    operadorliq?: true
-    aprobado?: true
-    fecha_aprobacion?: true
-    operadorap?: true
-    ano_planificacion?: true
-  }
-
-  export type Planificacion_guardiasCountAggregateInputType = {
-    idturno?: true
-    lugar?: true
-    inicio?: true
-    fin?: true
-    horas?: true
-    operador?: true
-    mes_planificacion?: true
-    feriado?: true
-    tarea?: true
-    liquidado?: true
-    fecha_liquidacion?: true
-    operadorliq?: true
-    aprobado?: true
-    fecha_aprobacion?: true
-    operadorap?: true
-    ano_planificacion?: true
-    _all?: true
-  }
-
-  export type Planificacion_guardiasAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which planificacion_guardias to aggregate.
-     */
-    where?: planificacion_guardiasWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of planificacion_guardias to fetch.
-     */
-    orderBy?: planificacion_guardiasOrderByWithRelationInput | planificacion_guardiasOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: planificacion_guardiasWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` planificacion_guardias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` planificacion_guardias.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned planificacion_guardias
-    **/
-    _count?: true | Planificacion_guardiasCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Planificacion_guardiasAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Planificacion_guardiasSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Planificacion_guardiasMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Planificacion_guardiasMaxAggregateInputType
-  }
-
-  export type GetPlanificacion_guardiasAggregateType<T extends Planificacion_guardiasAggregateArgs> = {
-        [P in keyof T & keyof AggregatePlanificacion_guardias]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePlanificacion_guardias[P]>
-      : GetScalarType<T[P], AggregatePlanificacion_guardias[P]>
-  }
-
-
-
-
-  export type planificacion_guardiasGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: planificacion_guardiasWhereInput
-    orderBy?: planificacion_guardiasOrderByWithAggregationInput | planificacion_guardiasOrderByWithAggregationInput[]
-    by: Planificacion_guardiasScalarFieldEnum[] | Planificacion_guardiasScalarFieldEnum
-    having?: planificacion_guardiasScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Planificacion_guardiasCountAggregateInputType | true
-    _avg?: Planificacion_guardiasAvgAggregateInputType
-    _sum?: Planificacion_guardiasSumAggregateInputType
-    _min?: Planificacion_guardiasMinAggregateInputType
-    _max?: Planificacion_guardiasMaxAggregateInputType
-  }
-
-
-  export type Planificacion_guardiasGroupByOutputType = {
-    idturno: number
-    lugar: string | null
-    inicio: Date | null
-    fin: Date | null
-    horas: number | null
-    operador: string | null
-    mes_planificacion: string | null
-    feriado: boolean | null
-    tarea: string | null
-    liquidado: boolean | null
-    fecha_liquidacion: string | null
-    operadorliq: string | null
-    aprobado: boolean | null
-    fecha_aprobacion: string | null
-    operadorap: string | null
-    ano_planificacion: number | null
-    _count: Planificacion_guardiasCountAggregateOutputType | null
-    _avg: Planificacion_guardiasAvgAggregateOutputType | null
-    _sum: Planificacion_guardiasSumAggregateOutputType | null
-    _min: Planificacion_guardiasMinAggregateOutputType | null
-    _max: Planificacion_guardiasMaxAggregateOutputType | null
-  }
-
-  type GetPlanificacion_guardiasGroupByPayload<T extends planificacion_guardiasGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Planificacion_guardiasGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Planificacion_guardiasGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Planificacion_guardiasGroupByOutputType[P]>
-            : GetScalarType<T[P], Planificacion_guardiasGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type planificacion_guardiasSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    idturno?: boolean
-    lugar?: boolean
-    inicio?: boolean
-    fin?: boolean
-    horas?: boolean
-    operador?: boolean
-    mes_planificacion?: boolean
-    feriado?: boolean
-    tarea?: boolean
-    liquidado?: boolean
-    fecha_liquidacion?: boolean
-    operadorliq?: boolean
-    aprobado?: boolean
-    fecha_aprobacion?: boolean
-    operadorap?: boolean
-    ano_planificacion?: boolean
-  }, ExtArgs["result"]["planificacion_guardias"]>
-
-  export type planificacion_guardiasSelectScalar = {
-    idturno?: boolean
-    lugar?: boolean
-    inicio?: boolean
-    fin?: boolean
-    horas?: boolean
-    operador?: boolean
-    mes_planificacion?: boolean
-    feriado?: boolean
-    tarea?: boolean
-    liquidado?: boolean
-    fecha_liquidacion?: boolean
-    operadorliq?: boolean
-    aprobado?: boolean
-    fecha_aprobacion?: boolean
-    operadorap?: boolean
-    ano_planificacion?: boolean
-  }
-
-
-  type planificacion_guardiasGetPayload<S extends boolean | null | undefined | planificacion_guardiasArgs> = $Types.GetResult<planificacion_guardiasPayload, S>
-
-  type planificacion_guardiasCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<planificacion_guardiasFindManyArgs, 'select' | 'include'> & {
-      select?: Planificacion_guardiasCountAggregateInputType | true
-    }
-
-  export interface planificacion_guardiasDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['planificacion_guardias'], meta: { name: 'planificacion_guardias' } }
-    /**
-     * Find zero or one Planificacion_guardias that matches the filter.
-     * @param {planificacion_guardiasFindUniqueArgs} args - Arguments to find a Planificacion_guardias
-     * @example
-     * // Get one Planificacion_guardias
-     * const planificacion_guardias = await prisma.planificacion_guardias.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends planificacion_guardiasFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, planificacion_guardiasFindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'planificacion_guardias'> extends True ? Prisma__planificacion_guardiasClient<$Types.GetResult<planificacion_guardiasPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__planificacion_guardiasClient<$Types.GetResult<planificacion_guardiasPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one Planificacion_guardias that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {planificacion_guardiasFindUniqueOrThrowArgs} args - Arguments to find a Planificacion_guardias
-     * @example
-     * // Get one Planificacion_guardias
-     * const planificacion_guardias = await prisma.planificacion_guardias.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends planificacion_guardiasFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, planificacion_guardiasFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__planificacion_guardiasClient<$Types.GetResult<planificacion_guardiasPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first Planificacion_guardias that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {planificacion_guardiasFindFirstArgs} args - Arguments to find a Planificacion_guardias
-     * @example
-     * // Get one Planificacion_guardias
-     * const planificacion_guardias = await prisma.planificacion_guardias.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends planificacion_guardiasFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, planificacion_guardiasFindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'planificacion_guardias'> extends True ? Prisma__planificacion_guardiasClient<$Types.GetResult<planificacion_guardiasPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__planificacion_guardiasClient<$Types.GetResult<planificacion_guardiasPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first Planificacion_guardias that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {planificacion_guardiasFindFirstOrThrowArgs} args - Arguments to find a Planificacion_guardias
-     * @example
-     * // Get one Planificacion_guardias
-     * const planificacion_guardias = await prisma.planificacion_guardias.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends planificacion_guardiasFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, planificacion_guardiasFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__planificacion_guardiasClient<$Types.GetResult<planificacion_guardiasPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more Planificacion_guardias that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {planificacion_guardiasFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Planificacion_guardias
-     * const planificacion_guardias = await prisma.planificacion_guardias.findMany()
-     * 
-     * // Get first 10 Planificacion_guardias
-     * const planificacion_guardias = await prisma.planificacion_guardias.findMany({ take: 10 })
-     * 
-     * // Only select the `idturno`
-     * const planificacion_guardiasWithIdturnoOnly = await prisma.planificacion_guardias.findMany({ select: { idturno: true } })
-     * 
-    **/
-    findMany<T extends planificacion_guardiasFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, planificacion_guardiasFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<planificacion_guardiasPayload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a Planificacion_guardias.
-     * @param {planificacion_guardiasCreateArgs} args - Arguments to create a Planificacion_guardias.
-     * @example
-     * // Create one Planificacion_guardias
-     * const Planificacion_guardias = await prisma.planificacion_guardias.create({
-     *   data: {
-     *     // ... data to create a Planificacion_guardias
-     *   }
-     * })
-     * 
-    **/
-    create<T extends planificacion_guardiasCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, planificacion_guardiasCreateArgs<ExtArgs>>
-    ): Prisma__planificacion_guardiasClient<$Types.GetResult<planificacion_guardiasPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many Planificacion_guardias.
-     *     @param {planificacion_guardiasCreateManyArgs} args - Arguments to create many Planificacion_guardias.
-     *     @example
-     *     // Create many Planificacion_guardias
-     *     const planificacion_guardias = await prisma.planificacion_guardias.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends planificacion_guardiasCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, planificacion_guardiasCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Planificacion_guardias.
-     * @param {planificacion_guardiasDeleteArgs} args - Arguments to delete one Planificacion_guardias.
-     * @example
-     * // Delete one Planificacion_guardias
-     * const Planificacion_guardias = await prisma.planificacion_guardias.delete({
-     *   where: {
-     *     // ... filter to delete one Planificacion_guardias
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends planificacion_guardiasDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, planificacion_guardiasDeleteArgs<ExtArgs>>
-    ): Prisma__planificacion_guardiasClient<$Types.GetResult<planificacion_guardiasPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one Planificacion_guardias.
-     * @param {planificacion_guardiasUpdateArgs} args - Arguments to update one Planificacion_guardias.
-     * @example
-     * // Update one Planificacion_guardias
-     * const planificacion_guardias = await prisma.planificacion_guardias.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends planificacion_guardiasUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, planificacion_guardiasUpdateArgs<ExtArgs>>
-    ): Prisma__planificacion_guardiasClient<$Types.GetResult<planificacion_guardiasPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Planificacion_guardias.
-     * @param {planificacion_guardiasDeleteManyArgs} args - Arguments to filter Planificacion_guardias to delete.
-     * @example
-     * // Delete a few Planificacion_guardias
-     * const { count } = await prisma.planificacion_guardias.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends planificacion_guardiasDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, planificacion_guardiasDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Planificacion_guardias.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {planificacion_guardiasUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Planificacion_guardias
-     * const planificacion_guardias = await prisma.planificacion_guardias.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends planificacion_guardiasUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, planificacion_guardiasUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Planificacion_guardias.
-     * @param {planificacion_guardiasUpsertArgs} args - Arguments to update or create a Planificacion_guardias.
-     * @example
-     * // Update or create a Planificacion_guardias
-     * const planificacion_guardias = await prisma.planificacion_guardias.upsert({
-     *   create: {
-     *     // ... data to create a Planificacion_guardias
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Planificacion_guardias we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends planificacion_guardiasUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, planificacion_guardiasUpsertArgs<ExtArgs>>
-    ): Prisma__planificacion_guardiasClient<$Types.GetResult<planificacion_guardiasPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of Planificacion_guardias.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {planificacion_guardiasCountArgs} args - Arguments to filter Planificacion_guardias to count.
-     * @example
-     * // Count the number of Planificacion_guardias
-     * const count = await prisma.planificacion_guardias.count({
-     *   where: {
-     *     // ... the filter for the Planificacion_guardias we want to count
-     *   }
-     * })
-    **/
-    count<T extends planificacion_guardiasCountArgs>(
-      args?: Subset<T, planificacion_guardiasCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Planificacion_guardiasCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Planificacion_guardias.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Planificacion_guardiasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Planificacion_guardiasAggregateArgs>(args: Subset<T, Planificacion_guardiasAggregateArgs>): Prisma.PrismaPromise<GetPlanificacion_guardiasAggregateType<T>>
-
-    /**
-     * Group by Planificacion_guardias.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {planificacion_guardiasGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends planificacion_guardiasGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: planificacion_guardiasGroupByArgs['orderBy'] }
-        : { orderBy?: planificacion_guardiasGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, planificacion_guardiasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPlanificacion_guardiasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for planificacion_guardias.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__planificacion_guardiasClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * planificacion_guardias base type for findUnique actions
-   */
-  export type planificacion_guardiasFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the planificacion_guardias
-     */
-    select?: planificacion_guardiasSelect<ExtArgs> | null
-    /**
-     * Filter, which planificacion_guardias to fetch.
-     */
-    where: planificacion_guardiasWhereUniqueInput
-  }
-
-  /**
-   * planificacion_guardias findUnique
-   */
-  export interface planificacion_guardiasFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends planificacion_guardiasFindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * planificacion_guardias findUniqueOrThrow
-   */
-  export type planificacion_guardiasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the planificacion_guardias
-     */
-    select?: planificacion_guardiasSelect<ExtArgs> | null
-    /**
-     * Filter, which planificacion_guardias to fetch.
-     */
-    where: planificacion_guardiasWhereUniqueInput
-  }
-
-
-  /**
-   * planificacion_guardias base type for findFirst actions
-   */
-  export type planificacion_guardiasFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the planificacion_guardias
-     */
-    select?: planificacion_guardiasSelect<ExtArgs> | null
-    /**
-     * Filter, which planificacion_guardias to fetch.
-     */
-    where?: planificacion_guardiasWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of planificacion_guardias to fetch.
-     */
-    orderBy?: planificacion_guardiasOrderByWithRelationInput | planificacion_guardiasOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for planificacion_guardias.
-     */
-    cursor?: planificacion_guardiasWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` planificacion_guardias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` planificacion_guardias.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of planificacion_guardias.
-     */
-    distinct?: Planificacion_guardiasScalarFieldEnum | Planificacion_guardiasScalarFieldEnum[]
-  }
-
-  /**
-   * planificacion_guardias findFirst
-   */
-  export interface planificacion_guardiasFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends planificacion_guardiasFindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * planificacion_guardias findFirstOrThrow
-   */
-  export type planificacion_guardiasFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the planificacion_guardias
-     */
-    select?: planificacion_guardiasSelect<ExtArgs> | null
-    /**
-     * Filter, which planificacion_guardias to fetch.
-     */
-    where?: planificacion_guardiasWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of planificacion_guardias to fetch.
-     */
-    orderBy?: planificacion_guardiasOrderByWithRelationInput | planificacion_guardiasOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for planificacion_guardias.
-     */
-    cursor?: planificacion_guardiasWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` planificacion_guardias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` planificacion_guardias.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of planificacion_guardias.
-     */
-    distinct?: Planificacion_guardiasScalarFieldEnum | Planificacion_guardiasScalarFieldEnum[]
-  }
-
-
-  /**
-   * planificacion_guardias findMany
-   */
-  export type planificacion_guardiasFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the planificacion_guardias
-     */
-    select?: planificacion_guardiasSelect<ExtArgs> | null
-    /**
-     * Filter, which planificacion_guardias to fetch.
-     */
-    where?: planificacion_guardiasWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of planificacion_guardias to fetch.
-     */
-    orderBy?: planificacion_guardiasOrderByWithRelationInput | planificacion_guardiasOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing planificacion_guardias.
-     */
-    cursor?: planificacion_guardiasWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` planificacion_guardias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` planificacion_guardias.
-     */
-    skip?: number
-    distinct?: Planificacion_guardiasScalarFieldEnum | Planificacion_guardiasScalarFieldEnum[]
-  }
-
-
-  /**
-   * planificacion_guardias create
-   */
-  export type planificacion_guardiasCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the planificacion_guardias
-     */
-    select?: planificacion_guardiasSelect<ExtArgs> | null
-    /**
-     * The data needed to create a planificacion_guardias.
-     */
-    data?: XOR<planificacion_guardiasCreateInput, planificacion_guardiasUncheckedCreateInput>
-  }
-
-
-  /**
-   * planificacion_guardias createMany
-   */
-  export type planificacion_guardiasCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many planificacion_guardias.
-     */
-    data: planificacion_guardiasCreateManyInput | planificacion_guardiasCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * planificacion_guardias update
-   */
-  export type planificacion_guardiasUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the planificacion_guardias
-     */
-    select?: planificacion_guardiasSelect<ExtArgs> | null
-    /**
-     * The data needed to update a planificacion_guardias.
-     */
-    data: XOR<planificacion_guardiasUpdateInput, planificacion_guardiasUncheckedUpdateInput>
-    /**
-     * Choose, which planificacion_guardias to update.
-     */
-    where: planificacion_guardiasWhereUniqueInput
-  }
-
-
-  /**
-   * planificacion_guardias updateMany
-   */
-  export type planificacion_guardiasUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update planificacion_guardias.
-     */
-    data: XOR<planificacion_guardiasUpdateManyMutationInput, planificacion_guardiasUncheckedUpdateManyInput>
-    /**
-     * Filter which planificacion_guardias to update
-     */
-    where?: planificacion_guardiasWhereInput
-  }
-
-
-  /**
-   * planificacion_guardias upsert
-   */
-  export type planificacion_guardiasUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the planificacion_guardias
-     */
-    select?: planificacion_guardiasSelect<ExtArgs> | null
-    /**
-     * The filter to search for the planificacion_guardias to update in case it exists.
-     */
-    where: planificacion_guardiasWhereUniqueInput
-    /**
-     * In case the planificacion_guardias found by the `where` argument doesn't exist, create a new planificacion_guardias with this data.
-     */
-    create: XOR<planificacion_guardiasCreateInput, planificacion_guardiasUncheckedCreateInput>
-    /**
-     * In case the planificacion_guardias was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<planificacion_guardiasUpdateInput, planificacion_guardiasUncheckedUpdateInput>
-  }
-
-
-  /**
-   * planificacion_guardias delete
-   */
-  export type planificacion_guardiasDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the planificacion_guardias
-     */
-    select?: planificacion_guardiasSelect<ExtArgs> | null
-    /**
-     * Filter which planificacion_guardias to delete.
-     */
-    where: planificacion_guardiasWhereUniqueInput
-  }
-
-
-  /**
-   * planificacion_guardias deleteMany
-   */
-  export type planificacion_guardiasDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which planificacion_guardias to delete
-     */
-    where?: planificacion_guardiasWhereInput
-  }
-
-
-  /**
-   * planificacion_guardias without action
-   */
-  export type planificacion_guardiasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the planificacion_guardias
-     */
-    select?: planificacion_guardiasSelect<ExtArgs> | null
-  }
-
-
-
-  /**
    * Model precio_servicio
    */
 
@@ -45930,6 +44911,1041 @@ export namespace Prisma {
 
 
   /**
+   * Model liquidacion_guardias
+   */
+
+
+  export type AggregateLiquidacion_guardias = {
+    _count: Liquidacion_guardiasCountAggregateOutputType | null
+    _avg: Liquidacion_guardiasAvgAggregateOutputType | null
+    _sum: Liquidacion_guardiasSumAggregateOutputType | null
+    _min: Liquidacion_guardiasMinAggregateOutputType | null
+    _max: Liquidacion_guardiasMaxAggregateOutputType | null
+  }
+
+  export type Liquidacion_guardiasAvgAggregateOutputType = {
+    idturno: number | null
+    horas: number | null
+    mes: number | null
+    ano: number | null
+    liquidado: number | null
+    aprobado: number | null
+    importe: number | null
+  }
+
+  export type Liquidacion_guardiasSumAggregateOutputType = {
+    idturno: number | null
+    horas: number | null
+    mes: number | null
+    ano: number | null
+    liquidado: number | null
+    aprobado: number | null
+    importe: number | null
+  }
+
+  export type Liquidacion_guardiasMinAggregateOutputType = {
+    idturno: number | null
+    lugar: string | null
+    inicio: Date | null
+    fin: Date | null
+    horas: number | null
+    operador: string | null
+    mes: number | null
+    ano: number | null
+    feriado: boolean | null
+    liquidado: number | null
+    fecha_liquidacion: Date | null
+    operadorliq: string | null
+    aprobado: number | null
+    fecha_aprobacion: Date | null
+    operadorap: string | null
+    importe: number | null
+  }
+
+  export type Liquidacion_guardiasMaxAggregateOutputType = {
+    idturno: number | null
+    lugar: string | null
+    inicio: Date | null
+    fin: Date | null
+    horas: number | null
+    operador: string | null
+    mes: number | null
+    ano: number | null
+    feriado: boolean | null
+    liquidado: number | null
+    fecha_liquidacion: Date | null
+    operadorliq: string | null
+    aprobado: number | null
+    fecha_aprobacion: Date | null
+    operadorap: string | null
+    importe: number | null
+  }
+
+  export type Liquidacion_guardiasCountAggregateOutputType = {
+    idturno: number
+    lugar: number
+    inicio: number
+    fin: number
+    horas: number
+    operador: number
+    mes: number
+    ano: number
+    feriado: number
+    liquidado: number
+    fecha_liquidacion: number
+    operadorliq: number
+    aprobado: number
+    fecha_aprobacion: number
+    operadorap: number
+    importe: number
+    _all: number
+  }
+
+
+  export type Liquidacion_guardiasAvgAggregateInputType = {
+    idturno?: true
+    horas?: true
+    mes?: true
+    ano?: true
+    liquidado?: true
+    aprobado?: true
+    importe?: true
+  }
+
+  export type Liquidacion_guardiasSumAggregateInputType = {
+    idturno?: true
+    horas?: true
+    mes?: true
+    ano?: true
+    liquidado?: true
+    aprobado?: true
+    importe?: true
+  }
+
+  export type Liquidacion_guardiasMinAggregateInputType = {
+    idturno?: true
+    lugar?: true
+    inicio?: true
+    fin?: true
+    horas?: true
+    operador?: true
+    mes?: true
+    ano?: true
+    feriado?: true
+    liquidado?: true
+    fecha_liquidacion?: true
+    operadorliq?: true
+    aprobado?: true
+    fecha_aprobacion?: true
+    operadorap?: true
+    importe?: true
+  }
+
+  export type Liquidacion_guardiasMaxAggregateInputType = {
+    idturno?: true
+    lugar?: true
+    inicio?: true
+    fin?: true
+    horas?: true
+    operador?: true
+    mes?: true
+    ano?: true
+    feriado?: true
+    liquidado?: true
+    fecha_liquidacion?: true
+    operadorliq?: true
+    aprobado?: true
+    fecha_aprobacion?: true
+    operadorap?: true
+    importe?: true
+  }
+
+  export type Liquidacion_guardiasCountAggregateInputType = {
+    idturno?: true
+    lugar?: true
+    inicio?: true
+    fin?: true
+    horas?: true
+    operador?: true
+    mes?: true
+    ano?: true
+    feriado?: true
+    liquidado?: true
+    fecha_liquidacion?: true
+    operadorliq?: true
+    aprobado?: true
+    fecha_aprobacion?: true
+    operadorap?: true
+    importe?: true
+    _all?: true
+  }
+
+  export type Liquidacion_guardiasAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which liquidacion_guardias to aggregate.
+     */
+    where?: liquidacion_guardiasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of liquidacion_guardias to fetch.
+     */
+    orderBy?: liquidacion_guardiasOrderByWithRelationInput | liquidacion_guardiasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: liquidacion_guardiasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` liquidacion_guardias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` liquidacion_guardias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned liquidacion_guardias
+    **/
+    _count?: true | Liquidacion_guardiasCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Liquidacion_guardiasAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Liquidacion_guardiasSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Liquidacion_guardiasMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Liquidacion_guardiasMaxAggregateInputType
+  }
+
+  export type GetLiquidacion_guardiasAggregateType<T extends Liquidacion_guardiasAggregateArgs> = {
+        [P in keyof T & keyof AggregateLiquidacion_guardias]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLiquidacion_guardias[P]>
+      : GetScalarType<T[P], AggregateLiquidacion_guardias[P]>
+  }
+
+
+
+
+  export type liquidacion_guardiasGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: liquidacion_guardiasWhereInput
+    orderBy?: liquidacion_guardiasOrderByWithAggregationInput | liquidacion_guardiasOrderByWithAggregationInput[]
+    by: Liquidacion_guardiasScalarFieldEnum[] | Liquidacion_guardiasScalarFieldEnum
+    having?: liquidacion_guardiasScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Liquidacion_guardiasCountAggregateInputType | true
+    _avg?: Liquidacion_guardiasAvgAggregateInputType
+    _sum?: Liquidacion_guardiasSumAggregateInputType
+    _min?: Liquidacion_guardiasMinAggregateInputType
+    _max?: Liquidacion_guardiasMaxAggregateInputType
+  }
+
+
+  export type Liquidacion_guardiasGroupByOutputType = {
+    idturno: number
+    lugar: string | null
+    inicio: Date | null
+    fin: Date | null
+    horas: number | null
+    operador: string | null
+    mes: number | null
+    ano: number | null
+    feriado: boolean | null
+    liquidado: number | null
+    fecha_liquidacion: Date | null
+    operadorliq: string | null
+    aprobado: number | null
+    fecha_aprobacion: Date | null
+    operadorap: string | null
+    importe: number | null
+    _count: Liquidacion_guardiasCountAggregateOutputType | null
+    _avg: Liquidacion_guardiasAvgAggregateOutputType | null
+    _sum: Liquidacion_guardiasSumAggregateOutputType | null
+    _min: Liquidacion_guardiasMinAggregateOutputType | null
+    _max: Liquidacion_guardiasMaxAggregateOutputType | null
+  }
+
+  type GetLiquidacion_guardiasGroupByPayload<T extends liquidacion_guardiasGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Liquidacion_guardiasGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Liquidacion_guardiasGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Liquidacion_guardiasGroupByOutputType[P]>
+            : GetScalarType<T[P], Liquidacion_guardiasGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type liquidacion_guardiasSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idturno?: boolean
+    lugar?: boolean
+    inicio?: boolean
+    fin?: boolean
+    horas?: boolean
+    operador?: boolean
+    mes?: boolean
+    ano?: boolean
+    feriado?: boolean
+    liquidado?: boolean
+    fecha_liquidacion?: boolean
+    operadorliq?: boolean
+    aprobado?: boolean
+    fecha_aprobacion?: boolean
+    operadorap?: boolean
+    importe?: boolean
+  }, ExtArgs["result"]["liquidacion_guardias"]>
+
+  export type liquidacion_guardiasSelectScalar = {
+    idturno?: boolean
+    lugar?: boolean
+    inicio?: boolean
+    fin?: boolean
+    horas?: boolean
+    operador?: boolean
+    mes?: boolean
+    ano?: boolean
+    feriado?: boolean
+    liquidado?: boolean
+    fecha_liquidacion?: boolean
+    operadorliq?: boolean
+    aprobado?: boolean
+    fecha_aprobacion?: boolean
+    operadorap?: boolean
+    importe?: boolean
+  }
+
+
+  type liquidacion_guardiasGetPayload<S extends boolean | null | undefined | liquidacion_guardiasArgs> = $Types.GetResult<liquidacion_guardiasPayload, S>
+
+  type liquidacion_guardiasCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<liquidacion_guardiasFindManyArgs, 'select' | 'include'> & {
+      select?: Liquidacion_guardiasCountAggregateInputType | true
+    }
+
+  export interface liquidacion_guardiasDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['liquidacion_guardias'], meta: { name: 'liquidacion_guardias' } }
+    /**
+     * Find zero or one Liquidacion_guardias that matches the filter.
+     * @param {liquidacion_guardiasFindUniqueArgs} args - Arguments to find a Liquidacion_guardias
+     * @example
+     * // Get one Liquidacion_guardias
+     * const liquidacion_guardias = await prisma.liquidacion_guardias.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends liquidacion_guardiasFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, liquidacion_guardiasFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'liquidacion_guardias'> extends True ? Prisma__liquidacion_guardiasClient<$Types.GetResult<liquidacion_guardiasPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__liquidacion_guardiasClient<$Types.GetResult<liquidacion_guardiasPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Liquidacion_guardias that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {liquidacion_guardiasFindUniqueOrThrowArgs} args - Arguments to find a Liquidacion_guardias
+     * @example
+     * // Get one Liquidacion_guardias
+     * const liquidacion_guardias = await prisma.liquidacion_guardias.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends liquidacion_guardiasFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, liquidacion_guardiasFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__liquidacion_guardiasClient<$Types.GetResult<liquidacion_guardiasPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Liquidacion_guardias that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_guardiasFindFirstArgs} args - Arguments to find a Liquidacion_guardias
+     * @example
+     * // Get one Liquidacion_guardias
+     * const liquidacion_guardias = await prisma.liquidacion_guardias.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends liquidacion_guardiasFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, liquidacion_guardiasFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'liquidacion_guardias'> extends True ? Prisma__liquidacion_guardiasClient<$Types.GetResult<liquidacion_guardiasPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__liquidacion_guardiasClient<$Types.GetResult<liquidacion_guardiasPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Liquidacion_guardias that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_guardiasFindFirstOrThrowArgs} args - Arguments to find a Liquidacion_guardias
+     * @example
+     * // Get one Liquidacion_guardias
+     * const liquidacion_guardias = await prisma.liquidacion_guardias.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends liquidacion_guardiasFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, liquidacion_guardiasFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__liquidacion_guardiasClient<$Types.GetResult<liquidacion_guardiasPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Liquidacion_guardias that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_guardiasFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Liquidacion_guardias
+     * const liquidacion_guardias = await prisma.liquidacion_guardias.findMany()
+     * 
+     * // Get first 10 Liquidacion_guardias
+     * const liquidacion_guardias = await prisma.liquidacion_guardias.findMany({ take: 10 })
+     * 
+     * // Only select the `idturno`
+     * const liquidacion_guardiasWithIdturnoOnly = await prisma.liquidacion_guardias.findMany({ select: { idturno: true } })
+     * 
+    **/
+    findMany<T extends liquidacion_guardiasFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, liquidacion_guardiasFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<liquidacion_guardiasPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Liquidacion_guardias.
+     * @param {liquidacion_guardiasCreateArgs} args - Arguments to create a Liquidacion_guardias.
+     * @example
+     * // Create one Liquidacion_guardias
+     * const Liquidacion_guardias = await prisma.liquidacion_guardias.create({
+     *   data: {
+     *     // ... data to create a Liquidacion_guardias
+     *   }
+     * })
+     * 
+    **/
+    create<T extends liquidacion_guardiasCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, liquidacion_guardiasCreateArgs<ExtArgs>>
+    ): Prisma__liquidacion_guardiasClient<$Types.GetResult<liquidacion_guardiasPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Liquidacion_guardias.
+     *     @param {liquidacion_guardiasCreateManyArgs} args - Arguments to create many Liquidacion_guardias.
+     *     @example
+     *     // Create many Liquidacion_guardias
+     *     const liquidacion_guardias = await prisma.liquidacion_guardias.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends liquidacion_guardiasCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, liquidacion_guardiasCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Liquidacion_guardias.
+     * @param {liquidacion_guardiasDeleteArgs} args - Arguments to delete one Liquidacion_guardias.
+     * @example
+     * // Delete one Liquidacion_guardias
+     * const Liquidacion_guardias = await prisma.liquidacion_guardias.delete({
+     *   where: {
+     *     // ... filter to delete one Liquidacion_guardias
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends liquidacion_guardiasDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, liquidacion_guardiasDeleteArgs<ExtArgs>>
+    ): Prisma__liquidacion_guardiasClient<$Types.GetResult<liquidacion_guardiasPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Liquidacion_guardias.
+     * @param {liquidacion_guardiasUpdateArgs} args - Arguments to update one Liquidacion_guardias.
+     * @example
+     * // Update one Liquidacion_guardias
+     * const liquidacion_guardias = await prisma.liquidacion_guardias.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends liquidacion_guardiasUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, liquidacion_guardiasUpdateArgs<ExtArgs>>
+    ): Prisma__liquidacion_guardiasClient<$Types.GetResult<liquidacion_guardiasPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Liquidacion_guardias.
+     * @param {liquidacion_guardiasDeleteManyArgs} args - Arguments to filter Liquidacion_guardias to delete.
+     * @example
+     * // Delete a few Liquidacion_guardias
+     * const { count } = await prisma.liquidacion_guardias.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends liquidacion_guardiasDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, liquidacion_guardiasDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Liquidacion_guardias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_guardiasUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Liquidacion_guardias
+     * const liquidacion_guardias = await prisma.liquidacion_guardias.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends liquidacion_guardiasUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, liquidacion_guardiasUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Liquidacion_guardias.
+     * @param {liquidacion_guardiasUpsertArgs} args - Arguments to update or create a Liquidacion_guardias.
+     * @example
+     * // Update or create a Liquidacion_guardias
+     * const liquidacion_guardias = await prisma.liquidacion_guardias.upsert({
+     *   create: {
+     *     // ... data to create a Liquidacion_guardias
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Liquidacion_guardias we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends liquidacion_guardiasUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, liquidacion_guardiasUpsertArgs<ExtArgs>>
+    ): Prisma__liquidacion_guardiasClient<$Types.GetResult<liquidacion_guardiasPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Liquidacion_guardias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_guardiasCountArgs} args - Arguments to filter Liquidacion_guardias to count.
+     * @example
+     * // Count the number of Liquidacion_guardias
+     * const count = await prisma.liquidacion_guardias.count({
+     *   where: {
+     *     // ... the filter for the Liquidacion_guardias we want to count
+     *   }
+     * })
+    **/
+    count<T extends liquidacion_guardiasCountArgs>(
+      args?: Subset<T, liquidacion_guardiasCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Liquidacion_guardiasCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Liquidacion_guardias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Liquidacion_guardiasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Liquidacion_guardiasAggregateArgs>(args: Subset<T, Liquidacion_guardiasAggregateArgs>): Prisma.PrismaPromise<GetLiquidacion_guardiasAggregateType<T>>
+
+    /**
+     * Group by Liquidacion_guardias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_guardiasGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends liquidacion_guardiasGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: liquidacion_guardiasGroupByArgs['orderBy'] }
+        : { orderBy?: liquidacion_guardiasGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, liquidacion_guardiasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLiquidacion_guardiasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for liquidacion_guardias.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__liquidacion_guardiasClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * liquidacion_guardias base type for findUnique actions
+   */
+  export type liquidacion_guardiasFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_guardias
+     */
+    select?: liquidacion_guardiasSelect<ExtArgs> | null
+    /**
+     * Filter, which liquidacion_guardias to fetch.
+     */
+    where: liquidacion_guardiasWhereUniqueInput
+  }
+
+  /**
+   * liquidacion_guardias findUnique
+   */
+  export interface liquidacion_guardiasFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends liquidacion_guardiasFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * liquidacion_guardias findUniqueOrThrow
+   */
+  export type liquidacion_guardiasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_guardias
+     */
+    select?: liquidacion_guardiasSelect<ExtArgs> | null
+    /**
+     * Filter, which liquidacion_guardias to fetch.
+     */
+    where: liquidacion_guardiasWhereUniqueInput
+  }
+
+
+  /**
+   * liquidacion_guardias base type for findFirst actions
+   */
+  export type liquidacion_guardiasFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_guardias
+     */
+    select?: liquidacion_guardiasSelect<ExtArgs> | null
+    /**
+     * Filter, which liquidacion_guardias to fetch.
+     */
+    where?: liquidacion_guardiasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of liquidacion_guardias to fetch.
+     */
+    orderBy?: liquidacion_guardiasOrderByWithRelationInput | liquidacion_guardiasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for liquidacion_guardias.
+     */
+    cursor?: liquidacion_guardiasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` liquidacion_guardias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` liquidacion_guardias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of liquidacion_guardias.
+     */
+    distinct?: Liquidacion_guardiasScalarFieldEnum | Liquidacion_guardiasScalarFieldEnum[]
+  }
+
+  /**
+   * liquidacion_guardias findFirst
+   */
+  export interface liquidacion_guardiasFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends liquidacion_guardiasFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * liquidacion_guardias findFirstOrThrow
+   */
+  export type liquidacion_guardiasFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_guardias
+     */
+    select?: liquidacion_guardiasSelect<ExtArgs> | null
+    /**
+     * Filter, which liquidacion_guardias to fetch.
+     */
+    where?: liquidacion_guardiasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of liquidacion_guardias to fetch.
+     */
+    orderBy?: liquidacion_guardiasOrderByWithRelationInput | liquidacion_guardiasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for liquidacion_guardias.
+     */
+    cursor?: liquidacion_guardiasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` liquidacion_guardias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` liquidacion_guardias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of liquidacion_guardias.
+     */
+    distinct?: Liquidacion_guardiasScalarFieldEnum | Liquidacion_guardiasScalarFieldEnum[]
+  }
+
+
+  /**
+   * liquidacion_guardias findMany
+   */
+  export type liquidacion_guardiasFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_guardias
+     */
+    select?: liquidacion_guardiasSelect<ExtArgs> | null
+    /**
+     * Filter, which liquidacion_guardias to fetch.
+     */
+    where?: liquidacion_guardiasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of liquidacion_guardias to fetch.
+     */
+    orderBy?: liquidacion_guardiasOrderByWithRelationInput | liquidacion_guardiasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing liquidacion_guardias.
+     */
+    cursor?: liquidacion_guardiasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` liquidacion_guardias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` liquidacion_guardias.
+     */
+    skip?: number
+    distinct?: Liquidacion_guardiasScalarFieldEnum | Liquidacion_guardiasScalarFieldEnum[]
+  }
+
+
+  /**
+   * liquidacion_guardias create
+   */
+  export type liquidacion_guardiasCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_guardias
+     */
+    select?: liquidacion_guardiasSelect<ExtArgs> | null
+    /**
+     * The data needed to create a liquidacion_guardias.
+     */
+    data?: XOR<liquidacion_guardiasCreateInput, liquidacion_guardiasUncheckedCreateInput>
+  }
+
+
+  /**
+   * liquidacion_guardias createMany
+   */
+  export type liquidacion_guardiasCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many liquidacion_guardias.
+     */
+    data: liquidacion_guardiasCreateManyInput | liquidacion_guardiasCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * liquidacion_guardias update
+   */
+  export type liquidacion_guardiasUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_guardias
+     */
+    select?: liquidacion_guardiasSelect<ExtArgs> | null
+    /**
+     * The data needed to update a liquidacion_guardias.
+     */
+    data: XOR<liquidacion_guardiasUpdateInput, liquidacion_guardiasUncheckedUpdateInput>
+    /**
+     * Choose, which liquidacion_guardias to update.
+     */
+    where: liquidacion_guardiasWhereUniqueInput
+  }
+
+
+  /**
+   * liquidacion_guardias updateMany
+   */
+  export type liquidacion_guardiasUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update liquidacion_guardias.
+     */
+    data: XOR<liquidacion_guardiasUpdateManyMutationInput, liquidacion_guardiasUncheckedUpdateManyInput>
+    /**
+     * Filter which liquidacion_guardias to update
+     */
+    where?: liquidacion_guardiasWhereInput
+  }
+
+
+  /**
+   * liquidacion_guardias upsert
+   */
+  export type liquidacion_guardiasUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_guardias
+     */
+    select?: liquidacion_guardiasSelect<ExtArgs> | null
+    /**
+     * The filter to search for the liquidacion_guardias to update in case it exists.
+     */
+    where: liquidacion_guardiasWhereUniqueInput
+    /**
+     * In case the liquidacion_guardias found by the `where` argument doesn't exist, create a new liquidacion_guardias with this data.
+     */
+    create: XOR<liquidacion_guardiasCreateInput, liquidacion_guardiasUncheckedCreateInput>
+    /**
+     * In case the liquidacion_guardias was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<liquidacion_guardiasUpdateInput, liquidacion_guardiasUncheckedUpdateInput>
+  }
+
+
+  /**
+   * liquidacion_guardias delete
+   */
+  export type liquidacion_guardiasDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_guardias
+     */
+    select?: liquidacion_guardiasSelect<ExtArgs> | null
+    /**
+     * Filter which liquidacion_guardias to delete.
+     */
+    where: liquidacion_guardiasWhereUniqueInput
+  }
+
+
+  /**
+   * liquidacion_guardias deleteMany
+   */
+  export type liquidacion_guardiasDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which liquidacion_guardias to delete
+     */
+    where?: liquidacion_guardiasWhereInput
+  }
+
+
+  /**
+   * liquidacion_guardias without action
+   */
+  export type liquidacion_guardiasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_guardias
+     */
+    select?: liquidacion_guardiasSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -46394,28 +46410,6 @@ export namespace Prisma {
   export type Parcelas_lugaresScalarFieldEnum = (typeof Parcelas_lugaresScalarFieldEnum)[keyof typeof Parcelas_lugaresScalarFieldEnum]
 
 
-  export const Planificacion_guardiasScalarFieldEnum: {
-    idturno: 'idturno',
-    lugar: 'lugar',
-    inicio: 'inicio',
-    fin: 'fin',
-    horas: 'horas',
-    operador: 'operador',
-    mes_planificacion: 'mes_planificacion',
-    feriado: 'feriado',
-    tarea: 'tarea',
-    liquidado: 'liquidado',
-    fecha_liquidacion: 'fecha_liquidacion',
-    operadorliq: 'operadorliq',
-    aprobado: 'aprobado',
-    fecha_aprobacion: 'fecha_aprobacion',
-    operadorap: 'operadorap',
-    ano_planificacion: 'ano_planificacion'
-  };
-
-  export type Planificacion_guardiasScalarFieldEnum = (typeof Planificacion_guardiasScalarFieldEnum)[keyof typeof Planificacion_guardiasScalarFieldEnum]
-
-
   export const Precio_servicioScalarFieldEnum: {
     idprecio: 'idprecio',
     codigo: 'codigo',
@@ -46667,6 +46661,28 @@ export namespace Prisma {
   };
 
   export type Servicios_gastosScalarFieldEnum = (typeof Servicios_gastosScalarFieldEnum)[keyof typeof Servicios_gastosScalarFieldEnum]
+
+
+  export const Liquidacion_guardiasScalarFieldEnum: {
+    idturno: 'idturno',
+    lugar: 'lugar',
+    inicio: 'inicio',
+    fin: 'fin',
+    horas: 'horas',
+    operador: 'operador',
+    mes: 'mes',
+    ano: 'ano',
+    feriado: 'feriado',
+    liquidado: 'liquidado',
+    fecha_liquidacion: 'fecha_liquidacion',
+    operadorliq: 'operadorliq',
+    aprobado: 'aprobado',
+    fecha_aprobacion: 'fecha_aprobacion',
+    operadorap: 'operadorap',
+    importe: 'importe'
+  };
+
+  export type Liquidacion_guardiasScalarFieldEnum = (typeof Liquidacion_guardiasScalarFieldEnum)[keyof typeof Liquidacion_guardiasScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -48581,97 +48597,6 @@ export namespace Prisma {
     operador?: StringNullableWithAggregatesFilter | string | null
   }
 
-  export type planificacion_guardiasWhereInput = {
-    AND?: planificacion_guardiasWhereInput | planificacion_guardiasWhereInput[]
-    OR?: planificacion_guardiasWhereInput[]
-    NOT?: planificacion_guardiasWhereInput | planificacion_guardiasWhereInput[]
-    idturno?: IntFilter | number
-    lugar?: StringNullableFilter | string | null
-    inicio?: DateTimeNullableFilter | Date | string | null
-    fin?: DateTimeNullableFilter | Date | string | null
-    horas?: IntNullableFilter | number | null
-    operador?: StringNullableFilter | string | null
-    mes_planificacion?: StringNullableFilter | string | null
-    feriado?: BoolNullableFilter | boolean | null
-    tarea?: StringNullableFilter | string | null
-    liquidado?: BoolNullableFilter | boolean | null
-    fecha_liquidacion?: StringNullableFilter | string | null
-    operadorliq?: StringNullableFilter | string | null
-    aprobado?: BoolNullableFilter | boolean | null
-    fecha_aprobacion?: StringNullableFilter | string | null
-    operadorap?: StringNullableFilter | string | null
-    ano_planificacion?: IntNullableFilter | number | null
-  }
-
-  export type planificacion_guardiasOrderByWithRelationInput = {
-    idturno?: SortOrder
-    lugar?: SortOrderInput | SortOrder
-    inicio?: SortOrderInput | SortOrder
-    fin?: SortOrderInput | SortOrder
-    horas?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    mes_planificacion?: SortOrderInput | SortOrder
-    feriado?: SortOrderInput | SortOrder
-    tarea?: SortOrderInput | SortOrder
-    liquidado?: SortOrderInput | SortOrder
-    fecha_liquidacion?: SortOrderInput | SortOrder
-    operadorliq?: SortOrderInput | SortOrder
-    aprobado?: SortOrderInput | SortOrder
-    fecha_aprobacion?: SortOrderInput | SortOrder
-    operadorap?: SortOrderInput | SortOrder
-    ano_planificacion?: SortOrderInput | SortOrder
-  }
-
-  export type planificacion_guardiasWhereUniqueInput = {
-    idturno?: number
-  }
-
-  export type planificacion_guardiasOrderByWithAggregationInput = {
-    idturno?: SortOrder
-    lugar?: SortOrderInput | SortOrder
-    inicio?: SortOrderInput | SortOrder
-    fin?: SortOrderInput | SortOrder
-    horas?: SortOrderInput | SortOrder
-    operador?: SortOrderInput | SortOrder
-    mes_planificacion?: SortOrderInput | SortOrder
-    feriado?: SortOrderInput | SortOrder
-    tarea?: SortOrderInput | SortOrder
-    liquidado?: SortOrderInput | SortOrder
-    fecha_liquidacion?: SortOrderInput | SortOrder
-    operadorliq?: SortOrderInput | SortOrder
-    aprobado?: SortOrderInput | SortOrder
-    fecha_aprobacion?: SortOrderInput | SortOrder
-    operadorap?: SortOrderInput | SortOrder
-    ano_planificacion?: SortOrderInput | SortOrder
-    _count?: planificacion_guardiasCountOrderByAggregateInput
-    _avg?: planificacion_guardiasAvgOrderByAggregateInput
-    _max?: planificacion_guardiasMaxOrderByAggregateInput
-    _min?: planificacion_guardiasMinOrderByAggregateInput
-    _sum?: planificacion_guardiasSumOrderByAggregateInput
-  }
-
-  export type planificacion_guardiasScalarWhereWithAggregatesInput = {
-    AND?: planificacion_guardiasScalarWhereWithAggregatesInput | planificacion_guardiasScalarWhereWithAggregatesInput[]
-    OR?: planificacion_guardiasScalarWhereWithAggregatesInput[]
-    NOT?: planificacion_guardiasScalarWhereWithAggregatesInput | planificacion_guardiasScalarWhereWithAggregatesInput[]
-    idturno?: IntWithAggregatesFilter | number
-    lugar?: StringNullableWithAggregatesFilter | string | null
-    inicio?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    fin?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    horas?: IntNullableWithAggregatesFilter | number | null
-    operador?: StringNullableWithAggregatesFilter | string | null
-    mes_planificacion?: StringNullableWithAggregatesFilter | string | null
-    feriado?: BoolNullableWithAggregatesFilter | boolean | null
-    tarea?: StringNullableWithAggregatesFilter | string | null
-    liquidado?: BoolNullableWithAggregatesFilter | boolean | null
-    fecha_liquidacion?: StringNullableWithAggregatesFilter | string | null
-    operadorliq?: StringNullableWithAggregatesFilter | string | null
-    aprobado?: BoolNullableWithAggregatesFilter | boolean | null
-    fecha_aprobacion?: StringNullableWithAggregatesFilter | string | null
-    operadorap?: StringNullableWithAggregatesFilter | string | null
-    ano_planificacion?: IntNullableWithAggregatesFilter | number | null
-  }
-
   export type precio_servicioWhereInput = {
     AND?: precio_servicioWhereInput | precio_servicioWhereInput[]
     OR?: precio_servicioWhereInput[]
@@ -49715,6 +49640,97 @@ export namespace Prisma {
     idgastos?: IntWithAggregatesFilter | number
     gastos?: StringNullableWithAggregatesFilter | string | null
     observacion?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type liquidacion_guardiasWhereInput = {
+    AND?: liquidacion_guardiasWhereInput | liquidacion_guardiasWhereInput[]
+    OR?: liquidacion_guardiasWhereInput[]
+    NOT?: liquidacion_guardiasWhereInput | liquidacion_guardiasWhereInput[]
+    idturno?: IntFilter | number
+    lugar?: StringNullableFilter | string | null
+    inicio?: DateTimeNullableFilter | Date | string | null
+    fin?: DateTimeNullableFilter | Date | string | null
+    horas?: IntNullableFilter | number | null
+    operador?: StringNullableFilter | string | null
+    mes?: IntNullableFilter | number | null
+    ano?: IntNullableFilter | number | null
+    feriado?: BoolNullableFilter | boolean | null
+    liquidado?: IntNullableFilter | number | null
+    fecha_liquidacion?: DateTimeNullableFilter | Date | string | null
+    operadorliq?: StringNullableFilter | string | null
+    aprobado?: IntNullableFilter | number | null
+    fecha_aprobacion?: DateTimeNullableFilter | Date | string | null
+    operadorap?: StringNullableFilter | string | null
+    importe?: FloatNullableFilter | number | null
+  }
+
+  export type liquidacion_guardiasOrderByWithRelationInput = {
+    idturno?: SortOrder
+    lugar?: SortOrderInput | SortOrder
+    inicio?: SortOrderInput | SortOrder
+    fin?: SortOrderInput | SortOrder
+    horas?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    mes?: SortOrderInput | SortOrder
+    ano?: SortOrderInput | SortOrder
+    feriado?: SortOrderInput | SortOrder
+    liquidado?: SortOrderInput | SortOrder
+    fecha_liquidacion?: SortOrderInput | SortOrder
+    operadorliq?: SortOrderInput | SortOrder
+    aprobado?: SortOrderInput | SortOrder
+    fecha_aprobacion?: SortOrderInput | SortOrder
+    operadorap?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+  }
+
+  export type liquidacion_guardiasWhereUniqueInput = {
+    idturno?: number
+  }
+
+  export type liquidacion_guardiasOrderByWithAggregationInput = {
+    idturno?: SortOrder
+    lugar?: SortOrderInput | SortOrder
+    inicio?: SortOrderInput | SortOrder
+    fin?: SortOrderInput | SortOrder
+    horas?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    mes?: SortOrderInput | SortOrder
+    ano?: SortOrderInput | SortOrder
+    feriado?: SortOrderInput | SortOrder
+    liquidado?: SortOrderInput | SortOrder
+    fecha_liquidacion?: SortOrderInput | SortOrder
+    operadorliq?: SortOrderInput | SortOrder
+    aprobado?: SortOrderInput | SortOrder
+    fecha_aprobacion?: SortOrderInput | SortOrder
+    operadorap?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    _count?: liquidacion_guardiasCountOrderByAggregateInput
+    _avg?: liquidacion_guardiasAvgOrderByAggregateInput
+    _max?: liquidacion_guardiasMaxOrderByAggregateInput
+    _min?: liquidacion_guardiasMinOrderByAggregateInput
+    _sum?: liquidacion_guardiasSumOrderByAggregateInput
+  }
+
+  export type liquidacion_guardiasScalarWhereWithAggregatesInput = {
+    AND?: liquidacion_guardiasScalarWhereWithAggregatesInput | liquidacion_guardiasScalarWhereWithAggregatesInput[]
+    OR?: liquidacion_guardiasScalarWhereWithAggregatesInput[]
+    NOT?: liquidacion_guardiasScalarWhereWithAggregatesInput | liquidacion_guardiasScalarWhereWithAggregatesInput[]
+    idturno?: IntWithAggregatesFilter | number
+    lugar?: StringNullableWithAggregatesFilter | string | null
+    inicio?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    fin?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    horas?: IntNullableWithAggregatesFilter | number | null
+    operador?: StringNullableWithAggregatesFilter | string | null
+    mes?: IntNullableWithAggregatesFilter | number | null
+    ano?: IntNullableWithAggregatesFilter | number | null
+    feriado?: BoolNullableWithAggregatesFilter | boolean | null
+    liquidado?: IntNullableWithAggregatesFilter | number | null
+    fecha_liquidacion?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    operadorliq?: StringNullableWithAggregatesFilter | string | null
+    aprobado?: IntNullableWithAggregatesFilter | number | null
+    fecha_aprobacion?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    operadorap?: StringNullableWithAggregatesFilter | string | null
+    importe?: FloatNullableWithAggregatesFilter | number | null
   }
 
   export type ataud_precioCreateInput = {
@@ -52178,136 +52194,6 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type planificacion_guardiasCreateInput = {
-    lugar?: string | null
-    inicio?: Date | string | null
-    fin?: Date | string | null
-    horas?: number | null
-    operador?: string | null
-    mes_planificacion?: string | null
-    feriado?: boolean | null
-    tarea?: string | null
-    liquidado?: boolean | null
-    fecha_liquidacion?: string | null
-    operadorliq?: string | null
-    aprobado?: boolean | null
-    fecha_aprobacion?: string | null
-    operadorap?: string | null
-    ano_planificacion?: number | null
-  }
-
-  export type planificacion_guardiasUncheckedCreateInput = {
-    idturno?: number
-    lugar?: string | null
-    inicio?: Date | string | null
-    fin?: Date | string | null
-    horas?: number | null
-    operador?: string | null
-    mes_planificacion?: string | null
-    feriado?: boolean | null
-    tarea?: string | null
-    liquidado?: boolean | null
-    fecha_liquidacion?: string | null
-    operadorliq?: string | null
-    aprobado?: boolean | null
-    fecha_aprobacion?: string | null
-    operadorap?: string | null
-    ano_planificacion?: number | null
-  }
-
-  export type planificacion_guardiasUpdateInput = {
-    lugar?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    horas?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
-    feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_liquidacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
-    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_aprobacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
-    ano_planificacion?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type planificacion_guardiasUncheckedUpdateInput = {
-    idturno?: IntFieldUpdateOperationsInput | number
-    lugar?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    horas?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
-    feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_liquidacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
-    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_aprobacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
-    ano_planificacion?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type planificacion_guardiasCreateManyInput = {
-    idturno?: number
-    lugar?: string | null
-    inicio?: Date | string | null
-    fin?: Date | string | null
-    horas?: number | null
-    operador?: string | null
-    mes_planificacion?: string | null
-    feriado?: boolean | null
-    tarea?: string | null
-    liquidado?: boolean | null
-    fecha_liquidacion?: string | null
-    operadorliq?: string | null
-    aprobado?: boolean | null
-    fecha_aprobacion?: string | null
-    operadorap?: string | null
-    ano_planificacion?: number | null
-  }
-
-  export type planificacion_guardiasUpdateManyMutationInput = {
-    lugar?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    horas?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
-    feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_liquidacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
-    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_aprobacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
-    ano_planificacion?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type planificacion_guardiasUncheckedUpdateManyInput = {
-    idturno?: IntFieldUpdateOperationsInput | number
-    lugar?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    horas?: NullableIntFieldUpdateOperationsInput | number | null
-    operador?: NullableStringFieldUpdateOperationsInput | string | null
-    mes_planificacion?: NullableStringFieldUpdateOperationsInput | string | null
-    feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_liquidacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
-    aprobado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_aprobacion?: NullableStringFieldUpdateOperationsInput | string | null
-    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
-    ano_planificacion?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
   export type precio_servicioCreateInput = {
     codigo?: number | null
     contado?: number | null
@@ -53813,6 +53699,136 @@ export namespace Prisma {
     idgastos?: IntFieldUpdateOperationsInput | number
     gastos?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type liquidacion_guardiasCreateInput = {
+    lugar?: string | null
+    inicio?: Date | string | null
+    fin?: Date | string | null
+    horas?: number | null
+    operador?: string | null
+    mes?: number | null
+    ano?: number | null
+    feriado?: boolean | null
+    liquidado?: number | null
+    fecha_liquidacion?: Date | string | null
+    operadorliq?: string | null
+    aprobado?: number | null
+    fecha_aprobacion?: Date | string | null
+    operadorap?: string | null
+    importe?: number | null
+  }
+
+  export type liquidacion_guardiasUncheckedCreateInput = {
+    idturno?: number
+    lugar?: string | null
+    inicio?: Date | string | null
+    fin?: Date | string | null
+    horas?: number | null
+    operador?: string | null
+    mes?: number | null
+    ano?: number | null
+    feriado?: boolean | null
+    liquidado?: number | null
+    fecha_liquidacion?: Date | string | null
+    operadorliq?: string | null
+    aprobado?: number | null
+    fecha_aprobacion?: Date | string | null
+    operadorap?: string | null
+    importe?: number | null
+  }
+
+  export type liquidacion_guardiasUpdateInput = {
+    lugar?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    mes?: NullableIntFieldUpdateOperationsInput | number | null
+    ano?: NullableIntFieldUpdateOperationsInput | number | null
+    feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    liquidado?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
+    aprobado?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_aprobacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type liquidacion_guardiasUncheckedUpdateInput = {
+    idturno?: IntFieldUpdateOperationsInput | number
+    lugar?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    mes?: NullableIntFieldUpdateOperationsInput | number | null
+    ano?: NullableIntFieldUpdateOperationsInput | number | null
+    feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    liquidado?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
+    aprobado?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_aprobacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type liquidacion_guardiasCreateManyInput = {
+    idturno?: number
+    lugar?: string | null
+    inicio?: Date | string | null
+    fin?: Date | string | null
+    horas?: number | null
+    operador?: string | null
+    mes?: number | null
+    ano?: number | null
+    feriado?: boolean | null
+    liquidado?: number | null
+    fecha_liquidacion?: Date | string | null
+    operadorliq?: string | null
+    aprobado?: number | null
+    fecha_aprobacion?: Date | string | null
+    operadorap?: string | null
+    importe?: number | null
+  }
+
+  export type liquidacion_guardiasUpdateManyMutationInput = {
+    lugar?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    mes?: NullableIntFieldUpdateOperationsInput | number | null
+    ano?: NullableIntFieldUpdateOperationsInput | number | null
+    feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    liquidado?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
+    aprobado?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_aprobacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type liquidacion_guardiasUncheckedUpdateManyInput = {
+    idturno?: IntFieldUpdateOperationsInput | number
+    lugar?: NullableStringFieldUpdateOperationsInput | string | null
+    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horas?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    mes?: NullableIntFieldUpdateOperationsInput | number | null
+    ano?: NullableIntFieldUpdateOperationsInput | number | null
+    feriado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    liquidado?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
+    aprobado?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_aprobacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorap?: NullableStringFieldUpdateOperationsInput | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type IntFilter = {
@@ -55466,75 +55482,6 @@ export namespace Prisma {
     dni?: SortOrder
   }
 
-  export type planificacion_guardiasCountOrderByAggregateInput = {
-    idturno?: SortOrder
-    lugar?: SortOrder
-    inicio?: SortOrder
-    fin?: SortOrder
-    horas?: SortOrder
-    operador?: SortOrder
-    mes_planificacion?: SortOrder
-    feriado?: SortOrder
-    tarea?: SortOrder
-    liquidado?: SortOrder
-    fecha_liquidacion?: SortOrder
-    operadorliq?: SortOrder
-    aprobado?: SortOrder
-    fecha_aprobacion?: SortOrder
-    operadorap?: SortOrder
-    ano_planificacion?: SortOrder
-  }
-
-  export type planificacion_guardiasAvgOrderByAggregateInput = {
-    idturno?: SortOrder
-    horas?: SortOrder
-    ano_planificacion?: SortOrder
-  }
-
-  export type planificacion_guardiasMaxOrderByAggregateInput = {
-    idturno?: SortOrder
-    lugar?: SortOrder
-    inicio?: SortOrder
-    fin?: SortOrder
-    horas?: SortOrder
-    operador?: SortOrder
-    mes_planificacion?: SortOrder
-    feriado?: SortOrder
-    tarea?: SortOrder
-    liquidado?: SortOrder
-    fecha_liquidacion?: SortOrder
-    operadorliq?: SortOrder
-    aprobado?: SortOrder
-    fecha_aprobacion?: SortOrder
-    operadorap?: SortOrder
-    ano_planificacion?: SortOrder
-  }
-
-  export type planificacion_guardiasMinOrderByAggregateInput = {
-    idturno?: SortOrder
-    lugar?: SortOrder
-    inicio?: SortOrder
-    fin?: SortOrder
-    horas?: SortOrder
-    operador?: SortOrder
-    mes_planificacion?: SortOrder
-    feriado?: SortOrder
-    tarea?: SortOrder
-    liquidado?: SortOrder
-    fecha_liquidacion?: SortOrder
-    operadorliq?: SortOrder
-    aprobado?: SortOrder
-    fecha_aprobacion?: SortOrder
-    operadorap?: SortOrder
-    ano_planificacion?: SortOrder
-  }
-
-  export type planificacion_guardiasSumOrderByAggregateInput = {
-    idturno?: SortOrder
-    horas?: SortOrder
-    ano_planificacion?: SortOrder
-  }
-
   export type precio_servicioCountOrderByAggregateInput = {
     idprecio?: SortOrder
     codigo?: SortOrder
@@ -56393,6 +56340,83 @@ export namespace Prisma {
 
   export type servicios_gastosSumOrderByAggregateInput = {
     idgastos?: SortOrder
+  }
+
+  export type liquidacion_guardiasCountOrderByAggregateInput = {
+    idturno?: SortOrder
+    lugar?: SortOrder
+    inicio?: SortOrder
+    fin?: SortOrder
+    horas?: SortOrder
+    operador?: SortOrder
+    mes?: SortOrder
+    ano?: SortOrder
+    feriado?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidacion?: SortOrder
+    operadorliq?: SortOrder
+    aprobado?: SortOrder
+    fecha_aprobacion?: SortOrder
+    operadorap?: SortOrder
+    importe?: SortOrder
+  }
+
+  export type liquidacion_guardiasAvgOrderByAggregateInput = {
+    idturno?: SortOrder
+    horas?: SortOrder
+    mes?: SortOrder
+    ano?: SortOrder
+    liquidado?: SortOrder
+    aprobado?: SortOrder
+    importe?: SortOrder
+  }
+
+  export type liquidacion_guardiasMaxOrderByAggregateInput = {
+    idturno?: SortOrder
+    lugar?: SortOrder
+    inicio?: SortOrder
+    fin?: SortOrder
+    horas?: SortOrder
+    operador?: SortOrder
+    mes?: SortOrder
+    ano?: SortOrder
+    feriado?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidacion?: SortOrder
+    operadorliq?: SortOrder
+    aprobado?: SortOrder
+    fecha_aprobacion?: SortOrder
+    operadorap?: SortOrder
+    importe?: SortOrder
+  }
+
+  export type liquidacion_guardiasMinOrderByAggregateInput = {
+    idturno?: SortOrder
+    lugar?: SortOrder
+    inicio?: SortOrder
+    fin?: SortOrder
+    horas?: SortOrder
+    operador?: SortOrder
+    mes?: SortOrder
+    ano?: SortOrder
+    feriado?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidacion?: SortOrder
+    operadorliq?: SortOrder
+    aprobado?: SortOrder
+    fecha_aprobacion?: SortOrder
+    operadorap?: SortOrder
+    importe?: SortOrder
+  }
+
+  export type liquidacion_guardiasSumOrderByAggregateInput = {
+    idturno?: SortOrder
+    horas?: SortOrder
+    mes?: SortOrder
+    ano?: SortOrder
+    liquidado?: SortOrder
+    aprobado?: SortOrder
+    importe?: SortOrder
   }
 
   export type NullableIntFieldUpdateOperationsInput = {

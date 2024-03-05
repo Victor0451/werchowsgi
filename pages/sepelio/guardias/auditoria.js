@@ -7,59 +7,53 @@ import { toast } from "react-toastify";
 import { Redirect } from "@/components/auth/Redirect";
 import useSWR from "swr";
 import { confirmAlert } from "react-confirm-alert";
-import moment from "moment";
+import moment from "moment/moment";
 import { registrarHistoria } from "@/libs/funciones";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import jsCookie from "js-cookie";
-import { ip } from "@/config/config";
-import { Alert } from "@material-tailwind/react";
-import ListadoInformes from "@/components/sepelio/servicios/ListadoInformes";
+import ListadoAuditoria from "@/components/sepelio/guardias/ListadoAuditoria";
 
-const InformeServicios = () => {
-  const [informes, guardarInformes] = useState([]);
-  const [noData, guardarNoData] = useState(false);
+function auditoria(props) {
+  const [listGuar, guardarListGuar] = useState([]);
 
   const { usu } = useWerchow();
 
   const { isLoading } = useUser();
 
-  const traerInfo = async () => {
+  const traerDatos = async () => {
     await axios
-      .get(`/api/sepelio/servicios`, {
+      .get("/api/sepelio/guardias", {
         params: {
-          f: "traer informes servicios",
+          f: "traer guardias",
         },
       })
       .then((res) => {
-        if (res.data) {
-          let list = JSON.parse(res.data);
-          console.log(list);
-          guardarInformes(list);
-          guardarNoData(false);
-        } else if (!res.data) {
-          toast.info("No hay informes registrados");
-          guardarNoData(true);
+        if (res.data.length > 0) {
+          guardarListGuar(res.data);
+        } else if (res.data.length === 0) {
+          toast.info("No hay guardias registradas");
         }
       })
       .catch((error) => {
         console.log(error);
-        toast.error("Ocurrio un error al generar el listado");
+        toast.error("Ocurrio un error al traer el listado de guardias");
       });
   };
 
-  const estadoInforme = async (est, id) => {
+  const estadoGuardia = async (est, id) => {
     await confirmAlert({
       title: "ATENCION",
-      message: "¿Seguro quieres cambiar el estado de este informe?",
+      message: "¿Seguro quieres cambiar el estado de la guardia seleccionada?",
       buttons: [
         {
           label: "Si",
           onClick: () => {
             let data = {
-              f: "estado informe",
+              f: "estado liquidacion",
               estado: "",
               id: id,
               usu: usu.usuario,
+              fecha: moment().format("YYYY-MM-DD"),
             };
 
             let toastMsg = "";
@@ -73,22 +67,22 @@ const InformeServicios = () => {
             }
 
             axios
-              .put("/api/sepelio/servicios", data)
+              .put("/api/sepelio/guardias", data)
               .then((res) => {
                 if (res.status === 200) {
                   toast.success(`El informe fue ${toastMsg} con exito`);
 
-                  let accionHis = `El informe de sepelio ID ${id} fue ${toastMsg}.`;
+                  let accionHis = `La guardia de sepelio ID ${id} fue ${toastMsg} para su liquidacion.`;
 
                   registrarHistoria(accionHis, usu.usuario);
 
-                  traerInfo();
+                  traerDatos();
                 }
               })
               .catch((error) => {
                 console.log(error);
                 toast.error(
-                  "Ocurrio un error al actualizar el estado del informe"
+                  "Ocurrio un error al actualizar el estado de la guardia seleccionada"
                 );
               });
           },
@@ -96,62 +90,64 @@ const InformeServicios = () => {
         {
           label: "No",
           onClick: () => {
-            toast.info("No se realizaron cambios en el informe", "ATENCION");
+            toast.info(
+              "No se realizaron cambios en la guardia seleccionada",
+              "ATENCION"
+            );
           },
         },
       ],
     });
   };
 
-  const liquidarInforme = async (id) => {
+  const liquidarGuardia = async (id) => {
     await confirmAlert({
       title: "ATENCION",
-      message: "¿Seguro quieres liquidar de este informe?",
+      message: "¿Seguro quieres liquidar de esta guardia?",
       buttons: [
         {
           label: "Si",
           onClick: () => {
             let data = {
-              f: "liquidar informe",
-              liquidado: true,
+              f: "liquidar guardia",
+              estado: 1,
               id: id,
               usu: usu.usuario,
+              fecha: moment().format("YYYY-MM-DD"),
             };
 
             axios
-              .put("/api/sepelio/servicios", data)
+              .put("/api/sepelio/guardias", data)
               .then((res) => {
                 if (res.status === 200) {
                   toast.success(
-                    `El informe fue marcado como liquidado con exito`
+                    `La guardia fue marcado como liquidado con exito`
                   );
 
-                  let accionHis = `El informe de sepelio ID ${id} fue marcado como liquidado.`;
+                  let accionHis = `La guardia de sepelio ID ${id} fue marcado como liquidada.`;
 
                   registrarHistoria(accionHis, usu.usuario);
 
-                  traerInfo();
+                  traerDatos();
                 }
               })
               .catch((error) => {
                 console.log(error);
-                toast.error(
-                  "Ocurrio un error al actualizar el estado del informe"
-                );
+                toast.error("Ocurrio un error al liquidar la guardia");
               });
           },
         },
         {
           label: "No",
           onClick: () => {
-            toast.info("No se realizaron cambios en el informe", "ATENCION");
+            toast.info("La guardia seleccionada no fue liquidada", "ATENCION");
           },
         },
       ],
     });
   };
 
-  useSWR("/api/sepelio/servicios", traerInfo);
+  useSWR("/api/sepelio/guardias", traerDatos);
 
   if (isLoading === true) return <Skeleton />;
 
@@ -161,15 +157,15 @@ const InformeServicios = () => {
         <Redirect />
       ) : (
         <>
-          <ListadoInformes
-            listado={informes}
-            estadoInforme={estadoInforme}
-            liquidarInforme={liquidarInforme}
+          <ListadoAuditoria
+            listado={listGuar}
+            estadoGuardia={estadoGuardia}
+            liquidarGuardia={liquidarGuardia}
           />
         </>
       )}
     </>
   );
-};
+}
 
-export default InformeServicios;
+export default auditoria;

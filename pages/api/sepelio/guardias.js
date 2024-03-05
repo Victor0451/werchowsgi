@@ -1,34 +1,36 @@
 import { Werchow, SGI, Camp, Sep } from "../../../libs/config";
 import moment from "moment";
-//import { PrismaClient as WerchowSepClient } from '../../../prisma/generated/werchowsep'
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    if (req.query.f && req.query.f === "traer planificacion") {
-      const plani = await Sep.planificacion_guardias.findMany();
+    if (req.query.f && req.query.f === "traer guardias") {
+      const plani = await Sep.liquidacion_guardias.findMany();
+
+      res.status(200).json(plani);
+    } else if (req.query.f && req.query.f === "traer liquidacion") {
+      const plani = await Sep.liquidacion_guardias.findMany();
 
       res.status(200).json(plani);
     }
-  }
-  if (req.method === "POST") {
-    if (req.body.f && req.body.f === "nueva planificacion") {
-      const regTarea = await Sep.planificacion_guardias.create({
+  } else if (req.method === "POST") {
+    if (req.body.f && req.body.f === "nueva liquidacion") {
+      const regTarea = await Sep.liquidacion_guardias.create({
         data: {
           lugar: req.body.lugar,
           inicio: new Date(req.body.inicio),
           fin: new Date(req.body.fin),
           horas: parseInt(req.body.horas),
+          importe: parseFloat(req.body.importe),
           feriado: req.body.feriado,
-          mes_planificacion: req.body.mes_planificacion,
-          ano_planificacion: parseInt(req.body.ano_planificacion),
+          mes: parseInt(req.body.mes),
+          ano: parseInt(req.body.ano),
           operador: req.body.operador,
         },
       });
 
       res.status(200).json(regTarea);
     }
-  }
-  if (req.method === "PUT") {
+  } else if (req.method === "PUT") {
     if (req.body.f && req.body.f === "editar evento") {
       const regAuto = await Sep.tareas.update({
         data: {
@@ -43,9 +45,34 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(regAuto);
+    } else if (req.body.f && req.body.f === "estado liquidacion") {
+      const regAuto = await Sep.liquidacion_guardias.update({
+        data: {
+          aprobado: parseInt(req.body.estado),
+          operadorap: req.body.usu,
+          fecha_aprobacion: new Date(req.body.fecha),
+        },
+        where: {
+          idturno: parseInt(req.body.id),
+        },
+      });
+
+      res.status(200).json(regAuto);
+    }else if (req.body.f && req.body.f === "liquidar guardia") {
+      const regAuto = await Sep.liquidacion_guardias.update({
+        data: {
+          liquidado: parseInt(req.body.estado),
+          operadorliq: req.body.usu,
+          fecha_liquidacion: new Date(req.body.fecha),
+        },
+        where: {
+          idturno: parseInt(req.body.id),
+        },
+      });
+
+      res.status(200).json(regAuto);
     }
-  }
-  if (req.method === "DELETE") {
+  } else if (req.method === "DELETE") {
     if (req.query.f && req.query.f === "eliminar tarea") {
       const delTarea = await Sep.tareas.delete({
         where: {
@@ -54,6 +81,14 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(delTarea);
+    } else if (req.query.f && req.query.f === "eliminar guardia") {
+      const delGuardia = await Sep.liquidacion_guardias.delete({
+        where: {
+          idturno: parseInt(req.query.idturno),
+        },
+      });
+
+      res.status(200).json(delGuardia);
     }
   }
 }

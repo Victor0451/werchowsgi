@@ -13,23 +13,27 @@ import {
 } from "@material-tailwind/react";
 import { TrashIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import ListadoGuardiasLiquidadas from "./ListadoGuardiasLiquidadas";
 
-const FormPlanificacion = ({
+const FormLiquidacionGuardia = ({
   operadores,
   handleChange,
   errores,
   regPlanificacion,
   inicioRef,
   finRef,
+  listGuar,
+  eliminarLiquidacion,
+  calcTotal,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
       <CardBody className="rounded-none">
-        <Typography variant="h2">Planificacion de Guardias</Typography>
+        <Typography variant="h2">Liquidacion de Guardias</Typography>
 
         <div className="p-4 border-2 rounded-lg mt-6 ">
           <Typography variant="h5" color="blue-gray" className="mb-6">
-            Planificacion
+            Registro de Guardias
           </Typography>
 
           <div className="grid md:grid-cols-3 md:gap-6">
@@ -106,20 +110,28 @@ const FormPlanificacion = ({
               {errores}
             </Alert>
           ) : null}
+
+          <div className="flex justify-end mt-6">
+            <Button onClick={regPlanificacion}>Registrar Liquidacion</Button>
+
+            <Link href={"/sepelio/guardias/calendario"}>
+              <Button className="ml-1" color="red">
+                Canelar
+              </Button>
+            </Link>
+          </div>
         </div>
 
-        <div className="flex justify-end mt-6">
-          <Button onClick={regPlanificacion}>Registrar Planificacion</Button>
+        <hr className="border-2 mt-5 mb-5" />
 
-          <Link href={"/sepelio/guardias/calendario"}>
-            <Button className="ml-1" color="red">
-              Canelar
-            </Button>
-          </Link>
-        </div>
+        <ListadoGuardiasLiquidadas
+          listado={listGuar}
+          eliminarLiquidacion={eliminarLiquidacion}
+          calcTotal={calcTotal}
+        />
       </CardBody>
     </Card>
   );
 };
 
-export default FormPlanificacion;
+export default FormLiquidacionGuardia;

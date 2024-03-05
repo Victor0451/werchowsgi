@@ -469,25 +469,6 @@ exports.Prisma.Parcelas_lugaresScalarFieldEnum = {
   operador: 'operador'
 };
 
-exports.Prisma.Planificacion_guardiasScalarFieldEnum = {
-  idturno: 'idturno',
-  lugar: 'lugar',
-  inicio: 'inicio',
-  fin: 'fin',
-  horas: 'horas',
-  operador: 'operador',
-  mes_planificacion: 'mes_planificacion',
-  feriado: 'feriado',
-  tarea: 'tarea',
-  liquidado: 'liquidado',
-  fecha_liquidacion: 'fecha_liquidacion',
-  operadorliq: 'operadorliq',
-  aprobado: 'aprobado',
-  fecha_aprobacion: 'fecha_aprobacion',
-  operadorap: 'operadorap',
-  ano_planificacion: 'ano_planificacion'
-};
-
 exports.Prisma.Precio_servicioScalarFieldEnum = {
   idprecio: 'idprecio',
   codigo: 'codigo',
@@ -708,6 +689,25 @@ exports.Prisma.Servicios_gastosScalarFieldEnum = {
   observacion: 'observacion'
 };
 
+exports.Prisma.Liquidacion_guardiasScalarFieldEnum = {
+  idturno: 'idturno',
+  lugar: 'lugar',
+  inicio: 'inicio',
+  fin: 'fin',
+  horas: 'horas',
+  operador: 'operador',
+  mes: 'mes',
+  ano: 'ano',
+  feriado: 'feriado',
+  liquidado: 'liquidado',
+  fecha_liquidacion: 'fecha_liquidacion',
+  operadorliq: 'operadorliq',
+  aprobado: 'aprobado',
+  fecha_aprobacion: 'fecha_aprobacion',
+  operadorap: 'operadorap',
+  importe: 'importe'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -749,7 +749,6 @@ exports.Prisma.ModelName = {
   operadorsep: 'operadorsep',
   parcelas: 'parcelas',
   parcelas_lugares: 'parcelas_lugares',
-  planificacion_guardias: 'planificacion_guardias',
   precio_servicio: 'precio_servicio',
   proveedores: 'proveedores',
   rodados: 'rodados',
@@ -760,7 +759,8 @@ exports.Prisma.ModelName = {
   tareas: 'tareas',
   visitantes: 'visitantes',
   informe_gastos: 'informe_gastos',
-  servicios_gastos: 'servicios_gastos'
+  servicios_gastos: 'servicios_gastos',
+  liquidacion_guardias: 'liquidacion_guardias'
 };
 
 /**

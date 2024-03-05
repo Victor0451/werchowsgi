@@ -7,13 +7,13 @@ import { toast } from "react-toastify";
 import { Redirect } from "@/components/auth/Redirect";
 import useSWR from "swr";
 import { confirmAlert } from "react-confirm-alert";
-import moment from "moment";
+import moment from "moment/moment";
 import { registrarHistoria } from "@/libs/funciones";
 import Router, { useRouter } from "next/router";
 import jsCookie from "js-cookie";
-import FormPlanificacion from "@/components/sepelio/guardias/FormPlanificacion";
+import FormLiquidacionGuardia from "@/components/sepelio/guardias/FormLiquidacionGuardia";
 
-function Planificacion(props) {
+function Liquidacion(props) {
   let inicioRef = React.createRef();
   let finRef = React.createRef();
 
@@ -22,6 +22,8 @@ function Planificacion(props) {
   const [lugarSel, guardarLugarSel] = useState("");
   const [opSel, guardarOpSel] = useState("");
   const [feriadoSel, guardarFeriadoSel] = useState("");
+  const [valorHora, guardarValorHora] = useState([]);
+  const [listGuar, guardarListGuar] = useState([]);
 
   const { usu } = useWerchow();
 
@@ -46,10 +48,11 @@ function Planificacion(props) {
       fin: moment(finRef.current.value).format("YYYY-MM-DD HH:mm:ss"),
       horas: "",
       feriado: feriadoSel,
-      mes_planificacion: moment().locale("es-es").format("MMMM"),
-      ano_planificacion: moment().format("YYYY"),
+      mes: moment().format("MM"),
+      ano: moment().format("YYYY"),
       operador: opSel,
-      f: "nueva planificacion",
+      importe: 0,
+      f: "nueva liquidacion",
     };
 
     if (data.lugar === "") {
@@ -71,6 +74,20 @@ function Planificacion(props) {
     } else {
       data.horas = moment(data.fin).diff(moment(data.inicio), "hour");
 
+      if (data.feriado === false) {
+        if (
+          (moment(data.inicio).format("dd") === "Sa" &&
+            moment(data.inicio).format("HH") > 14) ||
+          moment(data.inicio).format("dd") === "Su"
+        ) {
+          data.importe = data.horas * parseFloat(valorHora[0].finde);
+        } else {
+          data.importe = data.horas * parseFloat(valorHora[0].dias_habiles);
+        }
+      } else if (data.feriado === true) {
+        data.importe = data.horas * parseFloat(valorHora[0].finde);
+      }
+
       await axios
         .post("/api/sepelio/guardias", data)
         .then((res) => {
@@ -79,6 +96,8 @@ function Planificacion(props) {
 
             let accion = `Se registro la planificacion de guardia: ID ${res.data.idturno}, para: ${data.operador}, inicia ${data.inicio}, termina ${data.fin}, correspondiente al mes ${data.mes_planificacion}.`;
             registrarHistoria(accion, usu.usuario);
+
+            traerDatos();
           }
         })
         .catch((error) => {
@@ -106,6 +125,98 @@ function Planificacion(props) {
         console.log(error);
         toast.error("Ocurrio un error al traer el listado de operadores");
       });
+
+    await axios
+      .get("/api/sepelio/servicios", {
+        params: {
+          f: "traer valor guardia",
+        },
+      })
+      .then((res) => {
+        if (res.data.length > 0) {
+          guardarValorHora(res.data);
+        } else if (res.data.length === 0) {
+          toast.info("No hay tareas registradas");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al traer el valor de las guardias");
+      });
+
+    await axios
+      .get("/api/sepelio/guardias", {
+        params: {
+          f: "traer guardias",
+        },
+      })
+      .then((res) => {
+        if (res.data.length > 0) {
+          guardarListGuar(res.data);
+        } else if (res.data.length === 0) {
+          toast.info("No hay guardias registradas");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al traer el listado de guardias");
+      });
+  };
+
+  const eliminarLiquidacion = async (id) => {
+    await confirmAlert({
+      title: "Atencion",
+      message: "¿Seguro quieres eliminar la guardia seleccionada?",
+      buttons: [
+        {
+          label: "Si",
+          onClick: () => {
+            axios
+              .delete("/api/sepelio/guardias", {
+                params: {
+                  idturno: id,
+                  f: "eliminar guardia",
+                },
+              })
+              .then((res) => {
+                if (res.status === 200) {
+                  toast.success("Liquidacion eliminada");
+
+                  traerDatos();
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error(
+                  "Ocurrio un error al eliminar la guardia liquidada"
+                );
+              });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            toast.info("La guardia seleccionada no fue eliminada");
+          },
+        },
+      ],
+    });
+  };
+
+  const calcTotal = (arr, f) => {
+    let total = 0;
+
+    if (f === "t") {
+      for (let i = 0; i < arr.length; i++) {
+        total += parseFloat(arr[i].monto);
+      }
+    } else if (f === "g") {
+      for (let i = 0; i < arr.length; i++) {
+        total += parseFloat(arr[i].importe);
+      }
+    }
+
+    return total.toFixed(2);
   };
 
   useSWR("/api/sepelio/guardias", traerDatos);
@@ -118,13 +229,16 @@ function Planificacion(props) {
         <Redirect />
       ) : (
         <>
-          <FormPlanificacion
+          <FormLiquidacionGuardia
             operadores={operadores}
             errores={errores}
             handleChange={handleChange}
             regPlanificacion={regPlanificacion}
             inicioRef={inicioRef}
             finRef={finRef}
+            listGuar={listGuar}
+            eliminarLiquidacion={eliminarLiquidacion}
+            calcTotal={calcTotal}
           />
         </>
       )}
@@ -132,4 +246,4 @@ function Planificacion(props) {
   );
 }
 
-export default Planificacion;
+export default Liquidacion;
