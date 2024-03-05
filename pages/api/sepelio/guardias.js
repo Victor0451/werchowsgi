@@ -25,6 +25,8 @@ export default async function handler(req, res) {
           mes: parseInt(req.body.mes),
           ano: parseInt(req.body.ano),
           operador: req.body.operador,
+          aprobado: parseInt(req.body.aprobado),
+          liquidado: parseInt(req.body.liquidado),
         },
       });
 
@@ -58,7 +60,7 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(regAuto);
-    }else if (req.body.f && req.body.f === "liquidar guardia") {
+    } else if (req.body.f && req.body.f === "liquidar guardia") {
       const regAuto = await Sep.liquidacion_guardias.update({
         data: {
           liquidado: parseInt(req.body.estado),

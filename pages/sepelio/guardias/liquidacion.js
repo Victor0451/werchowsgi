@@ -52,6 +52,8 @@ function Liquidacion(props) {
       ano: moment().format("YYYY"),
       operador: opSel,
       importe: 0,
+      liquidado: 0,
+      aprobado: 0,
       f: "nueva liquidacion",
     };
 
@@ -76,8 +78,7 @@ function Liquidacion(props) {
 
       if (data.feriado === false) {
         if (
-          (moment(data.inicio).format("dd") === "Sa" &&
-            moment(data.inicio).format("HH") > 14) ||
+          moment(data.inicio).format("dd") === "Sa" ||
           moment(data.inicio).format("dd") === "Su"
         ) {
           data.importe = data.horas * parseFloat(valorHora[0].finde);
