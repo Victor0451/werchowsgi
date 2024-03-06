@@ -4,8 +4,8 @@ import DataTable from "react-data-table-component";
 import moment from "moment";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
-const ListadoVacaciones = ({ listado,eliminarVacaciones }) => {
-  let hoy = moment().format("DD/MM/YYYY");
+const ListadoVacaciones = ({ listado, eliminarVacaciones }) => {
+  let hoy = moment();
 
   let columns = [
     {
@@ -19,6 +19,12 @@ const ListadoVacaciones = ({ listado,eliminarVacaciones }) => {
       selector: (row) => `${row.empleado}`,
       sortable: true,
       grow: 0.2,
+    },
+    {
+      name: "Observacion",
+      selector: (row) => `${row.observacion}`,
+      sortable: true,
+      grow: 0.5,
     },
     {
       name: "Inicio",
@@ -46,8 +52,8 @@ const ListadoVacaciones = ({ listado,eliminarVacaciones }) => {
       grow: 0.1,
       cell: (row, index) => (
         <>
-          {hoy > moment(row.fin).utcOffset("+0300").format("DD/MM/YYYY") ||
-          hoy === moment(row.fin).utcOffset("+0300").format("DD/MM/YYYY") ? (
+          {hoy.isAfter(moment(row.fin)) === true ||
+          hoy.isSame(moment(row.fin) === true) ? (
             <div>Reintegrado</div>
           ) : (
             <div>{moment(row.fin).diff(moment(), "days")} Dias</div>
@@ -61,7 +67,11 @@ const ListadoVacaciones = ({ listado,eliminarVacaciones }) => {
       grow: 0.1,
       cell: (row, index) => (
         <>
-          <TrashIcon color="red" className="butlist mt-px h-6 w-6" onClick={() =>eliminarVacaciones(row.idvacaciones)} />
+          <TrashIcon
+            color="red"
+            className="butlist mt-px h-6 w-6"
+            onClick={() => eliminarVacaciones(row.idvacaciones)}
+          />
         </>
       ),
     },

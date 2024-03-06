@@ -21,7 +21,12 @@ import {
 } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
-const ListadoAuditoria = ({ listado, estadoGuardia, liquidarGuardia }) => {
+const ListadoAuditoria = ({
+  listado,
+  estadoGuardia,
+  liquidarGuardia,
+  calcTotal,
+}) => {
   let columns = [
     {
       name: "#",
@@ -225,13 +230,18 @@ const ListadoAuditoria = ({ listado, estadoGuardia, liquidarGuardia }) => {
     <Card className="h-full w-full p-4 ">
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <Typography variant="h2">
-          <u>Informes de Guardias Liquidadas</u>
+          <u>Auditoria Guardias</u>
         </Typography>
 
         <div className="mt-6 border-2 rounded-xl p-4">
-          <Typography variant="h4">Listado de Guardias</Typography>
+          <Typography variant="h4">
+            Listado de Guardias Pendientes de Liquidacion
+          </Typography>
           <Typography color="gray" className="mt-1 font-normal">
             <u>Total</u>: {listado.length}
+          </Typography>
+          <Typography color="gray" className="mt-1 font-normal">
+            <u>Importe</u>: ${calcTotal(listado)}
           </Typography>
 
           <>

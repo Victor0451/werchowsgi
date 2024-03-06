@@ -4,7 +4,21 @@ import moment from "moment";
 export default async function handler(req, res) {
   if (req.method === "GET") {
     if (req.query.f && req.query.f === "traer guardias") {
-      const plani = await Sep.liquidacion_guardias.findMany();
+      const plani = await Sep.$queryRawUnsafe(
+        `                
+        SELECT
+          *
+        FROM
+          liquidacion_guardias
+        WHERE
+          liquidado = 0
+        AND
+          aprobado = 0
+        OR
+          aprobado = 1
+
+               `
+      );
 
       res.status(200).json(plani);
     } else if (req.query.f && req.query.f === "traer liquidacion") {

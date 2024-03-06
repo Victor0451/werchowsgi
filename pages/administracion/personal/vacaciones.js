@@ -101,7 +101,7 @@ function Vacaciones(props) {
             toast.success("Se registro con exito el periodo de vacaciones");
 
             let accionHis = `Se registro el periodo de vacaciones ID ${
-              req.data.idvacaciones
+              res.data.idvacaciones
             } del empleado ${data.empleado}. Inicia el ${moment(
               data.inicio
             ).format("DD/MM/YYYY")} hasta el ${moment(data.fin).format(
@@ -109,6 +109,8 @@ function Vacaciones(props) {
             )}, con un total de ${data.dias} dias.`;
 
             registrarHistoria(accionHis, usu.usuario);
+
+            traerDatos();
           }
         })
         .catch((error) => {

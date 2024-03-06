@@ -147,6 +147,16 @@ function auditoria(props) {
     });
   };
 
+  const calcTotal = (arr) => {
+    let total = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      total += parseFloat(arr[i].importe);
+    }
+
+    return total.toFixed(2);
+  };
+
   useSWR("/api/sepelio/guardias", traerDatos);
 
   if (isLoading === true) return <Skeleton />;
@@ -161,6 +171,7 @@ function auditoria(props) {
             listado={listGuar}
             estadoGuardia={estadoGuardia}
             liquidarGuardia={liquidarGuardia}
+            calcTotal={calcTotal}
           />
         </>
       )}
