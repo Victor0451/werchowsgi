@@ -215,6 +215,7 @@ function informe(props) {
       horas: 0,
       monto: 0,
       horario_laboral: hoLabSel,
+      liquidado: false,
       f: "reg tarea informe",
     };
 

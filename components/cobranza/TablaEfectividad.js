@@ -12,14 +12,14 @@ import {
 } from "@material-tailwind/react";
 import moment from "moment";
 
-const TablaEfectividad = ({ arr, titulo }) => {
+const TablaEfectividad = ({ arr, titulo, porcent, totales }) => {
   return (
     <>
-      <Typography variant="h5" className="mb-4">
+      <Typography variant="h5" className="mt-4 mb-4">
         {titulo}
       </Typography>
 
-      <table className="w-full min-w-max table-auto text-left">
+      <table className="w-full  table-auto text-left">
         <thead>
           <tr>
             <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
@@ -164,11 +164,88 @@ const TablaEfectividad = ({ arr, titulo }) => {
                   color="blue-gray"
                   className="font-normal"
                 >
-                  {c.cobrado / c.total} %
+                  {porcent(c.adelantado, c.total, c.cobrado)} %
                 </Typography>
               </td>
             </tr>
           ))}
+          <tr>
+            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal leading-none opacity-70"
+              ></Typography>
+            </th>
+            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal leading-none opacity-70"
+              >
+                TOTALES
+              </Typography>
+            </th>
+            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal leading-none opacity-70"
+              >
+                {totales(arr, "fichas emi")}
+              </Typography>
+            </th>
+            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal leading-none opacity-70"
+              >
+                ${totales(arr, "emi")}
+              </Typography>
+            </th>
+            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal leading-none opacity-70"
+              >
+                {totales(arr, "fichas cob")}
+              </Typography>
+            </th>
+            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal leading-none opacity-70"
+              >
+                ${totales(arr, "cob")}
+              </Typography>
+            </th>
+            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal leading-none opacity-70"
+              >
+                ${totales(arr, "adelantado")}
+              </Typography>
+            </th>
+            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal leading-none opacity-70"
+              >
+                {porcent(
+                  totales(arr, "adelantado"),
+                  totales(arr, "emi"),
+                  totales(arr, "cob")
+                )}{" "}
+                %
+              </Typography>
+            </th>
+          </tr>
         </tbody>
       </table>
     </>

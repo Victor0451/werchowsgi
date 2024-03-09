@@ -473,6 +473,9 @@ export type informe_tareasPayload<ExtArgs extends $Extensions.Args = $Extensions
     fin: Date | null
     horas: number | null
     monto: number | null
+    liquidado: boolean | null
+    fecha_liquidacion: Date | null
+    operadorliq: string | null
   }, ExtArgs["result"]["informe_tareas"]>
   composites: {}
 }
@@ -984,6 +987,25 @@ export type liquidacion_guardiasPayload<ExtArgs extends $Extensions.Args = $Exte
  * 
  */
 export type liquidacion_guardias = runtime.Types.DefaultSelection<liquidacion_guardiasPayload>
+export type liquidacion_registroPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idliquidacion: number
+    fecha: Date | null
+    empleado: string | null
+    concepto: string | null
+    fecha_concepto: Date | null
+    importe: number | null
+    operador: string | null
+  }, ExtArgs["result"]["liquidacion_registro"]>
+  composites: {}
+}
+
+/**
+ * Model liquidacion_registro
+ * 
+ */
+export type liquidacion_registro = runtime.Types.DefaultSelection<liquidacion_registroPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1519,6 +1541,16 @@ export class PrismaClient<
     * ```
     */
   get liquidacion_guardias(): Prisma.liquidacion_guardiasDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.liquidacion_registro`: Exposes CRUD operations for the **liquidacion_registro** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Liquidacion_registros
+    * const liquidacion_registros = await prisma.liquidacion_registro.findMany()
+    * ```
+    */
+  get liquidacion_registro(): Prisma.liquidacion_registroDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -2042,7 +2074,8 @@ export namespace Prisma {
     visitantes: 'visitantes',
     informe_gastos: 'informe_gastos',
     servicios_gastos: 'servicios_gastos',
-    liquidacion_guardias: 'liquidacion_guardias'
+    liquidacion_guardias: 'liquidacion_guardias',
+    liquidacion_registro: 'liquidacion_registro'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2059,7 +2092,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'auto_usos' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sa' | 'caja_sepelio' | 'caja_srl' | 'conceptos' | 'conceptos_sepelio_cuentas' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'generacion_cajas' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'informe_tareas' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'lic_conducir' | 'novedades' | 'operadorsep' | 'parcelas' | 'parcelas_lugares' | 'precio_servicio' | 'proveedores' | 'rodados' | 'servicio_informes' | 'servicio_venta' | 'servicios' | 'servicios_historico' | 'tareas' | 'visitantes' | 'informe_gastos' | 'servicios_gastos' | 'liquidacion_guardias'
+      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'auto_usos' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sa' | 'caja_sepelio' | 'caja_srl' | 'conceptos' | 'conceptos_sepelio_cuentas' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'generacion_cajas' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'informe_tareas' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'lic_conducir' | 'novedades' | 'operadorsep' | 'parcelas' | 'parcelas_lugares' | 'precio_servicio' | 'proveedores' | 'rodados' | 'servicio_informes' | 'servicio_venta' | 'servicios' | 'servicios_historico' | 'tareas' | 'visitantes' | 'informe_gastos' | 'servicios_gastos' | 'liquidacion_guardias' | 'liquidacion_registro'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -5299,6 +5332,85 @@ export namespace Prisma {
             args: Prisma.liquidacion_guardiasCountArgs<ExtArgs>,
             result: $Utils.Optional<Liquidacion_guardiasCountAggregateOutputType> | number
             payload: liquidacion_guardiasPayload<ExtArgs>
+          }
+        }
+      }
+      liquidacion_registro: {
+        operations: {
+          findUnique: {
+            args: Prisma.liquidacion_registroFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_registroPayload> | null
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.liquidacion_registroFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_registroPayload>
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.liquidacion_registroFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_registroPayload> | null
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.liquidacion_registroFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_registroPayload>
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.liquidacion_registroFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_registroPayload>[]
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.liquidacion_registroCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_registroPayload>
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.liquidacion_registroCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.liquidacion_registroDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_registroPayload>
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.liquidacion_registroUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_registroPayload>
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.liquidacion_registroDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.liquidacion_registroUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.liquidacion_registroUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<liquidacion_registroPayload>
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Liquidacion_registroAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateLiquidacion_registro>
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.liquidacion_registroGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Liquidacion_registroGroupByOutputType>[]
+            payload: liquidacion_registroPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.liquidacion_registroCountArgs<ExtArgs>,
+            result: $Utils.Optional<Liquidacion_registroCountAggregateOutputType> | number
+            payload: liquidacion_registroPayload<ExtArgs>
           }
         }
       }
@@ -25010,6 +25122,9 @@ export namespace Prisma {
     fin: Date | null
     horas: number | null
     monto: number | null
+    liquidado: boolean | null
+    fecha_liquidacion: Date | null
+    operadorliq: string | null
   }
 
   export type Informe_tareasMaxAggregateOutputType = {
@@ -25022,6 +25137,9 @@ export namespace Prisma {
     fin: Date | null
     horas: number | null
     monto: number | null
+    liquidado: boolean | null
+    fecha_liquidacion: Date | null
+    operadorliq: string | null
   }
 
   export type Informe_tareasCountAggregateOutputType = {
@@ -25034,6 +25152,9 @@ export namespace Prisma {
     fin: number
     horas: number
     monto: number
+    liquidado: number
+    fecha_liquidacion: number
+    operadorliq: number
     _all: number
   }
 
@@ -25064,6 +25185,9 @@ export namespace Prisma {
     fin?: true
     horas?: true
     monto?: true
+    liquidado?: true
+    fecha_liquidacion?: true
+    operadorliq?: true
   }
 
   export type Informe_tareasMaxAggregateInputType = {
@@ -25076,6 +25200,9 @@ export namespace Prisma {
     fin?: true
     horas?: true
     monto?: true
+    liquidado?: true
+    fecha_liquidacion?: true
+    operadorliq?: true
   }
 
   export type Informe_tareasCountAggregateInputType = {
@@ -25088,6 +25215,9 @@ export namespace Prisma {
     fin?: true
     horas?: true
     monto?: true
+    liquidado?: true
+    fecha_liquidacion?: true
+    operadorliq?: true
     _all?: true
   }
 
@@ -25188,6 +25318,9 @@ export namespace Prisma {
     fin: Date | null
     horas: number | null
     monto: number | null
+    liquidado: boolean | null
+    fecha_liquidacion: Date | null
+    operadorliq: string | null
     _count: Informe_tareasCountAggregateOutputType | null
     _avg: Informe_tareasAvgAggregateOutputType | null
     _sum: Informe_tareasSumAggregateOutputType | null
@@ -25219,6 +25352,9 @@ export namespace Prisma {
     fin?: boolean
     horas?: boolean
     monto?: boolean
+    liquidado?: boolean
+    fecha_liquidacion?: boolean
+    operadorliq?: boolean
   }, ExtArgs["result"]["informe_tareas"]>
 
   export type informe_tareasSelectScalar = {
@@ -25231,6 +25367,9 @@ export namespace Prisma {
     fin?: boolean
     horas?: boolean
     monto?: boolean
+    liquidado?: boolean
+    fecha_liquidacion?: boolean
+    operadorliq?: boolean
   }
 
 
@@ -45946,6 +46085,940 @@ export namespace Prisma {
 
 
   /**
+   * Model liquidacion_registro
+   */
+
+
+  export type AggregateLiquidacion_registro = {
+    _count: Liquidacion_registroCountAggregateOutputType | null
+    _avg: Liquidacion_registroAvgAggregateOutputType | null
+    _sum: Liquidacion_registroSumAggregateOutputType | null
+    _min: Liquidacion_registroMinAggregateOutputType | null
+    _max: Liquidacion_registroMaxAggregateOutputType | null
+  }
+
+  export type Liquidacion_registroAvgAggregateOutputType = {
+    idliquidacion: number | null
+    importe: number | null
+  }
+
+  export type Liquidacion_registroSumAggregateOutputType = {
+    idliquidacion: number | null
+    importe: number | null
+  }
+
+  export type Liquidacion_registroMinAggregateOutputType = {
+    idliquidacion: number | null
+    fecha: Date | null
+    empleado: string | null
+    concepto: string | null
+    fecha_concepto: Date | null
+    importe: number | null
+    operador: string | null
+  }
+
+  export type Liquidacion_registroMaxAggregateOutputType = {
+    idliquidacion: number | null
+    fecha: Date | null
+    empleado: string | null
+    concepto: string | null
+    fecha_concepto: Date | null
+    importe: number | null
+    operador: string | null
+  }
+
+  export type Liquidacion_registroCountAggregateOutputType = {
+    idliquidacion: number
+    fecha: number
+    empleado: number
+    concepto: number
+    fecha_concepto: number
+    importe: number
+    operador: number
+    _all: number
+  }
+
+
+  export type Liquidacion_registroAvgAggregateInputType = {
+    idliquidacion?: true
+    importe?: true
+  }
+
+  export type Liquidacion_registroSumAggregateInputType = {
+    idliquidacion?: true
+    importe?: true
+  }
+
+  export type Liquidacion_registroMinAggregateInputType = {
+    idliquidacion?: true
+    fecha?: true
+    empleado?: true
+    concepto?: true
+    fecha_concepto?: true
+    importe?: true
+    operador?: true
+  }
+
+  export type Liquidacion_registroMaxAggregateInputType = {
+    idliquidacion?: true
+    fecha?: true
+    empleado?: true
+    concepto?: true
+    fecha_concepto?: true
+    importe?: true
+    operador?: true
+  }
+
+  export type Liquidacion_registroCountAggregateInputType = {
+    idliquidacion?: true
+    fecha?: true
+    empleado?: true
+    concepto?: true
+    fecha_concepto?: true
+    importe?: true
+    operador?: true
+    _all?: true
+  }
+
+  export type Liquidacion_registroAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which liquidacion_registro to aggregate.
+     */
+    where?: liquidacion_registroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of liquidacion_registros to fetch.
+     */
+    orderBy?: liquidacion_registroOrderByWithRelationInput | liquidacion_registroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: liquidacion_registroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` liquidacion_registros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` liquidacion_registros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned liquidacion_registros
+    **/
+    _count?: true | Liquidacion_registroCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Liquidacion_registroAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Liquidacion_registroSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Liquidacion_registroMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Liquidacion_registroMaxAggregateInputType
+  }
+
+  export type GetLiquidacion_registroAggregateType<T extends Liquidacion_registroAggregateArgs> = {
+        [P in keyof T & keyof AggregateLiquidacion_registro]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLiquidacion_registro[P]>
+      : GetScalarType<T[P], AggregateLiquidacion_registro[P]>
+  }
+
+
+
+
+  export type liquidacion_registroGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: liquidacion_registroWhereInput
+    orderBy?: liquidacion_registroOrderByWithAggregationInput | liquidacion_registroOrderByWithAggregationInput[]
+    by: Liquidacion_registroScalarFieldEnum[] | Liquidacion_registroScalarFieldEnum
+    having?: liquidacion_registroScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Liquidacion_registroCountAggregateInputType | true
+    _avg?: Liquidacion_registroAvgAggregateInputType
+    _sum?: Liquidacion_registroSumAggregateInputType
+    _min?: Liquidacion_registroMinAggregateInputType
+    _max?: Liquidacion_registroMaxAggregateInputType
+  }
+
+
+  export type Liquidacion_registroGroupByOutputType = {
+    idliquidacion: number
+    fecha: Date | null
+    empleado: string | null
+    concepto: string | null
+    fecha_concepto: Date | null
+    importe: number | null
+    operador: string | null
+    _count: Liquidacion_registroCountAggregateOutputType | null
+    _avg: Liquidacion_registroAvgAggregateOutputType | null
+    _sum: Liquidacion_registroSumAggregateOutputType | null
+    _min: Liquidacion_registroMinAggregateOutputType | null
+    _max: Liquidacion_registroMaxAggregateOutputType | null
+  }
+
+  type GetLiquidacion_registroGroupByPayload<T extends liquidacion_registroGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Liquidacion_registroGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Liquidacion_registroGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Liquidacion_registroGroupByOutputType[P]>
+            : GetScalarType<T[P], Liquidacion_registroGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type liquidacion_registroSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idliquidacion?: boolean
+    fecha?: boolean
+    empleado?: boolean
+    concepto?: boolean
+    fecha_concepto?: boolean
+    importe?: boolean
+    operador?: boolean
+  }, ExtArgs["result"]["liquidacion_registro"]>
+
+  export type liquidacion_registroSelectScalar = {
+    idliquidacion?: boolean
+    fecha?: boolean
+    empleado?: boolean
+    concepto?: boolean
+    fecha_concepto?: boolean
+    importe?: boolean
+    operador?: boolean
+  }
+
+
+  type liquidacion_registroGetPayload<S extends boolean | null | undefined | liquidacion_registroArgs> = $Types.GetResult<liquidacion_registroPayload, S>
+
+  type liquidacion_registroCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<liquidacion_registroFindManyArgs, 'select' | 'include'> & {
+      select?: Liquidacion_registroCountAggregateInputType | true
+    }
+
+  export interface liquidacion_registroDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['liquidacion_registro'], meta: { name: 'liquidacion_registro' } }
+    /**
+     * Find zero or one Liquidacion_registro that matches the filter.
+     * @param {liquidacion_registroFindUniqueArgs} args - Arguments to find a Liquidacion_registro
+     * @example
+     * // Get one Liquidacion_registro
+     * const liquidacion_registro = await prisma.liquidacion_registro.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends liquidacion_registroFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, liquidacion_registroFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'liquidacion_registro'> extends True ? Prisma__liquidacion_registroClient<$Types.GetResult<liquidacion_registroPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__liquidacion_registroClient<$Types.GetResult<liquidacion_registroPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Liquidacion_registro that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {liquidacion_registroFindUniqueOrThrowArgs} args - Arguments to find a Liquidacion_registro
+     * @example
+     * // Get one Liquidacion_registro
+     * const liquidacion_registro = await prisma.liquidacion_registro.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends liquidacion_registroFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, liquidacion_registroFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__liquidacion_registroClient<$Types.GetResult<liquidacion_registroPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Liquidacion_registro that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_registroFindFirstArgs} args - Arguments to find a Liquidacion_registro
+     * @example
+     * // Get one Liquidacion_registro
+     * const liquidacion_registro = await prisma.liquidacion_registro.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends liquidacion_registroFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, liquidacion_registroFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'liquidacion_registro'> extends True ? Prisma__liquidacion_registroClient<$Types.GetResult<liquidacion_registroPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__liquidacion_registroClient<$Types.GetResult<liquidacion_registroPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Liquidacion_registro that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_registroFindFirstOrThrowArgs} args - Arguments to find a Liquidacion_registro
+     * @example
+     * // Get one Liquidacion_registro
+     * const liquidacion_registro = await prisma.liquidacion_registro.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends liquidacion_registroFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, liquidacion_registroFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__liquidacion_registroClient<$Types.GetResult<liquidacion_registroPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Liquidacion_registros that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_registroFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Liquidacion_registros
+     * const liquidacion_registros = await prisma.liquidacion_registro.findMany()
+     * 
+     * // Get first 10 Liquidacion_registros
+     * const liquidacion_registros = await prisma.liquidacion_registro.findMany({ take: 10 })
+     * 
+     * // Only select the `idliquidacion`
+     * const liquidacion_registroWithIdliquidacionOnly = await prisma.liquidacion_registro.findMany({ select: { idliquidacion: true } })
+     * 
+    **/
+    findMany<T extends liquidacion_registroFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, liquidacion_registroFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<liquidacion_registroPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Liquidacion_registro.
+     * @param {liquidacion_registroCreateArgs} args - Arguments to create a Liquidacion_registro.
+     * @example
+     * // Create one Liquidacion_registro
+     * const Liquidacion_registro = await prisma.liquidacion_registro.create({
+     *   data: {
+     *     // ... data to create a Liquidacion_registro
+     *   }
+     * })
+     * 
+    **/
+    create<T extends liquidacion_registroCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, liquidacion_registroCreateArgs<ExtArgs>>
+    ): Prisma__liquidacion_registroClient<$Types.GetResult<liquidacion_registroPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Liquidacion_registros.
+     *     @param {liquidacion_registroCreateManyArgs} args - Arguments to create many Liquidacion_registros.
+     *     @example
+     *     // Create many Liquidacion_registros
+     *     const liquidacion_registro = await prisma.liquidacion_registro.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends liquidacion_registroCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, liquidacion_registroCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Liquidacion_registro.
+     * @param {liquidacion_registroDeleteArgs} args - Arguments to delete one Liquidacion_registro.
+     * @example
+     * // Delete one Liquidacion_registro
+     * const Liquidacion_registro = await prisma.liquidacion_registro.delete({
+     *   where: {
+     *     // ... filter to delete one Liquidacion_registro
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends liquidacion_registroDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, liquidacion_registroDeleteArgs<ExtArgs>>
+    ): Prisma__liquidacion_registroClient<$Types.GetResult<liquidacion_registroPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Liquidacion_registro.
+     * @param {liquidacion_registroUpdateArgs} args - Arguments to update one Liquidacion_registro.
+     * @example
+     * // Update one Liquidacion_registro
+     * const liquidacion_registro = await prisma.liquidacion_registro.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends liquidacion_registroUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, liquidacion_registroUpdateArgs<ExtArgs>>
+    ): Prisma__liquidacion_registroClient<$Types.GetResult<liquidacion_registroPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Liquidacion_registros.
+     * @param {liquidacion_registroDeleteManyArgs} args - Arguments to filter Liquidacion_registros to delete.
+     * @example
+     * // Delete a few Liquidacion_registros
+     * const { count } = await prisma.liquidacion_registro.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends liquidacion_registroDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, liquidacion_registroDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Liquidacion_registros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_registroUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Liquidacion_registros
+     * const liquidacion_registro = await prisma.liquidacion_registro.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends liquidacion_registroUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, liquidacion_registroUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Liquidacion_registro.
+     * @param {liquidacion_registroUpsertArgs} args - Arguments to update or create a Liquidacion_registro.
+     * @example
+     * // Update or create a Liquidacion_registro
+     * const liquidacion_registro = await prisma.liquidacion_registro.upsert({
+     *   create: {
+     *     // ... data to create a Liquidacion_registro
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Liquidacion_registro we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends liquidacion_registroUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, liquidacion_registroUpsertArgs<ExtArgs>>
+    ): Prisma__liquidacion_registroClient<$Types.GetResult<liquidacion_registroPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Liquidacion_registros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_registroCountArgs} args - Arguments to filter Liquidacion_registros to count.
+     * @example
+     * // Count the number of Liquidacion_registros
+     * const count = await prisma.liquidacion_registro.count({
+     *   where: {
+     *     // ... the filter for the Liquidacion_registros we want to count
+     *   }
+     * })
+    **/
+    count<T extends liquidacion_registroCountArgs>(
+      args?: Subset<T, liquidacion_registroCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Liquidacion_registroCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Liquidacion_registro.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Liquidacion_registroAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Liquidacion_registroAggregateArgs>(args: Subset<T, Liquidacion_registroAggregateArgs>): Prisma.PrismaPromise<GetLiquidacion_registroAggregateType<T>>
+
+    /**
+     * Group by Liquidacion_registro.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {liquidacion_registroGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends liquidacion_registroGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: liquidacion_registroGroupByArgs['orderBy'] }
+        : { orderBy?: liquidacion_registroGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, liquidacion_registroGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLiquidacion_registroGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for liquidacion_registro.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__liquidacion_registroClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * liquidacion_registro base type for findUnique actions
+   */
+  export type liquidacion_registroFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_registro
+     */
+    select?: liquidacion_registroSelect<ExtArgs> | null
+    /**
+     * Filter, which liquidacion_registro to fetch.
+     */
+    where: liquidacion_registroWhereUniqueInput
+  }
+
+  /**
+   * liquidacion_registro findUnique
+   */
+  export interface liquidacion_registroFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends liquidacion_registroFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * liquidacion_registro findUniqueOrThrow
+   */
+  export type liquidacion_registroFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_registro
+     */
+    select?: liquidacion_registroSelect<ExtArgs> | null
+    /**
+     * Filter, which liquidacion_registro to fetch.
+     */
+    where: liquidacion_registroWhereUniqueInput
+  }
+
+
+  /**
+   * liquidacion_registro base type for findFirst actions
+   */
+  export type liquidacion_registroFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_registro
+     */
+    select?: liquidacion_registroSelect<ExtArgs> | null
+    /**
+     * Filter, which liquidacion_registro to fetch.
+     */
+    where?: liquidacion_registroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of liquidacion_registros to fetch.
+     */
+    orderBy?: liquidacion_registroOrderByWithRelationInput | liquidacion_registroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for liquidacion_registros.
+     */
+    cursor?: liquidacion_registroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` liquidacion_registros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` liquidacion_registros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of liquidacion_registros.
+     */
+    distinct?: Liquidacion_registroScalarFieldEnum | Liquidacion_registroScalarFieldEnum[]
+  }
+
+  /**
+   * liquidacion_registro findFirst
+   */
+  export interface liquidacion_registroFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends liquidacion_registroFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * liquidacion_registro findFirstOrThrow
+   */
+  export type liquidacion_registroFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_registro
+     */
+    select?: liquidacion_registroSelect<ExtArgs> | null
+    /**
+     * Filter, which liquidacion_registro to fetch.
+     */
+    where?: liquidacion_registroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of liquidacion_registros to fetch.
+     */
+    orderBy?: liquidacion_registroOrderByWithRelationInput | liquidacion_registroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for liquidacion_registros.
+     */
+    cursor?: liquidacion_registroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` liquidacion_registros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` liquidacion_registros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of liquidacion_registros.
+     */
+    distinct?: Liquidacion_registroScalarFieldEnum | Liquidacion_registroScalarFieldEnum[]
+  }
+
+
+  /**
+   * liquidacion_registro findMany
+   */
+  export type liquidacion_registroFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_registro
+     */
+    select?: liquidacion_registroSelect<ExtArgs> | null
+    /**
+     * Filter, which liquidacion_registros to fetch.
+     */
+    where?: liquidacion_registroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of liquidacion_registros to fetch.
+     */
+    orderBy?: liquidacion_registroOrderByWithRelationInput | liquidacion_registroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing liquidacion_registros.
+     */
+    cursor?: liquidacion_registroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` liquidacion_registros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` liquidacion_registros.
+     */
+    skip?: number
+    distinct?: Liquidacion_registroScalarFieldEnum | Liquidacion_registroScalarFieldEnum[]
+  }
+
+
+  /**
+   * liquidacion_registro create
+   */
+  export type liquidacion_registroCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_registro
+     */
+    select?: liquidacion_registroSelect<ExtArgs> | null
+    /**
+     * The data needed to create a liquidacion_registro.
+     */
+    data?: XOR<liquidacion_registroCreateInput, liquidacion_registroUncheckedCreateInput>
+  }
+
+
+  /**
+   * liquidacion_registro createMany
+   */
+  export type liquidacion_registroCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many liquidacion_registros.
+     */
+    data: liquidacion_registroCreateManyInput | liquidacion_registroCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * liquidacion_registro update
+   */
+  export type liquidacion_registroUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_registro
+     */
+    select?: liquidacion_registroSelect<ExtArgs> | null
+    /**
+     * The data needed to update a liquidacion_registro.
+     */
+    data: XOR<liquidacion_registroUpdateInput, liquidacion_registroUncheckedUpdateInput>
+    /**
+     * Choose, which liquidacion_registro to update.
+     */
+    where: liquidacion_registroWhereUniqueInput
+  }
+
+
+  /**
+   * liquidacion_registro updateMany
+   */
+  export type liquidacion_registroUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update liquidacion_registros.
+     */
+    data: XOR<liquidacion_registroUpdateManyMutationInput, liquidacion_registroUncheckedUpdateManyInput>
+    /**
+     * Filter which liquidacion_registros to update
+     */
+    where?: liquidacion_registroWhereInput
+  }
+
+
+  /**
+   * liquidacion_registro upsert
+   */
+  export type liquidacion_registroUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_registro
+     */
+    select?: liquidacion_registroSelect<ExtArgs> | null
+    /**
+     * The filter to search for the liquidacion_registro to update in case it exists.
+     */
+    where: liquidacion_registroWhereUniqueInput
+    /**
+     * In case the liquidacion_registro found by the `where` argument doesn't exist, create a new liquidacion_registro with this data.
+     */
+    create: XOR<liquidacion_registroCreateInput, liquidacion_registroUncheckedCreateInput>
+    /**
+     * In case the liquidacion_registro was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<liquidacion_registroUpdateInput, liquidacion_registroUncheckedUpdateInput>
+  }
+
+
+  /**
+   * liquidacion_registro delete
+   */
+  export type liquidacion_registroDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_registro
+     */
+    select?: liquidacion_registroSelect<ExtArgs> | null
+    /**
+     * Filter which liquidacion_registro to delete.
+     */
+    where: liquidacion_registroWhereUniqueInput
+  }
+
+
+  /**
+   * liquidacion_registro deleteMany
+   */
+  export type liquidacion_registroDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which liquidacion_registros to delete
+     */
+    where?: liquidacion_registroWhereInput
+  }
+
+
+  /**
+   * liquidacion_registro without action
+   */
+  export type liquidacion_registroArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the liquidacion_registro
+     */
+    select?: liquidacion_registroSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -46297,7 +47370,10 @@ export namespace Prisma {
     inicio: 'inicio',
     fin: 'fin',
     horas: 'horas',
-    monto: 'monto'
+    monto: 'monto',
+    liquidado: 'liquidado',
+    fecha_liquidacion: 'fecha_liquidacion',
+    operadorliq: 'operadorliq'
   };
 
   export type Informe_tareasScalarFieldEnum = (typeof Informe_tareasScalarFieldEnum)[keyof typeof Informe_tareasScalarFieldEnum]
@@ -46683,6 +47759,19 @@ export namespace Prisma {
   };
 
   export type Liquidacion_guardiasScalarFieldEnum = (typeof Liquidacion_guardiasScalarFieldEnum)[keyof typeof Liquidacion_guardiasScalarFieldEnum]
+
+
+  export const Liquidacion_registroScalarFieldEnum: {
+    idliquidacion: 'idliquidacion',
+    fecha: 'fecha',
+    empleado: 'empleado',
+    concepto: 'concepto',
+    fecha_concepto: 'fecha_concepto',
+    importe: 'importe',
+    operador: 'operador'
+  };
+
+  export type Liquidacion_registroScalarFieldEnum = (typeof Liquidacion_registroScalarFieldEnum)[keyof typeof Liquidacion_registroScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -48095,6 +49184,9 @@ export namespace Prisma {
     fin?: DateTimeNullableFilter | Date | string | null
     horas?: IntNullableFilter | number | null
     monto?: FloatNullableFilter | number | null
+    liquidado?: BoolNullableFilter | boolean | null
+    fecha_liquidacion?: DateTimeNullableFilter | Date | string | null
+    operadorliq?: StringNullableFilter | string | null
   }
 
   export type informe_tareasOrderByWithRelationInput = {
@@ -48107,6 +49199,9 @@ export namespace Prisma {
     fin?: SortOrderInput | SortOrder
     horas?: SortOrderInput | SortOrder
     monto?: SortOrderInput | SortOrder
+    liquidado?: SortOrderInput | SortOrder
+    fecha_liquidacion?: SortOrderInput | SortOrder
+    operadorliq?: SortOrderInput | SortOrder
   }
 
   export type informe_tareasWhereUniqueInput = {
@@ -48123,6 +49218,9 @@ export namespace Prisma {
     fin?: SortOrderInput | SortOrder
     horas?: SortOrderInput | SortOrder
     monto?: SortOrderInput | SortOrder
+    liquidado?: SortOrderInput | SortOrder
+    fecha_liquidacion?: SortOrderInput | SortOrder
+    operadorliq?: SortOrderInput | SortOrder
     _count?: informe_tareasCountOrderByAggregateInput
     _avg?: informe_tareasAvgOrderByAggregateInput
     _max?: informe_tareasMaxOrderByAggregateInput
@@ -48143,6 +49241,9 @@ export namespace Prisma {
     fin?: DateTimeNullableWithAggregatesFilter | Date | string | null
     horas?: IntNullableWithAggregatesFilter | number | null
     monto?: FloatNullableWithAggregatesFilter | number | null
+    liquidado?: BoolNullableWithAggregatesFilter | boolean | null
+    fecha_liquidacion?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    operadorliq?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type ingreso_cajaWhereInput = {
@@ -49731,6 +50832,61 @@ export namespace Prisma {
     fecha_aprobacion?: DateTimeNullableWithAggregatesFilter | Date | string | null
     operadorap?: StringNullableWithAggregatesFilter | string | null
     importe?: FloatNullableWithAggregatesFilter | number | null
+  }
+
+  export type liquidacion_registroWhereInput = {
+    AND?: liquidacion_registroWhereInput | liquidacion_registroWhereInput[]
+    OR?: liquidacion_registroWhereInput[]
+    NOT?: liquidacion_registroWhereInput | liquidacion_registroWhereInput[]
+    idliquidacion?: IntFilter | number
+    fecha?: DateTimeNullableFilter | Date | string | null
+    empleado?: StringNullableFilter | string | null
+    concepto?: StringNullableFilter | string | null
+    fecha_concepto?: DateTimeNullableFilter | Date | string | null
+    importe?: FloatNullableFilter | number | null
+    operador?: StringNullableFilter | string | null
+  }
+
+  export type liquidacion_registroOrderByWithRelationInput = {
+    idliquidacion?: SortOrder
+    fecha?: SortOrderInput | SortOrder
+    empleado?: SortOrderInput | SortOrder
+    concepto?: SortOrderInput | SortOrder
+    fecha_concepto?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+  }
+
+  export type liquidacion_registroWhereUniqueInput = {
+    idliquidacion?: number
+  }
+
+  export type liquidacion_registroOrderByWithAggregationInput = {
+    idliquidacion?: SortOrder
+    fecha?: SortOrderInput | SortOrder
+    empleado?: SortOrderInput | SortOrder
+    concepto?: SortOrderInput | SortOrder
+    fecha_concepto?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    _count?: liquidacion_registroCountOrderByAggregateInput
+    _avg?: liquidacion_registroAvgOrderByAggregateInput
+    _max?: liquidacion_registroMaxOrderByAggregateInput
+    _min?: liquidacion_registroMinOrderByAggregateInput
+    _sum?: liquidacion_registroSumOrderByAggregateInput
+  }
+
+  export type liquidacion_registroScalarWhereWithAggregatesInput = {
+    AND?: liquidacion_registroScalarWhereWithAggregatesInput | liquidacion_registroScalarWhereWithAggregatesInput[]
+    OR?: liquidacion_registroScalarWhereWithAggregatesInput[]
+    NOT?: liquidacion_registroScalarWhereWithAggregatesInput | liquidacion_registroScalarWhereWithAggregatesInput[]
+    idliquidacion?: IntWithAggregatesFilter | number
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    empleado?: StringNullableWithAggregatesFilter | string | null
+    concepto?: StringNullableWithAggregatesFilter | string | null
+    fecha_concepto?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    importe?: FloatNullableWithAggregatesFilter | number | null
+    operador?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type ataud_precioCreateInput = {
@@ -51565,6 +52721,9 @@ export namespace Prisma {
     fin?: Date | string | null
     horas?: number | null
     monto?: number | null
+    liquidado?: boolean | null
+    fecha_liquidacion?: Date | string | null
+    operadorliq?: string | null
   }
 
   export type informe_tareasUncheckedCreateInput = {
@@ -51577,6 +52736,9 @@ export namespace Prisma {
     fin?: Date | string | null
     horas?: number | null
     monto?: number | null
+    liquidado?: boolean | null
+    fecha_liquidacion?: Date | string | null
+    operadorliq?: string | null
   }
 
   export type informe_tareasUpdateInput = {
@@ -51588,6 +52750,9 @@ export namespace Prisma {
     fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     monto?: NullableFloatFieldUpdateOperationsInput | number | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type informe_tareasUncheckedUpdateInput = {
@@ -51600,6 +52765,9 @@ export namespace Prisma {
     fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     monto?: NullableFloatFieldUpdateOperationsInput | number | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type informe_tareasCreateManyInput = {
@@ -51612,6 +52780,9 @@ export namespace Prisma {
     fin?: Date | string | null
     horas?: number | null
     monto?: number | null
+    liquidado?: boolean | null
+    fecha_liquidacion?: Date | string | null
+    operadorliq?: string | null
   }
 
   export type informe_tareasUpdateManyMutationInput = {
@@ -51623,6 +52794,9 @@ export namespace Prisma {
     fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     monto?: NullableFloatFieldUpdateOperationsInput | number | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type informe_tareasUncheckedUpdateManyInput = {
@@ -51635,6 +52809,9 @@ export namespace Prisma {
     fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     monto?: NullableFloatFieldUpdateOperationsInput | number | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ingreso_cajaCreateInput = {
@@ -53831,6 +55008,73 @@ export namespace Prisma {
     importe?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
+  export type liquidacion_registroCreateInput = {
+    fecha?: Date | string | null
+    empleado?: string | null
+    concepto?: string | null
+    fecha_concepto?: Date | string | null
+    importe?: number | null
+    operador?: string | null
+  }
+
+  export type liquidacion_registroUncheckedCreateInput = {
+    idliquidacion?: number
+    fecha?: Date | string | null
+    empleado?: string | null
+    concepto?: string | null
+    fecha_concepto?: Date | string | null
+    importe?: number | null
+    operador?: string | null
+  }
+
+  export type liquidacion_registroUpdateInput = {
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empleado?: NullableStringFieldUpdateOperationsInput | string | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_concepto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type liquidacion_registroUncheckedUpdateInput = {
+    idliquidacion?: IntFieldUpdateOperationsInput | number
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empleado?: NullableStringFieldUpdateOperationsInput | string | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_concepto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type liquidacion_registroCreateManyInput = {
+    idliquidacion?: number
+    fecha?: Date | string | null
+    empleado?: string | null
+    concepto?: string | null
+    fecha_concepto?: Date | string | null
+    importe?: number | null
+    operador?: string | null
+  }
+
+  export type liquidacion_registroUpdateManyMutationInput = {
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empleado?: NullableStringFieldUpdateOperationsInput | string | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_concepto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type liquidacion_registroUncheckedUpdateManyInput = {
+    idliquidacion?: IntFieldUpdateOperationsInput | number
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empleado?: NullableStringFieldUpdateOperationsInput | string | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_concepto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type IntFilter = {
     equals?: number
     in?: number[]
@@ -55095,6 +56339,9 @@ export namespace Prisma {
     fin?: SortOrder
     horas?: SortOrder
     monto?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidacion?: SortOrder
+    operadorliq?: SortOrder
   }
 
   export type informe_tareasAvgOrderByAggregateInput = {
@@ -55115,6 +56362,9 @@ export namespace Prisma {
     fin?: SortOrder
     horas?: SortOrder
     monto?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidacion?: SortOrder
+    operadorliq?: SortOrder
   }
 
   export type informe_tareasMinOrderByAggregateInput = {
@@ -55127,6 +56377,9 @@ export namespace Prisma {
     fin?: SortOrder
     horas?: SortOrder
     monto?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidacion?: SortOrder
+    operadorliq?: SortOrder
   }
 
   export type informe_tareasSumOrderByAggregateInput = {
@@ -56416,6 +57669,46 @@ export namespace Prisma {
     ano?: SortOrder
     liquidado?: SortOrder
     aprobado?: SortOrder
+    importe?: SortOrder
+  }
+
+  export type liquidacion_registroCountOrderByAggregateInput = {
+    idliquidacion?: SortOrder
+    fecha?: SortOrder
+    empleado?: SortOrder
+    concepto?: SortOrder
+    fecha_concepto?: SortOrder
+    importe?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type liquidacion_registroAvgOrderByAggregateInput = {
+    idliquidacion?: SortOrder
+    importe?: SortOrder
+  }
+
+  export type liquidacion_registroMaxOrderByAggregateInput = {
+    idliquidacion?: SortOrder
+    fecha?: SortOrder
+    empleado?: SortOrder
+    concepto?: SortOrder
+    fecha_concepto?: SortOrder
+    importe?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type liquidacion_registroMinOrderByAggregateInput = {
+    idliquidacion?: SortOrder
+    fecha?: SortOrder
+    empleado?: SortOrder
+    concepto?: SortOrder
+    fecha_concepto?: SortOrder
+    importe?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type liquidacion_registroSumOrderByAggregateInput = {
+    idliquidacion?: SortOrder
     importe?: SortOrder
   }
 

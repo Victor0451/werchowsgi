@@ -76,6 +76,25 @@ export const Administracion = () => {
               </MenuList>
             </Menu>
 
+            <Menu placement="right-start">
+              <MenuHandler>
+                <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
+                  <Typography color="black">Cobranza</Typography>
+                  <ChevronDownIcon
+                    strokeWidth={2}
+                    className={`h-3 w-3 transition-transform `}
+                  />
+                </MenuItem>
+              </MenuHandler>
+              <MenuList>
+                <Link href={"/cobranza/werchow/efectividad"}>
+                  <MenuItem>
+                    <Typography color="black">Efectividad</Typography>
+                  </MenuItem>
+                </Link>{" "}
+              </MenuList>
+            </Menu>
+
             <Link href={"/administracion/historial/panel"}>
               <MenuItem>
                 <Typography color="black">Historial del Sistema</Typography>
@@ -129,6 +148,11 @@ export const Administracion = () => {
                 <Link href={"/sepelio/guardias/auditoria"}>
                   <MenuItem>
                     <Typography color="black">Auditoria Guardias</Typography>
+                  </MenuItem>
+                </Link>
+                <Link href={"/sepelio/servicios/liquidacion"}>
+                  <MenuItem>
+                    <Typography color="black">Liquidacion Personal</Typography>
                   </MenuItem>
                 </Link>
               </MenuList>

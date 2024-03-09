@@ -25,6 +25,15 @@ export default async function handler(req, res) {
       const plani = await Sep.liquidacion_guardias.findMany();
 
       res.status(200).json(plani);
+    } else if (req.query.f && req.query.f === "traer guardias operador") {
+      const guardiasOp = await Sep.liquidacion_guardias.findMany({
+        where: {
+          operador: req.query.operador,
+          liquidado: 0,
+        },
+      });
+
+      res.status(200).json(guardiasOp);
     }
   } else if (req.method === "POST") {
     if (req.body.f && req.body.f === "nueva liquidacion") {
@@ -87,6 +96,19 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(regAuto);
+    } else if (req.body.f && req.body.f === "liquidar guardia 2") {
+      const liqGuardia = await Sep.liquidacion_guardias.update({
+        data: {
+          liquidado: parseInt(req.body.liquidado),
+          operadorliq: req.body.operadorliq,
+          fecha_liquidacion: new Date(req.body.fecha_liquidacion),
+        },
+        where: {
+          idturno: parseInt(req.body.idturno),
+        },
+      });
+
+      res.status(200).json(liqGuardia);
     }
   } else if (req.method === "DELETE") {
     if (req.query.f && req.query.f === "eliminar tarea") {

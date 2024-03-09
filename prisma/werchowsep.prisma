@@ -279,15 +279,18 @@ model honorarios {
 }
 
 model informe_tareas {
-  idtareas   Int       @id @default(autoincrement())
-  idinforme  Int?
-  idservicio Int?
-  operador   String?   @db.VarChar(255)
-  tarea      String?   @db.VarChar(255)
-  inicio     DateTime? @db.DateTime(0)
-  fin        DateTime? @db.DateTime(0)
-  horas      Int?
-  monto      Float?    @db.Float
+  idtareas          Int       @id @default(autoincrement())
+  idinforme         Int?
+  idservicio        Int?
+  operador          String?   @db.VarChar(255)
+  tarea             String?   @db.VarChar(255)
+  inicio            DateTime? @db.DateTime(0)
+  fin               DateTime? @db.DateTime(0)
+  horas             Int?
+  monto             Float?    @db.Float
+  liquidado         Boolean?
+  fecha_liquidacion DateTime? @db.Date
+  operadorliq       String?   @db.VarChar(255)
 }
 
 model ingreso_caja {
@@ -610,4 +613,14 @@ model liquidacion_guardias {
   fecha_aprobacion  DateTime? @db.Date
   operadorap        String?   @db.VarChar(255)
   importe           Float?    @db.Float
+}
+
+model liquidacion_registro {
+  idliquidacion  Int       @id @default(autoincrement())
+  fecha          DateTime? @db.Date
+  empleado       String?   @db.VarChar(255)
+  concepto       String?   @db.VarChar(255)
+  fecha_concepto DateTime? @db.Date
+  importe        Float?    @db.Float
+  operador       String?   @db.VarChar(255)
 }

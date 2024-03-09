@@ -41,8 +41,7 @@ function CertPreImpreso({ ficha }) {
               Por medio de la presente se extiende una constancia de cobertura
               de sepelio, la cual al momento de la fecha se encuentra al dia con
               las cuotas mensuales. Este documento fue solicitado para ser
-              presentado ante las autoridades de{" "}
-              <strong>LA POLICIA DE LA PROVINCIA</strong>
+              presentado ante las <strong>AUTORIDADES QUE LO REQUIERAN</strong>
             </Typography>
           </div>
         </div>

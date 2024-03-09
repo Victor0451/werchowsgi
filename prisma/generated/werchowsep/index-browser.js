@@ -383,7 +383,10 @@ exports.Prisma.Informe_tareasScalarFieldEnum = {
   inicio: 'inicio',
   fin: 'fin',
   horas: 'horas',
-  monto: 'monto'
+  monto: 'monto',
+  liquidado: 'liquidado',
+  fecha_liquidacion: 'fecha_liquidacion',
+  operadorliq: 'operadorliq'
 };
 
 exports.Prisma.Ingreso_cajaScalarFieldEnum = {
@@ -708,6 +711,16 @@ exports.Prisma.Liquidacion_guardiasScalarFieldEnum = {
   importe: 'importe'
 };
 
+exports.Prisma.Liquidacion_registroScalarFieldEnum = {
+  idliquidacion: 'idliquidacion',
+  fecha: 'fecha',
+  empleado: 'empleado',
+  concepto: 'concepto',
+  fecha_concepto: 'fecha_concepto',
+  importe: 'importe',
+  operador: 'operador'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -760,7 +773,8 @@ exports.Prisma.ModelName = {
   visitantes: 'visitantes',
   informe_gastos: 'informe_gastos',
   servicios_gastos: 'servicios_gastos',
-  liquidacion_guardias: 'liquidacion_guardias'
+  liquidacion_guardias: 'liquidacion_guardias',
+  liquidacion_registro: 'liquidacion_registro'
 };
 
 /**

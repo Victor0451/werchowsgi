@@ -67,8 +67,28 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
-    }
-    if (req.query.f && req.query.f === "traer cpolicia") {
+    } else if (req.query.f && req.query.f === "traer ctjt") {
+      const ctjt = await Info.$queryRaw`
+         
+      SELECT
+        *
+      FROM
+         ctjt
+      WHERE 
+          mes = ${parseInt(req.query.mes)}
+      AND           
+          ano = ${parseInt(req.query.ano)}
+             
+      
+        `;
+      res
+        .status(200)
+        .json(
+          JSON.stringify(ctjt, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "traer cpolicia") {
       const cpolicia = await Info.$queryRaw`
          
       SELECT

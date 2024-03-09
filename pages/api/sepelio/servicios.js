@@ -333,6 +333,15 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(tareasReg);
+    } else if (req.query.f && req.query.f === "traer tareas operador") {
+      const tareasOp = await Sep.informe_tareas.findMany({
+        where: {
+          operador: req.query.operador,
+          liquidado: false,
+        },
+      });
+
+      res.status(200).json(tareasOp);
     } else if (req.query.f && req.query.f === "traer gastos reg") {
       const tareasReg = await Sep.informe_gastos.findMany({
         where: {
@@ -452,6 +461,7 @@ export default async function handler(req, res) {
           fin: new Date(req.body.fin),
           horas: parseInt(req.body.horas),
           monto: parseFloat(req.body.monto),
+          liquidado: req.body.liquidado,
         },
       });
 
@@ -701,6 +711,19 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
+    } else if (req.body.f && req.body.f === "liquidar tarea") {
+      const liqTarea = await Sep.informe_tareas.update({
+        data: {
+          liquidado: req.body.liquidado,
+          operadorliq: req.body.usu,
+          fecha_liquidacion: new Date(req.body.fecha_liquidacion),
+        },
+        where: {
+          idtareas: parseInt(req.body.idtarea),
+        },
+      });
+
+      res.status(200).json(liqTarea);
     }
   } else if (req.method === "DELETE") {
     if (req.query.f && req.query.f === "eliminar tarea") {

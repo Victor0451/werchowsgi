@@ -90,6 +90,11 @@ export const Gestion = ({ usu }) => {
                     <Typography color="black">Auditoria Guardias</Typography>
                   </MenuItem>
                 </Link>
+                <Link href={"/sepelio/servicios/liquidacion"}>
+                  <MenuItem>
+                    <Typography color="black">Liquidacion Personal</Typography>
+                  </MenuItem>
+                </Link>
               </MenuList>
             </Menu>
             {usu.usuario === "joaquini" ||
