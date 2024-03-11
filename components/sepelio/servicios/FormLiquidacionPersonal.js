@@ -22,7 +22,7 @@ const FormLiquidacionPersonal = ({
   guardias,
   opSel,
   calcTotal,
-  pagarLiquidacion
+  pagarLiquidacion,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -51,8 +51,11 @@ const FormLiquidacionPersonal = ({
 
             <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
               <Alert className="" color="blue" icon={<IconSolid />}>
-                Liquidacion de las guardias, tareas en serivios y changas del
-                personal de sepelio.
+                ¡ATENCION! - Se motraran las guardias, tareas en serivios y
+                changas del personal de sepelio que tengas un importe a
+                liquidar. Las mismas que tengas valor 0 por estar en horario de
+                trabajos quedaran registradas pero no se mostraran en este
+                apartado.
               </Alert>
             </div>
 
@@ -76,7 +79,11 @@ const FormLiquidacionPersonal = ({
               pagarLiquidacion={pagarLiquidacion}
             />
           </>
-        ) : null}
+        ) : (
+          <Alert color="blue" icon={<IconSolid />} className="mt-5 mb-5">
+            El operador {opSel}, no posee tareas o guardias a liquidar.
+          </Alert>
+        )}
       </CardBody>
     </Card>
   );

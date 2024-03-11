@@ -334,14 +334,24 @@ export default async function handler(req, res) {
 
       res.status(200).json(tareasReg);
     } else if (req.query.f && req.query.f === "traer tareas operador") {
-      const tareasOp = await Sep.informe_tareas.findMany({
-        where: {
-          operador: req.query.operador,
-          liquidado: false,
-        },
-      });
+      const tareasSinLiq = await Sep.$queryRawUnsafe(
+        `                
+                SELECT *
+                FROM informe_tareas
+                WHERE operador = '${req.query.operador}'
+                AND liquidado = 0
+                AND monto > 0
+              
+               `
+      );
 
-      res.status(200).json(tareasOp);
+      res
+        .status(200)
+        .json(
+          JSON.stringify(tareasSinLiq, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     } else if (req.query.f && req.query.f === "traer gastos reg") {
       const tareasReg = await Sep.informe_gastos.findMany({
         where: {
@@ -722,6 +732,20 @@ export default async function handler(req, res) {
           idtareas: parseInt(req.body.idtarea),
         },
       });
+
+      res.status(200).json(liqTarea);
+    } else if (req.body.f && req.body.f === "liquidar tarea informe") {
+      const liqTarea = await Sep.$queryRawUnsafe(
+        `                
+          UPDATE informe_tareas 
+          SET liquidado = ${req.body.liquidado},
+              fecha_liquidacion = '${req.body.fecha_liquidacion}',
+              operadorliq = '${req.body.usu}'
+          WHERE idinforme = ${req.body.idinforme}
+
+          
+                       `
+      );
 
       res.status(200).json(liqTarea);
     }

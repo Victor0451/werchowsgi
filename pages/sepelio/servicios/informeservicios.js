@@ -33,7 +33,7 @@ const InformeServicios = () => {
       .then((res) => {
         if (res.data) {
           let list = JSON.parse(res.data);
-          console.log(list);
+
           guardarInformes(list);
           guardarNoData(false);
         } else if (!res.data) {
@@ -103,6 +103,28 @@ const InformeServicios = () => {
     });
   };
 
+  const putLiquidadoTareas = async (idinforme) => {
+    let data = {
+      f: "liquidar tarea informe",
+      liquidado: true,
+      idinforme: idinforme,
+      fecha_liquidacion: moment().format("YYYY-MM-DD"),
+      usu: usu.usuario,
+    };
+
+    await axios
+      .put(`/api/sepelio/servicios`, data)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success("Tareas marcadas como Liquidadas");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al liquidar las tareas");
+      });
+  };
+
   const liquidarInforme = async (id) => {
     await confirmAlert({
       title: "ATENCION",
@@ -131,6 +153,8 @@ const InformeServicios = () => {
                   registrarHistoria(accionHis, usu.usuario);
 
                   traerInfo();
+
+                  putLiquidadoTareas(id);
                 }
               })
               .catch((error) => {

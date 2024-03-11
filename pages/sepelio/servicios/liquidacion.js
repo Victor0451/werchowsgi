@@ -71,7 +71,8 @@ function liquidacion(props) {
         })
         .then((res) => {
           if (res.data) {
-            guardarTareas(res.data);
+            let list = JSON.parse(res.data);
+            guardarTareas(list);
           }
         })
         .catch((error) => {
