@@ -411,6 +411,18 @@ model adherent_provi {
   ESTADO     Boolean?
 }
 
+model ausencias {
+  idausencia  Int       @id @default(autoincrement())
+  cod_pres    String?   @db.VarChar(255)
+  prestador   String?   @db.VarChar(255)
+  motivo      String?   @db.VarChar(255)
+  desde       DateTime? @db.Date
+  hasta       DateTime? @db.Date
+  observacion String?   @db.VarChar(1000)
+  estado      Int?      @db.TinyInt
+  operador    String?   @db.VarChar(255)
+}
+
 model nosocios {
   idnosocio Int       @id @default(autoincrement())
   nosocio   String?   @db.VarChar(255)
@@ -423,6 +435,16 @@ model nosocios {
   gremio    String?   @db.VarChar(255)
   estado    Boolean?
   otra_os   String?   @db.VarChar(255)
+}
+
+model pacientes {
+  idpaciente Int     @id @default(autoincrement())
+  paciente   String? @db.VarChar(500)
+  dni        Int?
+  obra_soc   String? @db.VarChar(255)
+  telefono   BigInt?
+  domicilio  String? @db.VarChar(1000)
+  mail       String? @db.VarChar(500)
 }
 
 model planes_odontologicos {
@@ -469,32 +491,10 @@ model planes_visitas {
   plan     String?   @db.VarChar(255)
 }
 
-model pacientes {
-  idpaciente Int     @id @default(autoincrement())
-  paciente   String? @db.VarChar(500)
-  dni        Int?
-  obra_soc   String? @db.VarChar(255)
-  telefono   BigInt?
-  domicilio  String? @db.VarChar(1000)
-  mail       String? @db.VarChar(500)
-}
-
 model promociones {
   idpromo Int  @id @default(autoincrement())
   pot1    Int?
   pot2    Int?
   pint1   Int?
   pint2   Int?
-}
-
-model ausencias {
-  idausencia  Int       @id @default(autoincrement())
-  cod_pres    String?   @db.VarChar(255)
-  prestador   String?   @db.VarChar(255)
-  motivo      String?   @db.VarChar(255)
-  desde       DateTime? @db.Date
-  hasta       DateTime? @db.Date
-  observacion String?   @db.VarChar(1000)
-  estado      Int?      @db.TinyInt
-  operador    String?   @db.VarChar(255)
 }

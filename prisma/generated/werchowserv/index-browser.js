@@ -404,6 +404,18 @@ exports.Prisma.Adherent_proviScalarFieldEnum = {
   ESTADO: 'ESTADO'
 };
 
+exports.Prisma.AusenciasScalarFieldEnum = {
+  idausencia: 'idausencia',
+  cod_pres: 'cod_pres',
+  prestador: 'prestador',
+  motivo: 'motivo',
+  desde: 'desde',
+  hasta: 'hasta',
+  observacion: 'observacion',
+  estado: 'estado',
+  operador: 'operador'
+};
+
 exports.Prisma.NosociosScalarFieldEnum = {
   idnosocio: 'idnosocio',
   nosocio: 'nosocio',
@@ -416,6 +428,16 @@ exports.Prisma.NosociosScalarFieldEnum = {
   gremio: 'gremio',
   estado: 'estado',
   otra_os: 'otra_os'
+};
+
+exports.Prisma.PacientesScalarFieldEnum = {
+  idpaciente: 'idpaciente',
+  paciente: 'paciente',
+  dni: 'dni',
+  obra_soc: 'obra_soc',
+  telefono: 'telefono',
+  domicilio: 'domicilio',
+  mail: 'mail'
 };
 
 exports.Prisma.Planes_odontologicosScalarFieldEnum = {
@@ -462,34 +484,12 @@ exports.Prisma.Planes_visitasScalarFieldEnum = {
   plan: 'plan'
 };
 
-exports.Prisma.PacientesScalarFieldEnum = {
-  idpaciente: 'idpaciente',
-  paciente: 'paciente',
-  dni: 'dni',
-  obra_soc: 'obra_soc',
-  telefono: 'telefono',
-  domicilio: 'domicilio',
-  mail: 'mail'
-};
-
 exports.Prisma.PromocionesScalarFieldEnum = {
   idpromo: 'idpromo',
   pot1: 'pot1',
   pot2: 'pot2',
   pint1: 'pint1',
   pint2: 'pint2'
-};
-
-exports.Prisma.AusenciasScalarFieldEnum = {
-  idausencia: 'idausencia',
-  cod_pres: 'cod_pres',
-  prestador: 'prestador',
-  motivo: 'motivo',
-  desde: 'desde',
-  hasta: 'hasta',
-  observacion: 'observacion',
-  estado: 'estado',
-  operador: 'operador'
 };
 
 exports.Prisma.SortOrder = {
@@ -516,13 +516,13 @@ exports.Prisma.ModelName = {
   USOS: 'USOS',
   USOSFA: 'USOSFA',
   adherent_provi: 'adherent_provi',
+  ausencias: 'ausencias',
   nosocios: 'nosocios',
+  pacientes: 'pacientes',
   planes_odontologicos: 'planes_odontologicos',
   planes_socio: 'planes_socio',
   planes_visitas: 'planes_visitas',
-  pacientes: 'pacientes',
-  promociones: 'promociones',
-  ausencias: 'ausencias'
+  promociones: 'promociones'
 };
 
 /**

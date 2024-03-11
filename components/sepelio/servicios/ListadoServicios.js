@@ -35,8 +35,14 @@ const ListadoServicios = ({
     {
       name: "#",
       button: true,
-      grow: 0.1,
+      width: "60px",
       cell: (row, index) => <>{index + 1}</>,
+    },
+    {
+      name: "ID",
+      selector: (row) => `${row.idservicio}`,
+      sortable: true,
+      width: "80px",
     },
     {
       name: "Difunto",

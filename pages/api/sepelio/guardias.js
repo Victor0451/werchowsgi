@@ -40,8 +40,8 @@ export default async function handler(req, res) {
       const regTarea = await Sep.liquidacion_guardias.create({
         data: {
           lugar: req.body.lugar,
-          inicio: new Date(req.body.inicio),
-          fin: new Date(req.body.fin),
+          inicio: req.body.inicio,
+          fin: req.body.fin,
           horas: parseInt(req.body.horas),
           importe: parseFloat(req.body.importe),
           feriado: req.body.feriado,

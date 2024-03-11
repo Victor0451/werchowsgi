@@ -469,8 +469,8 @@ export type informe_tareasPayload<ExtArgs extends $Extensions.Args = $Extensions
     idservicio: number | null
     operador: string | null
     tarea: string | null
-    inicio: Date | null
-    fin: Date | null
+    inicio: string | null
+    fin: string | null
     horas: number | null
     monto: number | null
     liquidado: boolean | null
@@ -964,8 +964,8 @@ export type liquidacion_guardiasPayload<ExtArgs extends $Extensions.Args = $Exte
   scalars: $Extensions.GetResult<{
     idturno: number
     lugar: string | null
-    inicio: Date | null
-    fin: Date | null
+    inicio: string | null
+    fin: string | null
     horas: number | null
     operador: string | null
     mes: number | null
@@ -25118,8 +25118,8 @@ export namespace Prisma {
     idservicio: number | null
     operador: string | null
     tarea: string | null
-    inicio: Date | null
-    fin: Date | null
+    inicio: string | null
+    fin: string | null
     horas: number | null
     monto: number | null
     liquidado: boolean | null
@@ -25133,8 +25133,8 @@ export namespace Prisma {
     idservicio: number | null
     operador: string | null
     tarea: string | null
-    inicio: Date | null
-    fin: Date | null
+    inicio: string | null
+    fin: string | null
     horas: number | null
     monto: number | null
     liquidado: boolean | null
@@ -25314,8 +25314,8 @@ export namespace Prisma {
     idservicio: number | null
     operador: string | null
     tarea: string | null
-    inicio: Date | null
-    fin: Date | null
+    inicio: string | null
+    fin: string | null
     horas: number | null
     monto: number | null
     liquidado: boolean | null
@@ -45085,8 +45085,8 @@ export namespace Prisma {
   export type Liquidacion_guardiasMinAggregateOutputType = {
     idturno: number | null
     lugar: string | null
-    inicio: Date | null
-    fin: Date | null
+    inicio: string | null
+    fin: string | null
     horas: number | null
     operador: string | null
     mes: number | null
@@ -45104,8 +45104,8 @@ export namespace Prisma {
   export type Liquidacion_guardiasMaxAggregateOutputType = {
     idturno: number | null
     lugar: string | null
-    inicio: Date | null
-    fin: Date | null
+    inicio: string | null
+    fin: string | null
     horas: number | null
     operador: string | null
     mes: number | null
@@ -45309,8 +45309,8 @@ export namespace Prisma {
   export type Liquidacion_guardiasGroupByOutputType = {
     idturno: number
     lugar: string | null
-    inicio: Date | null
-    fin: Date | null
+    inicio: string | null
+    fin: string | null
     horas: number | null
     operador: string | null
     mes: number | null
@@ -49180,8 +49180,8 @@ export namespace Prisma {
     idservicio?: IntNullableFilter | number | null
     operador?: StringNullableFilter | string | null
     tarea?: StringNullableFilter | string | null
-    inicio?: DateTimeNullableFilter | Date | string | null
-    fin?: DateTimeNullableFilter | Date | string | null
+    inicio?: StringNullableFilter | string | null
+    fin?: StringNullableFilter | string | null
     horas?: IntNullableFilter | number | null
     monto?: FloatNullableFilter | number | null
     liquidado?: BoolNullableFilter | boolean | null
@@ -49237,8 +49237,8 @@ export namespace Prisma {
     idservicio?: IntNullableWithAggregatesFilter | number | null
     operador?: StringNullableWithAggregatesFilter | string | null
     tarea?: StringNullableWithAggregatesFilter | string | null
-    inicio?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    fin?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    inicio?: StringNullableWithAggregatesFilter | string | null
+    fin?: StringNullableWithAggregatesFilter | string | null
     horas?: IntNullableWithAggregatesFilter | number | null
     monto?: FloatNullableWithAggregatesFilter | number | null
     liquidado?: BoolNullableWithAggregatesFilter | boolean | null
@@ -50749,8 +50749,8 @@ export namespace Prisma {
     NOT?: liquidacion_guardiasWhereInput | liquidacion_guardiasWhereInput[]
     idturno?: IntFilter | number
     lugar?: StringNullableFilter | string | null
-    inicio?: DateTimeNullableFilter | Date | string | null
-    fin?: DateTimeNullableFilter | Date | string | null
+    inicio?: StringNullableFilter | string | null
+    fin?: StringNullableFilter | string | null
     horas?: IntNullableFilter | number | null
     operador?: StringNullableFilter | string | null
     mes?: IntNullableFilter | number | null
@@ -50818,8 +50818,8 @@ export namespace Prisma {
     NOT?: liquidacion_guardiasScalarWhereWithAggregatesInput | liquidacion_guardiasScalarWhereWithAggregatesInput[]
     idturno?: IntWithAggregatesFilter | number
     lugar?: StringNullableWithAggregatesFilter | string | null
-    inicio?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    fin?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    inicio?: StringNullableWithAggregatesFilter | string | null
+    fin?: StringNullableWithAggregatesFilter | string | null
     horas?: IntNullableWithAggregatesFilter | number | null
     operador?: StringNullableWithAggregatesFilter | string | null
     mes?: IntNullableWithAggregatesFilter | number | null
@@ -52717,8 +52717,8 @@ export namespace Prisma {
     idservicio?: number | null
     operador?: string | null
     tarea?: string | null
-    inicio?: Date | string | null
-    fin?: Date | string | null
+    inicio?: string | null
+    fin?: string | null
     horas?: number | null
     monto?: number | null
     liquidado?: boolean | null
@@ -52732,8 +52732,8 @@ export namespace Prisma {
     idservicio?: number | null
     operador?: string | null
     tarea?: string | null
-    inicio?: Date | string | null
-    fin?: Date | string | null
+    inicio?: string | null
+    fin?: string | null
     horas?: number | null
     monto?: number | null
     liquidado?: boolean | null
@@ -52746,8 +52746,8 @@ export namespace Prisma {
     idservicio?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    fin?: NullableStringFieldUpdateOperationsInput | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     monto?: NullableFloatFieldUpdateOperationsInput | number | null
     liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -52761,8 +52761,8 @@ export namespace Prisma {
     idservicio?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    fin?: NullableStringFieldUpdateOperationsInput | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     monto?: NullableFloatFieldUpdateOperationsInput | number | null
     liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -52776,8 +52776,8 @@ export namespace Prisma {
     idservicio?: number | null
     operador?: string | null
     tarea?: string | null
-    inicio?: Date | string | null
-    fin?: Date | string | null
+    inicio?: string | null
+    fin?: string | null
     horas?: number | null
     monto?: number | null
     liquidado?: boolean | null
@@ -52790,8 +52790,8 @@ export namespace Prisma {
     idservicio?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    fin?: NullableStringFieldUpdateOperationsInput | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     monto?: NullableFloatFieldUpdateOperationsInput | number | null
     liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -52805,8 +52805,8 @@ export namespace Prisma {
     idservicio?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     tarea?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    fin?: NullableStringFieldUpdateOperationsInput | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     monto?: NullableFloatFieldUpdateOperationsInput | number | null
     liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -54880,8 +54880,8 @@ export namespace Prisma {
 
   export type liquidacion_guardiasCreateInput = {
     lugar?: string | null
-    inicio?: Date | string | null
-    fin?: Date | string | null
+    inicio?: string | null
+    fin?: string | null
     horas?: number | null
     operador?: string | null
     mes?: number | null
@@ -54899,8 +54899,8 @@ export namespace Prisma {
   export type liquidacion_guardiasUncheckedCreateInput = {
     idturno?: number
     lugar?: string | null
-    inicio?: Date | string | null
-    fin?: Date | string | null
+    inicio?: string | null
+    fin?: string | null
     horas?: number | null
     operador?: string | null
     mes?: number | null
@@ -54917,8 +54917,8 @@ export namespace Prisma {
 
   export type liquidacion_guardiasUpdateInput = {
     lugar?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    fin?: NullableStringFieldUpdateOperationsInput | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     mes?: NullableIntFieldUpdateOperationsInput | number | null
@@ -54936,8 +54936,8 @@ export namespace Prisma {
   export type liquidacion_guardiasUncheckedUpdateInput = {
     idturno?: IntFieldUpdateOperationsInput | number
     lugar?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    fin?: NullableStringFieldUpdateOperationsInput | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     mes?: NullableIntFieldUpdateOperationsInput | number | null
@@ -54955,8 +54955,8 @@ export namespace Prisma {
   export type liquidacion_guardiasCreateManyInput = {
     idturno?: number
     lugar?: string | null
-    inicio?: Date | string | null
-    fin?: Date | string | null
+    inicio?: string | null
+    fin?: string | null
     horas?: number | null
     operador?: string | null
     mes?: number | null
@@ -54973,8 +54973,8 @@ export namespace Prisma {
 
   export type liquidacion_guardiasUpdateManyMutationInput = {
     lugar?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    fin?: NullableStringFieldUpdateOperationsInput | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     mes?: NullableIntFieldUpdateOperationsInput | number | null
@@ -54992,8 +54992,8 @@ export namespace Prisma {
   export type liquidacion_guardiasUncheckedUpdateManyInput = {
     idturno?: IntFieldUpdateOperationsInput | number
     lugar?: NullableStringFieldUpdateOperationsInput | string | null
-    inicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    fin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    fin?: NullableStringFieldUpdateOperationsInput | string | null
     horas?: NullableIntFieldUpdateOperationsInput | number | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
     mes?: NullableIntFieldUpdateOperationsInput | number | null
