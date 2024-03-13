@@ -70,6 +70,30 @@ export const AccesosDirectos = () => {
           <CardBody>
             <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
             <Typography variant="h5" color="blue-gray" className="mb-2">
+              Reintegros ISJ
+            </Typography>
+            <Typography>
+              Registro de reintegros de ordenes y practicas ISJ.
+            </Typography>
+          </CardBody>
+          <CardFooter className="pt-0">
+            <Link href="/socios/solicitudes/reintegros">
+              <Button
+                size="sm"
+                variant="text"
+                className="flex items-center gap-2"
+              >
+                Acceder
+                <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
+              </Button>
+            </Link>
+          </CardFooter>
+        </Card>
+
+        <Card className="mt-6">
+          <CardBody>
+            <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
+            <Typography variant="h5" color="blue-gray" className="mb-2">
               Legajo Virtual
             </Typography>
             <Typography>

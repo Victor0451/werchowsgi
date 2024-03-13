@@ -998,3 +998,16 @@ model mails_copy {
   fecha_leido DateTime? @db.DateTime(0)
   url_caja    String?   @db.VarChar(255)
 }
+
+model reintegros {
+  idreintegro Int       @id @default(autoincrement())
+  entidad     String?   @db.VarChar(255)
+  contrato    Int?
+  socio       String?   @db.VarChar(500)
+  dni         Int?
+  norden      String?   @db.VarChar(255)
+  importe     Float?    @db.Float
+  observacion String?   @db.VarChar(1000)
+  operador    String?   @db.VarChar(255)
+  fecha       DateTime? @db.Date
+}

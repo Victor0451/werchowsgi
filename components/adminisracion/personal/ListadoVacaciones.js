@@ -52,8 +52,10 @@ const ListadoVacaciones = ({ listado, eliminarVacaciones }) => {
       grow: 0.1,
       cell: (row, index) => (
         <>
-          {hoy.isAfter(moment(row.fin)) === true ||
-          hoy.isSame(moment(row.fin) === true) ? (
+          {hoy.isBefore(moment(row.inicio)) === true ? (
+            <div>Pendiente</div>
+          ) : hoy.isAfter(moment(row.fin)) === true ||
+            hoy.isSame(moment(row.fin) === true) ? (
             <div>Reintegrado</div>
           ) : (
             <div>{moment(row.fin).diff(moment(), "days")} Dias</div>

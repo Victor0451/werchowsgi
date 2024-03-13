@@ -1366,6 +1366,28 @@ export type mails_copyPayload<ExtArgs extends $Extensions.Args = $Extensions.Def
  * 
  */
 export type mails_copy = runtime.Types.DefaultSelection<mails_copyPayload>
+export type reintegrosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idreintegro: number
+    entidad: string | null
+    contrato: number | null
+    socio: string | null
+    dni: number | null
+    norden: string | null
+    importe: number | null
+    observacion: string | null
+    operador: string | null
+    fecha: Date | null
+  }, ExtArgs["result"]["reintegros"]>
+  composites: {}
+}
+
+/**
+ * Model reintegros
+ * 
+ */
+export type reintegros = runtime.Types.DefaultSelection<reintegrosPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2141,6 +2163,16 @@ export class PrismaClient<
     * ```
     */
   get mails_copy(): Prisma.mails_copyDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.reintegros`: Exposes CRUD operations for the **reintegros** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Reintegros
+    * const reintegros = await prisma.reintegros.findMany()
+    * ```
+    */
+  get reintegros(): Prisma.reintegrosDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -2688,7 +2720,8 @@ export namespace Prisma {
     certificado_estudiantes: 'certificado_estudiantes',
     cartera: 'cartera',
     gasto_luto: 'gasto_luto',
-    mails_copy: 'mails_copy'
+    mails_copy: 'mails_copy',
+    reintegros: 'reintegros'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2705,7 +2738,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'produccion' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'mails_copy'
+      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'produccion' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'mails_copy' | 'reintegros'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -7841,6 +7874,85 @@ export namespace Prisma {
             args: Prisma.mails_copyCountArgs<ExtArgs>,
             result: $Utils.Optional<Mails_copyCountAggregateOutputType> | number
             payload: mails_copyPayload<ExtArgs>
+          }
+        }
+      }
+      reintegros: {
+        operations: {
+          findUnique: {
+            args: Prisma.reintegrosFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reintegrosPayload> | null
+            payload: reintegrosPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.reintegrosFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reintegrosPayload>
+            payload: reintegrosPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.reintegrosFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reintegrosPayload> | null
+            payload: reintegrosPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.reintegrosFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reintegrosPayload>
+            payload: reintegrosPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.reintegrosFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reintegrosPayload>[]
+            payload: reintegrosPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.reintegrosCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reintegrosPayload>
+            payload: reintegrosPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.reintegrosCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reintegrosPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.reintegrosDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reintegrosPayload>
+            payload: reintegrosPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.reintegrosUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reintegrosPayload>
+            payload: reintegrosPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.reintegrosDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reintegrosPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.reintegrosUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reintegrosPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.reintegrosUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reintegrosPayload>
+            payload: reintegrosPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.ReintegrosAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateReintegros>
+            payload: reintegrosPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.reintegrosGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ReintegrosGroupByOutputType>[]
+            payload: reintegrosPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.reintegrosCountArgs<ExtArgs>,
+            result: $Utils.Optional<ReintegrosCountAggregateOutputType> | number
+            payload: reintegrosPayload<ExtArgs>
           }
         }
       }
@@ -70162,6 +70274,975 @@ export namespace Prisma {
 
 
   /**
+   * Model reintegros
+   */
+
+
+  export type AggregateReintegros = {
+    _count: ReintegrosCountAggregateOutputType | null
+    _avg: ReintegrosAvgAggregateOutputType | null
+    _sum: ReintegrosSumAggregateOutputType | null
+    _min: ReintegrosMinAggregateOutputType | null
+    _max: ReintegrosMaxAggregateOutputType | null
+  }
+
+  export type ReintegrosAvgAggregateOutputType = {
+    idreintegro: number | null
+    contrato: number | null
+    dni: number | null
+    importe: number | null
+  }
+
+  export type ReintegrosSumAggregateOutputType = {
+    idreintegro: number | null
+    contrato: number | null
+    dni: number | null
+    importe: number | null
+  }
+
+  export type ReintegrosMinAggregateOutputType = {
+    idreintegro: number | null
+    entidad: string | null
+    contrato: number | null
+    socio: string | null
+    dni: number | null
+    norden: string | null
+    importe: number | null
+    observacion: string | null
+    operador: string | null
+    fecha: Date | null
+  }
+
+  export type ReintegrosMaxAggregateOutputType = {
+    idreintegro: number | null
+    entidad: string | null
+    contrato: number | null
+    socio: string | null
+    dni: number | null
+    norden: string | null
+    importe: number | null
+    observacion: string | null
+    operador: string | null
+    fecha: Date | null
+  }
+
+  export type ReintegrosCountAggregateOutputType = {
+    idreintegro: number
+    entidad: number
+    contrato: number
+    socio: number
+    dni: number
+    norden: number
+    importe: number
+    observacion: number
+    operador: number
+    fecha: number
+    _all: number
+  }
+
+
+  export type ReintegrosAvgAggregateInputType = {
+    idreintegro?: true
+    contrato?: true
+    dni?: true
+    importe?: true
+  }
+
+  export type ReintegrosSumAggregateInputType = {
+    idreintegro?: true
+    contrato?: true
+    dni?: true
+    importe?: true
+  }
+
+  export type ReintegrosMinAggregateInputType = {
+    idreintegro?: true
+    entidad?: true
+    contrato?: true
+    socio?: true
+    dni?: true
+    norden?: true
+    importe?: true
+    observacion?: true
+    operador?: true
+    fecha?: true
+  }
+
+  export type ReintegrosMaxAggregateInputType = {
+    idreintegro?: true
+    entidad?: true
+    contrato?: true
+    socio?: true
+    dni?: true
+    norden?: true
+    importe?: true
+    observacion?: true
+    operador?: true
+    fecha?: true
+  }
+
+  export type ReintegrosCountAggregateInputType = {
+    idreintegro?: true
+    entidad?: true
+    contrato?: true
+    socio?: true
+    dni?: true
+    norden?: true
+    importe?: true
+    observacion?: true
+    operador?: true
+    fecha?: true
+    _all?: true
+  }
+
+  export type ReintegrosAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which reintegros to aggregate.
+     */
+    where?: reintegrosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of reintegros to fetch.
+     */
+    orderBy?: reintegrosOrderByWithRelationInput | reintegrosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: reintegrosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` reintegros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` reintegros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned reintegros
+    **/
+    _count?: true | ReintegrosCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ReintegrosAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ReintegrosSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ReintegrosMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ReintegrosMaxAggregateInputType
+  }
+
+  export type GetReintegrosAggregateType<T extends ReintegrosAggregateArgs> = {
+        [P in keyof T & keyof AggregateReintegros]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReintegros[P]>
+      : GetScalarType<T[P], AggregateReintegros[P]>
+  }
+
+
+
+
+  export type reintegrosGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: reintegrosWhereInput
+    orderBy?: reintegrosOrderByWithAggregationInput | reintegrosOrderByWithAggregationInput[]
+    by: ReintegrosScalarFieldEnum[] | ReintegrosScalarFieldEnum
+    having?: reintegrosScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ReintegrosCountAggregateInputType | true
+    _avg?: ReintegrosAvgAggregateInputType
+    _sum?: ReintegrosSumAggregateInputType
+    _min?: ReintegrosMinAggregateInputType
+    _max?: ReintegrosMaxAggregateInputType
+  }
+
+
+  export type ReintegrosGroupByOutputType = {
+    idreintegro: number
+    entidad: string | null
+    contrato: number | null
+    socio: string | null
+    dni: number | null
+    norden: string | null
+    importe: number | null
+    observacion: string | null
+    operador: string | null
+    fecha: Date | null
+    _count: ReintegrosCountAggregateOutputType | null
+    _avg: ReintegrosAvgAggregateOutputType | null
+    _sum: ReintegrosSumAggregateOutputType | null
+    _min: ReintegrosMinAggregateOutputType | null
+    _max: ReintegrosMaxAggregateOutputType | null
+  }
+
+  type GetReintegrosGroupByPayload<T extends reintegrosGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ReintegrosGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ReintegrosGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ReintegrosGroupByOutputType[P]>
+            : GetScalarType<T[P], ReintegrosGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type reintegrosSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idreintegro?: boolean
+    entidad?: boolean
+    contrato?: boolean
+    socio?: boolean
+    dni?: boolean
+    norden?: boolean
+    importe?: boolean
+    observacion?: boolean
+    operador?: boolean
+    fecha?: boolean
+  }, ExtArgs["result"]["reintegros"]>
+
+  export type reintegrosSelectScalar = {
+    idreintegro?: boolean
+    entidad?: boolean
+    contrato?: boolean
+    socio?: boolean
+    dni?: boolean
+    norden?: boolean
+    importe?: boolean
+    observacion?: boolean
+    operador?: boolean
+    fecha?: boolean
+  }
+
+
+  type reintegrosGetPayload<S extends boolean | null | undefined | reintegrosArgs> = $Types.GetResult<reintegrosPayload, S>
+
+  type reintegrosCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<reintegrosFindManyArgs, 'select' | 'include'> & {
+      select?: ReintegrosCountAggregateInputType | true
+    }
+
+  export interface reintegrosDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['reintegros'], meta: { name: 'reintegros' } }
+    /**
+     * Find zero or one Reintegros that matches the filter.
+     * @param {reintegrosFindUniqueArgs} args - Arguments to find a Reintegros
+     * @example
+     * // Get one Reintegros
+     * const reintegros = await prisma.reintegros.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends reintegrosFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, reintegrosFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'reintegros'> extends True ? Prisma__reintegrosClient<$Types.GetResult<reintegrosPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__reintegrosClient<$Types.GetResult<reintegrosPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Reintegros that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {reintegrosFindUniqueOrThrowArgs} args - Arguments to find a Reintegros
+     * @example
+     * // Get one Reintegros
+     * const reintegros = await prisma.reintegros.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends reintegrosFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reintegrosFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__reintegrosClient<$Types.GetResult<reintegrosPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Reintegros that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reintegrosFindFirstArgs} args - Arguments to find a Reintegros
+     * @example
+     * // Get one Reintegros
+     * const reintegros = await prisma.reintegros.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends reintegrosFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, reintegrosFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'reintegros'> extends True ? Prisma__reintegrosClient<$Types.GetResult<reintegrosPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__reintegrosClient<$Types.GetResult<reintegrosPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Reintegros that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reintegrosFindFirstOrThrowArgs} args - Arguments to find a Reintegros
+     * @example
+     * // Get one Reintegros
+     * const reintegros = await prisma.reintegros.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends reintegrosFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reintegrosFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__reintegrosClient<$Types.GetResult<reintegrosPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Reintegros that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reintegrosFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Reintegros
+     * const reintegros = await prisma.reintegros.findMany()
+     * 
+     * // Get first 10 Reintegros
+     * const reintegros = await prisma.reintegros.findMany({ take: 10 })
+     * 
+     * // Only select the `idreintegro`
+     * const reintegrosWithIdreintegroOnly = await prisma.reintegros.findMany({ select: { idreintegro: true } })
+     * 
+    **/
+    findMany<T extends reintegrosFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reintegrosFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<reintegrosPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Reintegros.
+     * @param {reintegrosCreateArgs} args - Arguments to create a Reintegros.
+     * @example
+     * // Create one Reintegros
+     * const Reintegros = await prisma.reintegros.create({
+     *   data: {
+     *     // ... data to create a Reintegros
+     *   }
+     * })
+     * 
+    **/
+    create<T extends reintegrosCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, reintegrosCreateArgs<ExtArgs>>
+    ): Prisma__reintegrosClient<$Types.GetResult<reintegrosPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Reintegros.
+     *     @param {reintegrosCreateManyArgs} args - Arguments to create many Reintegros.
+     *     @example
+     *     // Create many Reintegros
+     *     const reintegros = await prisma.reintegros.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends reintegrosCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reintegrosCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Reintegros.
+     * @param {reintegrosDeleteArgs} args - Arguments to delete one Reintegros.
+     * @example
+     * // Delete one Reintegros
+     * const Reintegros = await prisma.reintegros.delete({
+     *   where: {
+     *     // ... filter to delete one Reintegros
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends reintegrosDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, reintegrosDeleteArgs<ExtArgs>>
+    ): Prisma__reintegrosClient<$Types.GetResult<reintegrosPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Reintegros.
+     * @param {reintegrosUpdateArgs} args - Arguments to update one Reintegros.
+     * @example
+     * // Update one Reintegros
+     * const reintegros = await prisma.reintegros.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends reintegrosUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, reintegrosUpdateArgs<ExtArgs>>
+    ): Prisma__reintegrosClient<$Types.GetResult<reintegrosPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Reintegros.
+     * @param {reintegrosDeleteManyArgs} args - Arguments to filter Reintegros to delete.
+     * @example
+     * // Delete a few Reintegros
+     * const { count } = await prisma.reintegros.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends reintegrosDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reintegrosDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Reintegros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reintegrosUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Reintegros
+     * const reintegros = await prisma.reintegros.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends reintegrosUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, reintegrosUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Reintegros.
+     * @param {reintegrosUpsertArgs} args - Arguments to update or create a Reintegros.
+     * @example
+     * // Update or create a Reintegros
+     * const reintegros = await prisma.reintegros.upsert({
+     *   create: {
+     *     // ... data to create a Reintegros
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Reintegros we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends reintegrosUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, reintegrosUpsertArgs<ExtArgs>>
+    ): Prisma__reintegrosClient<$Types.GetResult<reintegrosPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Reintegros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reintegrosCountArgs} args - Arguments to filter Reintegros to count.
+     * @example
+     * // Count the number of Reintegros
+     * const count = await prisma.reintegros.count({
+     *   where: {
+     *     // ... the filter for the Reintegros we want to count
+     *   }
+     * })
+    **/
+    count<T extends reintegrosCountArgs>(
+      args?: Subset<T, reintegrosCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ReintegrosCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Reintegros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReintegrosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ReintegrosAggregateArgs>(args: Subset<T, ReintegrosAggregateArgs>): Prisma.PrismaPromise<GetReintegrosAggregateType<T>>
+
+    /**
+     * Group by Reintegros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reintegrosGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends reintegrosGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: reintegrosGroupByArgs['orderBy'] }
+        : { orderBy?: reintegrosGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, reintegrosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReintegrosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for reintegros.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__reintegrosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * reintegros base type for findUnique actions
+   */
+  export type reintegrosFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reintegros
+     */
+    select?: reintegrosSelect<ExtArgs> | null
+    /**
+     * Filter, which reintegros to fetch.
+     */
+    where: reintegrosWhereUniqueInput
+  }
+
+  /**
+   * reintegros findUnique
+   */
+  export interface reintegrosFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reintegrosFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * reintegros findUniqueOrThrow
+   */
+  export type reintegrosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reintegros
+     */
+    select?: reintegrosSelect<ExtArgs> | null
+    /**
+     * Filter, which reintegros to fetch.
+     */
+    where: reintegrosWhereUniqueInput
+  }
+
+
+  /**
+   * reintegros base type for findFirst actions
+   */
+  export type reintegrosFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reintegros
+     */
+    select?: reintegrosSelect<ExtArgs> | null
+    /**
+     * Filter, which reintegros to fetch.
+     */
+    where?: reintegrosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of reintegros to fetch.
+     */
+    orderBy?: reintegrosOrderByWithRelationInput | reintegrosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for reintegros.
+     */
+    cursor?: reintegrosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` reintegros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` reintegros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of reintegros.
+     */
+    distinct?: ReintegrosScalarFieldEnum | ReintegrosScalarFieldEnum[]
+  }
+
+  /**
+   * reintegros findFirst
+   */
+  export interface reintegrosFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reintegrosFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * reintegros findFirstOrThrow
+   */
+  export type reintegrosFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reintegros
+     */
+    select?: reintegrosSelect<ExtArgs> | null
+    /**
+     * Filter, which reintegros to fetch.
+     */
+    where?: reintegrosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of reintegros to fetch.
+     */
+    orderBy?: reintegrosOrderByWithRelationInput | reintegrosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for reintegros.
+     */
+    cursor?: reintegrosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` reintegros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` reintegros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of reintegros.
+     */
+    distinct?: ReintegrosScalarFieldEnum | ReintegrosScalarFieldEnum[]
+  }
+
+
+  /**
+   * reintegros findMany
+   */
+  export type reintegrosFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reintegros
+     */
+    select?: reintegrosSelect<ExtArgs> | null
+    /**
+     * Filter, which reintegros to fetch.
+     */
+    where?: reintegrosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of reintegros to fetch.
+     */
+    orderBy?: reintegrosOrderByWithRelationInput | reintegrosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing reintegros.
+     */
+    cursor?: reintegrosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` reintegros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` reintegros.
+     */
+    skip?: number
+    distinct?: ReintegrosScalarFieldEnum | ReintegrosScalarFieldEnum[]
+  }
+
+
+  /**
+   * reintegros create
+   */
+  export type reintegrosCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reintegros
+     */
+    select?: reintegrosSelect<ExtArgs> | null
+    /**
+     * The data needed to create a reintegros.
+     */
+    data?: XOR<reintegrosCreateInput, reintegrosUncheckedCreateInput>
+  }
+
+
+  /**
+   * reintegros createMany
+   */
+  export type reintegrosCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many reintegros.
+     */
+    data: reintegrosCreateManyInput | reintegrosCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * reintegros update
+   */
+  export type reintegrosUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reintegros
+     */
+    select?: reintegrosSelect<ExtArgs> | null
+    /**
+     * The data needed to update a reintegros.
+     */
+    data: XOR<reintegrosUpdateInput, reintegrosUncheckedUpdateInput>
+    /**
+     * Choose, which reintegros to update.
+     */
+    where: reintegrosWhereUniqueInput
+  }
+
+
+  /**
+   * reintegros updateMany
+   */
+  export type reintegrosUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update reintegros.
+     */
+    data: XOR<reintegrosUpdateManyMutationInput, reintegrosUncheckedUpdateManyInput>
+    /**
+     * Filter which reintegros to update
+     */
+    where?: reintegrosWhereInput
+  }
+
+
+  /**
+   * reintegros upsert
+   */
+  export type reintegrosUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reintegros
+     */
+    select?: reintegrosSelect<ExtArgs> | null
+    /**
+     * The filter to search for the reintegros to update in case it exists.
+     */
+    where: reintegrosWhereUniqueInput
+    /**
+     * In case the reintegros found by the `where` argument doesn't exist, create a new reintegros with this data.
+     */
+    create: XOR<reintegrosCreateInput, reintegrosUncheckedCreateInput>
+    /**
+     * In case the reintegros was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<reintegrosUpdateInput, reintegrosUncheckedUpdateInput>
+  }
+
+
+  /**
+   * reintegros delete
+   */
+  export type reintegrosDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reintegros
+     */
+    select?: reintegrosSelect<ExtArgs> | null
+    /**
+     * Filter which reintegros to delete.
+     */
+    where: reintegrosWhereUniqueInput
+  }
+
+
+  /**
+   * reintegros deleteMany
+   */
+  export type reintegrosDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which reintegros to delete
+     */
+    where?: reintegrosWhereInput
+  }
+
+
+  /**
+   * reintegros without action
+   */
+  export type reintegrosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reintegros
+     */
+    select?: reintegrosSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -71137,6 +72218,22 @@ export namespace Prisma {
   };
 
   export type Mails_copyScalarFieldEnum = (typeof Mails_copyScalarFieldEnum)[keyof typeof Mails_copyScalarFieldEnum]
+
+
+  export const ReintegrosScalarFieldEnum: {
+    idreintegro: 'idreintegro',
+    entidad: 'entidad',
+    contrato: 'contrato',
+    socio: 'socio',
+    dni: 'dni',
+    norden: 'norden',
+    importe: 'importe',
+    observacion: 'observacion',
+    operador: 'operador',
+    fecha: 'fecha'
+  };
+
+  export type ReintegrosScalarFieldEnum = (typeof ReintegrosScalarFieldEnum)[keyof typeof ReintegrosScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -75209,6 +76306,73 @@ export namespace Prisma {
     leido?: BoolNullableWithAggregatesFilter | boolean | null
     fecha_leido?: DateTimeNullableWithAggregatesFilter | Date | string | null
     url_caja?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type reintegrosWhereInput = {
+    AND?: reintegrosWhereInput | reintegrosWhereInput[]
+    OR?: reintegrosWhereInput[]
+    NOT?: reintegrosWhereInput | reintegrosWhereInput[]
+    idreintegro?: IntFilter | number
+    entidad?: StringNullableFilter | string | null
+    contrato?: IntNullableFilter | number | null
+    socio?: StringNullableFilter | string | null
+    dni?: IntNullableFilter | number | null
+    norden?: StringNullableFilter | string | null
+    importe?: FloatNullableFilter | number | null
+    observacion?: StringNullableFilter | string | null
+    operador?: StringNullableFilter | string | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+  }
+
+  export type reintegrosOrderByWithRelationInput = {
+    idreintegro?: SortOrder
+    entidad?: SortOrderInput | SortOrder
+    contrato?: SortOrderInput | SortOrder
+    socio?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
+    norden?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    observacion?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+  }
+
+  export type reintegrosWhereUniqueInput = {
+    idreintegro?: number
+  }
+
+  export type reintegrosOrderByWithAggregationInput = {
+    idreintegro?: SortOrder
+    entidad?: SortOrderInput | SortOrder
+    contrato?: SortOrderInput | SortOrder
+    socio?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
+    norden?: SortOrderInput | SortOrder
+    importe?: SortOrderInput | SortOrder
+    observacion?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    _count?: reintegrosCountOrderByAggregateInput
+    _avg?: reintegrosAvgOrderByAggregateInput
+    _max?: reintegrosMaxOrderByAggregateInput
+    _min?: reintegrosMinOrderByAggregateInput
+    _sum?: reintegrosSumOrderByAggregateInput
+  }
+
+  export type reintegrosScalarWhereWithAggregatesInput = {
+    AND?: reintegrosScalarWhereWithAggregatesInput | reintegrosScalarWhereWithAggregatesInput[]
+    OR?: reintegrosScalarWhereWithAggregatesInput[]
+    NOT?: reintegrosScalarWhereWithAggregatesInput | reintegrosScalarWhereWithAggregatesInput[]
+    idreintegro?: IntWithAggregatesFilter | number
+    entidad?: StringNullableWithAggregatesFilter | string | null
+    contrato?: IntNullableWithAggregatesFilter | number | null
+    socio?: StringNullableWithAggregatesFilter | string | null
+    dni?: IntNullableWithAggregatesFilter | number | null
+    norden?: StringNullableWithAggregatesFilter | string | null
+    importe?: FloatNullableWithAggregatesFilter | number | null
+    observacion?: StringNullableWithAggregatesFilter | string | null
+    operador?: StringNullableWithAggregatesFilter | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
   }
 
   export type alta_novellCreateInput = {
@@ -80405,6 +81569,94 @@ export namespace Prisma {
     url_caja?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type reintegrosCreateInput = {
+    entidad?: string | null
+    contrato?: number | null
+    socio?: string | null
+    dni?: number | null
+    norden?: string | null
+    importe?: number | null
+    observacion?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
+  }
+
+  export type reintegrosUncheckedCreateInput = {
+    idreintegro?: number
+    entidad?: string | null
+    contrato?: number | null
+    socio?: string | null
+    dni?: number | null
+    norden?: string | null
+    importe?: number | null
+    observacion?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
+  }
+
+  export type reintegrosUpdateInput = {
+    entidad?: NullableStringFieldUpdateOperationsInput | string | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    socio?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    norden?: NullableStringFieldUpdateOperationsInput | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type reintegrosUncheckedUpdateInput = {
+    idreintegro?: IntFieldUpdateOperationsInput | number
+    entidad?: NullableStringFieldUpdateOperationsInput | string | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    socio?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    norden?: NullableStringFieldUpdateOperationsInput | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type reintegrosCreateManyInput = {
+    idreintegro?: number
+    entidad?: string | null
+    contrato?: number | null
+    socio?: string | null
+    dni?: number | null
+    norden?: string | null
+    importe?: number | null
+    observacion?: string | null
+    operador?: string | null
+    fecha?: Date | string | null
+  }
+
+  export type reintegrosUpdateManyMutationInput = {
+    entidad?: NullableStringFieldUpdateOperationsInput | string | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    socio?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    norden?: NullableStringFieldUpdateOperationsInput | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type reintegrosUncheckedUpdateManyInput = {
+    idreintegro?: IntFieldUpdateOperationsInput | number
+    entidad?: NullableStringFieldUpdateOperationsInput | string | null
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    socio?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    norden?: NullableStringFieldUpdateOperationsInput | string | null
+    importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type IntFilter = {
     equals?: number
     in?: number[]
@@ -83774,6 +85026,59 @@ export namespace Prisma {
 
   export type mails_copySumOrderByAggregateInput = {
     idmail?: SortOrder
+  }
+
+  export type reintegrosCountOrderByAggregateInput = {
+    idreintegro?: SortOrder
+    entidad?: SortOrder
+    contrato?: SortOrder
+    socio?: SortOrder
+    dni?: SortOrder
+    norden?: SortOrder
+    importe?: SortOrder
+    observacion?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
+  }
+
+  export type reintegrosAvgOrderByAggregateInput = {
+    idreintegro?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+    importe?: SortOrder
+  }
+
+  export type reintegrosMaxOrderByAggregateInput = {
+    idreintegro?: SortOrder
+    entidad?: SortOrder
+    contrato?: SortOrder
+    socio?: SortOrder
+    dni?: SortOrder
+    norden?: SortOrder
+    importe?: SortOrder
+    observacion?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
+  }
+
+  export type reintegrosMinOrderByAggregateInput = {
+    idreintegro?: SortOrder
+    entidad?: SortOrder
+    contrato?: SortOrder
+    socio?: SortOrder
+    dni?: SortOrder
+    norden?: SortOrder
+    importe?: SortOrder
+    observacion?: SortOrder
+    operador?: SortOrder
+    fecha?: SortOrder
+  }
+
+  export type reintegrosSumOrderByAggregateInput = {
+    idreintegro?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+    importe?: SortOrder
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {

@@ -84,6 +84,11 @@ export const Socios = () => {
                 <Typography color="black">Reportes</Typography>
               </MenuItem>
             </Link>
+            <Link href={"/socios/reintegros"}>
+              <MenuItem>
+                <Typography color="black">Reintegros</Typography>
+              </MenuItem>
+            </Link>
           </ul>
         </MenuList>
       </Menu>

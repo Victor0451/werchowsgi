@@ -874,6 +874,19 @@ exports.Prisma.Mails_copyScalarFieldEnum = {
   url_caja: 'url_caja'
 };
 
+exports.Prisma.ReintegrosScalarFieldEnum = {
+  idreintegro: 'idreintegro',
+  entidad: 'entidad',
+  contrato: 'contrato',
+  socio: 'socio',
+  dni: 'dni',
+  norden: 'norden',
+  importe: 'importe',
+  observacion: 'observacion',
+  operador: 'operador',
+  fecha: 'fecha'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -950,7 +963,8 @@ exports.Prisma.ModelName = {
   certificado_estudiantes: 'certificado_estudiantes',
   cartera: 'cartera',
   gasto_luto: 'gasto_luto',
-  mails_copy: 'mails_copy'
+  mails_copy: 'mails_copy',
+  reintegros: 'reintegros'
 };
 
 /**

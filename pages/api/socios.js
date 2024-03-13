@@ -376,7 +376,7 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
-    } else if (req.query.f && req.query.f === "maestro baja") {
+    } else if (req.query.f && req.query.f === "mutual baja") {
       const mae = await Werchow.$queryRaw`
             SELECT
                 m.CONTRATO, 
@@ -424,7 +424,7 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
-    } else if (req.query.f && req.query.f === "maestro baja contrato") {
+    } else if (req.query.f && req.query.f === "mutual baja contrato") {
       const mae = await Werchow.$queryRaw`
             SELECT
                 m.CONTRATO, 
@@ -1204,7 +1204,11 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
-    } 
+    } else if (req.query.f && req.query.f === "listado reintegros") {
+      const listReintegros = await SGI.reintegros.findMany();
+
+      res.status(200).json(listReintegros);
+    }
   }
   if (req.method === "POST") {
     if (req.body.f && req.body.f === "soli afi") {
@@ -1295,6 +1299,22 @@ export default async function handler(req, res) {
           CUO_ANT: parseFloat(req.body.CUO_ANT),
           DESDE: new Date(req.body.DESDE),
           OPERADOR: req.body.OPERADOR,
+        },
+      });
+
+      res.status(200).json(regCuota);
+    } else if (req.body.f && req.body.f === "solicitud reintegro") {
+      const regCuota = await SGI.reintegros.create({
+        data: {
+          contrato: parseInt(req.body.contrato),
+          socio: req.body.socio,
+          dni: parseInt(req.body.dni),
+          entidad: req.body.entidad,
+          norden: req.body.nOrden,
+          importe: parseFloat(req.body.importe),
+          observacion: req.body.observacion,
+          operador: req.body.operador,
+          fecha: new Date(req.body.fecha),
         },
       });
 
