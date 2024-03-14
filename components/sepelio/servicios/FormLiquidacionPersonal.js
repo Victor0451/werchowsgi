@@ -79,11 +79,11 @@ const FormLiquidacionPersonal = ({
               pagarLiquidacion={pagarLiquidacion}
             />
           </>
-        ) : (
-          <Alert color="blue" icon={<IconSolid />} className="mt-5 mb-5">
-            El operador {opSel}, no posee tareas o guardias a liquidar.
+        ) : tareas === 1 ? (
+          <Alert color="orange" icon={<IconSolid />} className="mt-5 mb-5">
+            El operador seleccionado no posee tareas o guardias a liquidar.
           </Alert>
-        )}
+        ) : null}
       </CardBody>
     </Card>
   );

@@ -1205,9 +1205,22 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "listado reintegros") {
-      const listReintegros = await SGI.reintegros.findMany();
+      const listReintegros = await SGI.$queryRaw`
+         
+      SELECT
+        *
+      FROM
+        reintegros
+      
+        `;
 
-      res.status(200).json(listReintegros);
+      res
+        .status(200)
+        .json(
+          JSON.stringify(listReintegros, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     }
   }
   if (req.method === "POST") {

@@ -19,7 +19,7 @@ import { data } from "autoprefixer";
 
 function liquidacion(props) {
   const [operadores, guardarOperadores] = useState([]);
-  const [tareas, guardarTareas] = useState([]);
+  const [tareas, guardarTareas] = useState(0);
   const [guardias, guardarGuardias] = useState([]);
   const [errores, guardarErrores] = useState(null);
   const [opSel, guardarOpSel] = useState("");
@@ -55,7 +55,10 @@ function liquidacion(props) {
   };
 
   const buscarLiquidacion = async () => {
+    toast.info(`Buscando liquidacion del operador ${opSel}...`);
+
     guardarErrores(null);
+    guardarTareas(0);
 
     if (opSel === "") {
       guardarErrores(
@@ -70,9 +73,17 @@ function liquidacion(props) {
           },
         })
         .then((res) => {
-          if (res.data) {
-            let list = JSON.parse(res.data);
+          let list = JSON.parse(res.data);
+
+          if (list.length > 0) {
+            toast.success("Liquidacion entontrada");
+
             guardarTareas(list);
+          } else {
+            toast.warning(
+              `El operador ${opSel} no posee tareas o guardias a liquidar.`
+            );
+            guardarTareas(1);
           }
         })
         .catch((error) => {

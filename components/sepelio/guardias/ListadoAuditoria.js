@@ -26,6 +26,8 @@ const ListadoAuditoria = ({
   estadoGuardia,
   liquidarGuardia,
   calcTotal,
+  listL,
+  listP,
 }) => {
   let columns = [
     {
@@ -226,6 +228,19 @@ const ListadoAuditoria = ({
     );
   }, [filterText, resetPaginationToggle]);
 
+  const conditionalRowStyles = [
+    {
+      when: (row) => (row.liquidado === 1),
+      style: {
+        backgroundColor: "#33FFB2",
+        color: "black",
+        "&:hover": {
+          cursor: "pointer",
+        },
+      },
+    },
+  ];
+
   return (
     <Card className="h-full w-full p-4 ">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -234,15 +249,30 @@ const ListadoAuditoria = ({
         </Typography>
 
         <div className="mt-6 border-2 rounded-xl p-4">
-          <Typography variant="h4">
-            Listado de Guardias Pendientes de Liquidacion
-          </Typography>
-          <Typography color="gray" className="mt-1 font-normal">
-            <u>Total</u>: {listado.length}
-          </Typography>
-          <Typography color="gray" className="mt-1 font-normal">
-            <u>Importe</u>: ${calcTotal(listado)}
-          </Typography>
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
+              <Typography variant="h4">
+                Listado de Guardias Pendientes
+              </Typography>
+              <Typography color="gray" className="mt-1 font-normal">
+                <u>Total</u>: {listP}
+              </Typography>
+              <Typography color="gray" className="mt-1 font-normal">
+                <u>Importe</u>: ${calcTotal(listado, "P")}
+              </Typography>
+            </div>
+            <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
+              <Typography variant="h4">
+                Listado de Guardias Liquidadas
+              </Typography>
+              <Typography color="gray" className="mt-1 font-normal">
+                <u>Total</u>: {listL}
+              </Typography>
+              <Typography color="gray" className="mt-1 font-normal">
+                <u>Importe</u>: ${calcTotal(listado, "L")}
+              </Typography>
+            </div>
+          </div>
 
           <>
             <DataTable
@@ -253,6 +283,7 @@ const ListadoAuditoria = ({
               pagination
               subHeader
               subHeaderComponent={subHeaderComponent}
+              conditionalRowStyles={conditionalRowStyles}
             />
           </>
         </div>

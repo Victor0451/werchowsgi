@@ -4,7 +4,7 @@ import FilterComponent from "../Layouts/FilterComponent";
 
 import {
   Card,
-  CardHeader,
+  CardBody,
   Typography,
   Alert,
   Button,
@@ -16,7 +16,7 @@ import {
 import { FolderIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
 import moment from "moment";
 
-const ListadosReintegros = ({ listado, noData }) => {
+const ListadosReintegros = ({ listado, noData, calcTot }) => {
   let columns = [
     {
       name: "HC",
@@ -100,25 +100,22 @@ const ListadosReintegros = ({ listado, noData }) => {
   }, [filterText, resetPaginationToggle]);
 
   return (
-    <Card className="h-full w-full p-4 mt-10">
-      <CardHeader floated={false} shadow={false} className="rounded-none">
-        <Typography variant="h2">Listado de Cuotas Pendientes</Typography>
+    <Card className="h-full w-full p-4 mt-10 ">
+      <CardBody floated={false} shadow={false} className="rounded-none">
+        <Typography variant="h2">Listado de Reintegros</Typography>
 
         <div className="mt-4">
           <Typography variant="h5" color="blue-gray">
-            Cuotas Pendientes
+            Reintegros Realizados
           </Typography>
           <Typography color="gray" className="mt-1 font-normal">
             <u>Total</u>: {listado.length}
           </Typography>
+          <Typography color="gray" className="mt-1 font-normal">
+            <u>Importe</u>: ${calcTot(listado)}
+          </Typography>
 
-          <div className="mt-5 mb-5 border-2 p-4">
-            <Typography variant="h5" color="blue-gray">
-              Opciones
-            </Typography>
-          </div>
-
-          {/* {noData === true ? (
+          {noData === true ? (
             <Alert
               icon={
                 <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
@@ -133,6 +130,8 @@ const ListadosReintegros = ({ listado, noData }) => {
                   <Spinner className="h-12 w-12" />
                 </div>
               ) : (
+
+                <div className="border-2 rounded-xl p-4 mt-5">
                 <DataTable
                   columns={columns}
                   data={filteredItems}
@@ -142,11 +141,12 @@ const ListadosReintegros = ({ listado, noData }) => {
                   subHeader
                   subHeaderComponent={subHeaderComponent}
                 />
+                </div>
               )}
             </>
-          )} */}
+          )}
         </div>
-      </CardHeader>
+      </CardBody>
     </Card>
   );
 };

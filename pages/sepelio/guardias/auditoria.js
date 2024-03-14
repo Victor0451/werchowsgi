@@ -13,8 +13,10 @@ import Router, { useRouter } from "next/router";
 import jsCookie from "js-cookie";
 import ListadoAuditoria from "@/components/sepelio/guardias/ListadoAuditoria";
 
-function auditoria(props) {
+function Auditoria(props) {
   const [listGuar, guardarListGuar] = useState([]);
+  const [listP, guardarListP] = useState(0);
+  const [listL, guardarListL] = useState(0);
 
   const { usu } = useWerchow();
 
@@ -147,14 +149,33 @@ function auditoria(props) {
     });
   };
 
-  const calcTotal = (arr) => {
+  const calcTotal = (arr, f) => {
     let total = 0;
+    let li = [];
 
-    for (let i = 0; i < arr.length; i++) {
-      total += parseFloat(arr[i].importe);
+    if (f === "P") {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].liquidado === 0) {
+          total += parseFloat(arr[i].importe);
+          li.push(arr[i]);
+        }
+      }
+
+      guardarListP(li.length);
+
+      return total.toFixed(2);
+    } else if (f === "L") {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].liquidado === 1) {
+          total += parseFloat(arr[i].importe);
+          li.push(arr[i]);
+        }
+      }
+
+      guardarListL(li.length);
+
+      return total.toFixed(2);
     }
-
-    return total.toFixed(2);
   };
 
   useSWR("/api/sepelio/guardias", traerDatos);
@@ -172,6 +193,8 @@ function auditoria(props) {
             estadoGuardia={estadoGuardia}
             liquidarGuardia={liquidarGuardia}
             calcTotal={calcTotal}
+            listL={listL}
+            listP={listP}
           />
         </>
       )}
@@ -179,4 +202,4 @@ function auditoria(props) {
   );
 }
 
-export default auditoria;
+export default Auditoria;

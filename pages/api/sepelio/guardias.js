@@ -10,12 +10,7 @@ export default async function handler(req, res) {
           *
         FROM
           liquidacion_guardias
-        WHERE
-          liquidado = 0
-        AND
-          aprobado = 0
-        OR
-          aprobado = 1
+       
 
                `
       );

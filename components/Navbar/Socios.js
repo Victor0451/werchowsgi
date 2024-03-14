@@ -72,6 +72,16 @@ export const Socios = () => {
                     <Typography color="black">Certificado Policias</Typography>
                   </MenuItem>
                 </Link>
+                <Link href={"/socios/reintegros"}>
+                  <MenuItem>
+                    <Typography color="black">Reintegros</Typography>
+                  </MenuItem>
+                </Link>
+                <Link href={"/socios/listadoreintegros"}>
+                  <MenuItem>
+                    <Typography color="black">Listado Reintegros</Typography>
+                  </MenuItem>
+                </Link>
               </MenuList>
             </Menu>
             <Link href={"/socios/prints"}>
@@ -82,11 +92,6 @@ export const Socios = () => {
             <Link href={"/socios/reportes"}>
               <MenuItem>
                 <Typography color="black">Reportes</Typography>
-              </MenuItem>
-            </Link>
-            <Link href={"/socios/reintegros"}>
-              <MenuItem>
-                <Typography color="black">Reintegros</Typography>
               </MenuItem>
             </Link>
           </ul>

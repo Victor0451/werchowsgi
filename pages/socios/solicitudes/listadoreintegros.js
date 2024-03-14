@@ -16,8 +16,9 @@ import {
   CheckCircleIcon,
   InformationCircleIcon,
 } from "@heroicons/react/24/solid";
+import ListadosReintegros from "@/components/socios/ListadosReintegros";
 
-function ListadoReintegros(props) {
+function LisReintegros(props) {
   const [noData, guardarNoData] = useState(false);
   const [listado, guardarListado] = useState([]);
 
@@ -33,10 +34,10 @@ function ListadoReintegros(props) {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        if (res.data) {
+          let re = JSON.parse(res.data);
 
-        if (res.data.length > 0) {
-          guardarListado(data);
+          guardarListado(re);
           guardarNoData(false);
         } else {
           guardarNoData(true);
@@ -49,6 +50,16 @@ function ListadoReintegros(props) {
       });
   };
 
+  const calcTot = (arr) => {
+    let total = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      total += parseFloat(arr[i].importe);
+    }
+
+    return total.toFixed(2);
+  };
+
   useSWR("/api/socios", traerDatos);
 
   if (isLoading === true) return <Skeleton />;
@@ -59,11 +70,15 @@ function ListadoReintegros(props) {
         <Redirect />
       ) : (
         <>
-          {/* <ListadoReintegros listado={listado} noData={noData} /> */}
+          <ListadosReintegros
+            listado={listado}
+            noData={noData}
+            calcTot={calcTot}
+          />
         </>
       )}
     </>
   );
 }
 
-export default ListadoReintegros;
+export default LisReintegros;
