@@ -2215,6 +2215,8 @@ model prestamos {
   cod_ptm_leg    String?   @db.VarChar(255)
   ptm_afi        String?   @db.VarChar(255)
   capinoaut      Boolean?
+  ptm_inicio     String?   @db.VarChar(255)
+  ptm_fin        String?   @db.VarChar(255)
 }
 
 model produccion {

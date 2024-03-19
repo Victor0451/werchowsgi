@@ -16,6 +16,7 @@ import Select from "react-select";
 import { meses, anos } from "../../array/array";
 import TablaEfectividad from "./TablaEfectividad";
 import TablaTotales from "./TablaTotales";
+import Opciones from "./Opciones";
 
 const FormEfectividad = ({
   handleChange,
@@ -26,9 +27,12 @@ const FormEfectividad = ({
   cOf,
   cbanco,
   cpolicia,
+  cprestamos,
   porcent,
   totales,
   totArr,
+  actFunctions,
+  creaFunctions,
 }) => {
   return (
     <Card className="h-full w-full p-4 mt-5 border-2 ">
@@ -69,6 +73,13 @@ const FormEfectividad = ({
             </div>
             <div className="w-full md:w-1/6 px-3 mt-6 mb-6 md:mb-0">
               <Button onClick={traerInfo}>Buscar</Button>
+            </div>
+
+            <div className="w-full md:w-1/6 px-3 mt-6 mb-6 md:mb-0">
+              <Opciones
+                actFunctions={actFunctions}
+                creaFunctions={creaFunctions}
+              />
             </div>
 
             {cCob.length > 0 ? (
@@ -125,6 +136,13 @@ const FormEfectividad = ({
               <TablaEfectividad
                 arr={cpolicia}
                 titulo={"Policia"}
+                porcent={porcent}
+                totales={totales}
+              />
+
+              <TablaEfectividad
+                arr={cprestamos}
+                titulo={"Prestamos"}
                 porcent={porcent}
                 totales={totales}
               />

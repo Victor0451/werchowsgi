@@ -1302,6 +1302,8 @@ export type prestamosPayload<ExtArgs extends $Extensions.Args = $Extensions.Defa
     cod_ptm_leg: string | null
     ptm_afi: string | null
     capinoaut: boolean | null
+    ptm_inicio: string | null
+    ptm_fin: string | null
   }, ExtArgs["result"]["prestamos"]>
   composites: {}
 }
@@ -44382,6 +44384,8 @@ export namespace Prisma {
     cod_ptm_leg: string | null
     ptm_afi: string | null
     capinoaut: boolean | null
+    ptm_inicio: string | null
+    ptm_fin: string | null
   }
 
   export type PrestamosMaxAggregateOutputType = {
@@ -44401,6 +44405,8 @@ export namespace Prisma {
     cod_ptm_leg: string | null
     ptm_afi: string | null
     capinoaut: boolean | null
+    ptm_inicio: string | null
+    ptm_fin: string | null
   }
 
   export type PrestamosCountAggregateOutputType = {
@@ -44420,6 +44426,8 @@ export namespace Prisma {
     cod_ptm_leg: number
     ptm_afi: number
     capinoaut: number
+    ptm_inicio: number
+    ptm_fin: number
     _all: number
   }
 
@@ -44465,6 +44473,8 @@ export namespace Prisma {
     cod_ptm_leg?: true
     ptm_afi?: true
     capinoaut?: true
+    ptm_inicio?: true
+    ptm_fin?: true
   }
 
   export type PrestamosMaxAggregateInputType = {
@@ -44484,6 +44494,8 @@ export namespace Prisma {
     cod_ptm_leg?: true
     ptm_afi?: true
     capinoaut?: true
+    ptm_inicio?: true
+    ptm_fin?: true
   }
 
   export type PrestamosCountAggregateInputType = {
@@ -44503,6 +44515,8 @@ export namespace Prisma {
     cod_ptm_leg?: true
     ptm_afi?: true
     capinoaut?: true
+    ptm_inicio?: true
+    ptm_fin?: true
     _all?: true
   }
 
@@ -44610,6 +44624,8 @@ export namespace Prisma {
     cod_ptm_leg: string | null
     ptm_afi: string | null
     capinoaut: boolean | null
+    ptm_inicio: string | null
+    ptm_fin: string | null
     _count: PrestamosCountAggregateOutputType | null
     _avg: PrestamosAvgAggregateOutputType | null
     _sum: PrestamosSumAggregateOutputType | null
@@ -44648,6 +44664,8 @@ export namespace Prisma {
     cod_ptm_leg?: boolean
     ptm_afi?: boolean
     capinoaut?: boolean
+    ptm_inicio?: boolean
+    ptm_fin?: boolean
   }, ExtArgs["result"]["prestamos"]>
 
   export type prestamosSelectScalar = {
@@ -44667,6 +44685,8 @@ export namespace Prisma {
     cod_ptm_leg?: boolean
     ptm_afi?: boolean
     capinoaut?: boolean
+    ptm_inicio?: boolean
+    ptm_fin?: boolean
   }
 
 
@@ -63235,7 +63255,9 @@ export namespace Prisma {
     ptm_estado: 'ptm_estado',
     cod_ptm_leg: 'cod_ptm_leg',
     ptm_afi: 'ptm_afi',
-    capinoaut: 'capinoaut'
+    capinoaut: 'capinoaut',
+    ptm_inicio: 'ptm_inicio',
+    ptm_fin: 'ptm_fin'
   };
 
   export type PrestamosScalarFieldEnum = (typeof PrestamosScalarFieldEnum)[keyof typeof PrestamosScalarFieldEnum]
@@ -67990,6 +68012,8 @@ export namespace Prisma {
     cod_ptm_leg?: StringNullableFilter | string | null
     ptm_afi?: StringNullableFilter | string | null
     capinoaut?: BoolNullableFilter | boolean | null
+    ptm_inicio?: StringNullableFilter | string | null
+    ptm_fin?: StringNullableFilter | string | null
   }
 
   export type prestamosOrderByWithRelationInput = {
@@ -68009,6 +68033,8 @@ export namespace Prisma {
     cod_ptm_leg?: SortOrderInput | SortOrder
     ptm_afi?: SortOrderInput | SortOrder
     capinoaut?: SortOrderInput | SortOrder
+    ptm_inicio?: SortOrderInput | SortOrder
+    ptm_fin?: SortOrderInput | SortOrder
   }
 
   export type prestamosWhereUniqueInput = {
@@ -68032,6 +68058,8 @@ export namespace Prisma {
     cod_ptm_leg?: SortOrderInput | SortOrder
     ptm_afi?: SortOrderInput | SortOrder
     capinoaut?: SortOrderInput | SortOrder
+    ptm_inicio?: SortOrderInput | SortOrder
+    ptm_fin?: SortOrderInput | SortOrder
     _count?: prestamosCountOrderByAggregateInput
     _avg?: prestamosAvgOrderByAggregateInput
     _max?: prestamosMaxOrderByAggregateInput
@@ -68059,6 +68087,8 @@ export namespace Prisma {
     cod_ptm_leg?: StringNullableWithAggregatesFilter | string | null
     ptm_afi?: StringNullableWithAggregatesFilter | string | null
     capinoaut?: BoolNullableWithAggregatesFilter | boolean | null
+    ptm_inicio?: StringNullableWithAggregatesFilter | string | null
+    ptm_fin?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type produccionWhereInput = {
@@ -76114,6 +76144,8 @@ export namespace Prisma {
     cod_ptm_leg?: string | null
     ptm_afi?: string | null
     capinoaut?: boolean | null
+    ptm_inicio?: string | null
+    ptm_fin?: string | null
   }
 
   export type prestamosUncheckedCreateInput = {
@@ -76133,6 +76165,8 @@ export namespace Prisma {
     cod_ptm_leg?: string | null
     ptm_afi?: string | null
     capinoaut?: boolean | null
+    ptm_inicio?: string | null
+    ptm_fin?: string | null
   }
 
   export type prestamosUpdateInput = {
@@ -76151,6 +76185,8 @@ export namespace Prisma {
     cod_ptm_leg?: NullableStringFieldUpdateOperationsInput | string | null
     ptm_afi?: NullableStringFieldUpdateOperationsInput | string | null
     capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ptm_inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    ptm_fin?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type prestamosUncheckedUpdateInput = {
@@ -76170,6 +76206,8 @@ export namespace Prisma {
     cod_ptm_leg?: NullableStringFieldUpdateOperationsInput | string | null
     ptm_afi?: NullableStringFieldUpdateOperationsInput | string | null
     capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ptm_inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    ptm_fin?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type prestamosCreateManyInput = {
@@ -76189,6 +76227,8 @@ export namespace Prisma {
     cod_ptm_leg?: string | null
     ptm_afi?: string | null
     capinoaut?: boolean | null
+    ptm_inicio?: string | null
+    ptm_fin?: string | null
   }
 
   export type prestamosUpdateManyMutationInput = {
@@ -76207,6 +76247,8 @@ export namespace Prisma {
     cod_ptm_leg?: NullableStringFieldUpdateOperationsInput | string | null
     ptm_afi?: NullableStringFieldUpdateOperationsInput | string | null
     capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ptm_inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    ptm_fin?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type prestamosUncheckedUpdateManyInput = {
@@ -76226,6 +76268,8 @@ export namespace Prisma {
     cod_ptm_leg?: NullableStringFieldUpdateOperationsInput | string | null
     ptm_afi?: NullableStringFieldUpdateOperationsInput | string | null
     capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ptm_inicio?: NullableStringFieldUpdateOperationsInput | string | null
+    ptm_fin?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type produccionCreateInput = {
@@ -82157,6 +82201,8 @@ export namespace Prisma {
     cod_ptm_leg?: SortOrder
     ptm_afi?: SortOrder
     capinoaut?: SortOrder
+    ptm_inicio?: SortOrder
+    ptm_fin?: SortOrder
   }
 
   export type prestamosAvgOrderByAggregateInput = {
@@ -82188,6 +82234,8 @@ export namespace Prisma {
     cod_ptm_leg?: SortOrder
     ptm_afi?: SortOrder
     capinoaut?: SortOrder
+    ptm_inicio?: SortOrder
+    ptm_fin?: SortOrder
   }
 
   export type prestamosMinOrderByAggregateInput = {
@@ -82207,6 +82255,8 @@ export namespace Prisma {
     cod_ptm_leg?: SortOrder
     ptm_afi?: SortOrder
     capinoaut?: SortOrder
+    ptm_inicio?: SortOrder
+    ptm_fin?: SortOrder
   }
 
   export type prestamosSumOrderByAggregateInput = {

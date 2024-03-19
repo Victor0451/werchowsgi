@@ -20,6 +20,7 @@ function efectividad(props) {
   const [cbanco, guardarCbanco] = useState([]);
   const [cpolicia, guardarCpolicia] = useState([]);
   const [ctjt, guardarCtjt] = useState([]);
+  const [cprestamos, guardarCPrestamos] = useState([]);
 
   const { usu } = useWerchow();
 
@@ -143,6 +144,28 @@ function efectividad(props) {
           console.log(error);
           toast.error("Ocurrio un error al generar cpolicia");
         });
+
+      await axios
+        .get(`/api/efectividad`, {
+          params: {
+            mes: mesSel,
+            ano: anoSel,
+            f: "traer cprestamos",
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          if (res.data) {
+            let list = JSON.parse(res.data);
+            guardarCPrestamos(list);
+          } else {
+            toast.info("Aun no se genero la cartera cprestamos en este mes");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar cprestamos");
+        });
     }
   };
 
@@ -192,7 +215,76 @@ function efectividad(props) {
     }
   };
 
-  let totArr = cCob.concat(cOf.concat(cbanco.concat(cpolicia.concat(ctjt))));
+  const creaFunctions = async (f, tabla) => {
+    await axios
+      .get("/api/efectividad", {
+        params: {
+          f: f,
+          mes: moment().format("MM"),
+          ano: moment().format("YYYY"),
+        },
+      })
+      .then((res) => {
+        let li = JSON.parse(res.data);
+        if (li.length > 0) {
+          toast.warning(
+            `Ya se creo la tabla ${tabla} para el periodo ${moment().format(
+              "MM"
+            )}/${moment().format("YYYY")}`
+          );
+        } else {
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(`Ocurrio un error al verificar los registros de ${tabla}`);
+      });
+  };
+
+  const actFunctions = async (f, tabla) => {
+    await confirmAlert({
+      title: "ATENCION",
+      message: `¿Seguro quieres actualizar ${tabla}?`,
+      buttons: [
+        {
+          label: "Si",
+          onClick: () => {
+            toast.info(
+              `Actualizando ${tabla}, esto puede demorar unos segundos...`
+            );
+
+            const data = {
+              f: f,
+              mes: moment().format("MM"),
+              ano: moment().format("YYYY"),
+            };
+
+            axios
+              .put("/api/efectividad", data)
+              .then((res) => {
+                if (res.status === 200) {
+                  toast.success(`${tabla} actualizado con exito`);
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error(`Ocurrio un error al actualizar ${tabla}`);
+              });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            toast.info(`Los registros de ${tabla}, no fueron actualizados`);
+          },
+        },
+      ],
+    });
+  };
+
+  let totArr = cCob.concat(
+    cOf.concat(cbanco.concat(cpolicia.concat(ctjt.concat(cprestamos))))
+  );
 
   if (isLoading === true) return <Skeleton />;
 
@@ -211,9 +303,12 @@ function efectividad(props) {
             ctjt={ctjt}
             cbanco={cbanco}
             cpolicia={cpolicia}
+            cprestamos={cprestamos}
             porcent={porcent}
             totales={totates}
             totArr={totArr}
+            actFunctions={actFunctions}
+            creaFunctions={creaFunctions}
           />
         </>
       )}

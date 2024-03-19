@@ -80,29 +80,29 @@ model cpolicia {
 }
 
 model cprestamos {
-  id       Int     @id @default(autoincrement())
-  total    Int?
-  cobrado  Int?
-  mes      Int?
-  ano      Int?
-  sucursal String? @db.VarChar(1)
-  descr    String? @db.VarChar(255)
+  id         Int     @id @default(autoincrement())
+  total      Int?
+  cobrado    Int?
+  mes        Int?
+  ano        Int?
+  sucursal   String? @db.VarChar(1)
+  descr      String? @db.VarChar(255)
+  fichas     Int?
+  fichascob  Int?
+  adelantado Float?  @db.Float
 }
 
 model ctjt {
-  grupo      Int?
-  sucursal   String? @db.VarChar(45)
-  total      Float?
-  fichas     BigInt? @default(0)
-  cobrado    Int?    @default(0)
-  fichascob  Int?    @default(0)
-  mes        Int?    @default(0)
-  ano        Int?    @default(0)
-  adelantado Int?    @default(0)
   id         Int     @id @default(autoincrement())
+  total      Int?
+  fichas     Int?
+  cobrado    Int?
+  fichascob  Int?
+  mes        Int?
+  ano        Int?
+  adelantado Int?
+  sucursal   String? @db.VarChar(1)
   descr      String? @db.VarChar(255)
-
-  @@index([grupo], map: "grupo")
 }
 
 model ctjtm {
@@ -186,6 +186,60 @@ model prespoli {
   ALTA      DateTime? @db.Date
   OBSERV    String?   @db.VarChar(60)
   ID_PRES   Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model debpesoW {
+  TIPO_REG   String? @db.VarChar(1)
+  CONVENIO   String? @db.VarChar(5)
+  SERVICIO   String? @db.VarChar(10)
+  EMP_SUE    String? @db.VarChar(5)
+  COD_BCO    String? @db.VarChar(3)
+  SUC_BCO    String? @db.VarChar(4)
+  TIPO_CTA   String? @db.VarChar(1)
+  NRO_CTA    String? @db.VarChar(15)
+  ID_ABONADO String? @db.VarChar(22)
+  NRO_FACT   String? @db.VarChar(15)
+  USO_MOV    String? @db.VarChar(2)
+  COD_RECH   String? @db.VarChar(4)
+  FEC_VENC   String? @db.VarChar(8)
+  MONEDA     String? @db.VarChar(3)
+  IMPO       String? @db.VarChar(13)
+  FEC_REINT  String? @db.VarChar(8)
+  DEBITADO   String? @db.VarChar(13)
+  NUE_SUC    String? @db.VarChar(4)
+  TIPO_CTA1  String? @db.VarChar(1)
+  NUE_CTA    String? @db.VarChar(15)
+  NUE_NOMB   String? @db.VarChar(22)
+  RETORNO    String? @db.VarChar(40)
+  SIN_USO    String? @db.VarChar(5)
+  FILLER     String? @db.VarChar(1)
+  DETALLE    String? @db.VarChar(8)
+  LIBRES     String? @db.VarChar(1)
+  IMPORTE    Float?
+  PRESTAMO   Float?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model sow {
+  CONTRATO  Int?
+  APE_NOM   String?   @db.VarChar(30)
+  ALTA      DateTime? @db.Date
+  GRUPO     Int?
+  ADHS      Int?
+  PLAN      String?   @db.VarChar(2)
+  SUB_PLAN  String?   @db.VarChar(2)
+  ZONA      Int?
+  CUOTA     Float?
+  EMPRESA   String?   @db.VarChar(1)
+  SUCURSAL  String?   @db.VarChar(1)
+  EDAD_PROM Float?
+  PERMANEN  Float?
+  DEUDA     Int?
 
   @@ignore
 }

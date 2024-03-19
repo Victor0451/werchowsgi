@@ -725,7 +725,7 @@ export default async function handler(req, res) {
       const liqTarea = await Sep.informe_tareas.update({
         data: {
           liquidado: req.body.liquidado,
-          operadorliq: req.body.usu,
+          operadorliq: req.body.operadorliq,
           fecha_liquidacion: new Date(req.body.fecha_liquidacion),
         },
         where: {

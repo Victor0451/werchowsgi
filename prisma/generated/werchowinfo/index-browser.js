@@ -177,12 +177,14 @@ exports.Prisma.CprestamosScalarFieldEnum = {
   mes: 'mes',
   ano: 'ano',
   sucursal: 'sucursal',
-  descr: 'descr'
+  descr: 'descr',
+  fichas: 'fichas',
+  fichascob: 'fichascob',
+  adelantado: 'adelantado'
 };
 
 exports.Prisma.CtjtScalarFieldEnum = {
-  grupo: 'grupo',
-  sucursal: 'sucursal',
+  id: 'id',
   total: 'total',
   fichas: 'fichas',
   cobrado: 'cobrado',
@@ -190,7 +192,7 @@ exports.Prisma.CtjtScalarFieldEnum = {
   mes: 'mes',
   ano: 'ano',
   adelantado: 'adelantado',
-  id: 'id',
+  sucursal: 'sucursal',
   descr: 'descr'
 };
 

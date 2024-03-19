@@ -1104,7 +1104,9 @@ exports.Prisma.PrestamosScalarFieldEnum = {
   ptm_estado: 'ptm_estado',
   cod_ptm_leg: 'cod_ptm_leg',
   ptm_afi: 'ptm_afi',
-  capinoaut: 'capinoaut'
+  capinoaut: 'capinoaut',
+  ptm_inicio: 'ptm_inicio',
+  ptm_fin: 'ptm_fin'
 };
 
 exports.Prisma.ProduccionScalarFieldEnum = {

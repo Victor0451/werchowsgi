@@ -132,6 +132,9 @@ export type cprestamosPayload<ExtArgs extends $Extensions.Args = $Extensions.Def
     ano: number | null
     sucursal: string | null
     descr: string | null
+    fichas: number | null
+    fichascob: number | null
+    adelantado: number | null
   }, ExtArgs["result"]["cprestamos"]>
   composites: {}
 }
@@ -144,16 +147,15 @@ export type cprestamos = runtime.Types.DefaultSelection<cprestamosPayload>
 export type ctjtPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
-    grupo: number | null
-    sucursal: string | null
+    id: number
     total: number | null
-    fichas: bigint | null
+    fichas: number | null
     cobrado: number | null
     fichascob: number | null
     mes: number | null
     ano: number | null
     adelantado: number | null
-    id: number
+    sucursal: string | null
     descr: string | null
   }, ExtArgs["result"]["ctjt"]>
   composites: {}
@@ -6897,6 +6899,9 @@ export namespace Prisma {
     cobrado: number | null
     mes: number | null
     ano: number | null
+    fichas: number | null
+    fichascob: number | null
+    adelantado: number | null
   }
 
   export type CprestamosSumAggregateOutputType = {
@@ -6905,6 +6910,9 @@ export namespace Prisma {
     cobrado: number | null
     mes: number | null
     ano: number | null
+    fichas: number | null
+    fichascob: number | null
+    adelantado: number | null
   }
 
   export type CprestamosMinAggregateOutputType = {
@@ -6915,6 +6923,9 @@ export namespace Prisma {
     ano: number | null
     sucursal: string | null
     descr: string | null
+    fichas: number | null
+    fichascob: number | null
+    adelantado: number | null
   }
 
   export type CprestamosMaxAggregateOutputType = {
@@ -6925,6 +6936,9 @@ export namespace Prisma {
     ano: number | null
     sucursal: string | null
     descr: string | null
+    fichas: number | null
+    fichascob: number | null
+    adelantado: number | null
   }
 
   export type CprestamosCountAggregateOutputType = {
@@ -6935,6 +6949,9 @@ export namespace Prisma {
     ano: number
     sucursal: number
     descr: number
+    fichas: number
+    fichascob: number
+    adelantado: number
     _all: number
   }
 
@@ -6945,6 +6962,9 @@ export namespace Prisma {
     cobrado?: true
     mes?: true
     ano?: true
+    fichas?: true
+    fichascob?: true
+    adelantado?: true
   }
 
   export type CprestamosSumAggregateInputType = {
@@ -6953,6 +6973,9 @@ export namespace Prisma {
     cobrado?: true
     mes?: true
     ano?: true
+    fichas?: true
+    fichascob?: true
+    adelantado?: true
   }
 
   export type CprestamosMinAggregateInputType = {
@@ -6963,6 +6986,9 @@ export namespace Prisma {
     ano?: true
     sucursal?: true
     descr?: true
+    fichas?: true
+    fichascob?: true
+    adelantado?: true
   }
 
   export type CprestamosMaxAggregateInputType = {
@@ -6973,6 +6999,9 @@ export namespace Prisma {
     ano?: true
     sucursal?: true
     descr?: true
+    fichas?: true
+    fichascob?: true
+    adelantado?: true
   }
 
   export type CprestamosCountAggregateInputType = {
@@ -6983,6 +7012,9 @@ export namespace Prisma {
     ano?: true
     sucursal?: true
     descr?: true
+    fichas?: true
+    fichascob?: true
+    adelantado?: true
     _all?: true
   }
 
@@ -7081,6 +7113,9 @@ export namespace Prisma {
     ano: number | null
     sucursal: string | null
     descr: string | null
+    fichas: number | null
+    fichascob: number | null
+    adelantado: number | null
     _count: CprestamosCountAggregateOutputType | null
     _avg: CprestamosAvgAggregateOutputType | null
     _sum: CprestamosSumAggregateOutputType | null
@@ -7110,6 +7145,9 @@ export namespace Prisma {
     ano?: boolean
     sucursal?: boolean
     descr?: boolean
+    fichas?: boolean
+    fichascob?: boolean
+    adelantado?: boolean
   }, ExtArgs["result"]["cprestamos"]>
 
   export type cprestamosSelectScalar = {
@@ -7120,6 +7158,9 @@ export namespace Prisma {
     ano?: boolean
     sucursal?: boolean
     descr?: boolean
+    fichas?: boolean
+    fichascob?: boolean
+    adelantado?: boolean
   }
 
 
@@ -7838,7 +7879,7 @@ export namespace Prisma {
   }
 
   export type CtjtAvgAggregateOutputType = {
-    grupo: number | null
+    id: number | null
     total: number | null
     fichas: number | null
     cobrado: number | null
@@ -7846,52 +7887,47 @@ export namespace Prisma {
     mes: number | null
     ano: number | null
     adelantado: number | null
-    id: number | null
   }
 
   export type CtjtSumAggregateOutputType = {
-    grupo: number | null
+    id: number | null
     total: number | null
-    fichas: bigint | null
+    fichas: number | null
     cobrado: number | null
     fichascob: number | null
     mes: number | null
     ano: number | null
     adelantado: number | null
-    id: number | null
   }
 
   export type CtjtMinAggregateOutputType = {
-    grupo: number | null
-    sucursal: string | null
+    id: number | null
     total: number | null
-    fichas: bigint | null
+    fichas: number | null
     cobrado: number | null
     fichascob: number | null
     mes: number | null
     ano: number | null
     adelantado: number | null
-    id: number | null
+    sucursal: string | null
     descr: string | null
   }
 
   export type CtjtMaxAggregateOutputType = {
-    grupo: number | null
-    sucursal: string | null
+    id: number | null
     total: number | null
-    fichas: bigint | null
+    fichas: number | null
     cobrado: number | null
     fichascob: number | null
     mes: number | null
     ano: number | null
     adelantado: number | null
-    id: number | null
+    sucursal: string | null
     descr: string | null
   }
 
   export type CtjtCountAggregateOutputType = {
-    grupo: number
-    sucursal: number
+    id: number
     total: number
     fichas: number
     cobrado: number
@@ -7899,14 +7935,14 @@ export namespace Prisma {
     mes: number
     ano: number
     adelantado: number
-    id: number
+    sucursal: number
     descr: number
     _all: number
   }
 
 
   export type CtjtAvgAggregateInputType = {
-    grupo?: true
+    id?: true
     total?: true
     fichas?: true
     cobrado?: true
@@ -7914,11 +7950,10 @@ export namespace Prisma {
     mes?: true
     ano?: true
     adelantado?: true
-    id?: true
   }
 
   export type CtjtSumAggregateInputType = {
-    grupo?: true
+    id?: true
     total?: true
     fichas?: true
     cobrado?: true
@@ -7926,12 +7961,10 @@ export namespace Prisma {
     mes?: true
     ano?: true
     adelantado?: true
-    id?: true
   }
 
   export type CtjtMinAggregateInputType = {
-    grupo?: true
-    sucursal?: true
+    id?: true
     total?: true
     fichas?: true
     cobrado?: true
@@ -7939,13 +7972,12 @@ export namespace Prisma {
     mes?: true
     ano?: true
     adelantado?: true
-    id?: true
+    sucursal?: true
     descr?: true
   }
 
   export type CtjtMaxAggregateInputType = {
-    grupo?: true
-    sucursal?: true
+    id?: true
     total?: true
     fichas?: true
     cobrado?: true
@@ -7953,13 +7985,12 @@ export namespace Prisma {
     mes?: true
     ano?: true
     adelantado?: true
-    id?: true
+    sucursal?: true
     descr?: true
   }
 
   export type CtjtCountAggregateInputType = {
-    grupo?: true
-    sucursal?: true
+    id?: true
     total?: true
     fichas?: true
     cobrado?: true
@@ -7967,7 +7998,7 @@ export namespace Prisma {
     mes?: true
     ano?: true
     adelantado?: true
-    id?: true
+    sucursal?: true
     descr?: true
     _all?: true
   }
@@ -8060,16 +8091,15 @@ export namespace Prisma {
 
 
   export type CtjtGroupByOutputType = {
-    grupo: number | null
-    sucursal: string | null
+    id: number
     total: number | null
-    fichas: bigint | null
+    fichas: number | null
     cobrado: number | null
     fichascob: number | null
     mes: number | null
     ano: number | null
     adelantado: number | null
-    id: number
+    sucursal: string | null
     descr: string | null
     _count: CtjtCountAggregateOutputType | null
     _avg: CtjtAvgAggregateOutputType | null
@@ -8093,8 +8123,7 @@ export namespace Prisma {
 
 
   export type ctjtSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    grupo?: boolean
-    sucursal?: boolean
+    id?: boolean
     total?: boolean
     fichas?: boolean
     cobrado?: boolean
@@ -8102,13 +8131,12 @@ export namespace Prisma {
     mes?: boolean
     ano?: boolean
     adelantado?: boolean
-    id?: boolean
+    sucursal?: boolean
     descr?: boolean
   }, ExtArgs["result"]["ctjt"]>
 
   export type ctjtSelectScalar = {
-    grupo?: boolean
-    sucursal?: boolean
+    id?: boolean
     total?: boolean
     fichas?: boolean
     cobrado?: boolean
@@ -8116,7 +8144,7 @@ export namespace Prisma {
     mes?: boolean
     ano?: boolean
     adelantado?: boolean
-    id?: boolean
+    sucursal?: boolean
     descr?: boolean
   }
 
@@ -8208,8 +8236,8 @@ export namespace Prisma {
      * // Get first 10 Ctjts
      * const ctjts = await prisma.ctjt.findMany({ take: 10 })
      * 
-     * // Only select the `grupo`
-     * const ctjtWithGrupoOnly = await prisma.ctjt.findMany({ select: { grupo: true } })
+     * // Only select the `id`
+     * const ctjtWithIdOnly = await prisma.ctjt.findMany({ select: { id: true } })
      * 
     **/
     findMany<T extends ctjtFindManyArgs<ExtArgs>>(
@@ -11893,15 +11921,17 @@ export namespace Prisma {
     mes: 'mes',
     ano: 'ano',
     sucursal: 'sucursal',
-    descr: 'descr'
+    descr: 'descr',
+    fichas: 'fichas',
+    fichascob: 'fichascob',
+    adelantado: 'adelantado'
   };
 
   export type CprestamosScalarFieldEnum = (typeof CprestamosScalarFieldEnum)[keyof typeof CprestamosScalarFieldEnum]
 
 
   export const CtjtScalarFieldEnum: {
-    grupo: 'grupo',
-    sucursal: 'sucursal',
+    id: 'id',
     total: 'total',
     fichas: 'fichas',
     cobrado: 'cobrado',
@@ -11909,7 +11939,7 @@ export namespace Prisma {
     mes: 'mes',
     ano: 'ano',
     adelantado: 'adelantado',
-    id: 'id',
+    sucursal: 'sucursal',
     descr: 'descr'
   };
 
@@ -12334,6 +12364,9 @@ export namespace Prisma {
     ano?: IntNullableFilter | number | null
     sucursal?: StringNullableFilter | string | null
     descr?: StringNullableFilter | string | null
+    fichas?: IntNullableFilter | number | null
+    fichascob?: IntNullableFilter | number | null
+    adelantado?: FloatNullableFilter | number | null
   }
 
   export type cprestamosOrderByWithRelationInput = {
@@ -12344,6 +12377,9 @@ export namespace Prisma {
     ano?: SortOrderInput | SortOrder
     sucursal?: SortOrderInput | SortOrder
     descr?: SortOrderInput | SortOrder
+    fichas?: SortOrderInput | SortOrder
+    fichascob?: SortOrderInput | SortOrder
+    adelantado?: SortOrderInput | SortOrder
   }
 
   export type cprestamosWhereUniqueInput = {
@@ -12358,6 +12394,9 @@ export namespace Prisma {
     ano?: SortOrderInput | SortOrder
     sucursal?: SortOrderInput | SortOrder
     descr?: SortOrderInput | SortOrder
+    fichas?: SortOrderInput | SortOrder
+    fichascob?: SortOrderInput | SortOrder
+    adelantado?: SortOrderInput | SortOrder
     _count?: cprestamosCountOrderByAggregateInput
     _avg?: cprestamosAvgOrderByAggregateInput
     _max?: cprestamosMaxOrderByAggregateInput
@@ -12376,28 +12415,29 @@ export namespace Prisma {
     ano?: IntNullableWithAggregatesFilter | number | null
     sucursal?: StringNullableWithAggregatesFilter | string | null
     descr?: StringNullableWithAggregatesFilter | string | null
+    fichas?: IntNullableWithAggregatesFilter | number | null
+    fichascob?: IntNullableWithAggregatesFilter | number | null
+    adelantado?: FloatNullableWithAggregatesFilter | number | null
   }
 
   export type ctjtWhereInput = {
     AND?: ctjtWhereInput | ctjtWhereInput[]
     OR?: ctjtWhereInput[]
     NOT?: ctjtWhereInput | ctjtWhereInput[]
-    grupo?: IntNullableFilter | number | null
-    sucursal?: StringNullableFilter | string | null
-    total?: FloatNullableFilter | number | null
-    fichas?: BigIntNullableFilter | bigint | number | null
+    id?: IntFilter | number
+    total?: IntNullableFilter | number | null
+    fichas?: IntNullableFilter | number | null
     cobrado?: IntNullableFilter | number | null
     fichascob?: IntNullableFilter | number | null
     mes?: IntNullableFilter | number | null
     ano?: IntNullableFilter | number | null
     adelantado?: IntNullableFilter | number | null
-    id?: IntFilter | number
+    sucursal?: StringNullableFilter | string | null
     descr?: StringNullableFilter | string | null
   }
 
   export type ctjtOrderByWithRelationInput = {
-    grupo?: SortOrderInput | SortOrder
-    sucursal?: SortOrderInput | SortOrder
+    id?: SortOrder
     total?: SortOrderInput | SortOrder
     fichas?: SortOrderInput | SortOrder
     cobrado?: SortOrderInput | SortOrder
@@ -12405,7 +12445,7 @@ export namespace Prisma {
     mes?: SortOrderInput | SortOrder
     ano?: SortOrderInput | SortOrder
     adelantado?: SortOrderInput | SortOrder
-    id?: SortOrder
+    sucursal?: SortOrderInput | SortOrder
     descr?: SortOrderInput | SortOrder
   }
 
@@ -12414,8 +12454,7 @@ export namespace Prisma {
   }
 
   export type ctjtOrderByWithAggregationInput = {
-    grupo?: SortOrderInput | SortOrder
-    sucursal?: SortOrderInput | SortOrder
+    id?: SortOrder
     total?: SortOrderInput | SortOrder
     fichas?: SortOrderInput | SortOrder
     cobrado?: SortOrderInput | SortOrder
@@ -12423,7 +12462,7 @@ export namespace Prisma {
     mes?: SortOrderInput | SortOrder
     ano?: SortOrderInput | SortOrder
     adelantado?: SortOrderInput | SortOrder
-    id?: SortOrder
+    sucursal?: SortOrderInput | SortOrder
     descr?: SortOrderInput | SortOrder
     _count?: ctjtCountOrderByAggregateInput
     _avg?: ctjtAvgOrderByAggregateInput
@@ -12436,16 +12475,15 @@ export namespace Prisma {
     AND?: ctjtScalarWhereWithAggregatesInput | ctjtScalarWhereWithAggregatesInput[]
     OR?: ctjtScalarWhereWithAggregatesInput[]
     NOT?: ctjtScalarWhereWithAggregatesInput | ctjtScalarWhereWithAggregatesInput[]
-    grupo?: IntNullableWithAggregatesFilter | number | null
-    sucursal?: StringNullableWithAggregatesFilter | string | null
-    total?: FloatNullableWithAggregatesFilter | number | null
-    fichas?: BigIntNullableWithAggregatesFilter | bigint | number | null
+    id?: IntWithAggregatesFilter | number
+    total?: IntNullableWithAggregatesFilter | number | null
+    fichas?: IntNullableWithAggregatesFilter | number | null
     cobrado?: IntNullableWithAggregatesFilter | number | null
     fichascob?: IntNullableWithAggregatesFilter | number | null
     mes?: IntNullableWithAggregatesFilter | number | null
     ano?: IntNullableWithAggregatesFilter | number | null
     adelantado?: IntNullableWithAggregatesFilter | number | null
-    id?: IntWithAggregatesFilter | number
+    sucursal?: StringNullableWithAggregatesFilter | string | null
     descr?: StringNullableWithAggregatesFilter | string | null
   }
 
@@ -13112,6 +13150,9 @@ export namespace Prisma {
     ano?: number | null
     sucursal?: string | null
     descr?: string | null
+    fichas?: number | null
+    fichascob?: number | null
+    adelantado?: number | null
   }
 
   export type cprestamosUncheckedCreateInput = {
@@ -13122,6 +13163,9 @@ export namespace Prisma {
     ano?: number | null
     sucursal?: string | null
     descr?: string | null
+    fichas?: number | null
+    fichascob?: number | null
+    adelantado?: number | null
   }
 
   export type cprestamosUpdateInput = {
@@ -13131,6 +13175,9 @@ export namespace Prisma {
     ano?: NullableIntFieldUpdateOperationsInput | number | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     descr?: NullableStringFieldUpdateOperationsInput | string | null
+    fichas?: NullableIntFieldUpdateOperationsInput | number | null
+    fichascob?: NullableIntFieldUpdateOperationsInput | number | null
+    adelantado?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type cprestamosUncheckedUpdateInput = {
@@ -13141,6 +13188,9 @@ export namespace Prisma {
     ano?: NullableIntFieldUpdateOperationsInput | number | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     descr?: NullableStringFieldUpdateOperationsInput | string | null
+    fichas?: NullableIntFieldUpdateOperationsInput | number | null
+    fichascob?: NullableIntFieldUpdateOperationsInput | number | null
+    adelantado?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type cprestamosCreateManyInput = {
@@ -13151,6 +13201,9 @@ export namespace Prisma {
     ano?: number | null
     sucursal?: string | null
     descr?: string | null
+    fichas?: number | null
+    fichascob?: number | null
+    adelantado?: number | null
   }
 
   export type cprestamosUpdateManyMutationInput = {
@@ -13160,6 +13213,9 @@ export namespace Prisma {
     ano?: NullableIntFieldUpdateOperationsInput | number | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     descr?: NullableStringFieldUpdateOperationsInput | string | null
+    fichas?: NullableIntFieldUpdateOperationsInput | number | null
+    fichascob?: NullableIntFieldUpdateOperationsInput | number | null
+    adelantado?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type cprestamosUncheckedUpdateManyInput = {
@@ -13170,100 +13226,96 @@ export namespace Prisma {
     ano?: NullableIntFieldUpdateOperationsInput | number | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     descr?: NullableStringFieldUpdateOperationsInput | string | null
+    fichas?: NullableIntFieldUpdateOperationsInput | number | null
+    fichascob?: NullableIntFieldUpdateOperationsInput | number | null
+    adelantado?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ctjtCreateInput = {
-    grupo?: number | null
-    sucursal?: string | null
     total?: number | null
-    fichas?: bigint | number | null
+    fichas?: number | null
     cobrado?: number | null
     fichascob?: number | null
     mes?: number | null
     ano?: number | null
     adelantado?: number | null
+    sucursal?: string | null
     descr?: string | null
   }
 
   export type ctjtUncheckedCreateInput = {
-    grupo?: number | null
-    sucursal?: string | null
+    id?: number
     total?: number | null
-    fichas?: bigint | number | null
+    fichas?: number | null
     cobrado?: number | null
     fichascob?: number | null
     mes?: number | null
     ano?: number | null
     adelantado?: number | null
-    id?: number
+    sucursal?: string | null
     descr?: string | null
   }
 
   export type ctjtUpdateInput = {
-    grupo?: NullableIntFieldUpdateOperationsInput | number | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-    total?: NullableFloatFieldUpdateOperationsInput | number | null
-    fichas?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    total?: NullableIntFieldUpdateOperationsInput | number | null
+    fichas?: NullableIntFieldUpdateOperationsInput | number | null
     cobrado?: NullableIntFieldUpdateOperationsInput | number | null
     fichascob?: NullableIntFieldUpdateOperationsInput | number | null
     mes?: NullableIntFieldUpdateOperationsInput | number | null
     ano?: NullableIntFieldUpdateOperationsInput | number | null
     adelantado?: NullableIntFieldUpdateOperationsInput | number | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     descr?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ctjtUncheckedUpdateInput = {
-    grupo?: NullableIntFieldUpdateOperationsInput | number | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-    total?: NullableFloatFieldUpdateOperationsInput | number | null
-    fichas?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id?: IntFieldUpdateOperationsInput | number
+    total?: NullableIntFieldUpdateOperationsInput | number | null
+    fichas?: NullableIntFieldUpdateOperationsInput | number | null
     cobrado?: NullableIntFieldUpdateOperationsInput | number | null
     fichascob?: NullableIntFieldUpdateOperationsInput | number | null
     mes?: NullableIntFieldUpdateOperationsInput | number | null
     ano?: NullableIntFieldUpdateOperationsInput | number | null
     adelantado?: NullableIntFieldUpdateOperationsInput | number | null
-    id?: IntFieldUpdateOperationsInput | number
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     descr?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ctjtCreateManyInput = {
-    grupo?: number | null
-    sucursal?: string | null
+    id?: number
     total?: number | null
-    fichas?: bigint | number | null
+    fichas?: number | null
     cobrado?: number | null
     fichascob?: number | null
     mes?: number | null
     ano?: number | null
     adelantado?: number | null
-    id?: number
+    sucursal?: string | null
     descr?: string | null
   }
 
   export type ctjtUpdateManyMutationInput = {
-    grupo?: NullableIntFieldUpdateOperationsInput | number | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-    total?: NullableFloatFieldUpdateOperationsInput | number | null
-    fichas?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    total?: NullableIntFieldUpdateOperationsInput | number | null
+    fichas?: NullableIntFieldUpdateOperationsInput | number | null
     cobrado?: NullableIntFieldUpdateOperationsInput | number | null
     fichascob?: NullableIntFieldUpdateOperationsInput | number | null
     mes?: NullableIntFieldUpdateOperationsInput | number | null
     ano?: NullableIntFieldUpdateOperationsInput | number | null
     adelantado?: NullableIntFieldUpdateOperationsInput | number | null
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     descr?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ctjtUncheckedUpdateManyInput = {
-    grupo?: NullableIntFieldUpdateOperationsInput | number | null
-    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
-    total?: NullableFloatFieldUpdateOperationsInput | number | null
-    fichas?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id?: IntFieldUpdateOperationsInput | number
+    total?: NullableIntFieldUpdateOperationsInput | number | null
+    fichas?: NullableIntFieldUpdateOperationsInput | number | null
     cobrado?: NullableIntFieldUpdateOperationsInput | number | null
     fichascob?: NullableIntFieldUpdateOperationsInput | number | null
     mes?: NullableIntFieldUpdateOperationsInput | number | null
     ano?: NullableIntFieldUpdateOperationsInput | number | null
     adelantado?: NullableIntFieldUpdateOperationsInput | number | null
-    id?: IntFieldUpdateOperationsInput | number
+    sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     descr?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -14018,6 +14070,9 @@ export namespace Prisma {
     ano?: SortOrder
     sucursal?: SortOrder
     descr?: SortOrder
+    fichas?: SortOrder
+    fichascob?: SortOrder
+    adelantado?: SortOrder
   }
 
   export type cprestamosAvgOrderByAggregateInput = {
@@ -14026,6 +14081,9 @@ export namespace Prisma {
     cobrado?: SortOrder
     mes?: SortOrder
     ano?: SortOrder
+    fichas?: SortOrder
+    fichascob?: SortOrder
+    adelantado?: SortOrder
   }
 
   export type cprestamosMaxOrderByAggregateInput = {
@@ -14036,6 +14094,9 @@ export namespace Prisma {
     ano?: SortOrder
     sucursal?: SortOrder
     descr?: SortOrder
+    fichas?: SortOrder
+    fichascob?: SortOrder
+    adelantado?: SortOrder
   }
 
   export type cprestamosMinOrderByAggregateInput = {
@@ -14046,6 +14107,9 @@ export namespace Prisma {
     ano?: SortOrder
     sucursal?: SortOrder
     descr?: SortOrder
+    fichas?: SortOrder
+    fichascob?: SortOrder
+    adelantado?: SortOrder
   }
 
   export type cprestamosSumOrderByAggregateInput = {
@@ -14054,11 +14118,13 @@ export namespace Prisma {
     cobrado?: SortOrder
     mes?: SortOrder
     ano?: SortOrder
+    fichas?: SortOrder
+    fichascob?: SortOrder
+    adelantado?: SortOrder
   }
 
   export type ctjtCountOrderByAggregateInput = {
-    grupo?: SortOrder
-    sucursal?: SortOrder
+    id?: SortOrder
     total?: SortOrder
     fichas?: SortOrder
     cobrado?: SortOrder
@@ -14066,12 +14132,12 @@ export namespace Prisma {
     mes?: SortOrder
     ano?: SortOrder
     adelantado?: SortOrder
-    id?: SortOrder
+    sucursal?: SortOrder
     descr?: SortOrder
   }
 
   export type ctjtAvgOrderByAggregateInput = {
-    grupo?: SortOrder
+    id?: SortOrder
     total?: SortOrder
     fichas?: SortOrder
     cobrado?: SortOrder
@@ -14079,12 +14145,10 @@ export namespace Prisma {
     mes?: SortOrder
     ano?: SortOrder
     adelantado?: SortOrder
-    id?: SortOrder
   }
 
   export type ctjtMaxOrderByAggregateInput = {
-    grupo?: SortOrder
-    sucursal?: SortOrder
+    id?: SortOrder
     total?: SortOrder
     fichas?: SortOrder
     cobrado?: SortOrder
@@ -14092,13 +14156,12 @@ export namespace Prisma {
     mes?: SortOrder
     ano?: SortOrder
     adelantado?: SortOrder
-    id?: SortOrder
+    sucursal?: SortOrder
     descr?: SortOrder
   }
 
   export type ctjtMinOrderByAggregateInput = {
-    grupo?: SortOrder
-    sucursal?: SortOrder
+    id?: SortOrder
     total?: SortOrder
     fichas?: SortOrder
     cobrado?: SortOrder
@@ -14106,12 +14169,12 @@ export namespace Prisma {
     mes?: SortOrder
     ano?: SortOrder
     adelantado?: SortOrder
-    id?: SortOrder
+    sucursal?: SortOrder
     descr?: SortOrder
   }
 
   export type ctjtSumOrderByAggregateInput = {
-    grupo?: SortOrder
+    id?: SortOrder
     total?: SortOrder
     fichas?: SortOrder
     cobrado?: SortOrder
@@ -14119,7 +14182,6 @@ export namespace Prisma {
     mes?: SortOrder
     ano?: SortOrder
     adelantado?: SortOrder
-    id?: SortOrder
   }
 
   export type ctjtmCountOrderByAggregateInput = {
