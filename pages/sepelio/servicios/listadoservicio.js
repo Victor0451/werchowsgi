@@ -40,6 +40,22 @@ function ListadoServicio(props) {
         console.log(error);
         toast.error("Ocurrio un error al generar el listado");
       });
+
+    actIdInformes();
+  };
+
+  const actIdInformes = async () => {
+    let data = {
+      f: "act idinformes tareas",
+    };
+
+    await axios.put("/api/sepelio/servicios", data);
+
+    let data1 = {
+      f: "act idinformes gastos",
+    };
+
+    await axios.put("/api/sepelio/servicios", data1);
   };
 
   const ServiciosHistoricos = async () => {
@@ -65,7 +81,7 @@ function ListadoServicio(props) {
       });
   };
 
-  useSWR("/api/sepelio/ataudes", traerServicios);
+  useSWR("/api/sepelio/servicios", traerServicios);
 
   if (isLoading === true) return <Skeleton />;
 

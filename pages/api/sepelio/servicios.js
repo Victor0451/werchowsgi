@@ -748,6 +748,32 @@ export default async function handler(req, res) {
       );
 
       res.status(200).json(liqTarea);
+    }else if (req.body.f && req.body.f === "act idinformes tareas") {
+      const liqTarea = await Sep.$queryRawUnsafe(
+        `                
+        UPDATE informe_tareas as t
+        INNER JOIN servicio_informes as i on i.idservicio = t.idservicio 
+        set t.idinforme = i.idinforme
+        where t.idinforme IS NULL
+
+          
+                       `
+      );
+
+      res.status(200).json(liqTarea);
+    }else if (req.body.f && req.body.f === "act idinformes gastos") {
+      const liqTarea = await Sep.$queryRawUnsafe(
+        `                
+        UPDATE informe_gastos as t
+        INNER JOIN servicio_informes as i on i.idservicio = t.idservicio 
+        set t.idinforme = i.idinforme
+        where t.idinforme IS NULL
+
+          
+                       `
+      );
+
+      res.status(200).json(liqTarea);
     }
   } else if (req.method === "DELETE") {
     if (req.query.f && req.query.f === "eliminar tarea") {
