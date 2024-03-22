@@ -9,9 +9,11 @@ import useSWR from "swr";
 import { confirmAlert } from "react-confirm-alert";
 import moment, { months } from "moment";
 import { registrarHistoria, regHistorialSocio } from "@/libs/funciones";
-import FormEfectividad from "@/components/cobranza/FormEfectividad";
+import FormMora from "@/components/cobranza/FormMora";
 
-function efectividad(props) {
+function Mora(props) {
+  let componentRef = React.createRef();
+
   const [errores, guardarErrores] = useState(null);
   const [mesSel, guardarMesSel] = useState("");
   const [anoSel, guardarAnoSel] = useState("");
@@ -21,7 +23,6 @@ function efectividad(props) {
   const [cbancoP, guardarCbancoP] = useState([]);
   const [cpolicia, guardarCpolicia] = useState([]);
   const [ctjt, guardarCtjt] = useState([]);
-  const [cprestamos, guardarCPrestamos] = useState([]);
 
   const { usu } = useWerchow();
 
@@ -42,15 +43,14 @@ function efectividad(props) {
       guardarErrores("Debes seleccionar el año a analizar");
     } else {
       await axios
-        .get(`/api/efectividad`, {
+        .get(`/api/mora`, {
           params: {
             mes: mesSel,
             ano: anoSel,
-            f: "traer cCob",
+            f: "traer mcob",
           },
         })
         .then((res) => {
-          console.log(res.data);
           if (res.data) {
             let list = JSON.parse(res.data);
             guardarCCob(list);
@@ -64,11 +64,11 @@ function efectividad(props) {
         });
 
       await axios
-        .get(`/api/efectividad`, {
+        .get(`/api/mora`, {
           params: {
             mes: mesSel,
             ano: anoSel,
-            f: "traer cOf",
+            f: "traer mof",
           },
         })
         .then((res) => {
@@ -85,11 +85,11 @@ function efectividad(props) {
         });
 
       await axios
-        .get(`/api/efectividad`, {
+        .get(`/api/mora`, {
           params: {
             mes: mesSel,
             ano: anoSel,
-            f: "traer ctjt",
+            f: "traer mtjt",
           },
         })
         .then((res) => {
@@ -106,11 +106,11 @@ function efectividad(props) {
         });
 
       await axios
-        .get(`/api/efectividad`, {
+        .get(`/api/mora`, {
           params: {
             mes: mesSel,
             ano: anoSel,
-            f: "traer cbanco",
+            f: "traer mbanco activo",
           },
         })
         .then((res) => {
@@ -127,11 +127,11 @@ function efectividad(props) {
         });
 
       await axios
-        .get(`/api/efectividad`, {
+        .get(`/api/mora`, {
           params: {
             mes: mesSel,
             ano: anoSel,
-            f: "traer cbanco pasivo",
+            f: "traer mbanco pasivo",
           },
         })
         .then((res) => {
@@ -148,11 +148,11 @@ function efectividad(props) {
         });
 
       await axios
-        .get(`/api/efectividad`, {
+        .get(`/api/mora`, {
           params: {
             mes: mesSel,
             ano: anoSel,
-            f: "traer cpolicia",
+            f: "traer mpolicia",
           },
         })
         .then((res) => {
@@ -166,27 +166,6 @@ function efectividad(props) {
         .catch((error) => {
           console.log(error);
           toast.error("Ocurrio un error al generar cpolicia");
-        });
-
-      await axios
-        .get(`/api/efectividad`, {
-          params: {
-            mes: mesSel,
-            ano: anoSel,
-            f: "traer cprestamos",
-          },
-        })
-        .then((res) => {
-          if (res.data) {
-            let list = JSON.parse(res.data);
-            guardarCPrestamos(list);
-          } else {
-            toast.info("Aun no se genero la cartera cprestamos en este mes");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error("Ocurrio un error al generar cprestamos");
         });
     }
   };
@@ -205,110 +184,22 @@ function efectividad(props) {
   const totates = (arr, f) => {
     let total = 0;
 
-    if (f === "emi") {
-      for (let i = 0; i < arr.length; i++) {
-        total += parseFloat(arr[i].total);
-      }
-      return total.toFixed(2);
-    } else if (f === "fichas emi") {
+    if (f === "fichas") {
       for (let i = 0; i < arr.length; i++) {
         total += parseInt(arr[i].fichas);
       }
 
       return total;
-    } else if (f === "cob") {
+    } else if (f === "mora") {
       for (let i = 0; i < arr.length; i++) {
-        total += parseFloat(arr[i].cobrado);
+        total += parseFloat(arr[i].mora);
       }
 
       return total.toFixed(2);
-    } else if (f === "fichas cob") {
-      for (let i = 0; i < arr.length; i++) {
-        total += parseInt(arr[i].fichascob);
-      }
-
-      return total;
-    } else if (f === "adelantado") {
-      for (let i = 0; i < arr.length; i++) {
-        total += parseFloat(arr[i].adelantado);
-      }
-
-      return total;
     }
   };
 
-  const creaFunctions = async (f, tabla) => {
-    await axios
-      .get("/api/efectividad", {
-        params: {
-          f: f,
-          mes: moment().format("MM"),
-          ano: moment().format("YYYY"),
-        },
-      })
-      .then((res) => {
-        let li = JSON.parse(res.data);
-        if (li.length > 0) {
-          toast.warning(
-            `Ya se creo la tabla ${tabla} para el periodo ${moment().format(
-              "MM"
-            )}/${moment().format("YYYY")}`
-          );
-        } else {
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(`Ocurrio un error al verificar los registros de ${tabla}`);
-      });
-  };
-
-  const actFunctions = async (f, tabla) => {
-    await confirmAlert({
-      title: "ATENCION",
-      message: `¿Seguro quieres actualizar ${tabla}?`,
-      buttons: [
-        {
-          label: "Si",
-          onClick: () => {
-            toast.info(
-              `Actualizando ${tabla}, esto puede demorar unos segundos...`
-            );
-
-            const data = {
-              f: f,
-              mes: moment().format("MM"),
-              ano: moment().format("YYYY"),
-            };
-
-            axios
-              .put("/api/efectividad", data)
-              .then((res) => {
-                if (res.status === 200) {
-                  toast.success(`${tabla} actualizado con exito`);
-                }
-              })
-              .catch((error) => {
-                console.log(error);
-                toast.error(`Ocurrio un error al actualizar ${tabla}`);
-              });
-          },
-        },
-        {
-          label: "No",
-          onClick: () => {
-            toast.info(`Los registros de ${tabla}, no fueron actualizados`);
-          },
-        },
-      ],
-    });
-  };
-
-  let totArr = cCob.concat(
-    cOf.concat(
-      cbanco.concat(cbancoP.concat(cpolicia.concat(ctjt.concat(cprestamos))))
-    )
-  );
+  let totArr = cCob.concat(cOf.concat(cbanco.concat(cbancoP.concat(cpolicia))));
 
   if (isLoading === true) return <Skeleton />;
 
@@ -318,7 +209,7 @@ function efectividad(props) {
         <Redirect />
       ) : (
         <>
-          <FormEfectividad
+          <FormMora
             handleChange={handleChange}
             traerInfo={traerInfo}
             errores={errores}
@@ -328,12 +219,10 @@ function efectividad(props) {
             cbanco={cbanco}
             cbancoP={cbancoP}
             cpolicia={cpolicia}
-            cprestamos={cprestamos}
+            totArr={totArr}
             porcent={porcent}
             totales={totates}
-            totArr={totArr}
-            actFunctions={actFunctions}
-            creaFunctions={creaFunctions}
+            componentRef={componentRef}
           />
         </>
       )}
@@ -341,4 +230,4 @@ function efectividad(props) {
   );
 }
 
-export default efectividad;
+export default Mora;

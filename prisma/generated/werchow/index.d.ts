@@ -1711,6 +1711,58 @@ export type poliza_5380Payload<ExtArgs extends $Extensions.Args = $Extensions.De
  * 
  */
 export type poliza_5380 = runtime.Types.DefaultSelection<poliza_5380Payload>
+export type emiPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    CONTRATO: number | null
+    NRO_RECIBO: number | null
+    SERIE: number | null
+    COMPROB: number | null
+    DIA_REN: Date | null
+    DIA_CAR: Date | null
+    DIA_EMI: Date | null
+    DIA_PAG: Date | null
+    HORA_CAR: string | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    MAN_COM: string | null
+    MOVIM: string | null
+    EX: number | null
+    GR: number | null
+    SEGURO: number | null
+    CARGA: number | null
+    OPERADOR: number | null
+    EXTRA: number | null
+    TIP_EXT: number | null
+    SUCURSAL: string | null
+    PUESTO: string | null
+    ACTUALIZA: string | null
+    MARCA: number | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    CAE: string | null
+    CAE_VTO: string | null
+    NCR_SERIE: number | null
+    NCR_NRO: number | null
+    BARCOD: string | null
+    DNI: number | null
+    FE_SERIE: number | null
+    FE_NRO: number | null
+    FEC_REF: Date | null
+    CUOTAS_REF: number | null
+    IMPO_REF: number | null
+    id: number
+  }, ExtArgs["result"]["emi"]>
+  composites: {}
+}
+
+/**
+ * Model emi
+ * 
+ */
+export type emi = runtime.Types.DefaultSelection<emiPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2336,6 +2388,16 @@ export class PrismaClient<
     * ```
     */
   get poliza_5380(): Prisma.poliza_5380Delegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.emi`: Exposes CRUD operations for the **emi** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Emis
+    * const emis = await prisma.emi.findMany()
+    * ```
+    */
+  get emi(): Prisma.emiDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -2868,7 +2930,8 @@ export namespace Prisma {
     usuario: 'usuario',
     guardia: 'guardia',
     listado_rus: 'listado_rus',
-    poliza_5380: 'poliza_5380'
+    poliza_5380: 'poliza_5380',
+    emi: 'emi'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2885,7 +2948,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'acciones' | 'adherent' | 'alta_adhe' | 'anticipos' | 'bajas' | 'bajas_mutual' | 'bancos' | 'caja_sucursal' | 'cajas' | 'certificados' | 'cuo_fija' | 'cuota_prestamo' | 'cuotas_adeudadas' | 'debitos' | 'liq_temporal' | 'liquidaciones' | 'localidad' | 'maestro' | 'maestro22' | 'maestro_bis' | 'memo' | 'meses' | 'mutual' | 'mutual_adh' | 'obra_soc' | 'pago_bco' | 'pago_bcom' | 'pagos' | 'pagos_mutual' | 'parcelas' | 'planificacion' | 'porcentaje_liq' | 'prestamos' | 'produccion' | 'produccion_copy' | 'puestos' | 'registro_diario_saldos' | 'registro_egreso_diario' | 'registro_ingreso_diario' | 'registro_sucursal' | 'semana_asesor' | 'semanas' | 'som' | 'sow' | 'sucursal' | 'sueldos' | 'usuario' | 'guardia' | 'listado_rus' | 'poliza_5380'
+      modelProps: 'acciones' | 'adherent' | 'alta_adhe' | 'anticipos' | 'bajas' | 'bajas_mutual' | 'bancos' | 'caja_sucursal' | 'cajas' | 'certificados' | 'cuo_fija' | 'cuota_prestamo' | 'cuotas_adeudadas' | 'debitos' | 'liq_temporal' | 'liquidaciones' | 'localidad' | 'maestro' | 'maestro22' | 'maestro_bis' | 'memo' | 'meses' | 'mutual' | 'mutual_adh' | 'obra_soc' | 'pago_bco' | 'pago_bcom' | 'pagos' | 'pagos_mutual' | 'parcelas' | 'planificacion' | 'porcentaje_liq' | 'prestamos' | 'produccion' | 'produccion_copy' | 'puestos' | 'registro_diario_saldos' | 'registro_egreso_diario' | 'registro_ingreso_diario' | 'registro_sucursal' | 'semana_asesor' | 'semanas' | 'som' | 'sow' | 'sucursal' | 'sueldos' | 'usuario' | 'guardia' | 'listado_rus' | 'poliza_5380' | 'emi'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -6836,6 +6899,85 @@ export namespace Prisma {
             args: Prisma.poliza_5380CountArgs<ExtArgs>,
             result: $Utils.Optional<Poliza_5380CountAggregateOutputType> | number
             payload: poliza_5380Payload<ExtArgs>
+          }
+        }
+      }
+      emi: {
+        operations: {
+          findUnique: {
+            args: Prisma.emiFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<emiPayload> | null
+            payload: emiPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.emiFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<emiPayload>
+            payload: emiPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.emiFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<emiPayload> | null
+            payload: emiPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.emiFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<emiPayload>
+            payload: emiPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.emiFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<emiPayload>[]
+            payload: emiPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.emiCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<emiPayload>
+            payload: emiPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.emiCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: emiPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.emiDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<emiPayload>
+            payload: emiPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.emiUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<emiPayload>
+            payload: emiPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.emiDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: emiPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.emiUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: emiPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.emiUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<emiPayload>
+            payload: emiPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.EmiAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateEmi>
+            payload: emiPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.emiGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<EmiGroupByOutputType>[]
+            payload: emiPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.emiCountArgs<ExtArgs>,
+            result: $Utils.Optional<EmiCountAggregateOutputType> | number
+            payload: emiPayload<ExtArgs>
           }
         }
       }
@@ -62147,6 +62289,1329 @@ export namespace Prisma {
 
 
   /**
+   * Model emi
+   */
+
+
+  export type AggregateEmi = {
+    _count: EmiCountAggregateOutputType | null
+    _avg: EmiAvgAggregateOutputType | null
+    _sum: EmiSumAggregateOutputType | null
+    _min: EmiMinAggregateOutputType | null
+    _max: EmiMaxAggregateOutputType | null
+  }
+
+  export type EmiAvgAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_RECIBO: number | null
+    SERIE: number | null
+    COMPROB: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    EX: number | null
+    GR: number | null
+    SEGURO: number | null
+    CARGA: number | null
+    OPERADOR: number | null
+    EXTRA: number | null
+    TIP_EXT: number | null
+    MARCA: number | null
+    ZONA: number | null
+    CUOTA: number | null
+    NCR_SERIE: number | null
+    NCR_NRO: number | null
+    DNI: number | null
+    FE_SERIE: number | null
+    FE_NRO: number | null
+    CUOTAS_REF: number | null
+    IMPO_REF: number | null
+    id: number | null
+  }
+
+  export type EmiSumAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_RECIBO: number | null
+    SERIE: number | null
+    COMPROB: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    EX: number | null
+    GR: number | null
+    SEGURO: number | null
+    CARGA: number | null
+    OPERADOR: number | null
+    EXTRA: number | null
+    TIP_EXT: number | null
+    MARCA: number | null
+    ZONA: number | null
+    CUOTA: number | null
+    NCR_SERIE: number | null
+    NCR_NRO: number | null
+    DNI: number | null
+    FE_SERIE: number | null
+    FE_NRO: number | null
+    CUOTAS_REF: number | null
+    IMPO_REF: number | null
+    id: number | null
+  }
+
+  export type EmiMinAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_RECIBO: number | null
+    SERIE: number | null
+    COMPROB: number | null
+    DIA_REN: Date | null
+    DIA_CAR: Date | null
+    DIA_EMI: Date | null
+    DIA_PAG: Date | null
+    HORA_CAR: string | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    MAN_COM: string | null
+    MOVIM: string | null
+    EX: number | null
+    GR: number | null
+    SEGURO: number | null
+    CARGA: number | null
+    OPERADOR: number | null
+    EXTRA: number | null
+    TIP_EXT: number | null
+    SUCURSAL: string | null
+    PUESTO: string | null
+    ACTUALIZA: string | null
+    MARCA: number | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    CAE: string | null
+    CAE_VTO: string | null
+    NCR_SERIE: number | null
+    NCR_NRO: number | null
+    BARCOD: string | null
+    DNI: number | null
+    FE_SERIE: number | null
+    FE_NRO: number | null
+    FEC_REF: Date | null
+    CUOTAS_REF: number | null
+    IMPO_REF: number | null
+    id: number | null
+  }
+
+  export type EmiMaxAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_RECIBO: number | null
+    SERIE: number | null
+    COMPROB: number | null
+    DIA_REN: Date | null
+    DIA_CAR: Date | null
+    DIA_EMI: Date | null
+    DIA_PAG: Date | null
+    HORA_CAR: string | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    MAN_COM: string | null
+    MOVIM: string | null
+    EX: number | null
+    GR: number | null
+    SEGURO: number | null
+    CARGA: number | null
+    OPERADOR: number | null
+    EXTRA: number | null
+    TIP_EXT: number | null
+    SUCURSAL: string | null
+    PUESTO: string | null
+    ACTUALIZA: string | null
+    MARCA: number | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    CAE: string | null
+    CAE_VTO: string | null
+    NCR_SERIE: number | null
+    NCR_NRO: number | null
+    BARCOD: string | null
+    DNI: number | null
+    FE_SERIE: number | null
+    FE_NRO: number | null
+    FEC_REF: Date | null
+    CUOTAS_REF: number | null
+    IMPO_REF: number | null
+    id: number | null
+  }
+
+  export type EmiCountAggregateOutputType = {
+    CONTRATO: number
+    NRO_RECIBO: number
+    SERIE: number
+    COMPROB: number
+    DIA_REN: number
+    DIA_CAR: number
+    DIA_EMI: number
+    DIA_PAG: number
+    HORA_CAR: number
+    MES: number
+    ANO: number
+    IMPORTE: number
+    MAN_COM: number
+    MOVIM: number
+    EX: number
+    GR: number
+    SEGURO: number
+    CARGA: number
+    OPERADOR: number
+    EXTRA: number
+    TIP_EXT: number
+    SUCURSAL: number
+    PUESTO: number
+    ACTUALIZA: number
+    MARCA: number
+    ZONA: number
+    CUOTA: number
+    EMPRESA: number
+    CAE: number
+    CAE_VTO: number
+    NCR_SERIE: number
+    NCR_NRO: number
+    BARCOD: number
+    DNI: number
+    FE_SERIE: number
+    FE_NRO: number
+    FEC_REF: number
+    CUOTAS_REF: number
+    IMPO_REF: number
+    id: number
+    _all: number
+  }
+
+
+  export type EmiAvgAggregateInputType = {
+    CONTRATO?: true
+    NRO_RECIBO?: true
+    SERIE?: true
+    COMPROB?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    EX?: true
+    GR?: true
+    SEGURO?: true
+    CARGA?: true
+    OPERADOR?: true
+    EXTRA?: true
+    TIP_EXT?: true
+    MARCA?: true
+    ZONA?: true
+    CUOTA?: true
+    NCR_SERIE?: true
+    NCR_NRO?: true
+    DNI?: true
+    FE_SERIE?: true
+    FE_NRO?: true
+    CUOTAS_REF?: true
+    IMPO_REF?: true
+    id?: true
+  }
+
+  export type EmiSumAggregateInputType = {
+    CONTRATO?: true
+    NRO_RECIBO?: true
+    SERIE?: true
+    COMPROB?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    EX?: true
+    GR?: true
+    SEGURO?: true
+    CARGA?: true
+    OPERADOR?: true
+    EXTRA?: true
+    TIP_EXT?: true
+    MARCA?: true
+    ZONA?: true
+    CUOTA?: true
+    NCR_SERIE?: true
+    NCR_NRO?: true
+    DNI?: true
+    FE_SERIE?: true
+    FE_NRO?: true
+    CUOTAS_REF?: true
+    IMPO_REF?: true
+    id?: true
+  }
+
+  export type EmiMinAggregateInputType = {
+    CONTRATO?: true
+    NRO_RECIBO?: true
+    SERIE?: true
+    COMPROB?: true
+    DIA_REN?: true
+    DIA_CAR?: true
+    DIA_EMI?: true
+    DIA_PAG?: true
+    HORA_CAR?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    MAN_COM?: true
+    MOVIM?: true
+    EX?: true
+    GR?: true
+    SEGURO?: true
+    CARGA?: true
+    OPERADOR?: true
+    EXTRA?: true
+    TIP_EXT?: true
+    SUCURSAL?: true
+    PUESTO?: true
+    ACTUALIZA?: true
+    MARCA?: true
+    ZONA?: true
+    CUOTA?: true
+    EMPRESA?: true
+    CAE?: true
+    CAE_VTO?: true
+    NCR_SERIE?: true
+    NCR_NRO?: true
+    BARCOD?: true
+    DNI?: true
+    FE_SERIE?: true
+    FE_NRO?: true
+    FEC_REF?: true
+    CUOTAS_REF?: true
+    IMPO_REF?: true
+    id?: true
+  }
+
+  export type EmiMaxAggregateInputType = {
+    CONTRATO?: true
+    NRO_RECIBO?: true
+    SERIE?: true
+    COMPROB?: true
+    DIA_REN?: true
+    DIA_CAR?: true
+    DIA_EMI?: true
+    DIA_PAG?: true
+    HORA_CAR?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    MAN_COM?: true
+    MOVIM?: true
+    EX?: true
+    GR?: true
+    SEGURO?: true
+    CARGA?: true
+    OPERADOR?: true
+    EXTRA?: true
+    TIP_EXT?: true
+    SUCURSAL?: true
+    PUESTO?: true
+    ACTUALIZA?: true
+    MARCA?: true
+    ZONA?: true
+    CUOTA?: true
+    EMPRESA?: true
+    CAE?: true
+    CAE_VTO?: true
+    NCR_SERIE?: true
+    NCR_NRO?: true
+    BARCOD?: true
+    DNI?: true
+    FE_SERIE?: true
+    FE_NRO?: true
+    FEC_REF?: true
+    CUOTAS_REF?: true
+    IMPO_REF?: true
+    id?: true
+  }
+
+  export type EmiCountAggregateInputType = {
+    CONTRATO?: true
+    NRO_RECIBO?: true
+    SERIE?: true
+    COMPROB?: true
+    DIA_REN?: true
+    DIA_CAR?: true
+    DIA_EMI?: true
+    DIA_PAG?: true
+    HORA_CAR?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    MAN_COM?: true
+    MOVIM?: true
+    EX?: true
+    GR?: true
+    SEGURO?: true
+    CARGA?: true
+    OPERADOR?: true
+    EXTRA?: true
+    TIP_EXT?: true
+    SUCURSAL?: true
+    PUESTO?: true
+    ACTUALIZA?: true
+    MARCA?: true
+    ZONA?: true
+    CUOTA?: true
+    EMPRESA?: true
+    CAE?: true
+    CAE_VTO?: true
+    NCR_SERIE?: true
+    NCR_NRO?: true
+    BARCOD?: true
+    DNI?: true
+    FE_SERIE?: true
+    FE_NRO?: true
+    FEC_REF?: true
+    CUOTAS_REF?: true
+    IMPO_REF?: true
+    id?: true
+    _all?: true
+  }
+
+  export type EmiAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which emi to aggregate.
+     */
+    where?: emiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of emis to fetch.
+     */
+    orderBy?: emiOrderByWithRelationInput | emiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: emiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` emis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` emis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned emis
+    **/
+    _count?: true | EmiCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EmiAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EmiSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EmiMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EmiMaxAggregateInputType
+  }
+
+  export type GetEmiAggregateType<T extends EmiAggregateArgs> = {
+        [P in keyof T & keyof AggregateEmi]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEmi[P]>
+      : GetScalarType<T[P], AggregateEmi[P]>
+  }
+
+
+
+
+  export type emiGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: emiWhereInput
+    orderBy?: emiOrderByWithAggregationInput | emiOrderByWithAggregationInput[]
+    by: EmiScalarFieldEnum[] | EmiScalarFieldEnum
+    having?: emiScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EmiCountAggregateInputType | true
+    _avg?: EmiAvgAggregateInputType
+    _sum?: EmiSumAggregateInputType
+    _min?: EmiMinAggregateInputType
+    _max?: EmiMaxAggregateInputType
+  }
+
+
+  export type EmiGroupByOutputType = {
+    CONTRATO: number | null
+    NRO_RECIBO: number | null
+    SERIE: number | null
+    COMPROB: number | null
+    DIA_REN: Date | null
+    DIA_CAR: Date | null
+    DIA_EMI: Date | null
+    DIA_PAG: Date | null
+    HORA_CAR: string | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    MAN_COM: string | null
+    MOVIM: string | null
+    EX: number | null
+    GR: number | null
+    SEGURO: number | null
+    CARGA: number | null
+    OPERADOR: number | null
+    EXTRA: number | null
+    TIP_EXT: number | null
+    SUCURSAL: string | null
+    PUESTO: string | null
+    ACTUALIZA: string | null
+    MARCA: number | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    CAE: string | null
+    CAE_VTO: string | null
+    NCR_SERIE: number | null
+    NCR_NRO: number | null
+    BARCOD: string | null
+    DNI: number | null
+    FE_SERIE: number | null
+    FE_NRO: number | null
+    FEC_REF: Date | null
+    CUOTAS_REF: number | null
+    IMPO_REF: number | null
+    id: number
+    _count: EmiCountAggregateOutputType | null
+    _avg: EmiAvgAggregateOutputType | null
+    _sum: EmiSumAggregateOutputType | null
+    _min: EmiMinAggregateOutputType | null
+    _max: EmiMaxAggregateOutputType | null
+  }
+
+  type GetEmiGroupByPayload<T extends emiGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EmiGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EmiGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EmiGroupByOutputType[P]>
+            : GetScalarType<T[P], EmiGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type emiSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    CONTRATO?: boolean
+    NRO_RECIBO?: boolean
+    SERIE?: boolean
+    COMPROB?: boolean
+    DIA_REN?: boolean
+    DIA_CAR?: boolean
+    DIA_EMI?: boolean
+    DIA_PAG?: boolean
+    HORA_CAR?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    MAN_COM?: boolean
+    MOVIM?: boolean
+    EX?: boolean
+    GR?: boolean
+    SEGURO?: boolean
+    CARGA?: boolean
+    OPERADOR?: boolean
+    EXTRA?: boolean
+    TIP_EXT?: boolean
+    SUCURSAL?: boolean
+    PUESTO?: boolean
+    ACTUALIZA?: boolean
+    MARCA?: boolean
+    ZONA?: boolean
+    CUOTA?: boolean
+    EMPRESA?: boolean
+    CAE?: boolean
+    CAE_VTO?: boolean
+    NCR_SERIE?: boolean
+    NCR_NRO?: boolean
+    BARCOD?: boolean
+    DNI?: boolean
+    FE_SERIE?: boolean
+    FE_NRO?: boolean
+    FEC_REF?: boolean
+    CUOTAS_REF?: boolean
+    IMPO_REF?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["emi"]>
+
+  export type emiSelectScalar = {
+    CONTRATO?: boolean
+    NRO_RECIBO?: boolean
+    SERIE?: boolean
+    COMPROB?: boolean
+    DIA_REN?: boolean
+    DIA_CAR?: boolean
+    DIA_EMI?: boolean
+    DIA_PAG?: boolean
+    HORA_CAR?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    MAN_COM?: boolean
+    MOVIM?: boolean
+    EX?: boolean
+    GR?: boolean
+    SEGURO?: boolean
+    CARGA?: boolean
+    OPERADOR?: boolean
+    EXTRA?: boolean
+    TIP_EXT?: boolean
+    SUCURSAL?: boolean
+    PUESTO?: boolean
+    ACTUALIZA?: boolean
+    MARCA?: boolean
+    ZONA?: boolean
+    CUOTA?: boolean
+    EMPRESA?: boolean
+    CAE?: boolean
+    CAE_VTO?: boolean
+    NCR_SERIE?: boolean
+    NCR_NRO?: boolean
+    BARCOD?: boolean
+    DNI?: boolean
+    FE_SERIE?: boolean
+    FE_NRO?: boolean
+    FEC_REF?: boolean
+    CUOTAS_REF?: boolean
+    IMPO_REF?: boolean
+    id?: boolean
+  }
+
+
+  type emiGetPayload<S extends boolean | null | undefined | emiArgs> = $Types.GetResult<emiPayload, S>
+
+  type emiCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<emiFindManyArgs, 'select' | 'include'> & {
+      select?: EmiCountAggregateInputType | true
+    }
+
+  export interface emiDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['emi'], meta: { name: 'emi' } }
+    /**
+     * Find zero or one Emi that matches the filter.
+     * @param {emiFindUniqueArgs} args - Arguments to find a Emi
+     * @example
+     * // Get one Emi
+     * const emi = await prisma.emi.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends emiFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, emiFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'emi'> extends True ? Prisma__emiClient<$Types.GetResult<emiPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__emiClient<$Types.GetResult<emiPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Emi that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {emiFindUniqueOrThrowArgs} args - Arguments to find a Emi
+     * @example
+     * // Get one Emi
+     * const emi = await prisma.emi.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends emiFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, emiFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__emiClient<$Types.GetResult<emiPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Emi that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {emiFindFirstArgs} args - Arguments to find a Emi
+     * @example
+     * // Get one Emi
+     * const emi = await prisma.emi.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends emiFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, emiFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'emi'> extends True ? Prisma__emiClient<$Types.GetResult<emiPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__emiClient<$Types.GetResult<emiPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Emi that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {emiFindFirstOrThrowArgs} args - Arguments to find a Emi
+     * @example
+     * // Get one Emi
+     * const emi = await prisma.emi.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends emiFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, emiFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__emiClient<$Types.GetResult<emiPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Emis that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {emiFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Emis
+     * const emis = await prisma.emi.findMany()
+     * 
+     * // Get first 10 Emis
+     * const emis = await prisma.emi.findMany({ take: 10 })
+     * 
+     * // Only select the `CONTRATO`
+     * const emiWithCONTRATOOnly = await prisma.emi.findMany({ select: { CONTRATO: true } })
+     * 
+    **/
+    findMany<T extends emiFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, emiFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<emiPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Emi.
+     * @param {emiCreateArgs} args - Arguments to create a Emi.
+     * @example
+     * // Create one Emi
+     * const Emi = await prisma.emi.create({
+     *   data: {
+     *     // ... data to create a Emi
+     *   }
+     * })
+     * 
+    **/
+    create<T extends emiCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, emiCreateArgs<ExtArgs>>
+    ): Prisma__emiClient<$Types.GetResult<emiPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Emis.
+     *     @param {emiCreateManyArgs} args - Arguments to create many Emis.
+     *     @example
+     *     // Create many Emis
+     *     const emi = await prisma.emi.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends emiCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, emiCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Emi.
+     * @param {emiDeleteArgs} args - Arguments to delete one Emi.
+     * @example
+     * // Delete one Emi
+     * const Emi = await prisma.emi.delete({
+     *   where: {
+     *     // ... filter to delete one Emi
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends emiDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, emiDeleteArgs<ExtArgs>>
+    ): Prisma__emiClient<$Types.GetResult<emiPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Emi.
+     * @param {emiUpdateArgs} args - Arguments to update one Emi.
+     * @example
+     * // Update one Emi
+     * const emi = await prisma.emi.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends emiUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, emiUpdateArgs<ExtArgs>>
+    ): Prisma__emiClient<$Types.GetResult<emiPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Emis.
+     * @param {emiDeleteManyArgs} args - Arguments to filter Emis to delete.
+     * @example
+     * // Delete a few Emis
+     * const { count } = await prisma.emi.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends emiDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, emiDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Emis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {emiUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Emis
+     * const emi = await prisma.emi.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends emiUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, emiUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Emi.
+     * @param {emiUpsertArgs} args - Arguments to update or create a Emi.
+     * @example
+     * // Update or create a Emi
+     * const emi = await prisma.emi.upsert({
+     *   create: {
+     *     // ... data to create a Emi
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Emi we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends emiUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, emiUpsertArgs<ExtArgs>>
+    ): Prisma__emiClient<$Types.GetResult<emiPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Emis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {emiCountArgs} args - Arguments to filter Emis to count.
+     * @example
+     * // Count the number of Emis
+     * const count = await prisma.emi.count({
+     *   where: {
+     *     // ... the filter for the Emis we want to count
+     *   }
+     * })
+    **/
+    count<T extends emiCountArgs>(
+      args?: Subset<T, emiCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EmiCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Emi.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmiAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EmiAggregateArgs>(args: Subset<T, EmiAggregateArgs>): Prisma.PrismaPromise<GetEmiAggregateType<T>>
+
+    /**
+     * Group by Emi.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {emiGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends emiGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: emiGroupByArgs['orderBy'] }
+        : { orderBy?: emiGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, emiGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEmiGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for emi.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__emiClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * emi base type for findUnique actions
+   */
+  export type emiFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the emi
+     */
+    select?: emiSelect<ExtArgs> | null
+    /**
+     * Filter, which emi to fetch.
+     */
+    where: emiWhereUniqueInput
+  }
+
+  /**
+   * emi findUnique
+   */
+  export interface emiFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends emiFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * emi findUniqueOrThrow
+   */
+  export type emiFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the emi
+     */
+    select?: emiSelect<ExtArgs> | null
+    /**
+     * Filter, which emi to fetch.
+     */
+    where: emiWhereUniqueInput
+  }
+
+
+  /**
+   * emi base type for findFirst actions
+   */
+  export type emiFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the emi
+     */
+    select?: emiSelect<ExtArgs> | null
+    /**
+     * Filter, which emi to fetch.
+     */
+    where?: emiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of emis to fetch.
+     */
+    orderBy?: emiOrderByWithRelationInput | emiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for emis.
+     */
+    cursor?: emiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` emis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` emis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of emis.
+     */
+    distinct?: EmiScalarFieldEnum | EmiScalarFieldEnum[]
+  }
+
+  /**
+   * emi findFirst
+   */
+  export interface emiFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends emiFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * emi findFirstOrThrow
+   */
+  export type emiFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the emi
+     */
+    select?: emiSelect<ExtArgs> | null
+    /**
+     * Filter, which emi to fetch.
+     */
+    where?: emiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of emis to fetch.
+     */
+    orderBy?: emiOrderByWithRelationInput | emiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for emis.
+     */
+    cursor?: emiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` emis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` emis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of emis.
+     */
+    distinct?: EmiScalarFieldEnum | EmiScalarFieldEnum[]
+  }
+
+
+  /**
+   * emi findMany
+   */
+  export type emiFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the emi
+     */
+    select?: emiSelect<ExtArgs> | null
+    /**
+     * Filter, which emis to fetch.
+     */
+    where?: emiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of emis to fetch.
+     */
+    orderBy?: emiOrderByWithRelationInput | emiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing emis.
+     */
+    cursor?: emiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` emis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` emis.
+     */
+    skip?: number
+    distinct?: EmiScalarFieldEnum | EmiScalarFieldEnum[]
+  }
+
+
+  /**
+   * emi create
+   */
+  export type emiCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the emi
+     */
+    select?: emiSelect<ExtArgs> | null
+    /**
+     * The data needed to create a emi.
+     */
+    data?: XOR<emiCreateInput, emiUncheckedCreateInput>
+  }
+
+
+  /**
+   * emi createMany
+   */
+  export type emiCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many emis.
+     */
+    data: emiCreateManyInput | emiCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * emi update
+   */
+  export type emiUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the emi
+     */
+    select?: emiSelect<ExtArgs> | null
+    /**
+     * The data needed to update a emi.
+     */
+    data: XOR<emiUpdateInput, emiUncheckedUpdateInput>
+    /**
+     * Choose, which emi to update.
+     */
+    where: emiWhereUniqueInput
+  }
+
+
+  /**
+   * emi updateMany
+   */
+  export type emiUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update emis.
+     */
+    data: XOR<emiUpdateManyMutationInput, emiUncheckedUpdateManyInput>
+    /**
+     * Filter which emis to update
+     */
+    where?: emiWhereInput
+  }
+
+
+  /**
+   * emi upsert
+   */
+  export type emiUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the emi
+     */
+    select?: emiSelect<ExtArgs> | null
+    /**
+     * The filter to search for the emi to update in case it exists.
+     */
+    where: emiWhereUniqueInput
+    /**
+     * In case the emi found by the `where` argument doesn't exist, create a new emi with this data.
+     */
+    create: XOR<emiCreateInput, emiUncheckedCreateInput>
+    /**
+     * In case the emi was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<emiUpdateInput, emiUncheckedUpdateInput>
+  }
+
+
+  /**
+   * emi delete
+   */
+  export type emiDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the emi
+     */
+    select?: emiSelect<ExtArgs> | null
+    /**
+     * Filter which emi to delete.
+     */
+    where: emiWhereUniqueInput
+  }
+
+
+  /**
+   * emi deleteMany
+   */
+  export type emiDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which emis to delete
+     */
+    where?: emiWhereInput
+  }
+
+
+  /**
+   * emi without action
+   */
+  export type emiArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the emi
+     */
+    select?: emiSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -63557,6 +65022,52 @@ export namespace Prisma {
   };
 
   export type Poliza_5380ScalarFieldEnum = (typeof Poliza_5380ScalarFieldEnum)[keyof typeof Poliza_5380ScalarFieldEnum]
+
+
+  export const EmiScalarFieldEnum: {
+    CONTRATO: 'CONTRATO',
+    NRO_RECIBO: 'NRO_RECIBO',
+    SERIE: 'SERIE',
+    COMPROB: 'COMPROB',
+    DIA_REN: 'DIA_REN',
+    DIA_CAR: 'DIA_CAR',
+    DIA_EMI: 'DIA_EMI',
+    DIA_PAG: 'DIA_PAG',
+    HORA_CAR: 'HORA_CAR',
+    MES: 'MES',
+    ANO: 'ANO',
+    IMPORTE: 'IMPORTE',
+    MAN_COM: 'MAN_COM',
+    MOVIM: 'MOVIM',
+    EX: 'EX',
+    GR: 'GR',
+    SEGURO: 'SEGURO',
+    CARGA: 'CARGA',
+    OPERADOR: 'OPERADOR',
+    EXTRA: 'EXTRA',
+    TIP_EXT: 'TIP_EXT',
+    SUCURSAL: 'SUCURSAL',
+    PUESTO: 'PUESTO',
+    ACTUALIZA: 'ACTUALIZA',
+    MARCA: 'MARCA',
+    ZONA: 'ZONA',
+    CUOTA: 'CUOTA',
+    EMPRESA: 'EMPRESA',
+    CAE: 'CAE',
+    CAE_VTO: 'CAE_VTO',
+    NCR_SERIE: 'NCR_SERIE',
+    NCR_NRO: 'NCR_NRO',
+    BARCOD: 'BARCOD',
+    DNI: 'DNI',
+    FE_SERIE: 'FE_SERIE',
+    FE_NRO: 'FE_NRO',
+    FEC_REF: 'FEC_REF',
+    CUOTAS_REF: 'CUOTAS_REF',
+    IMPO_REF: 'IMPO_REF',
+    id: 'id'
+  };
+
+  export type EmiScalarFieldEnum = (typeof EmiScalarFieldEnum)[keyof typeof EmiScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -69323,6 +70834,193 @@ export namespace Prisma {
     NACIMIENTO?: StringNullableWithAggregatesFilter | string | null
     CAPITAL?: StringNullableWithAggregatesFilter | string | null
     TIPO?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type emiWhereInput = {
+    AND?: emiWhereInput | emiWhereInput[]
+    OR?: emiWhereInput[]
+    NOT?: emiWhereInput | emiWhereInput[]
+    CONTRATO?: IntNullableFilter | number | null
+    NRO_RECIBO?: IntNullableFilter | number | null
+    SERIE?: IntNullableFilter | number | null
+    COMPROB?: IntNullableFilter | number | null
+    DIA_REN?: DateTimeNullableFilter | Date | string | null
+    DIA_CAR?: DateTimeNullableFilter | Date | string | null
+    DIA_EMI?: DateTimeNullableFilter | Date | string | null
+    DIA_PAG?: DateTimeNullableFilter | Date | string | null
+    HORA_CAR?: StringNullableFilter | string | null
+    MES?: IntNullableFilter | number | null
+    ANO?: IntNullableFilter | number | null
+    IMPORTE?: FloatNullableFilter | number | null
+    MAN_COM?: StringNullableFilter | string | null
+    MOVIM?: StringNullableFilter | string | null
+    EX?: FloatNullableFilter | number | null
+    GR?: FloatNullableFilter | number | null
+    SEGURO?: FloatNullableFilter | number | null
+    CARGA?: IntNullableFilter | number | null
+    OPERADOR?: IntNullableFilter | number | null
+    EXTRA?: IntNullableFilter | number | null
+    TIP_EXT?: IntNullableFilter | number | null
+    SUCURSAL?: StringNullableFilter | string | null
+    PUESTO?: StringNullableFilter | string | null
+    ACTUALIZA?: StringNullableFilter | string | null
+    MARCA?: IntNullableFilter | number | null
+    ZONA?: IntNullableFilter | number | null
+    CUOTA?: FloatNullableFilter | number | null
+    EMPRESA?: StringNullableFilter | string | null
+    CAE?: StringNullableFilter | string | null
+    CAE_VTO?: StringNullableFilter | string | null
+    NCR_SERIE?: IntNullableFilter | number | null
+    NCR_NRO?: IntNullableFilter | number | null
+    BARCOD?: StringNullableFilter | string | null
+    DNI?: IntNullableFilter | number | null
+    FE_SERIE?: IntNullableFilter | number | null
+    FE_NRO?: IntNullableFilter | number | null
+    FEC_REF?: DateTimeNullableFilter | Date | string | null
+    CUOTAS_REF?: IntNullableFilter | number | null
+    IMPO_REF?: FloatNullableFilter | number | null
+    id?: IntFilter | number
+  }
+
+  export type emiOrderByWithRelationInput = {
+    CONTRATO?: SortOrderInput | SortOrder
+    NRO_RECIBO?: SortOrderInput | SortOrder
+    SERIE?: SortOrderInput | SortOrder
+    COMPROB?: SortOrderInput | SortOrder
+    DIA_REN?: SortOrderInput | SortOrder
+    DIA_CAR?: SortOrderInput | SortOrder
+    DIA_EMI?: SortOrderInput | SortOrder
+    DIA_PAG?: SortOrderInput | SortOrder
+    HORA_CAR?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
+    MAN_COM?: SortOrderInput | SortOrder
+    MOVIM?: SortOrderInput | SortOrder
+    EX?: SortOrderInput | SortOrder
+    GR?: SortOrderInput | SortOrder
+    SEGURO?: SortOrderInput | SortOrder
+    CARGA?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    EXTRA?: SortOrderInput | SortOrder
+    TIP_EXT?: SortOrderInput | SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
+    PUESTO?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    MARCA?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    CUOTA?: SortOrderInput | SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+    CAE?: SortOrderInput | SortOrder
+    CAE_VTO?: SortOrderInput | SortOrder
+    NCR_SERIE?: SortOrderInput | SortOrder
+    NCR_NRO?: SortOrderInput | SortOrder
+    BARCOD?: SortOrderInput | SortOrder
+    DNI?: SortOrderInput | SortOrder
+    FE_SERIE?: SortOrderInput | SortOrder
+    FE_NRO?: SortOrderInput | SortOrder
+    FEC_REF?: SortOrderInput | SortOrder
+    CUOTAS_REF?: SortOrderInput | SortOrder
+    IMPO_REF?: SortOrderInput | SortOrder
+    id?: SortOrder
+  }
+
+  export type emiWhereUniqueInput = {
+    id?: number
+  }
+
+  export type emiOrderByWithAggregationInput = {
+    CONTRATO?: SortOrderInput | SortOrder
+    NRO_RECIBO?: SortOrderInput | SortOrder
+    SERIE?: SortOrderInput | SortOrder
+    COMPROB?: SortOrderInput | SortOrder
+    DIA_REN?: SortOrderInput | SortOrder
+    DIA_CAR?: SortOrderInput | SortOrder
+    DIA_EMI?: SortOrderInput | SortOrder
+    DIA_PAG?: SortOrderInput | SortOrder
+    HORA_CAR?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
+    MAN_COM?: SortOrderInput | SortOrder
+    MOVIM?: SortOrderInput | SortOrder
+    EX?: SortOrderInput | SortOrder
+    GR?: SortOrderInput | SortOrder
+    SEGURO?: SortOrderInput | SortOrder
+    CARGA?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    EXTRA?: SortOrderInput | SortOrder
+    TIP_EXT?: SortOrderInput | SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
+    PUESTO?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    MARCA?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    CUOTA?: SortOrderInput | SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+    CAE?: SortOrderInput | SortOrder
+    CAE_VTO?: SortOrderInput | SortOrder
+    NCR_SERIE?: SortOrderInput | SortOrder
+    NCR_NRO?: SortOrderInput | SortOrder
+    BARCOD?: SortOrderInput | SortOrder
+    DNI?: SortOrderInput | SortOrder
+    FE_SERIE?: SortOrderInput | SortOrder
+    FE_NRO?: SortOrderInput | SortOrder
+    FEC_REF?: SortOrderInput | SortOrder
+    CUOTAS_REF?: SortOrderInput | SortOrder
+    IMPO_REF?: SortOrderInput | SortOrder
+    id?: SortOrder
+    _count?: emiCountOrderByAggregateInput
+    _avg?: emiAvgOrderByAggregateInput
+    _max?: emiMaxOrderByAggregateInput
+    _min?: emiMinOrderByAggregateInput
+    _sum?: emiSumOrderByAggregateInput
+  }
+
+  export type emiScalarWhereWithAggregatesInput = {
+    AND?: emiScalarWhereWithAggregatesInput | emiScalarWhereWithAggregatesInput[]
+    OR?: emiScalarWhereWithAggregatesInput[]
+    NOT?: emiScalarWhereWithAggregatesInput | emiScalarWhereWithAggregatesInput[]
+    CONTRATO?: IntNullableWithAggregatesFilter | number | null
+    NRO_RECIBO?: IntNullableWithAggregatesFilter | number | null
+    SERIE?: IntNullableWithAggregatesFilter | number | null
+    COMPROB?: IntNullableWithAggregatesFilter | number | null
+    DIA_REN?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    DIA_CAR?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    DIA_EMI?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    DIA_PAG?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    HORA_CAR?: StringNullableWithAggregatesFilter | string | null
+    MES?: IntNullableWithAggregatesFilter | number | null
+    ANO?: IntNullableWithAggregatesFilter | number | null
+    IMPORTE?: FloatNullableWithAggregatesFilter | number | null
+    MAN_COM?: StringNullableWithAggregatesFilter | string | null
+    MOVIM?: StringNullableWithAggregatesFilter | string | null
+    EX?: FloatNullableWithAggregatesFilter | number | null
+    GR?: FloatNullableWithAggregatesFilter | number | null
+    SEGURO?: FloatNullableWithAggregatesFilter | number | null
+    CARGA?: IntNullableWithAggregatesFilter | number | null
+    OPERADOR?: IntNullableWithAggregatesFilter | number | null
+    EXTRA?: IntNullableWithAggregatesFilter | number | null
+    TIP_EXT?: IntNullableWithAggregatesFilter | number | null
+    SUCURSAL?: StringNullableWithAggregatesFilter | string | null
+    PUESTO?: StringNullableWithAggregatesFilter | string | null
+    ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
+    MARCA?: IntNullableWithAggregatesFilter | number | null
+    ZONA?: IntNullableWithAggregatesFilter | number | null
+    CUOTA?: FloatNullableWithAggregatesFilter | number | null
+    EMPRESA?: StringNullableWithAggregatesFilter | string | null
+    CAE?: StringNullableWithAggregatesFilter | string | null
+    CAE_VTO?: StringNullableWithAggregatesFilter | string | null
+    NCR_SERIE?: IntNullableWithAggregatesFilter | number | null
+    NCR_NRO?: IntNullableWithAggregatesFilter | number | null
+    BARCOD?: StringNullableWithAggregatesFilter | string | null
+    DNI?: IntNullableWithAggregatesFilter | number | null
+    FE_SERIE?: IntNullableWithAggregatesFilter | number | null
+    FE_NRO?: IntNullableWithAggregatesFilter | number | null
+    FEC_REF?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    CUOTAS_REF?: IntNullableWithAggregatesFilter | number | null
+    IMPO_REF?: FloatNullableWithAggregatesFilter | number | null
+    id?: IntWithAggregatesFilter | number
   }
 
   export type accionesCreateInput = {
@@ -77951,6 +79649,304 @@ export namespace Prisma {
     TIPO?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type emiCreateInput = {
+    CONTRATO?: number | null
+    NRO_RECIBO?: number | null
+    SERIE?: number | null
+    COMPROB?: number | null
+    DIA_REN?: Date | string | null
+    DIA_CAR?: Date | string | null
+    DIA_EMI?: Date | string | null
+    DIA_PAG?: Date | string | null
+    HORA_CAR?: string | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+    MAN_COM?: string | null
+    MOVIM?: string | null
+    EX?: number | null
+    GR?: number | null
+    SEGURO?: number | null
+    CARGA?: number | null
+    OPERADOR?: number | null
+    EXTRA?: number | null
+    TIP_EXT?: number | null
+    SUCURSAL?: string | null
+    PUESTO?: string | null
+    ACTUALIZA?: string | null
+    MARCA?: number | null
+    ZONA?: number | null
+    CUOTA?: number | null
+    EMPRESA?: string | null
+    CAE?: string | null
+    CAE_VTO?: string | null
+    NCR_SERIE?: number | null
+    NCR_NRO?: number | null
+    BARCOD?: string | null
+    DNI?: number | null
+    FE_SERIE?: number | null
+    FE_NRO?: number | null
+    FEC_REF?: Date | string | null
+    CUOTAS_REF?: number | null
+    IMPO_REF?: number | null
+  }
+
+  export type emiUncheckedCreateInput = {
+    CONTRATO?: number | null
+    NRO_RECIBO?: number | null
+    SERIE?: number | null
+    COMPROB?: number | null
+    DIA_REN?: Date | string | null
+    DIA_CAR?: Date | string | null
+    DIA_EMI?: Date | string | null
+    DIA_PAG?: Date | string | null
+    HORA_CAR?: string | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+    MAN_COM?: string | null
+    MOVIM?: string | null
+    EX?: number | null
+    GR?: number | null
+    SEGURO?: number | null
+    CARGA?: number | null
+    OPERADOR?: number | null
+    EXTRA?: number | null
+    TIP_EXT?: number | null
+    SUCURSAL?: string | null
+    PUESTO?: string | null
+    ACTUALIZA?: string | null
+    MARCA?: number | null
+    ZONA?: number | null
+    CUOTA?: number | null
+    EMPRESA?: string | null
+    CAE?: string | null
+    CAE_VTO?: string | null
+    NCR_SERIE?: number | null
+    NCR_NRO?: number | null
+    BARCOD?: string | null
+    DNI?: number | null
+    FE_SERIE?: number | null
+    FE_NRO?: number | null
+    FEC_REF?: Date | string | null
+    CUOTAS_REF?: number | null
+    IMPO_REF?: number | null
+    id?: number
+  }
+
+  export type emiUpdateInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_RECIBO?: NullableIntFieldUpdateOperationsInput | number | null
+    SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    COMPROB?: NullableIntFieldUpdateOperationsInput | number | null
+    DIA_REN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_CAR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_EMI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_PAG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    HORA_CAR?: NullableStringFieldUpdateOperationsInput | string | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    MAN_COM?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIM?: NullableStringFieldUpdateOperationsInput | string | null
+    EX?: NullableFloatFieldUpdateOperationsInput | number | null
+    GR?: NullableFloatFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CARGA?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    EXTRA?: NullableIntFieldUpdateOperationsInput | number | null
+    TIP_EXT?: NullableIntFieldUpdateOperationsInput | number | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    PUESTO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    MARCA?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    CAE?: NullableStringFieldUpdateOperationsInput | string | null
+    CAE_VTO?: NullableStringFieldUpdateOperationsInput | string | null
+    NCR_SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    NCR_NRO?: NullableIntFieldUpdateOperationsInput | number | null
+    BARCOD?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI?: NullableIntFieldUpdateOperationsInput | number | null
+    FE_SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    FE_NRO?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_REF?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CUOTAS_REF?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPO_REF?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type emiUncheckedUpdateInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_RECIBO?: NullableIntFieldUpdateOperationsInput | number | null
+    SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    COMPROB?: NullableIntFieldUpdateOperationsInput | number | null
+    DIA_REN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_CAR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_EMI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_PAG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    HORA_CAR?: NullableStringFieldUpdateOperationsInput | string | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    MAN_COM?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIM?: NullableStringFieldUpdateOperationsInput | string | null
+    EX?: NullableFloatFieldUpdateOperationsInput | number | null
+    GR?: NullableFloatFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CARGA?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    EXTRA?: NullableIntFieldUpdateOperationsInput | number | null
+    TIP_EXT?: NullableIntFieldUpdateOperationsInput | number | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    PUESTO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    MARCA?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    CAE?: NullableStringFieldUpdateOperationsInput | string | null
+    CAE_VTO?: NullableStringFieldUpdateOperationsInput | string | null
+    NCR_SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    NCR_NRO?: NullableIntFieldUpdateOperationsInput | number | null
+    BARCOD?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI?: NullableIntFieldUpdateOperationsInput | number | null
+    FE_SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    FE_NRO?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_REF?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CUOTAS_REF?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPO_REF?: NullableFloatFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type emiCreateManyInput = {
+    CONTRATO?: number | null
+    NRO_RECIBO?: number | null
+    SERIE?: number | null
+    COMPROB?: number | null
+    DIA_REN?: Date | string | null
+    DIA_CAR?: Date | string | null
+    DIA_EMI?: Date | string | null
+    DIA_PAG?: Date | string | null
+    HORA_CAR?: string | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+    MAN_COM?: string | null
+    MOVIM?: string | null
+    EX?: number | null
+    GR?: number | null
+    SEGURO?: number | null
+    CARGA?: number | null
+    OPERADOR?: number | null
+    EXTRA?: number | null
+    TIP_EXT?: number | null
+    SUCURSAL?: string | null
+    PUESTO?: string | null
+    ACTUALIZA?: string | null
+    MARCA?: number | null
+    ZONA?: number | null
+    CUOTA?: number | null
+    EMPRESA?: string | null
+    CAE?: string | null
+    CAE_VTO?: string | null
+    NCR_SERIE?: number | null
+    NCR_NRO?: number | null
+    BARCOD?: string | null
+    DNI?: number | null
+    FE_SERIE?: number | null
+    FE_NRO?: number | null
+    FEC_REF?: Date | string | null
+    CUOTAS_REF?: number | null
+    IMPO_REF?: number | null
+    id?: number
+  }
+
+  export type emiUpdateManyMutationInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_RECIBO?: NullableIntFieldUpdateOperationsInput | number | null
+    SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    COMPROB?: NullableIntFieldUpdateOperationsInput | number | null
+    DIA_REN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_CAR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_EMI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_PAG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    HORA_CAR?: NullableStringFieldUpdateOperationsInput | string | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    MAN_COM?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIM?: NullableStringFieldUpdateOperationsInput | string | null
+    EX?: NullableFloatFieldUpdateOperationsInput | number | null
+    GR?: NullableFloatFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CARGA?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    EXTRA?: NullableIntFieldUpdateOperationsInput | number | null
+    TIP_EXT?: NullableIntFieldUpdateOperationsInput | number | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    PUESTO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    MARCA?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    CAE?: NullableStringFieldUpdateOperationsInput | string | null
+    CAE_VTO?: NullableStringFieldUpdateOperationsInput | string | null
+    NCR_SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    NCR_NRO?: NullableIntFieldUpdateOperationsInput | number | null
+    BARCOD?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI?: NullableIntFieldUpdateOperationsInput | number | null
+    FE_SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    FE_NRO?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_REF?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CUOTAS_REF?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPO_REF?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type emiUncheckedUpdateManyInput = {
+    CONTRATO?: NullableIntFieldUpdateOperationsInput | number | null
+    NRO_RECIBO?: NullableIntFieldUpdateOperationsInput | number | null
+    SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    COMPROB?: NullableIntFieldUpdateOperationsInput | number | null
+    DIA_REN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_CAR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_EMI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DIA_PAG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    HORA_CAR?: NullableStringFieldUpdateOperationsInput | string | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    MAN_COM?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIM?: NullableStringFieldUpdateOperationsInput | string | null
+    EX?: NullableFloatFieldUpdateOperationsInput | number | null
+    GR?: NullableFloatFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CARGA?: NullableIntFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    EXTRA?: NullableIntFieldUpdateOperationsInput | number | null
+    TIP_EXT?: NullableIntFieldUpdateOperationsInput | number | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    PUESTO?: NullableStringFieldUpdateOperationsInput | string | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    MARCA?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    CAE?: NullableStringFieldUpdateOperationsInput | string | null
+    CAE_VTO?: NullableStringFieldUpdateOperationsInput | string | null
+    NCR_SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    NCR_NRO?: NullableIntFieldUpdateOperationsInput | number | null
+    BARCOD?: NullableStringFieldUpdateOperationsInput | string | null
+    DNI?: NullableIntFieldUpdateOperationsInput | number | null
+    FE_SERIE?: NullableIntFieldUpdateOperationsInput | number | null
+    FE_NRO?: NullableIntFieldUpdateOperationsInput | number | null
+    FEC_REF?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CUOTAS_REF?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPO_REF?: NullableFloatFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter = {
     equals?: number
     in?: number[]
@@ -83316,6 +85312,191 @@ export namespace Prisma {
     NACIMIENTO?: SortOrder
     CAPITAL?: SortOrder
     TIPO?: SortOrder
+  }
+
+  export type emiCountOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_RECIBO?: SortOrder
+    SERIE?: SortOrder
+    COMPROB?: SortOrder
+    DIA_REN?: SortOrder
+    DIA_CAR?: SortOrder
+    DIA_EMI?: SortOrder
+    DIA_PAG?: SortOrder
+    HORA_CAR?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    MAN_COM?: SortOrder
+    MOVIM?: SortOrder
+    EX?: SortOrder
+    GR?: SortOrder
+    SEGURO?: SortOrder
+    CARGA?: SortOrder
+    OPERADOR?: SortOrder
+    EXTRA?: SortOrder
+    TIP_EXT?: SortOrder
+    SUCURSAL?: SortOrder
+    PUESTO?: SortOrder
+    ACTUALIZA?: SortOrder
+    MARCA?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EMPRESA?: SortOrder
+    CAE?: SortOrder
+    CAE_VTO?: SortOrder
+    NCR_SERIE?: SortOrder
+    NCR_NRO?: SortOrder
+    BARCOD?: SortOrder
+    DNI?: SortOrder
+    FE_SERIE?: SortOrder
+    FE_NRO?: SortOrder
+    FEC_REF?: SortOrder
+    CUOTAS_REF?: SortOrder
+    IMPO_REF?: SortOrder
+    id?: SortOrder
+  }
+
+  export type emiAvgOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_RECIBO?: SortOrder
+    SERIE?: SortOrder
+    COMPROB?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    EX?: SortOrder
+    GR?: SortOrder
+    SEGURO?: SortOrder
+    CARGA?: SortOrder
+    OPERADOR?: SortOrder
+    EXTRA?: SortOrder
+    TIP_EXT?: SortOrder
+    MARCA?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    NCR_SERIE?: SortOrder
+    NCR_NRO?: SortOrder
+    DNI?: SortOrder
+    FE_SERIE?: SortOrder
+    FE_NRO?: SortOrder
+    CUOTAS_REF?: SortOrder
+    IMPO_REF?: SortOrder
+    id?: SortOrder
+  }
+
+  export type emiMaxOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_RECIBO?: SortOrder
+    SERIE?: SortOrder
+    COMPROB?: SortOrder
+    DIA_REN?: SortOrder
+    DIA_CAR?: SortOrder
+    DIA_EMI?: SortOrder
+    DIA_PAG?: SortOrder
+    HORA_CAR?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    MAN_COM?: SortOrder
+    MOVIM?: SortOrder
+    EX?: SortOrder
+    GR?: SortOrder
+    SEGURO?: SortOrder
+    CARGA?: SortOrder
+    OPERADOR?: SortOrder
+    EXTRA?: SortOrder
+    TIP_EXT?: SortOrder
+    SUCURSAL?: SortOrder
+    PUESTO?: SortOrder
+    ACTUALIZA?: SortOrder
+    MARCA?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EMPRESA?: SortOrder
+    CAE?: SortOrder
+    CAE_VTO?: SortOrder
+    NCR_SERIE?: SortOrder
+    NCR_NRO?: SortOrder
+    BARCOD?: SortOrder
+    DNI?: SortOrder
+    FE_SERIE?: SortOrder
+    FE_NRO?: SortOrder
+    FEC_REF?: SortOrder
+    CUOTAS_REF?: SortOrder
+    IMPO_REF?: SortOrder
+    id?: SortOrder
+  }
+
+  export type emiMinOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_RECIBO?: SortOrder
+    SERIE?: SortOrder
+    COMPROB?: SortOrder
+    DIA_REN?: SortOrder
+    DIA_CAR?: SortOrder
+    DIA_EMI?: SortOrder
+    DIA_PAG?: SortOrder
+    HORA_CAR?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    MAN_COM?: SortOrder
+    MOVIM?: SortOrder
+    EX?: SortOrder
+    GR?: SortOrder
+    SEGURO?: SortOrder
+    CARGA?: SortOrder
+    OPERADOR?: SortOrder
+    EXTRA?: SortOrder
+    TIP_EXT?: SortOrder
+    SUCURSAL?: SortOrder
+    PUESTO?: SortOrder
+    ACTUALIZA?: SortOrder
+    MARCA?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EMPRESA?: SortOrder
+    CAE?: SortOrder
+    CAE_VTO?: SortOrder
+    NCR_SERIE?: SortOrder
+    NCR_NRO?: SortOrder
+    BARCOD?: SortOrder
+    DNI?: SortOrder
+    FE_SERIE?: SortOrder
+    FE_NRO?: SortOrder
+    FEC_REF?: SortOrder
+    CUOTAS_REF?: SortOrder
+    IMPO_REF?: SortOrder
+    id?: SortOrder
+  }
+
+  export type emiSumOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_RECIBO?: SortOrder
+    SERIE?: SortOrder
+    COMPROB?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    EX?: SortOrder
+    GR?: SortOrder
+    SEGURO?: SortOrder
+    CARGA?: SortOrder
+    OPERADOR?: SortOrder
+    EXTRA?: SortOrder
+    TIP_EXT?: SortOrder
+    MARCA?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    NCR_SERIE?: SortOrder
+    NCR_NRO?: SortOrder
+    DNI?: SortOrder
+    FE_SERIE?: SortOrder
+    FE_NRO?: SortOrder
+    CUOTAS_REF?: SortOrder
+    IMPO_REF?: SortOrder
+    id?: SortOrder
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {

@@ -2652,3 +2652,46 @@ model prestado {
 
   @@ignore
 }
+
+model emi {
+  CONTRATO   Int?
+  NRO_RECIBO Int?
+  SERIE      Int?
+  COMPROB    Int?
+  DIA_REN    DateTime? @db.Date
+  DIA_CAR    DateTime? @db.Date
+  DIA_EMI    DateTime? @db.Date
+  DIA_PAG    DateTime? @db.Date
+  HORA_CAR   String?   @db.VarChar(8)
+  MES        Int?
+  ANO        Int?
+  IMPORTE    Float?
+  MAN_COM    String?   @db.VarChar(1)
+  MOVIM      String?   @db.VarChar(1)
+  EX         Float?
+  GR         Float?
+  SEGURO     Float?
+  CARGA      Int?
+  OPERADOR   Int?
+  EXTRA      Int?      @db.TinyInt
+  TIP_EXT    Int?
+  SUCURSAL   String?   @db.VarChar(1)
+  PUESTO     String?   @db.VarChar(2)
+  ACTUALIZA  String?   @db.VarChar(13)
+  MARCA      Int?      @db.TinyInt
+  ZONA       Int?
+  CUOTA      Float?
+  EMPRESA    String?   @db.VarChar(1)
+  CAE        String?   @db.VarChar(20)
+  CAE_VTO    String?   @db.VarChar(8)
+  NCR_SERIE  Int?
+  NCR_NRO    Int?
+  BARCOD     String?   @db.VarChar(40)
+  DNI        Int?
+  FE_SERIE   Int?
+  FE_NRO     Int?
+  FEC_REF    DateTime? @db.Date
+  CUOTAS_REF Int?
+  IMPO_REF   Float?
+  id         Int       @id @default(autoincrement())
+}

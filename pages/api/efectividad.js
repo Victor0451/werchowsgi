@@ -4,18 +4,110 @@ import { Werchow, SGI, Camp, Info } from "../../libs/config";
 export default async function handler(req, res) {
   if (req.method === "GET") {
     if (req.query.f && req.query.f === "traer cOf") {
-      const cOf = await Info.$queryRaw`
-         
+      const cOf = await Werchow.$queryRaw`
+      SELECT
+      m.ZONA as 'zona',
+      g.DESCRIP as 'descr',
+      (
+        SELECT
+          SUM(c.IMPORTE)
+        FROM
+          maestro AS m1
+        INNER JOIN cuo_fija AS c ON c.CONTRATO = m1.CONTRATO
+        WHERE
+          m.ZONA = m1.ZONA
+        AND m1.ZONA IN (1, 3, 5, 30, 60)
+        AND m1.GRUPO = 1000
+        GROUP BY
+          m1.ZONA
+        ORDER BY
+          m.ZONA ASC
+      ) 'total',
+      (
+        SELECT
+          COUNT(*)
+        FROM
+          maestro AS m1
+        WHERE
+          m.ZONA = m1.ZONA
+        AND m1.ZONA IN (1, 3, 5, 30, 60)
+        AND m1.GRUPO = 1000
+        GROUP BY
+          m1.ZONA
+        ORDER BY
+          m.ZONA ASC
+      ) 'fichas',
+      (
+        SELECT
+          SUM(p.IMPORTE)
+        FROM
+          pagos AS p
+        INNER JOIN maestro AS m1 ON m1.CONTRATO = p.CONTRATO
+        WHERE
+          m.ZONA = m1.ZONA
+        AND MES = ${parseInt(req.query.mes)}
+        AND ANO = ${parseInt(req.query.ano)}
+        AND MOVIM = 'P'
+        AND m1.ZONA IN (1, 3, 5, 30, 60)
+        AND m1.GRUPO = 1000
+        GROUP BY
+          m1.ZONA
+        ORDER BY
+          m1.ZONA ASC
+      ) 'cobrado',
+      COUNT(*) 'fichascob',
+      (
+		IFNULL(
+			(
+				SELECT
+					SUM(c.IMPORTE)
+				FROM
+					pagos AS c
+				INNER JOIN maestro AS m1 ON m1.CONTRATO = c.CONTRATO
+			
+				WHERE
+					m.ZONA = m1.ZONA
+				AND c.MES > ${parseInt(req.query.mes)}
+				AND c.ANO = ${parseInt(req.query.ano)}
+				AND c.MOVIM = 'P'
+        AND c.DIA_PAG BETWEEN ${moment()
+          .startOf("month")
+          .format("YYYY-MM-DD")} AND ${moment()
+        .endOf("month")
+        .format("YYYY-MM-DD")}
+				AND m1.ZONA  IN (1, 3, 5, 30, 60)
+				AND m1.GRUPO = 1000
+				GROUP BY
+					m1.ZONA
+				ORDER BY
+					m1.ZONA ASC
+			),
+			0
+		)
+	) 'adelantado'
+    FROM
+      maestro AS m
+    INNER JOIN zonas AS g ON g.CODIGO = m.ZONA
+    INNER JOIN cuo_fija AS c ON c.CONTRATO = m.CONTRATO
+    WHERE
+      m.ZONA IN (1, 3, 5, 30, 60)
+    AND m.GRUPO = 1000
+    AND EXISTS (
       SELECT
         *
       FROM
-         c1000
-      WHERE 
-          mes = ${parseInt(req.query.mes)}
-      AND           
-          ano = ${parseInt(req.query.ano)}
-      AND 
-         zona in (1,3,5,30,60)                     
+        pagos AS p
+      WHERE
+        m.CONTRATO = p.CONTRATO
+      AND MES = ${parseInt(req.query.mes)}
+      AND ANO = ${parseInt(req.query.ano)}
+      AND MOVIM = 'P'
+    )
+    GROUP BY
+      m.ZONA,
+      g.DESCRIP
+    ORDER BY
+      m.ZONA ASC               
       
         `;
       res
@@ -26,20 +118,114 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer cCob") {
-      const cOf = await Info.$queryRaw`
-         
+      const cOf = await Werchow.$queryRaw`
+      SELECT
+      m.ZONA as 'zona',
+      g.DESCRIP as 'descr',
+      (
+        SELECT
+          SUM(c.IMPORTE)
+        FROM
+          maestro AS m1
+        INNER JOIN emi AS c ON c.CONTRATO = m1.CONTRATO
+        WHERE
+          m.ZONA = m1.ZONA
+        AND m1.ZONA NOT IN (1, 3, 5, 30, 60, 99)
+        AND m1.GRUPO = 1000
+        AND c.DIA_EMI = ${moment().startOf("month").format("YYYY-MM-DD")}
+        GROUP BY
+          m1.ZONA
+        ORDER BY
+          m.ZONA ASC
+      ) 'total',
+      (
+        SELECT
+          COUNT(*)
+        FROM
+          maestro AS m1
+        WHERE
+          m.ZONA = m1.ZONA
+        AND m1.ZONA NOT IN (1, 3, 5, 30, 60, 99)
+        AND m1.GRUPO = 1000
+        GROUP BY
+          m1.ZONA
+        ORDER BY
+          m.ZONA ASC
+      ) 'fichas',
+      (
+        SELECT
+          SUM(p.IMPORTE)
+        FROM
+          pagos AS p
+        INNER JOIN maestro AS m1 ON m1.CONTRATO = p.CONTRATO
+        INNER JOIN emi AS c ON c.CONTRATO = m1.CONTRATO
+        WHERE
+          m.ZONA = m1.ZONA
+        AND c.NRO_RECIBO = p.NRO_RECIBO
+        AND c.SERIE = p.SERIE
+        AND c.ANO = ${parseInt(req.query.ano)}
+        AND p.MOVIM = 'P'
+        AND m1.ZONA NOT IN (1, 3, 5, 30, 60, 99)
+        AND m1.GRUPO = 1000
+        GROUP BY
+          m1.ZONA
+        ORDER BY
+          m1.ZONA ASC
+      ) 'cobrado',
+      COUNT(*) 'fichascob',
+      (
+		IFNULL(
+			(
+				SELECT
+					SUM(c.IMPORTE)
+				FROM
+					pagos AS c
+				INNER JOIN maestro AS m1 ON m1.CONTRATO = c.CONTRATO
+			
+				WHERE
+					m.ZONA = m1.ZONA
+				AND c.MES > ${parseInt(req.query.mes)}
+				AND c.ANO = ${parseInt(req.query.ano)}
+				AND c.MOVIM = 'P'
+        AND c.DIA_PAG BETWEEN ${moment()
+          .startOf("month")
+          .format("YYYY-MM-DD")} AND ${moment()
+        .endOf("month")
+        .format("YYYY-MM-DD")}
+				AND m1.ZONA  NOT IN (1, 3, 5, 30, 60, 99)
+				AND m1.GRUPO = 1000
+				GROUP BY
+					m1.ZONA
+				ORDER BY
+					m1.ZONA ASC
+			),
+			0
+		)
+	) 'adelantado'
+    FROM
+      maestro AS m
+    INNER JOIN zonas AS g ON g.CODIGO = m.ZONA
+    INNER JOIN emi AS c ON c.CONTRATO = m.CONTRATO
+    WHERE
+      m.ZONA NOT IN (1, 3, 5, 30, 60, 99)
+    AND m.GRUPO = 1000
+    AND EXISTS (
       SELECT
         *
       FROM
-         c1000
-      WHERE 
-          mes = ${parseInt(req.query.mes)}
-      AND           
-          ano = ${parseInt(req.query.ano)}
-      AND 
-         zona not in (1,3,5,30,60)         
-
-      ORDER BY descr ASC                         
+        pagos AS p
+      WHERE
+        c.CONTRATO = p.CONTRATO
+      AND c.NRO_RECIBO = p.NRO_RECIBO
+      AND c.SERIE = p.SERIE
+      AND c.ANO = ${req.query.ano}
+      AND MOVIM = 'P'
+    )
+    GROUP BY
+      m.ZONA,
+      g.DESCRIP
+    ORDER BY
+      m.ZONA ASC                             
       
         `;
       res
@@ -50,18 +236,289 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer cbanco") {
-      const cbanco = await Info.$queryRaw`
+      const cbanco = await Werchow.$queryRaw`
          
-      SELECT
-        *
-      FROM
-         cbanco
-      WHERE 
-          mes = ${parseInt(req.query.mes)}
-      AND           
-          ano = ${parseInt(req.query.ano)}
-             
-      ORDER BY descr ASC      
+         SELECT
+	'BANCO ACTIVO' AS 'descr',
+	(
+		SELECT
+			SUM(c.IMPORTE)
+		FROM
+			maestro AS m1
+		INNER JOIN cuo_fija AS c ON c.CONTRATO = m1.CONTRATO
+		WHERE
+			m1.GRUPO > 5000
+		AND m1.GRUPO NOT IN (
+			6600,
+			6601,
+			6602,
+			6603,
+			6604,
+			6605,
+			6606,
+			6607,
+			6608,
+			6609,
+			6610,
+			6611,
+			6612,
+			6613,
+			6614,
+			6635,
+			6636,
+			6637,
+			6638,
+			6639,
+			7777,
+			8500,
+			9999
+		)
+	) 'total',
+	(
+		SELECT
+			COUNT(*)
+		FROM
+			maestro AS m1
+		WHERE
+			m1.GRUPO > 5000
+		AND m1.GRUPO NOT IN (
+			6600,
+			6601,
+			6602,
+			6603,
+			6604,
+			6605,
+			6606,
+			6607,
+			6608,
+			6609,
+			6610,
+			6611,
+			6612,
+			6613,
+			6614,
+			6635,
+			6636,
+			6637,
+			6638,
+			6639,
+			7777,
+			8500,
+			9999
+		)
+	) 'fichas',
+	(
+		SELECT
+			SUM(p.IMPORTE)
+		FROM
+			debpeso AS p
+		INNER JOIN maestro AS m1 ON m1.CONTRATO = p.ID_ABONADO
+		WHERE
+			CONVENIO = 10666
+		AND m1.GRUPO > 5000
+		AND m1.GRUPO NOT IN (
+			6600,
+			6601,
+			6602,
+			6603,
+			6604,
+			6605,
+			6606,
+			6607,
+			6608,
+			6609,
+			6610,
+			6611,
+			6612,
+			6613,
+			6614,
+			6635,
+			6636,
+			6637,
+			6638,
+			6639,
+			7777,
+			8500,
+			9999
+		)
+	) 'cobrado',
+	(
+		SELECT
+			count(p.IMPORTE)
+		FROM
+			debpeso AS p
+		INNER JOIN maestro AS m1 ON m1.CONTRATO = p.ID_ABONADO
+		WHERE
+			CONVENIO = 10666
+		AND m1.GRUPO > 5000
+		AND m1.GRUPO NOT IN (
+			6600,
+			6601,
+			6602,
+			6603,
+			6604,
+			6605,
+			6606,
+			6607,
+			6608,
+			6609,
+			6610,
+			6611,
+			6612,
+			6613,
+			6614,
+			6635,
+			6636,
+			6637,
+			6638,
+			6639,
+			7777,
+			8500,
+			9999
+		)
+	) 'fichascob',
+  0 as adelantado
+FROM
+	maestro AS m
+LIMIT 1  
+        `;
+      res
+        .status(200)
+        .json(
+          JSON.stringify(cbanco, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "traer cbanco pasivo") {
+      const cbanco = await Werchow.$queryRaw`
+         
+         SELECT
+	'BANCO PASIVO' AS 'descr',
+	(
+		SELECT
+			SUM(c.IMPORTE)
+		FROM
+			maestro AS m1
+		INNER JOIN cuo_fija AS c ON c.CONTRATO = m1.CONTRATO
+		WHERE
+			m1.GRUPO IN (
+				6600,
+				6601,
+				6602,
+				6603,
+				6604,
+				6605,
+				6606,
+				6607,
+				6608,
+				6609,
+				6610,
+				6611,
+				6612,
+				6613,
+				6614,
+				6635,
+				6636,
+				6637,
+				6638,
+				6639
+			)
+	) 'total',
+	(
+		SELECT
+			COUNT(*)
+		FROM
+			maestro AS m1
+		WHERE
+			m1.GRUPO IN (
+				6600,
+				6601,
+				6602,
+				6603,
+				6604,
+				6605,
+				6606,
+				6607,
+				6608,
+				6609,
+				6610,
+				6611,
+				6612,
+				6613,
+				6614,
+				6635,
+				6636,
+				6637,
+				6638,
+				6639
+			)
+	) 'fichas',
+	(
+		SELECT
+			SUM(p.IMPORTE)
+		FROM
+			debpeso AS p
+		INNER JOIN maestro AS m1 ON m1.CONTRATO = p.ID_ABONADO
+		WHERE
+			CONVENIO = 10666
+		AND m1.GRUPO IN (
+			6600,
+			6601,
+			6602,
+			6603,
+			6604,
+			6605,
+			6606,
+			6607,
+			6608,
+			6609,
+			6610,
+			6611,
+			6612,
+			6613,
+			6614,
+			6635,
+			6636,
+			6637,
+			6638,
+			6639
+		)
+	) 'cobrado',
+	(
+		SELECT
+			count(p.IMPORTE)
+		FROM
+			debpeso AS p
+		INNER JOIN maestro AS m1 ON m1.CONTRATO = p.ID_ABONADO
+		WHERE
+			CONVENIO = 10666
+		AND m1.GRUPO IN (
+			6600,
+			6601,
+			6602,
+			6603,
+			6604,
+			6605,
+			6606,
+			6607,
+			6608,
+			6609,
+			6610,
+			6611,
+			6612,
+			6613,
+			6614,
+			6635,
+			6636,
+			6637,
+			6638,
+			6639
+		)
+	) 'fichascob',
+  0 as adelantado
+FROM
+	maestro AS m
+LIMIT 1
         `;
       res
         .status(200)
@@ -71,18 +528,105 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer ctjt") {
-      const ctjt = await Info.$queryRaw`
+      const ctjt = await Werchow.$queryRaw`
          
-      SELECT
-        *
-      FROM
-         ctjt
-      WHERE 
-          mes = ${parseInt(req.query.mes)}
-      AND           
-          ano = ${parseInt(req.query.ano)}
-
-      ORDER BY descr ASC           
+         SELECT
+	m.GRUPO as 'zona',
+	g.DESCRIP as 'descr',
+	(
+		SELECT
+			SUM(c.IMPORTE)
+		FROM
+			maestro AS m1
+		INNER JOIN cuo_fija AS c ON c.CONTRATO = m1.CONTRATO
+		WHERE
+			m.GRUPO = m1.GRUPO
+		AND m1.GRUPO IN (
+			3400,
+			3600,
+			3700,
+			3800,
+			3900,
+			4000
+		)
+		GROUP BY
+			m1.GRUPO
+		ORDER BY
+			m.GRUPO ASC
+	) 'total',
+	(
+		SELECT
+			COUNT(*)
+		FROM
+			maestro AS m1
+		WHERE
+			m.GRUPO = m1.GRUPO
+		AND m1.GRUPO IN (
+			3400,
+			3600,
+			3700,
+			3800,
+			3900,
+			4000
+		)
+		GROUP BY
+			m1.GRUPO
+		ORDER BY
+			m.GRUPO ASC
+	) 'fichas',
+	(
+		SELECT
+			SUM(p.IMPORTE)
+		FROM
+			pago_bco AS p
+		INNER JOIN maestro AS m1 ON m1.CONTRATO = p.CONTRATO
+		WHERE
+			m.GRUPO = m1.GRUPO
+		AND MES = ${parseInt(req.query.mes)}
+		AND ANO = ${parseInt(req.query.ano)}
+		AND m1.GRUPO IN (
+			3400,
+			3600,
+			3700,
+			3800,
+			3900,
+			4000
+		)
+		GROUP BY
+			m1.GRUPO
+		ORDER BY
+			m1.GRUPO ASC
+	) 'cobrado',
+	COUNT(*) 'fichascob',
+   0 as 'adelantado'
+FROM
+	maestro AS m
+INNER JOIN grupos AS g ON g.CODIGO = m.GRUPO
+INNER JOIN cuo_fija AS c ON c.CONTRATO = m.CONTRATO
+WHERE
+	m.GRUPO IN (
+		3400,
+		3600,
+		3700,
+		3800,
+		3900,
+		4000
+	)
+AND EXISTS (
+	SELECT
+		*
+	FROM
+		pago_bco AS p
+	WHERE
+		m.CONTRATO = p.CONTRATO
+	AND MES = ${parseInt(req.query.mes)}
+	AND ANO = ${parseInt(req.query.ano)}
+)
+GROUP BY
+	m.GRUPO,
+	g.DESCRIP
+ORDER BY
+	m.GRUPO ASC
       
         `;
       res
@@ -93,18 +637,59 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer cpolicia") {
-      const cpolicia = await Info.$queryRaw`
+      const cpolicia = await Werchow.$queryRaw`
          
-      SELECT
-        *
-      FROM
-         cpolicia
-      WHERE 
-          mes = ${parseInt(req.query.mes)}
-      AND           
-          ano = ${parseInt(req.query.ano)}
-
-      ORDER BY descr ASC                
+         SELECT
+	'POLICIAS' AS 'descr',
+	(
+		SELECT
+			SUM(c.IMPORTE)
+		FROM
+			maestro AS m1
+		INNER JOIN cuo_fija AS c ON c.CONTRATO = m1.CONTRATO
+		WHERE
+			m1.GRUPO IN (
+				6
+			)
+	) 'total',
+	(
+		SELECT
+			COUNT(*)
+		FROM
+			maestro AS m1
+		WHERE
+			m1.GRUPO IN (
+			6
+			)
+	) 'fichas',
+	(
+		SELECT
+			SUM(p.IMPORTE)
+		FROM
+			debpeso AS p
+		INNER JOIN maestro AS m1 ON m1.CONTRATO = p.ID_ABONADO
+		WHERE
+			CONVENIO = 6
+		AND m1.GRUPO IN (
+		6
+		)
+	) 'cobrado',
+	(
+		SELECT
+			count(p.IMPORTE)
+		FROM
+			debpeso AS p
+		INNER JOIN maestro AS m1 ON m1.CONTRATO = p.ID_ABONADO
+		WHERE
+			CONVENIO = 6
+		AND m1.GRUPO IN (
+			6
+		)
+	) 'fichascob',
+  0 as adelantado
+FROM
+	maestro AS m
+LIMIT 1            
       
         `;
       res

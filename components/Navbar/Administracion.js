@@ -92,6 +92,11 @@ export const Administracion = () => {
                     <Typography color="black">Efectividad</Typography>
                   </MenuItem>
                 </Link>{" "}
+                <Link href={"/cobranza/werchow/mora"}>
+                  <MenuItem>
+                    <Typography color="black">Mora</Typography>
+                  </MenuItem>
+                </Link>{" "}
               </MenuList>
             </Menu>
 

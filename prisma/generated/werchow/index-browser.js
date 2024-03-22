@@ -1354,6 +1354,49 @@ exports.Prisma.Poliza_5380ScalarFieldEnum = {
   TIPO: 'TIPO'
 };
 
+exports.Prisma.EmiScalarFieldEnum = {
+  CONTRATO: 'CONTRATO',
+  NRO_RECIBO: 'NRO_RECIBO',
+  SERIE: 'SERIE',
+  COMPROB: 'COMPROB',
+  DIA_REN: 'DIA_REN',
+  DIA_CAR: 'DIA_CAR',
+  DIA_EMI: 'DIA_EMI',
+  DIA_PAG: 'DIA_PAG',
+  HORA_CAR: 'HORA_CAR',
+  MES: 'MES',
+  ANO: 'ANO',
+  IMPORTE: 'IMPORTE',
+  MAN_COM: 'MAN_COM',
+  MOVIM: 'MOVIM',
+  EX: 'EX',
+  GR: 'GR',
+  SEGURO: 'SEGURO',
+  CARGA: 'CARGA',
+  OPERADOR: 'OPERADOR',
+  EXTRA: 'EXTRA',
+  TIP_EXT: 'TIP_EXT',
+  SUCURSAL: 'SUCURSAL',
+  PUESTO: 'PUESTO',
+  ACTUALIZA: 'ACTUALIZA',
+  MARCA: 'MARCA',
+  ZONA: 'ZONA',
+  CUOTA: 'CUOTA',
+  EMPRESA: 'EMPRESA',
+  CAE: 'CAE',
+  CAE_VTO: 'CAE_VTO',
+  NCR_SERIE: 'NCR_SERIE',
+  NCR_NRO: 'NCR_NRO',
+  BARCOD: 'BARCOD',
+  DNI: 'DNI',
+  FE_SERIE: 'FE_SERIE',
+  FE_NRO: 'FE_NRO',
+  FEC_REF: 'FEC_REF',
+  CUOTAS_REF: 'CUOTAS_REF',
+  IMPO_REF: 'IMPO_REF',
+  id: 'id'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1415,7 +1458,8 @@ exports.Prisma.ModelName = {
   usuario: 'usuario',
   guardia: 'guardia',
   listado_rus: 'listado_rus',
-  poliza_5380: 'poliza_5380'
+  poliza_5380: 'poliza_5380',
+  emi: 'emi'
 };
 
 /**

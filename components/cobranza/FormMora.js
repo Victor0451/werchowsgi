@@ -14,34 +14,31 @@ import moment from "moment";
 import { IconSolid } from "../../libs/funciones";
 import Select from "react-select";
 import { meses, anos } from "../../array/array";
-import TablaEfectividad from "./TablaEfectividad";
+import TablaMora from "./TablaMora";
+import ReactToPrint from "react-to-print";
 
-import Opciones from "./Opciones";
-
-const FormEfectividad = ({
+const FormMora = ({
   handleChange,
   traerInfo,
   errores,
-  ctjt,
   cCob,
   cOf,
+  ctjt,
   cbanco,
   cbancoP,
   cpolicia,
-  cprestamos,
+  totArr,
   porcent,
   totales,
-  totArr,
-  actFunctions,
-  creaFunctions,
+  componentRef,
 }) => {
   return (
     <Card className="h-full w-full p-4 mt-5 border-2 ">
       <CardBody className="rounded-none">
-        <Typography variant="h2">WERCHOW - Efectividad de Cobranza</Typography>
+        <Typography variant="h2">WERCHOW - Analisis de Mora</Typography>
 
         <Alert className="mt-5 mb-5" color="blue" icon={<IconSolid />}>
-          Tabla resumen de la cobranza mensual para evaluar la efectividad.
+          Tabla resumen de la composición de mora mensual.
         </Alert>
 
         <div className="p-4 border-2 rounded-lg mt-6 ">
@@ -77,15 +74,18 @@ const FormEfectividad = ({
             </div>
 
             <div className="w-full md:w-1/6 px-3 mt-6 mb-6 md:mb-0">
-              <Opciones
+              {/* <Opciones
                 actFunctions={actFunctions}
                 creaFunctions={creaFunctions}
-              />
+              /> */}
             </div>
 
             {cCob.length > 0 ? (
               <div className="w-full md:w-1/6 px-3 mt-6 mb-6 md:mb-0">
-                <Button color="green">Imprimir</Button>
+                <ReactToPrint
+                  trigger={() => <Button color="green">Imprimir</Button>}
+                  content={() => componentRef}
+                />
               </div>
             ) : null}
 
@@ -101,33 +101,31 @@ const FormEfectividad = ({
           <>
             <hr className="border-2 mt-5 mb-5" />
 
-            <div className="border-2 rounded-xl p-4">
-              <Typography variant="h4" className="mb-4">
-                Efectividad De Cobranza
+            <div
+              className="border-2 rounded-xl p-2"
+              ref={(el) => (componentRef = el)}
+            >
+              <Typography variant="h4" className="mb-5">
+                Analisis de Mora
               </Typography>
 
-              <TablaEfectividad
+              <TablaMora
                 cCob={cCob}
                 cOf={cOf}
                 ctjt={ctjt}
                 cbanco={cbanco}
                 cbancoP={cbancoP}
                 cpolicia={cpolicia}
-                cprestamos={cprestamos}
-                totArr={totArr}
                 porcent={porcent}
                 totales={totales}
+                totArr={totArr}
               />
             </div>
           </>
-        ) : (
-          <Alert color="orange" icon={<IconSolid />} className="mt-5 mb-5">
-            No hay datos registrados para el periodo seleccionado
-          </Alert>
-        )}
+        ) : null}
       </CardBody>
     </Card>
   );
 };
 
-export default FormEfectividad;
+export default FormMora;
