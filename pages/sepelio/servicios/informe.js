@@ -30,6 +30,7 @@ function informe(props) {
   const [informe, guardarInforme] = useState([]);
   const [opSel, guardarOpSel] = useState("");
   const [hoLabSel, guardarHoLabSel] = useState(false);
+  const [feriadoSel, guardarFeriadoSel] = useState(false);
   const [tareaSel, guardartareaSel] = useState("");
   const [gastoSel, guardarGastoSel] = useState("");
   const [errores, guardarErrores] = useState(null);
@@ -215,6 +216,7 @@ function informe(props) {
       horas: 0,
       monto: 0,
       horario_laboral: hoLabSel,
+      feriado: feriadoSel,
       liquidado: false,
       f: "reg tarea informe",
     };
@@ -244,7 +246,11 @@ function informe(props) {
             ) {
               data.monto = data.horas * parseFloat(tareas[i].finde);
             } else {
-              data.monto = data.horas * parseFloat(tareas[i].dias_habiles);
+              if (data.feriado === true) {
+                data.monto = data.horas * parseFloat(tareas[i].finde);
+              } else {
+                data.monto = data.horas * parseFloat(tareas[i].dias_habiles);
+              }
             }
           } else if (data.horario_laboral === true) {
             data.monto = 0;
@@ -280,6 +286,7 @@ function informe(props) {
       gasto: gastoSel,
       importe: importeRef.current.value,
       observacion: gasObseSel,
+      liquidado: false,
       f: "reg gasto informe",
     };
 
@@ -394,6 +401,8 @@ function informe(props) {
       guardarOpSel(value);
     } else if (flag === "check") {
       guardarHoLabSel(value.target.checked);
+    } else if (flag === "check feriado") {
+      guardarFeriadoSel(value.target.checked);
     } else if (flag === "gasto") {
       guardarGastoSel(value);
     } else if (flag === "gasto obse") {
@@ -406,11 +415,15 @@ function informe(props) {
 
     if (f === "t") {
       for (let i = 0; i < arr.length; i++) {
-        total += parseFloat(arr[i].monto);
+        if (arr[i].liquidado === false) {
+          total += parseFloat(arr[i].monto);
+        }
       }
     } else if (f === "g") {
       for (let i = 0; i < arr.length; i++) {
-        total += parseFloat(arr[i].importe);
+        if (arr[i].liquidado === false) {
+          total += parseFloat(arr[i].importe);
+        }
       }
     }
 
@@ -433,6 +446,48 @@ function informe(props) {
         console.log(error);
         toast.error("Ocurrio un error al registrar el historial");
       });
+  };
+
+  const liqItem = async (f, id) => {
+    await confirmAlert({
+      title: "ATENCION",
+      message: "¿Seguro quieres liquidar este item?",
+      buttons: [
+        {
+          label: "Si",
+          onClick: () => {
+            let info = {
+              operadorliq: usu.usuario,
+              fecha_liquidado: moment().format("YYYY-MM-DD"),
+              f: f,
+              id: id,
+            };
+
+            axios
+              .put("/api/sepelio/servicios", info)
+              .then((res) => {
+                if (res.status === 200) {
+                  toast.success("Tarea/Gasto liquidado");
+
+                  setTimeout(() => {
+                    traerInfo();
+                  }, 1000);
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error("Ocurrio un error al liquidar la Tarea/Gasto");
+              });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            toast.info("El item no fue liquidado");
+          },
+        },
+      ],
+    });
   };
 
   useSWR("/api/sepelio/servicios", traerInfo);
@@ -466,6 +521,7 @@ function informe(props) {
                 regGastos={regGastos}
                 delGasto={delGasto}
                 gl={gl}
+                liqItem={liqItem}
               />
             </>
           ) : (

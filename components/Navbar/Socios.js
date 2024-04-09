@@ -72,12 +72,12 @@ export const Socios = () => {
                     <Typography color="black">Certificado Policias</Typography>
                   </MenuItem>
                 </Link>
-                <Link href={"/socios/reintegros"}>
+                <Link href={"/socios/solicitudes/reintegros"}>
                   <MenuItem>
                     <Typography color="black">Reintegros</Typography>
                   </MenuItem>
                 </Link>
-                <Link href={"/socios/listadoreintegros"}>
+                <Link href={"/socios/solicitudes/listadoreintegros"}>
                   <MenuItem>
                     <Typography color="black">Listado Reintegros</Typography>
                   </MenuItem>

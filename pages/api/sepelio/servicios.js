@@ -484,6 +484,7 @@ export default async function handler(req, res) {
           gasto: req.body.gasto,
           importe: parseFloat(req.body.importe),
           observacion: req.body.observacion,
+          liquidado: req.body.liquidado,
         },
       });
 
@@ -721,19 +722,32 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
-    } else if (req.body.f && req.body.f === "liquidar tarea") {
+    } else if (req.body.f && req.body.f === "liquidar tarea individual") {
       const liqTarea = await Sep.informe_tareas.update({
         data: {
-          liquidado: req.body.liquidado,
+          liquidado: true,
           operadorliq: req.body.operadorliq,
-          fecha_liquidacion: new Date(req.body.fecha_liquidacion),
+          fecha_liquidacion: new Date(req.body.fecha_liquidado),
         },
         where: {
-          idtareas: parseInt(req.body.idtarea),
+          idtareas: parseInt(req.body.id),
         },
       });
 
       res.status(200).json(liqTarea);
+    } else if (req.body.f && req.body.f === "liquidar gasto individual") {
+      const liqGasto = await Sep.informe_gastos.update({
+        data: {
+          liquidado: true,
+          operadorliq: req.body.operadorliq,
+          fecha_liquidado: new Date(req.body.fecha_liquidado),
+        },
+        where: {
+          idgastos: parseInt(req.body.id),
+        },
+      });
+
+      res.status(200).json(liqGasto);
     } else if (req.body.f && req.body.f === "liquidar tarea informe") {
       const liqTarea = await Sep.$queryRawUnsafe(
         `                
@@ -748,7 +762,7 @@ export default async function handler(req, res) {
       );
 
       res.status(200).json(liqTarea);
-    }else if (req.body.f && req.body.f === "act idinformes tareas") {
+    } else if (req.body.f && req.body.f === "act idinformes tareas") {
       const liqTarea = await Sep.$queryRawUnsafe(
         `                
         UPDATE informe_tareas as t
@@ -761,7 +775,7 @@ export default async function handler(req, res) {
       );
 
       res.status(200).json(liqTarea);
-    }else if (req.body.f && req.body.f === "act idinformes gastos") {
+    } else if (req.body.f && req.body.f === "act idinformes gastos") {
       const liqTarea = await Sep.$queryRawUnsafe(
         `                
         UPDATE informe_gastos as t

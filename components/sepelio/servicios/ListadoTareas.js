@@ -12,16 +12,16 @@ import {
   Input,
   Spinner,
 } from "@material-tailwind/react";
-import { TrashIcon } from "@heroicons/react/24/solid";
+import { TrashIcon, CurrencyDollarIcon } from "@heroicons/react/24/solid";
 import moment from "moment";
 import Link from "next/link";
 
-const ListadoTareas = ({ listado, delTarea, calcTotal, f }) => {
+const ListadoTareas = ({ listado, delTarea, calcTotal, f, liqItem }) => {
   let columns = [
     {
       name: "#",
       button: true,
-      grow: 0.1,
+      width: "60px",
       cell: (row, index) => <>{index + 1}</>,
     },
     {
@@ -42,25 +42,68 @@ const ListadoTareas = ({ listado, delTarea, calcTotal, f }) => {
       name: "Inicio",
       selector: (row) => `${moment(row.inicio).format("DD/MM/YYYY HH:mm")}`,
       sortable: true,
-      grow: 0.2,
+      width: "150px",
     },
     {
       name: "Fin",
       selector: (row) => `${moment(row.fin).format("DD/MM/YYYY HH:mm")}`,
       sortable: true,
-      grow: 0.2,
+      width: "150px",
     },
     {
       name: "Horas",
       selector: (row) => `${row.horas}`,
       sortable: true,
-      grow: 0.2,
+      width: "100px",
     },
     {
       name: "Monto",
       selector: (row) => `$${row.monto}`,
       sortable: true,
-      grow: 0.2,
+      width: "100px",
+    },
+
+    {
+      name: "Liquidado",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {row.liquidado === false ? (
+            <div>Pendiente</div>
+          ) : row.liquidado === true ? (
+            <div>Liquidado</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Fecha Liquidacion",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.fecha_liquidacion ? (
+            <div>---</div>
+          ) : row.fecha_liquidacion ? (
+            <div>{moment(row.fecha_liquidacion).format("DD/MM/YYYY")}</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Operdador Liq.",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.operadorliq ? (
+            <div>---</div>
+          ) : row.operadorliq ? (
+            <div>{row.operadorliq}</div>
+          ) : null}
+        </>
+      ),
     },
     {
       name: "Acciones",
@@ -68,7 +111,13 @@ const ListadoTareas = ({ listado, delTarea, calcTotal, f }) => {
       grow: 0.1,
       cell: (row, index) => (
         <>
-          {f && f === "vista" ? null : (
+          {f && f === "vista" ? (
+            <CurrencyDollarIcon
+              color="orange"
+              className="butlist mt-px h-6 w-6 "
+              onClick={() => liqItem("liquidar tarea individual", row.idtareas)}
+            />
+          ) : (
             <TrashIcon
               color="red"
               className="butlist mt-px h-6 w-6"

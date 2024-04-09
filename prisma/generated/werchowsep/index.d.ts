@@ -935,6 +935,9 @@ export type informe_gastosPayload<ExtArgs extends $Extensions.Args = $Extensions
     gasto: string | null
     observacion: string | null
     importe: number | null
+    liquidado: boolean | null
+    fecha_liquidado: Date | null
+    operadorliq: string | null
   }, ExtArgs["result"]["informe_gastos"]>
   composites: {}
 }
@@ -43256,6 +43259,9 @@ export namespace Prisma {
     gasto: string | null
     observacion: string | null
     importe: number | null
+    liquidado: boolean | null
+    fecha_liquidado: Date | null
+    operadorliq: string | null
   }
 
   export type Informe_gastosMaxAggregateOutputType = {
@@ -43265,6 +43271,9 @@ export namespace Prisma {
     gasto: string | null
     observacion: string | null
     importe: number | null
+    liquidado: boolean | null
+    fecha_liquidado: Date | null
+    operadorliq: string | null
   }
 
   export type Informe_gastosCountAggregateOutputType = {
@@ -43274,6 +43283,9 @@ export namespace Prisma {
     gasto: number
     observacion: number
     importe: number
+    liquidado: number
+    fecha_liquidado: number
+    operadorliq: number
     _all: number
   }
 
@@ -43299,6 +43311,9 @@ export namespace Prisma {
     gasto?: true
     observacion?: true
     importe?: true
+    liquidado?: true
+    fecha_liquidado?: true
+    operadorliq?: true
   }
 
   export type Informe_gastosMaxAggregateInputType = {
@@ -43308,6 +43323,9 @@ export namespace Prisma {
     gasto?: true
     observacion?: true
     importe?: true
+    liquidado?: true
+    fecha_liquidado?: true
+    operadorliq?: true
   }
 
   export type Informe_gastosCountAggregateInputType = {
@@ -43317,6 +43335,9 @@ export namespace Prisma {
     gasto?: true
     observacion?: true
     importe?: true
+    liquidado?: true
+    fecha_liquidado?: true
+    operadorliq?: true
     _all?: true
   }
 
@@ -43414,6 +43435,9 @@ export namespace Prisma {
     gasto: string | null
     observacion: string | null
     importe: number | null
+    liquidado: boolean | null
+    fecha_liquidado: Date | null
+    operadorliq: string | null
     _count: Informe_gastosCountAggregateOutputType | null
     _avg: Informe_gastosAvgAggregateOutputType | null
     _sum: Informe_gastosSumAggregateOutputType | null
@@ -43442,6 +43466,9 @@ export namespace Prisma {
     gasto?: boolean
     observacion?: boolean
     importe?: boolean
+    liquidado?: boolean
+    fecha_liquidado?: boolean
+    operadorliq?: boolean
   }, ExtArgs["result"]["informe_gastos"]>
 
   export type informe_gastosSelectScalar = {
@@ -43451,6 +43478,9 @@ export namespace Prisma {
     gasto?: boolean
     observacion?: boolean
     importe?: boolean
+    liquidado?: boolean
+    fecha_liquidado?: boolean
+    operadorliq?: boolean
   }
 
 
@@ -47724,7 +47754,10 @@ export namespace Prisma {
     idservicio: 'idservicio',
     gasto: 'gasto',
     observacion: 'observacion',
-    importe: 'importe'
+    importe: 'importe',
+    liquidado: 'liquidado',
+    fecha_liquidado: 'fecha_liquidado',
+    operadorliq: 'operadorliq'
   };
 
   export type Informe_gastosScalarFieldEnum = (typeof Informe_gastosScalarFieldEnum)[keyof typeof Informe_gastosScalarFieldEnum]
@@ -50663,6 +50696,9 @@ export namespace Prisma {
     gasto?: StringNullableFilter | string | null
     observacion?: StringNullableFilter | string | null
     importe?: FloatNullableFilter | number | null
+    liquidado?: BoolNullableFilter | boolean | null
+    fecha_liquidado?: DateTimeNullableFilter | Date | string | null
+    operadorliq?: StringNullableFilter | string | null
   }
 
   export type informe_gastosOrderByWithRelationInput = {
@@ -50672,6 +50708,9 @@ export namespace Prisma {
     gasto?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     importe?: SortOrderInput | SortOrder
+    liquidado?: SortOrderInput | SortOrder
+    fecha_liquidado?: SortOrderInput | SortOrder
+    operadorliq?: SortOrderInput | SortOrder
   }
 
   export type informe_gastosWhereUniqueInput = {
@@ -50685,6 +50724,9 @@ export namespace Prisma {
     gasto?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     importe?: SortOrderInput | SortOrder
+    liquidado?: SortOrderInput | SortOrder
+    fecha_liquidado?: SortOrderInput | SortOrder
+    operadorliq?: SortOrderInput | SortOrder
     _count?: informe_gastosCountOrderByAggregateInput
     _avg?: informe_gastosAvgOrderByAggregateInput
     _max?: informe_gastosMaxOrderByAggregateInput
@@ -50702,6 +50744,9 @@ export namespace Prisma {
     gasto?: StringNullableWithAggregatesFilter | string | null
     observacion?: StringNullableWithAggregatesFilter | string | null
     importe?: FloatNullableWithAggregatesFilter | number | null
+    liquidado?: BoolNullableWithAggregatesFilter | boolean | null
+    fecha_liquidado?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    operadorliq?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type servicios_gastosWhereInput = {
@@ -54785,6 +54830,9 @@ export namespace Prisma {
     gasto?: string | null
     observacion?: string | null
     importe?: number | null
+    liquidado?: boolean | null
+    fecha_liquidado?: Date | string | null
+    operadorliq?: string | null
   }
 
   export type informe_gastosUncheckedCreateInput = {
@@ -54794,6 +54842,9 @@ export namespace Prisma {
     gasto?: string | null
     observacion?: string | null
     importe?: number | null
+    liquidado?: boolean | null
+    fecha_liquidado?: Date | string | null
+    operadorliq?: string | null
   }
 
   export type informe_gastosUpdateInput = {
@@ -54802,6 +54853,9 @@ export namespace Prisma {
     gasto?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type informe_gastosUncheckedUpdateInput = {
@@ -54811,6 +54865,9 @@ export namespace Prisma {
     gasto?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type informe_gastosCreateManyInput = {
@@ -54820,6 +54877,9 @@ export namespace Prisma {
     gasto?: string | null
     observacion?: string | null
     importe?: number | null
+    liquidado?: boolean | null
+    fecha_liquidado?: Date | string | null
+    operadorliq?: string | null
   }
 
   export type informe_gastosUpdateManyMutationInput = {
@@ -54828,6 +54888,9 @@ export namespace Prisma {
     gasto?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type informe_gastosUncheckedUpdateManyInput = {
@@ -54837,6 +54900,9 @@ export namespace Prisma {
     gasto?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     importe?: NullableFloatFieldUpdateOperationsInput | number | null
+    liquidado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    fecha_liquidado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorliq?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type servicios_gastosCreateInput = {
@@ -57535,6 +57601,9 @@ export namespace Prisma {
     gasto?: SortOrder
     observacion?: SortOrder
     importe?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidado?: SortOrder
+    operadorliq?: SortOrder
   }
 
   export type informe_gastosAvgOrderByAggregateInput = {
@@ -57551,6 +57620,9 @@ export namespace Prisma {
     gasto?: SortOrder
     observacion?: SortOrder
     importe?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidado?: SortOrder
+    operadorliq?: SortOrder
   }
 
   export type informe_gastosMinOrderByAggregateInput = {
@@ -57560,6 +57632,9 @@ export namespace Prisma {
     gasto?: SortOrder
     observacion?: SortOrder
     importe?: SortOrder
+    liquidado?: SortOrder
+    fecha_liquidado?: SortOrder
+    operadorliq?: SortOrder
   }
 
   export type informe_gastosSumOrderByAggregateInput = {

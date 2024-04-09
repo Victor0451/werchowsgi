@@ -683,7 +683,10 @@ exports.Prisma.Informe_gastosScalarFieldEnum = {
   idservicio: 'idservicio',
   gasto: 'gasto',
   observacion: 'observacion',
-  importe: 'importe'
+  importe: 'importe',
+  liquidado: 'liquidado',
+  fecha_liquidado: 'fecha_liquidado',
+  operadorliq: 'operadorliq'
 };
 
 exports.Prisma.Servicios_gastosScalarFieldEnum = {

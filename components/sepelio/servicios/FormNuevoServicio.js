@@ -67,7 +67,6 @@ export const FormNuevoServicio = ({
   adhSel,
   gl,
 }) => {
-  console.log(adhs.length);
   return (
     <Card className="h-full w-full p-4 ">
       <CardBody className="rounded-none">
@@ -190,6 +189,31 @@ export const FormNuevoServicio = ({
                   >
                     <strong>
                       Ficha en estado moroso. Verifique su situacion
+                    </strong>
+                  </Alert>
+                ) : null}
+
+                {ficha[0] &&
+                moment(ficha[0].VIGENCIA).format("YYYY-MM-DD") >
+                  moment().format("YYYY-MM-DD") ? (
+                  <Alert
+                    color="orange"
+                    icon={
+                      <InformationCircleIcon
+                        strokeWidth={2}
+                        className="h-6 w-6"
+                      />
+                    }
+                  >
+                    <strong>
+                      {`
+                       ¡¡¡¡CUIDADO CON LA VIGENCIA ---> ${moment(
+                         ficha[0].VIGENCIA
+                       ).format(
+                         "DD/MM/YYYY"
+                       )} !!!!. Esta ficha no esta en periodo de vigencia, consultar con gerencia como proceder.
+
+                       `}
                     </strong>
                   </Alert>
                 ) : null}

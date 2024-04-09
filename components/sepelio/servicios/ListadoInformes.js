@@ -43,6 +43,12 @@ const ListadoInformes = ({ listado, estadoInforme, liquidarInforme }) => {
     //   width: "80px",
     // },
     {
+      name: "ID Serv.",
+      selector: (row) => `${row.idservicio}`,
+      sortable: true,
+      width: "95px",
+    },
+    {
       name: "Fecha",
       selector: (row) => `${moment(row.fecha).format("DD/MM/YYYY")}`,
       sortable: true,

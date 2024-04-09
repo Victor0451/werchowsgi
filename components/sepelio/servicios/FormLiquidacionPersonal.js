@@ -23,6 +23,8 @@ const FormLiquidacionPersonal = ({
   opSel,
   calcTotal,
   pagarLiquidacion,
+  liqItem,
+  liquidarGuardia
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -77,6 +79,8 @@ const FormLiquidacionPersonal = ({
               guardias={guardias}
               calcTotal={calcTotal}
               pagarLiquidacion={pagarLiquidacion}
+              liqItem={liqItem}
+              liquidarGuardia={liquidarGuardia}
             />
           </>
         ) : tareas === 1 ? (

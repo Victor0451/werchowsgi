@@ -39,6 +39,7 @@ const FormInformeServicio = ({
   gasReg,
   regGastos,
   gl,
+  liqItem
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -251,6 +252,13 @@ const FormInformeServicio = ({
                     onChange={(e) => handleChange("check", e)}
                   />
                 </div>
+                <div className="relative w-full mb-6 group">
+                  <Checkbox
+                    label="Feriado"
+                    ripple={true}
+                    onChange={(e) => handleChange("check feriado", e)}
+                  />
+                </div>
               </div>
               <Alert
                 color="blue"
@@ -262,6 +270,17 @@ const FormInformeServicio = ({
                 Por defecto el sistema liquida la tarea contemplando que el
                 operador NO ESTA EN HORARIO LABORAL. En caso contrario, marcar
                 el check con la leyenda "En Horario Laboral".
+              </Alert>
+              <Alert
+                color="blue"
+                icon={
+                  <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
+                }
+                className="mt-5 mb-5"
+              >
+                Por defecto el sistema liquida la tarea contemplando que el dia
+                hábil de la semana NO ES UN FERIADO. En caso contrario, marcar
+                el check con la leyenda "Feriado".
               </Alert>
 
               <div className="mt-4 flex justify-end mb-6 group">
@@ -291,6 +310,7 @@ const FormInformeServicio = ({
             delTarea={delTarea}
             calcTotal={calcTotal}
             f={f}
+            liqItem={liqItem}
           />
         </div>
         <hr className="border-2 mt-6 mb-6" />
@@ -360,6 +380,7 @@ const FormInformeServicio = ({
             calcTotal={calcTotal}
             f={f}
             delGasto={delGasto}
+            liqItem={liqItem}
           />
         </div>
 

@@ -16,7 +16,7 @@ import { TrashIcon } from "@heroicons/react/24/solid";
 import moment from "moment";
 import Link from "next/link";
 import {
-  CheckCircleIcon,
+  CurrencyDollarIcon,
   InformationCircleIcon,
   EyeIcon,
 } from "@heroicons/react/24/solid";
@@ -27,6 +27,8 @@ const ListadoLiquidacionPersonal = ({
   calcTotal,
   operador,
   pagarLiquidacion,
+  liqItem,
+  liquidarGuardia,
 }) => {
   let columns = [
     {
@@ -74,6 +76,48 @@ const ListadoLiquidacionPersonal = ({
       grow: 0.2,
     },
     {
+      name: "Liquidado",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {row.liquidado === 0 ? (
+            <div>Pendiente</div>
+          ) : row.liquidado === 1 ? (
+            <div>Liquidado</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Fecha Liquidacion",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.fecha_liquidado ? (
+            <div>---</div>
+          ) : row.fecha_liquidado ? (
+            <div>{moment(row.fecha_liquidado).format("DD/MM/YYYY")}</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Operdador Liq.",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.operador_liquidado ? (
+            <div>---</div>
+          ) : row.operador_liquidado ? (
+            <div>{row.operador_liquidado}</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
       name: "Acciones",
       button: true,
       grow: 0.1,
@@ -88,6 +132,11 @@ const ListadoLiquidacionPersonal = ({
           >
             <EyeIcon color="blue" className="butlist mt-px h-6 w-6" />
           </Link>
+          <CurrencyDollarIcon
+            color="orange"
+            className="butlist mt-px h-6 w-6 "
+            onClick={() => liqItem("liquidar tarea individual", row.idtareas)}
+          />
         </>
       ),
     },
@@ -147,10 +196,60 @@ const ListadoLiquidacionPersonal = ({
       grow: 0.1,
     },
     {
+      name: "Liquidado",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {row.liquidado === 0 ? (
+            <div>Pendiente</div>
+          ) : row.liquidado === 1 ? (
+            <div>Liquidado</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Fecha Liquidacion",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.fecha_liquidado ? (
+            <div>---</div>
+          ) : row.fecha_liquidado ? (
+            <div>{moment(row.fecha_liquidado).format("DD/MM/YYYY")}</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Operdador Liq.",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.operador_liquidado ? (
+            <div>---</div>
+          ) : row.operador_liquidado ? (
+            <div>{row.operador_liquidado}</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
       name: "Acciones",
       button: true,
-      grow: 0.1,
-      cell: (row, index) => <></>,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          <CurrencyDollarIcon
+            color="orange"
+            className="butlist mt-px h-6 w-6 "
+            onClick={() => liquidarGuardia(row.idturno)}
+          />
+        </>
+      ),
     },
   ];
 

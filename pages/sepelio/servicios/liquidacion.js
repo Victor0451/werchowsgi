@@ -235,6 +235,97 @@ function liquidacion(props) {
       });
   };
 
+  const liqItem = async (f, id) => {
+    await confirmAlert({
+      title: "ATENCION",
+      message: "¿Seguro quieres liquidar este item?",
+      buttons: [
+        {
+          label: "Si",
+          onClick: () => {
+            let info = {
+              operadorliq: usu.usuario,
+              fecha_liquidado: moment().format("YYYY-MM-DD"),
+              f: f,
+              id: id,
+            };
+
+            axios
+              .put("/api/sepelio/servicios", info)
+              .then((res) => {
+                if (res.status === 200) {
+                  toast.success("Tarea/Gasto liquidado");
+
+                  setTimeout(() => {
+                    buscarLiquidacion();
+                  }, 1000);
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error("Ocurrio un error al liquidar la Tarea/Gasto");
+              });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            toast.info("El item no fue liquidado");
+          },
+        },
+      ],
+    });
+  };
+
+  const liquidarGuardia = async (id) => {
+    await confirmAlert({
+      title: "ATENCION",
+      message: "¿Seguro quieres liquidar de esta guardia?",
+      buttons: [
+        {
+          label: "Si",
+          onClick: () => {
+            let data = {
+              f: "liquidar guardia",
+              estado: 1,
+              id: id,
+              usu: usu.usuario,
+              fecha: moment().format("YYYY-MM-DD"),
+            };
+
+            axios
+              .put("/api/sepelio/guardias", data)
+              .then((res) => {
+                if (res.status === 200) {
+                  toast.success(
+                    `La guardia fue marcado como liquidado con exito`
+                  );
+
+                  let accionHis = `La guardia de sepelio ID ${id} fue marcado como liquidada.`;
+
+                  registrarHistoria(accionHis, usu.usuario);
+
+                  setTimeout(() => {
+                    buscarLiquidacion();
+                  }, 1000);
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error("Ocurrio un error al liquidar la guardia");
+              });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            toast.info("La guardia seleccionada no fue liquidada", "ATENCION");
+          },
+        },
+      ],
+    });
+  };
+
   useSWR("/api/sepelio/servicios", traerInfo);
 
   if (isLoading === true) return <Skeleton />;
@@ -255,6 +346,8 @@ function liquidacion(props) {
             opSel={opSel}
             calcTotal={calcTotal}
             pagarLiquidacion={pagarLiquidacion}
+            liqItem={liqItem}
+            liquidarGuardia={liquidarGuardia}
           />
         </>
       )}

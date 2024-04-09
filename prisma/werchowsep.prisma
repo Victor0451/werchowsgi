@@ -582,12 +582,15 @@ model visitantes {
 }
 
 model informe_gastos {
-  idgastos    Int     @id @default(autoincrement())
-  idinforme   Int?
-  idservicio  Int?
-  gasto       String? @db.VarChar(255)
-  observacion String? @db.VarChar(1000)
-  importe     Float?  @db.Float
+  idgastos        Int       @id @default(autoincrement())
+  idinforme       Int?
+  idservicio      Int?
+  gasto           String?   @db.VarChar(255)
+  observacion     String?   @db.VarChar(1000)
+  importe         Float?    @db.Float
+  liquidado       Boolean?
+  fecha_liquidado DateTime? @db.Date
+  operadorliq     String?   @db.VarChar(255)
 }
 
 model servicios_gastos {

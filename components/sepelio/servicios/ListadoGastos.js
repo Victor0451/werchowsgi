@@ -12,11 +12,18 @@ import {
   Input,
   Spinner,
 } from "@material-tailwind/react";
-import { TrashIcon } from "@heroicons/react/24/solid";
+import { TrashIcon, CurrencyDollarIcon } from "@heroicons/react/24/solid";
 import moment from "moment";
 import Link from "next/link";
 
-const ListadoGastos = ({ listado, delTarea, calcTotal, f, delGasto }) => {
+const ListadoGastos = ({
+  listado,
+  delTarea,
+  calcTotal,
+  f,
+  delGasto,
+  liqItem,
+}) => {
   let columns = [
     {
       name: "#",
@@ -29,7 +36,7 @@ const ListadoGastos = ({ listado, delTarea, calcTotal, f, delGasto }) => {
       name: "Gasto",
       selector: (row) => `${row.gasto}`,
       sortable: true,
-      width: "180px",
+      width: "150px",
     },
 
     {
@@ -55,12 +62,61 @@ const ListadoGastos = ({ listado, delTarea, calcTotal, f, delGasto }) => {
     },
 
     {
+      name: "Liquidado",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {row.liquidado === false ? (
+            <div>Pendiente</div>
+          ) : row.liquidado === true ? (
+            <div>Liquidado</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Fecha Liquidacion",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.fecha_liquidado ? (
+            <div>---</div>
+          ) : row.fecha_liquidado ? (
+            <div>{moment(row.fecha_liquidado).format("DD/MM/YYYY")}</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Operdador Liq.",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.operadorliq ? (
+            <div>---</div>
+          ) : row.operadorliq ? (
+            <div>{row.operadorliq}</div>
+          ) : null}
+        </>
+      ),
+    },
+
+    {
       name: "Acciones",
       button: true,
       grow: 0.1,
       cell: (row, index) => (
         <>
-          {f && f === "vista" ? null : (
+          {f && f === "vista" ? (
+            <CurrencyDollarIcon
+              color="orange"
+              className="butlist mt-px h-6 w-6 "
+              onClick={() => liqItem("liquidar gasto individual", row.idgastos)}
+            />
+          ) : (
             <TrashIcon
               color="red"
               className="butlist mt-px h-6 w-6"
