@@ -17,6 +17,7 @@ import {
   InformationCircleIcon,
   PrinterIcon,
   CurrencyDollarIcon,
+  ClipboardDocumentIcon,
 } from "@heroicons/react/24/solid";
 import moment from "moment";
 import Link from "next/link";
@@ -111,6 +112,17 @@ const ListadoServicios = ({
           >
             <CurrencyDollarIcon
               color="green"
+              className="butlist mt-px h-6 w-6"
+            />
+          </Link>
+          <Link
+            href={{
+              pathname: "/sepelio/servicios/presupuesto",
+              query: { idservicio: row.idservicio },
+            }}
+          >
+            <ClipboardDocumentIcon
+              color="blue"
               className="butlist mt-px h-6 w-6"
             />
           </Link>
