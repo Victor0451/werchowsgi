@@ -427,7 +427,7 @@ export default function nuevoservicio() {
             toast.success("Servicio cargado correctamente");
 
             let accionHis = `Se cargo el servicio ID: ${
-              req.data.idservicio
+              res.data.idservicio
             } del extinto: ${servicio.apellido}, ${servicio.nombre} - DNI: ${
               servicio.dni
             }, fallecido el dia ${moment(servicio.fecha_fallecimiento).format(

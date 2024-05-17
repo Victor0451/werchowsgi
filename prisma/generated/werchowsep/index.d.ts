@@ -1009,6 +1009,62 @@ export type liquidacion_registroPayload<ExtArgs extends $Extensions.Args = $Exte
  * 
  */
 export type liquidacion_registro = runtime.Types.DefaultSelection<liquidacion_registroPayload>
+export type gastos_caja_copyPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idgastos: number
+    idcaja: number | null
+    concepto: string | null
+    tipofactura: string | null
+    nfactura: string | null
+    fecha: Date | null
+    operadorgestion: string | null
+    operadortramite: string | null
+    ptoventa: number | null
+    porciva: string | null
+    montoiva: number | null
+    retiibb: number | null
+    retggcias: number | null
+    perciva: number | null
+    detalle: string | null
+    mediopago: string | null
+    proveedor: string | null
+    empresa: string | null
+    total: number | null
+    idservicio: number | null
+  }, ExtArgs["result"]["gastos_caja_copy"]>
+  composites: {}
+}
+
+/**
+ * Model gastos_caja_copy
+ * 
+ */
+export type gastos_caja_copy = runtime.Types.DefaultSelection<gastos_caja_copyPayload>
+export type servicio_presupuestoPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idpresupuesto: number
+    idservicio: number | null
+    fecha: Date | null
+    apoderado: string | null
+    domicilio: string | null
+    telefono: string | null
+    detalle: string | null
+    total: number | null
+    anticipo: number | null
+    cuotas: number | null
+    saldo: number | null
+    operador: string | null
+  }, ExtArgs["result"]["servicio_presupuesto"]>
+  composites: {}
+}
+
+/**
+ * Model servicio_presupuesto
+ * 
+ */
+export type servicio_presupuesto = runtime.Types.DefaultSelection<servicio_presupuestoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1554,6 +1610,26 @@ export class PrismaClient<
     * ```
     */
   get liquidacion_registro(): Prisma.liquidacion_registroDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.gastos_caja_copy`: Exposes CRUD operations for the **gastos_caja_copy** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Gastos_caja_copies
+    * const gastos_caja_copies = await prisma.gastos_caja_copy.findMany()
+    * ```
+    */
+  get gastos_caja_copy(): Prisma.gastos_caja_copyDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.servicio_presupuesto`: Exposes CRUD operations for the **servicio_presupuesto** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Servicio_presupuestos
+    * const servicio_presupuestos = await prisma.servicio_presupuesto.findMany()
+    * ```
+    */
+  get servicio_presupuesto(): Prisma.servicio_presupuestoDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -2078,7 +2154,9 @@ export namespace Prisma {
     informe_gastos: 'informe_gastos',
     servicios_gastos: 'servicios_gastos',
     liquidacion_guardias: 'liquidacion_guardias',
-    liquidacion_registro: 'liquidacion_registro'
+    liquidacion_registro: 'liquidacion_registro',
+    gastos_caja_copy: 'gastos_caja_copy',
+    servicio_presupuesto: 'servicio_presupuesto'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2095,7 +2173,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'auto_usos' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sa' | 'caja_sepelio' | 'caja_srl' | 'conceptos' | 'conceptos_sepelio_cuentas' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'generacion_cajas' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'informe_tareas' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'lic_conducir' | 'novedades' | 'operadorsep' | 'parcelas' | 'parcelas_lugares' | 'precio_servicio' | 'proveedores' | 'rodados' | 'servicio_informes' | 'servicio_venta' | 'servicios' | 'servicios_historico' | 'tareas' | 'visitantes' | 'informe_gastos' | 'servicios_gastos' | 'liquidacion_guardias' | 'liquidacion_registro'
+      modelProps: 'ataud_precio' | 'ataud_venta' | 'ataudes' | 'auto_usos' | 'autos' | 'autos_hoja_ruta' | 'autos_novedades' | 'autos_pago_patente' | 'caja_sa' | 'caja_sepelio' | 'caja_srl' | 'conceptos' | 'conceptos_sepelio_cuentas' | 'fabricante_ataud' | 'gasto_luto' | 'gastos_caja' | 'generacion_cajas' | 'historial_autos' | 'historial_stock_ataud' | 'honorarios' | 'informe_tareas' | 'ingreso_caja' | 'legajo_virtual_autos' | 'legajo_virtual_servicios' | 'lic_conducir' | 'novedades' | 'operadorsep' | 'parcelas' | 'parcelas_lugares' | 'precio_servicio' | 'proveedores' | 'rodados' | 'servicio_informes' | 'servicio_venta' | 'servicios' | 'servicios_historico' | 'tareas' | 'visitantes' | 'informe_gastos' | 'servicios_gastos' | 'liquidacion_guardias' | 'liquidacion_registro' | 'gastos_caja_copy' | 'servicio_presupuesto'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -5414,6 +5492,164 @@ export namespace Prisma {
             args: Prisma.liquidacion_registroCountArgs<ExtArgs>,
             result: $Utils.Optional<Liquidacion_registroCountAggregateOutputType> | number
             payload: liquidacion_registroPayload<ExtArgs>
+          }
+        }
+      }
+      gastos_caja_copy: {
+        operations: {
+          findUnique: {
+            args: Prisma.gastos_caja_copyFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<gastos_caja_copyPayload> | null
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.gastos_caja_copyFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<gastos_caja_copyPayload>
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.gastos_caja_copyFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<gastos_caja_copyPayload> | null
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.gastos_caja_copyFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<gastos_caja_copyPayload>
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.gastos_caja_copyFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<gastos_caja_copyPayload>[]
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.gastos_caja_copyCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<gastos_caja_copyPayload>
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.gastos_caja_copyCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.gastos_caja_copyDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<gastos_caja_copyPayload>
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.gastos_caja_copyUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<gastos_caja_copyPayload>
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.gastos_caja_copyDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.gastos_caja_copyUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.gastos_caja_copyUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<gastos_caja_copyPayload>
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Gastos_caja_copyAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateGastos_caja_copy>
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.gastos_caja_copyGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Gastos_caja_copyGroupByOutputType>[]
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.gastos_caja_copyCountArgs<ExtArgs>,
+            result: $Utils.Optional<Gastos_caja_copyCountAggregateOutputType> | number
+            payload: gastos_caja_copyPayload<ExtArgs>
+          }
+        }
+      }
+      servicio_presupuesto: {
+        operations: {
+          findUnique: {
+            args: Prisma.servicio_presupuestoFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_presupuestoPayload> | null
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.servicio_presupuestoFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_presupuestoPayload>
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.servicio_presupuestoFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_presupuestoPayload> | null
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.servicio_presupuestoFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_presupuestoPayload>
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.servicio_presupuestoFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_presupuestoPayload>[]
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.servicio_presupuestoCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_presupuestoPayload>
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.servicio_presupuestoCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.servicio_presupuestoDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_presupuestoPayload>
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.servicio_presupuestoUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_presupuestoPayload>
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.servicio_presupuestoDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.servicio_presupuestoUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.servicio_presupuestoUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<servicio_presupuestoPayload>
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Servicio_presupuestoAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateServicio_presupuesto>
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.servicio_presupuestoGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Servicio_presupuestoGroupByOutputType>[]
+            payload: servicio_presupuestoPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.servicio_presupuestoCountArgs<ExtArgs>,
+            result: $Utils.Optional<Servicio_presupuestoCountAggregateOutputType> | number
+            payload: servicio_presupuestoPayload<ExtArgs>
           }
         }
       }
@@ -47049,6 +47285,2080 @@ export namespace Prisma {
 
 
   /**
+   * Model gastos_caja_copy
+   */
+
+
+  export type AggregateGastos_caja_copy = {
+    _count: Gastos_caja_copyCountAggregateOutputType | null
+    _avg: Gastos_caja_copyAvgAggregateOutputType | null
+    _sum: Gastos_caja_copySumAggregateOutputType | null
+    _min: Gastos_caja_copyMinAggregateOutputType | null
+    _max: Gastos_caja_copyMaxAggregateOutputType | null
+  }
+
+  export type Gastos_caja_copyAvgAggregateOutputType = {
+    idgastos: number | null
+    idcaja: number | null
+    ptoventa: number | null
+    montoiva: number | null
+    retiibb: number | null
+    retggcias: number | null
+    perciva: number | null
+    total: number | null
+    idservicio: number | null
+  }
+
+  export type Gastos_caja_copySumAggregateOutputType = {
+    idgastos: number | null
+    idcaja: number | null
+    ptoventa: number | null
+    montoiva: number | null
+    retiibb: number | null
+    retggcias: number | null
+    perciva: number | null
+    total: number | null
+    idservicio: number | null
+  }
+
+  export type Gastos_caja_copyMinAggregateOutputType = {
+    idgastos: number | null
+    idcaja: number | null
+    concepto: string | null
+    tipofactura: string | null
+    nfactura: string | null
+    fecha: Date | null
+    operadorgestion: string | null
+    operadortramite: string | null
+    ptoventa: number | null
+    porciva: string | null
+    montoiva: number | null
+    retiibb: number | null
+    retggcias: number | null
+    perciva: number | null
+    detalle: string | null
+    mediopago: string | null
+    proveedor: string | null
+    empresa: string | null
+    total: number | null
+    idservicio: number | null
+  }
+
+  export type Gastos_caja_copyMaxAggregateOutputType = {
+    idgastos: number | null
+    idcaja: number | null
+    concepto: string | null
+    tipofactura: string | null
+    nfactura: string | null
+    fecha: Date | null
+    operadorgestion: string | null
+    operadortramite: string | null
+    ptoventa: number | null
+    porciva: string | null
+    montoiva: number | null
+    retiibb: number | null
+    retggcias: number | null
+    perciva: number | null
+    detalle: string | null
+    mediopago: string | null
+    proveedor: string | null
+    empresa: string | null
+    total: number | null
+    idservicio: number | null
+  }
+
+  export type Gastos_caja_copyCountAggregateOutputType = {
+    idgastos: number
+    idcaja: number
+    concepto: number
+    tipofactura: number
+    nfactura: number
+    fecha: number
+    operadorgestion: number
+    operadortramite: number
+    ptoventa: number
+    porciva: number
+    montoiva: number
+    retiibb: number
+    retggcias: number
+    perciva: number
+    detalle: number
+    mediopago: number
+    proveedor: number
+    empresa: number
+    total: number
+    idservicio: number
+    _all: number
+  }
+
+
+  export type Gastos_caja_copyAvgAggregateInputType = {
+    idgastos?: true
+    idcaja?: true
+    ptoventa?: true
+    montoiva?: true
+    retiibb?: true
+    retggcias?: true
+    perciva?: true
+    total?: true
+    idservicio?: true
+  }
+
+  export type Gastos_caja_copySumAggregateInputType = {
+    idgastos?: true
+    idcaja?: true
+    ptoventa?: true
+    montoiva?: true
+    retiibb?: true
+    retggcias?: true
+    perciva?: true
+    total?: true
+    idservicio?: true
+  }
+
+  export type Gastos_caja_copyMinAggregateInputType = {
+    idgastos?: true
+    idcaja?: true
+    concepto?: true
+    tipofactura?: true
+    nfactura?: true
+    fecha?: true
+    operadorgestion?: true
+    operadortramite?: true
+    ptoventa?: true
+    porciva?: true
+    montoiva?: true
+    retiibb?: true
+    retggcias?: true
+    perciva?: true
+    detalle?: true
+    mediopago?: true
+    proveedor?: true
+    empresa?: true
+    total?: true
+    idservicio?: true
+  }
+
+  export type Gastos_caja_copyMaxAggregateInputType = {
+    idgastos?: true
+    idcaja?: true
+    concepto?: true
+    tipofactura?: true
+    nfactura?: true
+    fecha?: true
+    operadorgestion?: true
+    operadortramite?: true
+    ptoventa?: true
+    porciva?: true
+    montoiva?: true
+    retiibb?: true
+    retggcias?: true
+    perciva?: true
+    detalle?: true
+    mediopago?: true
+    proveedor?: true
+    empresa?: true
+    total?: true
+    idservicio?: true
+  }
+
+  export type Gastos_caja_copyCountAggregateInputType = {
+    idgastos?: true
+    idcaja?: true
+    concepto?: true
+    tipofactura?: true
+    nfactura?: true
+    fecha?: true
+    operadorgestion?: true
+    operadortramite?: true
+    ptoventa?: true
+    porciva?: true
+    montoiva?: true
+    retiibb?: true
+    retggcias?: true
+    perciva?: true
+    detalle?: true
+    mediopago?: true
+    proveedor?: true
+    empresa?: true
+    total?: true
+    idservicio?: true
+    _all?: true
+  }
+
+  export type Gastos_caja_copyAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which gastos_caja_copy to aggregate.
+     */
+    where?: gastos_caja_copyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of gastos_caja_copies to fetch.
+     */
+    orderBy?: gastos_caja_copyOrderByWithRelationInput | gastos_caja_copyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: gastos_caja_copyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` gastos_caja_copies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` gastos_caja_copies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned gastos_caja_copies
+    **/
+    _count?: true | Gastos_caja_copyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Gastos_caja_copyAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Gastos_caja_copySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Gastos_caja_copyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Gastos_caja_copyMaxAggregateInputType
+  }
+
+  export type GetGastos_caja_copyAggregateType<T extends Gastos_caja_copyAggregateArgs> = {
+        [P in keyof T & keyof AggregateGastos_caja_copy]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGastos_caja_copy[P]>
+      : GetScalarType<T[P], AggregateGastos_caja_copy[P]>
+  }
+
+
+
+
+  export type gastos_caja_copyGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: gastos_caja_copyWhereInput
+    orderBy?: gastos_caja_copyOrderByWithAggregationInput | gastos_caja_copyOrderByWithAggregationInput[]
+    by: Gastos_caja_copyScalarFieldEnum[] | Gastos_caja_copyScalarFieldEnum
+    having?: gastos_caja_copyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Gastos_caja_copyCountAggregateInputType | true
+    _avg?: Gastos_caja_copyAvgAggregateInputType
+    _sum?: Gastos_caja_copySumAggregateInputType
+    _min?: Gastos_caja_copyMinAggregateInputType
+    _max?: Gastos_caja_copyMaxAggregateInputType
+  }
+
+
+  export type Gastos_caja_copyGroupByOutputType = {
+    idgastos: number
+    idcaja: number | null
+    concepto: string | null
+    tipofactura: string | null
+    nfactura: string | null
+    fecha: Date | null
+    operadorgestion: string | null
+    operadortramite: string | null
+    ptoventa: number | null
+    porciva: string | null
+    montoiva: number | null
+    retiibb: number | null
+    retggcias: number | null
+    perciva: number | null
+    detalle: string | null
+    mediopago: string | null
+    proveedor: string | null
+    empresa: string | null
+    total: number | null
+    idservicio: number | null
+    _count: Gastos_caja_copyCountAggregateOutputType | null
+    _avg: Gastos_caja_copyAvgAggregateOutputType | null
+    _sum: Gastos_caja_copySumAggregateOutputType | null
+    _min: Gastos_caja_copyMinAggregateOutputType | null
+    _max: Gastos_caja_copyMaxAggregateOutputType | null
+  }
+
+  type GetGastos_caja_copyGroupByPayload<T extends gastos_caja_copyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Gastos_caja_copyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Gastos_caja_copyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Gastos_caja_copyGroupByOutputType[P]>
+            : GetScalarType<T[P], Gastos_caja_copyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type gastos_caja_copySelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idgastos?: boolean
+    idcaja?: boolean
+    concepto?: boolean
+    tipofactura?: boolean
+    nfactura?: boolean
+    fecha?: boolean
+    operadorgestion?: boolean
+    operadortramite?: boolean
+    ptoventa?: boolean
+    porciva?: boolean
+    montoiva?: boolean
+    retiibb?: boolean
+    retggcias?: boolean
+    perciva?: boolean
+    detalle?: boolean
+    mediopago?: boolean
+    proveedor?: boolean
+    empresa?: boolean
+    total?: boolean
+    idservicio?: boolean
+  }, ExtArgs["result"]["gastos_caja_copy"]>
+
+  export type gastos_caja_copySelectScalar = {
+    idgastos?: boolean
+    idcaja?: boolean
+    concepto?: boolean
+    tipofactura?: boolean
+    nfactura?: boolean
+    fecha?: boolean
+    operadorgestion?: boolean
+    operadortramite?: boolean
+    ptoventa?: boolean
+    porciva?: boolean
+    montoiva?: boolean
+    retiibb?: boolean
+    retggcias?: boolean
+    perciva?: boolean
+    detalle?: boolean
+    mediopago?: boolean
+    proveedor?: boolean
+    empresa?: boolean
+    total?: boolean
+    idservicio?: boolean
+  }
+
+
+  type gastos_caja_copyGetPayload<S extends boolean | null | undefined | gastos_caja_copyArgs> = $Types.GetResult<gastos_caja_copyPayload, S>
+
+  type gastos_caja_copyCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<gastos_caja_copyFindManyArgs, 'select' | 'include'> & {
+      select?: Gastos_caja_copyCountAggregateInputType | true
+    }
+
+  export interface gastos_caja_copyDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['gastos_caja_copy'], meta: { name: 'gastos_caja_copy' } }
+    /**
+     * Find zero or one Gastos_caja_copy that matches the filter.
+     * @param {gastos_caja_copyFindUniqueArgs} args - Arguments to find a Gastos_caja_copy
+     * @example
+     * // Get one Gastos_caja_copy
+     * const gastos_caja_copy = await prisma.gastos_caja_copy.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends gastos_caja_copyFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, gastos_caja_copyFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'gastos_caja_copy'> extends True ? Prisma__gastos_caja_copyClient<$Types.GetResult<gastos_caja_copyPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__gastos_caja_copyClient<$Types.GetResult<gastos_caja_copyPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Gastos_caja_copy that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {gastos_caja_copyFindUniqueOrThrowArgs} args - Arguments to find a Gastos_caja_copy
+     * @example
+     * // Get one Gastos_caja_copy
+     * const gastos_caja_copy = await prisma.gastos_caja_copy.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends gastos_caja_copyFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, gastos_caja_copyFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__gastos_caja_copyClient<$Types.GetResult<gastos_caja_copyPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Gastos_caja_copy that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gastos_caja_copyFindFirstArgs} args - Arguments to find a Gastos_caja_copy
+     * @example
+     * // Get one Gastos_caja_copy
+     * const gastos_caja_copy = await prisma.gastos_caja_copy.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends gastos_caja_copyFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, gastos_caja_copyFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'gastos_caja_copy'> extends True ? Prisma__gastos_caja_copyClient<$Types.GetResult<gastos_caja_copyPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__gastos_caja_copyClient<$Types.GetResult<gastos_caja_copyPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Gastos_caja_copy that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gastos_caja_copyFindFirstOrThrowArgs} args - Arguments to find a Gastos_caja_copy
+     * @example
+     * // Get one Gastos_caja_copy
+     * const gastos_caja_copy = await prisma.gastos_caja_copy.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends gastos_caja_copyFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, gastos_caja_copyFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__gastos_caja_copyClient<$Types.GetResult<gastos_caja_copyPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Gastos_caja_copies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gastos_caja_copyFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Gastos_caja_copies
+     * const gastos_caja_copies = await prisma.gastos_caja_copy.findMany()
+     * 
+     * // Get first 10 Gastos_caja_copies
+     * const gastos_caja_copies = await prisma.gastos_caja_copy.findMany({ take: 10 })
+     * 
+     * // Only select the `idgastos`
+     * const gastos_caja_copyWithIdgastosOnly = await prisma.gastos_caja_copy.findMany({ select: { idgastos: true } })
+     * 
+    **/
+    findMany<T extends gastos_caja_copyFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, gastos_caja_copyFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<gastos_caja_copyPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Gastos_caja_copy.
+     * @param {gastos_caja_copyCreateArgs} args - Arguments to create a Gastos_caja_copy.
+     * @example
+     * // Create one Gastos_caja_copy
+     * const Gastos_caja_copy = await prisma.gastos_caja_copy.create({
+     *   data: {
+     *     // ... data to create a Gastos_caja_copy
+     *   }
+     * })
+     * 
+    **/
+    create<T extends gastos_caja_copyCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, gastos_caja_copyCreateArgs<ExtArgs>>
+    ): Prisma__gastos_caja_copyClient<$Types.GetResult<gastos_caja_copyPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Gastos_caja_copies.
+     *     @param {gastos_caja_copyCreateManyArgs} args - Arguments to create many Gastos_caja_copies.
+     *     @example
+     *     // Create many Gastos_caja_copies
+     *     const gastos_caja_copy = await prisma.gastos_caja_copy.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends gastos_caja_copyCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, gastos_caja_copyCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Gastos_caja_copy.
+     * @param {gastos_caja_copyDeleteArgs} args - Arguments to delete one Gastos_caja_copy.
+     * @example
+     * // Delete one Gastos_caja_copy
+     * const Gastos_caja_copy = await prisma.gastos_caja_copy.delete({
+     *   where: {
+     *     // ... filter to delete one Gastos_caja_copy
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends gastos_caja_copyDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, gastos_caja_copyDeleteArgs<ExtArgs>>
+    ): Prisma__gastos_caja_copyClient<$Types.GetResult<gastos_caja_copyPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Gastos_caja_copy.
+     * @param {gastos_caja_copyUpdateArgs} args - Arguments to update one Gastos_caja_copy.
+     * @example
+     * // Update one Gastos_caja_copy
+     * const gastos_caja_copy = await prisma.gastos_caja_copy.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends gastos_caja_copyUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, gastos_caja_copyUpdateArgs<ExtArgs>>
+    ): Prisma__gastos_caja_copyClient<$Types.GetResult<gastos_caja_copyPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Gastos_caja_copies.
+     * @param {gastos_caja_copyDeleteManyArgs} args - Arguments to filter Gastos_caja_copies to delete.
+     * @example
+     * // Delete a few Gastos_caja_copies
+     * const { count } = await prisma.gastos_caja_copy.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends gastos_caja_copyDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, gastos_caja_copyDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Gastos_caja_copies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gastos_caja_copyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Gastos_caja_copies
+     * const gastos_caja_copy = await prisma.gastos_caja_copy.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends gastos_caja_copyUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, gastos_caja_copyUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Gastos_caja_copy.
+     * @param {gastos_caja_copyUpsertArgs} args - Arguments to update or create a Gastos_caja_copy.
+     * @example
+     * // Update or create a Gastos_caja_copy
+     * const gastos_caja_copy = await prisma.gastos_caja_copy.upsert({
+     *   create: {
+     *     // ... data to create a Gastos_caja_copy
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Gastos_caja_copy we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends gastos_caja_copyUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, gastos_caja_copyUpsertArgs<ExtArgs>>
+    ): Prisma__gastos_caja_copyClient<$Types.GetResult<gastos_caja_copyPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Gastos_caja_copies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gastos_caja_copyCountArgs} args - Arguments to filter Gastos_caja_copies to count.
+     * @example
+     * // Count the number of Gastos_caja_copies
+     * const count = await prisma.gastos_caja_copy.count({
+     *   where: {
+     *     // ... the filter for the Gastos_caja_copies we want to count
+     *   }
+     * })
+    **/
+    count<T extends gastos_caja_copyCountArgs>(
+      args?: Subset<T, gastos_caja_copyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Gastos_caja_copyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Gastos_caja_copy.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Gastos_caja_copyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Gastos_caja_copyAggregateArgs>(args: Subset<T, Gastos_caja_copyAggregateArgs>): Prisma.PrismaPromise<GetGastos_caja_copyAggregateType<T>>
+
+    /**
+     * Group by Gastos_caja_copy.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gastos_caja_copyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends gastos_caja_copyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: gastos_caja_copyGroupByArgs['orderBy'] }
+        : { orderBy?: gastos_caja_copyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, gastos_caja_copyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGastos_caja_copyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for gastos_caja_copy.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__gastos_caja_copyClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * gastos_caja_copy base type for findUnique actions
+   */
+  export type gastos_caja_copyFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gastos_caja_copy
+     */
+    select?: gastos_caja_copySelect<ExtArgs> | null
+    /**
+     * Filter, which gastos_caja_copy to fetch.
+     */
+    where: gastos_caja_copyWhereUniqueInput
+  }
+
+  /**
+   * gastos_caja_copy findUnique
+   */
+  export interface gastos_caja_copyFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends gastos_caja_copyFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * gastos_caja_copy findUniqueOrThrow
+   */
+  export type gastos_caja_copyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gastos_caja_copy
+     */
+    select?: gastos_caja_copySelect<ExtArgs> | null
+    /**
+     * Filter, which gastos_caja_copy to fetch.
+     */
+    where: gastos_caja_copyWhereUniqueInput
+  }
+
+
+  /**
+   * gastos_caja_copy base type for findFirst actions
+   */
+  export type gastos_caja_copyFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gastos_caja_copy
+     */
+    select?: gastos_caja_copySelect<ExtArgs> | null
+    /**
+     * Filter, which gastos_caja_copy to fetch.
+     */
+    where?: gastos_caja_copyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of gastos_caja_copies to fetch.
+     */
+    orderBy?: gastos_caja_copyOrderByWithRelationInput | gastos_caja_copyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for gastos_caja_copies.
+     */
+    cursor?: gastos_caja_copyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` gastos_caja_copies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` gastos_caja_copies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of gastos_caja_copies.
+     */
+    distinct?: Gastos_caja_copyScalarFieldEnum | Gastos_caja_copyScalarFieldEnum[]
+  }
+
+  /**
+   * gastos_caja_copy findFirst
+   */
+  export interface gastos_caja_copyFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends gastos_caja_copyFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * gastos_caja_copy findFirstOrThrow
+   */
+  export type gastos_caja_copyFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gastos_caja_copy
+     */
+    select?: gastos_caja_copySelect<ExtArgs> | null
+    /**
+     * Filter, which gastos_caja_copy to fetch.
+     */
+    where?: gastos_caja_copyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of gastos_caja_copies to fetch.
+     */
+    orderBy?: gastos_caja_copyOrderByWithRelationInput | gastos_caja_copyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for gastos_caja_copies.
+     */
+    cursor?: gastos_caja_copyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` gastos_caja_copies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` gastos_caja_copies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of gastos_caja_copies.
+     */
+    distinct?: Gastos_caja_copyScalarFieldEnum | Gastos_caja_copyScalarFieldEnum[]
+  }
+
+
+  /**
+   * gastos_caja_copy findMany
+   */
+  export type gastos_caja_copyFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gastos_caja_copy
+     */
+    select?: gastos_caja_copySelect<ExtArgs> | null
+    /**
+     * Filter, which gastos_caja_copies to fetch.
+     */
+    where?: gastos_caja_copyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of gastos_caja_copies to fetch.
+     */
+    orderBy?: gastos_caja_copyOrderByWithRelationInput | gastos_caja_copyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing gastos_caja_copies.
+     */
+    cursor?: gastos_caja_copyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` gastos_caja_copies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` gastos_caja_copies.
+     */
+    skip?: number
+    distinct?: Gastos_caja_copyScalarFieldEnum | Gastos_caja_copyScalarFieldEnum[]
+  }
+
+
+  /**
+   * gastos_caja_copy create
+   */
+  export type gastos_caja_copyCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gastos_caja_copy
+     */
+    select?: gastos_caja_copySelect<ExtArgs> | null
+    /**
+     * The data needed to create a gastos_caja_copy.
+     */
+    data?: XOR<gastos_caja_copyCreateInput, gastos_caja_copyUncheckedCreateInput>
+  }
+
+
+  /**
+   * gastos_caja_copy createMany
+   */
+  export type gastos_caja_copyCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many gastos_caja_copies.
+     */
+    data: gastos_caja_copyCreateManyInput | gastos_caja_copyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * gastos_caja_copy update
+   */
+  export type gastos_caja_copyUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gastos_caja_copy
+     */
+    select?: gastos_caja_copySelect<ExtArgs> | null
+    /**
+     * The data needed to update a gastos_caja_copy.
+     */
+    data: XOR<gastos_caja_copyUpdateInput, gastos_caja_copyUncheckedUpdateInput>
+    /**
+     * Choose, which gastos_caja_copy to update.
+     */
+    where: gastos_caja_copyWhereUniqueInput
+  }
+
+
+  /**
+   * gastos_caja_copy updateMany
+   */
+  export type gastos_caja_copyUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update gastos_caja_copies.
+     */
+    data: XOR<gastos_caja_copyUpdateManyMutationInput, gastos_caja_copyUncheckedUpdateManyInput>
+    /**
+     * Filter which gastos_caja_copies to update
+     */
+    where?: gastos_caja_copyWhereInput
+  }
+
+
+  /**
+   * gastos_caja_copy upsert
+   */
+  export type gastos_caja_copyUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gastos_caja_copy
+     */
+    select?: gastos_caja_copySelect<ExtArgs> | null
+    /**
+     * The filter to search for the gastos_caja_copy to update in case it exists.
+     */
+    where: gastos_caja_copyWhereUniqueInput
+    /**
+     * In case the gastos_caja_copy found by the `where` argument doesn't exist, create a new gastos_caja_copy with this data.
+     */
+    create: XOR<gastos_caja_copyCreateInput, gastos_caja_copyUncheckedCreateInput>
+    /**
+     * In case the gastos_caja_copy was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<gastos_caja_copyUpdateInput, gastos_caja_copyUncheckedUpdateInput>
+  }
+
+
+  /**
+   * gastos_caja_copy delete
+   */
+  export type gastos_caja_copyDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gastos_caja_copy
+     */
+    select?: gastos_caja_copySelect<ExtArgs> | null
+    /**
+     * Filter which gastos_caja_copy to delete.
+     */
+    where: gastos_caja_copyWhereUniqueInput
+  }
+
+
+  /**
+   * gastos_caja_copy deleteMany
+   */
+  export type gastos_caja_copyDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which gastos_caja_copies to delete
+     */
+    where?: gastos_caja_copyWhereInput
+  }
+
+
+  /**
+   * gastos_caja_copy without action
+   */
+  export type gastos_caja_copyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gastos_caja_copy
+     */
+    select?: gastos_caja_copySelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model servicio_presupuesto
+   */
+
+
+  export type AggregateServicio_presupuesto = {
+    _count: Servicio_presupuestoCountAggregateOutputType | null
+    _avg: Servicio_presupuestoAvgAggregateOutputType | null
+    _sum: Servicio_presupuestoSumAggregateOutputType | null
+    _min: Servicio_presupuestoMinAggregateOutputType | null
+    _max: Servicio_presupuestoMaxAggregateOutputType | null
+  }
+
+  export type Servicio_presupuestoAvgAggregateOutputType = {
+    idpresupuesto: number | null
+    idservicio: number | null
+    total: number | null
+    anticipo: number | null
+    cuotas: number | null
+    saldo: number | null
+  }
+
+  export type Servicio_presupuestoSumAggregateOutputType = {
+    idpresupuesto: number | null
+    idservicio: number | null
+    total: number | null
+    anticipo: number | null
+    cuotas: number | null
+    saldo: number | null
+  }
+
+  export type Servicio_presupuestoMinAggregateOutputType = {
+    idpresupuesto: number | null
+    idservicio: number | null
+    fecha: Date | null
+    apoderado: string | null
+    domicilio: string | null
+    telefono: string | null
+    detalle: string | null
+    total: number | null
+    anticipo: number | null
+    cuotas: number | null
+    saldo: number | null
+    operador: string | null
+  }
+
+  export type Servicio_presupuestoMaxAggregateOutputType = {
+    idpresupuesto: number | null
+    idservicio: number | null
+    fecha: Date | null
+    apoderado: string | null
+    domicilio: string | null
+    telefono: string | null
+    detalle: string | null
+    total: number | null
+    anticipo: number | null
+    cuotas: number | null
+    saldo: number | null
+    operador: string | null
+  }
+
+  export type Servicio_presupuestoCountAggregateOutputType = {
+    idpresupuesto: number
+    idservicio: number
+    fecha: number
+    apoderado: number
+    domicilio: number
+    telefono: number
+    detalle: number
+    total: number
+    anticipo: number
+    cuotas: number
+    saldo: number
+    operador: number
+    _all: number
+  }
+
+
+  export type Servicio_presupuestoAvgAggregateInputType = {
+    idpresupuesto?: true
+    idservicio?: true
+    total?: true
+    anticipo?: true
+    cuotas?: true
+    saldo?: true
+  }
+
+  export type Servicio_presupuestoSumAggregateInputType = {
+    idpresupuesto?: true
+    idservicio?: true
+    total?: true
+    anticipo?: true
+    cuotas?: true
+    saldo?: true
+  }
+
+  export type Servicio_presupuestoMinAggregateInputType = {
+    idpresupuesto?: true
+    idservicio?: true
+    fecha?: true
+    apoderado?: true
+    domicilio?: true
+    telefono?: true
+    detalle?: true
+    total?: true
+    anticipo?: true
+    cuotas?: true
+    saldo?: true
+    operador?: true
+  }
+
+  export type Servicio_presupuestoMaxAggregateInputType = {
+    idpresupuesto?: true
+    idservicio?: true
+    fecha?: true
+    apoderado?: true
+    domicilio?: true
+    telefono?: true
+    detalle?: true
+    total?: true
+    anticipo?: true
+    cuotas?: true
+    saldo?: true
+    operador?: true
+  }
+
+  export type Servicio_presupuestoCountAggregateInputType = {
+    idpresupuesto?: true
+    idservicio?: true
+    fecha?: true
+    apoderado?: true
+    domicilio?: true
+    telefono?: true
+    detalle?: true
+    total?: true
+    anticipo?: true
+    cuotas?: true
+    saldo?: true
+    operador?: true
+    _all?: true
+  }
+
+  export type Servicio_presupuestoAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which servicio_presupuesto to aggregate.
+     */
+    where?: servicio_presupuestoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicio_presupuestos to fetch.
+     */
+    orderBy?: servicio_presupuestoOrderByWithRelationInput | servicio_presupuestoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: servicio_presupuestoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicio_presupuestos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicio_presupuestos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned servicio_presupuestos
+    **/
+    _count?: true | Servicio_presupuestoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Servicio_presupuestoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Servicio_presupuestoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Servicio_presupuestoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Servicio_presupuestoMaxAggregateInputType
+  }
+
+  export type GetServicio_presupuestoAggregateType<T extends Servicio_presupuestoAggregateArgs> = {
+        [P in keyof T & keyof AggregateServicio_presupuesto]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateServicio_presupuesto[P]>
+      : GetScalarType<T[P], AggregateServicio_presupuesto[P]>
+  }
+
+
+
+
+  export type servicio_presupuestoGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: servicio_presupuestoWhereInput
+    orderBy?: servicio_presupuestoOrderByWithAggregationInput | servicio_presupuestoOrderByWithAggregationInput[]
+    by: Servicio_presupuestoScalarFieldEnum[] | Servicio_presupuestoScalarFieldEnum
+    having?: servicio_presupuestoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Servicio_presupuestoCountAggregateInputType | true
+    _avg?: Servicio_presupuestoAvgAggregateInputType
+    _sum?: Servicio_presupuestoSumAggregateInputType
+    _min?: Servicio_presupuestoMinAggregateInputType
+    _max?: Servicio_presupuestoMaxAggregateInputType
+  }
+
+
+  export type Servicio_presupuestoGroupByOutputType = {
+    idpresupuesto: number
+    idservicio: number | null
+    fecha: Date | null
+    apoderado: string | null
+    domicilio: string | null
+    telefono: string | null
+    detalle: string | null
+    total: number | null
+    anticipo: number | null
+    cuotas: number | null
+    saldo: number | null
+    operador: string | null
+    _count: Servicio_presupuestoCountAggregateOutputType | null
+    _avg: Servicio_presupuestoAvgAggregateOutputType | null
+    _sum: Servicio_presupuestoSumAggregateOutputType | null
+    _min: Servicio_presupuestoMinAggregateOutputType | null
+    _max: Servicio_presupuestoMaxAggregateOutputType | null
+  }
+
+  type GetServicio_presupuestoGroupByPayload<T extends servicio_presupuestoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Servicio_presupuestoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Servicio_presupuestoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Servicio_presupuestoGroupByOutputType[P]>
+            : GetScalarType<T[P], Servicio_presupuestoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type servicio_presupuestoSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idpresupuesto?: boolean
+    idservicio?: boolean
+    fecha?: boolean
+    apoderado?: boolean
+    domicilio?: boolean
+    telefono?: boolean
+    detalle?: boolean
+    total?: boolean
+    anticipo?: boolean
+    cuotas?: boolean
+    saldo?: boolean
+    operador?: boolean
+  }, ExtArgs["result"]["servicio_presupuesto"]>
+
+  export type servicio_presupuestoSelectScalar = {
+    idpresupuesto?: boolean
+    idservicio?: boolean
+    fecha?: boolean
+    apoderado?: boolean
+    domicilio?: boolean
+    telefono?: boolean
+    detalle?: boolean
+    total?: boolean
+    anticipo?: boolean
+    cuotas?: boolean
+    saldo?: boolean
+    operador?: boolean
+  }
+
+
+  type servicio_presupuestoGetPayload<S extends boolean | null | undefined | servicio_presupuestoArgs> = $Types.GetResult<servicio_presupuestoPayload, S>
+
+  type servicio_presupuestoCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<servicio_presupuestoFindManyArgs, 'select' | 'include'> & {
+      select?: Servicio_presupuestoCountAggregateInputType | true
+    }
+
+  export interface servicio_presupuestoDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['servicio_presupuesto'], meta: { name: 'servicio_presupuesto' } }
+    /**
+     * Find zero or one Servicio_presupuesto that matches the filter.
+     * @param {servicio_presupuestoFindUniqueArgs} args - Arguments to find a Servicio_presupuesto
+     * @example
+     * // Get one Servicio_presupuesto
+     * const servicio_presupuesto = await prisma.servicio_presupuesto.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends servicio_presupuestoFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, servicio_presupuestoFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'servicio_presupuesto'> extends True ? Prisma__servicio_presupuestoClient<$Types.GetResult<servicio_presupuestoPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__servicio_presupuestoClient<$Types.GetResult<servicio_presupuestoPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Servicio_presupuesto that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {servicio_presupuestoFindUniqueOrThrowArgs} args - Arguments to find a Servicio_presupuesto
+     * @example
+     * // Get one Servicio_presupuesto
+     * const servicio_presupuesto = await prisma.servicio_presupuesto.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends servicio_presupuestoFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicio_presupuestoFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__servicio_presupuestoClient<$Types.GetResult<servicio_presupuestoPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Servicio_presupuesto that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_presupuestoFindFirstArgs} args - Arguments to find a Servicio_presupuesto
+     * @example
+     * // Get one Servicio_presupuesto
+     * const servicio_presupuesto = await prisma.servicio_presupuesto.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends servicio_presupuestoFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, servicio_presupuestoFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'servicio_presupuesto'> extends True ? Prisma__servicio_presupuestoClient<$Types.GetResult<servicio_presupuestoPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__servicio_presupuestoClient<$Types.GetResult<servicio_presupuestoPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Servicio_presupuesto that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_presupuestoFindFirstOrThrowArgs} args - Arguments to find a Servicio_presupuesto
+     * @example
+     * // Get one Servicio_presupuesto
+     * const servicio_presupuesto = await prisma.servicio_presupuesto.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends servicio_presupuestoFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicio_presupuestoFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__servicio_presupuestoClient<$Types.GetResult<servicio_presupuestoPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Servicio_presupuestos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_presupuestoFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Servicio_presupuestos
+     * const servicio_presupuestos = await prisma.servicio_presupuesto.findMany()
+     * 
+     * // Get first 10 Servicio_presupuestos
+     * const servicio_presupuestos = await prisma.servicio_presupuesto.findMany({ take: 10 })
+     * 
+     * // Only select the `idpresupuesto`
+     * const servicio_presupuestoWithIdpresupuestoOnly = await prisma.servicio_presupuesto.findMany({ select: { idpresupuesto: true } })
+     * 
+    **/
+    findMany<T extends servicio_presupuestoFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicio_presupuestoFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<servicio_presupuestoPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Servicio_presupuesto.
+     * @param {servicio_presupuestoCreateArgs} args - Arguments to create a Servicio_presupuesto.
+     * @example
+     * // Create one Servicio_presupuesto
+     * const Servicio_presupuesto = await prisma.servicio_presupuesto.create({
+     *   data: {
+     *     // ... data to create a Servicio_presupuesto
+     *   }
+     * })
+     * 
+    **/
+    create<T extends servicio_presupuestoCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, servicio_presupuestoCreateArgs<ExtArgs>>
+    ): Prisma__servicio_presupuestoClient<$Types.GetResult<servicio_presupuestoPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Servicio_presupuestos.
+     *     @param {servicio_presupuestoCreateManyArgs} args - Arguments to create many Servicio_presupuestos.
+     *     @example
+     *     // Create many Servicio_presupuestos
+     *     const servicio_presupuesto = await prisma.servicio_presupuesto.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends servicio_presupuestoCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicio_presupuestoCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Servicio_presupuesto.
+     * @param {servicio_presupuestoDeleteArgs} args - Arguments to delete one Servicio_presupuesto.
+     * @example
+     * // Delete one Servicio_presupuesto
+     * const Servicio_presupuesto = await prisma.servicio_presupuesto.delete({
+     *   where: {
+     *     // ... filter to delete one Servicio_presupuesto
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends servicio_presupuestoDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, servicio_presupuestoDeleteArgs<ExtArgs>>
+    ): Prisma__servicio_presupuestoClient<$Types.GetResult<servicio_presupuestoPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Servicio_presupuesto.
+     * @param {servicio_presupuestoUpdateArgs} args - Arguments to update one Servicio_presupuesto.
+     * @example
+     * // Update one Servicio_presupuesto
+     * const servicio_presupuesto = await prisma.servicio_presupuesto.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends servicio_presupuestoUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, servicio_presupuestoUpdateArgs<ExtArgs>>
+    ): Prisma__servicio_presupuestoClient<$Types.GetResult<servicio_presupuestoPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Servicio_presupuestos.
+     * @param {servicio_presupuestoDeleteManyArgs} args - Arguments to filter Servicio_presupuestos to delete.
+     * @example
+     * // Delete a few Servicio_presupuestos
+     * const { count } = await prisma.servicio_presupuesto.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends servicio_presupuestoDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, servicio_presupuestoDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Servicio_presupuestos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_presupuestoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Servicio_presupuestos
+     * const servicio_presupuesto = await prisma.servicio_presupuesto.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends servicio_presupuestoUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, servicio_presupuestoUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Servicio_presupuesto.
+     * @param {servicio_presupuestoUpsertArgs} args - Arguments to update or create a Servicio_presupuesto.
+     * @example
+     * // Update or create a Servicio_presupuesto
+     * const servicio_presupuesto = await prisma.servicio_presupuesto.upsert({
+     *   create: {
+     *     // ... data to create a Servicio_presupuesto
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Servicio_presupuesto we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends servicio_presupuestoUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, servicio_presupuestoUpsertArgs<ExtArgs>>
+    ): Prisma__servicio_presupuestoClient<$Types.GetResult<servicio_presupuestoPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Servicio_presupuestos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_presupuestoCountArgs} args - Arguments to filter Servicio_presupuestos to count.
+     * @example
+     * // Count the number of Servicio_presupuestos
+     * const count = await prisma.servicio_presupuesto.count({
+     *   where: {
+     *     // ... the filter for the Servicio_presupuestos we want to count
+     *   }
+     * })
+    **/
+    count<T extends servicio_presupuestoCountArgs>(
+      args?: Subset<T, servicio_presupuestoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Servicio_presupuestoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Servicio_presupuesto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Servicio_presupuestoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Servicio_presupuestoAggregateArgs>(args: Subset<T, Servicio_presupuestoAggregateArgs>): Prisma.PrismaPromise<GetServicio_presupuestoAggregateType<T>>
+
+    /**
+     * Group by Servicio_presupuesto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {servicio_presupuestoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends servicio_presupuestoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: servicio_presupuestoGroupByArgs['orderBy'] }
+        : { orderBy?: servicio_presupuestoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, servicio_presupuestoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServicio_presupuestoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for servicio_presupuesto.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__servicio_presupuestoClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * servicio_presupuesto base type for findUnique actions
+   */
+  export type servicio_presupuestoFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_presupuesto
+     */
+    select?: servicio_presupuestoSelect<ExtArgs> | null
+    /**
+     * Filter, which servicio_presupuesto to fetch.
+     */
+    where: servicio_presupuestoWhereUniqueInput
+  }
+
+  /**
+   * servicio_presupuesto findUnique
+   */
+  export interface servicio_presupuestoFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends servicio_presupuestoFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * servicio_presupuesto findUniqueOrThrow
+   */
+  export type servicio_presupuestoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_presupuesto
+     */
+    select?: servicio_presupuestoSelect<ExtArgs> | null
+    /**
+     * Filter, which servicio_presupuesto to fetch.
+     */
+    where: servicio_presupuestoWhereUniqueInput
+  }
+
+
+  /**
+   * servicio_presupuesto base type for findFirst actions
+   */
+  export type servicio_presupuestoFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_presupuesto
+     */
+    select?: servicio_presupuestoSelect<ExtArgs> | null
+    /**
+     * Filter, which servicio_presupuesto to fetch.
+     */
+    where?: servicio_presupuestoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicio_presupuestos to fetch.
+     */
+    orderBy?: servicio_presupuestoOrderByWithRelationInput | servicio_presupuestoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for servicio_presupuestos.
+     */
+    cursor?: servicio_presupuestoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicio_presupuestos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicio_presupuestos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of servicio_presupuestos.
+     */
+    distinct?: Servicio_presupuestoScalarFieldEnum | Servicio_presupuestoScalarFieldEnum[]
+  }
+
+  /**
+   * servicio_presupuesto findFirst
+   */
+  export interface servicio_presupuestoFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends servicio_presupuestoFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * servicio_presupuesto findFirstOrThrow
+   */
+  export type servicio_presupuestoFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_presupuesto
+     */
+    select?: servicio_presupuestoSelect<ExtArgs> | null
+    /**
+     * Filter, which servicio_presupuesto to fetch.
+     */
+    where?: servicio_presupuestoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicio_presupuestos to fetch.
+     */
+    orderBy?: servicio_presupuestoOrderByWithRelationInput | servicio_presupuestoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for servicio_presupuestos.
+     */
+    cursor?: servicio_presupuestoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicio_presupuestos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicio_presupuestos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of servicio_presupuestos.
+     */
+    distinct?: Servicio_presupuestoScalarFieldEnum | Servicio_presupuestoScalarFieldEnum[]
+  }
+
+
+  /**
+   * servicio_presupuesto findMany
+   */
+  export type servicio_presupuestoFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_presupuesto
+     */
+    select?: servicio_presupuestoSelect<ExtArgs> | null
+    /**
+     * Filter, which servicio_presupuestos to fetch.
+     */
+    where?: servicio_presupuestoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of servicio_presupuestos to fetch.
+     */
+    orderBy?: servicio_presupuestoOrderByWithRelationInput | servicio_presupuestoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing servicio_presupuestos.
+     */
+    cursor?: servicio_presupuestoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` servicio_presupuestos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` servicio_presupuestos.
+     */
+    skip?: number
+    distinct?: Servicio_presupuestoScalarFieldEnum | Servicio_presupuestoScalarFieldEnum[]
+  }
+
+
+  /**
+   * servicio_presupuesto create
+   */
+  export type servicio_presupuestoCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_presupuesto
+     */
+    select?: servicio_presupuestoSelect<ExtArgs> | null
+    /**
+     * The data needed to create a servicio_presupuesto.
+     */
+    data?: XOR<servicio_presupuestoCreateInput, servicio_presupuestoUncheckedCreateInput>
+  }
+
+
+  /**
+   * servicio_presupuesto createMany
+   */
+  export type servicio_presupuestoCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many servicio_presupuestos.
+     */
+    data: servicio_presupuestoCreateManyInput | servicio_presupuestoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * servicio_presupuesto update
+   */
+  export type servicio_presupuestoUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_presupuesto
+     */
+    select?: servicio_presupuestoSelect<ExtArgs> | null
+    /**
+     * The data needed to update a servicio_presupuesto.
+     */
+    data: XOR<servicio_presupuestoUpdateInput, servicio_presupuestoUncheckedUpdateInput>
+    /**
+     * Choose, which servicio_presupuesto to update.
+     */
+    where: servicio_presupuestoWhereUniqueInput
+  }
+
+
+  /**
+   * servicio_presupuesto updateMany
+   */
+  export type servicio_presupuestoUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update servicio_presupuestos.
+     */
+    data: XOR<servicio_presupuestoUpdateManyMutationInput, servicio_presupuestoUncheckedUpdateManyInput>
+    /**
+     * Filter which servicio_presupuestos to update
+     */
+    where?: servicio_presupuestoWhereInput
+  }
+
+
+  /**
+   * servicio_presupuesto upsert
+   */
+  export type servicio_presupuestoUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_presupuesto
+     */
+    select?: servicio_presupuestoSelect<ExtArgs> | null
+    /**
+     * The filter to search for the servicio_presupuesto to update in case it exists.
+     */
+    where: servicio_presupuestoWhereUniqueInput
+    /**
+     * In case the servicio_presupuesto found by the `where` argument doesn't exist, create a new servicio_presupuesto with this data.
+     */
+    create: XOR<servicio_presupuestoCreateInput, servicio_presupuestoUncheckedCreateInput>
+    /**
+     * In case the servicio_presupuesto was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<servicio_presupuestoUpdateInput, servicio_presupuestoUncheckedUpdateInput>
+  }
+
+
+  /**
+   * servicio_presupuesto delete
+   */
+  export type servicio_presupuestoDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_presupuesto
+     */
+    select?: servicio_presupuestoSelect<ExtArgs> | null
+    /**
+     * Filter which servicio_presupuesto to delete.
+     */
+    where: servicio_presupuestoWhereUniqueInput
+  }
+
+
+  /**
+   * servicio_presupuesto deleteMany
+   */
+  export type servicio_presupuestoDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which servicio_presupuestos to delete
+     */
+    where?: servicio_presupuestoWhereInput
+  }
+
+
+  /**
+   * servicio_presupuesto without action
+   */
+  export type servicio_presupuestoArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the servicio_presupuesto
+     */
+    select?: servicio_presupuestoSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -47805,6 +50115,50 @@ export namespace Prisma {
   };
 
   export type Liquidacion_registroScalarFieldEnum = (typeof Liquidacion_registroScalarFieldEnum)[keyof typeof Liquidacion_registroScalarFieldEnum]
+
+
+  export const Gastos_caja_copyScalarFieldEnum: {
+    idgastos: 'idgastos',
+    idcaja: 'idcaja',
+    concepto: 'concepto',
+    tipofactura: 'tipofactura',
+    nfactura: 'nfactura',
+    fecha: 'fecha',
+    operadorgestion: 'operadorgestion',
+    operadortramite: 'operadortramite',
+    ptoventa: 'ptoventa',
+    porciva: 'porciva',
+    montoiva: 'montoiva',
+    retiibb: 'retiibb',
+    retggcias: 'retggcias',
+    perciva: 'perciva',
+    detalle: 'detalle',
+    mediopago: 'mediopago',
+    proveedor: 'proveedor',
+    empresa: 'empresa',
+    total: 'total',
+    idservicio: 'idservicio'
+  };
+
+  export type Gastos_caja_copyScalarFieldEnum = (typeof Gastos_caja_copyScalarFieldEnum)[keyof typeof Gastos_caja_copyScalarFieldEnum]
+
+
+  export const Servicio_presupuestoScalarFieldEnum: {
+    idpresupuesto: 'idpresupuesto',
+    idservicio: 'idservicio',
+    fecha: 'fecha',
+    apoderado: 'apoderado',
+    domicilio: 'domicilio',
+    telefono: 'telefono',
+    detalle: 'detalle',
+    total: 'total',
+    anticipo: 'anticipo',
+    cuotas: 'cuotas',
+    saldo: 'saldo',
+    operador: 'operador'
+  };
+
+  export type Servicio_presupuestoScalarFieldEnum = (typeof Servicio_presupuestoScalarFieldEnum)[keyof typeof Servicio_presupuestoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -50931,6 +53285,188 @@ export namespace Prisma {
     concepto?: StringNullableWithAggregatesFilter | string | null
     fecha_concepto?: DateTimeNullableWithAggregatesFilter | Date | string | null
     importe?: FloatNullableWithAggregatesFilter | number | null
+    operador?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type gastos_caja_copyWhereInput = {
+    AND?: gastos_caja_copyWhereInput | gastos_caja_copyWhereInput[]
+    OR?: gastos_caja_copyWhereInput[]
+    NOT?: gastos_caja_copyWhereInput | gastos_caja_copyWhereInput[]
+    idgastos?: IntFilter | number
+    idcaja?: IntNullableFilter | number | null
+    concepto?: StringNullableFilter | string | null
+    tipofactura?: StringNullableFilter | string | null
+    nfactura?: StringNullableFilter | string | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+    operadorgestion?: StringNullableFilter | string | null
+    operadortramite?: StringNullableFilter | string | null
+    ptoventa?: IntNullableFilter | number | null
+    porciva?: StringNullableFilter | string | null
+    montoiva?: IntNullableFilter | number | null
+    retiibb?: FloatNullableFilter | number | null
+    retggcias?: FloatNullableFilter | number | null
+    perciva?: FloatNullableFilter | number | null
+    detalle?: StringNullableFilter | string | null
+    mediopago?: StringNullableFilter | string | null
+    proveedor?: StringNullableFilter | string | null
+    empresa?: StringNullableFilter | string | null
+    total?: FloatNullableFilter | number | null
+    idservicio?: IntNullableFilter | number | null
+  }
+
+  export type gastos_caja_copyOrderByWithRelationInput = {
+    idgastos?: SortOrder
+    idcaja?: SortOrderInput | SortOrder
+    concepto?: SortOrderInput | SortOrder
+    tipofactura?: SortOrderInput | SortOrder
+    nfactura?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    operadorgestion?: SortOrderInput | SortOrder
+    operadortramite?: SortOrderInput | SortOrder
+    ptoventa?: SortOrderInput | SortOrder
+    porciva?: SortOrderInput | SortOrder
+    montoiva?: SortOrderInput | SortOrder
+    retiibb?: SortOrderInput | SortOrder
+    retggcias?: SortOrderInput | SortOrder
+    perciva?: SortOrderInput | SortOrder
+    detalle?: SortOrderInput | SortOrder
+    mediopago?: SortOrderInput | SortOrder
+    proveedor?: SortOrderInput | SortOrder
+    empresa?: SortOrderInput | SortOrder
+    total?: SortOrderInput | SortOrder
+    idservicio?: SortOrderInput | SortOrder
+  }
+
+  export type gastos_caja_copyWhereUniqueInput = {
+    idgastos?: number
+  }
+
+  export type gastos_caja_copyOrderByWithAggregationInput = {
+    idgastos?: SortOrder
+    idcaja?: SortOrderInput | SortOrder
+    concepto?: SortOrderInput | SortOrder
+    tipofactura?: SortOrderInput | SortOrder
+    nfactura?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    operadorgestion?: SortOrderInput | SortOrder
+    operadortramite?: SortOrderInput | SortOrder
+    ptoventa?: SortOrderInput | SortOrder
+    porciva?: SortOrderInput | SortOrder
+    montoiva?: SortOrderInput | SortOrder
+    retiibb?: SortOrderInput | SortOrder
+    retggcias?: SortOrderInput | SortOrder
+    perciva?: SortOrderInput | SortOrder
+    detalle?: SortOrderInput | SortOrder
+    mediopago?: SortOrderInput | SortOrder
+    proveedor?: SortOrderInput | SortOrder
+    empresa?: SortOrderInput | SortOrder
+    total?: SortOrderInput | SortOrder
+    idservicio?: SortOrderInput | SortOrder
+    _count?: gastos_caja_copyCountOrderByAggregateInput
+    _avg?: gastos_caja_copyAvgOrderByAggregateInput
+    _max?: gastos_caja_copyMaxOrderByAggregateInput
+    _min?: gastos_caja_copyMinOrderByAggregateInput
+    _sum?: gastos_caja_copySumOrderByAggregateInput
+  }
+
+  export type gastos_caja_copyScalarWhereWithAggregatesInput = {
+    AND?: gastos_caja_copyScalarWhereWithAggregatesInput | gastos_caja_copyScalarWhereWithAggregatesInput[]
+    OR?: gastos_caja_copyScalarWhereWithAggregatesInput[]
+    NOT?: gastos_caja_copyScalarWhereWithAggregatesInput | gastos_caja_copyScalarWhereWithAggregatesInput[]
+    idgastos?: IntWithAggregatesFilter | number
+    idcaja?: IntNullableWithAggregatesFilter | number | null
+    concepto?: StringNullableWithAggregatesFilter | string | null
+    tipofactura?: StringNullableWithAggregatesFilter | string | null
+    nfactura?: StringNullableWithAggregatesFilter | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    operadorgestion?: StringNullableWithAggregatesFilter | string | null
+    operadortramite?: StringNullableWithAggregatesFilter | string | null
+    ptoventa?: IntNullableWithAggregatesFilter | number | null
+    porciva?: StringNullableWithAggregatesFilter | string | null
+    montoiva?: IntNullableWithAggregatesFilter | number | null
+    retiibb?: FloatNullableWithAggregatesFilter | number | null
+    retggcias?: FloatNullableWithAggregatesFilter | number | null
+    perciva?: FloatNullableWithAggregatesFilter | number | null
+    detalle?: StringNullableWithAggregatesFilter | string | null
+    mediopago?: StringNullableWithAggregatesFilter | string | null
+    proveedor?: StringNullableWithAggregatesFilter | string | null
+    empresa?: StringNullableWithAggregatesFilter | string | null
+    total?: FloatNullableWithAggregatesFilter | number | null
+    idservicio?: IntNullableWithAggregatesFilter | number | null
+  }
+
+  export type servicio_presupuestoWhereInput = {
+    AND?: servicio_presupuestoWhereInput | servicio_presupuestoWhereInput[]
+    OR?: servicio_presupuestoWhereInput[]
+    NOT?: servicio_presupuestoWhereInput | servicio_presupuestoWhereInput[]
+    idpresupuesto?: IntFilter | number
+    idservicio?: IntNullableFilter | number | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+    apoderado?: StringNullableFilter | string | null
+    domicilio?: StringNullableFilter | string | null
+    telefono?: StringNullableFilter | string | null
+    detalle?: StringNullableFilter | string | null
+    total?: FloatNullableFilter | number | null
+    anticipo?: FloatNullableFilter | number | null
+    cuotas?: IntNullableFilter | number | null
+    saldo?: FloatNullableFilter | number | null
+    operador?: StringNullableFilter | string | null
+  }
+
+  export type servicio_presupuestoOrderByWithRelationInput = {
+    idpresupuesto?: SortOrder
+    idservicio?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    apoderado?: SortOrderInput | SortOrder
+    domicilio?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    detalle?: SortOrderInput | SortOrder
+    total?: SortOrderInput | SortOrder
+    anticipo?: SortOrderInput | SortOrder
+    cuotas?: SortOrderInput | SortOrder
+    saldo?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+  }
+
+  export type servicio_presupuestoWhereUniqueInput = {
+    idpresupuesto?: number
+  }
+
+  export type servicio_presupuestoOrderByWithAggregationInput = {
+    idpresupuesto?: SortOrder
+    idservicio?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    apoderado?: SortOrderInput | SortOrder
+    domicilio?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    detalle?: SortOrderInput | SortOrder
+    total?: SortOrderInput | SortOrder
+    anticipo?: SortOrderInput | SortOrder
+    cuotas?: SortOrderInput | SortOrder
+    saldo?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    _count?: servicio_presupuestoCountOrderByAggregateInput
+    _avg?: servicio_presupuestoAvgOrderByAggregateInput
+    _max?: servicio_presupuestoMaxOrderByAggregateInput
+    _min?: servicio_presupuestoMinOrderByAggregateInput
+    _sum?: servicio_presupuestoSumOrderByAggregateInput
+  }
+
+  export type servicio_presupuestoScalarWhereWithAggregatesInput = {
+    AND?: servicio_presupuestoScalarWhereWithAggregatesInput | servicio_presupuestoScalarWhereWithAggregatesInput[]
+    OR?: servicio_presupuestoScalarWhereWithAggregatesInput[]
+    NOT?: servicio_presupuestoScalarWhereWithAggregatesInput | servicio_presupuestoScalarWhereWithAggregatesInput[]
+    idpresupuesto?: IntWithAggregatesFilter | number
+    idservicio?: IntNullableWithAggregatesFilter | number | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    apoderado?: StringNullableWithAggregatesFilter | string | null
+    domicilio?: StringNullableWithAggregatesFilter | string | null
+    telefono?: StringNullableWithAggregatesFilter | string | null
+    detalle?: StringNullableWithAggregatesFilter | string | null
+    total?: FloatNullableWithAggregatesFilter | number | null
+    anticipo?: FloatNullableWithAggregatesFilter | number | null
+    cuotas?: IntNullableWithAggregatesFilter | number | null
+    saldo?: FloatNullableWithAggregatesFilter | number | null
     operador?: StringNullableWithAggregatesFilter | string | null
   }
 
@@ -55141,6 +57677,266 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type gastos_caja_copyCreateInput = {
+    idcaja?: number | null
+    concepto?: string | null
+    tipofactura?: string | null
+    nfactura?: string | null
+    fecha?: Date | string | null
+    operadorgestion?: string | null
+    operadortramite?: string | null
+    ptoventa?: number | null
+    porciva?: string | null
+    montoiva?: number | null
+    retiibb?: number | null
+    retggcias?: number | null
+    perciva?: number | null
+    detalle?: string | null
+    mediopago?: string | null
+    proveedor?: string | null
+    empresa?: string | null
+    total?: number | null
+    idservicio?: number | null
+  }
+
+  export type gastos_caja_copyUncheckedCreateInput = {
+    idgastos?: number
+    idcaja?: number | null
+    concepto?: string | null
+    tipofactura?: string | null
+    nfactura?: string | null
+    fecha?: Date | string | null
+    operadorgestion?: string | null
+    operadortramite?: string | null
+    ptoventa?: number | null
+    porciva?: string | null
+    montoiva?: number | null
+    retiibb?: number | null
+    retggcias?: number | null
+    perciva?: number | null
+    detalle?: string | null
+    mediopago?: string | null
+    proveedor?: string | null
+    empresa?: string | null
+    total?: number | null
+    idservicio?: number | null
+  }
+
+  export type gastos_caja_copyUpdateInput = {
+    idcaja?: NullableIntFieldUpdateOperationsInput | number | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    tipofactura?: NullableStringFieldUpdateOperationsInput | string | null
+    nfactura?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorgestion?: NullableStringFieldUpdateOperationsInput | string | null
+    operadortramite?: NullableStringFieldUpdateOperationsInput | string | null
+    ptoventa?: NullableIntFieldUpdateOperationsInput | number | null
+    porciva?: NullableStringFieldUpdateOperationsInput | string | null
+    montoiva?: NullableIntFieldUpdateOperationsInput | number | null
+    retiibb?: NullableFloatFieldUpdateOperationsInput | number | null
+    retggcias?: NullableFloatFieldUpdateOperationsInput | number | null
+    perciva?: NullableFloatFieldUpdateOperationsInput | number | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    mediopago?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: NullableFloatFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type gastos_caja_copyUncheckedUpdateInput = {
+    idgastos?: IntFieldUpdateOperationsInput | number
+    idcaja?: NullableIntFieldUpdateOperationsInput | number | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    tipofactura?: NullableStringFieldUpdateOperationsInput | string | null
+    nfactura?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorgestion?: NullableStringFieldUpdateOperationsInput | string | null
+    operadortramite?: NullableStringFieldUpdateOperationsInput | string | null
+    ptoventa?: NullableIntFieldUpdateOperationsInput | number | null
+    porciva?: NullableStringFieldUpdateOperationsInput | string | null
+    montoiva?: NullableIntFieldUpdateOperationsInput | number | null
+    retiibb?: NullableFloatFieldUpdateOperationsInput | number | null
+    retggcias?: NullableFloatFieldUpdateOperationsInput | number | null
+    perciva?: NullableFloatFieldUpdateOperationsInput | number | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    mediopago?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: NullableFloatFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type gastos_caja_copyCreateManyInput = {
+    idgastos?: number
+    idcaja?: number | null
+    concepto?: string | null
+    tipofactura?: string | null
+    nfactura?: string | null
+    fecha?: Date | string | null
+    operadorgestion?: string | null
+    operadortramite?: string | null
+    ptoventa?: number | null
+    porciva?: string | null
+    montoiva?: number | null
+    retiibb?: number | null
+    retggcias?: number | null
+    perciva?: number | null
+    detalle?: string | null
+    mediopago?: string | null
+    proveedor?: string | null
+    empresa?: string | null
+    total?: number | null
+    idservicio?: number | null
+  }
+
+  export type gastos_caja_copyUpdateManyMutationInput = {
+    idcaja?: NullableIntFieldUpdateOperationsInput | number | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    tipofactura?: NullableStringFieldUpdateOperationsInput | string | null
+    nfactura?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorgestion?: NullableStringFieldUpdateOperationsInput | string | null
+    operadortramite?: NullableStringFieldUpdateOperationsInput | string | null
+    ptoventa?: NullableIntFieldUpdateOperationsInput | number | null
+    porciva?: NullableStringFieldUpdateOperationsInput | string | null
+    montoiva?: NullableIntFieldUpdateOperationsInput | number | null
+    retiibb?: NullableFloatFieldUpdateOperationsInput | number | null
+    retggcias?: NullableFloatFieldUpdateOperationsInput | number | null
+    perciva?: NullableFloatFieldUpdateOperationsInput | number | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    mediopago?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: NullableFloatFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type gastos_caja_copyUncheckedUpdateManyInput = {
+    idgastos?: IntFieldUpdateOperationsInput | number
+    idcaja?: NullableIntFieldUpdateOperationsInput | number | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    tipofactura?: NullableStringFieldUpdateOperationsInput | string | null
+    nfactura?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operadorgestion?: NullableStringFieldUpdateOperationsInput | string | null
+    operadortramite?: NullableStringFieldUpdateOperationsInput | string | null
+    ptoventa?: NullableIntFieldUpdateOperationsInput | number | null
+    porciva?: NullableStringFieldUpdateOperationsInput | string | null
+    montoiva?: NullableIntFieldUpdateOperationsInput | number | null
+    retiibb?: NullableFloatFieldUpdateOperationsInput | number | null
+    retggcias?: NullableFloatFieldUpdateOperationsInput | number | null
+    perciva?: NullableFloatFieldUpdateOperationsInput | number | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    mediopago?: NullableStringFieldUpdateOperationsInput | string | null
+    proveedor?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: NullableFloatFieldUpdateOperationsInput | number | null
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type servicio_presupuestoCreateInput = {
+    idservicio?: number | null
+    fecha?: Date | string | null
+    apoderado?: string | null
+    domicilio?: string | null
+    telefono?: string | null
+    detalle?: string | null
+    total?: number | null
+    anticipo?: number | null
+    cuotas?: number | null
+    saldo?: number | null
+    operador?: string | null
+  }
+
+  export type servicio_presupuestoUncheckedCreateInput = {
+    idpresupuesto?: number
+    idservicio?: number | null
+    fecha?: Date | string | null
+    apoderado?: string | null
+    domicilio?: string | null
+    telefono?: string | null
+    detalle?: string | null
+    total?: number | null
+    anticipo?: number | null
+    cuotas?: number | null
+    saldo?: number | null
+    operador?: string | null
+  }
+
+  export type servicio_presupuestoUpdateInput = {
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apoderado?: NullableStringFieldUpdateOperationsInput | string | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: NullableFloatFieldUpdateOperationsInput | number | null
+    anticipo?: NullableFloatFieldUpdateOperationsInput | number | null
+    cuotas?: NullableIntFieldUpdateOperationsInput | number | null
+    saldo?: NullableFloatFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type servicio_presupuestoUncheckedUpdateInput = {
+    idpresupuesto?: IntFieldUpdateOperationsInput | number
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apoderado?: NullableStringFieldUpdateOperationsInput | string | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: NullableFloatFieldUpdateOperationsInput | number | null
+    anticipo?: NullableFloatFieldUpdateOperationsInput | number | null
+    cuotas?: NullableIntFieldUpdateOperationsInput | number | null
+    saldo?: NullableFloatFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type servicio_presupuestoCreateManyInput = {
+    idpresupuesto?: number
+    idservicio?: number | null
+    fecha?: Date | string | null
+    apoderado?: string | null
+    domicilio?: string | null
+    telefono?: string | null
+    detalle?: string | null
+    total?: number | null
+    anticipo?: number | null
+    cuotas?: number | null
+    saldo?: number | null
+    operador?: string | null
+  }
+
+  export type servicio_presupuestoUpdateManyMutationInput = {
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apoderado?: NullableStringFieldUpdateOperationsInput | string | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: NullableFloatFieldUpdateOperationsInput | number | null
+    anticipo?: NullableFloatFieldUpdateOperationsInput | number | null
+    cuotas?: NullableIntFieldUpdateOperationsInput | number | null
+    saldo?: NullableFloatFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type servicio_presupuestoUncheckedUpdateManyInput = {
+    idpresupuesto?: IntFieldUpdateOperationsInput | number
+    idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apoderado?: NullableStringFieldUpdateOperationsInput | string | null
+    domicilio?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    detalle?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: NullableFloatFieldUpdateOperationsInput | number | null
+    anticipo?: NullableFloatFieldUpdateOperationsInput | number | null
+    cuotas?: NullableIntFieldUpdateOperationsInput | number | null
+    saldo?: NullableFloatFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type IntFilter = {
     equals?: number
     in?: number[]
@@ -57785,6 +60581,162 @@ export namespace Prisma {
   export type liquidacion_registroSumOrderByAggregateInput = {
     idliquidacion?: SortOrder
     importe?: SortOrder
+  }
+
+  export type gastos_caja_copyCountOrderByAggregateInput = {
+    idgastos?: SortOrder
+    idcaja?: SortOrder
+    concepto?: SortOrder
+    tipofactura?: SortOrder
+    nfactura?: SortOrder
+    fecha?: SortOrder
+    operadorgestion?: SortOrder
+    operadortramite?: SortOrder
+    ptoventa?: SortOrder
+    porciva?: SortOrder
+    montoiva?: SortOrder
+    retiibb?: SortOrder
+    retggcias?: SortOrder
+    perciva?: SortOrder
+    detalle?: SortOrder
+    mediopago?: SortOrder
+    proveedor?: SortOrder
+    empresa?: SortOrder
+    total?: SortOrder
+    idservicio?: SortOrder
+  }
+
+  export type gastos_caja_copyAvgOrderByAggregateInput = {
+    idgastos?: SortOrder
+    idcaja?: SortOrder
+    ptoventa?: SortOrder
+    montoiva?: SortOrder
+    retiibb?: SortOrder
+    retggcias?: SortOrder
+    perciva?: SortOrder
+    total?: SortOrder
+    idservicio?: SortOrder
+  }
+
+  export type gastos_caja_copyMaxOrderByAggregateInput = {
+    idgastos?: SortOrder
+    idcaja?: SortOrder
+    concepto?: SortOrder
+    tipofactura?: SortOrder
+    nfactura?: SortOrder
+    fecha?: SortOrder
+    operadorgestion?: SortOrder
+    operadortramite?: SortOrder
+    ptoventa?: SortOrder
+    porciva?: SortOrder
+    montoiva?: SortOrder
+    retiibb?: SortOrder
+    retggcias?: SortOrder
+    perciva?: SortOrder
+    detalle?: SortOrder
+    mediopago?: SortOrder
+    proveedor?: SortOrder
+    empresa?: SortOrder
+    total?: SortOrder
+    idservicio?: SortOrder
+  }
+
+  export type gastos_caja_copyMinOrderByAggregateInput = {
+    idgastos?: SortOrder
+    idcaja?: SortOrder
+    concepto?: SortOrder
+    tipofactura?: SortOrder
+    nfactura?: SortOrder
+    fecha?: SortOrder
+    operadorgestion?: SortOrder
+    operadortramite?: SortOrder
+    ptoventa?: SortOrder
+    porciva?: SortOrder
+    montoiva?: SortOrder
+    retiibb?: SortOrder
+    retggcias?: SortOrder
+    perciva?: SortOrder
+    detalle?: SortOrder
+    mediopago?: SortOrder
+    proveedor?: SortOrder
+    empresa?: SortOrder
+    total?: SortOrder
+    idservicio?: SortOrder
+  }
+
+  export type gastos_caja_copySumOrderByAggregateInput = {
+    idgastos?: SortOrder
+    idcaja?: SortOrder
+    ptoventa?: SortOrder
+    montoiva?: SortOrder
+    retiibb?: SortOrder
+    retggcias?: SortOrder
+    perciva?: SortOrder
+    total?: SortOrder
+    idservicio?: SortOrder
+  }
+
+  export type servicio_presupuestoCountOrderByAggregateInput = {
+    idpresupuesto?: SortOrder
+    idservicio?: SortOrder
+    fecha?: SortOrder
+    apoderado?: SortOrder
+    domicilio?: SortOrder
+    telefono?: SortOrder
+    detalle?: SortOrder
+    total?: SortOrder
+    anticipo?: SortOrder
+    cuotas?: SortOrder
+    saldo?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type servicio_presupuestoAvgOrderByAggregateInput = {
+    idpresupuesto?: SortOrder
+    idservicio?: SortOrder
+    total?: SortOrder
+    anticipo?: SortOrder
+    cuotas?: SortOrder
+    saldo?: SortOrder
+  }
+
+  export type servicio_presupuestoMaxOrderByAggregateInput = {
+    idpresupuesto?: SortOrder
+    idservicio?: SortOrder
+    fecha?: SortOrder
+    apoderado?: SortOrder
+    domicilio?: SortOrder
+    telefono?: SortOrder
+    detalle?: SortOrder
+    total?: SortOrder
+    anticipo?: SortOrder
+    cuotas?: SortOrder
+    saldo?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type servicio_presupuestoMinOrderByAggregateInput = {
+    idpresupuesto?: SortOrder
+    idservicio?: SortOrder
+    fecha?: SortOrder
+    apoderado?: SortOrder
+    domicilio?: SortOrder
+    telefono?: SortOrder
+    detalle?: SortOrder
+    total?: SortOrder
+    anticipo?: SortOrder
+    cuotas?: SortOrder
+    saldo?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type servicio_presupuestoSumOrderByAggregateInput = {
+    idpresupuesto?: SortOrder
+    idservicio?: SortOrder
+    total?: SortOrder
+    anticipo?: SortOrder
+    cuotas?: SortOrder
+    saldo?: SortOrder
   }
 
   export type NullableIntFieldUpdateOperationsInput = {

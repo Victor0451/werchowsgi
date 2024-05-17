@@ -60,15 +60,18 @@ export const FormNuevoPrestamo = ({
             Ingrese el N° de ficha
           </Typography>
 
-          <div className="mt-5 grid gap-1  mb-6 md:grid-cols-2">
-            <Input
-              size="md"
-              label="Contrato"
-              type="number"
-              inputRef={contratoRef}
-            />
-
-            <Button onClick={buscarFicha}>Buscar</Button>
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <Input
+                size="md"
+                label="Contrato"
+                type="number"
+                inputRef={contratoRef}
+              />
+            </div>
+            <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <Button onClick={buscarFicha}>Buscar</Button>
+            </div>
           </div>
 
           {errores ? (
@@ -92,8 +95,8 @@ export const FormNuevoPrestamo = ({
                 Datos del Socio
               </Typography>
 
-              <div className="grid gap-1  mb-6 md:grid-cols-3 p-4">
-                <div className="mt-2">
+              <div className="flex flex-wrap -mx-3 mb-6">
+                <div className="w-full md:w-1/5 px-3 mt-6 mb-6 md:mb-0">
                   <Input
                     size="md"
                     label="Contrato"
@@ -103,7 +106,7 @@ export const FormNuevoPrestamo = ({
                   />
                 </div>
 
-                <div className="mt-2">
+                <div className="w-full md:w-1/5 px-3 mt-6 mb-6 md:mb-0">
                   <Input
                     size="md"
                     label="DNI"
@@ -113,47 +116,16 @@ export const FormNuevoPrestamo = ({
                   />
                 </div>
 
-                <div className="mt-2">
+                <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
                   <Input
                     size="md"
-                    label="Apellido"
+                    label="Titular"
                     type="text"
                     readOnly
-                    value={ficha.APELLIDOS}
+                    value={`${ficha.APELLIDOS}, ${ficha.NOMBRES}`}
                   />
                 </div>
-
-                <div className="mt-2">
-                  <Input
-                    size="md"
-                    label="Nombre"
-                    type="text"
-                    readOnly
-                    value={ficha.NOMBRES}
-                  />
-                </div>
-
-                <div className="mt-2">
-                  <Input
-                    size="md"
-                    label="Calle"
-                    type="text"
-                    readOnly
-                    value={ficha.CALLE}
-                  />
-                </div>
-
-                <div className="mt-2">
-                  <Input
-                    size="md"
-                    label="N°"
-                    type="text"
-                    readOnly
-                    value={ficha.NRO_CALLE}
-                  />
-                </div>
-
-                <div className="mt-2">
+                <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                   <Input
                     size="md"
                     label="Barrio"
@@ -163,7 +135,27 @@ export const FormNuevoPrestamo = ({
                   />
                 </div>
 
-                <div className="mt-2">
+                <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
+                  <Input
+                    size="md"
+                    label="Calle"
+                    type="text"
+                    readOnly
+                    value={ficha.CALLE}
+                  />
+                </div>
+
+                <div className="w-full md:w-1/5 px-3 mt-6 mb-6 md:mb-0">
+                  <Input
+                    size="md"
+                    label="N°"
+                    type="text"
+                    readOnly
+                    value={ficha.NRO_CALLE}
+                  />
+                </div>
+
+                <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
                   <Input
                     size="md"
                     label="Localidad"
@@ -173,7 +165,7 @@ export const FormNuevoPrestamo = ({
                   />
                 </div>
 
-                <div className="mt-2">
+                <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
                   <Input
                     size="md"
                     label="Telefono"
@@ -183,7 +175,7 @@ export const FormNuevoPrestamo = ({
                   />
                 </div>
 
-                <div className="mt-2">
+                <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
                   <Input
                     size="md"
                     label="Movil"
@@ -194,6 +186,23 @@ export const FormNuevoPrestamo = ({
                 </div>
               </div>
             </div>
+
+            <hr className="border-2 mt-5 mb-5" />
+
+            {alertas ? (
+              <Alert
+                color="orange"
+                className="max-w-screen mt-5 mb-5"
+                icon={<InformationCircleIcon className="mt-px h-6 w-6" />}
+              >
+                <Typography variant="h5" color="white">
+                  ATENCION
+                </Typography>
+                <Typography color="white" className="mt-2 font-normal ">
+                  {alertas}
+                </Typography>
+              </Alert>
+            ) : null}
 
             <hr className="border-2 mt-5 mb-5" />
 

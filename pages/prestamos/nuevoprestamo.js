@@ -1,349 +1,356 @@
-import React, { useState } from 'react'
-import useUser from '@/hook/useUser'
-import { Skeleton } from '@/components/Layouts/Skeleton'
-import useWerchow from '@/hook/useWerchow';
-import axios from 'axios';
-import { toast } from 'react-toastify'
-import { Redirect } from '@/components/auth/Redirect';
-import useSWR from 'swr'
-import { FormNuevoPrestamo } from '@/components/prestamos/FormNuevoPrestamo';
-import { confirmAlert } from 'react-confirm-alert';
-import moment from 'moment';
-import { registrarHistoria } from '@/libs/funciones';
+import React, { useState } from "react";
+import useUser from "@/hook/useUser";
+import { Skeleton } from "@/components/Layouts/Skeleton";
+import useWerchow from "@/hook/useWerchow";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { Redirect } from "@/components/auth/Redirect";
+import useSWR from "swr";
+import { FormNuevoPrestamo } from "@/components/prestamos/FormNuevoPrestamo";
+import { confirmAlert } from "react-confirm-alert";
+import moment from "moment";
+import { registrarHistoria } from "@/libs/funciones";
 
 export default function NuevoPrestamo() {
+  let contratoRef = React.createRef();
+  let legajoRef = React.createRef();
+  let sueldoNetoRef = React.createRef();
+  let antiRef = React.createRef();
 
-    let contratoRef = React.createRef()
-    let legajoRef = React.createRef()
-    let sueldoNetoRef = React.createRef()
-    let antiRef = React.createRef()
+  const [ficha, guardarFicha] = useState(null);
+  const [capital, guardarCapital] = useState([]);
+  const [planCuotas, guardarPlanCuotas] = useState([]);
+  const [tasas, guardarTasas] = useState([]);
+  const [errores, guardarErrores] = useState(null);
+  const [alertas, guardarAlertas] = useState(null);
+  const [planSelec, guardarPlanSelec] = useState("");
+  const [capSelec, guardarCapSelec] = useState("");
+  const [renova, guardarRenova] = useState("");
+  const [capADev, guardarCapADev] = useState(0);
+  const [couPrest, guardarCuoPrest] = useState(0);
+  const [flag, guardarFlag] = useState(false);
+  const [capiNoAut, guardarCapiNoAut] = useState(true);
 
-    const [ficha, guardarFicha] = useState(null)
-    const [capital, guardarCapital] = useState([])
-    const [planCuotas, guardarPlanCuotas] = useState([])
-    const [tasas, guardarTasas] = useState([])
-    const [errores, guardarErrores] = useState(null)
-    const [alertas, guardarAlertas] = useState(null)
-    const [planSelec, guardarPlanSelec] = useState("")
-    const [capSelec, guardarCapSelec] = useState("")
-    const [renova, guardarRenova] = useState("")
-    const [capADev, guardarCapADev] = useState(0)
-    const [couPrest, guardarCuoPrest] = useState(0)
-    const [flag, guardarFlag] = useState(false)
-    const [capiNoAut, guardarCapiNoAut] = useState(true)
+  const { usu } = useWerchow();
 
+  const { isLoading } = useUser();
 
-    const { usu } = useWerchow()
+  const buscarFicha = async () => {
+    guardarErrores(null);
+    guardarAlertas(null);
+    guardarFicha(null);
 
-    const { isLoading } = useUser();
+    let hc = contratoRef.current.value;
 
-    const buscarFicha = async () => {
+    if (hc === "") {
+      guardarErrores("Debes ingresar un N° de socio");
+    } else {
+      await axios
+        .get("/api/prestamos", {
+          params: {
+            f: "traer poli",
+            hc: hc,
+          },
+        })
+        .then((res) => {
+          if (res.data && res.data.GRUPO === 6) {
+            guardarFicha(res.data);
 
-        guardarErrores(null)
-        guardarAlertas(null)
+            let hoy = moment();
+            let alta = moment(res.data.ALTA);
 
-        let hc = contratoRef.current.value
+            if (hoy.diff(alta, "years") > 20) {
+              toast.warning(
+                `El socio tiene una antigüedad de ${hoy.diff(
+                  alta,
+                  "years"
+                )}, consultar con gerencia como proceder.`
+              );
+              guardarAlertas(
+                `El socio tiene una antigüedad de ${hoy.diff(
+                  alta,
+                  "years"
+                )}, consultar con gerencia como procede.`
+              );
+            }
+          } else {
+            toast.warning("El socio que estas buscando no es policia");
+            guardarAlertas("El socio que estas buscando no es policia");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al traer la ficha");
+        });
+    }
+  };
 
-        if (hc === "") {
+  const traerDatos = async () => {
+    await axios
+      .get("/api/prestamos", {
+        params: {
+          f: "tasas",
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          guardarTasas(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al tarer las tasas");
+      });
 
-            guardarErrores("Debes ingresar un N° de socio")
+    await axios
+      .get("/api/prestamos", {
+        params: {
+          f: "capital",
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          guardarCapital(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al tarer el listado de capitales");
+      });
 
-        } else {
+    await axios
+      .get("/api/prestamos", {
+        params: {
+          f: "plan cuotas",
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          guardarPlanCuotas(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al tarer los planes de cuotas");
+      });
+  };
 
+  const handleChange = (f, value) => {
+    if (f === "plan") {
+      guardarPlanSelec(value);
+    } else if (f === "cap") {
+      if (value.capital === 150000) {
+        guardarAlertas(
+          "ESTE CAPITAL ($150000), SOLO ADMITE PLANES DE 6 Y 12 CUOTAS."
+        );
+        toast.warning(
+          "ESTE CAPITAL ($150000), SOLO ADMITE PLANES DE 6 Y 12 CUOTAS"
+        );
+        guardarCapiNoAut(false);
+        guardarCapSelec(value.capital);
+      } else {
+        guardarCapSelec(value.capital);
+        guardarAlertas(null);
 
-            await axios.get('/api/prestamos', {
-                params: {
-                    f: 'traer poli',
-                    hc: hc
-                }
-            })
-                .then(res => {
+        if (value.autorizacion === false) {
+          guardarAlertas(
+            "ESTE CAPITAL REQUIERE SI O SI AUTORIZACION POR PARTE DE LA GERENCIA."
+          );
+          toast.warning(
+            "Este capital requiere autorizacion por parte de la gerencia"
+          );
+          guardarCapiNoAut(false);
+        }
+      }
+    } else if (f === "renova") {
+      guardarRenova(value);
+    }
+  };
 
-                    if (res.data && res.data.GRUPO === 6) {
+  const registrarPrestamo = async () => {
+    let data = {
+      fechacarga: moment().format("YYYY-MM-DD"),
+      fechasol: moment().format("YYYY-MM-DD"),
+      operador: usu.codigo,
+      ficha: ficha.CONTRATO,
+      legajo: legajoRef.current.value,
+      anti: antiRef.current.value,
+      renova: renova,
+      capital: capSelec,
+      cuotas: planSelec,
+      valcuota: couPrest,
+      neto: sueldoNetoRef.current.value,
+      estado: "PENDIENTE",
+      codptmleg: `${ficha.CONTRATO}-${moment().format("YYYY-MM-DD")}`,
+      ptm_afi: `${ficha.APELLIDOS}, ${ficha.NOMBRES}`,
+      capinoaut: capiNoAut,
+      f: "reg prestamo",
+    };
 
-                        guardarFicha(res.data)
+    if (data.legajo === "") {
+      guardarErrores("Debe ingresa el legajo del policia.");
+    } else if (data.anti === "") {
+      guardarErrores("Debe ingresar la antigüedad del policia en su trabajo.");
+    } else if (data.neto === "") {
+      guardarErrores("Debe ingresar el sueldo neto del policia.");
+    } else if (data.renova === "") {
+      guardarErrores(
+        "Debe seleccionar si este subsidio es una renovacion o no."
+      );
+    } else {
+      await confirmAlert({
+        title: "ATENCION",
+        message: "¿Estas seguro que quieres registrar el subsidio?",
+        buttons: [
+          {
+            label: "Si",
+            onClick: () => {
+              axios
+                .post(`/api/prestamos`, data)
+                .then((res) => {
+                  if (res.status === 200) {
+                    toast.success("Se registro el subsidio con exito");
 
-                    } else {
+                    let accionHis = `Se confecciono un prestamo del ${data.capital} en un plan de ${data.cuotas}, al afiliado ${data.ficha} - ${data.ptm_afi}`;
 
-                        toast.warning("El socio que estas buscando no es policia")
-                        guardarAlertas("El socio que estas buscando no es policia")
-
-                    }
-
+                    registrarHistoria(accionHis, usu.usuario);
+                  }
                 })
-                .catch(error => {
-                    console.log(error)
-                    toast.error("Ocurrio un error al traer la ficha")
-                })
-
-        }
-
-
+                .catch((error) => {
+                  console.log(error);
+                  toast.error("Ocurrio un error al registrar el subsidio");
+                });
+            },
+          },
+          {
+            label: "No",
+            onClick: () => {},
+          },
+        ],
+      });
     }
+  };
 
-    const traerDatos = async () => {
+  const simularPrestamo = () => {
+    guardarFlag(false);
+    guardarErrores(null);
 
-        await axios.get('/api/prestamos', {
-            params: {
-                f: 'tasas'
-            }
+    if (capSelec === "") {
+      guardarErrores("Debes Seleccionar un capital");
+    } else if (planSelec === "") {
+      guardarErrores("Debes Seleccionar un plan de cuotas");
+    } else {
+      if (parseInt(capSelec) === 150000) {
+        if (parseInt(planSelec) === 6 || parseInt(planSelec) === 12) {
+          let principal = parseInt(capSelec);
 
-        })
-            .then(res => {
-                if (res.status === 200) {
-                    guardarTasas(res.data)
-                }
-            })
-            .catch(error => {
-                console.log(error)
-                toast.error("Ocurrio un error al tarer las tasas")
-            })
+          let payments = parseInt(planSelec);
 
+          let x = 0;
+          let monthly = 0;
 
-        await axios.get('/api/prestamos', {
-            params: {
-                f: 'capital'
-            }
+          let tasa = 0;
 
-        })
-            .then(res => {
-                if (res.status === 200) {
-                    guardarCapital(res.data)
-                }
-            })
-            .catch(error => {
-                console.log(error)
-                toast.error("Ocurrio un error al tarer el listado de capitales")
-            })
+          if (payments === 6) {
+            tasa = 250 / 100 / 12;
 
+            x = Math.pow(1 + tasa, payments);
+            monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
+          } else if (payments === 12) {
+            tasa = 250 / 100 / 12;
 
-        await axios.get('/api/prestamos', {
-            params: {
-                f: 'plan cuotas'
-            }
+            x = Math.pow(1 + tasa, payments);
+            monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
+          }
 
-        })
-            .then(res => {
-                if (res.status === 200) {
-                    guardarPlanCuotas(res.data)
-                }
-            })
-            .catch(error => {
-                console.log(error)
-                toast.error("Ocurrio un error al tarer los planes de cuotas")
-            })
+          guardarCuoPrest(monthly);
 
-    }
+          let capadev = monthly * payments;
 
-    const handleChange = (f, value) => {
+          guardarCapADev(capadev);
 
-
-        if (f === 'plan') {
-
-            guardarPlanSelec(value)
-
-        } else if (f === 'cap') {
-
-            guardarAlertas(null)
-
-            guardarCapSelec(value.capital)
-
-            if (value.autorizacion === false) {
-                guardarAlertas("ESTE CAPITAL REQUIERE SI O SI AUTORIZACION POR PARTE DE LA GERENCIA.")
-                toast.warning("Este capital requiere autorizacion por parte de la gerencia")
-                guardarCapiNoAut(false)
-            }
-        } else if (f === 'renova') {
-
-            guardarRenova(value)
-
-        }
-
-    }
-
-    const registrarPrestamo = async () => {
-
-
-        let data = {
-            fechacarga: moment().format('YYYY-MM-DD'),
-            fechasol: moment().format('YYYY-MM-DD'),
-            operador: usu.codigo,
-            ficha: ficha.CONTRATO,
-            legajo: legajoRef.current.value,
-            anti: antiRef.current.value,
-            renova: renova,
-            capital: capSelec,
-            cuotas: planSelec,
-            valcuota: couPrest,
-            neto: sueldoNetoRef.current.value,
-            estado: "PENDIENTE",
-            codptmleg: `${ficha.CONTRATO}-${moment().format("YYYY-MM-DD")}`,
-            ptm_afi: `${ficha.APELLIDOS}, ${ficha.NOMBRES}`,
-            capinoaut: capiNoAut,
-            f: 'reg prestamo'
-        }
-
-        if (data.legajo === "") {
-
-            guardarErrores("Debe ingresa el legajo del policia.")
-
-        } else if (data.anti === "") {
-
-            guardarErrores("Debe ingresar la antigüedad del policia en su trabajo.")
-
-        } else if (data.neto === "") {
-
-            guardarErrores("Debe ingresar el sueldo neto del policia.")
-
-        } else if (data.renova === "") {
-
-            guardarErrores("Debe seleccionar si este subsidio es una renovacion o no.")
-
+          guardarFlag(true);
         } else {
-
-
-            await confirmAlert({
-                title: 'ATENCION',
-                message: '¿Estas seguro que quieres registrar el subsidio?',
-                buttons: [
-                    {
-                        label: 'Si',
-                        onClick: () => {
-
-                            axios.post(`/api/prestamos`, data)
-                                .then(res => {
-
-                                    if (res.status === 200) {
-
-                                        toast.success("Se registro el subsidio con exito")
-
-                                        let accionHis = `Se confecciono un prestamo del ${data.capital} en un plan de ${data.cuotas}, al afiliado ${data.ficha} - ${data.ptm_afi}`
-
-                                        registrarHistoria(accionHis, usu.usuario)
-
-
-                                    }
-
-                                })
-                                .catch(error => {
-                                    console.log(error)
-                                    toast.error("Ocurrio un error al registrar el subsidio")
-                                })
-
-                        }
-                    },
-                    {
-                        label: 'No',
-                        onClick: () => { }
-                    }
-                ]
-
-
-            });
+          guardarAlertas(
+            "ESTE CAPITAL ($150000), SOLO ADMITE PLANES DE 6 Y 12 CUOTAS."
+          );
+          toast.warning(
+            "ESTE CAPITAL ($150000), SOLO ADMITE PLANES DE 6 Y 12 CUOTAS"
+          );
         }
-    }
+      } else {
+        let principal = parseInt(capSelec);
 
-    const simularPrestamo = () => {
+        let payments = parseInt(planSelec);
 
-        guardarFlag(false);
-        guardarErrores(null)
+        let x = 0;
+        let monthly = 0;
 
-        if (capSelec === "") {
+        let tasa = 0;
 
-            guardarErrores("Debes Seleccionar un capital")
+        if (payments === 3) {
+          tasa = tasas[0].tasa / 100 / 12;
 
-        } else if (planSelec === "") {
+          x = Math.pow(1 + tasa, payments);
+          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
+        } else if (payments === 6) {
+          tasa = tasas[1].tasa / 100 / 12;
 
-            guardarErrores("Debes Seleccionar un plan de cuotas")
+          x = Math.pow(1 + tasa, payments);
+          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
+        } else if (payments === 10) {
+          tasa = tasas[2].tasa / 100 / 12;
 
-        } else {
+          x = Math.pow(1 + tasa, payments);
+          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
+        } else if (payments === 12) {
+          tasa = tasas[3].tasa / 100 / 12;
 
-            let principal = parseInt(capSelec);
-
-            let payments = parseInt(planSelec);
-
-            let x = 0
-            let monthly = 0
-
-            let tasa = 0
-
-            if (payments === 3) {
-
-                tasa = tasas[0].tasa / 100 / 12
-
-                x = Math.pow(1 + tasa, payments);
-                monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-
-            } else if (payments === 6) {
-
-                tasa = tasas[1].tasa / 100 / 12
-
-                x = Math.pow(1 + tasa, payments);
-                monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-
-            } else if (payments === 10) {
-
-                tasa = tasas[2].tasa / 100 / 12
-
-                x = Math.pow(1 + tasa, payments);
-                monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-
-            } else if (payments === 12) {
-
-                tasa = tasas[3].tasa / 100 / 12
-
-                x = Math.pow(1 + tasa, payments);
-                monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-
-            }
-
-
-            guardarCuoPrest(monthly);
-
-            let capadev = monthly * payments;
-
-            guardarCapADev(capadev);
-
-            guardarFlag(true);
-
+          x = Math.pow(1 + tasa, payments);
+          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
         }
+
+        guardarCuoPrest(monthly);
+
+        let capadev = monthly * payments;
+
+        guardarCapADev(capadev);
+
+        guardarFlag(true);
+      }
     }
+  };
 
-    useSWR("/api/prestamos", traerDatos);
+  useSWR("/api/prestamos", traerDatos);
 
+  if (isLoading === true) return <Skeleton />;
 
-    if (isLoading === true) return <Skeleton />
-
-    return (
-        <>
-            {
-                !usu ? (
-                    <Redirect />
-                ) : (
-
-                    <FormNuevoPrestamo
-                        contratoRef={contratoRef}
-                        buscarFicha={buscarFicha}
-                        errores={errores}
-                        alertas={alertas}
-                        ficha={ficha}
-                        capital={capital}
-                        planCuotas={planCuotas}
-                        handleChange={handleChange}
-                        registrarPrestamo={registrarPrestamo}
-                        simularPrestamo={simularPrestamo}
-                        flag={flag}
-                        planSelec={planSelec}
-                        capSelec={capSelec}
-                        capADev={capADev}
-                        couPrest={couPrest}
-                        legajoRef={legajoRef}
-                        antiRef={antiRef}
-                        sueldoNetoRef={sueldoNetoRef}
-                    />
-                )
-            }
-
-        </>
-    )
+  return (
+    <>
+      {!usu ? (
+        <Redirect />
+      ) : (
+        <FormNuevoPrestamo
+          contratoRef={contratoRef}
+          buscarFicha={buscarFicha}
+          errores={errores}
+          alertas={alertas}
+          ficha={ficha}
+          capital={capital}
+          planCuotas={planCuotas}
+          handleChange={handleChange}
+          registrarPrestamo={registrarPrestamo}
+          simularPrestamo={simularPrestamo}
+          flag={flag}
+          planSelec={planSelec}
+          capSelec={capSelec}
+          capADev={capADev}
+          couPrest={couPrest}
+          legajoRef={legajoRef}
+          antiRef={antiRef}
+          sueldoNetoRef={sueldoNetoRef}
+        />
+      )}
+    </>
+  );
 }

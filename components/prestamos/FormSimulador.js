@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Card,  
+  Card,
   CardBody,
   Typography,
   Alert,
@@ -31,7 +31,7 @@ export const FormSimulador = ({
 }) => {
   return (
     <Card className="h-full w-full p-4">
-       <CardBody className="rounded-none">
+      <CardBody className="rounded-none">
         <Typography variant="h2">Simulador de Subsidios</Typography>
 
         <Alert
@@ -54,6 +54,39 @@ export const FormSimulador = ({
                 </strong>
               </Link>
               .
+            </p>
+          </Typography>
+        </Alert>
+
+        <Alert
+          color="blue"
+          className="max-w-screen mt-5 mb-5"
+          icon={<InformationCircleIcon className="mt-px h-6 w-6" />}
+        >
+          <Typography variant="h5" color="white">
+            ATENCION
+          </Typography>
+          <Typography color="white" className="mt-2 font-normal ">
+            <p className=" text-justify">
+              EL EFECTIVO POLICIA QUE TENGA UNA ANTIGÜEDAD MAYOR A 21 AÑOS,
+              ANTES DE CONFECCIONAR UN PRESTAMO SE DEVERA ANALIZAR SU SITUACION
+              CON GERENCIA.
+            </p>
+          </Typography>
+        </Alert>
+
+        <Alert
+          color="blue"
+          className="max-w-screen mt-5 mb-5"
+          icon={<InformationCircleIcon className="mt-px h-6 w-6" />}
+        >
+          <Typography variant="h5" color="white">
+            ATENCION
+          </Typography>
+          <Typography color="white" className="mt-2 font-normal ">
+            <p className=" text-justify">
+              EL CAPITAL DE $150000, SOLO TIENE DISPONIBLES LOS PLANES DE 6 Y 12
+              CUOTAS.
             </p>
           </Typography>
         </Alert>

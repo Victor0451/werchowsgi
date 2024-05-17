@@ -724,6 +724,44 @@ exports.Prisma.Liquidacion_registroScalarFieldEnum = {
   operador: 'operador'
 };
 
+exports.Prisma.Gastos_caja_copyScalarFieldEnum = {
+  idgastos: 'idgastos',
+  idcaja: 'idcaja',
+  concepto: 'concepto',
+  tipofactura: 'tipofactura',
+  nfactura: 'nfactura',
+  fecha: 'fecha',
+  operadorgestion: 'operadorgestion',
+  operadortramite: 'operadortramite',
+  ptoventa: 'ptoventa',
+  porciva: 'porciva',
+  montoiva: 'montoiva',
+  retiibb: 'retiibb',
+  retggcias: 'retggcias',
+  perciva: 'perciva',
+  detalle: 'detalle',
+  mediopago: 'mediopago',
+  proveedor: 'proveedor',
+  empresa: 'empresa',
+  total: 'total',
+  idservicio: 'idservicio'
+};
+
+exports.Prisma.Servicio_presupuestoScalarFieldEnum = {
+  idpresupuesto: 'idpresupuesto',
+  idservicio: 'idservicio',
+  fecha: 'fecha',
+  apoderado: 'apoderado',
+  domicilio: 'domicilio',
+  telefono: 'telefono',
+  detalle: 'detalle',
+  total: 'total',
+  anticipo: 'anticipo',
+  cuotas: 'cuotas',
+  saldo: 'saldo',
+  operador: 'operador'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -777,7 +815,9 @@ exports.Prisma.ModelName = {
   informe_gastos: 'informe_gastos',
   servicios_gastos: 'servicios_gastos',
   liquidacion_guardias: 'liquidacion_guardias',
-  liquidacion_registro: 'liquidacion_registro'
+  liquidacion_registro: 'liquidacion_registro',
+  gastos_caja_copy: 'gastos_caja_copy',
+  servicio_presupuesto: 'servicio_presupuesto'
 };
 
 /**

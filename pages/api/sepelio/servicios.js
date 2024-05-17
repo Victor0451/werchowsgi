@@ -489,6 +489,24 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(regGato);
+    } else if (req.body.f && req.body.f === "reg presupuesto servicio") {
+      const regPresupuesto = await Sep.servicio_presupuesto.create({
+        data: {
+          fecha: new Date(req.body.fecha),
+          idservicio: parseInt(req.body.idservicio),
+          apoderado: req.body.apoderado,
+          domicilio: req.body.domicilio,
+          telefono: req.body.telefono,
+          detalle: req.body.detalle,
+          total: parseFloat(req.body.total),
+          anticipo: parseFloat(req.body.anticipo),
+          cuotas: parseInt(req.body.cuotas),
+          saldo: parseFloat(req.body.saldo),
+          operador: req.body.operador,
+        },
+      });
+
+      res.status(200).json(regPresupuesto);
     }
   } else if (req.method === "PUT") {
     if (req.body.f && req.body.f === "renov poliza") {

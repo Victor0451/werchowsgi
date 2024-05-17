@@ -627,3 +627,41 @@ model liquidacion_registro {
   importe        Float?    @db.Float
   operador       String?   @db.VarChar(255)
 }
+
+model gastos_caja_copy {
+  idgastos        Int       @id @default(autoincrement())
+  idcaja          Int?
+  concepto        String?   @db.VarChar(255)
+  tipofactura     String?   @db.VarChar(255)
+  nfactura        String?   @db.VarChar(255)
+  fecha           DateTime? @db.Date
+  operadorgestion String?   @db.VarChar(255)
+  operadortramite String?   @db.VarChar(255)
+  ptoventa        Int?
+  porciva         String?   @db.VarChar(255)
+  montoiva        Int?
+  retiibb         Float?    @db.Float
+  retggcias       Float?    @db.Float
+  perciva         Float?    @db.Float
+  detalle         String?   @db.VarChar(255)
+  mediopago       String?   @db.VarChar(255)
+  proveedor       String?   @db.VarChar(255)
+  empresa         String?   @db.VarChar(255)
+  total           Float?    @db.Float
+  idservicio      Int?
+}
+
+model servicio_presupuesto {
+  idpresupuesto Int       @id @default(autoincrement())
+  idservicio    Int?
+  fecha         DateTime? @db.Date
+  apoderado     String?   @db.VarChar(500)
+  domicilio     String?   @db.VarChar(500)
+  telefono      String?   @db.VarChar(100)
+  detalle       String?   @db.VarChar(2000)
+  total         Float?    @db.Float
+  anticipo      Float?    @db.Float
+  cuotas        Int?
+  saldo         Float?    @db.Float
+  operador      String?   @db.VarChar(255)
+}
