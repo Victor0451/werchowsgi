@@ -223,6 +223,9 @@ export type MEDICOS_TURNOSPayload<ExtArgs extends $Extensions.Args = $Extensions
     domicilio: string | null
     mail: string | null
     dni: number | null
+    motivo_turno: string | null
+    norden: string | null
+    observacion: string | null
   }, ExtArgs["result"]["mEDICOS_TURNOS"]>
   composites: {}
 }
@@ -301,6 +304,7 @@ export type PRESTADOPayload<ExtArgs extends $Extensions.Args = $Extensions.Defau
     OTERO: number | null
     idprest: number
     PROMO: boolean | null
+    LIQUIDACION: number | null
   }, ExtArgs["result"]["pRESTADO"]>
   composites: {}
 }
@@ -8831,6 +8835,9 @@ export namespace Prisma {
     domicilio: string | null
     mail: string | null
     dni: number | null
+    motivo_turno: string | null
+    norden: string | null
+    observacion: string | null
   }
 
   export type MEDICOS_TURNOSMaxAggregateOutputType = {
@@ -8847,6 +8854,9 @@ export namespace Prisma {
     domicilio: string | null
     mail: string | null
     dni: number | null
+    motivo_turno: string | null
+    norden: string | null
+    observacion: string | null
   }
 
   export type MEDICOS_TURNOSCountAggregateOutputType = {
@@ -8863,6 +8873,9 @@ export namespace Prisma {
     domicilio: number
     mail: number
     dni: number
+    motivo_turno: number
+    norden: number
+    observacion: number
     _all: number
   }
 
@@ -8895,6 +8908,9 @@ export namespace Prisma {
     domicilio?: true
     mail?: true
     dni?: true
+    motivo_turno?: true
+    norden?: true
+    observacion?: true
   }
 
   export type MEDICOS_TURNOSMaxAggregateInputType = {
@@ -8911,6 +8927,9 @@ export namespace Prisma {
     domicilio?: true
     mail?: true
     dni?: true
+    motivo_turno?: true
+    norden?: true
+    observacion?: true
   }
 
   export type MEDICOS_TURNOSCountAggregateInputType = {
@@ -8927,6 +8946,9 @@ export namespace Prisma {
     domicilio?: true
     mail?: true
     dni?: true
+    motivo_turno?: true
+    norden?: true
+    observacion?: true
     _all?: true
   }
 
@@ -9031,6 +9053,9 @@ export namespace Prisma {
     domicilio: string | null
     mail: string | null
     dni: number | null
+    motivo_turno: string | null
+    norden: string | null
+    observacion: string | null
     _count: MEDICOS_TURNOSCountAggregateOutputType | null
     _avg: MEDICOS_TURNOSAvgAggregateOutputType | null
     _sum: MEDICOS_TURNOSSumAggregateOutputType | null
@@ -9066,6 +9091,9 @@ export namespace Prisma {
     domicilio?: boolean
     mail?: boolean
     dni?: boolean
+    motivo_turno?: boolean
+    norden?: boolean
+    observacion?: boolean
   }, ExtArgs["result"]["mEDICOS_TURNOS"]>
 
   export type MEDICOS_TURNOSSelectScalar = {
@@ -9082,6 +9110,9 @@ export namespace Prisma {
     domicilio?: boolean
     mail?: boolean
     dni?: boolean
+    motivo_turno?: boolean
+    norden?: boolean
+    observacion?: boolean
   }
 
 
@@ -11731,6 +11762,7 @@ export namespace Prisma {
     CON_PAGA: number | null
     OTERO: number | null
     idprest: number | null
+    LIQUIDACION: number | null
   }
 
   export type PRESTADOSumAggregateOutputType = {
@@ -11741,6 +11773,7 @@ export namespace Prisma {
     CON_PAGA: number | null
     OTERO: number | null
     idprest: number | null
+    LIQUIDACION: number | null
   }
 
   export type PRESTADOMinAggregateOutputType = {
@@ -11768,6 +11801,7 @@ export namespace Prisma {
     OTERO: number | null
     idprest: number | null
     PROMO: boolean | null
+    LIQUIDACION: number | null
   }
 
   export type PRESTADOMaxAggregateOutputType = {
@@ -11795,6 +11829,7 @@ export namespace Prisma {
     OTERO: number | null
     idprest: number | null
     PROMO: boolean | null
+    LIQUIDACION: number | null
   }
 
   export type PRESTADOCountAggregateOutputType = {
@@ -11822,6 +11857,7 @@ export namespace Prisma {
     OTERO: number
     idprest: number
     PROMO: number
+    LIQUIDACION: number
     _all: number
   }
 
@@ -11834,6 +11870,7 @@ export namespace Prisma {
     CON_PAGA?: true
     OTERO?: true
     idprest?: true
+    LIQUIDACION?: true
   }
 
   export type PRESTADOSumAggregateInputType = {
@@ -11844,6 +11881,7 @@ export namespace Prisma {
     CON_PAGA?: true
     OTERO?: true
     idprest?: true
+    LIQUIDACION?: true
   }
 
   export type PRESTADOMinAggregateInputType = {
@@ -11871,6 +11909,7 @@ export namespace Prisma {
     OTERO?: true
     idprest?: true
     PROMO?: true
+    LIQUIDACION?: true
   }
 
   export type PRESTADOMaxAggregateInputType = {
@@ -11898,6 +11937,7 @@ export namespace Prisma {
     OTERO?: true
     idprest?: true
     PROMO?: true
+    LIQUIDACION?: true
   }
 
   export type PRESTADOCountAggregateInputType = {
@@ -11925,6 +11965,7 @@ export namespace Prisma {
     OTERO?: true
     idprest?: true
     PROMO?: true
+    LIQUIDACION?: true
     _all?: true
   }
 
@@ -12040,6 +12081,7 @@ export namespace Prisma {
     OTERO: number | null
     idprest: number
     PROMO: boolean | null
+    LIQUIDACION: number | null
     _count: PRESTADOCountAggregateOutputType | null
     _avg: PRESTADOAvgAggregateOutputType | null
     _sum: PRESTADOSumAggregateOutputType | null
@@ -12086,6 +12128,7 @@ export namespace Prisma {
     OTERO?: boolean
     idprest?: boolean
     PROMO?: boolean
+    LIQUIDACION?: boolean
   }, ExtArgs["result"]["pRESTADO"]>
 
   export type PRESTADOSelectScalar = {
@@ -12113,6 +12156,7 @@ export namespace Prisma {
     OTERO?: boolean
     idprest?: boolean
     PROMO?: boolean
+    LIQUIDACION?: boolean
   }
 
 
@@ -23075,7 +23119,10 @@ export namespace Prisma {
     operador: 'operador',
     domicilio: 'domicilio',
     mail: 'mail',
-    dni: 'dni'
+    dni: 'dni',
+    motivo_turno: 'motivo_turno',
+    norden: 'norden',
+    observacion: 'observacion'
   };
 
   export type MEDICOS_TURNOSScalarFieldEnum = (typeof MEDICOS_TURNOSScalarFieldEnum)[keyof typeof MEDICOS_TURNOSScalarFieldEnum]
@@ -23135,7 +23182,8 @@ export namespace Prisma {
     BAJA: 'BAJA',
     OTERO: 'OTERO',
     idprest: 'idprest',
-    PROMO: 'PROMO'
+    PROMO: 'PROMO',
+    LIQUIDACION: 'LIQUIDACION'
   };
 
   export type PRESTADOScalarFieldEnum = (typeof PRESTADOScalarFieldEnum)[keyof typeof PRESTADOScalarFieldEnum]
@@ -24054,6 +24102,9 @@ export namespace Prisma {
     domicilio?: StringNullableFilter | string | null
     mail?: StringNullableFilter | string | null
     dni?: IntNullableFilter | number | null
+    motivo_turno?: StringNullableFilter | string | null
+    norden?: StringNullableFilter | string | null
+    observacion?: StringNullableFilter | string | null
   }
 
   export type MEDICOS_TURNOSOrderByWithRelationInput = {
@@ -24070,6 +24121,9 @@ export namespace Prisma {
     domicilio?: SortOrderInput | SortOrder
     mail?: SortOrderInput | SortOrder
     dni?: SortOrderInput | SortOrder
+    motivo_turno?: SortOrderInput | SortOrder
+    norden?: SortOrderInput | SortOrder
+    observacion?: SortOrderInput | SortOrder
   }
 
   export type MEDICOS_TURNOSWhereUniqueInput = {
@@ -24090,6 +24144,9 @@ export namespace Prisma {
     domicilio?: SortOrderInput | SortOrder
     mail?: SortOrderInput | SortOrder
     dni?: SortOrderInput | SortOrder
+    motivo_turno?: SortOrderInput | SortOrder
+    norden?: SortOrderInput | SortOrder
+    observacion?: SortOrderInput | SortOrder
     _count?: MEDICOS_TURNOSCountOrderByAggregateInput
     _avg?: MEDICOS_TURNOSAvgOrderByAggregateInput
     _max?: MEDICOS_TURNOSMaxOrderByAggregateInput
@@ -24114,6 +24171,9 @@ export namespace Prisma {
     domicilio?: StringNullableWithAggregatesFilter | string | null
     mail?: StringNullableWithAggregatesFilter | string | null
     dni?: IntNullableWithAggregatesFilter | number | null
+    motivo_turno?: StringNullableWithAggregatesFilter | string | null
+    norden?: StringNullableWithAggregatesFilter | string | null
+    observacion?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type PRACTICAWhereInput = {
@@ -24270,6 +24330,7 @@ export namespace Prisma {
     OTERO?: IntNullableFilter | number | null
     idprest?: IntFilter | number
     PROMO?: BoolNullableFilter | boolean | null
+    LIQUIDACION?: FloatNullableFilter | number | null
   }
 
   export type PRESTADOOrderByWithRelationInput = {
@@ -24297,6 +24358,7 @@ export namespace Prisma {
     OTERO?: SortOrderInput | SortOrder
     idprest?: SortOrder
     PROMO?: SortOrderInput | SortOrder
+    LIQUIDACION?: SortOrderInput | SortOrder
   }
 
   export type PRESTADOWhereUniqueInput = {
@@ -24328,6 +24390,7 @@ export namespace Prisma {
     OTERO?: SortOrderInput | SortOrder
     idprest?: SortOrder
     PROMO?: SortOrderInput | SortOrder
+    LIQUIDACION?: SortOrderInput | SortOrder
     _count?: PRESTADOCountOrderByAggregateInput
     _avg?: PRESTADOAvgOrderByAggregateInput
     _max?: PRESTADOMaxOrderByAggregateInput
@@ -24363,6 +24426,7 @@ export namespace Prisma {
     OTERO?: IntNullableWithAggregatesFilter | number | null
     idprest?: IntWithAggregatesFilter | number
     PROMO?: BoolNullableWithAggregatesFilter | boolean | null
+    LIQUIDACION?: FloatNullableWithAggregatesFilter | number | null
   }
 
   export type USOSWhereInput = {
@@ -26243,6 +26307,9 @@ export namespace Prisma {
     domicilio?: string | null
     mail?: string | null
     dni?: number | null
+    motivo_turno?: string | null
+    norden?: string | null
+    observacion?: string | null
   }
 
   export type MEDICOS_TURNOSUncheckedCreateInput = {
@@ -26259,6 +26326,9 @@ export namespace Prisma {
     domicilio?: string | null
     mail?: string | null
     dni?: number | null
+    motivo_turno?: string | null
+    norden?: string | null
+    observacion?: string | null
   }
 
   export type MEDICOS_TURNOSUpdateInput = {
@@ -26274,6 +26344,9 @@ export namespace Prisma {
     domicilio?: NullableStringFieldUpdateOperationsInput | string | null
     mail?: NullableStringFieldUpdateOperationsInput | string | null
     dni?: NullableIntFieldUpdateOperationsInput | number | null
+    motivo_turno?: NullableStringFieldUpdateOperationsInput | string | null
+    norden?: NullableStringFieldUpdateOperationsInput | string | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MEDICOS_TURNOSUncheckedUpdateInput = {
@@ -26290,6 +26363,9 @@ export namespace Prisma {
     domicilio?: NullableStringFieldUpdateOperationsInput | string | null
     mail?: NullableStringFieldUpdateOperationsInput | string | null
     dni?: NullableIntFieldUpdateOperationsInput | number | null
+    motivo_turno?: NullableStringFieldUpdateOperationsInput | string | null
+    norden?: NullableStringFieldUpdateOperationsInput | string | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MEDICOS_TURNOSCreateManyInput = {
@@ -26306,6 +26382,9 @@ export namespace Prisma {
     domicilio?: string | null
     mail?: string | null
     dni?: number | null
+    motivo_turno?: string | null
+    norden?: string | null
+    observacion?: string | null
   }
 
   export type MEDICOS_TURNOSUpdateManyMutationInput = {
@@ -26321,6 +26400,9 @@ export namespace Prisma {
     domicilio?: NullableStringFieldUpdateOperationsInput | string | null
     mail?: NullableStringFieldUpdateOperationsInput | string | null
     dni?: NullableIntFieldUpdateOperationsInput | number | null
+    motivo_turno?: NullableStringFieldUpdateOperationsInput | string | null
+    norden?: NullableStringFieldUpdateOperationsInput | string | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MEDICOS_TURNOSUncheckedUpdateManyInput = {
@@ -26337,6 +26419,9 @@ export namespace Prisma {
     domicilio?: NullableStringFieldUpdateOperationsInput | string | null
     mail?: NullableStringFieldUpdateOperationsInput | string | null
     dni?: NullableIntFieldUpdateOperationsInput | number | null
+    motivo_turno?: NullableStringFieldUpdateOperationsInput | string | null
+    norden?: NullableStringFieldUpdateOperationsInput | string | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PRACTICACreateInput = {
@@ -26525,6 +26610,7 @@ export namespace Prisma {
     BAJA?: Date | string | null
     OTERO?: number | null
     PROMO?: boolean | null
+    LIQUIDACION?: number | null
   }
 
   export type PRESTADOUncheckedCreateInput = {
@@ -26552,6 +26638,7 @@ export namespace Prisma {
     OTERO?: number | null
     idprest?: number
     PROMO?: boolean | null
+    LIQUIDACION?: number | null
   }
 
   export type PRESTADOUpdateInput = {
@@ -26578,6 +26665,7 @@ export namespace Prisma {
     BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     OTERO?: NullableIntFieldUpdateOperationsInput | number | null
     PROMO?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    LIQUIDACION?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type PRESTADOUncheckedUpdateInput = {
@@ -26605,6 +26693,7 @@ export namespace Prisma {
     OTERO?: NullableIntFieldUpdateOperationsInput | number | null
     idprest?: IntFieldUpdateOperationsInput | number
     PROMO?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    LIQUIDACION?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type PRESTADOCreateManyInput = {
@@ -26632,6 +26721,7 @@ export namespace Prisma {
     OTERO?: number | null
     idprest?: number
     PROMO?: boolean | null
+    LIQUIDACION?: number | null
   }
 
   export type PRESTADOUpdateManyMutationInput = {
@@ -26658,6 +26748,7 @@ export namespace Prisma {
     BAJA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     OTERO?: NullableIntFieldUpdateOperationsInput | number | null
     PROMO?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    LIQUIDACION?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type PRESTADOUncheckedUpdateManyInput = {
@@ -26685,6 +26776,7 @@ export namespace Prisma {
     OTERO?: NullableIntFieldUpdateOperationsInput | number | null
     idprest?: IntFieldUpdateOperationsInput | number
     PROMO?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    LIQUIDACION?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type USOSCreateInput = {
@@ -28578,6 +28670,9 @@ export namespace Prisma {
     domicilio?: SortOrder
     mail?: SortOrder
     dni?: SortOrder
+    motivo_turno?: SortOrder
+    norden?: SortOrder
+    observacion?: SortOrder
   }
 
   export type MEDICOS_TURNOSAvgOrderByAggregateInput = {
@@ -28601,6 +28696,9 @@ export namespace Prisma {
     domicilio?: SortOrder
     mail?: SortOrder
     dni?: SortOrder
+    motivo_turno?: SortOrder
+    norden?: SortOrder
+    observacion?: SortOrder
   }
 
   export type MEDICOS_TURNOSMinOrderByAggregateInput = {
@@ -28617,6 +28715,9 @@ export namespace Prisma {
     domicilio?: SortOrder
     mail?: SortOrder
     dni?: SortOrder
+    motivo_turno?: SortOrder
+    norden?: SortOrder
+    observacion?: SortOrder
   }
 
   export type MEDICOS_TURNOSSumOrderByAggregateInput = {
@@ -28788,6 +28889,7 @@ export namespace Prisma {
     OTERO?: SortOrder
     idprest?: SortOrder
     PROMO?: SortOrder
+    LIQUIDACION?: SortOrder
   }
 
   export type PRESTADOAvgOrderByAggregateInput = {
@@ -28798,6 +28900,7 @@ export namespace Prisma {
     CON_PAGA?: SortOrder
     OTERO?: SortOrder
     idprest?: SortOrder
+    LIQUIDACION?: SortOrder
   }
 
   export type PRESTADOMaxOrderByAggregateInput = {
@@ -28825,6 +28928,7 @@ export namespace Prisma {
     OTERO?: SortOrder
     idprest?: SortOrder
     PROMO?: SortOrder
+    LIQUIDACION?: SortOrder
   }
 
   export type PRESTADOMinOrderByAggregateInput = {
@@ -28852,6 +28956,7 @@ export namespace Prisma {
     OTERO?: SortOrder
     idprest?: SortOrder
     PROMO?: SortOrder
+    LIQUIDACION?: SortOrder
   }
 
   export type PRESTADOSumOrderByAggregateInput = {
@@ -28862,6 +28967,7 @@ export namespace Prisma {
     CON_PAGA?: SortOrder
     OTERO?: SortOrder
     idprest?: SortOrder
+    LIQUIDACION?: SortOrder
   }
 
   export type StringWithAggregatesFilter = {

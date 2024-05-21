@@ -57,6 +57,8 @@ const FormOrdenPago = ({
   errores,
   exito,
   tipOrd,
+  detMed,
+  fTot
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -136,7 +138,7 @@ const FormOrdenPago = ({
                   <u>Ordenes</u>: {listado.length}
                 </Typography>
                 <Typography color="gray" className="mt-1 font-normal">
-                  <u>Importe</u>: ${totales(listado)}
+                  <u>Importe</u>: ${totales(listado, detMed.LIQUIDACION)}
                 </Typography>
                 <ListadoOrdenes
                   listado={listado}
@@ -147,6 +149,8 @@ const FormOrdenPago = ({
                   alertas={alertas}
                   errores={errores}
                   exito={exito}
+                  detMed={detMed}
+                  fTot={fTot}
                 />
               </div>
 
@@ -160,12 +164,14 @@ const FormOrdenPago = ({
                   <u>Ordenes</u>: {listadoCheck.length}
                 </Typography>
                 <Typography color="gray" className="mt-1 font-normal">
-                  <u>Importe</u>: ${totales(listadoCheck)}
+                  <u>Importe</u>: ${totales(listadoCheck, detMed.LIQUIDACION)}
                 </Typography>
                 <ListadoOrdenes
                   listado={listadoCheck}
                   f={"Check"}
                   deleteCheckOrden={deleteCheckOrden}
+                  detMed={detMed}
+                  fTot={fTot}
                 />
               </div>
 

@@ -45,6 +45,8 @@ function NuevaOrden(props) {
   const [alertas, guardarAlertas] = useState(null);
   const [errores, guardarErrores] = useState(null);
   const [tipOrd, guardarTipoOrd] = useState(null);
+  const [detMed, guardarDetallePrest] = useState(null);
+  const [fTot, guardarFTot] = useState(null);
 
   const { usu } = useWerchow();
 
@@ -125,6 +127,30 @@ function NuevaOrden(props) {
       });
   };
 
+  const traerDetalleMed = async (prestado) => {
+    console.log(prestado);
+    await axios
+      .get("/api/ordenpago", {
+        params: {
+          prestado: prestado,
+          f: "traer detalle medico",
+        },
+      })
+      .then((res) => {
+        if (res.data) {
+          let dat = JSON.parse(res.data);
+          guardarDetallePrest(dat[0]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(
+          "Ocurrio un error al tarer el detalle del medico",
+          "ATENCION"
+        );
+      });
+  };
+
   const buscarOrdenes = async (f) => {
     guardarTipoOrd(f);
 
@@ -140,10 +166,13 @@ function NuevaOrden(props) {
       let resto = [];
       let todo = [];
 
+      traerDetalleMed(codigo);
+
       guardarNomPrest(prestado);
       guardarCodPres(codigo);
 
       if (f === "O") {
+        guardarFTot(f);
         await axios
           .get(`/api/medicos`, {
             params: {
@@ -196,6 +225,7 @@ function NuevaOrden(props) {
             toast.error("Ocurrio un error al generar las ordenes", "ATENCION");
           });
       } else if (f === "P") {
+        guardarFTot(f);
         await axios
           .get(`/api/medicos`, {
             params: {
@@ -333,7 +363,7 @@ function NuevaOrden(props) {
       orPag.fecha_pago = fechaPagRef.current.value;
       orPag.tipo_factura = "-";
       orPag.nfactura = "0";
-      orPag.total = totales(listadoCheck);
+      orPag.total = totales(listadoCheck, detMed.LIQUIDACION);
     } else if (f === "P") {
       orPag.proveedor = codPres;
       orPag.nombre = nomPres;
@@ -343,7 +373,7 @@ function NuevaOrden(props) {
       orPag.fecha_pago = fechaPagPracRef.current.value;
       orPag.tipo_factura = "-";
       orPag.nfactura = "0";
-      orPag.total = totales(listadoCheck);
+      orPag.total = totales(listadoCheck, detMed.LIQUIDACION);
     }
     if (orPag.fecha_pago === "") {
       toast.warning("Debes ingresar la fecha de pago de la orden a generar");
@@ -472,11 +502,17 @@ function NuevaOrden(props) {
       });
   };
 
-  const totales = (arr) => {
+  const totales = (arr, liq) => {
     let total = 0;
 
-    for (let i = 0; i < arr.length; i++) {
-      total += parseFloat(arr[i].IMP_LIQ);
+    if (fTot === "O") {
+      for (let i = 0; i < arr.length; i++) {
+        total += parseFloat(liq);
+      }
+    } else if (fTot === "P") {
+      for (let i = 0; i < arr.length; i++) {
+        total += parseFloat(arr[i].IMP_LIQ);
+      }
     }
 
     return total.toFixed(2);
@@ -592,6 +628,8 @@ function NuevaOrden(props) {
             errores={errores}
             exito={exito}
             tipOrd={tipOrd}
+            detMed={detMed}
+            fTot={fTot}
           />
         </>
       )}

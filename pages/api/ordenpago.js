@@ -3,7 +3,34 @@ import moment from "moment";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    if (req.query.f && req.query.f === "norden") {
+    if (req.query.f && req.query.f === "traer detalle medico") {
+      const detalleMedico = await Serv.$queryRaw`
+         
+        SELECT 
+            COD_PRES, 
+            NOMBRE, 
+            DIRECCION, 
+            TELEFONOS, 
+            HORARIO1, 
+            HORARIO2,      
+            SUBSTR(LIS_ESPE,1,3) "SERVICIO", 
+            CON_PAGA,
+            LIQUIDACION,
+            LUGAR,
+            OTERO,
+            PROMO, 
+            AUSENTE
+        FROM PRESTADO
+        WHERE COD_PRES = ${req.query.prestado}   
+      `;
+      res
+        .status(200)
+        .json(
+          JSON.stringify(detalleMedico, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "norden") {
       const nOrden = await SGI.ordenes_pago.findFirst({
         select: {
           idorden: true,

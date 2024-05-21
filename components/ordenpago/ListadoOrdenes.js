@@ -14,7 +14,9 @@ const ListadoOrdenes = ({
   nuImpor,
   alertas,
   errores,
-  exito
+  exito,
+  detMed,
+  fTot,
 }) => {
   let columns = [
     {
@@ -73,10 +75,26 @@ const ListadoOrdenes = ({
       width: "110px",
     },
     {
-      name: "Importe",
-      selector: (row) => `$${row.IMP_LIQ}`,
+      name: "Valor Orden",
+      selector: (row) => `$${row.IMPORTE}`,
       sortable: true,
-      width: "110px",
+      width: "120px",
+    },
+
+    {
+      name: "Val. Liquidacion",
+      cell: (row, index) => (
+        <>
+          {fTot === "O" ? (
+            `$${detMed.LIQUIDACION}`
+          ) : fTot === "P" ? (
+            <>Liquida valor de orden</>
+          ) : null}
+        </>
+      ),
+
+      sortable: true,
+      width: "135px",
     },
 
     {
@@ -92,14 +110,17 @@ const ListadoOrdenes = ({
                 className="butlist mt-px h-6 w-6"
                 onClick={() => checkOrden(row)}
               />
-              <ModalModifImp
-                row={row}
-                nuImpor={nuImpor}
-                updateImporte={updateImporte}
-                alertas={alertas}
-                errores={errores}
-                exito={exito}
-              />
+
+              {fTot === "P" ? (
+                <ModalModifImp
+                  row={row}
+                  nuImpor={nuImpor}
+                  updateImporte={updateImporte}
+                  alertas={alertas}
+                  errores={errores}
+                  exito={exito}
+                />
+              ) : null}
             </>
           ) : f === "Check" ? (
             <TrashIcon

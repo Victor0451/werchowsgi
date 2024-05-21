@@ -268,7 +268,10 @@ exports.Prisma.MEDICOS_TURNOSScalarFieldEnum = {
   operador: 'operador',
   domicilio: 'domicilio',
   mail: 'mail',
-  dni: 'dni'
+  dni: 'dni',
+  motivo_turno: 'motivo_turno',
+  norden: 'norden',
+  observacion: 'observacion'
 };
 
 exports.Prisma.PRACTICAScalarFieldEnum = {
@@ -319,7 +322,8 @@ exports.Prisma.PRESTADOScalarFieldEnum = {
   BAJA: 'BAJA',
   OTERO: 'OTERO',
   idprest: 'idprest',
-  PROMO: 'PROMO'
+  PROMO: 'PROMO',
+  LIQUIDACION: 'LIQUIDACION'
 };
 
 exports.Prisma.USOSScalarFieldEnum = {
