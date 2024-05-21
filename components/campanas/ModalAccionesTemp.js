@@ -14,6 +14,7 @@ export default function ModalAccionesTemp({
   RegistrarGestion,
   handleChange,
   errores,
+  f,
 }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
@@ -34,7 +35,10 @@ export default function ModalAccionesTemp({
         size="xl"
       >
         <DialogHeader>Detalle Caso</DialogHeader>
-        <DialogFooter>
+       
+
+        <DialogBody divider className="h-[40vw] overflow-scroll">
+        <div className="flex justify-end  mb-2">
           <Button
             variant="gradient"
             color="green"
@@ -52,14 +56,14 @@ export default function ModalAccionesTemp({
           >
             <span>Cerrar</span>
           </Button>
-        </DialogFooter>
-
-        <DialogBody divider className="h-[45vw] overflow-scroll">
+        </div>
+         
           <FormAccionesTemp
             row={row}
             RegistrarGestion={RegistrarGestion}
             handleChange={handleChange}
             errores={errores}
+            f={f}
           />
         </DialogBody>
       </Dialog>

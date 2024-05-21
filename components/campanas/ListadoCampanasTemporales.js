@@ -10,6 +10,7 @@ export const ListadoCampanaTemporales = ({
     handleChange,
     RegistrarGestion,
     errores,
+    f
 }) => {
 
     const columns = [
@@ -64,6 +65,7 @@ export const ListadoCampanaTemporales = ({
                         handleChange={handleChange}
                         RegistrarGestion={RegistrarGestion}
                         errores={errores}
+                        f={f}
                     />
 
                 </>
