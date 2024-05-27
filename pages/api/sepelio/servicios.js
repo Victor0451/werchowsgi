@@ -338,9 +338,9 @@ export default async function handler(req, res) {
         `                
                 SELECT *
                 FROM informe_tareas
-                WHERE operador = '${req.query.operador}'
-                AND liquidado = 0
+                WHERE operador = '${req.query.operador}'                
                 AND monto > 0
+                ORDER BY liquidado ASC
               
                `
       );

@@ -30,6 +30,7 @@ const ListadoLiquidacionPersonal = ({
   liqItem,
   liquidarGuardia,
 }) => {
+  console.log(tareas);
   let columns = [
     {
       name: "#",
@@ -95,10 +96,10 @@ const ListadoLiquidacionPersonal = ({
       width: "100px",
       cell: (row, index) => (
         <>
-          {!row.fecha_liquidado ? (
+          {!row.fecha_liquidacion ? (
             <div>---</div>
-          ) : row.fecha_liquidado ? (
-            <div>{moment(row.fecha_liquidado).format("DD/MM/YYYY")}</div>
+          ) : row.fecha_liquidacion ? (
+            <div>{moment(row.fecha_liquidacion).format("DD/MM/YYYY")}</div>
           ) : null}
         </>
       ),
@@ -109,10 +110,10 @@ const ListadoLiquidacionPersonal = ({
       width: "100px",
       cell: (row, index) => (
         <>
-          {!row.operador_liquidado ? (
+          {!row.operadorliq ? (
             <div>---</div>
-          ) : row.operador_liquidado ? (
-            <div>{row.operador_liquidado}</div>
+          ) : row.operadorliq ? (
+            <div>{row.operadorliq}</div>
           ) : null}
         </>
       ),
@@ -130,13 +131,18 @@ const ListadoLiquidacionPersonal = ({
             }}
             target="__blank"
           >
-            <EyeIcon color="blue" className="butlist mt-px h-6 w-6" />
+            <EyeIcon color="blue" className="butlist mt-px h-6 w-6 mr-1" />
           </Link>
-          <CurrencyDollarIcon
-            color="orange"
-            className="butlist mt-px h-6 w-6 "
-            onClick={() => liqItem("liquidar tarea individual", row.idtareas)}
-          />
+
+          {row.liquidado === 0 ? (
+            <CurrencyDollarIcon
+              color="orange"
+              className="butlist mt-px h-6 w-6 "
+              onClick={() => liqItem("liquidar tarea individual", row.idtareas)}
+            />
+          ) : (
+            <>Ac. Liq. </>
+          )}
         </>
       ),
     },
@@ -215,10 +221,10 @@ const ListadoLiquidacionPersonal = ({
       width: "100px",
       cell: (row, index) => (
         <>
-          {!row.fecha_liquidado ? (
+          {!row.fecha_liquidacion ? (
             <div>---</div>
-          ) : row.fecha_liquidado ? (
-            <div>{moment(row.fecha_liquidado).format("DD/MM/YYYY")}</div>
+          ) : row.fecha_liquidacion ? (
+            <div>{moment(row.fecha_liquidacion).format("DD/MM/YYYY")}</div>
           ) : null}
         </>
       ),
@@ -229,10 +235,10 @@ const ListadoLiquidacionPersonal = ({
       width: "100px",
       cell: (row, index) => (
         <>
-          {!row.operador_liquidado ? (
+          {!row.operadorliq ? (
             <div>---</div>
-          ) : row.operador_liquidado ? (
-            <div>{row.operador_liquidado}</div>
+          ) : row.operadorliq ? (
+            <div>{row.operadorliq}</div>
           ) : null}
         </>
       ),
@@ -243,11 +249,15 @@ const ListadoLiquidacionPersonal = ({
       width: "100px",
       cell: (row, index) => (
         <>
-          <CurrencyDollarIcon
-            color="orange"
-            className="butlist mt-px h-6 w-6 "
-            onClick={() => liquidarGuardia(row.idturno)}
-          />
+          {row.liquidado === 0 ? (
+            <CurrencyDollarIcon
+              color="orange"
+              className="butlist mt-px h-6 w-6 "
+              onClick={() => liquidarGuardia(row.idturno)}
+            />
+          ) : (
+            <>Accion Liquidada </>
+          )}
         </>
       ),
     },
@@ -262,11 +272,11 @@ const ListadoLiquidacionPersonal = ({
               Detalle de Liquidacion: {operador}
             </Typography>
           </div>
-          <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 ">
+          {/* <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 ">
             <Button color="green" className="" onClick={pagarLiquidacion}>
               Liquidar
             </Button>
-          </div>
+          </div> */}
         </div>
 
         <div className="border-2 rounded-xl p-4 mt-4 mb-4">

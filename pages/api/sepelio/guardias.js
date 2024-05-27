@@ -23,8 +23,10 @@ export default async function handler(req, res) {
     } else if (req.query.f && req.query.f === "traer guardias operador") {
       const guardiasOp = await Sep.liquidacion_guardias.findMany({
         where: {
-          operador: req.query.operador,
-          liquidado: 0,
+          operador: req.query.operador,          
+        },
+        orderBy: {
+          liquidado: "asc",
         },
       });
 
