@@ -39,7 +39,6 @@ function ImprimirOrden(props) {
           },
         })
         .then((res) => {
-          console.log(res.data);
           if (res.data.length > 0) {
             guardarOrden(res.data[0]);
 

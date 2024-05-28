@@ -188,7 +188,7 @@ const FormImprimirOrden = ({ orden, detOrden, calcTotal, componentRef }) => {
               Router.push("/ordenpago/listadoorden");
             }}
           >
-            Canelar
+            Cancelar
           </Button>
         </div>
       </CardBody>
