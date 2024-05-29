@@ -83,18 +83,9 @@ const ListadoOrdenes = ({
 
     {
       name: "Val. Liquidacion",
-      cell: (row, index) => (
-        <>
-          {fTot === "O" ? (
-            `$${detMed.LIQUIDACION}`
-          ) : fTot === "P" ? (
-            <>Liquida valor de orden</>
-          ) : null}
-        </>
-      ),
-
+      selector: (row) => `$${row.IMP_LIQ}`,
       sortable: true,
-      width: "135px",
+      width: "120px",
     },
 
     {
@@ -111,16 +102,14 @@ const ListadoOrdenes = ({
                 onClick={() => checkOrden(row)}
               />
 
-              {fTot === "P" ? (
-                <ModalModifImp
-                  row={row}
-                  nuImpor={nuImpor}
-                  updateImporte={updateImporte}
-                  alertas={alertas}
-                  errores={errores}
-                  exito={exito}
-                />
-              ) : null}
+              <ModalModifImp
+                row={row}
+                nuImpor={nuImpor}
+                updateImporte={updateImporte}
+                alertas={alertas}
+                errores={errores}
+                exito={exito}
+              />
             </>
           ) : f === "Check" ? (
             <TrashIcon

@@ -507,7 +507,7 @@ function NuevaOrden(props) {
 
     if (fTot === "O") {
       for (let i = 0; i < arr.length; i++) {
-        total += parseFloat(liq);
+        total += parseFloat(arr[i].IMP_LIQ);
       }
     } else if (fTot === "P") {
       for (let i = 0; i < arr.length; i++) {
