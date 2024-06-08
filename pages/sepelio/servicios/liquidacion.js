@@ -115,15 +115,55 @@ function liquidacion(props) {
 
     if (f === "t") {
       for (let i = 0; i < arr.length; i++) {
-        total += parseFloat(arr[i].monto);
+        if (arr[i].liquidado === 0) {
+          total += parseFloat(arr[i].monto);
+        }
+      }
+    } else if (f === "tp") {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].liquidado === 1) {
+          total += parseFloat(arr[i].monto);
+        }
+      }
+    } else if (f === "tcon") {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].liquidado === 0) {
+          total++;
+        }
+      }
+    } else if (f === "tconp") {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].liquidado === 1) {
+          total++;
+        }
       }
     } else if (f === "g") {
       for (let i = 0; i < arr.length; i++) {
-        total += parseFloat(arr[i].importe);
+        if (arr[i].liquidado === 0) {
+          total += parseFloat(arr[i].importe);
+        }
+      }
+    } else if (f === "gp") {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].liquidado === 1) {
+          total += parseFloat(arr[i].importe);
+        }
+      }
+    } else if (f === "gcon") {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].liquidado === 0) {
+          total++;
+        }
+      }
+    } else if (f === "gconp") {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].liquidado === 1) {
+          total++;
+        }
       }
     }
 
-    return total.toFixed(2);
+    return total;
   };
 
   const pagarLiquidacion = async () => {
