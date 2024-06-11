@@ -166,113 +166,96 @@ function liquidacion(props) {
     return total;
   };
 
-  const pagarLiquidacion = async () => {
-    await confirmAlert({
-      title: "ATENCION",
-      message: "¿Seguro quieres liquidar las tareas del operador?",
-      buttons: [
-        {
-          label: "Si",
-          onClick: () => {
-            let dataT = {
-              idtarea: 0,
-              liquidado: true,
-              fecha_liquidacion: moment().format("YYYY-MM-DD"),
-              operadorliq: usu.usuario,
-              f: "liquidar tarea",
-            };
-
-            let dataG = {
-              idturno: 0,
-              liquidado: 1,
-              fecha_liquidacion: moment().format("YYYY-MM-DD"),
-              operadorliq: usu.usuario,
-              f: "liquidar guardia 2",
-            };
-
-            for (let i = 0; i < tareas.length; i++) {
-              dataT.idtarea = tareas[i].idtareas;
+  const pagarLiquidacion = async (f) => {
+    if (f === "T") {
+      await confirmAlert({
+        title: "ATENCION",
+        message: "¿Seguro quieres liquidar todas las tareas?",
+        buttons: [
+          {
+            label: "Si",
+            onClick: () => {
+              let info = {
+                operadorliq: usu.usuario,
+                fecha_liquidado: moment().format("YYYY-MM-DD"),
+                f: "liquidar tareas",
+                operador: opSel,
+              };
 
               axios
-                .put(`/api/sepelio/servicios`, dataT)
+                .put("/api/sepelio/servicios", info)
                 .then((res) => {
                   if (res.status === 200) {
-                    let accionHis = `Se liquido la tarea ID ${dataT.idtarea} del operador: ${opSel} por un monto de ${tareas[i].monto} perteneciente al informe de sepelio ID: ${tareas[i].idinforme}.`;
+                    toast.success("Tareas liquidadas");
+
+                    let accionHis = `Todas las tareas del operador ${opSel} fueron liquidadas.`;
 
                     registrarHistoria(accionHis, usu.usuario);
 
-                    registroLiq(
-                      tareas[i].operador,
-                      tareas[i].tarea,
-                      moment(tareas[i].inicio).format("YYYY-MM-DD"),
-                      tareas[i].monto
-                    );
+                    setTimeout(() => {
+                      buscarLiquidacion();
+                    }, 1000);
                   }
                 })
                 .catch((error) => {
                   console.log(error);
-                  toast.error("Ocurrio un error al liquidar la tarea");
+                  toast.error("Ocurrio un error al liquidar");
                 });
-            }
-
-            for (let i = 0; i < guardias.length; i++) {
-              dataG.idturno = guardias[i].idturno;
-
-              axios
-                .put(`/api/sepelio/guardias`, dataG)
-                .then((res) => {
-                  if (res.status === 200) {
-                    let accionHis = `Se liquido la guardia ID ${dataG.idturno} del operador: ${opSel} por un monto de ${guardias[i].importe}.`;
-
-                    registrarHistoria(accionHis, usu.usuario);
-
-                    registroLiq(
-                      guardias[i].operador,
-                      `Guardia ${guardias[i].lugar}`,
-                      moment(guardias[i].inicio).format("YYYY-MM-DD"),
-                      guardias[i].importe
-                    );
-                  }
-                })
-                .catch((error) => {
-                  console.log(error);
-                  toast.error("Ocurrio un error al liquidar la guardia");
-                });
-            }
+            },
           },
-        },
-        {
-          label: "No",
-          onClick: () => {
-            toast.info("El detalle generado, no fue impactado");
+          {
+            label: "No",
+            onClick: () => {
+              toast.info("Ninguna tarea fue liquidada");
+            },
           },
-        },
-      ],
-    });
-  };
-
-  const registroLiq = async (emp, con, fec, imp) => {
-    let data = {
-      fecha: moment().format("YYYY-MM-DD"),
-      empleado: emp,
-      concepto: con,
-      fecha_concepto: fec,
-      importe: imp,
-      operador: usu.usuario,
-      f: "liquidacion registro",
-    };
-
-    await axios
-      .post("/api/sepelio/liquidaciones", data)
-      .then((res) => {
-        if (res.status === 200) {
-          toast.success("Registro de liquidacion generado");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al generar el registro de liquidacion");
+        ],
       });
+    } else if (f === "G") {
+      await confirmAlert({
+        title: "ATENCION",
+        message: "¿Seguro quieres liquidar todas las guardias?",
+        buttons: [
+          {
+            label: "Si",
+            onClick: () => {
+              let info = {
+                operadorliq: usu.usuario,
+                fecha_liquidacion: moment().format("YYYY-MM-DD"),
+                f: "liquidar guardias",
+                operador: opSel,
+              };
+
+              axios
+                .put("/api/sepelio/guardias", info)
+                .then((res) => {
+                  if (res.status === 200) {
+                    toast.success("Guardias Liquidadas");
+
+                    let accionHis = `Todas las guardias del operador ${opSel} fueron liquidadas.`;
+
+                    registrarHistoria(accionHis, usu.usuario);
+
+                    setTimeout(() => {
+                      buscarLiquidacion();
+                    }, 1000);
+                  }
+                })
+                .catch((error) => {
+                  console.log(error);
+                  toast.error("Ocurrio un error al liquidar");
+                });
+            },
+          },
+          {
+            label: "No",
+            onClick: () => {
+              toast.info("Ninguna guardia fue liquidada");
+            },
+          },
+        ],
+      });
+    }
   };
 
   const liqItem = async (f, id) => {

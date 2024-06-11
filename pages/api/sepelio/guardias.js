@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     } else if (req.query.f && req.query.f === "traer guardias operador") {
       const guardiasOp = await Sep.liquidacion_guardias.findMany({
         where: {
-          operador: req.query.operador,          
+          operador: req.query.operador,
         },
         orderBy: {
           liquidado: "asc",
@@ -104,6 +104,20 @@ export default async function handler(req, res) {
           idturno: parseInt(req.body.idturno),
         },
       });
+
+      res.status(200).json(liqGuardia);
+    } else if (req.body.f && req.body.f === "liquidar guardias") {
+      const liqGuardia = await Sep.$queryRawUnsafe(
+        `                
+          UPDATE liquidacion_guardias
+          SET liquidado = 1,
+              fecha_liquidacion = '${req.body.fecha_liquidacion}',
+              operadorliq = '${req.body.operadorliq}'
+          WHERE operador = '${req.body.operador}'
+
+          
+                       `
+      );
 
       res.status(200).json(liqGuardia);
     }

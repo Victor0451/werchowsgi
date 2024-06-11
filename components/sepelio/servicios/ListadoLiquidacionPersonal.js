@@ -274,9 +274,7 @@ const ListadoLiquidacionPersonal = ({
             </Typography>
           </div>
           {/* <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 ">
-            <Button color="green" className="" onClick={pagarLiquidacion}>
-              Liquidar
-            </Button>
+           
           </div> */}
         </div>
 
@@ -316,14 +314,27 @@ const ListadoLiquidacionPersonal = ({
             </div>
           </div>
 
-          <DataTable
-            columns={columns}
-            data={tareas}
-            defaultSortField="name"
-            striped
-            pagination
-            subHeader
-          />
+          <div className=" border-2 rounded-xl p-4">
+            <div className="flex justify-end">
+              <Button
+                color="green"
+                className=""
+                onClick={() => {
+                  pagarLiquidacion("T");
+                }}
+              >
+                Liquidar todas las tareas
+              </Button>
+            </div>
+            <DataTable
+              columns={columns}
+              data={tareas}
+              defaultSortField="name"
+              striped
+              pagination
+              subHeader
+            />
+          </div>
         </div>
 
         <div className="border-2 rounded-xl p-4 mt-4 mb-4">
@@ -356,20 +367,35 @@ const ListadoLiquidacionPersonal = ({
 
             <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
               <Alert className="" color="blue" icon={<IconSolid />}>
-                Las tareas liquidadas se van ordenando y mostrando
+                Las guardias liquidadas se van ordenando y mostrando
                 automaticamente al final del listado.
               </Alert>
             </div>
           </div>
 
-          <DataTable
-            columns={columns2}
-            data={guardias}
-            defaultSortField="name"
-            striped
-            pagination
-            subHeader
-          />
+          <div className=" border-2 rounded-xl p-4">
+            <div className="flex justify-end">
+              <Button
+                color="green"
+                size="sm"
+                className=" "
+                onClick={() => {
+                  pagarLiquidacion("G");
+                }}
+              >
+                Liquidar todas las guardias
+              </Button>
+            </div>
+
+            <DataTable
+              columns={columns2}
+              data={guardias}
+              defaultSortField="name"
+              striped
+              pagination
+              subHeader
+            />
+          </div>
         </div>
 
         <div className="flex flex-wrap -mx-3 mb-6">

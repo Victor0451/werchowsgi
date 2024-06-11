@@ -753,6 +753,20 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(liqTarea);
+    } else if (req.body.f && req.body.f === "liquidar tareas") {
+      const liqTarea = await Sep.$queryRawUnsafe(
+        `                
+          UPDATE informe_tareas 
+          SET liquidado = 1,
+              fecha_liquidacion = '${req.body.fecha_liquidado}',
+              operadorliq = '${req.body.operadorliq}'
+          WHERE operador = '${req.body.operador}'
+
+          
+                       `
+      );
+
+      res.status(200).json(liqTarea);
     } else if (req.body.f && req.body.f === "liquidar gasto individual") {
       const liqGasto = await Sep.informe_gastos.update({
         data: {
