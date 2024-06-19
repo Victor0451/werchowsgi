@@ -18,6 +18,7 @@ import {
   PrinterIcon,
   CurrencyDollarIcon,
   ClipboardDocumentIcon,
+  TrashIcon
 } from "@heroicons/react/24/solid";
 import moment from "moment";
 import Link from "next/link";
@@ -31,6 +32,7 @@ const ListadoServicios = ({
   noData,
   listadoHist,
   ServiciosHistoricos,
+  eliminarServicio
 }) => {
   let columns = [
     {
@@ -84,7 +86,7 @@ const ListadoServicios = ({
     {
       name: "Acciones",
       button: true,
-      grow: 0.1,
+      width: "120px",
       cell: (row, index) => (
         <>
           <Link
@@ -126,6 +128,12 @@ const ListadoServicios = ({
               className="butlist mt-px h-6 w-6"
             />
           </Link>
+
+          <TrashIcon
+              color="red"
+              className="butlist mt-px h-6 w-6"
+              onClick={() =>{eliminarServicio(row.idservicio)}}
+            />
         </>
       ),
     },

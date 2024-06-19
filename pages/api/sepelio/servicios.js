@@ -838,6 +838,14 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(delGasto);
+    } else if (req.query.f && req.query.f === "eliminar servicio") {
+      const delServ = await Sep.servicios.delete({
+        where: {
+          idservicio: parseInt(req.query.idservicio),
+        },
+      });
+
+      res.status(200).json(delServ);
     }
   }
 }

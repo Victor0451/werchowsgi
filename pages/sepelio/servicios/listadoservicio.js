@@ -81,6 +81,46 @@ function ListadoServicio(props) {
       });
   };
 
+  const eliminarServicio = async (id) => {
+    await confirmAlert({
+      title: "Atencion",
+      message: "¿Seguro quieres eliminar el servicio seleccionado?",
+      buttons: [
+        {
+          label: "Si",
+          onClick: () => {
+            axios
+              .delete("/api/sepelio/servicios", {
+                params: {
+                  idservicio: id,
+                  f: "eliminar servicio",
+                },
+              })
+              .then((res) => {
+                if (res.status === 200) {
+                  toast.success("Servicio eliminado");
+
+                  traerServicios();
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error(
+                  "Ocurrio un error al eliminar el servicio seleccionado"
+                );
+              });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            toast.info("El servicio seleccionado no fue eliminado");
+          },
+        },
+      ],
+    });
+  };
+
   useSWR("/api/sepelio/servicios", traerServicios);
 
   if (isLoading === true) return <Skeleton />;
@@ -97,6 +137,7 @@ function ListadoServicio(props) {
             noData={noData}
             listadoHist={listadoHist}
             ServiciosHistoricos={ServiciosHistoricos}
+            eliminarServicio={eliminarServicio}
           />
         </>
       )}

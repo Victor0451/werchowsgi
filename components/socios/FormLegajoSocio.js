@@ -71,7 +71,7 @@ const FormLegajoSocio = ({
   baja,
   apellidoRef,
   listApe,
-  gl
+  gl,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -451,6 +451,24 @@ const FormLegajoSocio = ({
                         defaultValue={moment(ficha.VIGENCIA).format(
                           "DD/MM/YYYY"
                         )}
+                        readOnly
+                      />
+                    </div>
+                    <div className="relative w-full mb-6 group">
+                      <Input
+                        size="md"
+                        label="Telefono"
+                        type="text"
+                        value={ficha.TELEFONO}
+                        readOnly
+                      />
+                    </div>
+                    <div className="relative w-full mb-6 group">
+                      <Input
+                        size="md"
+                        label="Movil"
+                        type="text"
+                        value={ficha.MOVIL}
                         readOnly
                       />
                     </div>
