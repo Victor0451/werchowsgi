@@ -445,6 +445,10 @@ export default async function handler(req, res) {
           cremacion: req.body.cremacion,
           liquidado: req.body.liquidado,
           donacion: req.body.donacion,
+          detalle_corona: req.body.detalle_corona,
+          religion: req.body.religion,
+          estado_civil: req.body.estado_civil,
+          importe_servicio: parseFloat(req.body.importe_servicio),
         },
       });
 

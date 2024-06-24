@@ -584,7 +584,11 @@ exports.Prisma.ServiciosScalarFieldEnum = {
   obra_soc: 'obra_soc',
   importe: 'importe',
   donacion: 'donacion',
-  domicilio_solicitante: 'domicilio_solicitante'
+  domicilio_solicitante: 'domicilio_solicitante',
+  detalle_corona: 'detalle_corona',
+  religion: 'religion',
+  estado_civil: 'estado_civil',
+  importe_servicio: 'importe_servicio'
 };
 
 exports.Prisma.Servicios_historicoScalarFieldEnum = {

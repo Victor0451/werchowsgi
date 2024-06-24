@@ -52,6 +52,10 @@ export const FormNuevoServicio = ({
   nombreRef,
   edadRef,
   dniPartiRef,
+  detCoronaRef,
+  religionRef,
+  estCivilRef,
+  impServRef,
   handleChange,
   motivoSel,
   regServicio,
@@ -241,6 +245,24 @@ export const FormNuevoServicio = ({
                   <div className="relative w-full mb-6 group">
                     <Input
                       size="md"
+                      label="Est. Civil"
+                      type="text"
+                      inputRef={estCivilRef}
+                    />
+                  </div>
+
+                  <div className="relative w-full mb-6 group">
+                    <Input
+                      size="md"
+                      label="Religion"
+                      type="text"
+                      inputRef={religionRef}
+                    />
+                  </div>
+
+                  <div className="relative w-full mb-6 group">
+                    <Input
+                      size="md"
                       label="Fecha Fallecimiento"
                       type="date"
                       inputRef={fechaFacRef}
@@ -411,6 +433,26 @@ export const FormNuevoServicio = ({
                       <Option value="SI">Si</Option>
                       <Option value="NO">No</Option>
                     </Select>
+                  </div>
+
+                  <div className="relative w-full mb-6 group">
+                    <Input
+                      size="md"
+                      label="Importe Servicio (Serv. Particular)"
+                      type="number"
+                      inputRef={impServRef}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-1 md:gap-4">
+                  <div className="relative w-full mb-6 group">
+                    <Input
+                      size="md"
+                      label="Detalle Corona"
+                      type="text"
+                      inputRef={detCoronaRef}
+                    />
                   </div>
                 </div>
               </div>

@@ -8,6 +8,7 @@ import {
   Select,
   Option,
   Input,
+  Textarea,
 } from "@material-tailwind/react";
 import moment from "moment";
 import { Archivo } from "../../archivos/Archivo";
@@ -45,9 +46,9 @@ export const FormLegajoServicio = ({
                 size="md"
                 label="Fecha Recepcion"
                 type="text"
-                defaultValue={moment(servicio.fecha_recepcion).utcOffset("+0300").format(
-                  "DD/MM/YYYY"
-                )}
+                defaultValue={moment(servicio.fecha_recepcion)
+                  .utcOffset("+0300")
+                  .format("DD/MM/YYYY")}
                 readOnly
               />
             </div>
@@ -127,9 +128,9 @@ export const FormLegajoServicio = ({
                 size="md"
                 label="Fecha Fallecimiento"
                 type="text"
-                defaultValue={moment(servicio.fecha_fallecimiento).utcOffset("+0300").format(
-                  "DD/MM/YYYY"
-                )}
+                defaultValue={moment(servicio.fecha_fallecimiento)
+                  .utcOffset("+0300")
+                  .format("DD/MM/YYYY")}
                 readOnly
               />
             </div>
@@ -140,6 +141,26 @@ export const FormLegajoServicio = ({
                 label="Lugar Fallecimiento"
                 type="text"
                 defaultValue={servicio.lugar_fallecimiento}
+                readOnly
+              />
+            </div>
+
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Estado Civil"
+                type="text"
+                defaultValue={servicio.estado_civil}
+                readOnly
+              />
+            </div>
+
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Religion"
+                type="text"
+                defaultValue={servicio.religion}
                 readOnly
               />
             </div>
@@ -164,6 +185,137 @@ export const FormLegajoServicio = ({
               />
             </div>
           </div>
+        </div>
+
+        <hr className="border-2 mt-5 mb-5" />
+
+        <div className="border-2 rounded-xl mt-6 p-4">
+          <Typography variant="h5" color="blue-gray" className="mt-6 mb-6">
+            Datos del Servicio
+          </Typography>
+
+          <div className="grid md:grid-cols-3 md:gap-4">
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Tipo Servicio"
+                type="text"
+                readOnly
+                defaultValue={servicio.tipo_servicio}
+              />
+            </div>
+
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Causa de Fallec."
+                type="text"
+                readOnly
+                defaultValue={servicio.motivo}
+              />
+            </div>
+
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Retiro del Extinto"
+                type="text"
+                readOnly
+                defaultValue={servicio.retiro}
+              />
+            </div>
+
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Casa Mortuaria"
+                type="text"
+                readOnly
+                defaultValue={servicio.casa_mortuaria}
+              />
+            </div>
+
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Fecha de Inumacion"
+                type="text"
+                readOnly
+                defaultValue={moment(servicio.fecha_inhumacion)
+                  .utcOffset("+0300")
+                  .format("DD/MM/YYYY")}
+              />
+            </div>
+
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Hora de Inumacion"
+                type="time"
+                readOnly
+                defaultValue={servicio.hora_inhumacion}
+              />
+            </div>
+
+            <div className="relative w-full mb-6 group">
+              <Input
+                size="md"
+                label="Cementerio"
+                type="text"
+                readOnly
+                defaultValue={servicio.cementerio}
+              />
+            </div>
+
+            {servicio.cremacion === true ? (
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Cremacion"
+                  type="text"
+                  readOnly
+                  defaultValue={"Si"}
+                />
+              </div>
+            ) : (
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Cremacion"
+                  type="text"
+                  readOnly
+                  defaultValue={"No"}
+                />
+              </div>
+            )}
+
+            {servicio.donacion === true ? (
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Donacion"
+                  type="text"
+                  readOnly
+                  defaultValue={"Si"}
+                />
+              </div>
+            ) : (
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Donacion"
+                  type="text"
+                  readOnly
+                  defaultValue={"No"}
+                />
+              </div>
+            )}
+          </div>
+          <Textarea
+            label="Detalle Corona"
+            rows={5}
+            defaultValue={servicio.detalle_corona}
+          />
         </div>
 
         <hr className="mt-5 mb-5 border-2" />
@@ -280,7 +432,9 @@ export const FormLegajoServicio = ({
                   size="md"
                   label="Fecha"
                   type="text"
-                  defaultValue={moment(parcela.fecha).utcOffset("+0300").format("DD/MM/YYYY")}
+                  defaultValue={moment(parcela.fecha)
+                    .utcOffset("+0300")
+                    .format("DD/MM/YYYY")}
                   readOnly
                 />
               </div>

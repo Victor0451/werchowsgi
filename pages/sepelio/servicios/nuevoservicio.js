@@ -31,6 +31,10 @@ export default function nuevoservicio() {
   let nombreRef = React.createRef();
   let edadRef = React.createRef();
   let dniPartiRef = React.createRef();
+  let detCoronaRef = React.createRef();
+  let religionRef = React.createRef();
+  let estCivilRef = React.createRef();
+  let impServRef = React.createRef();
 
   const [errores, guardarErrores] = useState(null);
   const [alertas, guardarAlertas] = useState(null);
@@ -326,6 +330,10 @@ export default function nuevoservicio() {
       liquidado: false,
       donacion: donacionSel,
       idparcela: parceSel.idparcela,
+      detalle_corona: detCoronaRef.current.value,
+      religion: religionRef.current.value,
+      estado_civil: estCivilRef.current.value,
+      importe_servicio: impServRef.current.value,
       f: "nuevo servicio",
     };
 
@@ -582,6 +590,10 @@ export default function nuevoservicio() {
             nombreRef={nombreRef}
             edadRef={edadRef}
             dniPartiRef={dniPartiRef}
+            detCoronaRef={detCoronaRef}
+            religionRef={religionRef}
+            estCivilRef={estCivilRef}
+            impServRef={impServRef}
             handleChange={handleChange}
             motivoSel={motivoSel}
             regServicio={regServicio}

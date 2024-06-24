@@ -8,6 +8,7 @@ import {
   Select,
   Option,
   Input,
+  Textarea,
 } from "@material-tailwind/react";
 import moment from "moment";
 import ReactToPrint from "react-to-print";
@@ -21,25 +22,25 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
             <u>Solicitud de Servicio</u>
           </Typography>
 
-          <div className="p-4 border-2 rounded-lg mt-6">
-            <Typography variant="h5" color="blue-gray" className="mb-6">
+          <div className="p-4 border-2 rounded-lg mt-3">
+            <Typography variant="h5" color="blue-gray" className="mb-3">
               Informacion del Servicio
             </Typography>
 
-            <div className="grid md:grid-cols-3 md:gap-6">
-              <div className="relative w-full mb-6 group">
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Fecha Recepcion"
                   type="text"
-                  defaultValue={moment(servicio.fecha_recepcion).utcOffset("+0300").format(
-                    "DD/MM/YYYY"
-                  )}
+                  defaultValue={moment(servicio.fecha_recepcion)
+                    .utcOffset("+0300")
+                    .format("DD/MM/YYYY")}
                   readOnly
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Empresa"
@@ -49,7 +50,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="N° Socio"
@@ -59,7 +60,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="DNI"
@@ -69,7 +70,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Obra Social"
@@ -79,7 +80,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Apellido"
@@ -89,7 +90,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Nombre"
@@ -99,7 +100,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Edad"
@@ -109,19 +110,39 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
-                  label="Fecha Fallecimiento"
+                  label="Estado Civil"
                   type="text"
-                  defaultValue={moment(servicio.fecha_fallecimiento).utcOffset("+0300").format(
-                    "DD/MM/YYYY"
-                  )}
+                  defaultValue={servicio.estado_civil}
                   readOnly
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <Input
+                  size="md"
+                  label="Religion"
+                  type="text"
+                  defaultValue={servicio.religion}
+                  readOnly
+                />
+              </div>
+
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <Input
+                  size="md"
+                  label="Fecha Fallecimiento"
+                  type="text"
+                  defaultValue={moment(servicio.fecha_fallecimiento)
+                    .utcOffset("+0300")
+                    .format("DD/MM/YYYY")}
+                  readOnly
+                />
+              </div>
+
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Lugar Fallecimiento"
@@ -131,7 +152,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Altura"
@@ -141,7 +162,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Peso"
@@ -153,15 +174,15 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
             </div>
           </div>
 
-          <hr className="border-2 mt-5 mb-5" />
+          <hr className="border-2 mt-3 mb-3" />
 
-          <div className="border-2 rounded-xl mt-6 p-4">
-            <Typography variant="h5" color="blue-gray" className="mt-6 mb-6">
+          <div className="border-2 rounded-xl mt-3 p-4">
+            <Typography variant="h5" color="blue-gray" className=" mb-3">
               Datos del Servicio
             </Typography>
 
-            <div className="grid md:grid-cols-3 md:gap-4">
-              <div className="relative w-full mb-6 group">
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Tipo Servicio"
@@ -171,7 +192,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Causa de Fallec."
@@ -181,7 +202,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Retiro del Extinto"
@@ -191,7 +212,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Casa Mortuaria"
@@ -201,19 +222,19 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Fecha de Inumacion"
                   type="text"
                   readOnly
-                  defaultValue={moment(servicio.fecha_inhumacion).utcOffset("+0300").format(
-                    "DD/MM/YYYY"
-                  )}
+                  defaultValue={moment(servicio.fecha_inhumacion)
+                    .utcOffset("+0300")
+                    .format("DD/MM/YYYY")}
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Hora de Inumacion"
@@ -223,7 +244,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Cementerio"
@@ -234,7 +255,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
               </div>
 
               {servicio.cremacion === true ? (
-                <div className="relative w-full mb-6 group">
+                <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                   <Input
                     size="md"
                     label="Cremacion"
@@ -244,7 +265,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   />
                 </div>
               ) : (
-                <div className="relative w-full mb-6 group">
+                <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                   <Input
                     size="md"
                     label="Cremacion"
@@ -256,7 +277,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
               )}
 
               {servicio.donacion === true ? (
-                <div className="relative w-full mb-6 group">
+                <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                   <Input
                     size="md"
                     label="Donacion"
@@ -266,7 +287,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   />
                 </div>
               ) : (
-                <div className="relative w-full mb-6 group">
+                <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
                   <Input
                     size="md"
                     label="Donacion"
@@ -277,17 +298,22 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 </div>
               )}
             </div>
+            <Textarea
+              label="Detalle Corona"
+              rows={5}
+              defaultValue={servicio.detalle_corona}
+            />
           </div>
 
-          <hr className="border-2 mt-5 mb-5" />
+          <hr className="border-2 mt-3 mb-3" />
 
-          <div className="p-4 border-2 rounded-lg mt-6">
-            <Typography variant="h5" color="blue-gray" className="mb-6">
+          <div className="p-4 border-2 rounded-lg mt-3">
+            <Typography variant="h5" color="blue-gray" className="mb-3">
               Informacion del Ataud
             </Typography>
 
             <div className="grid md:grid-cols-3 md:gap-6">
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Ataud"
@@ -296,7 +322,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   readOnly
                 />
               </div>
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Tipo"
@@ -305,7 +331,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   readOnly
                 />
               </div>
-              <div className="relative w-full mb-6 group">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-6 md:mb-0">
                 <Input
                   size="md"
                   label="Uso"

@@ -489,6 +489,10 @@ model servicios {
   importe               Float?    @db.Float
   donacion              Boolean?
   domicilio_solicitante String?   @db.VarChar(500)
+  detalle_corona        String?   @db.VarChar(5000)
+  religion              String?   @db.VarChar(255)
+  estado_civil          String?   @db.VarChar(255)
+  importe_servicio      Float?    @db.Float
 }
 
 model servicios_historico {

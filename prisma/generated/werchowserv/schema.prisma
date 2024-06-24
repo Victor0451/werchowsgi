@@ -283,7 +283,7 @@ model PRACT_ENFER {
 
 model PRESTADO {
   COD_PRES    String    @db.VarChar(5)
-  NOMBRE      String?   @db.VarChar(25)
+  NOMBRE      String?   @db.VarChar(255)
   ESPEC       String?   @db.VarChar(15)
   LIS_ESPE    String?   @db.VarChar(30)
   SUC         String?   @db.VarChar(1)
