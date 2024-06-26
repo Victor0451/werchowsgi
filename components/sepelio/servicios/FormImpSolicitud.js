@@ -12,23 +12,42 @@ import {
 } from "@material-tailwind/react";
 import moment from "moment";
 import ReactToPrint from "react-to-print";
+import {
+  CheckCircleIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/solid";
 
 const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
   return (
     <Card className="h-full w-full p-4 ">
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <div ref={(el) => (componentRef = el)} className="p-4">
-          <Typography variant="h2">
-            <u>Solicitud de Servicio</u>
-          </Typography>
+          <div className="flex flex-wrap -mx-3 ">
+            <div className="w-full md:w-1/2 px-3  md:mb-0">
+              <Typography variant="h3">
+                <u>Solicitud de Servicio</u>
+              </Typography>
+            </div>
+            <div className="w-full md:w-1/2 px-3  md:mb-0">
+              <Alert
+                color="blue"
+                className="max-w-screen "
+                icon={<InformationCircleIcon className="mt-px h-6 w-6" />}
+              >
+                <Typography color="white" className=" font-normal">
+                  El gasto de luto estimado es de: ${servicio.gasto_luto}
+                </Typography>
+              </Alert>
+            </div>
+          </div>
 
           <div className="p-4 border-2 rounded-lg mt-3">
-            <Typography variant="h5" color="blue-gray" className="mb-3">
+            <Typography variant="h5" color="blue-gray" className="mb-1">
               Informacion del Servicio
             </Typography>
 
             <div className="flex flex-wrap -mx-3 mb-6">
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Fecha Recepcion"
@@ -40,7 +59,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Empresa"
@@ -50,7 +69,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="N° Socio"
@@ -60,7 +79,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="DNI"
@@ -70,7 +89,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Obra Social"
@@ -80,7 +99,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Apellido"
@@ -90,7 +109,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Nombre"
@@ -100,7 +119,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Edad"
@@ -109,8 +128,17 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   readOnly
                 />
               </div>
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
+                <Input
+                  size="md"
+                  label="Telefono/Movil"
+                  type="text"
+                  defaultValue={`${servicio.telefono}-${servicio.movil}`}
+                  readOnly
+                />
+              </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Estado Civil"
@@ -120,7 +148,17 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
+                <Input
+                  size="md"
+                  label="Conyugue"
+                  type="text"
+                  defaultValue={servicio.conyugue}
+                  readOnly
+                />
+              </div>
+
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Religion"
@@ -130,7 +168,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Fecha Fallecimiento"
@@ -142,7 +180,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Lugar Fallecimiento"
@@ -152,22 +190,12 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
-                  label="Altura"
+                  label="Altura y Peso"
                   type="text"
-                  defaultValue={servicio.altura}
-                  readOnly
-                />
-              </div>
-
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
-                <Input
-                  size="md"
-                  label="Peso"
-                  type="text"
-                  defaultValue={servicio.peso}
+                  defaultValue={`${servicio.altura}-${servicio.peso}`}
                   readOnly
                 />
               </div>
@@ -177,12 +205,12 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
           <hr className="border-2 mt-3 mb-3" />
 
           <div className="border-2 rounded-xl mt-3 p-4">
-            <Typography variant="h5" color="blue-gray" className=" mb-3">
+            <Typography variant="h5" color="blue-gray" className=" mb-1">
               Datos del Servicio
             </Typography>
 
             <div className="flex flex-wrap -mx-3 mb-6">
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Tipo Servicio"
@@ -192,7 +220,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Causa de Fallec."
@@ -202,7 +230,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Retiro del Extinto"
@@ -212,7 +240,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Casa Mortuaria"
@@ -222,7 +250,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Fecha de Inumacion"
@@ -234,7 +262,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Hora de Inumacion"
@@ -244,7 +272,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 />
               </div>
 
-              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Cementerio"
@@ -255,7 +283,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
               </div>
 
               {servicio.cremacion === true ? (
-                <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                   <Input
                     size="md"
                     label="Cremacion"
@@ -265,7 +293,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   />
                 </div>
               ) : (
-                <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                   <Input
                     size="md"
                     label="Cremacion"
@@ -277,7 +305,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
               )}
 
               {servicio.donacion === true ? (
-                <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                   <Input
                     size="md"
                     label="Donacion"
@@ -287,7 +315,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   />
                 </div>
               ) : (
-                <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                   <Input
                     size="md"
                     label="Donacion"
@@ -308,12 +336,12 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
           <hr className="border-2 mt-3 mb-3" />
 
           <div className="p-4 border-2 rounded-lg mt-3">
-            <Typography variant="h5" color="blue-gray" className="mb-3">
+            <Typography variant="h5" color="blue-gray" className="mb-1">
               Informacion del Ataud
             </Typography>
 
-            <div className="grid md:grid-cols-3 md:gap-6">
-              <div className="w-full md:w-1/3 px-3 mt-3 mb-6 md:mb-0">
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Ataud"
@@ -322,7 +350,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   readOnly
                 />
               </div>
-              <div className="w-full md:w-1/3 px-3 mt-3 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Tipo"
@@ -331,7 +359,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   readOnly
                 />
               </div>
-              <div className="w-full md:w-1/3 px-3 mt-3 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
                 <Input
                   size="md"
                   label="Uso"
@@ -343,7 +371,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
             </div>
           </div>
 
-          <div className=" ">
+          <div className="mt-10 ">
             <div className=" p-4">
               <Typography variant="h4" className="mb-4 text-center">
                 <strong>
@@ -353,12 +381,15 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
 
               <div className="mt-10 conform">
                 <Typography variant="small" className=" text-justify mt-4">
-                  El/la que subscribe
-                  .................................................................,
-                  en carácter de ..............................................
-                  en adelante el responsable del/la Extinto/a
-                  .............................................., Acepta que el
-                  servicio de brinde en la siguiente modalidad:
+                  El/la que subscribe {""}
+                  <strong>{servicio.solicitado}</strong>, {""}
+                  en carácter de <strong>{servicio.parentesco}</strong> {""}
+                  en adelante el responsable del/la Extinto/a {""}
+                  <strong>
+                    {servicio.apellido}, {""}
+                    {servicio.nombre}
+                  </strong>
+                  , Acepta que el servicio de brinde en la siguiente modalidad:
                 </Typography>
                 <Typography variant="small" className=" text-justify mt-10">
                   Acepta que el servicio se brinde bajo las siguientes
@@ -387,7 +418,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   minutos; caso contrario La Empresa cobrará por la misma un
                   valor equivalente al alquiler de un automóvil. 7- La Empresa
                   proveerá de un set de cafetería: 1 kg de azúcar, 1 caja de te
-                  de 50 u, 1 caja de mate de 25 u, 1 café, y bebidas gaseosas (
+                  de 25 u, 1 caja de mate de 25 u, 1 café, y bebidas gaseosas (
                   3) . 8- El responsable designado es el único con exclusivo
                   derecho a cobrar el gasto luto del plan queda excluido el
                   subsidio de contención familiar que tiene beneficiarios

@@ -35,6 +35,9 @@ export default function nuevoservicio() {
   let religionRef = React.createRef();
   let estCivilRef = React.createRef();
   let impServRef = React.createRef();
+  let telefonoRef = React.createRef();
+  let movilRef = React.createRef();
+  let conyugueRef = React.createRef();
 
   const [errores, guardarErrores] = useState(null);
   const [alertas, guardarAlertas] = useState(null);
@@ -54,6 +57,7 @@ export default function nuevoservicio() {
   const [adhs, guardarAdhs] = useState([]);
   const [adhSel, guardarAdhSel] = useState([]);
   const [gl, guardarGastoLuto] = useState([]);
+  const [glFin, guardarGastoLutoFin] = useState([]);
 
   const { usu } = useWerchow();
 
@@ -121,6 +125,8 @@ export default function nuevoservicio() {
                   guardarShow(true);
 
                   traerAdhs("adh", ficha[0].CONTRATO);
+
+                  calcGasLut(ficha[0].ALTA);
                 } else if (re.length === 0) {
                   axios
                     .get("/api/socios", {
@@ -135,6 +141,7 @@ export default function nuevoservicio() {
                       if (re.length > 0) {
                         guardarFicha(JSON.parse(res1.data));
                         guardarShow(true);
+                        calcGasLut(re[0].ALTA);
                       } else if (re.length === 0) {
                         axios
                           .get("/api/socios", {
@@ -152,6 +159,7 @@ export default function nuevoservicio() {
                               guardarShow(true);
 
                               traerAdhs("mutual adh", ficha[0].CONTRATO);
+                              calcGasLut(ficha[0].ALTA);
                             } else if (re.length === 0) {
                               axios
                                 .get("/api/socios", {
@@ -166,6 +174,7 @@ export default function nuevoservicio() {
                                   if (re.length > 0) {
                                     guardarFicha(JSON.parse(res3.data));
                                     guardarShow(true);
+                                    calcGasLut(re[0].ALTA);
                                   } else if (re.length === 0) {
                                     toast.info(
                                       "El DNI ingresado no se encuentra registrado o esta dado de baja"
@@ -305,6 +314,9 @@ export default function nuevoservicio() {
       apellido: "",
       nombre: "",
       edad: "",
+      telefono: "",
+      movil: "",
+      gasto_luto: "",
       fecha_fallecimiento: fechaFacRef.current.value,
       lugar_fallecimiento: lugarFacRef.current.value,
       tipo_servicio: "",
@@ -334,6 +346,7 @@ export default function nuevoservicio() {
       religion: religionRef.current.value,
       estado_civil: estCivilRef.current.value,
       importe_servicio: impServRef.current.value,
+      conyugue: conyugueRef.current.value,
       f: "nuevo servicio",
     };
 
@@ -347,6 +360,9 @@ export default function nuevoservicio() {
       servicio.edad = ficha[0].EDAD;
       servicio.tipo_servicio = `Servicio Plan ${ficha[0].PLAN}`;
       servicio.sucursal = ficha[0].SUCURSAL;
+      servicio.telefono = ficha[0].TELEFONO;
+      servicio.movil = ficha[0].MOVIL;
+      servicio.gasto_luto = glFin;
     } else {
       servicio.contrato = 0;
       servicio.empresa = "-";
@@ -357,6 +373,9 @@ export default function nuevoservicio() {
       servicio.edad = edadRef.current.value;
       servicio.tipo_servicio = `Servicio Particular`;
       servicio.sucursal = "-";
+      servicio.telefono = telefonoRef.current.value;
+      servicio.movil = movilRef.current.value;
+      servicio.gasto_luto = "-";
     }
 
     if (servicio.dni === "") {
@@ -536,7 +555,7 @@ export default function nuevoservicio() {
     guardarAdhSel(ad);
   };
 
-  const gasLuto = async (plan, alta, cantadh) => {
+  const gasLuto = async () => {
     await axios
       .get(`/api/sepelio/servicios`, {
         params: {
@@ -552,6 +571,18 @@ export default function nuevoservicio() {
         console.log(error);
         toast.error("Ocurrio un error al registrar el historial");
       });
+  };
+
+  const calcGasLut = (alta) => {
+    let inicio = moment(alta).format("YYYY-MM-DD");
+
+    let anti = moment().diff(inicio, "years");
+
+    if (anti <= 3) {
+      guardarGastoLutoFin(gl.gasto1);
+    } else if (anti > 3) {
+      guardarGastoLutoFin(gl.gasto2);
+    }
   };
 
   useSWR("/api/sepelio/ataudes", traerDatos);
@@ -594,6 +625,9 @@ export default function nuevoservicio() {
             religionRef={religionRef}
             estCivilRef={estCivilRef}
             impServRef={impServRef}
+            telefonoRef={telefonoRef}
+            movilRef={movilRef}
+            conyugueRef={conyugueRef}
             handleChange={handleChange}
             motivoSel={motivoSel}
             regServicio={regServicio}

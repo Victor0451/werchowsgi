@@ -88,6 +88,25 @@ export const FormSocio = ({ ficha }) => {
           defaultValue={ficha[0].EDAD}
         />
       </div>
+
+      <div className="relative w-full mb-6 group">
+        <Input
+          size="md"
+          label="Telefono"
+          type="number"
+          defaultValue={ficha[0].TELEFONO}
+        />
+      </div>
+
+      <div className="relative w-full mb-6 group">
+        <Input
+          size="md"
+          label="Movil"
+          type="number"
+          defaultValue={ficha[0].MOVIL}
+        />
+      </div>
+
       <div className="relative w-full mb-6 group">
         <Input
           size="md"

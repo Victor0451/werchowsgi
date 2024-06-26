@@ -804,6 +804,10 @@ export type serviciosPayload<ExtArgs extends $Extensions.Args = $Extensions.Defa
     religion: string | null
     estado_civil: string | null
     importe_servicio: number | null
+    telefono: string | null
+    movil: string | null
+    gasto_luto: string | null
+    conyugue: string | null
   }, ExtArgs["result"]["servicios"]>
   composites: {}
 }
@@ -38878,6 +38882,10 @@ export namespace Prisma {
     religion: string | null
     estado_civil: string | null
     importe_servicio: number | null
+    telefono: string | null
+    movil: string | null
+    gasto_luto: string | null
+    conyugue: string | null
   }
 
   export type ServiciosMaxAggregateOutputType = {
@@ -38922,6 +38930,10 @@ export namespace Prisma {
     religion: string | null
     estado_civil: string | null
     importe_servicio: number | null
+    telefono: string | null
+    movil: string | null
+    gasto_luto: string | null
+    conyugue: string | null
   }
 
   export type ServiciosCountAggregateOutputType = {
@@ -38966,6 +38978,10 @@ export namespace Prisma {
     religion: number
     estado_civil: number
     importe_servicio: number
+    telefono: number
+    movil: number
+    gasto_luto: number
+    conyugue: number
     _all: number
   }
 
@@ -39044,6 +39060,10 @@ export namespace Prisma {
     religion?: true
     estado_civil?: true
     importe_servicio?: true
+    telefono?: true
+    movil?: true
+    gasto_luto?: true
+    conyugue?: true
   }
 
   export type ServiciosMaxAggregateInputType = {
@@ -39088,6 +39108,10 @@ export namespace Prisma {
     religion?: true
     estado_civil?: true
     importe_servicio?: true
+    telefono?: true
+    movil?: true
+    gasto_luto?: true
+    conyugue?: true
   }
 
   export type ServiciosCountAggregateInputType = {
@@ -39132,6 +39156,10 @@ export namespace Prisma {
     religion?: true
     estado_civil?: true
     importe_servicio?: true
+    telefono?: true
+    movil?: true
+    gasto_luto?: true
+    conyugue?: true
     _all?: true
   }
 
@@ -39264,6 +39292,10 @@ export namespace Prisma {
     religion: string | null
     estado_civil: string | null
     importe_servicio: number | null
+    telefono: string | null
+    movil: string | null
+    gasto_luto: string | null
+    conyugue: string | null
     _count: ServiciosCountAggregateOutputType | null
     _avg: ServiciosAvgAggregateOutputType | null
     _sum: ServiciosSumAggregateOutputType | null
@@ -39327,6 +39359,10 @@ export namespace Prisma {
     religion?: boolean
     estado_civil?: boolean
     importe_servicio?: boolean
+    telefono?: boolean
+    movil?: boolean
+    gasto_luto?: boolean
+    conyugue?: boolean
   }, ExtArgs["result"]["servicios"]>
 
   export type serviciosSelectScalar = {
@@ -39371,6 +39407,10 @@ export namespace Prisma {
     religion?: boolean
     estado_civil?: boolean
     importe_servicio?: boolean
+    telefono?: boolean
+    movil?: boolean
+    gasto_luto?: boolean
+    conyugue?: boolean
   }
 
 
@@ -50001,7 +50041,11 @@ export namespace Prisma {
     detalle_corona: 'detalle_corona',
     religion: 'religion',
     estado_civil: 'estado_civil',
-    importe_servicio: 'importe_servicio'
+    importe_servicio: 'importe_servicio',
+    telefono: 'telefono',
+    movil: 'movil',
+    gasto_luto: 'gasto_luto',
+    conyugue: 'conyugue'
   };
 
   export type ServiciosScalarFieldEnum = (typeof ServiciosScalarFieldEnum)[keyof typeof ServiciosScalarFieldEnum]
@@ -52553,6 +52597,10 @@ export namespace Prisma {
     religion?: StringNullableFilter | string | null
     estado_civil?: StringNullableFilter | string | null
     importe_servicio?: FloatNullableFilter | number | null
+    telefono?: StringNullableFilter | string | null
+    movil?: StringNullableFilter | string | null
+    gasto_luto?: StringNullableFilter | string | null
+    conyugue?: StringNullableFilter | string | null
   }
 
   export type serviciosOrderByWithRelationInput = {
@@ -52597,6 +52645,10 @@ export namespace Prisma {
     religion?: SortOrderInput | SortOrder
     estado_civil?: SortOrderInput | SortOrder
     importe_servicio?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    movil?: SortOrderInput | SortOrder
+    gasto_luto?: SortOrderInput | SortOrder
+    conyugue?: SortOrderInput | SortOrder
   }
 
   export type serviciosWhereUniqueInput = {
@@ -52645,6 +52697,10 @@ export namespace Prisma {
     religion?: SortOrderInput | SortOrder
     estado_civil?: SortOrderInput | SortOrder
     importe_servicio?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    movil?: SortOrderInput | SortOrder
+    gasto_luto?: SortOrderInput | SortOrder
+    conyugue?: SortOrderInput | SortOrder
     _count?: serviciosCountOrderByAggregateInput
     _avg?: serviciosAvgOrderByAggregateInput
     _max?: serviciosMaxOrderByAggregateInput
@@ -52697,6 +52753,10 @@ export namespace Prisma {
     religion?: StringNullableWithAggregatesFilter | string | null
     estado_civil?: StringNullableWithAggregatesFilter | string | null
     importe_servicio?: FloatNullableWithAggregatesFilter | number | null
+    telefono?: StringNullableWithAggregatesFilter | string | null
+    movil?: StringNullableWithAggregatesFilter | string | null
+    gasto_luto?: StringNullableWithAggregatesFilter | string | null
+    conyugue?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type servicios_historicoWhereInput = {
@@ -56567,6 +56627,10 @@ export namespace Prisma {
     religion?: string | null
     estado_civil?: string | null
     importe_servicio?: number | null
+    telefono?: string | null
+    movil?: string | null
+    gasto_luto?: string | null
+    conyugue?: string | null
   }
 
   export type serviciosUncheckedCreateInput = {
@@ -56611,6 +56675,10 @@ export namespace Prisma {
     religion?: string | null
     estado_civil?: string | null
     importe_servicio?: number | null
+    telefono?: string | null
+    movil?: string | null
+    gasto_luto?: string | null
+    conyugue?: string | null
   }
 
   export type serviciosUpdateInput = {
@@ -56654,6 +56722,10 @@ export namespace Prisma {
     religion?: NullableStringFieldUpdateOperationsInput | string | null
     estado_civil?: NullableStringFieldUpdateOperationsInput | string | null
     importe_servicio?: NullableFloatFieldUpdateOperationsInput | number | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    movil?: NullableStringFieldUpdateOperationsInput | string | null
+    gasto_luto?: NullableStringFieldUpdateOperationsInput | string | null
+    conyugue?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type serviciosUncheckedUpdateInput = {
@@ -56698,6 +56770,10 @@ export namespace Prisma {
     religion?: NullableStringFieldUpdateOperationsInput | string | null
     estado_civil?: NullableStringFieldUpdateOperationsInput | string | null
     importe_servicio?: NullableFloatFieldUpdateOperationsInput | number | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    movil?: NullableStringFieldUpdateOperationsInput | string | null
+    gasto_luto?: NullableStringFieldUpdateOperationsInput | string | null
+    conyugue?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type serviciosCreateManyInput = {
@@ -56742,6 +56818,10 @@ export namespace Prisma {
     religion?: string | null
     estado_civil?: string | null
     importe_servicio?: number | null
+    telefono?: string | null
+    movil?: string | null
+    gasto_luto?: string | null
+    conyugue?: string | null
   }
 
   export type serviciosUpdateManyMutationInput = {
@@ -56785,6 +56865,10 @@ export namespace Prisma {
     religion?: NullableStringFieldUpdateOperationsInput | string | null
     estado_civil?: NullableStringFieldUpdateOperationsInput | string | null
     importe_servicio?: NullableFloatFieldUpdateOperationsInput | number | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    movil?: NullableStringFieldUpdateOperationsInput | string | null
+    gasto_luto?: NullableStringFieldUpdateOperationsInput | string | null
+    conyugue?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type serviciosUncheckedUpdateManyInput = {
@@ -56829,6 +56913,10 @@ export namespace Prisma {
     religion?: NullableStringFieldUpdateOperationsInput | string | null
     estado_civil?: NullableStringFieldUpdateOperationsInput | string | null
     importe_servicio?: NullableFloatFieldUpdateOperationsInput | number | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    movil?: NullableStringFieldUpdateOperationsInput | string | null
+    gasto_luto?: NullableStringFieldUpdateOperationsInput | string | null
+    conyugue?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type servicios_historicoCreateInput = {
@@ -60030,6 +60118,10 @@ export namespace Prisma {
     religion?: SortOrder
     estado_civil?: SortOrder
     importe_servicio?: SortOrder
+    telefono?: SortOrder
+    movil?: SortOrder
+    gasto_luto?: SortOrder
+    conyugue?: SortOrder
   }
 
   export type serviciosAvgOrderByAggregateInput = {
@@ -60090,6 +60182,10 @@ export namespace Prisma {
     religion?: SortOrder
     estado_civil?: SortOrder
     importe_servicio?: SortOrder
+    telefono?: SortOrder
+    movil?: SortOrder
+    gasto_luto?: SortOrder
+    conyugue?: SortOrder
   }
 
   export type serviciosMinOrderByAggregateInput = {
@@ -60134,6 +60230,10 @@ export namespace Prisma {
     religion?: SortOrder
     estado_civil?: SortOrder
     importe_servicio?: SortOrder
+    telefono?: SortOrder
+    movil?: SortOrder
+    gasto_luto?: SortOrder
+    conyugue?: SortOrder
   }
 
   export type serviciosSumOrderByAggregateInput = {

@@ -588,7 +588,11 @@ exports.Prisma.ServiciosScalarFieldEnum = {
   detalle_corona: 'detalle_corona',
   religion: 'religion',
   estado_civil: 'estado_civil',
-  importe_servicio: 'importe_servicio'
+  importe_servicio: 'importe_servicio',
+  telefono: 'telefono',
+  movil: 'movil',
+  gasto_luto: 'gasto_luto',
+  conyugue: 'conyugue'
 };
 
 exports.Prisma.Servicios_historicoScalarFieldEnum = {

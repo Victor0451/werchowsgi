@@ -21,7 +21,9 @@ export const FormParticular = ({
     apellidoRef,
     nombreRef,
     edadRef,
-    dniPartiRef
+    dniPartiRef,
+    telefonoRef,
+    movilRef,
 }) => {
     return (
         <>
@@ -57,6 +59,14 @@ export const FormParticular = ({
 
             <div className="relative w-full mb-6 group">
                 <Input size="md" label="Edad" type="number" inputRef={edadRef} />
+            </div>
+
+            <div className="relative w-full mb-6 group">
+                <Input size="md" label="Telefono" type="number" inputRef={telefonoRef} />
+            </div>
+
+            <div className="relative w-full mb-6 group">
+                <Input size="md" label="Movil" type="number" inputRef={movilRef} />
             </div>
 
         </>

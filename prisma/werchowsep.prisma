@@ -493,6 +493,10 @@ model servicios {
   religion              String?   @db.VarChar(255)
   estado_civil          String?   @db.VarChar(255)
   importe_servicio      Float?    @db.Float
+  telefono              String?   @db.VarChar(255)
+  movil                 String?   @db.VarChar(255)
+  gasto_luto            String?   @db.VarChar(255)
+  conyugue              String?   @db.VarChar(255)
 }
 
 model servicios_historico {

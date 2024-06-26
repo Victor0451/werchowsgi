@@ -56,6 +56,9 @@ export const FormNuevoServicio = ({
   religionRef,
   estCivilRef,
   impServRef,
+  telefonoRef,
+  conyugueRef,
+  movilRef,
   handleChange,
   motivoSel,
   regServicio,
@@ -239,6 +242,8 @@ export const FormNuevoServicio = ({
                       nombreRef={nombreRef}
                       edadRef={edadRef}
                       dniPartiRef={dniPartiRef}
+                      telefonoRef={telefonoRef}
+                      movilRef={movilRef}
                     />
                   )}
 
@@ -248,6 +253,15 @@ export const FormNuevoServicio = ({
                       label="Est. Civil"
                       type="text"
                       inputRef={estCivilRef}
+                    />
+                  </div>
+
+                  <div className="relative w-full mb-6 group">
+                    <Input
+                      size="md"
+                      label="Conyugue"
+                      type="text"
+                      inputRef={conyugueRef}
                     />
                   </div>
 

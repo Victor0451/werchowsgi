@@ -23,6 +23,7 @@ function Imprimir(props) {
 
   const [servicio, guardarServicio] = useState(null);
   const [ataud, guardarAtaud] = useState([]);
+  const [gl, guardarGastoLuto] = useState([]);
 
   const { usu } = useWerchow();
 

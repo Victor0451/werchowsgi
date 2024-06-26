@@ -421,6 +421,8 @@ export default async function handler(req, res) {
           apellido: req.body.apellido,
           nombre: req.body.nombre,
           edad: parseInt(req.body.edad),
+          telefono: req.body.telefono,
+          movil: req.body.movil,
           fecha_fallecimiento: new Date(req.body.fecha_fallecimiento),
           lugar_fallecimiento: req.body.lugar_fallecimiento,
           tipo_servicio: req.body.tipo_servicio,
@@ -449,6 +451,8 @@ export default async function handler(req, res) {
           religion: req.body.religion,
           estado_civil: req.body.estado_civil,
           importe_servicio: parseFloat(req.body.importe_servicio),
+          gasto_luto: req.body.gasto,
+          conyugue: req.body.conyugue
         },
       });
 
