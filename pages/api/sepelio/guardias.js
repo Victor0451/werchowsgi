@@ -114,6 +114,7 @@ export default async function handler(req, res) {
               fecha_liquidacion = '${req.body.fecha_liquidacion}',
               operadorliq = '${req.body.operadorliq}'
           WHERE operador = '${req.body.operador}'
+          AND liquidado = 0
 
           
                        `

@@ -18,7 +18,8 @@ import {
   PrinterIcon,
   CurrencyDollarIcon,
   ClipboardDocumentIcon,
-  TrashIcon
+  TrashIcon,
+  PencilIcon,
 } from "@heroicons/react/24/solid";
 import moment from "moment";
 import Link from "next/link";
@@ -32,7 +33,7 @@ const ListadoServicios = ({
   noData,
   listadoHist,
   ServiciosHistoricos,
-  eliminarServicio
+  eliminarServicio,
 }) => {
   let columns = [
     {
@@ -65,13 +66,13 @@ const ListadoServicios = ({
       name: "Causa Muerte",
       selector: (row) => `${row.motivo}`,
       sortable: true,
-      grow: 0.3,
+      width: "220px",
     },
     {
       name: "Tipo Serv.",
       selector: (row) => `${row.tipo_servicio}`,
       sortable: true,
-      grow: 0.1,
+      width: "120px",
     },
     {
       name: "Fecha Fallec.",
@@ -80,13 +81,13 @@ const ListadoServicios = ({
           .utcOffset("+0300")
           .format("DD/MM/YYYY")}`,
       sortable: true,
-      grow: 0.1,
+      width: "120px",
     },
 
     {
       name: "Acciones",
       button: true,
-      width: "120px",
+      width: "150px",
       cell: (row, index) => (
         <>
           <Link
@@ -129,11 +130,22 @@ const ListadoServicios = ({
             />
           </Link>
 
+          <Link
+            href={{
+              pathname: "/sepelio/servicios/editarservicio",
+              query: { idservicio: row.idservicio },
+            }}
+          >
+            <PencilIcon color="orange" className="butlist mt-px h-6 w-6" />
+          </Link>
+
           <TrashIcon
-              color="red"
-              className="butlist mt-px h-6 w-6"
-              onClick={() =>{eliminarServicio(row.idservicio)}}
-            />
+            color="red"
+            className="butlist mt-px h-6 w-6"
+            onClick={() => {
+              eliminarServicio(row.idservicio);
+            }}
+          />
         </>
       ),
     },

@@ -394,6 +394,33 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(delGastos);
+    } else if (req.query.f && req.query.f === "eliminar caja") {
+      const delCaja = await Sep.caja_sepelio.delete({
+        where: {
+          idcaja: parseInt(req.query.idcaja),
+        },
+      });
+
+      res.status(200).json(delCaja);
+    } else if (req.query.f && req.query.f === "eliminar ingresos caja") {
+      const delIngreso = await Sep.$queryRaw`
+      
+      DELETE
+      FROM ingreso_caja 
+      WHERE idcaja = ${parseInt(req.query.idcaja)}
+     
+`;
+
+      res.status(200).json(delIngreso);
+    } else if (req.query.f && req.query.f === "eliminar egresos caja") {
+      const delEgreso = await Sep.$queryRaw`
+      
+      DELETE
+      FROM gastos_caja 
+      WHERE idcaja = ${parseInt(req.query.idcaja)}     
+`;
+
+      res.status(200).json(delEgreso);
     }
   }
 }

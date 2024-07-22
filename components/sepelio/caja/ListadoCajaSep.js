@@ -18,12 +18,13 @@ import {
   FaceFrownIcon,
   InformationCircleIcon,
   PrinterIcon,
+  TrashIcon,
 } from "@heroicons/react/24/solid";
 import moment from "moment";
 import Link from "next/link";
 import ExportarPadron from "./ExportarPadron";
 
-export const ListadoCajaSep = ({ listado, noData, usu }) => {
+export const ListadoCajaSep = ({ listado, noData, usu, eliminarCaja }) => {
   let columns = [
     {
       name: "ID",
@@ -130,6 +131,12 @@ export const ListadoCajaSep = ({ listado, noData, usu }) => {
                       className="butlist mt-px h-6 w-6"
                     />
                   </Link>
+
+                  <TrashIcon
+                    color="red"
+                    className="butlist mt-px h-6 w-6"
+                    onClick={() => eliminarCaja(row.idcaja)}
+                  />
                 </>
               ) : row.estado === false ? (
                 <>

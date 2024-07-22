@@ -591,6 +591,7 @@ export default function Gasto() {
       ],
     });
   };
+  
   const calTotalGastos = (arr) => {
     let total = 0;
 

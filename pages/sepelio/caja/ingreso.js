@@ -31,6 +31,7 @@ export default function Ingreso() {
   const [totCaja, guardarTotCaja] = useState(0);
   const [errores, guardarErrores] = useState(null);
   const [alertas, guardarAlertas] = useState(null);
+  const [ingresosCaja, guardarIngresosCaja] = useState([]);
 
   const { usu } = useWerchow();
 
@@ -94,6 +95,27 @@ export default function Ingreso() {
         .catch((error) => {
           console.log(error);
           toast.error("Ocurrio un error al traer los conceptos");
+        });
+    }
+  };
+
+  const traerIngresosCaja = async () => {
+    if (jsCookie.get("idcaja")) {
+      await axios
+        .get(`/api/sepelio/caja`, {
+          params: {
+            f: "traer ingresos",
+            idcaja: jsCookie.get("idcaja"),
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            guardarIngresosCaja(res.data);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al traer los ingresos cargados");
         });
     }
   };
@@ -202,7 +224,7 @@ export default function Ingreso() {
     await axios.put(`/api/sepelio/caja`, data).then((res) => {
       if (res.status === 200) {
         traerCaja();
-        traerGastosCaja();
+        traerIngresosCaja()
       }
     });
   };
@@ -243,7 +265,7 @@ export default function Ingreso() {
       .then((res) => {
         if (res.status === 200) {
           traerCaja();
-          traerGastosCaja();
+          traerIngresosCaja();
         }
       })
       .catch((error) => {
@@ -319,6 +341,16 @@ export default function Ingreso() {
     });
   };
 
+  const calTotalIngresos = (arr) => {
+    let total = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      total += arr[i].monto;
+    }
+
+    return total.toFixed(2);
+  };
+
   useSWR("/api/sepelio/caja", traerCaja);
 
   if (isLoading === true) return <Skeleton />;
@@ -347,6 +379,9 @@ export default function Ingreso() {
             usu={usu}
             regIngreso={regIngreso}
             alertas={alertas}
+            ingresosCaja={ingresosCaja}
+            calTotalIngresos={calTotalIngresos}
+            traerIngresosCaja={traerIngresosCaja}
           />
         </>
       )}

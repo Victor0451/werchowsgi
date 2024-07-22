@@ -17,6 +17,7 @@ import FilterComponent from "../../Layouts/FilterComponent";
 import Link from "next/link";
 import moment from "moment";
 import ModalPreIngreso from "./ModalPreIngreso";
+import ModalIngresosCargados from "./ModalIngresosCargados";
 
 export const FormCargaIngreso = ({
   fechaRef,
@@ -37,6 +38,9 @@ export const FormCargaIngreso = ({
   usu,
   regIngreso,
   alertas,
+  ingresosCaja,
+  calTotalIngresos,
+  traerIngresosCaja
 }) => {
   let columns = [
     {
@@ -253,6 +257,13 @@ export const FormCargaIngreso = ({
             </Alert>
           ) : (
             <div className="grid md:grid-cols-4 md:gap-6">
+              <div className="relative w-full mb-6 group">
+                <ModalIngresosCargados
+                  listado={ingresosCaja}
+                  calTotalIngresos={calTotalIngresos}
+                  traerIngresosCaja={traerIngresosCaja}
+                />
+              </div>
               <div className="relative w-full mb-6 group">
                 <ModalPreIngreso
                   facturas={facturas}
