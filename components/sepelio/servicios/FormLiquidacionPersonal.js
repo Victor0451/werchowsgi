@@ -24,7 +24,8 @@ const FormLiquidacionPersonal = ({
   calcTotal,
   pagarLiquidacion,
   liqItem,
-  liquidarGuardia
+  liquidarGuardia,
+  alertas,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -69,7 +70,7 @@ const FormLiquidacionPersonal = ({
           </div>
         </div>
 
-        {tareas.length > 0 ? (
+        {tareas.length > 0 || guardias.length > 0 ? (
           <>
             <hr className="border-2 mt-5 mb-5" />
 
@@ -83,10 +84,14 @@ const FormLiquidacionPersonal = ({
               liquidarGuardia={liquidarGuardia}
             />
           </>
-        ) : tareas === 1 ? (
-          <Alert color="orange" icon={<IconSolid />} className="mt-5 mb-5">
-            El operador seleccionado no posee tareas o guardias a liquidar.
-          </Alert>
+        ) : tareas.length === 0 && guardias.length === 0 ? (
+          <>
+            {alertas ? (
+              <Alert color="orange" icon={<IconSolid />} className="mt-5 mb-5">
+                {alertas}
+              </Alert>
+            ) : null}
+          </>
         ) : null}
       </CardBody>
     </Card>

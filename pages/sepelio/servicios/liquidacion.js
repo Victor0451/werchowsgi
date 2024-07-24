@@ -19,9 +19,10 @@ import { data } from "autoprefixer";
 
 function liquidacion(props) {
   const [operadores, guardarOperadores] = useState([]);
-  const [tareas, guardarTareas] = useState(0);
+  const [tareas, guardarTareas] = useState([]);
   const [guardias, guardarGuardias] = useState([]);
   const [errores, guardarErrores] = useState(null);
+  const [alertas, guardarAlertas] = useState(null);
   const [opSel, guardarOpSel] = useState("");
 
   const { usu } = useWerchow();
@@ -55,16 +56,20 @@ function liquidacion(props) {
   };
 
   const buscarLiquidacion = async () => {
-    toast.info(`Buscando liquidacion del operador ${opSel}...`);
-
     guardarErrores(null);
-    guardarTareas(0);
+    guardarTareas([]);
+    guardarGuardias([]);
+
+    toast.info(`Buscando liquidacion del operador ${opSel}...`);
 
     if (opSel === "") {
       guardarErrores(
         "Debes seleccionar al operador para traer su liquidacion pendiente"
       );
     } else {
+      let tar = [];
+      let guar = [];
+
       await axios
         .get("/api/sepelio/servicios", {
           params: {
@@ -73,17 +78,12 @@ function liquidacion(props) {
           },
         })
         .then((res) => {
-          let list = JSON.parse(res.data);
+          tar = JSON.parse(res.data);
 
-          if (list.length > 0) {
+          if (tar.length > 0) {
             toast.success("Liquidacion entontrada");
 
-            guardarTareas(list);
-          } else {
-            toast.warning(
-              `El operador ${opSel} no posee tareas o guardias a liquidar.`
-            );
-            guardarTareas(1);
+            guardarTareas(tar);
           }
         })
         .catch((error) => {
@@ -100,13 +100,24 @@ function liquidacion(props) {
         })
         .then((res) => {
           if (res.data) {
-            guardarGuardias(res.data);
+            guar = res.data;
+            guardarGuardias(guar);
           }
         })
         .catch((error) => {
           console.log(error);
           toast.error("Ocurrio un error al generar el listado de guardias");
         });
+
+      if (tar.length === 0 && guar.length === 0) {
+        toast.warning(
+          `El operador ${opSel} no posee tareas o guardias a liquidar.`
+        );
+
+        guardarAlertas(
+          `El operador ${opSel} no posee tareas o guardias a liquidar.`
+        );
+      }
     }
   };
 
@@ -371,6 +382,7 @@ function liquidacion(props) {
             pagarLiquidacion={pagarLiquidacion}
             liqItem={liqItem}
             liquidarGuardia={liquidarGuardia}
+            alertas={alertas}
           />
         </>
       )}

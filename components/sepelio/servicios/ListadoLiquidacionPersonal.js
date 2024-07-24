@@ -31,7 +31,6 @@ const ListadoLiquidacionPersonal = ({
   liqItem,
   liquidarGuardia,
 }) => {
-  console.log(tareas);
   let columns = [
     {
       name: "#",
@@ -278,125 +277,148 @@ const ListadoLiquidacionPersonal = ({
           </div> */}
         </div>
 
-        <div className="border-2 rounded-xl p-4 mt-4 mb-4">
-          <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
-              <Alert className="" color="orange" icon={<IconSolid />}>
-                <Typography variant="h5">Tareas a Liquidar</Typography>
+        {tareas.length === 0 ? (
+          <div className="border-2 rounded-xl p-4 mt-4 mb-4">
+            <Typography variant="h4">Tareas a Liquidar</Typography>
+            <Alert color="orange" icon={<IconSolid />} className="mt-5 mb-5">
+              El operador seleccionado no posee tareas a liquidar.
+            </Alert>
+          </div>
+        ) : (
+          <div className="border-2 rounded-xl p-4 mt-4 mb-4">
+            <Typography variant="h4">Tareas Registradas</Typography>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <Alert className="" color="orange" icon={<IconSolid />}>
+                  <Typography variant="h5">Tareas a Liquidar</Typography>
 
-                <Typography color="black" className="mt-1 font-normal">
-                  <u>Total</u>: {calcTotal(tareas, "tcon")}
-                </Typography>
-                <Typography color="black" className="mt-1 font-normal">
-                  <u>Total a Pagar</u>: ${calcTotal(tareas, "t")}
-                </Typography>
-              </Alert>
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total</u>: {calcTotal(tareas, "tcon")}
+                  </Typography>
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total a Pagar</u>: ${calcTotal(tareas, "t")}
+                  </Typography>
+                </Alert>
+              </div>
+
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <Alert className="" color="green" icon={<IconSolid />}>
+                  <Typography variant="h5">Tareas Liquidadas</Typography>
+
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total</u>: {calcTotal(tareas, "tconp")}
+                  </Typography>
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total a Pagar</u>: ${calcTotal(tareas, "tp")}
+                  </Typography>
+                </Alert>
+              </div>
+
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <Alert className="" color="blue" icon={<IconSolid />}>
+                  Las tareas liquidadas se van ordenando y mostrando
+                  automaticamente al final del listado.
+                </Alert>
+              </div>
             </div>
 
-            <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
-              <Alert className="" color="green" icon={<IconSolid />}>
-                <Typography variant="h5">Tareas Liquidadas</Typography>
-
-                <Typography color="black" className="mt-1 font-normal">
-                  <u>Total</u>: {calcTotal(tareas, "tconp")}
-                </Typography>
-                <Typography color="black" className="mt-1 font-normal">
-                  <u>Total a Pagar</u>: ${calcTotal(tareas, "tp")}
-                </Typography>
-              </Alert>
-            </div>
-
-            <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
-              <Alert className="" color="blue" icon={<IconSolid />}>
-                Las tareas liquidadas se van ordenando y mostrando
-                automaticamente al final del listado.
-              </Alert>
+            <div className=" border-2 rounded-xl p-4">
+              <div className="flex justify-end">
+                <Button
+                  color="green"
+                  className=""
+                  onClick={() => {
+                    pagarLiquidacion("T");
+                  }}
+                >
+                  Liquidar todas las tareas
+                </Button>
+              </div>
+              <DataTable
+                columns={columns}
+                data={tareas}
+                defaultSortField="name"
+                striped
+                pagination
+                subHeader
+              />
             </div>
           </div>
+        )}
 
-          <div className=" border-2 rounded-xl p-4">
-            <div className="flex justify-end">
-              <Button
-                color="green"
-                className=""
-                onClick={() => {
-                  pagarLiquidacion("T");
-                }}
-              >
-                Liquidar todas las tareas
-              </Button>
-            </div>
-            <DataTable
-              columns={columns}
-              data={tareas}
-              defaultSortField="name"
-              striped
-              pagination
-              subHeader
-            />
+        <hr className="border-2 mt-5 mb-5" />
+
+        {guardias.length === 0 ? (
+          <div className="border-2 rounded-xl p-4 mt-4 mb-4">
+            <Typography variant="h4">Guardias a Liquidar</Typography>
+            <Alert color="orange" icon={<IconSolid />} className="mt-5 mb-5">
+              El operador seleccionado no posee guardias a liquidar.
+            </Alert>
           </div>
-        </div>
+        ) : (
+          <div className="border-2 rounded-xl p-4 mt-4 mb-4">
+            <Typography variant="h4">Guardias Registradas</Typography>
 
-        <div className="border-2 rounded-xl p-4 mt-4 mb-4">
-          <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
-              <Alert className="" color="orange" icon={<IconSolid />}>
-                <Typography variant="h5">Guardias a Liquidar</Typography>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <Alert className="" color="orange" icon={<IconSolid />}>
+                  <Typography variant="h5">Guardias a Liquidar</Typography>
 
-                <Typography color="black" className="mt-1 font-normal">
-                  <u>Total</u>: {calcTotal(guardias, "gcon")}
-                </Typography>
-                <Typography color="black" className="mt-1 font-normal">
-                  <u>Total a Pagar</u>: ${calcTotal(guardias, "g")}
-                </Typography>
-              </Alert>
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total</u>: {calcTotal(guardias, "gcon")}
+                  </Typography>
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total a Pagar</u>: ${calcTotal(guardias, "g")}
+                  </Typography>
+                </Alert>
+              </div>
+
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <Alert className="" color="green" icon={<IconSolid />}>
+                  <Typography variant="h5">Guardias Liquidadas</Typography>
+
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total</u>: {calcTotal(guardias, "gconp")}
+                  </Typography>
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total a Pagar</u>: ${calcTotal(guardias, "gp")}
+                  </Typography>
+                </Alert>
+              </div>
+
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <Alert className="" color="blue" icon={<IconSolid />}>
+                  Las guardias liquidadas se van ordenando y mostrando
+                  automaticamente al final del listado.
+                </Alert>
+              </div>
             </div>
 
-            <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
-              <Alert className="" color="green" icon={<IconSolid />}>
-                <Typography variant="h5">Guardias Liquidadas</Typography>
+            <div className=" border-2 rounded-xl p-4">
+              <div className="flex justify-end">
+                <Button
+                  color="green"
+                  size="sm"
+                  className=" "
+                  onClick={() => {
+                    pagarLiquidacion("G");
+                  }}
+                >
+                  Liquidar todas las guardias
+                </Button>
+              </div>
 
-                <Typography color="black" className="mt-1 font-normal">
-                  <u>Total</u>: {calcTotal(guardias, "gconp")}
-                </Typography>
-                <Typography color="black" className="mt-1 font-normal">
-                  <u>Total a Pagar</u>: ${calcTotal(guardias, "gp")}
-                </Typography>
-              </Alert>
-            </div>
-
-            <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
-              <Alert className="" color="blue" icon={<IconSolid />}>
-                Las guardias liquidadas se van ordenando y mostrando
-                automaticamente al final del listado.
-              </Alert>
+              <DataTable
+                columns={columns2}
+                data={guardias}
+                defaultSortField="name"
+                striped
+                pagination
+                subHeader
+              />
             </div>
           </div>
-
-          <div className=" border-2 rounded-xl p-4">
-            <div className="flex justify-end">
-              <Button
-                color="green"
-                size="sm"
-                className=" "
-                onClick={() => {
-                  pagarLiquidacion("G");
-                }}
-              >
-                Liquidar todas las guardias
-              </Button>
-            </div>
-
-            <DataTable
-              columns={columns2}
-              data={guardias}
-              defaultSortField="name"
-              striped
-              pagination
-              subHeader
-            />
-          </div>
-        </div>
+        )}
 
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
