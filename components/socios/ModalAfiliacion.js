@@ -141,11 +141,11 @@ export default function ModalAfiliacion({
                     Por la presente solicito la afiliación a la Empresa Werchow
                     Medicina Privada S.A, a los efectos de poder efectivizar el
                     pago de la cuota de inscripción. Asimismo acepto que de
-                    conformidad a las condiciones de la contratación, afrontaré
-                    un periodo de carencia de 15/30/60 días a contar desde el
-                    pago de la cuota de afiliación, en lo que se refiere al
-                    servicio de sepelio, para los servicios médicos la vigencia
-                    es de 48 hs .
+                    conformidad a las condiciones de la contratación,la nueva
+                    fecha de vigencia es{" "}
+                    {vigencia ? <strong>{vigencia}</strong> : null}, en lo que
+                    se refiere al servicio de sepelio, para los servicios
+                    médicos la vigencia es de 48 hs.
                   </Typography>
                 </p>
 
