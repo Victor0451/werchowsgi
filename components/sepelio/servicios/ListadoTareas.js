@@ -63,48 +63,48 @@ const ListadoTareas = ({ listado, delTarea, calcTotal, f, liqItem }) => {
       width: "100px",
     },
 
-    {
-      name: "Liquidado",
-      button: true,
-      width: "100px",
-      cell: (row, index) => (
-        <>
-          {row.liquidado === false ? (
-            <div>Pendiente</div>
-          ) : row.liquidado === true ? (
-            <div>Liquidado</div>
-          ) : null}
-        </>
-      ),
-    },
-    {
-      name: "Fecha Liquidacion",
-      button: true,
-      width: "100px",
-      cell: (row, index) => (
-        <>
-          {!row.fecha_liquidacion ? (
-            <div>---</div>
-          ) : row.fecha_liquidacion ? (
-            <div>{moment(row.fecha_liquidacion).format("DD/MM/YYYY")}</div>
-          ) : null}
-        </>
-      ),
-    },
-    {
-      name: "Operdador Liq.",
-      button: true,
-      width: "100px",
-      cell: (row, index) => (
-        <>
-          {!row.operadorliq ? (
-            <div>---</div>
-          ) : row.operadorliq ? (
-            <div>{row.operadorliq}</div>
-          ) : null}
-        </>
-      ),
-    },
+    // {
+    //   name: "Liquidado",
+    //   button: true,
+    //   width: "100px",
+    //   cell: (row, index) => (
+    //     <>
+    //       {row.liquidado === false ? (
+    //         <div>Pendiente</div>
+    //       ) : row.liquidado === true ? (
+    //         <div>Liquidado</div>
+    //       ) : null}
+    //     </>
+    //   ),
+    // },
+    // {
+    //   name: "Fecha Liquidacion",
+    //   button: true,
+    //   width: "100px",
+    //   cell: (row, index) => (
+    //     <>
+    //       {!row.fecha_liquidacion ? (
+    //         <div>---</div>
+    //       ) : row.fecha_liquidacion ? (
+    //         <div>{moment(row.fecha_liquidacion).format("DD/MM/YYYY")}</div>
+    //       ) : null}
+    //     </>
+    //   ),
+    // },
+    // {
+    //   name: "Operdador Liq.",
+    //   button: true,
+    //   width: "100px",
+    //   cell: (row, index) => (
+    //     <>
+    //       {!row.operadorliq ? (
+    //         <div>---</div>
+    //       ) : row.operadorliq ? (
+    //         <div>{row.operadorliq}</div>
+    //       ) : null}
+    //     </>
+    //   ),
+    // },
     {
       name: "Acciones",
       button: true,

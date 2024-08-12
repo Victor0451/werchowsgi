@@ -61,48 +61,48 @@ const ListadoGastos = ({
       width: "100px",
     },
 
-    {
-      name: "Liquidado",
-      button: true,
-      width: "100px",
-      cell: (row, index) => (
-        <>
-          {row.liquidado === false ? (
-            <div>Pendiente</div>
-          ) : row.liquidado === true ? (
-            <div>Liquidado</div>
-          ) : null}
-        </>
-      ),
-    },
-    {
-      name: "Fecha Liquidacion",
-      button: true,
-      width: "100px",
-      cell: (row, index) => (
-        <>
-          {!row.fecha_liquidado ? (
-            <div>---</div>
-          ) : row.fecha_liquidado ? (
-            <div>{moment(row.fecha_liquidado).format("DD/MM/YYYY")}</div>
-          ) : null}
-        </>
-      ),
-    },
-    {
-      name: "Operdador Liq.",
-      button: true,
-      width: "100px",
-      cell: (row, index) => (
-        <>
-          {!row.operadorliq ? (
-            <div>---</div>
-          ) : row.operadorliq ? (
-            <div>{row.operadorliq}</div>
-          ) : null}
-        </>
-      ),
-    },
+    // {
+    //   name: "Liquidado",
+    //   button: true,
+    //   width: "100px",
+    //   cell: (row, index) => (
+    //     <>
+    //       {row.liquidado === false ? (
+    //         <div>Pendiente</div>
+    //       ) : row.liquidado === true ? (
+    //         <div>Liquidado</div>
+    //       ) : null}
+    //     </>
+    //   ),
+    // },
+    // {
+    //   name: "Fecha Liquidacion",
+    //   button: true,
+    //   width: "100px",
+    //   cell: (row, index) => (
+    //     <>
+    //       {!row.fecha_liquidado ? (
+    //         <div>---</div>
+    //       ) : row.fecha_liquidado ? (
+    //         <div>{moment(row.fecha_liquidado).format("DD/MM/YYYY")}</div>
+    //       ) : null}
+    //     </>
+    //   ),
+    // },
+    // {
+    //   name: "Operdador Liq.",
+    //   button: true,
+    //   width: "100px",
+    //   cell: (row, index) => (
+    //     <>
+    //       {!row.operadorliq ? (
+    //         <div>---</div>
+    //       ) : row.operadorliq ? (
+    //         <div>{row.operadorliq}</div>
+    //       ) : null}
+    //     </>
+    //   ),
+    // },
 
     {
       name: "Acciones",
