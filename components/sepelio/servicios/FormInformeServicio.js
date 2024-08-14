@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import {
   Card,
   CardHeader,
@@ -39,7 +39,7 @@ const FormInformeServicio = ({
   gasReg,
   regGastos,
   gl,
-  liqItem
+  liqItem,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">

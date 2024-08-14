@@ -107,17 +107,26 @@ const ListadoServicios = ({
           >
             <PrinterIcon color="black" className="butlist mt-px h-6 w-6" />
           </Link>
-          <Link
-            href={{
-              pathname: "/sepelio/servicios/informe",
-              query: { idservicio: row.idservicio },
-            }}
-          >
-            <CurrencyDollarIcon
-              color="green"
-              className="butlist mt-px h-6 w-6"
-            />
-          </Link>
+
+          {usu.usuario === "vlongo" ||
+          usu.usuario === "nquintana" ||
+          usu.usuario === "jcmorales" ||
+          usu.usuario === "rquispe" ||
+          usu.usuario === "cflores" ||
+          usu.usuario === "pbandur" ? (
+            <Link
+              href={{
+                pathname: "/sepelio/servicios/informe",
+                query: { idservicio: row.idservicio },
+              }}
+            >
+              <CurrencyDollarIcon
+                color="green"
+                className="butlist mt-px h-6 w-6"
+              />
+            </Link>
+          ) : null}
+
           <Link
             href={{
               pathname: "/sepelio/servicios/presupuesto",

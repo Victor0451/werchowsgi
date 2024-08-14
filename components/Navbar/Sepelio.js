@@ -15,7 +15,7 @@ import {
 import Link from "next/link";
 import { ip } from "../../config/config";
 
-export const Sepelio = () => {
+export const Sepelio = ({ usu }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const triggers = {
@@ -293,24 +293,31 @@ export const Sepelio = () => {
               </MenuList>
             </Menu>
 
-            <Menu placement="right-start">
-              <MenuHandler>
-                <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
-                  <Typography color="black">Guardias</Typography>
-                  <ChevronDownIcon
-                    strokeWidth={2}
-                    className={`h-3 w-3 transition-transform `}
-                  />
-                </MenuItem>
-              </MenuHandler>
-              <MenuList>
-                <Link href={"/sepelio/guardias/liquidacion"}>
-                  <MenuItem>
-                    <Typography color="black">Liquidacion</Typography>
+            {usu.usuario === "vlongo" ||
+            usu.usuario === "nquintana" ||
+            usu.usuario === "jcmorales" ||
+            usu.usuario === "rquispe" ||
+            usu.usuario === "cflores" ||
+            usu.usuario === "pbandur" ? (
+              <Menu placement="right-start">
+                <MenuHandler>
+                  <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
+                    <Typography color="black">Guardias</Typography>
+                    <ChevronDownIcon
+                      strokeWidth={2}
+                      className={`h-3 w-3 transition-transform `}
+                    />
                   </MenuItem>
-                </Link>
-              </MenuList>
-            </Menu>
+                </MenuHandler>
+                <MenuList>
+                  <Link href={"/sepelio/guardias/liquidacion"}>
+                    <MenuItem>
+                      <Typography color="black">Liquidacion</Typography>
+                    </MenuItem>
+                  </Link>
+                </MenuList>
+              </Menu>
+            ) : null}
           </ul>
         </MenuList>
       </Menu>

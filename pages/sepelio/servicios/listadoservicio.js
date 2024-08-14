@@ -138,6 +138,7 @@ function ListadoServicio(props) {
             listadoHist={listadoHist}
             ServiciosHistoricos={ServiciosHistoricos}
             eliminarServicio={eliminarServicio}
+        
           />
         </>
       )}
