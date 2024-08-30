@@ -12,6 +12,7 @@ import { OrdenPago } from "./OrdenPago";
 import { Cobranza } from "./Cobranza";
 import { Gestion } from "./Gestion";
 import { ClubWerchow } from "./ClubWerchow";
+import { Contabilidad } from "./Contabilidad";
 export const NavListItems = ({}) => {
   const { user, isLoading } = useUser();
   let usu = {};
@@ -25,6 +26,7 @@ export const NavListItems = ({}) => {
       <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
         {usu.administracion === true ? <Administracion /> : null}
         {usu.gestion === true ? <Gestion usu={usu} /> : null}
+        {usu.contabilidad === true ? <Contabilidad /> : null}
         {usu.campanas === true ? <Campanas /> : null}
         {usu.cobranza === true ? <Cobranza /> : null}
         {usu.prestamos === true ? <Prestamos /> : null}

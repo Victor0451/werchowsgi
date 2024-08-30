@@ -553,7 +553,8 @@ exports.Prisma.OperadorScalarFieldEnum = {
   campanas: 'campanas',
   socios: 'socios',
   sepelio: 'sepelio',
-  gestion: 'gestion'
+  gestion: 'gestion',
+  contabilidad: 'contabilidad'
 };
 
 exports.Prisma.Ordenes_pagoScalarFieldEnum = {
@@ -887,6 +888,56 @@ exports.Prisma.ReintegrosScalarFieldEnum = {
   fecha: 'fecha'
 };
 
+exports.Prisma.Conceptos_liquidacionScalarFieldEnum = {
+  idconcepto: 'idconcepto',
+  concepto: 'concepto',
+  formula: 'formula'
+};
+
+exports.Prisma.Legajo_operadorScalarFieldEnum = {
+  idlegajo: 'idlegajo',
+  operador: 'operador',
+  cuil: 'cuil',
+  fecha_ingreso: 'fecha_ingreso',
+  antiguedad: 'antiguedad',
+  categoria: 'categoria',
+  tiempo_trabajo: 'tiempo_trabajo',
+  fecha_pago: 'fecha_pago',
+  contratacion: 'contratacion',
+  idempresa: 'idempresa',
+  estado: 'estado'
+};
+
+exports.Prisma.Recibo_liquidacionScalarFieldEnum = {
+  idrecibo: 'idrecibo',
+  periodo: 'periodo',
+  fecha: 'fecha',
+  operador: 'operador',
+  total_neto: 'total_neto',
+  total_letra: 'total_letra',
+  forma_pago: 'forma_pago',
+  fecha_deposito: 'fecha_deposito',
+  banco: 'banco',
+  empresa: 'empresa',
+  empresa_cuit: 'empresa_cuit',
+  operador_cuil: 'operador_cuil',
+  idlegajo: 'idlegajo',
+  fecha_ingreso: 'fecha_ingreso',
+  anti: 'anti',
+  categoria: 'categoria',
+  seccion: 'seccion'
+};
+
+exports.Prisma.Recibo_movimientosScalarFieldEnum = {
+  idmovimiento: 'idmovimiento',
+  idrecibo: 'idrecibo',
+  cuil: 'cuil',
+  concepto: 'concepto',
+  remu_ren: 'remu_ren',
+  remu_exe: 'remu_exe',
+  descuento: 'descuento'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -964,7 +1015,11 @@ exports.Prisma.ModelName = {
   cartera: 'cartera',
   gasto_luto: 'gasto_luto',
   mails_copy: 'mails_copy',
-  reintegros: 'reintegros'
+  reintegros: 'reintegros',
+  conceptos_liquidacion: 'conceptos_liquidacion',
+  legajo_operador: 'legajo_operador',
+  recibo_liquidacion: 'recibo_liquidacion',
+  recibo_movimientos: 'recibo_movimientos'
 };
 
 /**

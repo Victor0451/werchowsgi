@@ -778,6 +778,7 @@ export type operadorPayload<ExtArgs extends $Extensions.Args = $Extensions.Defau
     socios: boolean | null
     sepelio: boolean | null
     gestion: boolean | null
+    contabilidad: boolean | null
   }, ExtArgs["result"]["operador"]>
   composites: {}
 }
@@ -1388,6 +1389,92 @@ export type reintegrosPayload<ExtArgs extends $Extensions.Args = $Extensions.Def
  * 
  */
 export type reintegros = runtime.Types.DefaultSelection<reintegrosPayload>
+export type conceptos_liquidacionPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idconcepto: number
+    concepto: string | null
+    formula: string | null
+  }, ExtArgs["result"]["conceptos_liquidacion"]>
+  composites: {}
+}
+
+/**
+ * Model conceptos_liquidacion
+ * 
+ */
+export type conceptos_liquidacion = runtime.Types.DefaultSelection<conceptos_liquidacionPayload>
+export type legajo_operadorPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idlegajo: number
+    operador: string | null
+    cuil: string | null
+    fecha_ingreso: Date | null
+    antiguedad: number | null
+    categoria: string | null
+    tiempo_trabajo: string | null
+    fecha_pago: string | null
+    contratacion: string | null
+    idempresa: number | null
+    estado: boolean | null
+  }, ExtArgs["result"]["legajo_operador"]>
+  composites: {}
+}
+
+/**
+ * Model legajo_operador
+ * 
+ */
+export type legajo_operador = runtime.Types.DefaultSelection<legajo_operadorPayload>
+export type recibo_liquidacionPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idrecibo: number
+    periodo: string | null
+    fecha: Date | null
+    operador: string | null
+    total_neto: number | null
+    total_letra: string | null
+    forma_pago: string | null
+    fecha_deposito: Date | null
+    banco: string | null
+    empresa: string | null
+    empresa_cuit: string | null
+    operador_cuil: string | null
+    idlegajo: number | null
+    fecha_ingreso: Date | null
+    anti: number | null
+    categoria: string | null
+    seccion: string | null
+  }, ExtArgs["result"]["recibo_liquidacion"]>
+  composites: {}
+}
+
+/**
+ * Model recibo_liquidacion
+ * 
+ */
+export type recibo_liquidacion = runtime.Types.DefaultSelection<recibo_liquidacionPayload>
+export type recibo_movimientosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idmovimiento: number
+    idrecibo: number | null
+    cuil: string | null
+    concepto: string | null
+    remu_ren: number | null
+    remu_exe: number | null
+    descuento: number | null
+  }, ExtArgs["result"]["recibo_movimientos"]>
+  composites: {}
+}
+
+/**
+ * Model recibo_movimientos
+ * 
+ */
+export type recibo_movimientos = runtime.Types.DefaultSelection<recibo_movimientosPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2173,6 +2260,46 @@ export class PrismaClient<
     * ```
     */
   get reintegros(): Prisma.reintegrosDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.conceptos_liquidacion`: Exposes CRUD operations for the **conceptos_liquidacion** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Conceptos_liquidacions
+    * const conceptos_liquidacions = await prisma.conceptos_liquidacion.findMany()
+    * ```
+    */
+  get conceptos_liquidacion(): Prisma.conceptos_liquidacionDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.legajo_operador`: Exposes CRUD operations for the **legajo_operador** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Legajo_operadors
+    * const legajo_operadors = await prisma.legajo_operador.findMany()
+    * ```
+    */
+  get legajo_operador(): Prisma.legajo_operadorDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.recibo_liquidacion`: Exposes CRUD operations for the **recibo_liquidacion** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Recibo_liquidacions
+    * const recibo_liquidacions = await prisma.recibo_liquidacion.findMany()
+    * ```
+    */
+  get recibo_liquidacion(): Prisma.recibo_liquidacionDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.recibo_movimientos`: Exposes CRUD operations for the **recibo_movimientos** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Recibo_movimientos
+    * const recibo_movimientos = await prisma.recibo_movimientos.findMany()
+    * ```
+    */
+  get recibo_movimientos(): Prisma.recibo_movimientosDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -2721,7 +2848,11 @@ export namespace Prisma {
     cartera: 'cartera',
     gasto_luto: 'gasto_luto',
     mails_copy: 'mails_copy',
-    reintegros: 'reintegros'
+    reintegros: 'reintegros',
+    conceptos_liquidacion: 'conceptos_liquidacion',
+    legajo_operador: 'legajo_operador',
+    recibo_liquidacion: 'recibo_liquidacion',
+    recibo_movimientos: 'recibo_movimientos'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2738,7 +2869,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'produccion' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'mails_copy' | 'reintegros'
+      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'produccion' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'mails_copy' | 'reintegros' | 'conceptos_liquidacion' | 'legajo_operador' | 'recibo_liquidacion' | 'recibo_movimientos'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -7953,6 +8084,322 @@ export namespace Prisma {
             args: Prisma.reintegrosCountArgs<ExtArgs>,
             result: $Utils.Optional<ReintegrosCountAggregateOutputType> | number
             payload: reintegrosPayload<ExtArgs>
+          }
+        }
+      }
+      conceptos_liquidacion: {
+        operations: {
+          findUnique: {
+            args: Prisma.conceptos_liquidacionFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_liquidacionPayload> | null
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.conceptos_liquidacionFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_liquidacionPayload>
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.conceptos_liquidacionFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_liquidacionPayload> | null
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.conceptos_liquidacionFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_liquidacionPayload>
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.conceptos_liquidacionFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_liquidacionPayload>[]
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.conceptos_liquidacionCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_liquidacionPayload>
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.conceptos_liquidacionCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.conceptos_liquidacionDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_liquidacionPayload>
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.conceptos_liquidacionUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_liquidacionPayload>
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.conceptos_liquidacionDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.conceptos_liquidacionUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.conceptos_liquidacionUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<conceptos_liquidacionPayload>
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Conceptos_liquidacionAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateConceptos_liquidacion>
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.conceptos_liquidacionGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Conceptos_liquidacionGroupByOutputType>[]
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.conceptos_liquidacionCountArgs<ExtArgs>,
+            result: $Utils.Optional<Conceptos_liquidacionCountAggregateOutputType> | number
+            payload: conceptos_liquidacionPayload<ExtArgs>
+          }
+        }
+      }
+      legajo_operador: {
+        operations: {
+          findUnique: {
+            args: Prisma.legajo_operadorFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<legajo_operadorPayload> | null
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.legajo_operadorFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<legajo_operadorPayload>
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.legajo_operadorFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<legajo_operadorPayload> | null
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.legajo_operadorFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<legajo_operadorPayload>
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.legajo_operadorFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<legajo_operadorPayload>[]
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.legajo_operadorCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<legajo_operadorPayload>
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.legajo_operadorCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.legajo_operadorDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<legajo_operadorPayload>
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.legajo_operadorUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<legajo_operadorPayload>
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.legajo_operadorDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.legajo_operadorUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.legajo_operadorUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<legajo_operadorPayload>
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Legajo_operadorAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateLegajo_operador>
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.legajo_operadorGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Legajo_operadorGroupByOutputType>[]
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.legajo_operadorCountArgs<ExtArgs>,
+            result: $Utils.Optional<Legajo_operadorCountAggregateOutputType> | number
+            payload: legajo_operadorPayload<ExtArgs>
+          }
+        }
+      }
+      recibo_liquidacion: {
+        operations: {
+          findUnique: {
+            args: Prisma.recibo_liquidacionFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_liquidacionPayload> | null
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.recibo_liquidacionFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_liquidacionPayload>
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.recibo_liquidacionFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_liquidacionPayload> | null
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.recibo_liquidacionFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_liquidacionPayload>
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.recibo_liquidacionFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_liquidacionPayload>[]
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.recibo_liquidacionCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_liquidacionPayload>
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.recibo_liquidacionCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.recibo_liquidacionDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_liquidacionPayload>
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.recibo_liquidacionUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_liquidacionPayload>
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.recibo_liquidacionDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.recibo_liquidacionUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.recibo_liquidacionUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_liquidacionPayload>
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Recibo_liquidacionAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateRecibo_liquidacion>
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.recibo_liquidacionGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Recibo_liquidacionGroupByOutputType>[]
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.recibo_liquidacionCountArgs<ExtArgs>,
+            result: $Utils.Optional<Recibo_liquidacionCountAggregateOutputType> | number
+            payload: recibo_liquidacionPayload<ExtArgs>
+          }
+        }
+      }
+      recibo_movimientos: {
+        operations: {
+          findUnique: {
+            args: Prisma.recibo_movimientosFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_movimientosPayload> | null
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.recibo_movimientosFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_movimientosPayload>
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.recibo_movimientosFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_movimientosPayload> | null
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.recibo_movimientosFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_movimientosPayload>
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.recibo_movimientosFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_movimientosPayload>[]
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.recibo_movimientosCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_movimientosPayload>
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.recibo_movimientosCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.recibo_movimientosDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_movimientosPayload>
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.recibo_movimientosUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_movimientosPayload>
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.recibo_movimientosDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.recibo_movimientosUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.recibo_movimientosUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<recibo_movimientosPayload>
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Recibo_movimientosAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateRecibo_movimientos>
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.recibo_movimientosGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Recibo_movimientosGroupByOutputType>[]
+            payload: recibo_movimientosPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.recibo_movimientosCountArgs<ExtArgs>,
+            result: $Utils.Optional<Recibo_movimientosCountAggregateOutputType> | number
+            payload: recibo_movimientosPayload<ExtArgs>
           }
         }
       }
@@ -41746,6 +42193,7 @@ export namespace Prisma {
     socios: boolean | null
     sepelio: boolean | null
     gestion: boolean | null
+    contabilidad: boolean | null
   }
 
   export type OperadorMaxAggregateOutputType = {
@@ -41774,6 +42222,7 @@ export namespace Prisma {
     socios: boolean | null
     sepelio: boolean | null
     gestion: boolean | null
+    contabilidad: boolean | null
   }
 
   export type OperadorCountAggregateOutputType = {
@@ -41802,6 +42251,7 @@ export namespace Prisma {
     socios: number
     sepelio: number
     gestion: number
+    contabilidad: number
     _all: number
   }
 
@@ -41852,6 +42302,7 @@ export namespace Prisma {
     socios?: true
     sepelio?: true
     gestion?: true
+    contabilidad?: true
   }
 
   export type OperadorMaxAggregateInputType = {
@@ -41880,6 +42331,7 @@ export namespace Prisma {
     socios?: true
     sepelio?: true
     gestion?: true
+    contabilidad?: true
   }
 
   export type OperadorCountAggregateInputType = {
@@ -41908,6 +42360,7 @@ export namespace Prisma {
     socios?: true
     sepelio?: true
     gestion?: true
+    contabilidad?: true
     _all?: true
   }
 
@@ -42024,6 +42477,7 @@ export namespace Prisma {
     socios: boolean | null
     sepelio: boolean | null
     gestion: boolean | null
+    contabilidad: boolean | null
     _count: OperadorCountAggregateOutputType | null
     _avg: OperadorAvgAggregateOutputType | null
     _sum: OperadorSumAggregateOutputType | null
@@ -42071,6 +42525,7 @@ export namespace Prisma {
     socios?: boolean
     sepelio?: boolean
     gestion?: boolean
+    contabilidad?: boolean
   }, ExtArgs["result"]["operador"]>
 
   export type operadorSelectScalar = {
@@ -42099,6 +42554,7 @@ export namespace Prisma {
     socios?: boolean
     sepelio?: boolean
     gestion?: boolean
+    contabilidad?: boolean
   }
 
 
@@ -71243,6 +71699,3852 @@ export namespace Prisma {
 
 
   /**
+   * Model conceptos_liquidacion
+   */
+
+
+  export type AggregateConceptos_liquidacion = {
+    _count: Conceptos_liquidacionCountAggregateOutputType | null
+    _avg: Conceptos_liquidacionAvgAggregateOutputType | null
+    _sum: Conceptos_liquidacionSumAggregateOutputType | null
+    _min: Conceptos_liquidacionMinAggregateOutputType | null
+    _max: Conceptos_liquidacionMaxAggregateOutputType | null
+  }
+
+  export type Conceptos_liquidacionAvgAggregateOutputType = {
+    idconcepto: number | null
+  }
+
+  export type Conceptos_liquidacionSumAggregateOutputType = {
+    idconcepto: number | null
+  }
+
+  export type Conceptos_liquidacionMinAggregateOutputType = {
+    idconcepto: number | null
+    concepto: string | null
+    formula: string | null
+  }
+
+  export type Conceptos_liquidacionMaxAggregateOutputType = {
+    idconcepto: number | null
+    concepto: string | null
+    formula: string | null
+  }
+
+  export type Conceptos_liquidacionCountAggregateOutputType = {
+    idconcepto: number
+    concepto: number
+    formula: number
+    _all: number
+  }
+
+
+  export type Conceptos_liquidacionAvgAggregateInputType = {
+    idconcepto?: true
+  }
+
+  export type Conceptos_liquidacionSumAggregateInputType = {
+    idconcepto?: true
+  }
+
+  export type Conceptos_liquidacionMinAggregateInputType = {
+    idconcepto?: true
+    concepto?: true
+    formula?: true
+  }
+
+  export type Conceptos_liquidacionMaxAggregateInputType = {
+    idconcepto?: true
+    concepto?: true
+    formula?: true
+  }
+
+  export type Conceptos_liquidacionCountAggregateInputType = {
+    idconcepto?: true
+    concepto?: true
+    formula?: true
+    _all?: true
+  }
+
+  export type Conceptos_liquidacionAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which conceptos_liquidacion to aggregate.
+     */
+    where?: conceptos_liquidacionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of conceptos_liquidacions to fetch.
+     */
+    orderBy?: conceptos_liquidacionOrderByWithRelationInput | conceptos_liquidacionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: conceptos_liquidacionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` conceptos_liquidacions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` conceptos_liquidacions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned conceptos_liquidacions
+    **/
+    _count?: true | Conceptos_liquidacionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Conceptos_liquidacionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Conceptos_liquidacionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Conceptos_liquidacionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Conceptos_liquidacionMaxAggregateInputType
+  }
+
+  export type GetConceptos_liquidacionAggregateType<T extends Conceptos_liquidacionAggregateArgs> = {
+        [P in keyof T & keyof AggregateConceptos_liquidacion]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateConceptos_liquidacion[P]>
+      : GetScalarType<T[P], AggregateConceptos_liquidacion[P]>
+  }
+
+
+
+
+  export type conceptos_liquidacionGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: conceptos_liquidacionWhereInput
+    orderBy?: conceptos_liquidacionOrderByWithAggregationInput | conceptos_liquidacionOrderByWithAggregationInput[]
+    by: Conceptos_liquidacionScalarFieldEnum[] | Conceptos_liquidacionScalarFieldEnum
+    having?: conceptos_liquidacionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Conceptos_liquidacionCountAggregateInputType | true
+    _avg?: Conceptos_liquidacionAvgAggregateInputType
+    _sum?: Conceptos_liquidacionSumAggregateInputType
+    _min?: Conceptos_liquidacionMinAggregateInputType
+    _max?: Conceptos_liquidacionMaxAggregateInputType
+  }
+
+
+  export type Conceptos_liquidacionGroupByOutputType = {
+    idconcepto: number
+    concepto: string | null
+    formula: string | null
+    _count: Conceptos_liquidacionCountAggregateOutputType | null
+    _avg: Conceptos_liquidacionAvgAggregateOutputType | null
+    _sum: Conceptos_liquidacionSumAggregateOutputType | null
+    _min: Conceptos_liquidacionMinAggregateOutputType | null
+    _max: Conceptos_liquidacionMaxAggregateOutputType | null
+  }
+
+  type GetConceptos_liquidacionGroupByPayload<T extends conceptos_liquidacionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Conceptos_liquidacionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Conceptos_liquidacionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Conceptos_liquidacionGroupByOutputType[P]>
+            : GetScalarType<T[P], Conceptos_liquidacionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type conceptos_liquidacionSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idconcepto?: boolean
+    concepto?: boolean
+    formula?: boolean
+  }, ExtArgs["result"]["conceptos_liquidacion"]>
+
+  export type conceptos_liquidacionSelectScalar = {
+    idconcepto?: boolean
+    concepto?: boolean
+    formula?: boolean
+  }
+
+
+  type conceptos_liquidacionGetPayload<S extends boolean | null | undefined | conceptos_liquidacionArgs> = $Types.GetResult<conceptos_liquidacionPayload, S>
+
+  type conceptos_liquidacionCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<conceptos_liquidacionFindManyArgs, 'select' | 'include'> & {
+      select?: Conceptos_liquidacionCountAggregateInputType | true
+    }
+
+  export interface conceptos_liquidacionDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['conceptos_liquidacion'], meta: { name: 'conceptos_liquidacion' } }
+    /**
+     * Find zero or one Conceptos_liquidacion that matches the filter.
+     * @param {conceptos_liquidacionFindUniqueArgs} args - Arguments to find a Conceptos_liquidacion
+     * @example
+     * // Get one Conceptos_liquidacion
+     * const conceptos_liquidacion = await prisma.conceptos_liquidacion.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends conceptos_liquidacionFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, conceptos_liquidacionFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'conceptos_liquidacion'> extends True ? Prisma__conceptos_liquidacionClient<$Types.GetResult<conceptos_liquidacionPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__conceptos_liquidacionClient<$Types.GetResult<conceptos_liquidacionPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Conceptos_liquidacion that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {conceptos_liquidacionFindUniqueOrThrowArgs} args - Arguments to find a Conceptos_liquidacion
+     * @example
+     * // Get one Conceptos_liquidacion
+     * const conceptos_liquidacion = await prisma.conceptos_liquidacion.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends conceptos_liquidacionFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, conceptos_liquidacionFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__conceptos_liquidacionClient<$Types.GetResult<conceptos_liquidacionPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Conceptos_liquidacion that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_liquidacionFindFirstArgs} args - Arguments to find a Conceptos_liquidacion
+     * @example
+     * // Get one Conceptos_liquidacion
+     * const conceptos_liquidacion = await prisma.conceptos_liquidacion.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends conceptos_liquidacionFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, conceptos_liquidacionFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'conceptos_liquidacion'> extends True ? Prisma__conceptos_liquidacionClient<$Types.GetResult<conceptos_liquidacionPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__conceptos_liquidacionClient<$Types.GetResult<conceptos_liquidacionPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Conceptos_liquidacion that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_liquidacionFindFirstOrThrowArgs} args - Arguments to find a Conceptos_liquidacion
+     * @example
+     * // Get one Conceptos_liquidacion
+     * const conceptos_liquidacion = await prisma.conceptos_liquidacion.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends conceptos_liquidacionFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, conceptos_liquidacionFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__conceptos_liquidacionClient<$Types.GetResult<conceptos_liquidacionPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Conceptos_liquidacions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_liquidacionFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Conceptos_liquidacions
+     * const conceptos_liquidacions = await prisma.conceptos_liquidacion.findMany()
+     * 
+     * // Get first 10 Conceptos_liquidacions
+     * const conceptos_liquidacions = await prisma.conceptos_liquidacion.findMany({ take: 10 })
+     * 
+     * // Only select the `idconcepto`
+     * const conceptos_liquidacionWithIdconceptoOnly = await prisma.conceptos_liquidacion.findMany({ select: { idconcepto: true } })
+     * 
+    **/
+    findMany<T extends conceptos_liquidacionFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, conceptos_liquidacionFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<conceptos_liquidacionPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Conceptos_liquidacion.
+     * @param {conceptos_liquidacionCreateArgs} args - Arguments to create a Conceptos_liquidacion.
+     * @example
+     * // Create one Conceptos_liquidacion
+     * const Conceptos_liquidacion = await prisma.conceptos_liquidacion.create({
+     *   data: {
+     *     // ... data to create a Conceptos_liquidacion
+     *   }
+     * })
+     * 
+    **/
+    create<T extends conceptos_liquidacionCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, conceptos_liquidacionCreateArgs<ExtArgs>>
+    ): Prisma__conceptos_liquidacionClient<$Types.GetResult<conceptos_liquidacionPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Conceptos_liquidacions.
+     *     @param {conceptos_liquidacionCreateManyArgs} args - Arguments to create many Conceptos_liquidacions.
+     *     @example
+     *     // Create many Conceptos_liquidacions
+     *     const conceptos_liquidacion = await prisma.conceptos_liquidacion.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends conceptos_liquidacionCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, conceptos_liquidacionCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Conceptos_liquidacion.
+     * @param {conceptos_liquidacionDeleteArgs} args - Arguments to delete one Conceptos_liquidacion.
+     * @example
+     * // Delete one Conceptos_liquidacion
+     * const Conceptos_liquidacion = await prisma.conceptos_liquidacion.delete({
+     *   where: {
+     *     // ... filter to delete one Conceptos_liquidacion
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends conceptos_liquidacionDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, conceptos_liquidacionDeleteArgs<ExtArgs>>
+    ): Prisma__conceptos_liquidacionClient<$Types.GetResult<conceptos_liquidacionPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Conceptos_liquidacion.
+     * @param {conceptos_liquidacionUpdateArgs} args - Arguments to update one Conceptos_liquidacion.
+     * @example
+     * // Update one Conceptos_liquidacion
+     * const conceptos_liquidacion = await prisma.conceptos_liquidacion.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends conceptos_liquidacionUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, conceptos_liquidacionUpdateArgs<ExtArgs>>
+    ): Prisma__conceptos_liquidacionClient<$Types.GetResult<conceptos_liquidacionPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Conceptos_liquidacions.
+     * @param {conceptos_liquidacionDeleteManyArgs} args - Arguments to filter Conceptos_liquidacions to delete.
+     * @example
+     * // Delete a few Conceptos_liquidacions
+     * const { count } = await prisma.conceptos_liquidacion.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends conceptos_liquidacionDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, conceptos_liquidacionDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Conceptos_liquidacions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_liquidacionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Conceptos_liquidacions
+     * const conceptos_liquidacion = await prisma.conceptos_liquidacion.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends conceptos_liquidacionUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, conceptos_liquidacionUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Conceptos_liquidacion.
+     * @param {conceptos_liquidacionUpsertArgs} args - Arguments to update or create a Conceptos_liquidacion.
+     * @example
+     * // Update or create a Conceptos_liquidacion
+     * const conceptos_liquidacion = await prisma.conceptos_liquidacion.upsert({
+     *   create: {
+     *     // ... data to create a Conceptos_liquidacion
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Conceptos_liquidacion we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends conceptos_liquidacionUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, conceptos_liquidacionUpsertArgs<ExtArgs>>
+    ): Prisma__conceptos_liquidacionClient<$Types.GetResult<conceptos_liquidacionPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Conceptos_liquidacions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_liquidacionCountArgs} args - Arguments to filter Conceptos_liquidacions to count.
+     * @example
+     * // Count the number of Conceptos_liquidacions
+     * const count = await prisma.conceptos_liquidacion.count({
+     *   where: {
+     *     // ... the filter for the Conceptos_liquidacions we want to count
+     *   }
+     * })
+    **/
+    count<T extends conceptos_liquidacionCountArgs>(
+      args?: Subset<T, conceptos_liquidacionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Conceptos_liquidacionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Conceptos_liquidacion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Conceptos_liquidacionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Conceptos_liquidacionAggregateArgs>(args: Subset<T, Conceptos_liquidacionAggregateArgs>): Prisma.PrismaPromise<GetConceptos_liquidacionAggregateType<T>>
+
+    /**
+     * Group by Conceptos_liquidacion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {conceptos_liquidacionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends conceptos_liquidacionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: conceptos_liquidacionGroupByArgs['orderBy'] }
+        : { orderBy?: conceptos_liquidacionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, conceptos_liquidacionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetConceptos_liquidacionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for conceptos_liquidacion.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__conceptos_liquidacionClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * conceptos_liquidacion base type for findUnique actions
+   */
+  export type conceptos_liquidacionFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_liquidacion
+     */
+    select?: conceptos_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter, which conceptos_liquidacion to fetch.
+     */
+    where: conceptos_liquidacionWhereUniqueInput
+  }
+
+  /**
+   * conceptos_liquidacion findUnique
+   */
+  export interface conceptos_liquidacionFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends conceptos_liquidacionFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * conceptos_liquidacion findUniqueOrThrow
+   */
+  export type conceptos_liquidacionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_liquidacion
+     */
+    select?: conceptos_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter, which conceptos_liquidacion to fetch.
+     */
+    where: conceptos_liquidacionWhereUniqueInput
+  }
+
+
+  /**
+   * conceptos_liquidacion base type for findFirst actions
+   */
+  export type conceptos_liquidacionFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_liquidacion
+     */
+    select?: conceptos_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter, which conceptos_liquidacion to fetch.
+     */
+    where?: conceptos_liquidacionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of conceptos_liquidacions to fetch.
+     */
+    orderBy?: conceptos_liquidacionOrderByWithRelationInput | conceptos_liquidacionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for conceptos_liquidacions.
+     */
+    cursor?: conceptos_liquidacionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` conceptos_liquidacions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` conceptos_liquidacions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of conceptos_liquidacions.
+     */
+    distinct?: Conceptos_liquidacionScalarFieldEnum | Conceptos_liquidacionScalarFieldEnum[]
+  }
+
+  /**
+   * conceptos_liquidacion findFirst
+   */
+  export interface conceptos_liquidacionFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends conceptos_liquidacionFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * conceptos_liquidacion findFirstOrThrow
+   */
+  export type conceptos_liquidacionFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_liquidacion
+     */
+    select?: conceptos_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter, which conceptos_liquidacion to fetch.
+     */
+    where?: conceptos_liquidacionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of conceptos_liquidacions to fetch.
+     */
+    orderBy?: conceptos_liquidacionOrderByWithRelationInput | conceptos_liquidacionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for conceptos_liquidacions.
+     */
+    cursor?: conceptos_liquidacionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` conceptos_liquidacions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` conceptos_liquidacions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of conceptos_liquidacions.
+     */
+    distinct?: Conceptos_liquidacionScalarFieldEnum | Conceptos_liquidacionScalarFieldEnum[]
+  }
+
+
+  /**
+   * conceptos_liquidacion findMany
+   */
+  export type conceptos_liquidacionFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_liquidacion
+     */
+    select?: conceptos_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter, which conceptos_liquidacions to fetch.
+     */
+    where?: conceptos_liquidacionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of conceptos_liquidacions to fetch.
+     */
+    orderBy?: conceptos_liquidacionOrderByWithRelationInput | conceptos_liquidacionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing conceptos_liquidacions.
+     */
+    cursor?: conceptos_liquidacionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` conceptos_liquidacions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` conceptos_liquidacions.
+     */
+    skip?: number
+    distinct?: Conceptos_liquidacionScalarFieldEnum | Conceptos_liquidacionScalarFieldEnum[]
+  }
+
+
+  /**
+   * conceptos_liquidacion create
+   */
+  export type conceptos_liquidacionCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_liquidacion
+     */
+    select?: conceptos_liquidacionSelect<ExtArgs> | null
+    /**
+     * The data needed to create a conceptos_liquidacion.
+     */
+    data?: XOR<conceptos_liquidacionCreateInput, conceptos_liquidacionUncheckedCreateInput>
+  }
+
+
+  /**
+   * conceptos_liquidacion createMany
+   */
+  export type conceptos_liquidacionCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many conceptos_liquidacions.
+     */
+    data: conceptos_liquidacionCreateManyInput | conceptos_liquidacionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * conceptos_liquidacion update
+   */
+  export type conceptos_liquidacionUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_liquidacion
+     */
+    select?: conceptos_liquidacionSelect<ExtArgs> | null
+    /**
+     * The data needed to update a conceptos_liquidacion.
+     */
+    data: XOR<conceptos_liquidacionUpdateInput, conceptos_liquidacionUncheckedUpdateInput>
+    /**
+     * Choose, which conceptos_liquidacion to update.
+     */
+    where: conceptos_liquidacionWhereUniqueInput
+  }
+
+
+  /**
+   * conceptos_liquidacion updateMany
+   */
+  export type conceptos_liquidacionUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update conceptos_liquidacions.
+     */
+    data: XOR<conceptos_liquidacionUpdateManyMutationInput, conceptos_liquidacionUncheckedUpdateManyInput>
+    /**
+     * Filter which conceptos_liquidacions to update
+     */
+    where?: conceptos_liquidacionWhereInput
+  }
+
+
+  /**
+   * conceptos_liquidacion upsert
+   */
+  export type conceptos_liquidacionUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_liquidacion
+     */
+    select?: conceptos_liquidacionSelect<ExtArgs> | null
+    /**
+     * The filter to search for the conceptos_liquidacion to update in case it exists.
+     */
+    where: conceptos_liquidacionWhereUniqueInput
+    /**
+     * In case the conceptos_liquidacion found by the `where` argument doesn't exist, create a new conceptos_liquidacion with this data.
+     */
+    create: XOR<conceptos_liquidacionCreateInput, conceptos_liquidacionUncheckedCreateInput>
+    /**
+     * In case the conceptos_liquidacion was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<conceptos_liquidacionUpdateInput, conceptos_liquidacionUncheckedUpdateInput>
+  }
+
+
+  /**
+   * conceptos_liquidacion delete
+   */
+  export type conceptos_liquidacionDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_liquidacion
+     */
+    select?: conceptos_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter which conceptos_liquidacion to delete.
+     */
+    where: conceptos_liquidacionWhereUniqueInput
+  }
+
+
+  /**
+   * conceptos_liquidacion deleteMany
+   */
+  export type conceptos_liquidacionDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which conceptos_liquidacions to delete
+     */
+    where?: conceptos_liquidacionWhereInput
+  }
+
+
+  /**
+   * conceptos_liquidacion without action
+   */
+  export type conceptos_liquidacionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the conceptos_liquidacion
+     */
+    select?: conceptos_liquidacionSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model legajo_operador
+   */
+
+
+  export type AggregateLegajo_operador = {
+    _count: Legajo_operadorCountAggregateOutputType | null
+    _avg: Legajo_operadorAvgAggregateOutputType | null
+    _sum: Legajo_operadorSumAggregateOutputType | null
+    _min: Legajo_operadorMinAggregateOutputType | null
+    _max: Legajo_operadorMaxAggregateOutputType | null
+  }
+
+  export type Legajo_operadorAvgAggregateOutputType = {
+    idlegajo: number | null
+    antiguedad: number | null
+    idempresa: number | null
+  }
+
+  export type Legajo_operadorSumAggregateOutputType = {
+    idlegajo: number | null
+    antiguedad: number | null
+    idempresa: number | null
+  }
+
+  export type Legajo_operadorMinAggregateOutputType = {
+    idlegajo: number | null
+    operador: string | null
+    cuil: string | null
+    fecha_ingreso: Date | null
+    antiguedad: number | null
+    categoria: string | null
+    tiempo_trabajo: string | null
+    fecha_pago: string | null
+    contratacion: string | null
+    idempresa: number | null
+    estado: boolean | null
+  }
+
+  export type Legajo_operadorMaxAggregateOutputType = {
+    idlegajo: number | null
+    operador: string | null
+    cuil: string | null
+    fecha_ingreso: Date | null
+    antiguedad: number | null
+    categoria: string | null
+    tiempo_trabajo: string | null
+    fecha_pago: string | null
+    contratacion: string | null
+    idempresa: number | null
+    estado: boolean | null
+  }
+
+  export type Legajo_operadorCountAggregateOutputType = {
+    idlegajo: number
+    operador: number
+    cuil: number
+    fecha_ingreso: number
+    antiguedad: number
+    categoria: number
+    tiempo_trabajo: number
+    fecha_pago: number
+    contratacion: number
+    idempresa: number
+    estado: number
+    _all: number
+  }
+
+
+  export type Legajo_operadorAvgAggregateInputType = {
+    idlegajo?: true
+    antiguedad?: true
+    idempresa?: true
+  }
+
+  export type Legajo_operadorSumAggregateInputType = {
+    idlegajo?: true
+    antiguedad?: true
+    idempresa?: true
+  }
+
+  export type Legajo_operadorMinAggregateInputType = {
+    idlegajo?: true
+    operador?: true
+    cuil?: true
+    fecha_ingreso?: true
+    antiguedad?: true
+    categoria?: true
+    tiempo_trabajo?: true
+    fecha_pago?: true
+    contratacion?: true
+    idempresa?: true
+    estado?: true
+  }
+
+  export type Legajo_operadorMaxAggregateInputType = {
+    idlegajo?: true
+    operador?: true
+    cuil?: true
+    fecha_ingreso?: true
+    antiguedad?: true
+    categoria?: true
+    tiempo_trabajo?: true
+    fecha_pago?: true
+    contratacion?: true
+    idempresa?: true
+    estado?: true
+  }
+
+  export type Legajo_operadorCountAggregateInputType = {
+    idlegajo?: true
+    operador?: true
+    cuil?: true
+    fecha_ingreso?: true
+    antiguedad?: true
+    categoria?: true
+    tiempo_trabajo?: true
+    fecha_pago?: true
+    contratacion?: true
+    idempresa?: true
+    estado?: true
+    _all?: true
+  }
+
+  export type Legajo_operadorAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which legajo_operador to aggregate.
+     */
+    where?: legajo_operadorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of legajo_operadors to fetch.
+     */
+    orderBy?: legajo_operadorOrderByWithRelationInput | legajo_operadorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: legajo_operadorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` legajo_operadors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` legajo_operadors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned legajo_operadors
+    **/
+    _count?: true | Legajo_operadorCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Legajo_operadorAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Legajo_operadorSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Legajo_operadorMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Legajo_operadorMaxAggregateInputType
+  }
+
+  export type GetLegajo_operadorAggregateType<T extends Legajo_operadorAggregateArgs> = {
+        [P in keyof T & keyof AggregateLegajo_operador]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLegajo_operador[P]>
+      : GetScalarType<T[P], AggregateLegajo_operador[P]>
+  }
+
+
+
+
+  export type legajo_operadorGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: legajo_operadorWhereInput
+    orderBy?: legajo_operadorOrderByWithAggregationInput | legajo_operadorOrderByWithAggregationInput[]
+    by: Legajo_operadorScalarFieldEnum[] | Legajo_operadorScalarFieldEnum
+    having?: legajo_operadorScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Legajo_operadorCountAggregateInputType | true
+    _avg?: Legajo_operadorAvgAggregateInputType
+    _sum?: Legajo_operadorSumAggregateInputType
+    _min?: Legajo_operadorMinAggregateInputType
+    _max?: Legajo_operadorMaxAggregateInputType
+  }
+
+
+  export type Legajo_operadorGroupByOutputType = {
+    idlegajo: number
+    operador: string | null
+    cuil: string | null
+    fecha_ingreso: Date | null
+    antiguedad: number | null
+    categoria: string | null
+    tiempo_trabajo: string | null
+    fecha_pago: string | null
+    contratacion: string | null
+    idempresa: number | null
+    estado: boolean | null
+    _count: Legajo_operadorCountAggregateOutputType | null
+    _avg: Legajo_operadorAvgAggregateOutputType | null
+    _sum: Legajo_operadorSumAggregateOutputType | null
+    _min: Legajo_operadorMinAggregateOutputType | null
+    _max: Legajo_operadorMaxAggregateOutputType | null
+  }
+
+  type GetLegajo_operadorGroupByPayload<T extends legajo_operadorGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Legajo_operadorGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Legajo_operadorGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Legajo_operadorGroupByOutputType[P]>
+            : GetScalarType<T[P], Legajo_operadorGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type legajo_operadorSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idlegajo?: boolean
+    operador?: boolean
+    cuil?: boolean
+    fecha_ingreso?: boolean
+    antiguedad?: boolean
+    categoria?: boolean
+    tiempo_trabajo?: boolean
+    fecha_pago?: boolean
+    contratacion?: boolean
+    idempresa?: boolean
+    estado?: boolean
+  }, ExtArgs["result"]["legajo_operador"]>
+
+  export type legajo_operadorSelectScalar = {
+    idlegajo?: boolean
+    operador?: boolean
+    cuil?: boolean
+    fecha_ingreso?: boolean
+    antiguedad?: boolean
+    categoria?: boolean
+    tiempo_trabajo?: boolean
+    fecha_pago?: boolean
+    contratacion?: boolean
+    idempresa?: boolean
+    estado?: boolean
+  }
+
+
+  type legajo_operadorGetPayload<S extends boolean | null | undefined | legajo_operadorArgs> = $Types.GetResult<legajo_operadorPayload, S>
+
+  type legajo_operadorCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<legajo_operadorFindManyArgs, 'select' | 'include'> & {
+      select?: Legajo_operadorCountAggregateInputType | true
+    }
+
+  export interface legajo_operadorDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['legajo_operador'], meta: { name: 'legajo_operador' } }
+    /**
+     * Find zero or one Legajo_operador that matches the filter.
+     * @param {legajo_operadorFindUniqueArgs} args - Arguments to find a Legajo_operador
+     * @example
+     * // Get one Legajo_operador
+     * const legajo_operador = await prisma.legajo_operador.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends legajo_operadorFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, legajo_operadorFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'legajo_operador'> extends True ? Prisma__legajo_operadorClient<$Types.GetResult<legajo_operadorPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__legajo_operadorClient<$Types.GetResult<legajo_operadorPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Legajo_operador that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {legajo_operadorFindUniqueOrThrowArgs} args - Arguments to find a Legajo_operador
+     * @example
+     * // Get one Legajo_operador
+     * const legajo_operador = await prisma.legajo_operador.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends legajo_operadorFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, legajo_operadorFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__legajo_operadorClient<$Types.GetResult<legajo_operadorPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Legajo_operador that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {legajo_operadorFindFirstArgs} args - Arguments to find a Legajo_operador
+     * @example
+     * // Get one Legajo_operador
+     * const legajo_operador = await prisma.legajo_operador.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends legajo_operadorFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, legajo_operadorFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'legajo_operador'> extends True ? Prisma__legajo_operadorClient<$Types.GetResult<legajo_operadorPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__legajo_operadorClient<$Types.GetResult<legajo_operadorPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Legajo_operador that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {legajo_operadorFindFirstOrThrowArgs} args - Arguments to find a Legajo_operador
+     * @example
+     * // Get one Legajo_operador
+     * const legajo_operador = await prisma.legajo_operador.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends legajo_operadorFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, legajo_operadorFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__legajo_operadorClient<$Types.GetResult<legajo_operadorPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Legajo_operadors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {legajo_operadorFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Legajo_operadors
+     * const legajo_operadors = await prisma.legajo_operador.findMany()
+     * 
+     * // Get first 10 Legajo_operadors
+     * const legajo_operadors = await prisma.legajo_operador.findMany({ take: 10 })
+     * 
+     * // Only select the `idlegajo`
+     * const legajo_operadorWithIdlegajoOnly = await prisma.legajo_operador.findMany({ select: { idlegajo: true } })
+     * 
+    **/
+    findMany<T extends legajo_operadorFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, legajo_operadorFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<legajo_operadorPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Legajo_operador.
+     * @param {legajo_operadorCreateArgs} args - Arguments to create a Legajo_operador.
+     * @example
+     * // Create one Legajo_operador
+     * const Legajo_operador = await prisma.legajo_operador.create({
+     *   data: {
+     *     // ... data to create a Legajo_operador
+     *   }
+     * })
+     * 
+    **/
+    create<T extends legajo_operadorCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, legajo_operadorCreateArgs<ExtArgs>>
+    ): Prisma__legajo_operadorClient<$Types.GetResult<legajo_operadorPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Legajo_operadors.
+     *     @param {legajo_operadorCreateManyArgs} args - Arguments to create many Legajo_operadors.
+     *     @example
+     *     // Create many Legajo_operadors
+     *     const legajo_operador = await prisma.legajo_operador.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends legajo_operadorCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, legajo_operadorCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Legajo_operador.
+     * @param {legajo_operadorDeleteArgs} args - Arguments to delete one Legajo_operador.
+     * @example
+     * // Delete one Legajo_operador
+     * const Legajo_operador = await prisma.legajo_operador.delete({
+     *   where: {
+     *     // ... filter to delete one Legajo_operador
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends legajo_operadorDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, legajo_operadorDeleteArgs<ExtArgs>>
+    ): Prisma__legajo_operadorClient<$Types.GetResult<legajo_operadorPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Legajo_operador.
+     * @param {legajo_operadorUpdateArgs} args - Arguments to update one Legajo_operador.
+     * @example
+     * // Update one Legajo_operador
+     * const legajo_operador = await prisma.legajo_operador.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends legajo_operadorUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, legajo_operadorUpdateArgs<ExtArgs>>
+    ): Prisma__legajo_operadorClient<$Types.GetResult<legajo_operadorPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Legajo_operadors.
+     * @param {legajo_operadorDeleteManyArgs} args - Arguments to filter Legajo_operadors to delete.
+     * @example
+     * // Delete a few Legajo_operadors
+     * const { count } = await prisma.legajo_operador.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends legajo_operadorDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, legajo_operadorDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Legajo_operadors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {legajo_operadorUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Legajo_operadors
+     * const legajo_operador = await prisma.legajo_operador.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends legajo_operadorUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, legajo_operadorUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Legajo_operador.
+     * @param {legajo_operadorUpsertArgs} args - Arguments to update or create a Legajo_operador.
+     * @example
+     * // Update or create a Legajo_operador
+     * const legajo_operador = await prisma.legajo_operador.upsert({
+     *   create: {
+     *     // ... data to create a Legajo_operador
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Legajo_operador we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends legajo_operadorUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, legajo_operadorUpsertArgs<ExtArgs>>
+    ): Prisma__legajo_operadorClient<$Types.GetResult<legajo_operadorPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Legajo_operadors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {legajo_operadorCountArgs} args - Arguments to filter Legajo_operadors to count.
+     * @example
+     * // Count the number of Legajo_operadors
+     * const count = await prisma.legajo_operador.count({
+     *   where: {
+     *     // ... the filter for the Legajo_operadors we want to count
+     *   }
+     * })
+    **/
+    count<T extends legajo_operadorCountArgs>(
+      args?: Subset<T, legajo_operadorCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Legajo_operadorCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Legajo_operador.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Legajo_operadorAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Legajo_operadorAggregateArgs>(args: Subset<T, Legajo_operadorAggregateArgs>): Prisma.PrismaPromise<GetLegajo_operadorAggregateType<T>>
+
+    /**
+     * Group by Legajo_operador.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {legajo_operadorGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends legajo_operadorGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: legajo_operadorGroupByArgs['orderBy'] }
+        : { orderBy?: legajo_operadorGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, legajo_operadorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLegajo_operadorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for legajo_operador.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__legajo_operadorClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * legajo_operador base type for findUnique actions
+   */
+  export type legajo_operadorFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the legajo_operador
+     */
+    select?: legajo_operadorSelect<ExtArgs> | null
+    /**
+     * Filter, which legajo_operador to fetch.
+     */
+    where: legajo_operadorWhereUniqueInput
+  }
+
+  /**
+   * legajo_operador findUnique
+   */
+  export interface legajo_operadorFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends legajo_operadorFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * legajo_operador findUniqueOrThrow
+   */
+  export type legajo_operadorFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the legajo_operador
+     */
+    select?: legajo_operadorSelect<ExtArgs> | null
+    /**
+     * Filter, which legajo_operador to fetch.
+     */
+    where: legajo_operadorWhereUniqueInput
+  }
+
+
+  /**
+   * legajo_operador base type for findFirst actions
+   */
+  export type legajo_operadorFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the legajo_operador
+     */
+    select?: legajo_operadorSelect<ExtArgs> | null
+    /**
+     * Filter, which legajo_operador to fetch.
+     */
+    where?: legajo_operadorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of legajo_operadors to fetch.
+     */
+    orderBy?: legajo_operadorOrderByWithRelationInput | legajo_operadorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for legajo_operadors.
+     */
+    cursor?: legajo_operadorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` legajo_operadors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` legajo_operadors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of legajo_operadors.
+     */
+    distinct?: Legajo_operadorScalarFieldEnum | Legajo_operadorScalarFieldEnum[]
+  }
+
+  /**
+   * legajo_operador findFirst
+   */
+  export interface legajo_operadorFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends legajo_operadorFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * legajo_operador findFirstOrThrow
+   */
+  export type legajo_operadorFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the legajo_operador
+     */
+    select?: legajo_operadorSelect<ExtArgs> | null
+    /**
+     * Filter, which legajo_operador to fetch.
+     */
+    where?: legajo_operadorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of legajo_operadors to fetch.
+     */
+    orderBy?: legajo_operadorOrderByWithRelationInput | legajo_operadorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for legajo_operadors.
+     */
+    cursor?: legajo_operadorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` legajo_operadors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` legajo_operadors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of legajo_operadors.
+     */
+    distinct?: Legajo_operadorScalarFieldEnum | Legajo_operadorScalarFieldEnum[]
+  }
+
+
+  /**
+   * legajo_operador findMany
+   */
+  export type legajo_operadorFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the legajo_operador
+     */
+    select?: legajo_operadorSelect<ExtArgs> | null
+    /**
+     * Filter, which legajo_operadors to fetch.
+     */
+    where?: legajo_operadorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of legajo_operadors to fetch.
+     */
+    orderBy?: legajo_operadorOrderByWithRelationInput | legajo_operadorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing legajo_operadors.
+     */
+    cursor?: legajo_operadorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` legajo_operadors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` legajo_operadors.
+     */
+    skip?: number
+    distinct?: Legajo_operadorScalarFieldEnum | Legajo_operadorScalarFieldEnum[]
+  }
+
+
+  /**
+   * legajo_operador create
+   */
+  export type legajo_operadorCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the legajo_operador
+     */
+    select?: legajo_operadorSelect<ExtArgs> | null
+    /**
+     * The data needed to create a legajo_operador.
+     */
+    data?: XOR<legajo_operadorCreateInput, legajo_operadorUncheckedCreateInput>
+  }
+
+
+  /**
+   * legajo_operador createMany
+   */
+  export type legajo_operadorCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many legajo_operadors.
+     */
+    data: legajo_operadorCreateManyInput | legajo_operadorCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * legajo_operador update
+   */
+  export type legajo_operadorUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the legajo_operador
+     */
+    select?: legajo_operadorSelect<ExtArgs> | null
+    /**
+     * The data needed to update a legajo_operador.
+     */
+    data: XOR<legajo_operadorUpdateInput, legajo_operadorUncheckedUpdateInput>
+    /**
+     * Choose, which legajo_operador to update.
+     */
+    where: legajo_operadorWhereUniqueInput
+  }
+
+
+  /**
+   * legajo_operador updateMany
+   */
+  export type legajo_operadorUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update legajo_operadors.
+     */
+    data: XOR<legajo_operadorUpdateManyMutationInput, legajo_operadorUncheckedUpdateManyInput>
+    /**
+     * Filter which legajo_operadors to update
+     */
+    where?: legajo_operadorWhereInput
+  }
+
+
+  /**
+   * legajo_operador upsert
+   */
+  export type legajo_operadorUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the legajo_operador
+     */
+    select?: legajo_operadorSelect<ExtArgs> | null
+    /**
+     * The filter to search for the legajo_operador to update in case it exists.
+     */
+    where: legajo_operadorWhereUniqueInput
+    /**
+     * In case the legajo_operador found by the `where` argument doesn't exist, create a new legajo_operador with this data.
+     */
+    create: XOR<legajo_operadorCreateInput, legajo_operadorUncheckedCreateInput>
+    /**
+     * In case the legajo_operador was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<legajo_operadorUpdateInput, legajo_operadorUncheckedUpdateInput>
+  }
+
+
+  /**
+   * legajo_operador delete
+   */
+  export type legajo_operadorDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the legajo_operador
+     */
+    select?: legajo_operadorSelect<ExtArgs> | null
+    /**
+     * Filter which legajo_operador to delete.
+     */
+    where: legajo_operadorWhereUniqueInput
+  }
+
+
+  /**
+   * legajo_operador deleteMany
+   */
+  export type legajo_operadorDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which legajo_operadors to delete
+     */
+    where?: legajo_operadorWhereInput
+  }
+
+
+  /**
+   * legajo_operador without action
+   */
+  export type legajo_operadorArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the legajo_operador
+     */
+    select?: legajo_operadorSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model recibo_liquidacion
+   */
+
+
+  export type AggregateRecibo_liquidacion = {
+    _count: Recibo_liquidacionCountAggregateOutputType | null
+    _avg: Recibo_liquidacionAvgAggregateOutputType | null
+    _sum: Recibo_liquidacionSumAggregateOutputType | null
+    _min: Recibo_liquidacionMinAggregateOutputType | null
+    _max: Recibo_liquidacionMaxAggregateOutputType | null
+  }
+
+  export type Recibo_liquidacionAvgAggregateOutputType = {
+    idrecibo: number | null
+    total_neto: number | null
+    idlegajo: number | null
+    anti: number | null
+  }
+
+  export type Recibo_liquidacionSumAggregateOutputType = {
+    idrecibo: number | null
+    total_neto: number | null
+    idlegajo: number | null
+    anti: number | null
+  }
+
+  export type Recibo_liquidacionMinAggregateOutputType = {
+    idrecibo: number | null
+    periodo: string | null
+    fecha: Date | null
+    operador: string | null
+    total_neto: number | null
+    total_letra: string | null
+    forma_pago: string | null
+    fecha_deposito: Date | null
+    banco: string | null
+    empresa: string | null
+    empresa_cuit: string | null
+    operador_cuil: string | null
+    idlegajo: number | null
+    fecha_ingreso: Date | null
+    anti: number | null
+    categoria: string | null
+    seccion: string | null
+  }
+
+  export type Recibo_liquidacionMaxAggregateOutputType = {
+    idrecibo: number | null
+    periodo: string | null
+    fecha: Date | null
+    operador: string | null
+    total_neto: number | null
+    total_letra: string | null
+    forma_pago: string | null
+    fecha_deposito: Date | null
+    banco: string | null
+    empresa: string | null
+    empresa_cuit: string | null
+    operador_cuil: string | null
+    idlegajo: number | null
+    fecha_ingreso: Date | null
+    anti: number | null
+    categoria: string | null
+    seccion: string | null
+  }
+
+  export type Recibo_liquidacionCountAggregateOutputType = {
+    idrecibo: number
+    periodo: number
+    fecha: number
+    operador: number
+    total_neto: number
+    total_letra: number
+    forma_pago: number
+    fecha_deposito: number
+    banco: number
+    empresa: number
+    empresa_cuit: number
+    operador_cuil: number
+    idlegajo: number
+    fecha_ingreso: number
+    anti: number
+    categoria: number
+    seccion: number
+    _all: number
+  }
+
+
+  export type Recibo_liquidacionAvgAggregateInputType = {
+    idrecibo?: true
+    total_neto?: true
+    idlegajo?: true
+    anti?: true
+  }
+
+  export type Recibo_liquidacionSumAggregateInputType = {
+    idrecibo?: true
+    total_neto?: true
+    idlegajo?: true
+    anti?: true
+  }
+
+  export type Recibo_liquidacionMinAggregateInputType = {
+    idrecibo?: true
+    periodo?: true
+    fecha?: true
+    operador?: true
+    total_neto?: true
+    total_letra?: true
+    forma_pago?: true
+    fecha_deposito?: true
+    banco?: true
+    empresa?: true
+    empresa_cuit?: true
+    operador_cuil?: true
+    idlegajo?: true
+    fecha_ingreso?: true
+    anti?: true
+    categoria?: true
+    seccion?: true
+  }
+
+  export type Recibo_liquidacionMaxAggregateInputType = {
+    idrecibo?: true
+    periodo?: true
+    fecha?: true
+    operador?: true
+    total_neto?: true
+    total_letra?: true
+    forma_pago?: true
+    fecha_deposito?: true
+    banco?: true
+    empresa?: true
+    empresa_cuit?: true
+    operador_cuil?: true
+    idlegajo?: true
+    fecha_ingreso?: true
+    anti?: true
+    categoria?: true
+    seccion?: true
+  }
+
+  export type Recibo_liquidacionCountAggregateInputType = {
+    idrecibo?: true
+    periodo?: true
+    fecha?: true
+    operador?: true
+    total_neto?: true
+    total_letra?: true
+    forma_pago?: true
+    fecha_deposito?: true
+    banco?: true
+    empresa?: true
+    empresa_cuit?: true
+    operador_cuil?: true
+    idlegajo?: true
+    fecha_ingreso?: true
+    anti?: true
+    categoria?: true
+    seccion?: true
+    _all?: true
+  }
+
+  export type Recibo_liquidacionAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which recibo_liquidacion to aggregate.
+     */
+    where?: recibo_liquidacionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recibo_liquidacions to fetch.
+     */
+    orderBy?: recibo_liquidacionOrderByWithRelationInput | recibo_liquidacionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: recibo_liquidacionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recibo_liquidacions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recibo_liquidacions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned recibo_liquidacions
+    **/
+    _count?: true | Recibo_liquidacionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Recibo_liquidacionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Recibo_liquidacionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Recibo_liquidacionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Recibo_liquidacionMaxAggregateInputType
+  }
+
+  export type GetRecibo_liquidacionAggregateType<T extends Recibo_liquidacionAggregateArgs> = {
+        [P in keyof T & keyof AggregateRecibo_liquidacion]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRecibo_liquidacion[P]>
+      : GetScalarType<T[P], AggregateRecibo_liquidacion[P]>
+  }
+
+
+
+
+  export type recibo_liquidacionGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: recibo_liquidacionWhereInput
+    orderBy?: recibo_liquidacionOrderByWithAggregationInput | recibo_liquidacionOrderByWithAggregationInput[]
+    by: Recibo_liquidacionScalarFieldEnum[] | Recibo_liquidacionScalarFieldEnum
+    having?: recibo_liquidacionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Recibo_liquidacionCountAggregateInputType | true
+    _avg?: Recibo_liquidacionAvgAggregateInputType
+    _sum?: Recibo_liquidacionSumAggregateInputType
+    _min?: Recibo_liquidacionMinAggregateInputType
+    _max?: Recibo_liquidacionMaxAggregateInputType
+  }
+
+
+  export type Recibo_liquidacionGroupByOutputType = {
+    idrecibo: number
+    periodo: string | null
+    fecha: Date | null
+    operador: string | null
+    total_neto: number | null
+    total_letra: string | null
+    forma_pago: string | null
+    fecha_deposito: Date | null
+    banco: string | null
+    empresa: string | null
+    empresa_cuit: string | null
+    operador_cuil: string | null
+    idlegajo: number | null
+    fecha_ingreso: Date | null
+    anti: number | null
+    categoria: string | null
+    seccion: string | null
+    _count: Recibo_liquidacionCountAggregateOutputType | null
+    _avg: Recibo_liquidacionAvgAggregateOutputType | null
+    _sum: Recibo_liquidacionSumAggregateOutputType | null
+    _min: Recibo_liquidacionMinAggregateOutputType | null
+    _max: Recibo_liquidacionMaxAggregateOutputType | null
+  }
+
+  type GetRecibo_liquidacionGroupByPayload<T extends recibo_liquidacionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Recibo_liquidacionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Recibo_liquidacionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Recibo_liquidacionGroupByOutputType[P]>
+            : GetScalarType<T[P], Recibo_liquidacionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type recibo_liquidacionSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idrecibo?: boolean
+    periodo?: boolean
+    fecha?: boolean
+    operador?: boolean
+    total_neto?: boolean
+    total_letra?: boolean
+    forma_pago?: boolean
+    fecha_deposito?: boolean
+    banco?: boolean
+    empresa?: boolean
+    empresa_cuit?: boolean
+    operador_cuil?: boolean
+    idlegajo?: boolean
+    fecha_ingreso?: boolean
+    anti?: boolean
+    categoria?: boolean
+    seccion?: boolean
+  }, ExtArgs["result"]["recibo_liquidacion"]>
+
+  export type recibo_liquidacionSelectScalar = {
+    idrecibo?: boolean
+    periodo?: boolean
+    fecha?: boolean
+    operador?: boolean
+    total_neto?: boolean
+    total_letra?: boolean
+    forma_pago?: boolean
+    fecha_deposito?: boolean
+    banco?: boolean
+    empresa?: boolean
+    empresa_cuit?: boolean
+    operador_cuil?: boolean
+    idlegajo?: boolean
+    fecha_ingreso?: boolean
+    anti?: boolean
+    categoria?: boolean
+    seccion?: boolean
+  }
+
+
+  type recibo_liquidacionGetPayload<S extends boolean | null | undefined | recibo_liquidacionArgs> = $Types.GetResult<recibo_liquidacionPayload, S>
+
+  type recibo_liquidacionCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<recibo_liquidacionFindManyArgs, 'select' | 'include'> & {
+      select?: Recibo_liquidacionCountAggregateInputType | true
+    }
+
+  export interface recibo_liquidacionDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['recibo_liquidacion'], meta: { name: 'recibo_liquidacion' } }
+    /**
+     * Find zero or one Recibo_liquidacion that matches the filter.
+     * @param {recibo_liquidacionFindUniqueArgs} args - Arguments to find a Recibo_liquidacion
+     * @example
+     * // Get one Recibo_liquidacion
+     * const recibo_liquidacion = await prisma.recibo_liquidacion.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends recibo_liquidacionFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, recibo_liquidacionFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'recibo_liquidacion'> extends True ? Prisma__recibo_liquidacionClient<$Types.GetResult<recibo_liquidacionPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__recibo_liquidacionClient<$Types.GetResult<recibo_liquidacionPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Recibo_liquidacion that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {recibo_liquidacionFindUniqueOrThrowArgs} args - Arguments to find a Recibo_liquidacion
+     * @example
+     * // Get one Recibo_liquidacion
+     * const recibo_liquidacion = await prisma.recibo_liquidacion.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends recibo_liquidacionFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, recibo_liquidacionFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__recibo_liquidacionClient<$Types.GetResult<recibo_liquidacionPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Recibo_liquidacion that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_liquidacionFindFirstArgs} args - Arguments to find a Recibo_liquidacion
+     * @example
+     * // Get one Recibo_liquidacion
+     * const recibo_liquidacion = await prisma.recibo_liquidacion.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends recibo_liquidacionFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, recibo_liquidacionFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'recibo_liquidacion'> extends True ? Prisma__recibo_liquidacionClient<$Types.GetResult<recibo_liquidacionPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__recibo_liquidacionClient<$Types.GetResult<recibo_liquidacionPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Recibo_liquidacion that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_liquidacionFindFirstOrThrowArgs} args - Arguments to find a Recibo_liquidacion
+     * @example
+     * // Get one Recibo_liquidacion
+     * const recibo_liquidacion = await prisma.recibo_liquidacion.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends recibo_liquidacionFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, recibo_liquidacionFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__recibo_liquidacionClient<$Types.GetResult<recibo_liquidacionPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Recibo_liquidacions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_liquidacionFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Recibo_liquidacions
+     * const recibo_liquidacions = await prisma.recibo_liquidacion.findMany()
+     * 
+     * // Get first 10 Recibo_liquidacions
+     * const recibo_liquidacions = await prisma.recibo_liquidacion.findMany({ take: 10 })
+     * 
+     * // Only select the `idrecibo`
+     * const recibo_liquidacionWithIdreciboOnly = await prisma.recibo_liquidacion.findMany({ select: { idrecibo: true } })
+     * 
+    **/
+    findMany<T extends recibo_liquidacionFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, recibo_liquidacionFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<recibo_liquidacionPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Recibo_liquidacion.
+     * @param {recibo_liquidacionCreateArgs} args - Arguments to create a Recibo_liquidacion.
+     * @example
+     * // Create one Recibo_liquidacion
+     * const Recibo_liquidacion = await prisma.recibo_liquidacion.create({
+     *   data: {
+     *     // ... data to create a Recibo_liquidacion
+     *   }
+     * })
+     * 
+    **/
+    create<T extends recibo_liquidacionCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, recibo_liquidacionCreateArgs<ExtArgs>>
+    ): Prisma__recibo_liquidacionClient<$Types.GetResult<recibo_liquidacionPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Recibo_liquidacions.
+     *     @param {recibo_liquidacionCreateManyArgs} args - Arguments to create many Recibo_liquidacions.
+     *     @example
+     *     // Create many Recibo_liquidacions
+     *     const recibo_liquidacion = await prisma.recibo_liquidacion.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends recibo_liquidacionCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, recibo_liquidacionCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Recibo_liquidacion.
+     * @param {recibo_liquidacionDeleteArgs} args - Arguments to delete one Recibo_liquidacion.
+     * @example
+     * // Delete one Recibo_liquidacion
+     * const Recibo_liquidacion = await prisma.recibo_liquidacion.delete({
+     *   where: {
+     *     // ... filter to delete one Recibo_liquidacion
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends recibo_liquidacionDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, recibo_liquidacionDeleteArgs<ExtArgs>>
+    ): Prisma__recibo_liquidacionClient<$Types.GetResult<recibo_liquidacionPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Recibo_liquidacion.
+     * @param {recibo_liquidacionUpdateArgs} args - Arguments to update one Recibo_liquidacion.
+     * @example
+     * // Update one Recibo_liquidacion
+     * const recibo_liquidacion = await prisma.recibo_liquidacion.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends recibo_liquidacionUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, recibo_liquidacionUpdateArgs<ExtArgs>>
+    ): Prisma__recibo_liquidacionClient<$Types.GetResult<recibo_liquidacionPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Recibo_liquidacions.
+     * @param {recibo_liquidacionDeleteManyArgs} args - Arguments to filter Recibo_liquidacions to delete.
+     * @example
+     * // Delete a few Recibo_liquidacions
+     * const { count } = await prisma.recibo_liquidacion.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends recibo_liquidacionDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, recibo_liquidacionDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Recibo_liquidacions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_liquidacionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Recibo_liquidacions
+     * const recibo_liquidacion = await prisma.recibo_liquidacion.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends recibo_liquidacionUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, recibo_liquidacionUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Recibo_liquidacion.
+     * @param {recibo_liquidacionUpsertArgs} args - Arguments to update or create a Recibo_liquidacion.
+     * @example
+     * // Update or create a Recibo_liquidacion
+     * const recibo_liquidacion = await prisma.recibo_liquidacion.upsert({
+     *   create: {
+     *     // ... data to create a Recibo_liquidacion
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Recibo_liquidacion we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends recibo_liquidacionUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, recibo_liquidacionUpsertArgs<ExtArgs>>
+    ): Prisma__recibo_liquidacionClient<$Types.GetResult<recibo_liquidacionPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Recibo_liquidacions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_liquidacionCountArgs} args - Arguments to filter Recibo_liquidacions to count.
+     * @example
+     * // Count the number of Recibo_liquidacions
+     * const count = await prisma.recibo_liquidacion.count({
+     *   where: {
+     *     // ... the filter for the Recibo_liquidacions we want to count
+     *   }
+     * })
+    **/
+    count<T extends recibo_liquidacionCountArgs>(
+      args?: Subset<T, recibo_liquidacionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Recibo_liquidacionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Recibo_liquidacion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Recibo_liquidacionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Recibo_liquidacionAggregateArgs>(args: Subset<T, Recibo_liquidacionAggregateArgs>): Prisma.PrismaPromise<GetRecibo_liquidacionAggregateType<T>>
+
+    /**
+     * Group by Recibo_liquidacion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_liquidacionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends recibo_liquidacionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: recibo_liquidacionGroupByArgs['orderBy'] }
+        : { orderBy?: recibo_liquidacionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, recibo_liquidacionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRecibo_liquidacionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for recibo_liquidacion.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__recibo_liquidacionClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * recibo_liquidacion base type for findUnique actions
+   */
+  export type recibo_liquidacionFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_liquidacion
+     */
+    select?: recibo_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter, which recibo_liquidacion to fetch.
+     */
+    where: recibo_liquidacionWhereUniqueInput
+  }
+
+  /**
+   * recibo_liquidacion findUnique
+   */
+  export interface recibo_liquidacionFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends recibo_liquidacionFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * recibo_liquidacion findUniqueOrThrow
+   */
+  export type recibo_liquidacionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_liquidacion
+     */
+    select?: recibo_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter, which recibo_liquidacion to fetch.
+     */
+    where: recibo_liquidacionWhereUniqueInput
+  }
+
+
+  /**
+   * recibo_liquidacion base type for findFirst actions
+   */
+  export type recibo_liquidacionFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_liquidacion
+     */
+    select?: recibo_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter, which recibo_liquidacion to fetch.
+     */
+    where?: recibo_liquidacionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recibo_liquidacions to fetch.
+     */
+    orderBy?: recibo_liquidacionOrderByWithRelationInput | recibo_liquidacionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for recibo_liquidacions.
+     */
+    cursor?: recibo_liquidacionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recibo_liquidacions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recibo_liquidacions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of recibo_liquidacions.
+     */
+    distinct?: Recibo_liquidacionScalarFieldEnum | Recibo_liquidacionScalarFieldEnum[]
+  }
+
+  /**
+   * recibo_liquidacion findFirst
+   */
+  export interface recibo_liquidacionFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends recibo_liquidacionFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * recibo_liquidacion findFirstOrThrow
+   */
+  export type recibo_liquidacionFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_liquidacion
+     */
+    select?: recibo_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter, which recibo_liquidacion to fetch.
+     */
+    where?: recibo_liquidacionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recibo_liquidacions to fetch.
+     */
+    orderBy?: recibo_liquidacionOrderByWithRelationInput | recibo_liquidacionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for recibo_liquidacions.
+     */
+    cursor?: recibo_liquidacionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recibo_liquidacions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recibo_liquidacions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of recibo_liquidacions.
+     */
+    distinct?: Recibo_liquidacionScalarFieldEnum | Recibo_liquidacionScalarFieldEnum[]
+  }
+
+
+  /**
+   * recibo_liquidacion findMany
+   */
+  export type recibo_liquidacionFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_liquidacion
+     */
+    select?: recibo_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter, which recibo_liquidacions to fetch.
+     */
+    where?: recibo_liquidacionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recibo_liquidacions to fetch.
+     */
+    orderBy?: recibo_liquidacionOrderByWithRelationInput | recibo_liquidacionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing recibo_liquidacions.
+     */
+    cursor?: recibo_liquidacionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recibo_liquidacions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recibo_liquidacions.
+     */
+    skip?: number
+    distinct?: Recibo_liquidacionScalarFieldEnum | Recibo_liquidacionScalarFieldEnum[]
+  }
+
+
+  /**
+   * recibo_liquidacion create
+   */
+  export type recibo_liquidacionCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_liquidacion
+     */
+    select?: recibo_liquidacionSelect<ExtArgs> | null
+    /**
+     * The data needed to create a recibo_liquidacion.
+     */
+    data?: XOR<recibo_liquidacionCreateInput, recibo_liquidacionUncheckedCreateInput>
+  }
+
+
+  /**
+   * recibo_liquidacion createMany
+   */
+  export type recibo_liquidacionCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many recibo_liquidacions.
+     */
+    data: recibo_liquidacionCreateManyInput | recibo_liquidacionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * recibo_liquidacion update
+   */
+  export type recibo_liquidacionUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_liquidacion
+     */
+    select?: recibo_liquidacionSelect<ExtArgs> | null
+    /**
+     * The data needed to update a recibo_liquidacion.
+     */
+    data: XOR<recibo_liquidacionUpdateInput, recibo_liquidacionUncheckedUpdateInput>
+    /**
+     * Choose, which recibo_liquidacion to update.
+     */
+    where: recibo_liquidacionWhereUniqueInput
+  }
+
+
+  /**
+   * recibo_liquidacion updateMany
+   */
+  export type recibo_liquidacionUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update recibo_liquidacions.
+     */
+    data: XOR<recibo_liquidacionUpdateManyMutationInput, recibo_liquidacionUncheckedUpdateManyInput>
+    /**
+     * Filter which recibo_liquidacions to update
+     */
+    where?: recibo_liquidacionWhereInput
+  }
+
+
+  /**
+   * recibo_liquidacion upsert
+   */
+  export type recibo_liquidacionUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_liquidacion
+     */
+    select?: recibo_liquidacionSelect<ExtArgs> | null
+    /**
+     * The filter to search for the recibo_liquidacion to update in case it exists.
+     */
+    where: recibo_liquidacionWhereUniqueInput
+    /**
+     * In case the recibo_liquidacion found by the `where` argument doesn't exist, create a new recibo_liquidacion with this data.
+     */
+    create: XOR<recibo_liquidacionCreateInput, recibo_liquidacionUncheckedCreateInput>
+    /**
+     * In case the recibo_liquidacion was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<recibo_liquidacionUpdateInput, recibo_liquidacionUncheckedUpdateInput>
+  }
+
+
+  /**
+   * recibo_liquidacion delete
+   */
+  export type recibo_liquidacionDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_liquidacion
+     */
+    select?: recibo_liquidacionSelect<ExtArgs> | null
+    /**
+     * Filter which recibo_liquidacion to delete.
+     */
+    where: recibo_liquidacionWhereUniqueInput
+  }
+
+
+  /**
+   * recibo_liquidacion deleteMany
+   */
+  export type recibo_liquidacionDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which recibo_liquidacions to delete
+     */
+    where?: recibo_liquidacionWhereInput
+  }
+
+
+  /**
+   * recibo_liquidacion without action
+   */
+  export type recibo_liquidacionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_liquidacion
+     */
+    select?: recibo_liquidacionSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model recibo_movimientos
+   */
+
+
+  export type AggregateRecibo_movimientos = {
+    _count: Recibo_movimientosCountAggregateOutputType | null
+    _avg: Recibo_movimientosAvgAggregateOutputType | null
+    _sum: Recibo_movimientosSumAggregateOutputType | null
+    _min: Recibo_movimientosMinAggregateOutputType | null
+    _max: Recibo_movimientosMaxAggregateOutputType | null
+  }
+
+  export type Recibo_movimientosAvgAggregateOutputType = {
+    idmovimiento: number | null
+    idrecibo: number | null
+    remu_ren: number | null
+    remu_exe: number | null
+    descuento: number | null
+  }
+
+  export type Recibo_movimientosSumAggregateOutputType = {
+    idmovimiento: number | null
+    idrecibo: number | null
+    remu_ren: number | null
+    remu_exe: number | null
+    descuento: number | null
+  }
+
+  export type Recibo_movimientosMinAggregateOutputType = {
+    idmovimiento: number | null
+    idrecibo: number | null
+    cuil: string | null
+    concepto: string | null
+    remu_ren: number | null
+    remu_exe: number | null
+    descuento: number | null
+  }
+
+  export type Recibo_movimientosMaxAggregateOutputType = {
+    idmovimiento: number | null
+    idrecibo: number | null
+    cuil: string | null
+    concepto: string | null
+    remu_ren: number | null
+    remu_exe: number | null
+    descuento: number | null
+  }
+
+  export type Recibo_movimientosCountAggregateOutputType = {
+    idmovimiento: number
+    idrecibo: number
+    cuil: number
+    concepto: number
+    remu_ren: number
+    remu_exe: number
+    descuento: number
+    _all: number
+  }
+
+
+  export type Recibo_movimientosAvgAggregateInputType = {
+    idmovimiento?: true
+    idrecibo?: true
+    remu_ren?: true
+    remu_exe?: true
+    descuento?: true
+  }
+
+  export type Recibo_movimientosSumAggregateInputType = {
+    idmovimiento?: true
+    idrecibo?: true
+    remu_ren?: true
+    remu_exe?: true
+    descuento?: true
+  }
+
+  export type Recibo_movimientosMinAggregateInputType = {
+    idmovimiento?: true
+    idrecibo?: true
+    cuil?: true
+    concepto?: true
+    remu_ren?: true
+    remu_exe?: true
+    descuento?: true
+  }
+
+  export type Recibo_movimientosMaxAggregateInputType = {
+    idmovimiento?: true
+    idrecibo?: true
+    cuil?: true
+    concepto?: true
+    remu_ren?: true
+    remu_exe?: true
+    descuento?: true
+  }
+
+  export type Recibo_movimientosCountAggregateInputType = {
+    idmovimiento?: true
+    idrecibo?: true
+    cuil?: true
+    concepto?: true
+    remu_ren?: true
+    remu_exe?: true
+    descuento?: true
+    _all?: true
+  }
+
+  export type Recibo_movimientosAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which recibo_movimientos to aggregate.
+     */
+    where?: recibo_movimientosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recibo_movimientos to fetch.
+     */
+    orderBy?: recibo_movimientosOrderByWithRelationInput | recibo_movimientosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: recibo_movimientosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recibo_movimientos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recibo_movimientos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned recibo_movimientos
+    **/
+    _count?: true | Recibo_movimientosCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Recibo_movimientosAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Recibo_movimientosSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Recibo_movimientosMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Recibo_movimientosMaxAggregateInputType
+  }
+
+  export type GetRecibo_movimientosAggregateType<T extends Recibo_movimientosAggregateArgs> = {
+        [P in keyof T & keyof AggregateRecibo_movimientos]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRecibo_movimientos[P]>
+      : GetScalarType<T[P], AggregateRecibo_movimientos[P]>
+  }
+
+
+
+
+  export type recibo_movimientosGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: recibo_movimientosWhereInput
+    orderBy?: recibo_movimientosOrderByWithAggregationInput | recibo_movimientosOrderByWithAggregationInput[]
+    by: Recibo_movimientosScalarFieldEnum[] | Recibo_movimientosScalarFieldEnum
+    having?: recibo_movimientosScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Recibo_movimientosCountAggregateInputType | true
+    _avg?: Recibo_movimientosAvgAggregateInputType
+    _sum?: Recibo_movimientosSumAggregateInputType
+    _min?: Recibo_movimientosMinAggregateInputType
+    _max?: Recibo_movimientosMaxAggregateInputType
+  }
+
+
+  export type Recibo_movimientosGroupByOutputType = {
+    idmovimiento: number
+    idrecibo: number | null
+    cuil: string | null
+    concepto: string | null
+    remu_ren: number | null
+    remu_exe: number | null
+    descuento: number | null
+    _count: Recibo_movimientosCountAggregateOutputType | null
+    _avg: Recibo_movimientosAvgAggregateOutputType | null
+    _sum: Recibo_movimientosSumAggregateOutputType | null
+    _min: Recibo_movimientosMinAggregateOutputType | null
+    _max: Recibo_movimientosMaxAggregateOutputType | null
+  }
+
+  type GetRecibo_movimientosGroupByPayload<T extends recibo_movimientosGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Recibo_movimientosGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Recibo_movimientosGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Recibo_movimientosGroupByOutputType[P]>
+            : GetScalarType<T[P], Recibo_movimientosGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type recibo_movimientosSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idmovimiento?: boolean
+    idrecibo?: boolean
+    cuil?: boolean
+    concepto?: boolean
+    remu_ren?: boolean
+    remu_exe?: boolean
+    descuento?: boolean
+  }, ExtArgs["result"]["recibo_movimientos"]>
+
+  export type recibo_movimientosSelectScalar = {
+    idmovimiento?: boolean
+    idrecibo?: boolean
+    cuil?: boolean
+    concepto?: boolean
+    remu_ren?: boolean
+    remu_exe?: boolean
+    descuento?: boolean
+  }
+
+
+  type recibo_movimientosGetPayload<S extends boolean | null | undefined | recibo_movimientosArgs> = $Types.GetResult<recibo_movimientosPayload, S>
+
+  type recibo_movimientosCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<recibo_movimientosFindManyArgs, 'select' | 'include'> & {
+      select?: Recibo_movimientosCountAggregateInputType | true
+    }
+
+  export interface recibo_movimientosDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['recibo_movimientos'], meta: { name: 'recibo_movimientos' } }
+    /**
+     * Find zero or one Recibo_movimientos that matches the filter.
+     * @param {recibo_movimientosFindUniqueArgs} args - Arguments to find a Recibo_movimientos
+     * @example
+     * // Get one Recibo_movimientos
+     * const recibo_movimientos = await prisma.recibo_movimientos.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends recibo_movimientosFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, recibo_movimientosFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'recibo_movimientos'> extends True ? Prisma__recibo_movimientosClient<$Types.GetResult<recibo_movimientosPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__recibo_movimientosClient<$Types.GetResult<recibo_movimientosPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Recibo_movimientos that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {recibo_movimientosFindUniqueOrThrowArgs} args - Arguments to find a Recibo_movimientos
+     * @example
+     * // Get one Recibo_movimientos
+     * const recibo_movimientos = await prisma.recibo_movimientos.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends recibo_movimientosFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, recibo_movimientosFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__recibo_movimientosClient<$Types.GetResult<recibo_movimientosPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Recibo_movimientos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_movimientosFindFirstArgs} args - Arguments to find a Recibo_movimientos
+     * @example
+     * // Get one Recibo_movimientos
+     * const recibo_movimientos = await prisma.recibo_movimientos.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends recibo_movimientosFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, recibo_movimientosFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'recibo_movimientos'> extends True ? Prisma__recibo_movimientosClient<$Types.GetResult<recibo_movimientosPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__recibo_movimientosClient<$Types.GetResult<recibo_movimientosPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Recibo_movimientos that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_movimientosFindFirstOrThrowArgs} args - Arguments to find a Recibo_movimientos
+     * @example
+     * // Get one Recibo_movimientos
+     * const recibo_movimientos = await prisma.recibo_movimientos.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends recibo_movimientosFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, recibo_movimientosFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__recibo_movimientosClient<$Types.GetResult<recibo_movimientosPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Recibo_movimientos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_movimientosFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Recibo_movimientos
+     * const recibo_movimientos = await prisma.recibo_movimientos.findMany()
+     * 
+     * // Get first 10 Recibo_movimientos
+     * const recibo_movimientos = await prisma.recibo_movimientos.findMany({ take: 10 })
+     * 
+     * // Only select the `idmovimiento`
+     * const recibo_movimientosWithIdmovimientoOnly = await prisma.recibo_movimientos.findMany({ select: { idmovimiento: true } })
+     * 
+    **/
+    findMany<T extends recibo_movimientosFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, recibo_movimientosFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<recibo_movimientosPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Recibo_movimientos.
+     * @param {recibo_movimientosCreateArgs} args - Arguments to create a Recibo_movimientos.
+     * @example
+     * // Create one Recibo_movimientos
+     * const Recibo_movimientos = await prisma.recibo_movimientos.create({
+     *   data: {
+     *     // ... data to create a Recibo_movimientos
+     *   }
+     * })
+     * 
+    **/
+    create<T extends recibo_movimientosCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, recibo_movimientosCreateArgs<ExtArgs>>
+    ): Prisma__recibo_movimientosClient<$Types.GetResult<recibo_movimientosPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Recibo_movimientos.
+     *     @param {recibo_movimientosCreateManyArgs} args - Arguments to create many Recibo_movimientos.
+     *     @example
+     *     // Create many Recibo_movimientos
+     *     const recibo_movimientos = await prisma.recibo_movimientos.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends recibo_movimientosCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, recibo_movimientosCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Recibo_movimientos.
+     * @param {recibo_movimientosDeleteArgs} args - Arguments to delete one Recibo_movimientos.
+     * @example
+     * // Delete one Recibo_movimientos
+     * const Recibo_movimientos = await prisma.recibo_movimientos.delete({
+     *   where: {
+     *     // ... filter to delete one Recibo_movimientos
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends recibo_movimientosDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, recibo_movimientosDeleteArgs<ExtArgs>>
+    ): Prisma__recibo_movimientosClient<$Types.GetResult<recibo_movimientosPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Recibo_movimientos.
+     * @param {recibo_movimientosUpdateArgs} args - Arguments to update one Recibo_movimientos.
+     * @example
+     * // Update one Recibo_movimientos
+     * const recibo_movimientos = await prisma.recibo_movimientos.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends recibo_movimientosUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, recibo_movimientosUpdateArgs<ExtArgs>>
+    ): Prisma__recibo_movimientosClient<$Types.GetResult<recibo_movimientosPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Recibo_movimientos.
+     * @param {recibo_movimientosDeleteManyArgs} args - Arguments to filter Recibo_movimientos to delete.
+     * @example
+     * // Delete a few Recibo_movimientos
+     * const { count } = await prisma.recibo_movimientos.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends recibo_movimientosDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, recibo_movimientosDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Recibo_movimientos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_movimientosUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Recibo_movimientos
+     * const recibo_movimientos = await prisma.recibo_movimientos.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends recibo_movimientosUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, recibo_movimientosUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Recibo_movimientos.
+     * @param {recibo_movimientosUpsertArgs} args - Arguments to update or create a Recibo_movimientos.
+     * @example
+     * // Update or create a Recibo_movimientos
+     * const recibo_movimientos = await prisma.recibo_movimientos.upsert({
+     *   create: {
+     *     // ... data to create a Recibo_movimientos
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Recibo_movimientos we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends recibo_movimientosUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, recibo_movimientosUpsertArgs<ExtArgs>>
+    ): Prisma__recibo_movimientosClient<$Types.GetResult<recibo_movimientosPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Recibo_movimientos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_movimientosCountArgs} args - Arguments to filter Recibo_movimientos to count.
+     * @example
+     * // Count the number of Recibo_movimientos
+     * const count = await prisma.recibo_movimientos.count({
+     *   where: {
+     *     // ... the filter for the Recibo_movimientos we want to count
+     *   }
+     * })
+    **/
+    count<T extends recibo_movimientosCountArgs>(
+      args?: Subset<T, recibo_movimientosCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Recibo_movimientosCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Recibo_movimientos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Recibo_movimientosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Recibo_movimientosAggregateArgs>(args: Subset<T, Recibo_movimientosAggregateArgs>): Prisma.PrismaPromise<GetRecibo_movimientosAggregateType<T>>
+
+    /**
+     * Group by Recibo_movimientos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recibo_movimientosGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends recibo_movimientosGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: recibo_movimientosGroupByArgs['orderBy'] }
+        : { orderBy?: recibo_movimientosGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, recibo_movimientosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRecibo_movimientosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for recibo_movimientos.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__recibo_movimientosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * recibo_movimientos base type for findUnique actions
+   */
+  export type recibo_movimientosFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_movimientos
+     */
+    select?: recibo_movimientosSelect<ExtArgs> | null
+    /**
+     * Filter, which recibo_movimientos to fetch.
+     */
+    where: recibo_movimientosWhereUniqueInput
+  }
+
+  /**
+   * recibo_movimientos findUnique
+   */
+  export interface recibo_movimientosFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends recibo_movimientosFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * recibo_movimientos findUniqueOrThrow
+   */
+  export type recibo_movimientosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_movimientos
+     */
+    select?: recibo_movimientosSelect<ExtArgs> | null
+    /**
+     * Filter, which recibo_movimientos to fetch.
+     */
+    where: recibo_movimientosWhereUniqueInput
+  }
+
+
+  /**
+   * recibo_movimientos base type for findFirst actions
+   */
+  export type recibo_movimientosFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_movimientos
+     */
+    select?: recibo_movimientosSelect<ExtArgs> | null
+    /**
+     * Filter, which recibo_movimientos to fetch.
+     */
+    where?: recibo_movimientosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recibo_movimientos to fetch.
+     */
+    orderBy?: recibo_movimientosOrderByWithRelationInput | recibo_movimientosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for recibo_movimientos.
+     */
+    cursor?: recibo_movimientosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recibo_movimientos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recibo_movimientos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of recibo_movimientos.
+     */
+    distinct?: Recibo_movimientosScalarFieldEnum | Recibo_movimientosScalarFieldEnum[]
+  }
+
+  /**
+   * recibo_movimientos findFirst
+   */
+  export interface recibo_movimientosFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends recibo_movimientosFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * recibo_movimientos findFirstOrThrow
+   */
+  export type recibo_movimientosFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_movimientos
+     */
+    select?: recibo_movimientosSelect<ExtArgs> | null
+    /**
+     * Filter, which recibo_movimientos to fetch.
+     */
+    where?: recibo_movimientosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recibo_movimientos to fetch.
+     */
+    orderBy?: recibo_movimientosOrderByWithRelationInput | recibo_movimientosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for recibo_movimientos.
+     */
+    cursor?: recibo_movimientosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recibo_movimientos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recibo_movimientos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of recibo_movimientos.
+     */
+    distinct?: Recibo_movimientosScalarFieldEnum | Recibo_movimientosScalarFieldEnum[]
+  }
+
+
+  /**
+   * recibo_movimientos findMany
+   */
+  export type recibo_movimientosFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_movimientos
+     */
+    select?: recibo_movimientosSelect<ExtArgs> | null
+    /**
+     * Filter, which recibo_movimientos to fetch.
+     */
+    where?: recibo_movimientosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recibo_movimientos to fetch.
+     */
+    orderBy?: recibo_movimientosOrderByWithRelationInput | recibo_movimientosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing recibo_movimientos.
+     */
+    cursor?: recibo_movimientosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recibo_movimientos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recibo_movimientos.
+     */
+    skip?: number
+    distinct?: Recibo_movimientosScalarFieldEnum | Recibo_movimientosScalarFieldEnum[]
+  }
+
+
+  /**
+   * recibo_movimientos create
+   */
+  export type recibo_movimientosCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_movimientos
+     */
+    select?: recibo_movimientosSelect<ExtArgs> | null
+    /**
+     * The data needed to create a recibo_movimientos.
+     */
+    data?: XOR<recibo_movimientosCreateInput, recibo_movimientosUncheckedCreateInput>
+  }
+
+
+  /**
+   * recibo_movimientos createMany
+   */
+  export type recibo_movimientosCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many recibo_movimientos.
+     */
+    data: recibo_movimientosCreateManyInput | recibo_movimientosCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * recibo_movimientos update
+   */
+  export type recibo_movimientosUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_movimientos
+     */
+    select?: recibo_movimientosSelect<ExtArgs> | null
+    /**
+     * The data needed to update a recibo_movimientos.
+     */
+    data: XOR<recibo_movimientosUpdateInput, recibo_movimientosUncheckedUpdateInput>
+    /**
+     * Choose, which recibo_movimientos to update.
+     */
+    where: recibo_movimientosWhereUniqueInput
+  }
+
+
+  /**
+   * recibo_movimientos updateMany
+   */
+  export type recibo_movimientosUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update recibo_movimientos.
+     */
+    data: XOR<recibo_movimientosUpdateManyMutationInput, recibo_movimientosUncheckedUpdateManyInput>
+    /**
+     * Filter which recibo_movimientos to update
+     */
+    where?: recibo_movimientosWhereInput
+  }
+
+
+  /**
+   * recibo_movimientos upsert
+   */
+  export type recibo_movimientosUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_movimientos
+     */
+    select?: recibo_movimientosSelect<ExtArgs> | null
+    /**
+     * The filter to search for the recibo_movimientos to update in case it exists.
+     */
+    where: recibo_movimientosWhereUniqueInput
+    /**
+     * In case the recibo_movimientos found by the `where` argument doesn't exist, create a new recibo_movimientos with this data.
+     */
+    create: XOR<recibo_movimientosCreateInput, recibo_movimientosUncheckedCreateInput>
+    /**
+     * In case the recibo_movimientos was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<recibo_movimientosUpdateInput, recibo_movimientosUncheckedUpdateInput>
+  }
+
+
+  /**
+   * recibo_movimientos delete
+   */
+  export type recibo_movimientosDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_movimientos
+     */
+    select?: recibo_movimientosSelect<ExtArgs> | null
+    /**
+     * Filter which recibo_movimientos to delete.
+     */
+    where: recibo_movimientosWhereUniqueInput
+  }
+
+
+  /**
+   * recibo_movimientos deleteMany
+   */
+  export type recibo_movimientosDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which recibo_movimientos to delete
+     */
+    where?: recibo_movimientosWhereInput
+  }
+
+
+  /**
+   * recibo_movimientos without action
+   */
+  export type recibo_movimientosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recibo_movimientos
+     */
+    select?: recibo_movimientosSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -71809,7 +76111,8 @@ export namespace Prisma {
     campanas: 'campanas',
     socios: 'socios',
     sepelio: 'sepelio',
-    gestion: 'gestion'
+    gestion: 'gestion',
+    contabilidad: 'contabilidad'
   };
 
   export type OperadorScalarFieldEnum = (typeof OperadorScalarFieldEnum)[keyof typeof OperadorScalarFieldEnum]
@@ -72234,6 +76537,68 @@ export namespace Prisma {
   };
 
   export type ReintegrosScalarFieldEnum = (typeof ReintegrosScalarFieldEnum)[keyof typeof ReintegrosScalarFieldEnum]
+
+
+  export const Conceptos_liquidacionScalarFieldEnum: {
+    idconcepto: 'idconcepto',
+    concepto: 'concepto',
+    formula: 'formula'
+  };
+
+  export type Conceptos_liquidacionScalarFieldEnum = (typeof Conceptos_liquidacionScalarFieldEnum)[keyof typeof Conceptos_liquidacionScalarFieldEnum]
+
+
+  export const Legajo_operadorScalarFieldEnum: {
+    idlegajo: 'idlegajo',
+    operador: 'operador',
+    cuil: 'cuil',
+    fecha_ingreso: 'fecha_ingreso',
+    antiguedad: 'antiguedad',
+    categoria: 'categoria',
+    tiempo_trabajo: 'tiempo_trabajo',
+    fecha_pago: 'fecha_pago',
+    contratacion: 'contratacion',
+    idempresa: 'idempresa',
+    estado: 'estado'
+  };
+
+  export type Legajo_operadorScalarFieldEnum = (typeof Legajo_operadorScalarFieldEnum)[keyof typeof Legajo_operadorScalarFieldEnum]
+
+
+  export const Recibo_liquidacionScalarFieldEnum: {
+    idrecibo: 'idrecibo',
+    periodo: 'periodo',
+    fecha: 'fecha',
+    operador: 'operador',
+    total_neto: 'total_neto',
+    total_letra: 'total_letra',
+    forma_pago: 'forma_pago',
+    fecha_deposito: 'fecha_deposito',
+    banco: 'banco',
+    empresa: 'empresa',
+    empresa_cuit: 'empresa_cuit',
+    operador_cuil: 'operador_cuil',
+    idlegajo: 'idlegajo',
+    fecha_ingreso: 'fecha_ingreso',
+    anti: 'anti',
+    categoria: 'categoria',
+    seccion: 'seccion'
+  };
+
+  export type Recibo_liquidacionScalarFieldEnum = (typeof Recibo_liquidacionScalarFieldEnum)[keyof typeof Recibo_liquidacionScalarFieldEnum]
+
+
+  export const Recibo_movimientosScalarFieldEnum: {
+    idmovimiento: 'idmovimiento',
+    idrecibo: 'idrecibo',
+    cuil: 'cuil',
+    concepto: 'concepto',
+    remu_ren: 'remu_ren',
+    remu_exe: 'remu_exe',
+    descuento: 'descuento'
+  };
+
+  export type Recibo_movimientosScalarFieldEnum = (typeof Recibo_movimientosScalarFieldEnum)[keyof typeof Recibo_movimientosScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -74503,6 +78868,7 @@ export namespace Prisma {
     socios?: BoolNullableFilter | boolean | null
     sepelio?: BoolNullableFilter | boolean | null
     gestion?: BoolNullableFilter | boolean | null
+    contabilidad?: BoolNullableFilter | boolean | null
   }
 
   export type operadorOrderByWithRelationInput = {
@@ -74531,6 +78897,7 @@ export namespace Prisma {
     socios?: SortOrderInput | SortOrder
     sepelio?: SortOrderInput | SortOrder
     gestion?: SortOrderInput | SortOrder
+    contabilidad?: SortOrderInput | SortOrder
   }
 
   export type operadorWhereUniqueInput = {
@@ -74563,6 +78930,7 @@ export namespace Prisma {
     socios?: SortOrderInput | SortOrder
     sepelio?: SortOrderInput | SortOrder
     gestion?: SortOrderInput | SortOrder
+    contabilidad?: SortOrderInput | SortOrder
     _count?: operadorCountOrderByAggregateInput
     _avg?: operadorAvgOrderByAggregateInput
     _max?: operadorMaxOrderByAggregateInput
@@ -74599,6 +78967,7 @@ export namespace Prisma {
     socios?: BoolNullableWithAggregatesFilter | boolean | null
     sepelio?: BoolNullableWithAggregatesFilter | boolean | null
     gestion?: BoolNullableWithAggregatesFilter | boolean | null
+    contabilidad?: BoolNullableWithAggregatesFilter | boolean | null
   }
 
   export type ordenes_pagoWhereInput = {
@@ -76373,6 +80742,266 @@ export namespace Prisma {
     observacion?: StringNullableWithAggregatesFilter | string | null
     operador?: StringNullableWithAggregatesFilter | string | null
     fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+  }
+
+  export type conceptos_liquidacionWhereInput = {
+    AND?: conceptos_liquidacionWhereInput | conceptos_liquidacionWhereInput[]
+    OR?: conceptos_liquidacionWhereInput[]
+    NOT?: conceptos_liquidacionWhereInput | conceptos_liquidacionWhereInput[]
+    idconcepto?: IntFilter | number
+    concepto?: StringNullableFilter | string | null
+    formula?: StringNullableFilter | string | null
+  }
+
+  export type conceptos_liquidacionOrderByWithRelationInput = {
+    idconcepto?: SortOrder
+    concepto?: SortOrderInput | SortOrder
+    formula?: SortOrderInput | SortOrder
+  }
+
+  export type conceptos_liquidacionWhereUniqueInput = {
+    idconcepto?: number
+  }
+
+  export type conceptos_liquidacionOrderByWithAggregationInput = {
+    idconcepto?: SortOrder
+    concepto?: SortOrderInput | SortOrder
+    formula?: SortOrderInput | SortOrder
+    _count?: conceptos_liquidacionCountOrderByAggregateInput
+    _avg?: conceptos_liquidacionAvgOrderByAggregateInput
+    _max?: conceptos_liquidacionMaxOrderByAggregateInput
+    _min?: conceptos_liquidacionMinOrderByAggregateInput
+    _sum?: conceptos_liquidacionSumOrderByAggregateInput
+  }
+
+  export type conceptos_liquidacionScalarWhereWithAggregatesInput = {
+    AND?: conceptos_liquidacionScalarWhereWithAggregatesInput | conceptos_liquidacionScalarWhereWithAggregatesInput[]
+    OR?: conceptos_liquidacionScalarWhereWithAggregatesInput[]
+    NOT?: conceptos_liquidacionScalarWhereWithAggregatesInput | conceptos_liquidacionScalarWhereWithAggregatesInput[]
+    idconcepto?: IntWithAggregatesFilter | number
+    concepto?: StringNullableWithAggregatesFilter | string | null
+    formula?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type legajo_operadorWhereInput = {
+    AND?: legajo_operadorWhereInput | legajo_operadorWhereInput[]
+    OR?: legajo_operadorWhereInput[]
+    NOT?: legajo_operadorWhereInput | legajo_operadorWhereInput[]
+    idlegajo?: IntFilter | number
+    operador?: StringNullableFilter | string | null
+    cuil?: StringNullableFilter | string | null
+    fecha_ingreso?: DateTimeNullableFilter | Date | string | null
+    antiguedad?: IntNullableFilter | number | null
+    categoria?: StringNullableFilter | string | null
+    tiempo_trabajo?: StringNullableFilter | string | null
+    fecha_pago?: StringNullableFilter | string | null
+    contratacion?: StringNullableFilter | string | null
+    idempresa?: IntNullableFilter | number | null
+    estado?: BoolNullableFilter | boolean | null
+  }
+
+  export type legajo_operadorOrderByWithRelationInput = {
+    idlegajo?: SortOrder
+    operador?: SortOrderInput | SortOrder
+    cuil?: SortOrderInput | SortOrder
+    fecha_ingreso?: SortOrderInput | SortOrder
+    antiguedad?: SortOrderInput | SortOrder
+    categoria?: SortOrderInput | SortOrder
+    tiempo_trabajo?: SortOrderInput | SortOrder
+    fecha_pago?: SortOrderInput | SortOrder
+    contratacion?: SortOrderInput | SortOrder
+    idempresa?: SortOrderInput | SortOrder
+    estado?: SortOrderInput | SortOrder
+  }
+
+  export type legajo_operadorWhereUniqueInput = {
+    idlegajo?: number
+  }
+
+  export type legajo_operadorOrderByWithAggregationInput = {
+    idlegajo?: SortOrder
+    operador?: SortOrderInput | SortOrder
+    cuil?: SortOrderInput | SortOrder
+    fecha_ingreso?: SortOrderInput | SortOrder
+    antiguedad?: SortOrderInput | SortOrder
+    categoria?: SortOrderInput | SortOrder
+    tiempo_trabajo?: SortOrderInput | SortOrder
+    fecha_pago?: SortOrderInput | SortOrder
+    contratacion?: SortOrderInput | SortOrder
+    idempresa?: SortOrderInput | SortOrder
+    estado?: SortOrderInput | SortOrder
+    _count?: legajo_operadorCountOrderByAggregateInput
+    _avg?: legajo_operadorAvgOrderByAggregateInput
+    _max?: legajo_operadorMaxOrderByAggregateInput
+    _min?: legajo_operadorMinOrderByAggregateInput
+    _sum?: legajo_operadorSumOrderByAggregateInput
+  }
+
+  export type legajo_operadorScalarWhereWithAggregatesInput = {
+    AND?: legajo_operadorScalarWhereWithAggregatesInput | legajo_operadorScalarWhereWithAggregatesInput[]
+    OR?: legajo_operadorScalarWhereWithAggregatesInput[]
+    NOT?: legajo_operadorScalarWhereWithAggregatesInput | legajo_operadorScalarWhereWithAggregatesInput[]
+    idlegajo?: IntWithAggregatesFilter | number
+    operador?: StringNullableWithAggregatesFilter | string | null
+    cuil?: StringNullableWithAggregatesFilter | string | null
+    fecha_ingreso?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    antiguedad?: IntNullableWithAggregatesFilter | number | null
+    categoria?: StringNullableWithAggregatesFilter | string | null
+    tiempo_trabajo?: StringNullableWithAggregatesFilter | string | null
+    fecha_pago?: StringNullableWithAggregatesFilter | string | null
+    contratacion?: StringNullableWithAggregatesFilter | string | null
+    idempresa?: IntNullableWithAggregatesFilter | number | null
+    estado?: BoolNullableWithAggregatesFilter | boolean | null
+  }
+
+  export type recibo_liquidacionWhereInput = {
+    AND?: recibo_liquidacionWhereInput | recibo_liquidacionWhereInput[]
+    OR?: recibo_liquidacionWhereInput[]
+    NOT?: recibo_liquidacionWhereInput | recibo_liquidacionWhereInput[]
+    idrecibo?: IntFilter | number
+    periodo?: StringNullableFilter | string | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+    operador?: StringNullableFilter | string | null
+    total_neto?: FloatNullableFilter | number | null
+    total_letra?: StringNullableFilter | string | null
+    forma_pago?: StringNullableFilter | string | null
+    fecha_deposito?: DateTimeNullableFilter | Date | string | null
+    banco?: StringNullableFilter | string | null
+    empresa?: StringNullableFilter | string | null
+    empresa_cuit?: StringNullableFilter | string | null
+    operador_cuil?: StringNullableFilter | string | null
+    idlegajo?: IntNullableFilter | number | null
+    fecha_ingreso?: DateTimeNullableFilter | Date | string | null
+    anti?: IntNullableFilter | number | null
+    categoria?: StringNullableFilter | string | null
+    seccion?: StringNullableFilter | string | null
+  }
+
+  export type recibo_liquidacionOrderByWithRelationInput = {
+    idrecibo?: SortOrder
+    periodo?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    total_neto?: SortOrderInput | SortOrder
+    total_letra?: SortOrderInput | SortOrder
+    forma_pago?: SortOrderInput | SortOrder
+    fecha_deposito?: SortOrderInput | SortOrder
+    banco?: SortOrderInput | SortOrder
+    empresa?: SortOrderInput | SortOrder
+    empresa_cuit?: SortOrderInput | SortOrder
+    operador_cuil?: SortOrderInput | SortOrder
+    idlegajo?: SortOrderInput | SortOrder
+    fecha_ingreso?: SortOrderInput | SortOrder
+    anti?: SortOrderInput | SortOrder
+    categoria?: SortOrderInput | SortOrder
+    seccion?: SortOrderInput | SortOrder
+  }
+
+  export type recibo_liquidacionWhereUniqueInput = {
+    idrecibo?: number
+  }
+
+  export type recibo_liquidacionOrderByWithAggregationInput = {
+    idrecibo?: SortOrder
+    periodo?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    total_neto?: SortOrderInput | SortOrder
+    total_letra?: SortOrderInput | SortOrder
+    forma_pago?: SortOrderInput | SortOrder
+    fecha_deposito?: SortOrderInput | SortOrder
+    banco?: SortOrderInput | SortOrder
+    empresa?: SortOrderInput | SortOrder
+    empresa_cuit?: SortOrderInput | SortOrder
+    operador_cuil?: SortOrderInput | SortOrder
+    idlegajo?: SortOrderInput | SortOrder
+    fecha_ingreso?: SortOrderInput | SortOrder
+    anti?: SortOrderInput | SortOrder
+    categoria?: SortOrderInput | SortOrder
+    seccion?: SortOrderInput | SortOrder
+    _count?: recibo_liquidacionCountOrderByAggregateInput
+    _avg?: recibo_liquidacionAvgOrderByAggregateInput
+    _max?: recibo_liquidacionMaxOrderByAggregateInput
+    _min?: recibo_liquidacionMinOrderByAggregateInput
+    _sum?: recibo_liquidacionSumOrderByAggregateInput
+  }
+
+  export type recibo_liquidacionScalarWhereWithAggregatesInput = {
+    AND?: recibo_liquidacionScalarWhereWithAggregatesInput | recibo_liquidacionScalarWhereWithAggregatesInput[]
+    OR?: recibo_liquidacionScalarWhereWithAggregatesInput[]
+    NOT?: recibo_liquidacionScalarWhereWithAggregatesInput | recibo_liquidacionScalarWhereWithAggregatesInput[]
+    idrecibo?: IntWithAggregatesFilter | number
+    periodo?: StringNullableWithAggregatesFilter | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    operador?: StringNullableWithAggregatesFilter | string | null
+    total_neto?: FloatNullableWithAggregatesFilter | number | null
+    total_letra?: StringNullableWithAggregatesFilter | string | null
+    forma_pago?: StringNullableWithAggregatesFilter | string | null
+    fecha_deposito?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    banco?: StringNullableWithAggregatesFilter | string | null
+    empresa?: StringNullableWithAggregatesFilter | string | null
+    empresa_cuit?: StringNullableWithAggregatesFilter | string | null
+    operador_cuil?: StringNullableWithAggregatesFilter | string | null
+    idlegajo?: IntNullableWithAggregatesFilter | number | null
+    fecha_ingreso?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    anti?: IntNullableWithAggregatesFilter | number | null
+    categoria?: StringNullableWithAggregatesFilter | string | null
+    seccion?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type recibo_movimientosWhereInput = {
+    AND?: recibo_movimientosWhereInput | recibo_movimientosWhereInput[]
+    OR?: recibo_movimientosWhereInput[]
+    NOT?: recibo_movimientosWhereInput | recibo_movimientosWhereInput[]
+    idmovimiento?: IntFilter | number
+    idrecibo?: IntNullableFilter | number | null
+    cuil?: StringNullableFilter | string | null
+    concepto?: StringNullableFilter | string | null
+    remu_ren?: FloatNullableFilter | number | null
+    remu_exe?: FloatNullableFilter | number | null
+    descuento?: FloatNullableFilter | number | null
+  }
+
+  export type recibo_movimientosOrderByWithRelationInput = {
+    idmovimiento?: SortOrder
+    idrecibo?: SortOrderInput | SortOrder
+    cuil?: SortOrderInput | SortOrder
+    concepto?: SortOrderInput | SortOrder
+    remu_ren?: SortOrderInput | SortOrder
+    remu_exe?: SortOrderInput | SortOrder
+    descuento?: SortOrderInput | SortOrder
+  }
+
+  export type recibo_movimientosWhereUniqueInput = {
+    idmovimiento?: number
+  }
+
+  export type recibo_movimientosOrderByWithAggregationInput = {
+    idmovimiento?: SortOrder
+    idrecibo?: SortOrderInput | SortOrder
+    cuil?: SortOrderInput | SortOrder
+    concepto?: SortOrderInput | SortOrder
+    remu_ren?: SortOrderInput | SortOrder
+    remu_exe?: SortOrderInput | SortOrder
+    descuento?: SortOrderInput | SortOrder
+    _count?: recibo_movimientosCountOrderByAggregateInput
+    _avg?: recibo_movimientosAvgOrderByAggregateInput
+    _max?: recibo_movimientosMaxOrderByAggregateInput
+    _min?: recibo_movimientosMinOrderByAggregateInput
+    _sum?: recibo_movimientosSumOrderByAggregateInput
+  }
+
+  export type recibo_movimientosScalarWhereWithAggregatesInput = {
+    AND?: recibo_movimientosScalarWhereWithAggregatesInput | recibo_movimientosScalarWhereWithAggregatesInput[]
+    OR?: recibo_movimientosScalarWhereWithAggregatesInput[]
+    NOT?: recibo_movimientosScalarWhereWithAggregatesInput | recibo_movimientosScalarWhereWithAggregatesInput[]
+    idmovimiento?: IntWithAggregatesFilter | number
+    idrecibo?: IntNullableWithAggregatesFilter | number | null
+    cuil?: StringNullableWithAggregatesFilter | string | null
+    concepto?: StringNullableWithAggregatesFilter | string | null
+    remu_ren?: FloatNullableWithAggregatesFilter | number | null
+    remu_exe?: FloatNullableWithAggregatesFilter | number | null
+    descuento?: FloatNullableWithAggregatesFilter | number | null
   }
 
   export type alta_novellCreateInput = {
@@ -79259,6 +83888,7 @@ export namespace Prisma {
     socios?: boolean | null
     sepelio?: boolean | null
     gestion?: boolean | null
+    contabilidad?: boolean | null
   }
 
   export type operadorUncheckedCreateInput = {
@@ -79287,6 +83917,7 @@ export namespace Prisma {
     socios?: boolean | null
     sepelio?: boolean | null
     gestion?: boolean | null
+    contabilidad?: boolean | null
   }
 
   export type operadorUpdateInput = {
@@ -79314,6 +83945,7 @@ export namespace Prisma {
     socios?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
     gestion?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    contabilidad?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type operadorUncheckedUpdateInput = {
@@ -79342,6 +83974,7 @@ export namespace Prisma {
     socios?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
     gestion?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    contabilidad?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type operadorCreateManyInput = {
@@ -79370,6 +84003,7 @@ export namespace Prisma {
     socios?: boolean | null
     sepelio?: boolean | null
     gestion?: boolean | null
+    contabilidad?: boolean | null
   }
 
   export type operadorUpdateManyMutationInput = {
@@ -79397,6 +84031,7 @@ export namespace Prisma {
     socios?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
     gestion?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    contabilidad?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type operadorUncheckedUpdateManyInput = {
@@ -79425,6 +84060,7 @@ export namespace Prisma {
     socios?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
     gestion?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    contabilidad?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type ordenes_pagoCreateInput = {
@@ -81657,6 +86293,344 @@ export namespace Prisma {
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type conceptos_liquidacionCreateInput = {
+    concepto?: string | null
+    formula?: string | null
+  }
+
+  export type conceptos_liquidacionUncheckedCreateInput = {
+    idconcepto?: number
+    concepto?: string | null
+    formula?: string | null
+  }
+
+  export type conceptos_liquidacionUpdateInput = {
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    formula?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type conceptos_liquidacionUncheckedUpdateInput = {
+    idconcepto?: IntFieldUpdateOperationsInput | number
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    formula?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type conceptos_liquidacionCreateManyInput = {
+    idconcepto?: number
+    concepto?: string | null
+    formula?: string | null
+  }
+
+  export type conceptos_liquidacionUpdateManyMutationInput = {
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    formula?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type conceptos_liquidacionUncheckedUpdateManyInput = {
+    idconcepto?: IntFieldUpdateOperationsInput | number
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    formula?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type legajo_operadorCreateInput = {
+    operador?: string | null
+    cuil?: string | null
+    fecha_ingreso?: Date | string | null
+    antiguedad?: number | null
+    categoria?: string | null
+    tiempo_trabajo?: string | null
+    fecha_pago?: string | null
+    contratacion?: string | null
+    idempresa?: number | null
+    estado?: boolean | null
+  }
+
+  export type legajo_operadorUncheckedCreateInput = {
+    idlegajo?: number
+    operador?: string | null
+    cuil?: string | null
+    fecha_ingreso?: Date | string | null
+    antiguedad?: number | null
+    categoria?: string | null
+    tiempo_trabajo?: string | null
+    fecha_pago?: string | null
+    contratacion?: string | null
+    idempresa?: number | null
+    estado?: boolean | null
+  }
+
+  export type legajo_operadorUpdateInput = {
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    antiguedad?: NullableIntFieldUpdateOperationsInput | number | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    tiempo_trabajo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_pago?: NullableStringFieldUpdateOperationsInput | string | null
+    contratacion?: NullableStringFieldUpdateOperationsInput | string | null
+    idempresa?: NullableIntFieldUpdateOperationsInput | number | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type legajo_operadorUncheckedUpdateInput = {
+    idlegajo?: IntFieldUpdateOperationsInput | number
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    antiguedad?: NullableIntFieldUpdateOperationsInput | number | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    tiempo_trabajo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_pago?: NullableStringFieldUpdateOperationsInput | string | null
+    contratacion?: NullableStringFieldUpdateOperationsInput | string | null
+    idempresa?: NullableIntFieldUpdateOperationsInput | number | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type legajo_operadorCreateManyInput = {
+    idlegajo?: number
+    operador?: string | null
+    cuil?: string | null
+    fecha_ingreso?: Date | string | null
+    antiguedad?: number | null
+    categoria?: string | null
+    tiempo_trabajo?: string | null
+    fecha_pago?: string | null
+    contratacion?: string | null
+    idempresa?: number | null
+    estado?: boolean | null
+  }
+
+  export type legajo_operadorUpdateManyMutationInput = {
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    antiguedad?: NullableIntFieldUpdateOperationsInput | number | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    tiempo_trabajo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_pago?: NullableStringFieldUpdateOperationsInput | string | null
+    contratacion?: NullableStringFieldUpdateOperationsInput | string | null
+    idempresa?: NullableIntFieldUpdateOperationsInput | number | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type legajo_operadorUncheckedUpdateManyInput = {
+    idlegajo?: IntFieldUpdateOperationsInput | number
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    antiguedad?: NullableIntFieldUpdateOperationsInput | number | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    tiempo_trabajo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_pago?: NullableStringFieldUpdateOperationsInput | string | null
+    contratacion?: NullableStringFieldUpdateOperationsInput | string | null
+    idempresa?: NullableIntFieldUpdateOperationsInput | number | null
+    estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type recibo_liquidacionCreateInput = {
+    periodo?: string | null
+    fecha?: Date | string | null
+    operador?: string | null
+    total_neto?: number | null
+    total_letra?: string | null
+    forma_pago?: string | null
+    fecha_deposito?: Date | string | null
+    banco?: string | null
+    empresa?: string | null
+    empresa_cuit?: string | null
+    operador_cuil?: string | null
+    idlegajo?: number | null
+    fecha_ingreso?: Date | string | null
+    anti?: number | null
+    categoria?: string | null
+    seccion?: string | null
+  }
+
+  export type recibo_liquidacionUncheckedCreateInput = {
+    idrecibo?: number
+    periodo?: string | null
+    fecha?: Date | string | null
+    operador?: string | null
+    total_neto?: number | null
+    total_letra?: string | null
+    forma_pago?: string | null
+    fecha_deposito?: Date | string | null
+    banco?: string | null
+    empresa?: string | null
+    empresa_cuit?: string | null
+    operador_cuil?: string | null
+    idlegajo?: number | null
+    fecha_ingreso?: Date | string | null
+    anti?: number | null
+    categoria?: string | null
+    seccion?: string | null
+  }
+
+  export type recibo_liquidacionUpdateInput = {
+    periodo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    total_neto?: NullableFloatFieldUpdateOperationsInput | number | null
+    total_letra?: NullableStringFieldUpdateOperationsInput | string | null
+    forma_pago?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_deposito?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    banco?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa_cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    operador_cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    idlegajo?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    anti?: NullableIntFieldUpdateOperationsInput | number | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    seccion?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type recibo_liquidacionUncheckedUpdateInput = {
+    idrecibo?: IntFieldUpdateOperationsInput | number
+    periodo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    total_neto?: NullableFloatFieldUpdateOperationsInput | number | null
+    total_letra?: NullableStringFieldUpdateOperationsInput | string | null
+    forma_pago?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_deposito?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    banco?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa_cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    operador_cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    idlegajo?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    anti?: NullableIntFieldUpdateOperationsInput | number | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    seccion?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type recibo_liquidacionCreateManyInput = {
+    idrecibo?: number
+    periodo?: string | null
+    fecha?: Date | string | null
+    operador?: string | null
+    total_neto?: number | null
+    total_letra?: string | null
+    forma_pago?: string | null
+    fecha_deposito?: Date | string | null
+    banco?: string | null
+    empresa?: string | null
+    empresa_cuit?: string | null
+    operador_cuil?: string | null
+    idlegajo?: number | null
+    fecha_ingreso?: Date | string | null
+    anti?: number | null
+    categoria?: string | null
+    seccion?: string | null
+  }
+
+  export type recibo_liquidacionUpdateManyMutationInput = {
+    periodo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    total_neto?: NullableFloatFieldUpdateOperationsInput | number | null
+    total_letra?: NullableStringFieldUpdateOperationsInput | string | null
+    forma_pago?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_deposito?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    banco?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa_cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    operador_cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    idlegajo?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    anti?: NullableIntFieldUpdateOperationsInput | number | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    seccion?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type recibo_liquidacionUncheckedUpdateManyInput = {
+    idrecibo?: IntFieldUpdateOperationsInput | number
+    periodo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    total_neto?: NullableFloatFieldUpdateOperationsInput | number | null
+    total_letra?: NullableStringFieldUpdateOperationsInput | string | null
+    forma_pago?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_deposito?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    banco?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    empresa_cuit?: NullableStringFieldUpdateOperationsInput | string | null
+    operador_cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    idlegajo?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    anti?: NullableIntFieldUpdateOperationsInput | number | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    seccion?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type recibo_movimientosCreateInput = {
+    idrecibo?: number | null
+    cuil?: string | null
+    concepto?: string | null
+    remu_ren?: number | null
+    remu_exe?: number | null
+    descuento?: number | null
+  }
+
+  export type recibo_movimientosUncheckedCreateInput = {
+    idmovimiento?: number
+    idrecibo?: number | null
+    cuil?: string | null
+    concepto?: string | null
+    remu_ren?: number | null
+    remu_exe?: number | null
+    descuento?: number | null
+  }
+
+  export type recibo_movimientosUpdateInput = {
+    idrecibo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    remu_ren?: NullableFloatFieldUpdateOperationsInput | number | null
+    remu_exe?: NullableFloatFieldUpdateOperationsInput | number | null
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type recibo_movimientosUncheckedUpdateInput = {
+    idmovimiento?: IntFieldUpdateOperationsInput | number
+    idrecibo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    remu_ren?: NullableFloatFieldUpdateOperationsInput | number | null
+    remu_exe?: NullableFloatFieldUpdateOperationsInput | number | null
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type recibo_movimientosCreateManyInput = {
+    idmovimiento?: number
+    idrecibo?: number | null
+    cuil?: string | null
+    concepto?: string | null
+    remu_ren?: number | null
+    remu_exe?: number | null
+    descuento?: number | null
+  }
+
+  export type recibo_movimientosUpdateManyMutationInput = {
+    idrecibo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    remu_ren?: NullableFloatFieldUpdateOperationsInput | number | null
+    remu_exe?: NullableFloatFieldUpdateOperationsInput | number | null
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type recibo_movimientosUncheckedUpdateManyInput = {
+    idmovimiento?: IntFieldUpdateOperationsInput | number
+    idrecibo?: NullableIntFieldUpdateOperationsInput | number | null
+    cuil?: NullableStringFieldUpdateOperationsInput | string | null
+    concepto?: NullableStringFieldUpdateOperationsInput | string | null
+    remu_ren?: NullableFloatFieldUpdateOperationsInput | number | null
+    remu_exe?: NullableFloatFieldUpdateOperationsInput | number | null
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
   export type IntFilter = {
     equals?: number
     in?: number[]
@@ -83626,6 +88600,7 @@ export namespace Prisma {
     socios?: SortOrder
     sepelio?: SortOrder
     gestion?: SortOrder
+    contabilidad?: SortOrder
   }
 
   export type operadorAvgOrderByAggregateInput = {
@@ -83664,6 +88639,7 @@ export namespace Prisma {
     socios?: SortOrder
     sepelio?: SortOrder
     gestion?: SortOrder
+    contabilidad?: SortOrder
   }
 
   export type operadorMinOrderByAggregateInput = {
@@ -83692,6 +88668,7 @@ export namespace Prisma {
     socios?: SortOrder
     sepelio?: SortOrder
     gestion?: SortOrder
+    contabilidad?: SortOrder
   }
 
   export type operadorSumOrderByAggregateInput = {
@@ -85079,6 +90056,206 @@ export namespace Prisma {
     contrato?: SortOrder
     dni?: SortOrder
     importe?: SortOrder
+  }
+
+  export type conceptos_liquidacionCountOrderByAggregateInput = {
+    idconcepto?: SortOrder
+    concepto?: SortOrder
+    formula?: SortOrder
+  }
+
+  export type conceptos_liquidacionAvgOrderByAggregateInput = {
+    idconcepto?: SortOrder
+  }
+
+  export type conceptos_liquidacionMaxOrderByAggregateInput = {
+    idconcepto?: SortOrder
+    concepto?: SortOrder
+    formula?: SortOrder
+  }
+
+  export type conceptos_liquidacionMinOrderByAggregateInput = {
+    idconcepto?: SortOrder
+    concepto?: SortOrder
+    formula?: SortOrder
+  }
+
+  export type conceptos_liquidacionSumOrderByAggregateInput = {
+    idconcepto?: SortOrder
+  }
+
+  export type legajo_operadorCountOrderByAggregateInput = {
+    idlegajo?: SortOrder
+    operador?: SortOrder
+    cuil?: SortOrder
+    fecha_ingreso?: SortOrder
+    antiguedad?: SortOrder
+    categoria?: SortOrder
+    tiempo_trabajo?: SortOrder
+    fecha_pago?: SortOrder
+    contratacion?: SortOrder
+    idempresa?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type legajo_operadorAvgOrderByAggregateInput = {
+    idlegajo?: SortOrder
+    antiguedad?: SortOrder
+    idempresa?: SortOrder
+  }
+
+  export type legajo_operadorMaxOrderByAggregateInput = {
+    idlegajo?: SortOrder
+    operador?: SortOrder
+    cuil?: SortOrder
+    fecha_ingreso?: SortOrder
+    antiguedad?: SortOrder
+    categoria?: SortOrder
+    tiempo_trabajo?: SortOrder
+    fecha_pago?: SortOrder
+    contratacion?: SortOrder
+    idempresa?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type legajo_operadorMinOrderByAggregateInput = {
+    idlegajo?: SortOrder
+    operador?: SortOrder
+    cuil?: SortOrder
+    fecha_ingreso?: SortOrder
+    antiguedad?: SortOrder
+    categoria?: SortOrder
+    tiempo_trabajo?: SortOrder
+    fecha_pago?: SortOrder
+    contratacion?: SortOrder
+    idempresa?: SortOrder
+    estado?: SortOrder
+  }
+
+  export type legajo_operadorSumOrderByAggregateInput = {
+    idlegajo?: SortOrder
+    antiguedad?: SortOrder
+    idempresa?: SortOrder
+  }
+
+  export type recibo_liquidacionCountOrderByAggregateInput = {
+    idrecibo?: SortOrder
+    periodo?: SortOrder
+    fecha?: SortOrder
+    operador?: SortOrder
+    total_neto?: SortOrder
+    total_letra?: SortOrder
+    forma_pago?: SortOrder
+    fecha_deposito?: SortOrder
+    banco?: SortOrder
+    empresa?: SortOrder
+    empresa_cuit?: SortOrder
+    operador_cuil?: SortOrder
+    idlegajo?: SortOrder
+    fecha_ingreso?: SortOrder
+    anti?: SortOrder
+    categoria?: SortOrder
+    seccion?: SortOrder
+  }
+
+  export type recibo_liquidacionAvgOrderByAggregateInput = {
+    idrecibo?: SortOrder
+    total_neto?: SortOrder
+    idlegajo?: SortOrder
+    anti?: SortOrder
+  }
+
+  export type recibo_liquidacionMaxOrderByAggregateInput = {
+    idrecibo?: SortOrder
+    periodo?: SortOrder
+    fecha?: SortOrder
+    operador?: SortOrder
+    total_neto?: SortOrder
+    total_letra?: SortOrder
+    forma_pago?: SortOrder
+    fecha_deposito?: SortOrder
+    banco?: SortOrder
+    empresa?: SortOrder
+    empresa_cuit?: SortOrder
+    operador_cuil?: SortOrder
+    idlegajo?: SortOrder
+    fecha_ingreso?: SortOrder
+    anti?: SortOrder
+    categoria?: SortOrder
+    seccion?: SortOrder
+  }
+
+  export type recibo_liquidacionMinOrderByAggregateInput = {
+    idrecibo?: SortOrder
+    periodo?: SortOrder
+    fecha?: SortOrder
+    operador?: SortOrder
+    total_neto?: SortOrder
+    total_letra?: SortOrder
+    forma_pago?: SortOrder
+    fecha_deposito?: SortOrder
+    banco?: SortOrder
+    empresa?: SortOrder
+    empresa_cuit?: SortOrder
+    operador_cuil?: SortOrder
+    idlegajo?: SortOrder
+    fecha_ingreso?: SortOrder
+    anti?: SortOrder
+    categoria?: SortOrder
+    seccion?: SortOrder
+  }
+
+  export type recibo_liquidacionSumOrderByAggregateInput = {
+    idrecibo?: SortOrder
+    total_neto?: SortOrder
+    idlegajo?: SortOrder
+    anti?: SortOrder
+  }
+
+  export type recibo_movimientosCountOrderByAggregateInput = {
+    idmovimiento?: SortOrder
+    idrecibo?: SortOrder
+    cuil?: SortOrder
+    concepto?: SortOrder
+    remu_ren?: SortOrder
+    remu_exe?: SortOrder
+    descuento?: SortOrder
+  }
+
+  export type recibo_movimientosAvgOrderByAggregateInput = {
+    idmovimiento?: SortOrder
+    idrecibo?: SortOrder
+    remu_ren?: SortOrder
+    remu_exe?: SortOrder
+    descuento?: SortOrder
+  }
+
+  export type recibo_movimientosMaxOrderByAggregateInput = {
+    idmovimiento?: SortOrder
+    idrecibo?: SortOrder
+    cuil?: SortOrder
+    concepto?: SortOrder
+    remu_ren?: SortOrder
+    remu_exe?: SortOrder
+    descuento?: SortOrder
+  }
+
+  export type recibo_movimientosMinOrderByAggregateInput = {
+    idmovimiento?: SortOrder
+    idrecibo?: SortOrder
+    cuil?: SortOrder
+    concepto?: SortOrder
+    remu_ren?: SortOrder
+    remu_exe?: SortOrder
+    descuento?: SortOrder
+  }
+
+  export type recibo_movimientosSumOrderByAggregateInput = {
+    idmovimiento?: SortOrder
+    idrecibo?: SortOrder
+    remu_ren?: SortOrder
+    remu_exe?: SortOrder
+    descuento?: SortOrder
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {

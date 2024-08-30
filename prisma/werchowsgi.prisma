@@ -592,6 +592,7 @@ model operador {
   socios         Boolean?
   sepelio        Boolean?
   gestion        Boolean?
+  contabilidad   Boolean?
 }
 
 model ordenes_pago {
@@ -1010,4 +1011,54 @@ model reintegros {
   observacion String?   @db.VarChar(1000)
   operador    String?   @db.VarChar(255)
   fecha       DateTime? @db.Date
+}
+
+model conceptos_liquidacion {
+  idconcepto Int     @id @default(autoincrement())
+  concepto   String? @db.VarChar(500)
+  formula    String? @db.VarChar(500)
+}
+
+model legajo_operador {
+  idlegajo       Int       @id @default(autoincrement())
+  operador       String?   @db.VarChar(255)
+  cuil           String?   @db.VarChar(255)
+  fecha_ingreso  DateTime? @db.Date
+  antiguedad     Int?
+  categoria      String?   @db.VarChar(255)
+  tiempo_trabajo String?   @db.VarChar(255)
+  fecha_pago     String?   @db.VarChar(255)
+  contratacion   String?   @db.VarChar(255)
+  idempresa      Int?
+  estado         Boolean?
+}
+
+model recibo_liquidacion {
+  idrecibo       Int       @id @default(autoincrement())
+  periodo        String?   @db.VarChar(255)
+  fecha          DateTime? @db.Date
+  operador       String?   @db.VarChar(255)
+  total_neto     Float?    @db.Float
+  total_letra    String?   @db.VarChar(500)
+  forma_pago     String?   @db.VarChar(255)
+  fecha_deposito DateTime? @db.Date
+  banco          String?   @db.VarChar(255)
+  empresa        String?   @db.VarChar(255)
+  empresa_cuit   String?   @db.VarChar(255)
+  operador_cuil  String?   @db.VarChar(255)
+  idlegajo       Int?
+  fecha_ingreso  DateTime? @db.Date
+  anti           Int?
+  categoria      String?   @db.VarChar(255)
+  seccion        String?   @db.VarChar(255)
+}
+
+model recibo_movimientos {
+  idmovimiento Int     @id @default(autoincrement())
+  idrecibo     Int?
+  cuil         String? @db.VarChar(255)
+  concepto     String? @db.VarChar(255)
+  remu_ren     Float?  @db.Float
+  remu_exe     Float?  @db.Float
+  descuento    Float?  @db.Float
 }
