@@ -9,7 +9,7 @@ import useSWR from "swr";
 import { confirmAlert } from "react-confirm-alert";
 import moment from "moment";
 import { registrarHistoria, regHistorialAuto } from "@/libs/funciones";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import jsCookie from "js-cookie";
 import {
   CheckCircleIcon,
@@ -273,6 +273,13 @@ function recibo(props) {
               .then((res) => {
                 if (res.status === 200) {
                   toast.success("Recibo creado y totales actualizados");
+
+                  setTimeout(() => {
+                    Router.push({
+                      pathname: "/contabilidad/liquidaciones/impresion",
+                      query: { idrecibo: idRec },
+                    });
+                  }, 1000);
                 }
               })
               .catch((error) => {

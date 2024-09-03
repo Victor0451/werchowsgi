@@ -77,8 +77,6 @@ function Sucursales(props) {
         guardarEmp("Mutual San Valentin");
       }
 
-      console.log(mov);
-
       if (mov.movimiento === "I") {
         guardarIngreso([...ingreso, mov]);
       } else if (mov.movimiento === "E") {

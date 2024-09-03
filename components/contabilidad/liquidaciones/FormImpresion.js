@@ -111,6 +111,8 @@ const FormImpresion = ({ recibo, operador, movim, calImpus, componentRef }) => {
                   size="sm"
                   label="Seccion"
                   type="text"
+                  value={recibo.seccion}
+                  readOnly
                 />
               </div>
               <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
@@ -174,7 +176,14 @@ const FormImpresion = ({ recibo, operador, movim, calImpus, componentRef }) => {
               </div>
 
               <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
-                <Input variant="standard" size="sm" label="Banco" type="text" />
+                <Input
+                  variant="standard"
+                  size="sm"
+                  label="Banco"
+                  type="text"
+                  value={recibo.banco}
+                  readOnly
+                />
               </div>
             </div>
           </div>
@@ -288,7 +297,7 @@ const FormImpresion = ({ recibo, operador, movim, calImpus, componentRef }) => {
                     >
                       Lugar y Fecha de pago:
                     </Typography>
-                    San Salvador de Jujuy, {moment().format("DD/MM/YYYY")}
+                    San Salvador de Jujuy, 05/{moment().format("MM/YYYY")}
                   </td>
                   <td className="p-1">
                     <Typography
