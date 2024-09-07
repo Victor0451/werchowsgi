@@ -417,8 +417,8 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   de los vehículos durante la inhumación no superará los 40
                   minutos; caso contrario La Empresa cobrará por la misma un
                   valor equivalente al alquiler de un automóvil. 7- La Empresa
-                  proveerá de un set de cafetería: 1 kg de azúcar, 1 caja de te
-                  de 25 u, 1 caja de mate de 25 u, 1 café, y bebidas gaseosas (
+                  proveerá de un set de cafetería: 1 kg de azúcar, 1 bolsa de caramelos, 
+                  1 café, y bebidas gaseosas (
                   3) . 8- El responsable designado es el único con exclusivo
                   derecho a cobrar el gasto luto del plan queda excluido el
                   subsidio de contención familiar que tiene beneficiarios
