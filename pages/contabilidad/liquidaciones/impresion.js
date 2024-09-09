@@ -120,14 +120,14 @@ function impresion(props) {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].remu_ren) {
         trr += parseFloat(arr[i].remu_ren.toFixed(2));
+      }
 
-        if (arr[i].remu_exe) {
-          tre += parseFloat(arr[i].remu_exe.toFixed(2));
-        }
+      if (arr[i].remu_exe) {
+        tre += parseFloat(arr[i].remu_exe.toFixed(2));
+      }
 
-        if (arr[i].descuento) {
-          tds += parseFloat(arr[i].descuento.toFixed(2));
-        }
+      if (arr[i].descuento) {
+        tds += parseFloat(arr[i].descuento.toFixed(2));
       }
     }
 
@@ -153,6 +153,20 @@ function impresion(props) {
             calImpus={calImpus}
             componentRef={componentRef}
             calTot={calTot}
+            firma={"Firma del empleado"}
+            titulo={"Recibo Empleado"}
+          />
+
+          <hr className="mt-5 mb-5 border-2" />
+          <FormImpresion
+            recibo={recibo}
+            operador={operador}
+            movim={movim}
+            calImpus={calImpus}
+            componentRef={componentRef}
+            calTot={calTot}
+            firma={"Firma del empleador"}
+            titulo={"Recibo Empleador"}
           />
         </>
       )}
