@@ -138,7 +138,7 @@ const ListadoImputaciones = ({ listado, usu, eliminarImpu, calImpus }) => {
                 <Typography variant="h6">Total de Remu. Ret.</Typography>
 
                 <Typography color="black" className="mt-1 font-normal">
-                  <u>Total a Pagar</u>: ${parseFloat(calImpus(listado, "rr"))}
+                  <u>Total a Pagar</u>: ${calImpus(listado, "rr")}
                 </Typography>
               </Alert>
             </div>
@@ -148,7 +148,7 @@ const ListadoImputaciones = ({ listado, usu, eliminarImpu, calImpus }) => {
                 <Typography variant="h6">Total de Remu. Exentas</Typography>
 
                 <Typography color="black" className="mt-1 font-normal">
-                  <u>Total a Pagar</u>: ${parseFloat(calImpus(listado, "re"))}
+                  <u>Total a Pagar</u>: ${calImpus(listado, "re")}
                 </Typography>
               </Alert>
             </div>
@@ -158,7 +158,7 @@ const ListadoImputaciones = ({ listado, usu, eliminarImpu, calImpus }) => {
                 <Typography variant="h6">Total de Descuentos</Typography>
 
                 <Typography color="black" className="mt-1 font-normal">
-                  <u>Total a Pagar</u>: ${parseFloat(calImpus(listado, "ds"))}
+                  <u>Total a Pagar</u>: ${calImpus(listado, "ds")}
                 </Typography>
               </Alert>
             </div>

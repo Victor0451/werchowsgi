@@ -24,7 +24,14 @@ import Select2 from "react-select";
 import Link from "next/link";
 import ReactToPrint from "react-to-print";
 
-const FormImpresion = ({ recibo, operador, movim, calImpus, componentRef }) => {
+const FormImpresion = ({
+  recibo,
+  operador,
+  movim,
+  calImpus,
+  componentRef,
+  calTot,
+}) => {
   const TABLE_HEAD = [
     "Concepto",
     "Remun. Sujetas a Retencion",
@@ -226,7 +233,9 @@ const FormImpresion = ({ recibo, operador, movim, calImpus, componentRef }) => {
                         color="blue-gray"
                         className="font-normal text-center"
                       >
-                        {l.remu_ren}
+                        {l.remu_ren ? (
+                          <>{parseFloat(l.remu_ren).toFixed(2)}</>
+                        ) : null}
                       </Typography>
                     </td>
                     <td className="p-1 border border-gray-800">
@@ -235,7 +244,9 @@ const FormImpresion = ({ recibo, operador, movim, calImpus, componentRef }) => {
                         color="blue-gray"
                         className="font-normal text-center"
                       >
-                        {l.remu_exe}
+                        {l.remu_exe ? (
+                          <>{parseFloat(l.remu_exe).toFixed(2)}</>
+                        ) : null}
                       </Typography>
                     </td>
                     <td className="p-1 border border-gray-800">
@@ -244,7 +255,9 @@ const FormImpresion = ({ recibo, operador, movim, calImpus, componentRef }) => {
                         color="blue-gray"
                         className="font-normal text-center"
                       >
-                        {l.descuento}
+                        {l.descuento ? (
+                          <>{parseFloat(l.descuento).toFixed(2)}</>
+                        ) : null}
                       </Typography>
                     </td>
                   </tr>
@@ -318,11 +331,7 @@ const FormImpresion = ({ recibo, operador, movim, calImpus, componentRef }) => {
                       TOTAL NETO
                     </Typography>
                   </td>
-                  <td className="p-1">
-                    {calImpus(movim, "rr") +
-                      calImpus(movim, "re") -
-                      calImpus(movim, "ds")}
-                  </td>
+                  <td className="p-1">{calTot(movim)}</td>
                 </tr>
               </tbody>
             </table>

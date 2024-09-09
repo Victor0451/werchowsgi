@@ -134,26 +134,38 @@ function recibo(props) {
 
     if (f === "rr") {
       for (let i = 0; i < arr.length; i++) {
-        total += arr[i].remu_ren;
+        if (arr[i].remu_ren) {
+          total += parseFloat(arr[i].remu_ren.toFixed(2));
+        }
       }
     } else if (f === "re") {
       for (let i = 0; i < arr.length; i++) {
-        total += arr[i].remu_exe;
+        if (arr[i].remu_exe) {
+          total += parseFloat(arr[i].remu_exe.toFixed(2));
+        }
       }
     } else if (f === "ds") {
       for (let i = 0; i < arr.length; i++) {
-        total += arr[i].desc;
+        if (arr[i].desc) {
+          total += parseFloat(arr[i].desc.toFixed(2));
+        }
       }
     }
 
-    return total;
+    return total.toFixed(2);
   };
 
   let crearRecibo = async () => {
-    if (periodoRef.current.value === "") {
-      toast.info(
+    if (seccionRef.current.value === "") {
+      toast.warning("Ingresa la seccion a la que pertenece el empleado");
+    } else if (periodoRef.current.value === "") {
+      toast.warning(
         "Ingresa el periodo de liquidacion para poder verificar si ya existe la liquidacion"
       );
+    } else if (fechaDepRef.current.value === "") {
+      toast.warning("Ingresa la fecha de deposito del sueldo");
+    } else if (bancoRef.current.value === "") {
+      toast.warning("Ingresa el banco al cual se realizara el deposito.");
     } else {
       await axios
         .get("/api/contabilidad/liquidaciones", {

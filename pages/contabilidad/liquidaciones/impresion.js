@@ -85,24 +85,55 @@ function impresion(props) {
         toast.error("Ocurrio un error al traer el listado de participantes");
       });
   };
-  let calImpus = (arr, f) => {
+
+  let calImpus = (arr, f, f2) => {
     let total = 0;
 
     if (f === "rr") {
       for (let i = 0; i < arr.length; i++) {
-        total += arr[i].remu_ren;
+        if (arr[i].remu_ren) {
+          total += parseFloat(arr[i].remu_ren.toFixed(2));
+        }
       }
     } else if (f === "re") {
       for (let i = 0; i < arr.length; i++) {
-        total += arr[i].remu_exe;
+        if (arr[i].remu_exe) {
+          total += parseFloat(arr[i].remu_exe.toFixed(2));
+        }
       }
     } else if (f === "ds") {
       for (let i = 0; i < arr.length; i++) {
-        total += arr[i].descuento;
+        if (arr[i].descuento) {
+          total += parseFloat(arr[i].descuento.toFixed(2));
+        }
       }
     }
 
-    return total;
+    return total.toFixed(2);
+  };
+
+  let calTot = (arr) => {
+    let trr = 0;
+    let tre = 0;
+    let tds = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].remu_ren) {
+        trr += parseFloat(arr[i].remu_ren.toFixed(2));
+
+        if (arr[i].remu_exe) {
+          tre += parseFloat(arr[i].remu_exe.toFixed(2));
+        }
+
+        if (arr[i].descuento) {
+          tds += parseFloat(arr[i].descuento.toFixed(2));
+        }
+      }
+    }
+
+    let to = trr + tre - tds;
+
+    return to.toFixed(2);
   };
 
   useSWR("/api/contabilidad/liquidaciones", traerDatos);
@@ -121,6 +152,7 @@ function impresion(props) {
             movim={movim}
             calImpus={calImpus}
             componentRef={componentRef}
+            calTot={calTot}
           />
         </>
       )}
