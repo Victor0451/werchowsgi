@@ -14,6 +14,7 @@ import ModalAcciones from "./ModalAcciones";
 import ModalImpNotificaciones from "./ModalImpNotificaciones";
 import ExportarPadron from "./ExportarPadron";
 import ModalHistorial from "./ModalHistorial";
+import { BellIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
 
 const ListadoCasos = ({
   listado,
@@ -135,6 +136,16 @@ const ListadoCasos = ({
 
   return (
     <div className="mt-4">
+      <Alert
+        icon={<InformationCircleIcon strokeWidth={2} className="h-6 w-6" />}
+        className="mt-5 mb-5"
+      >
+        ATENCIÓN, CAMBIO EN LA PLANIFICACIÓN DE LAS CAMPAÑAS. AHORA LA CAMPAÑA
+        AT2 ES PARA 1001 CON TITULAR Y/O ADHERENTE MAYOR A 65 AÑOS Y LA CAMPAÑA
+        DE RECUPERACIÓN ES PARA FICHAS CON INTEGRANTES MENORES A 65 AÑOS. POR
+        ENDE, SU FORMA DE LIQUIDACIÓN SERA DIFERENTE.
+      </Alert>
+
       <Typography variant="h5" color="blue-gray">
         Listado de Casos Asignados
       </Typography>

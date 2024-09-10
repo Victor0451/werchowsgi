@@ -18,7 +18,7 @@ export const Campana = ({ titulo, camp, empresa, operador }) => {
         <Typography variant="h5" color="blue-gray" className="mb-2">
           {titulo}
         </Typography>
-        <Typography>{camp}</Typography>
+        {/* <Typography>{camp}</Typography> */}
       </CardBody>
       <CardFooter className="pt-0">
         <Link
