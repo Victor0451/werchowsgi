@@ -139,28 +139,17 @@ export default function NuevoPrestamo() {
     if (f === "plan") {
       guardarPlanSelec(value);
     } else if (f === "cap") {
-      if (value.capital === 150000) {
+      guardarCapSelec(value.capital);
+      guardarAlertas(null);
+
+      if (value.autorizacion === false) {
         guardarAlertas(
-          "ESTE CAPITAL ($150000), SOLO ADMITE PLANES DE 6 Y 12 CUOTAS."
+          "ESTE CAPITAL REQUIERE SI O SI AUTORIZACION POR PARTE DE LA GERENCIA."
         );
         toast.warning(
-          "ESTE CAPITAL ($150000), SOLO ADMITE PLANES DE 6 Y 12 CUOTAS"
+          "Este capital requiere autorizacion por parte de la gerencia"
         );
         guardarCapiNoAut(false);
-        guardarCapSelec(value.capital);
-      } else {
-        guardarCapSelec(value.capital);
-        guardarAlertas(null);
-
-        if (value.autorizacion === false) {
-          guardarAlertas(
-            "ESTE CAPITAL REQUIERE SI O SI AUTORIZACION POR PARTE DE LA GERENCIA."
-          );
-          toast.warning(
-            "Este capital requiere autorizacion por parte de la gerencia"
-          );
-          guardarCapiNoAut(false);
-        }
       }
     } else if (f === "renova") {
       guardarRenova(value);
