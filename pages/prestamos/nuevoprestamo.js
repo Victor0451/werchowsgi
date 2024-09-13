@@ -229,44 +229,35 @@ export default function NuevoPrestamo() {
     } else if (planSelec === "") {
       guardarErrores("Debes Seleccionar un plan de cuotas");
     } else {
-      if (parseInt(capSelec) === 150000) {
-        if (parseInt(planSelec) === 6 || parseInt(planSelec) === 12) {
-          let principal = parseInt(capSelec);
+      if (parseInt(planSelec) === 6 || parseInt(planSelec) === 12) {
+        let principal = parseInt(capSelec);
 
-          let payments = parseInt(planSelec);
+        let payments = parseInt(planSelec);
 
-          let x = 0;
-          let monthly = 0;
+        let x = 0;
+        let monthly = 0;
 
-          let tasa = 0;
+        let tasa = 0;
 
-          if (payments === 6) {
-            tasa = 250 / 100 / 12;
+        if (payments === 6) {
+          tasa = 250 / 100 / 12;
 
-            x = Math.pow(1 + tasa, payments);
-            monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-          } else if (payments === 12) {
-            tasa = 250 / 100 / 12;
+          x = Math.pow(1 + tasa, payments);
+          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
+        } else if (payments === 12) {
+          tasa = 250 / 100 / 12;
 
-            x = Math.pow(1 + tasa, payments);
-            monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-          }
-
-          guardarCuoPrest(monthly);
-
-          let capadev = monthly * payments;
-
-          guardarCapADev(capadev);
-
-          guardarFlag(true);
-        } else {
-          guardarAlertas(
-            "ESTE CAPITAL ($150000), SOLO ADMITE PLANES DE 6 Y 12 CUOTAS."
-          );
-          toast.warning(
-            "ESTE CAPITAL ($150000), SOLO ADMITE PLANES DE 6 Y 12 CUOTAS"
-          );
+          x = Math.pow(1 + tasa, payments);
+          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
         }
+
+        guardarCuoPrest(monthly);
+
+        let capadev = monthly * payments;
+
+        guardarCapADev(capadev);
+
+        guardarFlag(true);
       } else {
         let principal = parseInt(capSelec);
 
