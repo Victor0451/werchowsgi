@@ -760,8 +760,7 @@ exports.Prisma.Tareas_sucursalesScalarFieldEnum = {
   end: 'end',
   priority: 'priority',
   sucursal: 'sucursal',
-  operador: 'operador',
-  leido: 'leido'
+  operador: 'operador'
 };
 
 exports.Prisma.Tipo_contratosScalarFieldEnum = {
@@ -860,19 +859,6 @@ exports.Prisma.Gasto_lutoScalarFieldEnum = {
   idgastoluto: 'idgastoluto',
   gasto1: 'gasto1',
   gasto2: 'gasto2'
-};
-
-exports.Prisma.Mails_copyScalarFieldEnum = {
-  idmail: 'idmail',
-  fecha: 'fecha',
-  envia: 'envia',
-  recibe: 'recibe',
-  descrip: 'descrip',
-  codmail: 'codmail',
-  asunto: 'asunto',
-  leido: 'leido',
-  fecha_leido: 'fecha_leido',
-  url_caja: 'url_caja'
 };
 
 exports.Prisma.ReintegrosScalarFieldEnum = {
@@ -1014,7 +1000,6 @@ exports.Prisma.ModelName = {
   certificado_estudiantes: 'certificado_estudiantes',
   cartera: 'cartera',
   gasto_luto: 'gasto_luto',
-  mails_copy: 'mails_copy',
   reintegros: 'reintegros',
   conceptos_liquidacion: 'conceptos_liquidacion',
   legajo_operador: 'legajo_operador',

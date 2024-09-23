@@ -21,7 +21,7 @@ export const Redirect = () => {
       <CardBody className="rounded-none">
         <img
           className=" max-h-full max-w-full rounded-xl"
-          src="img/logerr.jpg"
+          src="/img/logerr.jpg"
           alt="No Registrado"
         />
 

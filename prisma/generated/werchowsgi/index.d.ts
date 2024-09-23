@@ -1142,12 +1142,11 @@ export type tareas_sucursalesPayload<ExtArgs extends $Extensions.Args = $Extensi
     idevents: number
     title: string | null
     allDay: number | null
-    start: Date | null
-    end: Date | null
+    start: string | null
+    end: string | null
     priority: number | null
     sucursal: string | null
     operador: string | null
-    leido: boolean | null
   }, ExtArgs["result"]["tareas_sucursales"]>
   composites: {}
 }
@@ -1345,28 +1344,6 @@ export type gasto_lutoPayload<ExtArgs extends $Extensions.Args = $Extensions.Def
  * 
  */
 export type gasto_luto = runtime.Types.DefaultSelection<gasto_lutoPayload>
-export type mails_copyPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    idmail: number
-    fecha: Date | null
-    envia: string | null
-    recibe: string | null
-    descrip: string | null
-    codmail: string | null
-    asunto: string | null
-    leido: boolean | null
-    fecha_leido: Date | null
-    url_caja: string | null
-  }, ExtArgs["result"]["mails_copy"]>
-  composites: {}
-}
-
-/**
- * Model mails_copy
- * 
- */
-export type mails_copy = runtime.Types.DefaultSelection<mails_copyPayload>
 export type reintegrosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -2242,16 +2219,6 @@ export class PrismaClient<
   get gasto_luto(): Prisma.gasto_lutoDelegate<GlobalReject, ExtArgs>;
 
   /**
-   * `prisma.mails_copy`: Exposes CRUD operations for the **mails_copy** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Mails_copies
-    * const mails_copies = await prisma.mails_copy.findMany()
-    * ```
-    */
-  get mails_copy(): Prisma.mails_copyDelegate<GlobalReject, ExtArgs>;
-
-  /**
    * `prisma.reintegros`: Exposes CRUD operations for the **reintegros** model.
     * Example usage:
     * ```ts
@@ -2847,7 +2814,6 @@ export namespace Prisma {
     certificado_estudiantes: 'certificado_estudiantes',
     cartera: 'cartera',
     gasto_luto: 'gasto_luto',
-    mails_copy: 'mails_copy',
     reintegros: 'reintegros',
     conceptos_liquidacion: 'conceptos_liquidacion',
     legajo_operador: 'legajo_operador',
@@ -2869,7 +2835,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'produccion' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'mails_copy' | 'reintegros' | 'conceptos_liquidacion' | 'legajo_operador' | 'recibo_liquidacion' | 'recibo_movimientos'
+      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'produccion' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'reintegros' | 'conceptos_liquidacion' | 'legajo_operador' | 'recibo_liquidacion' | 'recibo_movimientos'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -7926,85 +7892,6 @@ export namespace Prisma {
             args: Prisma.gasto_lutoCountArgs<ExtArgs>,
             result: $Utils.Optional<Gasto_lutoCountAggregateOutputType> | number
             payload: gasto_lutoPayload<ExtArgs>
-          }
-        }
-      }
-      mails_copy: {
-        operations: {
-          findUnique: {
-            args: Prisma.mails_copyFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<mails_copyPayload> | null
-            payload: mails_copyPayload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.mails_copyFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<mails_copyPayload>
-            payload: mails_copyPayload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.mails_copyFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<mails_copyPayload> | null
-            payload: mails_copyPayload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.mails_copyFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<mails_copyPayload>
-            payload: mails_copyPayload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.mails_copyFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<mails_copyPayload>[]
-            payload: mails_copyPayload<ExtArgs>
-          }
-          create: {
-            args: Prisma.mails_copyCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<mails_copyPayload>
-            payload: mails_copyPayload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.mails_copyCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: mails_copyPayload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.mails_copyDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<mails_copyPayload>
-            payload: mails_copyPayload<ExtArgs>
-          }
-          update: {
-            args: Prisma.mails_copyUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<mails_copyPayload>
-            payload: mails_copyPayload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.mails_copyDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: mails_copyPayload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.mails_copyUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: mails_copyPayload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.mails_copyUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<mails_copyPayload>
-            payload: mails_copyPayload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.Mails_copyAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateMails_copy>
-            payload: mails_copyPayload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.mails_copyGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Mails_copyGroupByOutputType>[]
-            payload: mails_copyPayload<ExtArgs>
-          }
-          count: {
-            args: Prisma.mails_copyCountArgs<ExtArgs>,
-            result: $Utils.Optional<Mails_copyCountAggregateOutputType> | number
-            payload: mails_copyPayload<ExtArgs>
           }
         }
       }
@@ -59495,24 +59382,22 @@ export namespace Prisma {
     idevents: number | null
     title: string | null
     allDay: number | null
-    start: Date | null
-    end: Date | null
+    start: string | null
+    end: string | null
     priority: number | null
     sucursal: string | null
     operador: string | null
-    leido: boolean | null
   }
 
   export type Tareas_sucursalesMaxAggregateOutputType = {
     idevents: number | null
     title: string | null
     allDay: number | null
-    start: Date | null
-    end: Date | null
+    start: string | null
+    end: string | null
     priority: number | null
     sucursal: string | null
     operador: string | null
-    leido: boolean | null
   }
 
   export type Tareas_sucursalesCountAggregateOutputType = {
@@ -59524,7 +59409,6 @@ export namespace Prisma {
     priority: number
     sucursal: number
     operador: number
-    leido: number
     _all: number
   }
 
@@ -59550,7 +59434,6 @@ export namespace Prisma {
     priority?: true
     sucursal?: true
     operador?: true
-    leido?: true
   }
 
   export type Tareas_sucursalesMaxAggregateInputType = {
@@ -59562,7 +59445,6 @@ export namespace Prisma {
     priority?: true
     sucursal?: true
     operador?: true
-    leido?: true
   }
 
   export type Tareas_sucursalesCountAggregateInputType = {
@@ -59574,7 +59456,6 @@ export namespace Prisma {
     priority?: true
     sucursal?: true
     operador?: true
-    leido?: true
     _all?: true
   }
 
@@ -59669,12 +59550,11 @@ export namespace Prisma {
     idevents: number
     title: string | null
     allDay: number | null
-    start: Date | null
-    end: Date | null
+    start: string | null
+    end: string | null
     priority: number | null
     sucursal: string | null
     operador: string | null
-    leido: boolean | null
     _count: Tareas_sucursalesCountAggregateOutputType | null
     _avg: Tareas_sucursalesAvgAggregateOutputType | null
     _sum: Tareas_sucursalesSumAggregateOutputType | null
@@ -59705,7 +59585,6 @@ export namespace Prisma {
     priority?: boolean
     sucursal?: boolean
     operador?: boolean
-    leido?: boolean
   }, ExtArgs["result"]["tareas_sucursales"]>
 
   export type tareas_sucursalesSelectScalar = {
@@ -59717,7 +59596,6 @@ export namespace Prisma {
     priority?: boolean
     sucursal?: boolean
     operador?: boolean
-    leido?: boolean
   }
 
 
@@ -69773,963 +69651,6 @@ export namespace Prisma {
 
 
   /**
-   * Model mails_copy
-   */
-
-
-  export type AggregateMails_copy = {
-    _count: Mails_copyCountAggregateOutputType | null
-    _avg: Mails_copyAvgAggregateOutputType | null
-    _sum: Mails_copySumAggregateOutputType | null
-    _min: Mails_copyMinAggregateOutputType | null
-    _max: Mails_copyMaxAggregateOutputType | null
-  }
-
-  export type Mails_copyAvgAggregateOutputType = {
-    idmail: number | null
-  }
-
-  export type Mails_copySumAggregateOutputType = {
-    idmail: number | null
-  }
-
-  export type Mails_copyMinAggregateOutputType = {
-    idmail: number | null
-    fecha: Date | null
-    envia: string | null
-    recibe: string | null
-    descrip: string | null
-    codmail: string | null
-    asunto: string | null
-    leido: boolean | null
-    fecha_leido: Date | null
-    url_caja: string | null
-  }
-
-  export type Mails_copyMaxAggregateOutputType = {
-    idmail: number | null
-    fecha: Date | null
-    envia: string | null
-    recibe: string | null
-    descrip: string | null
-    codmail: string | null
-    asunto: string | null
-    leido: boolean | null
-    fecha_leido: Date | null
-    url_caja: string | null
-  }
-
-  export type Mails_copyCountAggregateOutputType = {
-    idmail: number
-    fecha: number
-    envia: number
-    recibe: number
-    descrip: number
-    codmail: number
-    asunto: number
-    leido: number
-    fecha_leido: number
-    url_caja: number
-    _all: number
-  }
-
-
-  export type Mails_copyAvgAggregateInputType = {
-    idmail?: true
-  }
-
-  export type Mails_copySumAggregateInputType = {
-    idmail?: true
-  }
-
-  export type Mails_copyMinAggregateInputType = {
-    idmail?: true
-    fecha?: true
-    envia?: true
-    recibe?: true
-    descrip?: true
-    codmail?: true
-    asunto?: true
-    leido?: true
-    fecha_leido?: true
-    url_caja?: true
-  }
-
-  export type Mails_copyMaxAggregateInputType = {
-    idmail?: true
-    fecha?: true
-    envia?: true
-    recibe?: true
-    descrip?: true
-    codmail?: true
-    asunto?: true
-    leido?: true
-    fecha_leido?: true
-    url_caja?: true
-  }
-
-  export type Mails_copyCountAggregateInputType = {
-    idmail?: true
-    fecha?: true
-    envia?: true
-    recibe?: true
-    descrip?: true
-    codmail?: true
-    asunto?: true
-    leido?: true
-    fecha_leido?: true
-    url_caja?: true
-    _all?: true
-  }
-
-  export type Mails_copyAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which mails_copy to aggregate.
-     */
-    where?: mails_copyWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of mails_copies to fetch.
-     */
-    orderBy?: mails_copyOrderByWithRelationInput | mails_copyOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: mails_copyWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` mails_copies from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` mails_copies.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned mails_copies
-    **/
-    _count?: true | Mails_copyCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Mails_copyAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Mails_copySumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Mails_copyMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Mails_copyMaxAggregateInputType
-  }
-
-  export type GetMails_copyAggregateType<T extends Mails_copyAggregateArgs> = {
-        [P in keyof T & keyof AggregateMails_copy]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateMails_copy[P]>
-      : GetScalarType<T[P], AggregateMails_copy[P]>
-  }
-
-
-
-
-  export type mails_copyGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: mails_copyWhereInput
-    orderBy?: mails_copyOrderByWithAggregationInput | mails_copyOrderByWithAggregationInput[]
-    by: Mails_copyScalarFieldEnum[] | Mails_copyScalarFieldEnum
-    having?: mails_copyScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Mails_copyCountAggregateInputType | true
-    _avg?: Mails_copyAvgAggregateInputType
-    _sum?: Mails_copySumAggregateInputType
-    _min?: Mails_copyMinAggregateInputType
-    _max?: Mails_copyMaxAggregateInputType
-  }
-
-
-  export type Mails_copyGroupByOutputType = {
-    idmail: number
-    fecha: Date | null
-    envia: string | null
-    recibe: string | null
-    descrip: string | null
-    codmail: string | null
-    asunto: string | null
-    leido: boolean | null
-    fecha_leido: Date | null
-    url_caja: string | null
-    _count: Mails_copyCountAggregateOutputType | null
-    _avg: Mails_copyAvgAggregateOutputType | null
-    _sum: Mails_copySumAggregateOutputType | null
-    _min: Mails_copyMinAggregateOutputType | null
-    _max: Mails_copyMaxAggregateOutputType | null
-  }
-
-  type GetMails_copyGroupByPayload<T extends mails_copyGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Mails_copyGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Mails_copyGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Mails_copyGroupByOutputType[P]>
-            : GetScalarType<T[P], Mails_copyGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type mails_copySelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    idmail?: boolean
-    fecha?: boolean
-    envia?: boolean
-    recibe?: boolean
-    descrip?: boolean
-    codmail?: boolean
-    asunto?: boolean
-    leido?: boolean
-    fecha_leido?: boolean
-    url_caja?: boolean
-  }, ExtArgs["result"]["mails_copy"]>
-
-  export type mails_copySelectScalar = {
-    idmail?: boolean
-    fecha?: boolean
-    envia?: boolean
-    recibe?: boolean
-    descrip?: boolean
-    codmail?: boolean
-    asunto?: boolean
-    leido?: boolean
-    fecha_leido?: boolean
-    url_caja?: boolean
-  }
-
-
-  type mails_copyGetPayload<S extends boolean | null | undefined | mails_copyArgs> = $Types.GetResult<mails_copyPayload, S>
-
-  type mails_copyCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<mails_copyFindManyArgs, 'select' | 'include'> & {
-      select?: Mails_copyCountAggregateInputType | true
-    }
-
-  export interface mails_copyDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['mails_copy'], meta: { name: 'mails_copy' } }
-    /**
-     * Find zero or one Mails_copy that matches the filter.
-     * @param {mails_copyFindUniqueArgs} args - Arguments to find a Mails_copy
-     * @example
-     * // Get one Mails_copy
-     * const mails_copy = await prisma.mails_copy.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends mails_copyFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, mails_copyFindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'mails_copy'> extends True ? Prisma__mails_copyClient<$Types.GetResult<mails_copyPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__mails_copyClient<$Types.GetResult<mails_copyPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one Mails_copy that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {mails_copyFindUniqueOrThrowArgs} args - Arguments to find a Mails_copy
-     * @example
-     * // Get one Mails_copy
-     * const mails_copy = await prisma.mails_copy.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends mails_copyFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, mails_copyFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__mails_copyClient<$Types.GetResult<mails_copyPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first Mails_copy that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mails_copyFindFirstArgs} args - Arguments to find a Mails_copy
-     * @example
-     * // Get one Mails_copy
-     * const mails_copy = await prisma.mails_copy.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends mails_copyFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, mails_copyFindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'mails_copy'> extends True ? Prisma__mails_copyClient<$Types.GetResult<mails_copyPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__mails_copyClient<$Types.GetResult<mails_copyPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first Mails_copy that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mails_copyFindFirstOrThrowArgs} args - Arguments to find a Mails_copy
-     * @example
-     * // Get one Mails_copy
-     * const mails_copy = await prisma.mails_copy.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends mails_copyFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, mails_copyFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__mails_copyClient<$Types.GetResult<mails_copyPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more Mails_copies that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mails_copyFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Mails_copies
-     * const mails_copies = await prisma.mails_copy.findMany()
-     * 
-     * // Get first 10 Mails_copies
-     * const mails_copies = await prisma.mails_copy.findMany({ take: 10 })
-     * 
-     * // Only select the `idmail`
-     * const mails_copyWithIdmailOnly = await prisma.mails_copy.findMany({ select: { idmail: true } })
-     * 
-    **/
-    findMany<T extends mails_copyFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, mails_copyFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<mails_copyPayload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a Mails_copy.
-     * @param {mails_copyCreateArgs} args - Arguments to create a Mails_copy.
-     * @example
-     * // Create one Mails_copy
-     * const Mails_copy = await prisma.mails_copy.create({
-     *   data: {
-     *     // ... data to create a Mails_copy
-     *   }
-     * })
-     * 
-    **/
-    create<T extends mails_copyCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, mails_copyCreateArgs<ExtArgs>>
-    ): Prisma__mails_copyClient<$Types.GetResult<mails_copyPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many Mails_copies.
-     *     @param {mails_copyCreateManyArgs} args - Arguments to create many Mails_copies.
-     *     @example
-     *     // Create many Mails_copies
-     *     const mails_copy = await prisma.mails_copy.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends mails_copyCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, mails_copyCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Mails_copy.
-     * @param {mails_copyDeleteArgs} args - Arguments to delete one Mails_copy.
-     * @example
-     * // Delete one Mails_copy
-     * const Mails_copy = await prisma.mails_copy.delete({
-     *   where: {
-     *     // ... filter to delete one Mails_copy
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends mails_copyDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, mails_copyDeleteArgs<ExtArgs>>
-    ): Prisma__mails_copyClient<$Types.GetResult<mails_copyPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one Mails_copy.
-     * @param {mails_copyUpdateArgs} args - Arguments to update one Mails_copy.
-     * @example
-     * // Update one Mails_copy
-     * const mails_copy = await prisma.mails_copy.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends mails_copyUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, mails_copyUpdateArgs<ExtArgs>>
-    ): Prisma__mails_copyClient<$Types.GetResult<mails_copyPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Mails_copies.
-     * @param {mails_copyDeleteManyArgs} args - Arguments to filter Mails_copies to delete.
-     * @example
-     * // Delete a few Mails_copies
-     * const { count } = await prisma.mails_copy.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends mails_copyDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, mails_copyDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Mails_copies.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mails_copyUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Mails_copies
-     * const mails_copy = await prisma.mails_copy.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends mails_copyUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, mails_copyUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Mails_copy.
-     * @param {mails_copyUpsertArgs} args - Arguments to update or create a Mails_copy.
-     * @example
-     * // Update or create a Mails_copy
-     * const mails_copy = await prisma.mails_copy.upsert({
-     *   create: {
-     *     // ... data to create a Mails_copy
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Mails_copy we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends mails_copyUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, mails_copyUpsertArgs<ExtArgs>>
-    ): Prisma__mails_copyClient<$Types.GetResult<mails_copyPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of Mails_copies.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mails_copyCountArgs} args - Arguments to filter Mails_copies to count.
-     * @example
-     * // Count the number of Mails_copies
-     * const count = await prisma.mails_copy.count({
-     *   where: {
-     *     // ... the filter for the Mails_copies we want to count
-     *   }
-     * })
-    **/
-    count<T extends mails_copyCountArgs>(
-      args?: Subset<T, mails_copyCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Mails_copyCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Mails_copy.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Mails_copyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Mails_copyAggregateArgs>(args: Subset<T, Mails_copyAggregateArgs>): Prisma.PrismaPromise<GetMails_copyAggregateType<T>>
-
-    /**
-     * Group by Mails_copy.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mails_copyGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends mails_copyGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: mails_copyGroupByArgs['orderBy'] }
-        : { orderBy?: mails_copyGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, mails_copyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMails_copyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for mails_copy.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__mails_copyClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * mails_copy base type for findUnique actions
-   */
-  export type mails_copyFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mails_copy
-     */
-    select?: mails_copySelect<ExtArgs> | null
-    /**
-     * Filter, which mails_copy to fetch.
-     */
-    where: mails_copyWhereUniqueInput
-  }
-
-  /**
-   * mails_copy findUnique
-   */
-  export interface mails_copyFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends mails_copyFindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * mails_copy findUniqueOrThrow
-   */
-  export type mails_copyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mails_copy
-     */
-    select?: mails_copySelect<ExtArgs> | null
-    /**
-     * Filter, which mails_copy to fetch.
-     */
-    where: mails_copyWhereUniqueInput
-  }
-
-
-  /**
-   * mails_copy base type for findFirst actions
-   */
-  export type mails_copyFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mails_copy
-     */
-    select?: mails_copySelect<ExtArgs> | null
-    /**
-     * Filter, which mails_copy to fetch.
-     */
-    where?: mails_copyWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of mails_copies to fetch.
-     */
-    orderBy?: mails_copyOrderByWithRelationInput | mails_copyOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for mails_copies.
-     */
-    cursor?: mails_copyWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` mails_copies from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` mails_copies.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of mails_copies.
-     */
-    distinct?: Mails_copyScalarFieldEnum | Mails_copyScalarFieldEnum[]
-  }
-
-  /**
-   * mails_copy findFirst
-   */
-  export interface mails_copyFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends mails_copyFindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * mails_copy findFirstOrThrow
-   */
-  export type mails_copyFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mails_copy
-     */
-    select?: mails_copySelect<ExtArgs> | null
-    /**
-     * Filter, which mails_copy to fetch.
-     */
-    where?: mails_copyWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of mails_copies to fetch.
-     */
-    orderBy?: mails_copyOrderByWithRelationInput | mails_copyOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for mails_copies.
-     */
-    cursor?: mails_copyWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` mails_copies from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` mails_copies.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of mails_copies.
-     */
-    distinct?: Mails_copyScalarFieldEnum | Mails_copyScalarFieldEnum[]
-  }
-
-
-  /**
-   * mails_copy findMany
-   */
-  export type mails_copyFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mails_copy
-     */
-    select?: mails_copySelect<ExtArgs> | null
-    /**
-     * Filter, which mails_copies to fetch.
-     */
-    where?: mails_copyWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of mails_copies to fetch.
-     */
-    orderBy?: mails_copyOrderByWithRelationInput | mails_copyOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing mails_copies.
-     */
-    cursor?: mails_copyWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` mails_copies from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` mails_copies.
-     */
-    skip?: number
-    distinct?: Mails_copyScalarFieldEnum | Mails_copyScalarFieldEnum[]
-  }
-
-
-  /**
-   * mails_copy create
-   */
-  export type mails_copyCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mails_copy
-     */
-    select?: mails_copySelect<ExtArgs> | null
-    /**
-     * The data needed to create a mails_copy.
-     */
-    data?: XOR<mails_copyCreateInput, mails_copyUncheckedCreateInput>
-  }
-
-
-  /**
-   * mails_copy createMany
-   */
-  export type mails_copyCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many mails_copies.
-     */
-    data: mails_copyCreateManyInput | mails_copyCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * mails_copy update
-   */
-  export type mails_copyUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mails_copy
-     */
-    select?: mails_copySelect<ExtArgs> | null
-    /**
-     * The data needed to update a mails_copy.
-     */
-    data: XOR<mails_copyUpdateInput, mails_copyUncheckedUpdateInput>
-    /**
-     * Choose, which mails_copy to update.
-     */
-    where: mails_copyWhereUniqueInput
-  }
-
-
-  /**
-   * mails_copy updateMany
-   */
-  export type mails_copyUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update mails_copies.
-     */
-    data: XOR<mails_copyUpdateManyMutationInput, mails_copyUncheckedUpdateManyInput>
-    /**
-     * Filter which mails_copies to update
-     */
-    where?: mails_copyWhereInput
-  }
-
-
-  /**
-   * mails_copy upsert
-   */
-  export type mails_copyUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mails_copy
-     */
-    select?: mails_copySelect<ExtArgs> | null
-    /**
-     * The filter to search for the mails_copy to update in case it exists.
-     */
-    where: mails_copyWhereUniqueInput
-    /**
-     * In case the mails_copy found by the `where` argument doesn't exist, create a new mails_copy with this data.
-     */
-    create: XOR<mails_copyCreateInput, mails_copyUncheckedCreateInput>
-    /**
-     * In case the mails_copy was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<mails_copyUpdateInput, mails_copyUncheckedUpdateInput>
-  }
-
-
-  /**
-   * mails_copy delete
-   */
-  export type mails_copyDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mails_copy
-     */
-    select?: mails_copySelect<ExtArgs> | null
-    /**
-     * Filter which mails_copy to delete.
-     */
-    where: mails_copyWhereUniqueInput
-  }
-
-
-  /**
-   * mails_copy deleteMany
-   */
-  export type mails_copyDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which mails_copies to delete
-     */
-    where?: mails_copyWhereInput
-  }
-
-
-  /**
-   * mails_copy without action
-   */
-  export type mails_copyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mails_copy
-     */
-    select?: mails_copySelect<ExtArgs> | null
-  }
-
-
-
-  /**
    * Model reintegros
    */
 
@@ -76372,8 +75293,7 @@ export namespace Prisma {
     end: 'end',
     priority: 'priority',
     sucursal: 'sucursal',
-    operador: 'operador',
-    leido: 'leido'
+    operador: 'operador'
   };
 
   export type Tareas_sucursalesScalarFieldEnum = (typeof Tareas_sucursalesScalarFieldEnum)[keyof typeof Tareas_sucursalesScalarFieldEnum]
@@ -76505,22 +75425,6 @@ export namespace Prisma {
   };
 
   export type Gasto_lutoScalarFieldEnum = (typeof Gasto_lutoScalarFieldEnum)[keyof typeof Gasto_lutoScalarFieldEnum]
-
-
-  export const Mails_copyScalarFieldEnum: {
-    idmail: 'idmail',
-    fecha: 'fecha',
-    envia: 'envia',
-    recibe: 'recibe',
-    descrip: 'descrip',
-    codmail: 'codmail',
-    asunto: 'asunto',
-    leido: 'leido',
-    fecha_leido: 'fecha_leido',
-    url_caja: 'url_caja'
-  };
-
-  export type Mails_copyScalarFieldEnum = (typeof Mails_copyScalarFieldEnum)[keyof typeof Mails_copyScalarFieldEnum]
 
 
   export const ReintegrosScalarFieldEnum: {
@@ -80012,12 +78916,11 @@ export namespace Prisma {
     idevents?: IntFilter | number
     title?: StringNullableFilter | string | null
     allDay?: IntNullableFilter | number | null
-    start?: DateTimeNullableFilter | Date | string | null
-    end?: DateTimeNullableFilter | Date | string | null
+    start?: StringNullableFilter | string | null
+    end?: StringNullableFilter | string | null
     priority?: IntNullableFilter | number | null
     sucursal?: StringNullableFilter | string | null
     operador?: StringNullableFilter | string | null
-    leido?: BoolNullableFilter | boolean | null
   }
 
   export type tareas_sucursalesOrderByWithRelationInput = {
@@ -80029,7 +78932,6 @@ export namespace Prisma {
     priority?: SortOrderInput | SortOrder
     sucursal?: SortOrderInput | SortOrder
     operador?: SortOrderInput | SortOrder
-    leido?: SortOrderInput | SortOrder
   }
 
   export type tareas_sucursalesWhereUniqueInput = {
@@ -80045,7 +78947,6 @@ export namespace Prisma {
     priority?: SortOrderInput | SortOrder
     sucursal?: SortOrderInput | SortOrder
     operador?: SortOrderInput | SortOrder
-    leido?: SortOrderInput | SortOrder
     _count?: tareas_sucursalesCountOrderByAggregateInput
     _avg?: tareas_sucursalesAvgOrderByAggregateInput
     _max?: tareas_sucursalesMaxOrderByAggregateInput
@@ -80060,12 +78961,11 @@ export namespace Prisma {
     idevents?: IntWithAggregatesFilter | number
     title?: StringNullableWithAggregatesFilter | string | null
     allDay?: IntNullableWithAggregatesFilter | number | null
-    start?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    end?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    start?: StringNullableWithAggregatesFilter | string | null
+    end?: StringNullableWithAggregatesFilter | string | null
     priority?: IntNullableWithAggregatesFilter | number | null
     sucursal?: StringNullableWithAggregatesFilter | string | null
     operador?: StringNullableWithAggregatesFilter | string | null
-    leido?: BoolNullableWithAggregatesFilter | boolean | null
   }
 
   export type tipo_contratosWhereInput = {
@@ -80608,73 +79508,6 @@ export namespace Prisma {
     idgastoluto?: IntWithAggregatesFilter | number
     gasto1?: IntNullableWithAggregatesFilter | number | null
     gasto2?: IntNullableWithAggregatesFilter | number | null
-  }
-
-  export type mails_copyWhereInput = {
-    AND?: mails_copyWhereInput | mails_copyWhereInput[]
-    OR?: mails_copyWhereInput[]
-    NOT?: mails_copyWhereInput | mails_copyWhereInput[]
-    idmail?: IntFilter | number
-    fecha?: DateTimeNullableFilter | Date | string | null
-    envia?: StringNullableFilter | string | null
-    recibe?: StringNullableFilter | string | null
-    descrip?: StringNullableFilter | string | null
-    codmail?: StringNullableFilter | string | null
-    asunto?: StringNullableFilter | string | null
-    leido?: BoolNullableFilter | boolean | null
-    fecha_leido?: DateTimeNullableFilter | Date | string | null
-    url_caja?: StringNullableFilter | string | null
-  }
-
-  export type mails_copyOrderByWithRelationInput = {
-    idmail?: SortOrder
-    fecha?: SortOrderInput | SortOrder
-    envia?: SortOrderInput | SortOrder
-    recibe?: SortOrderInput | SortOrder
-    descrip?: SortOrderInput | SortOrder
-    codmail?: SortOrderInput | SortOrder
-    asunto?: SortOrderInput | SortOrder
-    leido?: SortOrderInput | SortOrder
-    fecha_leido?: SortOrderInput | SortOrder
-    url_caja?: SortOrderInput | SortOrder
-  }
-
-  export type mails_copyWhereUniqueInput = {
-    idmail?: number
-  }
-
-  export type mails_copyOrderByWithAggregationInput = {
-    idmail?: SortOrder
-    fecha?: SortOrderInput | SortOrder
-    envia?: SortOrderInput | SortOrder
-    recibe?: SortOrderInput | SortOrder
-    descrip?: SortOrderInput | SortOrder
-    codmail?: SortOrderInput | SortOrder
-    asunto?: SortOrderInput | SortOrder
-    leido?: SortOrderInput | SortOrder
-    fecha_leido?: SortOrderInput | SortOrder
-    url_caja?: SortOrderInput | SortOrder
-    _count?: mails_copyCountOrderByAggregateInput
-    _avg?: mails_copyAvgOrderByAggregateInput
-    _max?: mails_copyMaxOrderByAggregateInput
-    _min?: mails_copyMinOrderByAggregateInput
-    _sum?: mails_copySumOrderByAggregateInput
-  }
-
-  export type mails_copyScalarWhereWithAggregatesInput = {
-    AND?: mails_copyScalarWhereWithAggregatesInput | mails_copyScalarWhereWithAggregatesInput[]
-    OR?: mails_copyScalarWhereWithAggregatesInput[]
-    NOT?: mails_copyScalarWhereWithAggregatesInput | mails_copyScalarWhereWithAggregatesInput[]
-    idmail?: IntWithAggregatesFilter | number
-    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    envia?: StringNullableWithAggregatesFilter | string | null
-    recibe?: StringNullableWithAggregatesFilter | string | null
-    descrip?: StringNullableWithAggregatesFilter | string | null
-    codmail?: StringNullableWithAggregatesFilter | string | null
-    asunto?: StringNullableWithAggregatesFilter | string | null
-    leido?: BoolNullableWithAggregatesFilter | boolean | null
-    fecha_leido?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    url_caja?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type reintegrosWhereInput = {
@@ -85383,82 +84216,75 @@ export namespace Prisma {
   export type tareas_sucursalesCreateInput = {
     title?: string | null
     allDay?: number | null
-    start?: Date | string | null
-    end?: Date | string | null
+    start?: string | null
+    end?: string | null
     priority?: number | null
     sucursal?: string | null
     operador?: string | null
-    leido?: boolean | null
   }
 
   export type tareas_sucursalesUncheckedCreateInput = {
     idevents?: number
     title?: string | null
     allDay?: number | null
-    start?: Date | string | null
-    end?: Date | string | null
+    start?: string | null
+    end?: string | null
     priority?: number | null
     sucursal?: string | null
     operador?: string | null
-    leido?: boolean | null
   }
 
   export type tareas_sucursalesUpdateInput = {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     allDay?: NullableIntFieldUpdateOperationsInput | number | null
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableIntFieldUpdateOperationsInput | number | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    leido?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type tareas_sucursalesUncheckedUpdateInput = {
     idevents?: IntFieldUpdateOperationsInput | number
     title?: NullableStringFieldUpdateOperationsInput | string | null
     allDay?: NullableIntFieldUpdateOperationsInput | number | null
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableIntFieldUpdateOperationsInput | number | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    leido?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type tareas_sucursalesCreateManyInput = {
     idevents?: number
     title?: string | null
     allDay?: number | null
-    start?: Date | string | null
-    end?: Date | string | null
+    start?: string | null
+    end?: string | null
     priority?: number | null
     sucursal?: string | null
     operador?: string | null
-    leido?: boolean | null
   }
 
   export type tareas_sucursalesUpdateManyMutationInput = {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     allDay?: NullableIntFieldUpdateOperationsInput | number | null
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableIntFieldUpdateOperationsInput | number | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    leido?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type tareas_sucursalesUncheckedUpdateManyInput = {
     idevents?: IntFieldUpdateOperationsInput | number
     title?: NullableStringFieldUpdateOperationsInput | string | null
     allDay?: NullableIntFieldUpdateOperationsInput | number | null
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableIntFieldUpdateOperationsInput | number | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: NullableStringFieldUpdateOperationsInput | string | null
-    leido?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type tipo_contratosCreateInput = {
@@ -86115,94 +84941,6 @@ export namespace Prisma {
     idgastoluto?: IntFieldUpdateOperationsInput | number
     gasto1?: NullableIntFieldUpdateOperationsInput | number | null
     gasto2?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type mails_copyCreateInput = {
-    fecha?: Date | string | null
-    envia?: string | null
-    recibe?: string | null
-    descrip?: string | null
-    codmail?: string | null
-    asunto?: string | null
-    leido?: boolean | null
-    fecha_leido?: Date | string | null
-    url_caja?: string | null
-  }
-
-  export type mails_copyUncheckedCreateInput = {
-    idmail?: number
-    fecha?: Date | string | null
-    envia?: string | null
-    recibe?: string | null
-    descrip?: string | null
-    codmail?: string | null
-    asunto?: string | null
-    leido?: boolean | null
-    fecha_leido?: Date | string | null
-    url_caja?: string | null
-  }
-
-  export type mails_copyUpdateInput = {
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    envia?: NullableStringFieldUpdateOperationsInput | string | null
-    recibe?: NullableStringFieldUpdateOperationsInput | string | null
-    descrip?: NullableStringFieldUpdateOperationsInput | string | null
-    codmail?: NullableStringFieldUpdateOperationsInput | string | null
-    asunto?: NullableStringFieldUpdateOperationsInput | string | null
-    leido?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_leido?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    url_caja?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type mails_copyUncheckedUpdateInput = {
-    idmail?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    envia?: NullableStringFieldUpdateOperationsInput | string | null
-    recibe?: NullableStringFieldUpdateOperationsInput | string | null
-    descrip?: NullableStringFieldUpdateOperationsInput | string | null
-    codmail?: NullableStringFieldUpdateOperationsInput | string | null
-    asunto?: NullableStringFieldUpdateOperationsInput | string | null
-    leido?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_leido?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    url_caja?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type mails_copyCreateManyInput = {
-    idmail?: number
-    fecha?: Date | string | null
-    envia?: string | null
-    recibe?: string | null
-    descrip?: string | null
-    codmail?: string | null
-    asunto?: string | null
-    leido?: boolean | null
-    fecha_leido?: Date | string | null
-    url_caja?: string | null
-  }
-
-  export type mails_copyUpdateManyMutationInput = {
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    envia?: NullableStringFieldUpdateOperationsInput | string | null
-    recibe?: NullableStringFieldUpdateOperationsInput | string | null
-    descrip?: NullableStringFieldUpdateOperationsInput | string | null
-    codmail?: NullableStringFieldUpdateOperationsInput | string | null
-    asunto?: NullableStringFieldUpdateOperationsInput | string | null
-    leido?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_leido?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    url_caja?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type mails_copyUncheckedUpdateManyInput = {
-    idmail?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    envia?: NullableStringFieldUpdateOperationsInput | string | null
-    recibe?: NullableStringFieldUpdateOperationsInput | string | null
-    descrip?: NullableStringFieldUpdateOperationsInput | string | null
-    codmail?: NullableStringFieldUpdateOperationsInput | string | null
-    asunto?: NullableStringFieldUpdateOperationsInput | string | null
-    leido?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    fecha_leido?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    url_caja?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type reintegrosCreateInput = {
@@ -89511,7 +88249,6 @@ export namespace Prisma {
     priority?: SortOrder
     sucursal?: SortOrder
     operador?: SortOrder
-    leido?: SortOrder
   }
 
   export type tareas_sucursalesAvgOrderByAggregateInput = {
@@ -89529,7 +88266,6 @@ export namespace Prisma {
     priority?: SortOrder
     sucursal?: SortOrder
     operador?: SortOrder
-    leido?: SortOrder
   }
 
   export type tareas_sucursalesMinOrderByAggregateInput = {
@@ -89541,7 +88277,6 @@ export namespace Prisma {
     priority?: SortOrder
     sucursal?: SortOrder
     operador?: SortOrder
-    leido?: SortOrder
   }
 
   export type tareas_sucursalesSumOrderByAggregateInput = {
@@ -89956,53 +88691,6 @@ export namespace Prisma {
     idgastoluto?: SortOrder
     gasto1?: SortOrder
     gasto2?: SortOrder
-  }
-
-  export type mails_copyCountOrderByAggregateInput = {
-    idmail?: SortOrder
-    fecha?: SortOrder
-    envia?: SortOrder
-    recibe?: SortOrder
-    descrip?: SortOrder
-    codmail?: SortOrder
-    asunto?: SortOrder
-    leido?: SortOrder
-    fecha_leido?: SortOrder
-    url_caja?: SortOrder
-  }
-
-  export type mails_copyAvgOrderByAggregateInput = {
-    idmail?: SortOrder
-  }
-
-  export type mails_copyMaxOrderByAggregateInput = {
-    idmail?: SortOrder
-    fecha?: SortOrder
-    envia?: SortOrder
-    recibe?: SortOrder
-    descrip?: SortOrder
-    codmail?: SortOrder
-    asunto?: SortOrder
-    leido?: SortOrder
-    fecha_leido?: SortOrder
-    url_caja?: SortOrder
-  }
-
-  export type mails_copyMinOrderByAggregateInput = {
-    idmail?: SortOrder
-    fecha?: SortOrder
-    envia?: SortOrder
-    recibe?: SortOrder
-    descrip?: SortOrder
-    codmail?: SortOrder
-    asunto?: SortOrder
-    leido?: SortOrder
-    fecha_leido?: SortOrder
-    url_caja?: SortOrder
-  }
-
-  export type mails_copySumOrderByAggregateInput = {
-    idmail?: SortOrder
   }
 
   export type reintegrosCountOrderByAggregateInput = {

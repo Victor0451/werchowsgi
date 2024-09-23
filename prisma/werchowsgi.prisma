@@ -806,15 +806,14 @@ model tablero_efectividad {
 }
 
 model tareas_sucursales {
-  idevents Int       @id @default(autoincrement())
-  title    String?   @db.VarChar(255)
-  allDay   Int?      @db.TinyInt
-  start    DateTime? @db.DateTime(0)
-  end      DateTime? @db.DateTime(0)
+  idevents Int     @id @default(autoincrement())
+  title    String? @db.VarChar(255)
+  allDay   Int?    @db.TinyInt
+  start    String? @db.VarChar(255)
+  end      String? @db.VarChar(255)
   priority Int?
-  sucursal String?   @db.VarChar(255)
-  operador String?   @db.VarChar(255)
-  leido    Boolean?
+  sucursal String? @db.VarChar(255)
+  operador String? @db.VarChar(255)
 }
 
 model tipo_contratos {
@@ -985,19 +984,6 @@ model gasto_luto {
   idgastoluto Int  @id @default(autoincrement())
   gasto1      Int?
   gasto2      Int?
-}
-
-model mails_copy {
-  idmail      Int       @id @default(autoincrement())
-  fecha       DateTime? @db.DateTime(0)
-  envia       String?   @db.VarChar(255)
-  recibe      String?   @db.VarChar(255)
-  descrip     String?   @db.VarChar(1000)
-  codmail     String?   @db.VarChar(255)
-  asunto      String?   @db.VarChar(255)
-  leido       Boolean?
-  fecha_leido DateTime? @db.DateTime(0)
-  url_caja    String?   @db.VarChar(255)
 }
 
 model reintegros {
