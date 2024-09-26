@@ -37,7 +37,8 @@ const ListadoDetalleOrden = ({ listado, checkOrden, deleteCheckOrden, f }) => {
 
     {
       name: "Fecha",
-      selector: (row) => `${moment(row.fecha).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.fecha).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.2,
     },

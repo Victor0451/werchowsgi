@@ -34,7 +34,8 @@ const ListParcelas = ({
   let columns = [
     {
       name: "Fecha Alta",
-      selector: (row) => `${moment(row.fecha_alta).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.fecha_alta).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.1,
     },

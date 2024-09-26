@@ -58,7 +58,8 @@ const ListadosReintegros = ({ listado, noData, calcTot }) => {
     },
     {
       name: "Fecha",
-      selector: (row) => `${moment(row.importe).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.importe).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.1,
     },
@@ -130,17 +131,16 @@ const ListadosReintegros = ({ listado, noData, calcTot }) => {
                   <Spinner className="h-12 w-12" />
                 </div>
               ) : (
-
                 <div className="border-2 rounded-xl p-4 mt-5">
-                <DataTable
-                  columns={columns}
-                  data={filteredItems}
-                  defaultSortField="name"
-                  striped
-                  pagination
-                  subHeader
-                  subHeaderComponent={subHeaderComponent}
-                />
+                  <DataTable
+                    columns={columns}
+                    data={filteredItems}
+                    defaultSortField="name"
+                    striped
+                    pagination
+                    subHeader
+                    subHeaderComponent={subHeaderComponent}
+                  />
                 </div>
               )}
             </>

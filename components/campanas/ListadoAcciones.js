@@ -19,7 +19,8 @@ const ListadoAcciones = ({ listado }) => {
 
     {
       name: "Fecha",
-      selector: (row) => `${moment(row.fechaaccion).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.fechaaccion).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.1,
     },
@@ -31,7 +32,10 @@ const ListadoAcciones = ({ listado }) => {
     },
     {
       name: "Fecha",
-      selector: (row) => `${moment(row.fechanuevaaccion).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.fechanuevaaccion)
+          .utcOffset("+0300")
+          .format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.1,
     },

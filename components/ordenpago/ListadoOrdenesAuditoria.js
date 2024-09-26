@@ -154,7 +154,11 @@ const ListadoOrdenesAuditoria = ({
           {row.FECHA_CONTROL === null ? (
             <>---</>
           ) : row.FECHA_CONTROL ? (
-            <>{moment(row.FECHA_CONTROL).format("DD/MM/YYYY")}</>
+            <>
+              {moment(row.FECHA_CONTROL)
+                .utcOffset("+0300")
+                .format("DD/MM/YYYY")}
+            </>
           ) : null}
         </>
       ),

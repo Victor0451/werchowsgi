@@ -35,46 +35,46 @@ const ListadoLiquidacionPersonal = ({
     {
       name: "#",
       button: true,
-      grow: 0.1,
+      width: "50px",
       cell: (row, index) => <>{index + 1}</>,
     },
     {
       name: "Operador",
       selector: (row) => `${row.operador}`,
       sortable: true,
-      grow: 0.2,
+      width: "80px",
     },
 
     {
       name: "Tarea",
       selector: (row) => `${row.tarea}`,
       sortable: true,
-      grow: 0.2,
+      width: "100px",
     },
 
     {
       name: "Inicio",
       selector: (row) => `${moment(row.inicio).format("DD/MM/YYYY HH:mm")}`,
       sortable: true,
-      grow: 0.2,
+      width: "150px",
     },
     {
       name: "Fin",
       selector: (row) => `${moment(row.fin).format("DD/MM/YYYY HH:mm")}`,
       sortable: true,
-      grow: 0.2,
+      width: "150px",
     },
     {
       name: "Horas",
       selector: (row) => `${row.horas}`,
       sortable: true,
-      grow: 0.2,
+      width: "80px",
     },
     {
       name: "Monto",
       selector: (row) => `$${row.monto}`,
       sortable: true,
-      grow: 0.2,
+      width: "100px",
     },
     {
       name: "Liquidado",
@@ -99,7 +99,11 @@ const ListadoLiquidacionPersonal = ({
           {!row.fecha_liquidacion ? (
             <div>---</div>
           ) : row.fecha_liquidacion ? (
-            <div>{moment(row.fecha_liquidacion).format("DD/MM/YYYY")}</div>
+            <div>
+              {moment(row.fecha_liquidacion)
+                .utcOffset("+0300")
+                .format("DD/MM/YYYY")}
+            </div>
           ) : null}
         </>
       ),
@@ -152,14 +156,14 @@ const ListadoLiquidacionPersonal = ({
     {
       name: "#",
       button: true,
-      grow: 0.1,
+      width: "80px",
       cell: (row, index) => <>{index + 1}</>,
     },
     {
       name: "Operador",
       selector: (row) => `${row.operador}`,
       sortable: true,
-      grow: 0.2,
+      width: "100px",
     },
 
     {
@@ -181,25 +185,25 @@ const ListadoLiquidacionPersonal = ({
       name: "Inicio",
       selector: (row) => `${moment(row.inicio).format("DD/MM/YYYY HH:mm")}`,
       sortable: true,
-      grow: 0.2,
+      width: "150px",
     },
     {
       name: "Fin",
       selector: (row) => `${moment(row.fin).format("DD/MM/YYYY HH:mm")}`,
       sortable: true,
-      grow: 0.2,
+      width: "150px",
     },
     {
       name: "Horas",
       selector: (row) => `${row.horas}`,
       sortable: true,
-      grow: 0.1,
+      width: "100px",
     },
     {
       name: "Importe",
       selector: (row) => `$${row.importe}`,
       sortable: true,
-      grow: 0.1,
+      width: "100px",
     },
     {
       name: "Liquidado",
@@ -224,7 +228,11 @@ const ListadoLiquidacionPersonal = ({
           {!row.fecha_liquidacion ? (
             <div>---</div>
           ) : row.fecha_liquidacion ? (
-            <div>{moment(row.fecha_liquidacion).format("DD/MM/YYYY")}</div>
+            <div>
+              {moment(row.fecha_liquidacion)
+                .utcOffset("+0300")
+                .format("DD/MM/YYYY")}
+            </div>
           ) : null}
         </>
       ),

@@ -108,7 +108,11 @@ const ListadoAuditoria = ({
           {!row.fecha_aprobacion ? (
             <div>---</div>
           ) : row.fecha_aprobacion ? (
-            <div>{moment(row.fecha_aprobacion).format("DD/MM/YYYY")}</div>
+            <div>
+              {moment(row.fecha_aprobacion)
+                .utcOffset("+0300")
+                .format("DD/MM/YYYY")}
+            </div>
           ) : null}
         </>
       ),
@@ -152,7 +156,11 @@ const ListadoAuditoria = ({
           {!row.fecha_liquidacion ? (
             <div>---</div>
           ) : row.fecha_liquidacion ? (
-            <div>{moment(row.fecha_liquidacion).format("DD/MM/YYYY")}</div>
+            <div>
+              {moment(row.fecha_liquidacion)
+                .utcOffset("+0300")
+                .format("DD/MM/YYYY")}
+            </div>
           ) : null}
         </>
       ),
@@ -230,7 +238,7 @@ const ListadoAuditoria = ({
 
   const conditionalRowStyles = [
     {
-      when: (row) => (row.liquidado === 1),
+      when: (row) => row.liquidado === 1,
       style: {
         backgroundColor: "#33FFB2",
         color: "black",

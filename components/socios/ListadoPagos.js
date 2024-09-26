@@ -58,9 +58,9 @@ const ListadoPagos = ({ listado }) => {
       cell: (row, index) => (
         <>
           {!row.DIA_PAGO ? (
-            <>{moment(row.DIA_PAG).format("DD/MM/YYYY")}</>
+            <>{moment(row.DIA_PAG).utcOffset("+0300").format("DD/MM/YYYY")}</>
           ) : (
-            <>{moment(row.DIA_PAGO).format("DD/MM/YYYY")}</>
+            <>{moment(row.DIA_PAGO).utcOffset("+0300").format("DD/MM/YYYY")}</>
           )}
         </>
       ),

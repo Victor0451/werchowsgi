@@ -19,7 +19,8 @@ const ListadoAdherentes = ({ listado }) => {
     },
     {
       name: "Fecha Nacimiento",
-      selector: (row) => `${moment(row.NACIMIENTO).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.NACIMIENTO).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.2,
     },
@@ -31,13 +32,15 @@ const ListadoAdherentes = ({ listado }) => {
     },
     {
       name: "Fecha Alta",
-      selector: (row) => `${moment(row.ALTA).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.ALTA).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.2,
     },
     {
       name: "Fecha Vigencia",
-      selector: (row) => `${moment(row.VIGENCIA).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.VIGENCIA).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.2,
     },
@@ -50,9 +53,14 @@ const ListadoAdherentes = ({ listado }) => {
           {!row.BAJA ? (
             <>Activo</>
           ) : row.BAJA && row.FALLE === 999 ? (
-            <>Fallecio - {moment(row.BAJA).format("DD/MM/YYYY")}</>
+            <>
+              Fallecio -{" "}
+              {moment(row.BAJA).utcOffset("+0300").format("DD/MM/YYYY")}
+            </>
           ) : row.BAJA && row.FALLE !== 999 ? (
-            <>Baja - {moment(row.BAJA).format("DD/MM/YYYY")}</>
+            <>
+              Baja - {moment(row.BAJA).utcOffset("+0300").format("DD/MM/YYYY")}
+            </>
           ) : null}
         </>
       ),

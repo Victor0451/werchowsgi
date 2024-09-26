@@ -35,7 +35,8 @@ const ListadoOrdenesGeneradas = ({
   let columns = [
     {
       name: "Fecha",
-      selector: (row) => `${moment(row.fecha).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.fecha).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       width: "110px",
     },

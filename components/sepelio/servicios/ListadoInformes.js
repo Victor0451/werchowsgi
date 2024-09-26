@@ -50,7 +50,8 @@ const ListadoInformes = ({ listado, estadoInforme, liquidarInforme }) => {
     },
     {
       name: "Fecha",
-      selector: (row) => `${moment(row.fecha).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.fecha).utcOffset("+03:00").format("DD/MM/YYYY")}`,
       sortable: true,
       width: "100px",
     },
@@ -105,7 +106,11 @@ const ListadoInformes = ({ listado, estadoInforme, liquidarInforme }) => {
           {!row.fecha_aprobado ? (
             <div>---</div>
           ) : row.fecha_aprobado ? (
-            <div>{moment(row.fecha_aprobado).format("DD/MM/YYYY")}</div>
+            <div>
+              {moment(row.fecha_aprobado)
+                .utcOffset("+0300")
+                .format("DD/MM/YYYY")}
+            </div>
           ) : null}
         </>
       ),
@@ -149,7 +154,11 @@ const ListadoInformes = ({ listado, estadoInforme, liquidarInforme }) => {
           {!row.fecha_liquidado ? (
             <div>---</div>
           ) : row.fecha_liquidado ? (
-            <div>{moment(row.fecha_liquidado).format("DD/MM/YYYY")}</div>
+            <div>
+              {moment(row.fecha_liquidado)
+                .utcOffset("+0300")
+                .format("DD/MM/YYYY")}
+            </div>
           ) : null}
         </>
       ),

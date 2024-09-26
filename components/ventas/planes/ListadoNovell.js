@@ -25,7 +25,10 @@ export const ListadoNovell = ({ listado, usu, noData }) => {
   let columns = [
     {
       name: "Fecha",
-      selector: (row) => `${moment(row.fecha_recepcion).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.fecha_recepcion)
+          .utcOffset("+0300")
+          .format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.1,
     },

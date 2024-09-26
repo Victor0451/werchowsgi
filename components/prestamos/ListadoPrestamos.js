@@ -16,7 +16,8 @@ export const ListadoPrestamos = ({ listado, usu, estadoPrest }) => {
   const columns = [
     {
       name: "Fecha",
-      selector: (row) => `${moment(row.ptm_fechasol).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.ptm_fechasol).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       width: "110px",
     },

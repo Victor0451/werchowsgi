@@ -36,7 +36,8 @@ const ListadoOrdenesSinPuntear = ({
 
     {
       name: "Fecha",
-      selector: (row) => `${moment(row.FECHA).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.FECHA).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       grow: 0.1,
     },

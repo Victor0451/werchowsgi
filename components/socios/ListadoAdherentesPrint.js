@@ -60,7 +60,7 @@ const ListadoAdherentes = ({ listado }) => {
                   color="blue-gray"
                   className="font-normal"
                 >
-                  {moment(l.NACIMIENTO).format("DD/MM/YYYY")}
+                  {moment(l.NACIMIENTO).utcOffset("+0300").format("DD/MM/YYYY")}
                 </Typography>
               </td>
               <td className="p-4">
@@ -78,7 +78,7 @@ const ListadoAdherentes = ({ listado }) => {
                   color="blue-gray"
                   className="font-normal"
                 >
-                  {moment(l.ALTA).format("DD/MM/YYYY")}
+                  {moment(l.ALTA).utcOffset("+0300").format("DD/MM/YYYY")}
                 </Typography>
               </td>
               <td className="p-4">
@@ -87,7 +87,7 @@ const ListadoAdherentes = ({ listado }) => {
                   color="blue-gray"
                   className="font-normal"
                 >
-                  {moment(l.VIGENCIA).format("DD/MM/YYYY")}
+                  {moment(l.VIGENCIA).utcOffset("+0300").format("DD/MM/YYYY")}
                 </Typography>
               </td>
               <td className="p-4">
@@ -99,9 +99,15 @@ const ListadoAdherentes = ({ listado }) => {
                   {!l.BAJA ? (
                     <>Activo</>
                   ) : l.BAJA && l.FALLE === 999 ? (
-                    <>Fallecio - {moment(l.BAJA).format("DD/MM/YYYY")}</>
+                    <>
+                      Fallecio -{" "}
+                      {moment(l.BAJA).utcOffset("+0300").format("DD/MM/YYYY")}
+                    </>
                   ) : l.BAJA && l.FALLE !== 999 ? (
-                    <>Baja - {moment(l.BAJA).format("DD/MM/YYYY")}</>
+                    <>
+                      Baja -{" "}
+                      {moment(l.BAJA).utcOffset("+0300").format("DD/MM/YYYY")}
+                    </>
                   ) : null}
                 </Typography>
               </td>

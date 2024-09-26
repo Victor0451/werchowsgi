@@ -99,9 +99,17 @@ const ListadoPagos = ({ listado }) => {
                   className="font-normal"
                 >
                   {!l.DIA_PAGO ? (
-                    <>{moment(l.DIA_PAG).format("DD/MM/YYYY")}</>
+                    <>
+                      {moment(l.DIA_PAG)
+                        .utcOffset("+0300")
+                        .format("DD/MM/YYYY")}
+                    </>
                   ) : (
-                    <>{moment(l.DIA_PAGO).format("DD/MM/YYYY")}</>
+                    <>
+                      {moment(l.DIA_PAGO)
+                        .utcOffset("+0300")
+                        .format("DD/MM/YYYY")}
+                    </>
                   )}
                 </Typography>
               </td>

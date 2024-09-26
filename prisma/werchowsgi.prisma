@@ -807,7 +807,7 @@ model tablero_efectividad {
 
 model tareas_sucursales {
   idevents Int     @id @default(autoincrement())
-  title    String? @db.VarChar(255)
+  title    String? @db.VarChar(2000)
   allDay   Int?    @db.TinyInt
   start    String? @db.VarChar(255)
   end      String? @db.VarChar(255)
