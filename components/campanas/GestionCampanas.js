@@ -62,13 +62,14 @@ export const GestionCampanas = () => {
                                     empresa="werchow"
                                     operador={operadorNom}
                                 />
+                                */}
 
-                                <Campana
-                                    titulo="BLANQUEOS"
-                                    camp="Blanqueo"
-                                    empresa="werchow"
-                                    operador={operadorNom}
-                                /> */}
+                <Campana
+                  titulo="BLANQUEOS"
+                  camp="Blanqueo"
+                  empresa="werchow"
+                  operador={operadorNom}
+                />
 
                 <Campana
                   titulo="POLICIAS"
