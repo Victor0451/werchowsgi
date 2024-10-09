@@ -229,75 +229,44 @@ export default function NuevoPrestamo() {
     } else if (planSelec === "") {
       guardarErrores("Debes Seleccionar un plan de cuotas");
     } else {
-      if (parseInt(planSelec) === 6 || parseInt(planSelec) === 12) {
-        let principal = parseInt(capSelec);
+      let principal = parseInt(capSelec);
 
-        let payments = parseInt(planSelec);
+      let payments = parseInt(planSelec);
 
-        let x = 0;
-        let monthly = 0;
+      let x = 0;
+      let monthly = 0;
 
-        let tasa = 0;
+      let tasa = 0;
 
-        if (payments === 6) {
-          tasa = 250 / 100 / 12;
+      if (payments === 3) {
+        tasa = tasas[0].tasa / 100 / 12;
 
-          x = Math.pow(1 + tasa, payments);
-          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-        } else if (payments === 12) {
-          tasa = 250 / 100 / 12;
+        x = Math.pow(1 + tasa, payments);
+        monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
+      } else if (payments === 6) {
+        tasa = tasas[1].tasa / 100 / 12;
 
-          x = Math.pow(1 + tasa, payments);
-          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-        }
+        x = Math.pow(1 + tasa, payments);
+        monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
+      } else if (payments === 10) {
+        tasa = tasas[2].tasa / 100 / 12;
 
-        guardarCuoPrest(monthly);
+        x = Math.pow(1 + tasa, payments);
+        monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
+      } else if (payments === 12) {
+        tasa = tasas[3].tasa / 100 / 12;
 
-        let capadev = monthly * payments;
-
-        guardarCapADev(capadev);
-
-        guardarFlag(true);
-      } else {
-        let principal = parseInt(capSelec);
-
-        let payments = parseInt(planSelec);
-
-        let x = 0;
-        let monthly = 0;
-
-        let tasa = 0;
-
-        if (payments === 3) {
-          tasa = tasas[0].tasa / 100 / 12;
-
-          x = Math.pow(1 + tasa, payments);
-          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-        } else if (payments === 6) {
-          tasa = tasas[1].tasa / 100 / 12;
-
-          x = Math.pow(1 + tasa, payments);
-          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-        } else if (payments === 10) {
-          tasa = tasas[2].tasa / 100 / 12;
-
-          x = Math.pow(1 + tasa, payments);
-          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-        } else if (payments === 12) {
-          tasa = tasas[3].tasa / 100 / 12;
-
-          x = Math.pow(1 + tasa, payments);
-          monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
-        }
-
-        guardarCuoPrest(monthly);
-
-        let capadev = monthly * payments;
-
-        guardarCapADev(capadev);
-
-        guardarFlag(true);
+        x = Math.pow(1 + tasa, payments);
+        monthly = ((principal * x * tasa) / (x - 1)).toFixed(0);
       }
+
+      guardarCuoPrest(monthly);
+
+      let capadev = monthly * payments;
+
+      guardarCapADev(capadev);
+
+      guardarFlag(true);
     }
   };
 
