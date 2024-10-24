@@ -80,6 +80,9 @@ export const Gestion = ({ usu }) => {
             usu.usuario === "jcmorales" ||
             usu.usuario === "rquispe" ||
             usu.usuario === "cflores" ||
+            usu.usuario === "joaquini" ||
+            usu.usuario === "isantiago" ||
+            usu.usuario === "jcmorales" ||
             usu.usuario === "pbandur" ? (
               <Menu placement="right-start">
                 <MenuHandler>
