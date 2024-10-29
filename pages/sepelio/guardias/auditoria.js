@@ -195,6 +195,7 @@ function Auditoria(props) {
             calcTotal={calcTotal}
             listL={listL}
             listP={listP}
+            usu={usu}
           />
         </>
       )}

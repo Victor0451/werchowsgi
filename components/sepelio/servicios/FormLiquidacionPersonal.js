@@ -26,6 +26,7 @@ const FormLiquidacionPersonal = ({
   liqItem,
   liquidarGuardia,
   alertas,
+  usu
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -82,6 +83,7 @@ const FormLiquidacionPersonal = ({
               pagarLiquidacion={pagarLiquidacion}
               liqItem={liqItem}
               liquidarGuardia={liquidarGuardia}
+              usu={usu}
             />
           </>
         ) : tareas.length === 0 && guardias.length === 0 ? (

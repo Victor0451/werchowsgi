@@ -10,7 +10,7 @@ export default async function handler(req, res) {
           *
         FROM
           liquidacion_guardias
-       
+        WHERE liquidado = 0
 
                `
       );
@@ -24,6 +24,7 @@ export default async function handler(req, res) {
       const guardiasOp = await Sep.liquidacion_guardias.findMany({
         where: {
           operador: req.query.operador,
+          liquidado: 0
         },
         orderBy: {
           liquidado: "asc",

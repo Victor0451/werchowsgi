@@ -28,6 +28,7 @@ const ListadoAuditoria = ({
   calcTotal,
   listL,
   listP,
+  usu,
 }) => {
   let columns = [
     {
@@ -197,11 +198,13 @@ const ListadoAuditoria = ({
             onClick={() => estadoGuardia("R", row.idturno)}
           />
 
-          <CurrencyDollarIcon
-            color="orange"
-            className="butlist mt-px h-6 w-6 "
-            onClick={() => liquidarGuardia(row.idturno)}
-          />
+          {usu.usuario !== "joaquini" ? (
+            <CurrencyDollarIcon
+              color="orange"
+              className="butlist mt-px h-6 w-6 "
+              onClick={() => liquidarGuardia(row.idturno)}
+            />
+          ) : null}
         </>
       ),
     },

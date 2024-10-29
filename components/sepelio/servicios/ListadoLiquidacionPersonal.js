@@ -30,6 +30,7 @@ const ListadoLiquidacionPersonal = ({
   pagarLiquidacion,
   liqItem,
   liquidarGuardia,
+  usu,
 }) => {
   let columns = [
     {
@@ -138,14 +139,14 @@ const ListadoLiquidacionPersonal = ({
             <EyeIcon color="blue" className="butlist mt-px h-6 w-6 mr-1" />
           </Link>
 
-          {row.liquidado === 0 ? (
+          {row.liquidado === 0 && usu.usuario !== "joaquini" ? (
             <CurrencyDollarIcon
               color="orange"
               className="butlist mt-px h-6 w-6 "
               onClick={() => liqItem("liquidar tarea individual", row.idtareas)}
             />
           ) : (
-            <>Ac. Liq. </>
+            <>Sin accion </>
           )}
         </>
       ),
@@ -257,14 +258,14 @@ const ListadoLiquidacionPersonal = ({
       width: "100px",
       cell: (row, index) => (
         <>
-          {row.liquidado === 0 ? (
+          {row.liquidado === 0 && usu.usuario !== "joaquini" ? (
             <CurrencyDollarIcon
               color="orange"
               className="butlist mt-px h-6 w-6 "
               onClick={() => liquidarGuardia(row.idturno)}
             />
           ) : (
-            <>Accion Liquidada </>
+            <>Sin accion</>
           )}
         </>
       ),
@@ -332,15 +333,17 @@ const ListadoLiquidacionPersonal = ({
 
             <div className=" border-2 rounded-xl p-4">
               <div className="flex justify-end">
-                <Button
-                  color="green"
-                  className=""
-                  onClick={() => {
-                    pagarLiquidacion("T");
-                  }}
-                >
-                  Liquidar todas las tareas
-                </Button>
+                {usu.usuario !== "joaquini" ? (
+                  <Button
+                    color="green"
+                    className=""
+                    onClick={() => {
+                      pagarLiquidacion("T");
+                    }}
+                  >
+                    Liquidar todas las tareas
+                  </Button>
+                ) : null}
               </div>
               <DataTable
                 columns={columns}
@@ -404,16 +407,18 @@ const ListadoLiquidacionPersonal = ({
 
             <div className=" border-2 rounded-xl p-4">
               <div className="flex justify-end">
-                <Button
-                  color="green"
-                  size="sm"
-                  className=" "
-                  onClick={() => {
-                    pagarLiquidacion("G");
-                  }}
-                >
-                  Liquidar todas las guardias
-                </Button>
+                {usu.usuario !== "joaquini" ? (
+                  <Button
+                    color="green"
+                    size="sm"
+                    className=" "
+                    onClick={() => {
+                      pagarLiquidacion("G");
+                    }}
+                  >
+                    Liquidar todas las guardias
+                  </Button>
+                ) : null}
               </div>
 
               <DataTable

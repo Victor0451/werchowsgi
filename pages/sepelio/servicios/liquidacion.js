@@ -383,6 +383,7 @@ function liquidacion(props) {
             liqItem={liqItem}
             liquidarGuardia={liquidarGuardia}
             alertas={alertas}
+            usu={usu}
           />
         </>
       )}
