@@ -21,6 +21,8 @@ function liquidacion(props) {
   const [operadores, guardarOperadores] = useState([]);
   const [tareas, guardarTareas] = useState([]);
   const [guardias, guardarGuardias] = useState([]);
+  const [tareasH, guardarTareasH] = useState([]);
+  const [guardiasH, guardarGuardiasH] = useState([]);
   const [errores, guardarErrores] = useState(null);
   const [alertas, guardarAlertas] = useState(null);
   const [opSel, guardarOpSel] = useState("");
@@ -102,6 +104,72 @@ function liquidacion(props) {
           if (res.data) {
             guar = res.data;
             guardarGuardias(guar);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar el listado de guardias");
+        });
+
+      if (tar.length === 0 && guar.length === 0) {
+        toast.warning(
+          `El operador ${opSel} no posee tareas o guardias a liquidar.`
+        );
+
+        guardarAlertas(
+          `El operador ${opSel} no posee tareas o guardias a liquidar.`
+        );
+      }
+    }
+  };
+
+  const buscarHistorial = async () => {
+    guardarErrores(null);
+    guardarTareasH([]);
+    guardarGuardiasH([]);
+
+    toast.info(`Buscando liquidacion del operador ${opSel}...`);
+
+    if (opSel === "") {
+      guardarErrores(
+        "Debes seleccionar al operador para traer su liquidacion pendiente"
+      );
+    } else {
+      let tar = [];
+      let guar = [];
+
+      await axios
+        .get("/api/sepelio/servicios", {
+          params: {
+            f: "traer historial tareas operador",
+            operador: opSel,
+          },
+        })
+        .then((res) => {
+          tar = JSON.parse(res.data);
+
+          if (tar.length > 0) {
+            toast.success("Liquidacion entontrada");
+
+            guardarTareasH(tar);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar el listado de tareas");
+        });
+
+      await axios
+        .get("/api/sepelio/guardias", {
+          params: {
+            f: "traer historial guardias operador",
+            operador: opSel,
+          },
+        })
+        .then((res) => {
+          if (res.data) {
+            guar = res.data;
+            guardarGuardiasH(guar);
           }
         })
         .catch((error) => {
@@ -377,6 +445,8 @@ function liquidacion(props) {
             buscarLiquidacion={buscarLiquidacion}
             tareas={tareas}
             guardias={guardias}
+            tareasH={tareasH}
+            guardiasH={guardiasH}
             opSel={opSel}
             calcTotal={calcTotal}
             pagarLiquidacion={pagarLiquidacion}
@@ -384,6 +454,7 @@ function liquidacion(props) {
             liquidarGuardia={liquidarGuardia}
             alertas={alertas}
             usu={usu}
+            buscarHistorial={buscarHistorial}
           />
         </>
       )}

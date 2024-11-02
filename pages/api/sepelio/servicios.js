@@ -353,6 +353,28 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
+    } else if (
+      req.query.f &&
+      req.query.f === "traer historial tareas operador"
+    ) {
+      const tareasSinLiq = await Sep.$queryRawUnsafe(
+        `                
+                SELECT *
+                FROM informe_tareas
+                WHERE operador = '${req.query.operador}'                
+                AND liquidado = 1                
+               
+              
+               `
+      );
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(tareasSinLiq, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     } else if (req.query.f && req.query.f === "traer gastos reg") {
       const tareasReg = await Sep.informe_gastos.findMany({
         where: {
@@ -453,7 +475,7 @@ export default async function handler(req, res) {
           estado_civil: req.body.estado_civil,
           importe_servicio: parseFloat(req.body.importe_servicio),
           gasto_luto: req.body.gasto,
-          conyugue: req.body.conyugue
+          conyugue: req.body.conyugue,
         },
       });
 

@@ -24,7 +24,22 @@ export default async function handler(req, res) {
       const guardiasOp = await Sep.liquidacion_guardias.findMany({
         where: {
           operador: req.query.operador,
-          liquidado: 0
+          liquidado: 0,
+        },
+        orderBy: {
+          liquidado: "asc",
+        },
+      });
+
+      res.status(200).json(guardiasOp);
+    } else if (
+      req.query.f &&
+      req.query.f === "traer historial guardias operador"
+    ) {
+      const guardiasOp = await Sep.liquidacion_guardias.findMany({
+        where: {
+          operador: req.query.operador,
+          liquidado: 1,
         },
         orderBy: {
           liquidado: "asc",

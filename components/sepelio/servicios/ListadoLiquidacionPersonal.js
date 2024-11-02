@@ -3,7 +3,7 @@ import DataTable from "react-data-table-component";
 import FilterComponent from "../../Layouts/FilterComponent";
 import {
   Card,
-  CardHeader,
+  CardBody,
   Typography,
   Alert,
   Button,
@@ -21,16 +21,20 @@ import {
   EyeIcon,
 } from "@heroicons/react/24/solid";
 import { IconSolid } from "../../../libs/funciones";
+import ModalHistorialLiquidacion from "./ModalHistorialLiquidacion";
 
 const ListadoLiquidacionPersonal = ({
   tareas,
   guardias,
+  tareasH,
+  guardiasH,
   calcTotal,
   operador,
   pagarLiquidacion,
   liqItem,
   liquidarGuardia,
   usu,
+  buscarHistorial,
 }) => {
   let columns = [
     {
@@ -274,16 +278,24 @@ const ListadoLiquidacionPersonal = ({
 
   return (
     <Card className="h-full w-full p-4 border-2 ">
-      <CardHeader floated={false} shadow={false} className="rounded-none">
+      <CardBody floated={false} shadow={false} className="rounded-none">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
             <Typography variant="h3">
               Detalle de Liquidacion: {operador}
             </Typography>
           </div>
-          {/* <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 ">
-           
-          </div> */}
+          <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 ">
+            <ModalHistorialLiquidacion
+              tareasH={tareasH}
+              guardiasH={guardiasH}
+              calcTotal={calcTotal}
+              operador={operador}
+              pagarLiquidacion={pagarLiquidacion}
+              usu={usu}
+              buscarHistorial={buscarHistorial}
+            />
+          </div>
         </div>
 
         {tareas.length === 0 ? (
@@ -472,7 +484,7 @@ const ListadoLiquidacionPersonal = ({
             </div>
           </div>
         </div>
-      </CardHeader>
+      </CardBody>
     </Card>
   );
 };
