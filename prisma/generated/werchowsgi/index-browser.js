@@ -538,10 +538,6 @@ exports.Prisma.OperadorScalarFieldEnum = {
   updatedAt: 'updatedAt',
   perfil: 'perfil',
   estado: 'estado',
-  puestow: 'puestow',
-  seriew: 'seriew',
-  puestom: 'puestom',
-  seriem: 'seriem',
   codigo: 'codigo',
   medicos: 'medicos',
   sucursal: 'sucursal',
@@ -924,6 +920,19 @@ exports.Prisma.Recibo_movimientosScalarFieldEnum = {
   descuento: 'descuento'
 };
 
+exports.Prisma.PuestosScalarFieldEnum = {
+  idpuesto: 'idpuesto',
+  operador: 'operador',
+  puestow: 'puestow',
+  seriew: 'seriew',
+  puestom: 'puestom',
+  seriem: 'seriem',
+  puesto_sm: 'puesto_sm',
+  serie_sm: 'serie_sm',
+  puesto_isj: 'puesto_isj',
+  serie_isj: 'serie_isj'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1004,7 +1013,8 @@ exports.Prisma.ModelName = {
   conceptos_liquidacion: 'conceptos_liquidacion',
   legajo_operador: 'legajo_operador',
   recibo_liquidacion: 'recibo_liquidacion',
-  recibo_movimientos: 'recibo_movimientos'
+  recibo_movimientos: 'recibo_movimientos',
+  puestos: 'puestos'
 };
 
 /**

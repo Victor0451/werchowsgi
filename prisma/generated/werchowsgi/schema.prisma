@@ -576,10 +576,6 @@ model operador {
   updatedAt      DateTime @db.DateTime(0)
   perfil         Int?
   estado         Boolean?
-  puestow        Int?
-  seriew         Int?
-  puestom        Int?
-  seriem         Int?
   codigo         Int?
   medicos        Boolean?
   sucursal       String?  @db.VarChar(255)
@@ -1047,4 +1043,17 @@ model recibo_movimientos {
   remu_ren     Float?  @db.Float
   remu_exe     Float?  @db.Float
   descuento    Float?  @db.Float
+}
+
+model puestos {
+  idpuesto   Int     @id @default(autoincrement())
+  operador   String? @db.VarChar(255)
+  puestow    Int?
+  seriew     Int?
+  puestom    Int?
+  seriem     Int?
+  puesto_sm  Int?
+  serie_sm   Int?
+  puesto_isj Int?
+  serie_isj  Int?
 }

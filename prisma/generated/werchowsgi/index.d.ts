@@ -762,10 +762,6 @@ export type operadorPayload<ExtArgs extends $Extensions.Args = $Extensions.Defau
     updatedAt: Date
     perfil: number | null
     estado: boolean | null
-    puestow: number | null
-    seriew: number | null
-    puestom: number | null
-    seriem: number | null
     codigo: number | null
     medicos: boolean | null
     sucursal: string | null
@@ -1452,6 +1448,28 @@ export type recibo_movimientosPayload<ExtArgs extends $Extensions.Args = $Extens
  * 
  */
 export type recibo_movimientos = runtime.Types.DefaultSelection<recibo_movimientosPayload>
+export type puestosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idpuesto: number
+    operador: string | null
+    puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
+    puesto_sm: number | null
+    serie_sm: number | null
+    puesto_isj: number | null
+    serie_isj: number | null
+  }, ExtArgs["result"]["puestos"]>
+  composites: {}
+}
+
+/**
+ * Model puestos
+ * 
+ */
+export type puestos = runtime.Types.DefaultSelection<puestosPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2267,6 +2285,16 @@ export class PrismaClient<
     * ```
     */
   get recibo_movimientos(): Prisma.recibo_movimientosDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.puestos`: Exposes CRUD operations for the **puestos** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Puestos
+    * const puestos = await prisma.puestos.findMany()
+    * ```
+    */
+  get puestos(): Prisma.puestosDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -2818,7 +2846,8 @@ export namespace Prisma {
     conceptos_liquidacion: 'conceptos_liquidacion',
     legajo_operador: 'legajo_operador',
     recibo_liquidacion: 'recibo_liquidacion',
-    recibo_movimientos: 'recibo_movimientos'
+    recibo_movimientos: 'recibo_movimientos',
+    puestos: 'puestos'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2835,7 +2864,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'produccion' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'reintegros' | 'conceptos_liquidacion' | 'legajo_operador' | 'recibo_liquidacion' | 'recibo_movimientos'
+      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'produccion' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'reintegros' | 'conceptos_liquidacion' | 'legajo_operador' | 'recibo_liquidacion' | 'recibo_movimientos' | 'puestos'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -8287,6 +8316,85 @@ export namespace Prisma {
             args: Prisma.recibo_movimientosCountArgs<ExtArgs>,
             result: $Utils.Optional<Recibo_movimientosCountAggregateOutputType> | number
             payload: recibo_movimientosPayload<ExtArgs>
+          }
+        }
+      }
+      puestos: {
+        operations: {
+          findUnique: {
+            args: Prisma.puestosFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<puestosPayload> | null
+            payload: puestosPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.puestosFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<puestosPayload>
+            payload: puestosPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.puestosFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<puestosPayload> | null
+            payload: puestosPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.puestosFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<puestosPayload>
+            payload: puestosPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.puestosFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<puestosPayload>[]
+            payload: puestosPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.puestosCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<puestosPayload>
+            payload: puestosPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.puestosCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: puestosPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.puestosDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<puestosPayload>
+            payload: puestosPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.puestosUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<puestosPayload>
+            payload: puestosPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.puestosDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: puestosPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.puestosUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: puestosPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.puestosUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<puestosPayload>
+            payload: puestosPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.PuestosAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePuestos>
+            payload: puestosPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.puestosGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PuestosGroupByOutputType>[]
+            payload: puestosPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.puestosCountArgs<ExtArgs>,
+            result: $Utils.Optional<PuestosCountAggregateOutputType> | number
+            payload: puestosPayload<ExtArgs>
           }
         }
       }
@@ -42037,20 +42145,12 @@ export namespace Prisma {
   export type OperadorAvgAggregateOutputType = {
     id: number | null
     perfil: number | null
-    puestow: number | null
-    seriew: number | null
-    puestom: number | null
-    seriem: number | null
     codigo: number | null
   }
 
   export type OperadorSumAggregateOutputType = {
     id: number | null
     perfil: number | null
-    puestow: number | null
-    seriew: number | null
-    puestom: number | null
-    seriem: number | null
     codigo: number | null
   }
 
@@ -42064,10 +42164,6 @@ export namespace Prisma {
     updatedAt: Date | null
     perfil: number | null
     estado: boolean | null
-    puestow: number | null
-    seriew: number | null
-    puestom: number | null
-    seriem: number | null
     codigo: number | null
     medicos: boolean | null
     sucursal: string | null
@@ -42093,10 +42189,6 @@ export namespace Prisma {
     updatedAt: Date | null
     perfil: number | null
     estado: boolean | null
-    puestow: number | null
-    seriew: number | null
-    puestom: number | null
-    seriem: number | null
     codigo: number | null
     medicos: boolean | null
     sucursal: string | null
@@ -42122,10 +42214,6 @@ export namespace Prisma {
     updatedAt: number
     perfil: number
     estado: number
-    puestow: number
-    seriew: number
-    puestom: number
-    seriem: number
     codigo: number
     medicos: number
     sucursal: number
@@ -42146,20 +42234,12 @@ export namespace Prisma {
   export type OperadorAvgAggregateInputType = {
     id?: true
     perfil?: true
-    puestow?: true
-    seriew?: true
-    puestom?: true
-    seriem?: true
     codigo?: true
   }
 
   export type OperadorSumAggregateInputType = {
     id?: true
     perfil?: true
-    puestow?: true
-    seriew?: true
-    puestom?: true
-    seriem?: true
     codigo?: true
   }
 
@@ -42173,10 +42253,6 @@ export namespace Prisma {
     updatedAt?: true
     perfil?: true
     estado?: true
-    puestow?: true
-    seriew?: true
-    puestom?: true
-    seriem?: true
     codigo?: true
     medicos?: true
     sucursal?: true
@@ -42202,10 +42278,6 @@ export namespace Prisma {
     updatedAt?: true
     perfil?: true
     estado?: true
-    puestow?: true
-    seriew?: true
-    puestom?: true
-    seriem?: true
     codigo?: true
     medicos?: true
     sucursal?: true
@@ -42231,10 +42303,6 @@ export namespace Prisma {
     updatedAt?: true
     perfil?: true
     estado?: true
-    puestow?: true
-    seriew?: true
-    puestom?: true
-    seriem?: true
     codigo?: true
     medicos?: true
     sucursal?: true
@@ -42348,10 +42416,6 @@ export namespace Prisma {
     updatedAt: Date
     perfil: number | null
     estado: boolean | null
-    puestow: number | null
-    seriew: number | null
-    puestom: number | null
-    seriem: number | null
     codigo: number | null
     medicos: boolean | null
     sucursal: string | null
@@ -42396,10 +42460,6 @@ export namespace Prisma {
     updatedAt?: boolean
     perfil?: boolean
     estado?: boolean
-    puestow?: boolean
-    seriew?: boolean
-    puestom?: boolean
-    seriem?: boolean
     codigo?: boolean
     medicos?: boolean
     sucursal?: boolean
@@ -42425,10 +42485,6 @@ export namespace Prisma {
     updatedAt?: boolean
     perfil?: boolean
     estado?: boolean
-    puestow?: boolean
-    seriew?: boolean
-    puestom?: boolean
-    seriem?: boolean
     codigo?: boolean
     medicos?: boolean
     sucursal?: boolean
@@ -74466,6 +74522,995 @@ export namespace Prisma {
 
 
   /**
+   * Model puestos
+   */
+
+
+  export type AggregatePuestos = {
+    _count: PuestosCountAggregateOutputType | null
+    _avg: PuestosAvgAggregateOutputType | null
+    _sum: PuestosSumAggregateOutputType | null
+    _min: PuestosMinAggregateOutputType | null
+    _max: PuestosMaxAggregateOutputType | null
+  }
+
+  export type PuestosAvgAggregateOutputType = {
+    idpuesto: number | null
+    puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
+    puesto_sm: number | null
+    serie_sm: number | null
+    puesto_isj: number | null
+    serie_isj: number | null
+  }
+
+  export type PuestosSumAggregateOutputType = {
+    idpuesto: number | null
+    puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
+    puesto_sm: number | null
+    serie_sm: number | null
+    puesto_isj: number | null
+    serie_isj: number | null
+  }
+
+  export type PuestosMinAggregateOutputType = {
+    idpuesto: number | null
+    operador: string | null
+    puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
+    puesto_sm: number | null
+    serie_sm: number | null
+    puesto_isj: number | null
+    serie_isj: number | null
+  }
+
+  export type PuestosMaxAggregateOutputType = {
+    idpuesto: number | null
+    operador: string | null
+    puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
+    puesto_sm: number | null
+    serie_sm: number | null
+    puesto_isj: number | null
+    serie_isj: number | null
+  }
+
+  export type PuestosCountAggregateOutputType = {
+    idpuesto: number
+    operador: number
+    puestow: number
+    seriew: number
+    puestom: number
+    seriem: number
+    puesto_sm: number
+    serie_sm: number
+    puesto_isj: number
+    serie_isj: number
+    _all: number
+  }
+
+
+  export type PuestosAvgAggregateInputType = {
+    idpuesto?: true
+    puestow?: true
+    seriew?: true
+    puestom?: true
+    seriem?: true
+    puesto_sm?: true
+    serie_sm?: true
+    puesto_isj?: true
+    serie_isj?: true
+  }
+
+  export type PuestosSumAggregateInputType = {
+    idpuesto?: true
+    puestow?: true
+    seriew?: true
+    puestom?: true
+    seriem?: true
+    puesto_sm?: true
+    serie_sm?: true
+    puesto_isj?: true
+    serie_isj?: true
+  }
+
+  export type PuestosMinAggregateInputType = {
+    idpuesto?: true
+    operador?: true
+    puestow?: true
+    seriew?: true
+    puestom?: true
+    seriem?: true
+    puesto_sm?: true
+    serie_sm?: true
+    puesto_isj?: true
+    serie_isj?: true
+  }
+
+  export type PuestosMaxAggregateInputType = {
+    idpuesto?: true
+    operador?: true
+    puestow?: true
+    seriew?: true
+    puestom?: true
+    seriem?: true
+    puesto_sm?: true
+    serie_sm?: true
+    puesto_isj?: true
+    serie_isj?: true
+  }
+
+  export type PuestosCountAggregateInputType = {
+    idpuesto?: true
+    operador?: true
+    puestow?: true
+    seriew?: true
+    puestom?: true
+    seriem?: true
+    puesto_sm?: true
+    serie_sm?: true
+    puesto_isj?: true
+    serie_isj?: true
+    _all?: true
+  }
+
+  export type PuestosAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which puestos to aggregate.
+     */
+    where?: puestosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of puestos to fetch.
+     */
+    orderBy?: puestosOrderByWithRelationInput | puestosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: puestosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` puestos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` puestos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned puestos
+    **/
+    _count?: true | PuestosCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PuestosAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PuestosSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PuestosMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PuestosMaxAggregateInputType
+  }
+
+  export type GetPuestosAggregateType<T extends PuestosAggregateArgs> = {
+        [P in keyof T & keyof AggregatePuestos]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePuestos[P]>
+      : GetScalarType<T[P], AggregatePuestos[P]>
+  }
+
+
+
+
+  export type puestosGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: puestosWhereInput
+    orderBy?: puestosOrderByWithAggregationInput | puestosOrderByWithAggregationInput[]
+    by: PuestosScalarFieldEnum[] | PuestosScalarFieldEnum
+    having?: puestosScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PuestosCountAggregateInputType | true
+    _avg?: PuestosAvgAggregateInputType
+    _sum?: PuestosSumAggregateInputType
+    _min?: PuestosMinAggregateInputType
+    _max?: PuestosMaxAggregateInputType
+  }
+
+
+  export type PuestosGroupByOutputType = {
+    idpuesto: number
+    operador: string | null
+    puestow: number | null
+    seriew: number | null
+    puestom: number | null
+    seriem: number | null
+    puesto_sm: number | null
+    serie_sm: number | null
+    puesto_isj: number | null
+    serie_isj: number | null
+    _count: PuestosCountAggregateOutputType | null
+    _avg: PuestosAvgAggregateOutputType | null
+    _sum: PuestosSumAggregateOutputType | null
+    _min: PuestosMinAggregateOutputType | null
+    _max: PuestosMaxAggregateOutputType | null
+  }
+
+  type GetPuestosGroupByPayload<T extends puestosGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PuestosGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PuestosGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PuestosGroupByOutputType[P]>
+            : GetScalarType<T[P], PuestosGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type puestosSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idpuesto?: boolean
+    operador?: boolean
+    puestow?: boolean
+    seriew?: boolean
+    puestom?: boolean
+    seriem?: boolean
+    puesto_sm?: boolean
+    serie_sm?: boolean
+    puesto_isj?: boolean
+    serie_isj?: boolean
+  }, ExtArgs["result"]["puestos"]>
+
+  export type puestosSelectScalar = {
+    idpuesto?: boolean
+    operador?: boolean
+    puestow?: boolean
+    seriew?: boolean
+    puestom?: boolean
+    seriem?: boolean
+    puesto_sm?: boolean
+    serie_sm?: boolean
+    puesto_isj?: boolean
+    serie_isj?: boolean
+  }
+
+
+  type puestosGetPayload<S extends boolean | null | undefined | puestosArgs> = $Types.GetResult<puestosPayload, S>
+
+  type puestosCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<puestosFindManyArgs, 'select' | 'include'> & {
+      select?: PuestosCountAggregateInputType | true
+    }
+
+  export interface puestosDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['puestos'], meta: { name: 'puestos' } }
+    /**
+     * Find zero or one Puestos that matches the filter.
+     * @param {puestosFindUniqueArgs} args - Arguments to find a Puestos
+     * @example
+     * // Get one Puestos
+     * const puestos = await prisma.puestos.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends puestosFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, puestosFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'puestos'> extends True ? Prisma__puestosClient<$Types.GetResult<puestosPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__puestosClient<$Types.GetResult<puestosPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Puestos that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {puestosFindUniqueOrThrowArgs} args - Arguments to find a Puestos
+     * @example
+     * // Get one Puestos
+     * const puestos = await prisma.puestos.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends puestosFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, puestosFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__puestosClient<$Types.GetResult<puestosPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Puestos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {puestosFindFirstArgs} args - Arguments to find a Puestos
+     * @example
+     * // Get one Puestos
+     * const puestos = await prisma.puestos.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends puestosFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, puestosFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'puestos'> extends True ? Prisma__puestosClient<$Types.GetResult<puestosPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__puestosClient<$Types.GetResult<puestosPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Puestos that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {puestosFindFirstOrThrowArgs} args - Arguments to find a Puestos
+     * @example
+     * // Get one Puestos
+     * const puestos = await prisma.puestos.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends puestosFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, puestosFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__puestosClient<$Types.GetResult<puestosPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Puestos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {puestosFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Puestos
+     * const puestos = await prisma.puestos.findMany()
+     * 
+     * // Get first 10 Puestos
+     * const puestos = await prisma.puestos.findMany({ take: 10 })
+     * 
+     * // Only select the `idpuesto`
+     * const puestosWithIdpuestoOnly = await prisma.puestos.findMany({ select: { idpuesto: true } })
+     * 
+    **/
+    findMany<T extends puestosFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, puestosFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<puestosPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Puestos.
+     * @param {puestosCreateArgs} args - Arguments to create a Puestos.
+     * @example
+     * // Create one Puestos
+     * const Puestos = await prisma.puestos.create({
+     *   data: {
+     *     // ... data to create a Puestos
+     *   }
+     * })
+     * 
+    **/
+    create<T extends puestosCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, puestosCreateArgs<ExtArgs>>
+    ): Prisma__puestosClient<$Types.GetResult<puestosPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Puestos.
+     *     @param {puestosCreateManyArgs} args - Arguments to create many Puestos.
+     *     @example
+     *     // Create many Puestos
+     *     const puestos = await prisma.puestos.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends puestosCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, puestosCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Puestos.
+     * @param {puestosDeleteArgs} args - Arguments to delete one Puestos.
+     * @example
+     * // Delete one Puestos
+     * const Puestos = await prisma.puestos.delete({
+     *   where: {
+     *     // ... filter to delete one Puestos
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends puestosDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, puestosDeleteArgs<ExtArgs>>
+    ): Prisma__puestosClient<$Types.GetResult<puestosPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Puestos.
+     * @param {puestosUpdateArgs} args - Arguments to update one Puestos.
+     * @example
+     * // Update one Puestos
+     * const puestos = await prisma.puestos.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends puestosUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, puestosUpdateArgs<ExtArgs>>
+    ): Prisma__puestosClient<$Types.GetResult<puestosPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Puestos.
+     * @param {puestosDeleteManyArgs} args - Arguments to filter Puestos to delete.
+     * @example
+     * // Delete a few Puestos
+     * const { count } = await prisma.puestos.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends puestosDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, puestosDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Puestos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {puestosUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Puestos
+     * const puestos = await prisma.puestos.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends puestosUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, puestosUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Puestos.
+     * @param {puestosUpsertArgs} args - Arguments to update or create a Puestos.
+     * @example
+     * // Update or create a Puestos
+     * const puestos = await prisma.puestos.upsert({
+     *   create: {
+     *     // ... data to create a Puestos
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Puestos we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends puestosUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, puestosUpsertArgs<ExtArgs>>
+    ): Prisma__puestosClient<$Types.GetResult<puestosPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Puestos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {puestosCountArgs} args - Arguments to filter Puestos to count.
+     * @example
+     * // Count the number of Puestos
+     * const count = await prisma.puestos.count({
+     *   where: {
+     *     // ... the filter for the Puestos we want to count
+     *   }
+     * })
+    **/
+    count<T extends puestosCountArgs>(
+      args?: Subset<T, puestosCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PuestosCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Puestos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PuestosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PuestosAggregateArgs>(args: Subset<T, PuestosAggregateArgs>): Prisma.PrismaPromise<GetPuestosAggregateType<T>>
+
+    /**
+     * Group by Puestos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {puestosGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends puestosGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: puestosGroupByArgs['orderBy'] }
+        : { orderBy?: puestosGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, puestosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPuestosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for puestos.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__puestosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * puestos base type for findUnique actions
+   */
+  export type puestosFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the puestos
+     */
+    select?: puestosSelect<ExtArgs> | null
+    /**
+     * Filter, which puestos to fetch.
+     */
+    where: puestosWhereUniqueInput
+  }
+
+  /**
+   * puestos findUnique
+   */
+  export interface puestosFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends puestosFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * puestos findUniqueOrThrow
+   */
+  export type puestosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the puestos
+     */
+    select?: puestosSelect<ExtArgs> | null
+    /**
+     * Filter, which puestos to fetch.
+     */
+    where: puestosWhereUniqueInput
+  }
+
+
+  /**
+   * puestos base type for findFirst actions
+   */
+  export type puestosFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the puestos
+     */
+    select?: puestosSelect<ExtArgs> | null
+    /**
+     * Filter, which puestos to fetch.
+     */
+    where?: puestosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of puestos to fetch.
+     */
+    orderBy?: puestosOrderByWithRelationInput | puestosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for puestos.
+     */
+    cursor?: puestosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` puestos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` puestos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of puestos.
+     */
+    distinct?: PuestosScalarFieldEnum | PuestosScalarFieldEnum[]
+  }
+
+  /**
+   * puestos findFirst
+   */
+  export interface puestosFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends puestosFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * puestos findFirstOrThrow
+   */
+  export type puestosFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the puestos
+     */
+    select?: puestosSelect<ExtArgs> | null
+    /**
+     * Filter, which puestos to fetch.
+     */
+    where?: puestosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of puestos to fetch.
+     */
+    orderBy?: puestosOrderByWithRelationInput | puestosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for puestos.
+     */
+    cursor?: puestosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` puestos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` puestos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of puestos.
+     */
+    distinct?: PuestosScalarFieldEnum | PuestosScalarFieldEnum[]
+  }
+
+
+  /**
+   * puestos findMany
+   */
+  export type puestosFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the puestos
+     */
+    select?: puestosSelect<ExtArgs> | null
+    /**
+     * Filter, which puestos to fetch.
+     */
+    where?: puestosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of puestos to fetch.
+     */
+    orderBy?: puestosOrderByWithRelationInput | puestosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing puestos.
+     */
+    cursor?: puestosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` puestos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` puestos.
+     */
+    skip?: number
+    distinct?: PuestosScalarFieldEnum | PuestosScalarFieldEnum[]
+  }
+
+
+  /**
+   * puestos create
+   */
+  export type puestosCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the puestos
+     */
+    select?: puestosSelect<ExtArgs> | null
+    /**
+     * The data needed to create a puestos.
+     */
+    data?: XOR<puestosCreateInput, puestosUncheckedCreateInput>
+  }
+
+
+  /**
+   * puestos createMany
+   */
+  export type puestosCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many puestos.
+     */
+    data: puestosCreateManyInput | puestosCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * puestos update
+   */
+  export type puestosUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the puestos
+     */
+    select?: puestosSelect<ExtArgs> | null
+    /**
+     * The data needed to update a puestos.
+     */
+    data: XOR<puestosUpdateInput, puestosUncheckedUpdateInput>
+    /**
+     * Choose, which puestos to update.
+     */
+    where: puestosWhereUniqueInput
+  }
+
+
+  /**
+   * puestos updateMany
+   */
+  export type puestosUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update puestos.
+     */
+    data: XOR<puestosUpdateManyMutationInput, puestosUncheckedUpdateManyInput>
+    /**
+     * Filter which puestos to update
+     */
+    where?: puestosWhereInput
+  }
+
+
+  /**
+   * puestos upsert
+   */
+  export type puestosUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the puestos
+     */
+    select?: puestosSelect<ExtArgs> | null
+    /**
+     * The filter to search for the puestos to update in case it exists.
+     */
+    where: puestosWhereUniqueInput
+    /**
+     * In case the puestos found by the `where` argument doesn't exist, create a new puestos with this data.
+     */
+    create: XOR<puestosCreateInput, puestosUncheckedCreateInput>
+    /**
+     * In case the puestos was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<puestosUpdateInput, puestosUncheckedUpdateInput>
+  }
+
+
+  /**
+   * puestos delete
+   */
+  export type puestosDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the puestos
+     */
+    select?: puestosSelect<ExtArgs> | null
+    /**
+     * Filter which puestos to delete.
+     */
+    where: puestosWhereUniqueInput
+  }
+
+
+  /**
+   * puestos deleteMany
+   */
+  export type puestosDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which puestos to delete
+     */
+    where?: puestosWhereInput
+  }
+
+
+  /**
+   * puestos without action
+   */
+  export type puestosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the puestos
+     */
+    select?: puestosSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -75017,10 +76062,6 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     perfil: 'perfil',
     estado: 'estado',
-    puestow: 'puestow',
-    seriew: 'seriew',
-    puestom: 'puestom',
-    seriem: 'seriem',
     codigo: 'codigo',
     medicos: 'medicos',
     sucursal: 'sucursal',
@@ -75503,6 +76544,22 @@ export namespace Prisma {
   };
 
   export type Recibo_movimientosScalarFieldEnum = (typeof Recibo_movimientosScalarFieldEnum)[keyof typeof Recibo_movimientosScalarFieldEnum]
+
+
+  export const PuestosScalarFieldEnum: {
+    idpuesto: 'idpuesto',
+    operador: 'operador',
+    puestow: 'puestow',
+    seriew: 'seriew',
+    puestom: 'puestom',
+    seriem: 'seriem',
+    puesto_sm: 'puesto_sm',
+    serie_sm: 'serie_sm',
+    puesto_isj: 'puesto_isj',
+    serie_isj: 'serie_isj'
+  };
+
+  export type PuestosScalarFieldEnum = (typeof PuestosScalarFieldEnum)[keyof typeof PuestosScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -77756,10 +78813,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter | Date | string
     perfil?: IntNullableFilter | number | null
     estado?: BoolNullableFilter | boolean | null
-    puestow?: IntNullableFilter | number | null
-    seriew?: IntNullableFilter | number | null
-    puestom?: IntNullableFilter | number | null
-    seriem?: IntNullableFilter | number | null
     codigo?: IntNullableFilter | number | null
     medicos?: BoolNullableFilter | boolean | null
     sucursal?: StringNullableFilter | string | null
@@ -77785,10 +78838,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     perfil?: SortOrderInput | SortOrder
     estado?: SortOrderInput | SortOrder
-    puestow?: SortOrderInput | SortOrder
-    seriew?: SortOrderInput | SortOrder
-    puestom?: SortOrderInput | SortOrder
-    seriem?: SortOrderInput | SortOrder
     codigo?: SortOrderInput | SortOrder
     medicos?: SortOrderInput | SortOrder
     sucursal?: SortOrderInput | SortOrder
@@ -77818,10 +78867,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     perfil?: SortOrderInput | SortOrder
     estado?: SortOrderInput | SortOrder
-    puestow?: SortOrderInput | SortOrder
-    seriew?: SortOrderInput | SortOrder
-    puestom?: SortOrderInput | SortOrder
-    seriem?: SortOrderInput | SortOrder
     codigo?: SortOrderInput | SortOrder
     medicos?: SortOrderInput | SortOrder
     sucursal?: SortOrderInput | SortOrder
@@ -77855,10 +78900,6 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter | Date | string
     perfil?: IntNullableWithAggregatesFilter | number | null
     estado?: BoolNullableWithAggregatesFilter | boolean | null
-    puestow?: IntNullableWithAggregatesFilter | number | null
-    seriew?: IntNullableWithAggregatesFilter | number | null
-    puestom?: IntNullableWithAggregatesFilter | number | null
-    seriem?: IntNullableWithAggregatesFilter | number | null
     codigo?: IntNullableWithAggregatesFilter | number | null
     medicos?: BoolNullableWithAggregatesFilter | boolean | null
     sucursal?: StringNullableWithAggregatesFilter | string | null
@@ -79835,6 +80876,73 @@ export namespace Prisma {
     remu_ren?: FloatNullableWithAggregatesFilter | number | null
     remu_exe?: FloatNullableWithAggregatesFilter | number | null
     descuento?: FloatNullableWithAggregatesFilter | number | null
+  }
+
+  export type puestosWhereInput = {
+    AND?: puestosWhereInput | puestosWhereInput[]
+    OR?: puestosWhereInput[]
+    NOT?: puestosWhereInput | puestosWhereInput[]
+    idpuesto?: IntFilter | number
+    operador?: StringNullableFilter | string | null
+    puestow?: IntNullableFilter | number | null
+    seriew?: IntNullableFilter | number | null
+    puestom?: IntNullableFilter | number | null
+    seriem?: IntNullableFilter | number | null
+    puesto_sm?: IntNullableFilter | number | null
+    serie_sm?: IntNullableFilter | number | null
+    puesto_isj?: IntNullableFilter | number | null
+    serie_isj?: IntNullableFilter | number | null
+  }
+
+  export type puestosOrderByWithRelationInput = {
+    idpuesto?: SortOrder
+    operador?: SortOrderInput | SortOrder
+    puestow?: SortOrderInput | SortOrder
+    seriew?: SortOrderInput | SortOrder
+    puestom?: SortOrderInput | SortOrder
+    seriem?: SortOrderInput | SortOrder
+    puesto_sm?: SortOrderInput | SortOrder
+    serie_sm?: SortOrderInput | SortOrder
+    puesto_isj?: SortOrderInput | SortOrder
+    serie_isj?: SortOrderInput | SortOrder
+  }
+
+  export type puestosWhereUniqueInput = {
+    idpuesto?: number
+  }
+
+  export type puestosOrderByWithAggregationInput = {
+    idpuesto?: SortOrder
+    operador?: SortOrderInput | SortOrder
+    puestow?: SortOrderInput | SortOrder
+    seriew?: SortOrderInput | SortOrder
+    puestom?: SortOrderInput | SortOrder
+    seriem?: SortOrderInput | SortOrder
+    puesto_sm?: SortOrderInput | SortOrder
+    serie_sm?: SortOrderInput | SortOrder
+    puesto_isj?: SortOrderInput | SortOrder
+    serie_isj?: SortOrderInput | SortOrder
+    _count?: puestosCountOrderByAggregateInput
+    _avg?: puestosAvgOrderByAggregateInput
+    _max?: puestosMaxOrderByAggregateInput
+    _min?: puestosMinOrderByAggregateInput
+    _sum?: puestosSumOrderByAggregateInput
+  }
+
+  export type puestosScalarWhereWithAggregatesInput = {
+    AND?: puestosScalarWhereWithAggregatesInput | puestosScalarWhereWithAggregatesInput[]
+    OR?: puestosScalarWhereWithAggregatesInput[]
+    NOT?: puestosScalarWhereWithAggregatesInput | puestosScalarWhereWithAggregatesInput[]
+    idpuesto?: IntWithAggregatesFilter | number
+    operador?: StringNullableWithAggregatesFilter | string | null
+    puestow?: IntNullableWithAggregatesFilter | number | null
+    seriew?: IntNullableWithAggregatesFilter | number | null
+    puestom?: IntNullableWithAggregatesFilter | number | null
+    seriem?: IntNullableWithAggregatesFilter | number | null
+    puesto_sm?: IntNullableWithAggregatesFilter | number | null
+    serie_sm?: IntNullableWithAggregatesFilter | number | null
+    puesto_isj?: IntNullableWithAggregatesFilter | number | null
+    serie_isj?: IntNullableWithAggregatesFilter | number | null
   }
 
   export type alta_novellCreateInput = {
@@ -82705,10 +83813,6 @@ export namespace Prisma {
     updatedAt: Date | string
     perfil?: number | null
     estado?: boolean | null
-    puestow?: number | null
-    seriew?: number | null
-    puestom?: number | null
-    seriem?: number | null
     codigo?: number | null
     medicos?: boolean | null
     sucursal?: string | null
@@ -82734,10 +83838,6 @@ export namespace Prisma {
     updatedAt: Date | string
     perfil?: number | null
     estado?: boolean | null
-    puestow?: number | null
-    seriew?: number | null
-    puestom?: number | null
-    seriem?: number | null
     codigo?: number | null
     medicos?: boolean | null
     sucursal?: string | null
@@ -82762,10 +83862,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     perfil?: NullableIntFieldUpdateOperationsInput | number | null
     estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    puestow?: NullableIntFieldUpdateOperationsInput | number | null
-    seriew?: NullableIntFieldUpdateOperationsInput | number | null
-    puestom?: NullableIntFieldUpdateOperationsInput | number | null
-    seriem?: NullableIntFieldUpdateOperationsInput | number | null
     codigo?: NullableIntFieldUpdateOperationsInput | number | null
     medicos?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82791,10 +83887,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     perfil?: NullableIntFieldUpdateOperationsInput | number | null
     estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    puestow?: NullableIntFieldUpdateOperationsInput | number | null
-    seriew?: NullableIntFieldUpdateOperationsInput | number | null
-    puestom?: NullableIntFieldUpdateOperationsInput | number | null
-    seriem?: NullableIntFieldUpdateOperationsInput | number | null
     codigo?: NullableIntFieldUpdateOperationsInput | number | null
     medicos?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82820,10 +83912,6 @@ export namespace Prisma {
     updatedAt: Date | string
     perfil?: number | null
     estado?: boolean | null
-    puestow?: number | null
-    seriew?: number | null
-    puestom?: number | null
-    seriem?: number | null
     codigo?: number | null
     medicos?: boolean | null
     sucursal?: string | null
@@ -82848,10 +83936,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     perfil?: NullableIntFieldUpdateOperationsInput | number | null
     estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    puestow?: NullableIntFieldUpdateOperationsInput | number | null
-    seriew?: NullableIntFieldUpdateOperationsInput | number | null
-    puestom?: NullableIntFieldUpdateOperationsInput | number | null
-    seriem?: NullableIntFieldUpdateOperationsInput | number | null
     codigo?: NullableIntFieldUpdateOperationsInput | number | null
     medicos?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82877,10 +83961,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     perfil?: NullableIntFieldUpdateOperationsInput | number | null
     estado?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    puestow?: NullableIntFieldUpdateOperationsInput | number | null
-    seriew?: NullableIntFieldUpdateOperationsInput | number | null
-    puestom?: NullableIntFieldUpdateOperationsInput | number | null
-    seriem?: NullableIntFieldUpdateOperationsInput | number | null
     codigo?: NullableIntFieldUpdateOperationsInput | number | null
     medicos?: NullableBoolFieldUpdateOperationsInput | boolean | null
     sucursal?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85369,6 +86449,94 @@ export namespace Prisma {
     descuento?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
+  export type puestosCreateInput = {
+    operador?: string | null
+    puestow?: number | null
+    seriew?: number | null
+    puestom?: number | null
+    seriem?: number | null
+    puesto_sm?: number | null
+    serie_sm?: number | null
+    puesto_isj?: number | null
+    serie_isj?: number | null
+  }
+
+  export type puestosUncheckedCreateInput = {
+    idpuesto?: number
+    operador?: string | null
+    puestow?: number | null
+    seriew?: number | null
+    puestom?: number | null
+    seriem?: number | null
+    puesto_sm?: number | null
+    serie_sm?: number | null
+    puesto_isj?: number | null
+    serie_isj?: number | null
+  }
+
+  export type puestosUpdateInput = {
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    puestow?: NullableIntFieldUpdateOperationsInput | number | null
+    seriew?: NullableIntFieldUpdateOperationsInput | number | null
+    puestom?: NullableIntFieldUpdateOperationsInput | number | null
+    seriem?: NullableIntFieldUpdateOperationsInput | number | null
+    puesto_sm?: NullableIntFieldUpdateOperationsInput | number | null
+    serie_sm?: NullableIntFieldUpdateOperationsInput | number | null
+    puesto_isj?: NullableIntFieldUpdateOperationsInput | number | null
+    serie_isj?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type puestosUncheckedUpdateInput = {
+    idpuesto?: IntFieldUpdateOperationsInput | number
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    puestow?: NullableIntFieldUpdateOperationsInput | number | null
+    seriew?: NullableIntFieldUpdateOperationsInput | number | null
+    puestom?: NullableIntFieldUpdateOperationsInput | number | null
+    seriem?: NullableIntFieldUpdateOperationsInput | number | null
+    puesto_sm?: NullableIntFieldUpdateOperationsInput | number | null
+    serie_sm?: NullableIntFieldUpdateOperationsInput | number | null
+    puesto_isj?: NullableIntFieldUpdateOperationsInput | number | null
+    serie_isj?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type puestosCreateManyInput = {
+    idpuesto?: number
+    operador?: string | null
+    puestow?: number | null
+    seriew?: number | null
+    puestom?: number | null
+    seriem?: number | null
+    puesto_sm?: number | null
+    serie_sm?: number | null
+    puesto_isj?: number | null
+    serie_isj?: number | null
+  }
+
+  export type puestosUpdateManyMutationInput = {
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    puestow?: NullableIntFieldUpdateOperationsInput | number | null
+    seriew?: NullableIntFieldUpdateOperationsInput | number | null
+    puestom?: NullableIntFieldUpdateOperationsInput | number | null
+    seriem?: NullableIntFieldUpdateOperationsInput | number | null
+    puesto_sm?: NullableIntFieldUpdateOperationsInput | number | null
+    serie_sm?: NullableIntFieldUpdateOperationsInput | number | null
+    puesto_isj?: NullableIntFieldUpdateOperationsInput | number | null
+    serie_isj?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type puestosUncheckedUpdateManyInput = {
+    idpuesto?: IntFieldUpdateOperationsInput | number
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+    puestow?: NullableIntFieldUpdateOperationsInput | number | null
+    seriew?: NullableIntFieldUpdateOperationsInput | number | null
+    puestom?: NullableIntFieldUpdateOperationsInput | number | null
+    seriem?: NullableIntFieldUpdateOperationsInput | number | null
+    puesto_sm?: NullableIntFieldUpdateOperationsInput | number | null
+    serie_sm?: NullableIntFieldUpdateOperationsInput | number | null
+    puesto_isj?: NullableIntFieldUpdateOperationsInput | number | null
+    serie_isj?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
   export type IntFilter = {
     equals?: number
     in?: number[]
@@ -87322,10 +88490,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     perfil?: SortOrder
     estado?: SortOrder
-    puestow?: SortOrder
-    seriew?: SortOrder
-    puestom?: SortOrder
-    seriem?: SortOrder
     codigo?: SortOrder
     medicos?: SortOrder
     sucursal?: SortOrder
@@ -87344,10 +88508,6 @@ export namespace Prisma {
   export type operadorAvgOrderByAggregateInput = {
     id?: SortOrder
     perfil?: SortOrder
-    puestow?: SortOrder
-    seriew?: SortOrder
-    puestom?: SortOrder
-    seriem?: SortOrder
     codigo?: SortOrder
   }
 
@@ -87361,10 +88521,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     perfil?: SortOrder
     estado?: SortOrder
-    puestow?: SortOrder
-    seriew?: SortOrder
-    puestom?: SortOrder
-    seriem?: SortOrder
     codigo?: SortOrder
     medicos?: SortOrder
     sucursal?: SortOrder
@@ -87390,10 +88546,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     perfil?: SortOrder
     estado?: SortOrder
-    puestow?: SortOrder
-    seriew?: SortOrder
-    puestom?: SortOrder
-    seriem?: SortOrder
     codigo?: SortOrder
     medicos?: SortOrder
     sucursal?: SortOrder
@@ -87412,10 +88564,6 @@ export namespace Prisma {
   export type operadorSumOrderByAggregateInput = {
     id?: SortOrder
     perfil?: SortOrder
-    puestow?: SortOrder
-    seriew?: SortOrder
-    puestom?: SortOrder
-    seriem?: SortOrder
     codigo?: SortOrder
   }
 
@@ -88944,6 +90092,69 @@ export namespace Prisma {
     remu_ren?: SortOrder
     remu_exe?: SortOrder
     descuento?: SortOrder
+  }
+
+  export type puestosCountOrderByAggregateInput = {
+    idpuesto?: SortOrder
+    operador?: SortOrder
+    puestow?: SortOrder
+    seriew?: SortOrder
+    puestom?: SortOrder
+    seriem?: SortOrder
+    puesto_sm?: SortOrder
+    serie_sm?: SortOrder
+    puesto_isj?: SortOrder
+    serie_isj?: SortOrder
+  }
+
+  export type puestosAvgOrderByAggregateInput = {
+    idpuesto?: SortOrder
+    puestow?: SortOrder
+    seriew?: SortOrder
+    puestom?: SortOrder
+    seriem?: SortOrder
+    puesto_sm?: SortOrder
+    serie_sm?: SortOrder
+    puesto_isj?: SortOrder
+    serie_isj?: SortOrder
+  }
+
+  export type puestosMaxOrderByAggregateInput = {
+    idpuesto?: SortOrder
+    operador?: SortOrder
+    puestow?: SortOrder
+    seriew?: SortOrder
+    puestom?: SortOrder
+    seriem?: SortOrder
+    puesto_sm?: SortOrder
+    serie_sm?: SortOrder
+    puesto_isj?: SortOrder
+    serie_isj?: SortOrder
+  }
+
+  export type puestosMinOrderByAggregateInput = {
+    idpuesto?: SortOrder
+    operador?: SortOrder
+    puestow?: SortOrder
+    seriew?: SortOrder
+    puestom?: SortOrder
+    seriem?: SortOrder
+    puesto_sm?: SortOrder
+    serie_sm?: SortOrder
+    puesto_isj?: SortOrder
+    serie_isj?: SortOrder
+  }
+
+  export type puestosSumOrderByAggregateInput = {
+    idpuesto?: SortOrder
+    puestow?: SortOrder
+    seriew?: SortOrder
+    puestom?: SortOrder
+    seriem?: SortOrder
+    puesto_sm?: SortOrder
+    serie_sm?: SortOrder
+    puesto_isj?: SortOrder
+    serie_isj?: SortOrder
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
