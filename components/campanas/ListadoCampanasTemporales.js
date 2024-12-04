@@ -16,6 +16,13 @@ export const ListadoCampanaTemporales = ({
     const columns = [
 
         {
+            name: "Sucursal",
+            selector: row => `${row.SUCURSAL}`,
+            sortable: true,
+            grow: 0.1
+        },
+
+        {
             name: "Contrato",
             selector: row => `${row.CONTRATO}`,
             sortable: true,

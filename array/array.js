@@ -4,8 +4,7 @@ export const acciones = [
   { value: 3, label: "NO SE ENCUENTRA" },
   { value: 4, label: "NUMERO EQUIVOCADO" },
   { value: 5, label: "FUERA DE SERVICIO" },
-  { value: 6, label: "NO VIVE AHI" },
-  { value: 7, label: "COMPROMISO DE PAGO" },
+  { value: 6, label: "NO VIVE AHI" },  
   { value: 8, label: "NO PAGA" },
   { value: 9, label: "CUOTA AL DIA" },
   { value: 10, label: "NOTIFICACION EN MANO" },
@@ -16,6 +15,7 @@ export const acciones = [
   { value: 19, label: "COMP. PAGO NO EFECTIVO" },
   { value: 20, label: "DOMICILIO INEXISTENTE" },
   { value: 21, label: "NOTIFICACION BAJO PUERTA" },
+  { value: 22, label: "FICHA RECUPERADA" },
 ];
 
 export const nueavaaccion = [
