@@ -120,7 +120,9 @@ const FormRecibo = ({
                 size="md"
                 label="Fecha de Ingreso"
                 type="text"
-                value={moment(operador.fecha_ingreso).format("DD/MM/YYYY")}
+                value={moment(operador.fecha_ingreso)
+                  .utcOffset("+0300")
+                  .frmat("DD/MM/YYYY")}
                 readOnly
               />
             </div>

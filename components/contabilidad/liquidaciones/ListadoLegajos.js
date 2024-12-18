@@ -44,7 +44,8 @@ const ListadoLegajos = ({ listado, usu, traerHistorialRec, historialRec }) => {
     },
     {
       name: "Ingreso",
-      selector: (row) => `${moment(row.fecha_ingreso).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.fecha_ingreso).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
       width: "100px",
     },

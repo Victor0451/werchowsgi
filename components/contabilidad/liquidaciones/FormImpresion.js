@@ -32,7 +32,7 @@ const FormImpresion = ({
   componentRef,
   calTot,
   firma,
-  titulo
+  titulo,
 }) => {
   const TABLE_HEAD = [
     "Concepto",
@@ -141,7 +141,9 @@ const FormImpresion = ({
                   size="sm"
                   label="Fecha de Ingreso"
                   type="text"
-                  value={moment(operador.fecha_ingreso).format("DD/MM/YYYY")}
+                  value={moment(operador.fecha_ingreso)
+                    .utcOffset("+0300")
+                    .format("DD/MM/YYYY")}
                   readOnly
                 />
               </div>
@@ -180,7 +182,9 @@ const FormImpresion = ({
                   size="sm"
                   label="Fecha de Deposito"
                   type="text"
-                  value={moment(recibo.fecha_deposito).format("DD/MM/YYYY")}
+                  value={moment(recibo.fecha_deposito)
+                    .utcOffset("+0300")
+                    .format("DD/MM/YYYY")}
                 />
               </div>
 
@@ -357,7 +361,9 @@ const FormImpresion = ({
                     </ListItem>
                     <ListItem className="group rounded-none py-1.5 px-3 text-sm font-normal text-blue-gray-700 hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white">
                       FECHA DEPOSITO:{" "}
-                      {moment(recibo.fecha_deposito).format("DD/MM/YYYY")}
+                      {moment(recibo.fecha_deposito)
+                        .utcOffset("+0300")
+                        .format("DD/MM/YYYY")}
                     </ListItem>
                   </List>
                 </div>

@@ -36,7 +36,8 @@ export default function ModalHistorialRecibos({
     },
     {
       name: "Fecha",
-      selector: (row) => `${moment(row.fecha).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.fecha).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
     },
 
@@ -58,7 +59,8 @@ export default function ModalHistorialRecibos({
     },
     {
       name: "Fecha de Deposito",
-      selector: (row) => `${moment(row.fecha_deposito).format("DD/MM/YYYY")}`,
+      selector: (row) =>
+        `${moment(row.fecha_deposito).utcOffset("+0300").format("DD/MM/YYYY")}`,
       sortable: true,
     },
 
