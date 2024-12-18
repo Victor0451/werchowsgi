@@ -162,11 +162,14 @@ const FormImprimirOrden = ({ orden, detOrden, calcTotal, componentRef }) => {
                 <Typography variant="h5" color="blue-gray" className="mt-5">
                   <u>Detalle de Consultas/Practicas Adjuntadas</u>
                 </Typography>
-                <Typography color="gray" className="mt-1 font-normal">
+                {/* <Typography color="gray" className="mt-1 font-normal">
                   <u>Total N°</u>: {detOrden.length}
-                </Typography>
-                <Typography color="gray" className="mt-1 font-normal">
+                </Typography> */}
+                {/* <Typography color="gray" className="mt-1 font-normal">
                   <u>Total $</u>: {calcTotal(detOrden)}
+                </Typography> */}
+                <Typography variant="h6" color="blue-gray" className="mt-5">
+                  <u>Total $</u>: {orden.total}
                 </Typography>
                 <div className="mt-5">
                   <ListadoDetalleOrden listado={detOrden} />
