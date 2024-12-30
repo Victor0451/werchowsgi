@@ -139,6 +139,31 @@ export const AccesosDirectos = () => {
             </Link>
           </CardFooter>
         </Card>
+
+        <Card className="mt-6">
+          <CardBody>
+            <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
+            <Typography variant="h5" color="blue-gray" className="mb-2">
+              Solicitud Baja de Afiliacion
+            </Typography>
+            <Typography>
+              Acceso rapido para generar la solicitud de baja de afiliacion por
+              sistema.
+            </Typography>
+          </CardBody>
+          <CardFooter className="pt-0">
+            <Link href="/socios/solicitudes/baja">
+              <Button
+                size="sm"
+                variant="text"
+                className="flex items-center gap-2"
+              >
+                Generar
+                <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
+              </Button>
+            </Link>
+          </CardFooter>
+        </Card>
       </div>
     </div>
   );

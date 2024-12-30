@@ -4,7 +4,7 @@ import { Card, Typography } from "@material-tailwind/react";
 
 const ListadoAdherentes = ({ listado }) => {
   const TABLE_HEAD = [
-    "Adherente",
+    "Integrantes",
     "Fecha Nac.",
     "DNI",
     "Alta",
@@ -20,7 +20,7 @@ const ListadoAdherentes = ({ listado }) => {
             {TABLE_HEAD.map((head) => (
               <th
                 key={head}
-                className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+                className="border-b border-blue-gray-100 bg-blue-gray-50 p-1"
               >
                 <Typography
                   variant="small"
@@ -36,34 +36,39 @@ const ListadoAdherentes = ({ listado }) => {
         <tbody>
           {listado.map((l, index) => (
             <tr key={index} className="even:bg-blue-gray-50/50">
-              {/* <td className="p-4">
+              <td className="p-1">
                 <Typography
                   variant="small"
                   color="blue-gray"
                   className="font-normal"
                 >
-                  {index + 1}
-                </Typography>
-              </td> */}
-              <td className="p-4">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal"
-                >
-                  {l.APELLIDOS}, {l.NOMBRES}
+                  {!l.APELLIDOS ? (
+                    <br />
+                  ) : (
+                    <>
+                      {l.APELLIDOS}, {l.NOMBRES}
+                    </>
+                  )}
                 </Typography>
               </td>
-              <td className="p-4">
+              <td className="p-1">
                 <Typography
                   variant="small"
                   color="blue-gray"
                   className="font-normal"
                 >
-                  {moment(l.NACIMIENTO).utcOffset("+0300").format("DD/MM/YYYY")}
+                  {!l.NACIMIENTO ? (
+                    ""
+                  ) : (
+                    <>
+                      {moment(l.NACIMIENTO)
+                        .utcOffset("+0300")
+                        .format("DD/MM/YYYY")}
+                    </>
+                  )}
                 </Typography>
               </td>
-              <td className="p-4">
+              <td className="p-1">
                 <Typography
                   variant="small"
                   color="blue-gray"
@@ -72,31 +77,45 @@ const ListadoAdherentes = ({ listado }) => {
                   {l.NRO_DOC}
                 </Typography>
               </td>
-              <td className="p-4">
+              <td className="p-1">
                 <Typography
                   variant="small"
                   color="blue-gray"
                   className="font-normal"
                 >
-                  {moment(l.ALTA).utcOffset("+0300").format("DD/MM/YYYY")}
+                  {!l.ALTA ? (
+                    ""
+                  ) : (
+                    <>
+                      {moment(l.ALTA).utcOffset("+0300").format("DD/MM/YYYY")}
+                    </>
+                  )}
                 </Typography>
               </td>
-              <td className="p-4">
+              <td className="p-1">
                 <Typography
                   variant="small"
                   color="blue-gray"
                   className="font-normal"
                 >
-                  {moment(l.VIGENCIA).utcOffset("+0300").format("DD/MM/YYYY")}
+                  {!l.VIGENCIA ? (
+                    <></>
+                  ) : (
+                    <>
+                      {moment(l.VIGENCIA)
+                        .utcOffset("+0300")
+                        .format("DD/MM/YYYY")}
+                    </>
+                  )}
                 </Typography>
               </td>
-              <td className="p-4">
+              <td className="p-1">
                 <Typography
                   variant="small"
                   color="blue-gray"
                   className="font-normal"
                 >
-                  {!l.BAJA ? (
+                  {!l.BAJA && l.APELLIDOS ? (
                     <>Activo</>
                   ) : l.BAJA && l.FALLE === 999 ? (
                     <>
@@ -108,6 +127,8 @@ const ListadoAdherentes = ({ listado }) => {
                       Baja -{" "}
                       {moment(l.BAJA).utcOffset("+0300").format("DD/MM/YYYY")}
                     </>
+                  ) : !l.BAJA && !l.APELLIDOS ? (
+                    <></>
                   ) : null}
                 </Typography>
               </td>

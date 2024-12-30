@@ -22,8 +22,8 @@ body {
 }
 
 .werchowlogo {
-  width: 75px;
-  height: 65px;
+  width: 55px;
+  height: 45px;
 }
 
 .mutuallogo {
@@ -40,7 +40,6 @@ body {
   opacity: 0.6;
   color: gray;
   transition: opacity 0.5s ease 0s;
-
 }
 
 .conformnovell {
@@ -51,13 +50,10 @@ body {
 }
 
 .certFondo {
-
   background-image: url("../public/img/certificado.jpg");
-  background-size:contain;
-  background-repeat:no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center center;
-  
-
 }
 
 .ruleta {
@@ -75,3 +71,10 @@ body {
   overflow-y: scroll !important;
 }
 
+.condibaja {
+  width: 1300px;
+  height: 700px;
+  display: block;
+  margin-top: 1cm;
+  margin-bottom: 0.5cm;
+}
