@@ -69,7 +69,7 @@ export default function CampanasTemporales() {
           if (res.status === 200) {
             toast.success("Se registro la accion con exito");
 
-            let accionHis = `Se realizo la gestion ID: ${res.data.idgestion} del caso: ${datos.idcaso} - socio: ${datos.contrato} asignado en campaña temporal.`;
+            let accionHis = `Se realizo la gestion del caso ID: ${row.idcaso} - socio: ${row.CONTRATO} - ${row.APELLIDOS}, ${row.NOMBRES} asignado en campaña temporal.`;
 
             registrarHistoria(accionHis, usu.usuario);
 
