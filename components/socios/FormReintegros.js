@@ -65,8 +65,8 @@ const FormReintegros = ({
                 }
               >
                 <strong>
-                  Registro de reintegros ISJ para ordenes (tope de $1000) y
-                  practicas (tope de $1500)
+                  Registro de reintegros ISJ para ordenes (tope de $2000) y
+                  practicas (tope de $4000)
                 </strong>
               </Alert>
             </div>

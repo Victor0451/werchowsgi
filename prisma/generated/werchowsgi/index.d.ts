@@ -775,6 +775,7 @@ export type operadorPayload<ExtArgs extends $Extensions.Args = $Extensions.Defau
     sepelio: boolean | null
     gestion: boolean | null
     contabilidad: boolean | null
+    cobranza: boolean | null
   }, ExtArgs["result"]["operador"]>
   composites: {}
 }
@@ -1470,6 +1471,24 @@ export type puestosPayload<ExtArgs extends $Extensions.Args = $Extensions.Defaul
  * 
  */
 export type puestos = runtime.Types.DefaultSelection<puestosPayload>
+export type historial_lv_prestamosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idlegajo: number
+    contrato: number | null
+    archivo: string | null
+    fecha_subida: Date | null
+    empresa: string | null
+    cod_ptm_leg: string | null
+  }, ExtArgs["result"]["historial_lv_prestamos"]>
+  composites: {}
+}
+
+/**
+ * Model historial_lv_prestamos
+ * 
+ */
+export type historial_lv_prestamos = runtime.Types.DefaultSelection<historial_lv_prestamosPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2295,6 +2314,16 @@ export class PrismaClient<
     * ```
     */
   get puestos(): Prisma.puestosDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.historial_lv_prestamos`: Exposes CRUD operations for the **historial_lv_prestamos** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Historial_lv_prestamos
+    * const historial_lv_prestamos = await prisma.historial_lv_prestamos.findMany()
+    * ```
+    */
+  get historial_lv_prestamos(): Prisma.historial_lv_prestamosDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -2847,7 +2876,8 @@ export namespace Prisma {
     legajo_operador: 'legajo_operador',
     recibo_liquidacion: 'recibo_liquidacion',
     recibo_movimientos: 'recibo_movimientos',
-    puestos: 'puestos'
+    puestos: 'puestos',
+    historial_lv_prestamos: 'historial_lv_prestamos'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2864,7 +2894,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'produccion' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'reintegros' | 'conceptos_liquidacion' | 'legajo_operador' | 'recibo_liquidacion' | 'recibo_movimientos' | 'puestos'
+      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'produccion' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'reintegros' | 'conceptos_liquidacion' | 'legajo_operador' | 'recibo_liquidacion' | 'recibo_movimientos' | 'puestos' | 'historial_lv_prestamos'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -8395,6 +8425,85 @@ export namespace Prisma {
             args: Prisma.puestosCountArgs<ExtArgs>,
             result: $Utils.Optional<PuestosCountAggregateOutputType> | number
             payload: puestosPayload<ExtArgs>
+          }
+        }
+      }
+      historial_lv_prestamos: {
+        operations: {
+          findUnique: {
+            args: Prisma.historial_lv_prestamosFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historial_lv_prestamosPayload> | null
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.historial_lv_prestamosFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historial_lv_prestamosPayload>
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.historial_lv_prestamosFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historial_lv_prestamosPayload> | null
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.historial_lv_prestamosFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historial_lv_prestamosPayload>
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.historial_lv_prestamosFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historial_lv_prestamosPayload>[]
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.historial_lv_prestamosCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historial_lv_prestamosPayload>
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.historial_lv_prestamosCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.historial_lv_prestamosDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historial_lv_prestamosPayload>
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.historial_lv_prestamosUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historial_lv_prestamosPayload>
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.historial_lv_prestamosDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.historial_lv_prestamosUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.historial_lv_prestamosUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<historial_lv_prestamosPayload>
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Historial_lv_prestamosAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateHistorial_lv_prestamos>
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.historial_lv_prestamosGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Historial_lv_prestamosGroupByOutputType>[]
+            payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.historial_lv_prestamosCountArgs<ExtArgs>,
+            result: $Utils.Optional<Historial_lv_prestamosCountAggregateOutputType> | number
+            payload: historial_lv_prestamosPayload<ExtArgs>
           }
         }
       }
@@ -42177,6 +42286,7 @@ export namespace Prisma {
     sepelio: boolean | null
     gestion: boolean | null
     contabilidad: boolean | null
+    cobranza: boolean | null
   }
 
   export type OperadorMaxAggregateOutputType = {
@@ -42202,6 +42312,7 @@ export namespace Prisma {
     sepelio: boolean | null
     gestion: boolean | null
     contabilidad: boolean | null
+    cobranza: boolean | null
   }
 
   export type OperadorCountAggregateOutputType = {
@@ -42227,6 +42338,7 @@ export namespace Prisma {
     sepelio: number
     gestion: number
     contabilidad: number
+    cobranza: number
     _all: number
   }
 
@@ -42266,6 +42378,7 @@ export namespace Prisma {
     sepelio?: true
     gestion?: true
     contabilidad?: true
+    cobranza?: true
   }
 
   export type OperadorMaxAggregateInputType = {
@@ -42291,6 +42404,7 @@ export namespace Prisma {
     sepelio?: true
     gestion?: true
     contabilidad?: true
+    cobranza?: true
   }
 
   export type OperadorCountAggregateInputType = {
@@ -42316,6 +42430,7 @@ export namespace Prisma {
     sepelio?: true
     gestion?: true
     contabilidad?: true
+    cobranza?: true
     _all?: true
   }
 
@@ -42429,6 +42544,7 @@ export namespace Prisma {
     sepelio: boolean | null
     gestion: boolean | null
     contabilidad: boolean | null
+    cobranza: boolean | null
     _count: OperadorCountAggregateOutputType | null
     _avg: OperadorAvgAggregateOutputType | null
     _sum: OperadorSumAggregateOutputType | null
@@ -42473,6 +42589,7 @@ export namespace Prisma {
     sepelio?: boolean
     gestion?: boolean
     contabilidad?: boolean
+    cobranza?: boolean
   }, ExtArgs["result"]["operador"]>
 
   export type operadorSelectScalar = {
@@ -42498,6 +42615,7 @@ export namespace Prisma {
     sepelio?: boolean
     gestion?: boolean
     contabilidad?: boolean
+    cobranza?: boolean
   }
 
 
@@ -75511,6 +75629,931 @@ export namespace Prisma {
 
 
   /**
+   * Model historial_lv_prestamos
+   */
+
+
+  export type AggregateHistorial_lv_prestamos = {
+    _count: Historial_lv_prestamosCountAggregateOutputType | null
+    _avg: Historial_lv_prestamosAvgAggregateOutputType | null
+    _sum: Historial_lv_prestamosSumAggregateOutputType | null
+    _min: Historial_lv_prestamosMinAggregateOutputType | null
+    _max: Historial_lv_prestamosMaxAggregateOutputType | null
+  }
+
+  export type Historial_lv_prestamosAvgAggregateOutputType = {
+    idlegajo: number | null
+    contrato: number | null
+  }
+
+  export type Historial_lv_prestamosSumAggregateOutputType = {
+    idlegajo: number | null
+    contrato: number | null
+  }
+
+  export type Historial_lv_prestamosMinAggregateOutputType = {
+    idlegajo: number | null
+    contrato: number | null
+    archivo: string | null
+    fecha_subida: Date | null
+    empresa: string | null
+    cod_ptm_leg: string | null
+  }
+
+  export type Historial_lv_prestamosMaxAggregateOutputType = {
+    idlegajo: number | null
+    contrato: number | null
+    archivo: string | null
+    fecha_subida: Date | null
+    empresa: string | null
+    cod_ptm_leg: string | null
+  }
+
+  export type Historial_lv_prestamosCountAggregateOutputType = {
+    idlegajo: number
+    contrato: number
+    archivo: number
+    fecha_subida: number
+    empresa: number
+    cod_ptm_leg: number
+    _all: number
+  }
+
+
+  export type Historial_lv_prestamosAvgAggregateInputType = {
+    idlegajo?: true
+    contrato?: true
+  }
+
+  export type Historial_lv_prestamosSumAggregateInputType = {
+    idlegajo?: true
+    contrato?: true
+  }
+
+  export type Historial_lv_prestamosMinAggregateInputType = {
+    idlegajo?: true
+    contrato?: true
+    archivo?: true
+    fecha_subida?: true
+    empresa?: true
+    cod_ptm_leg?: true
+  }
+
+  export type Historial_lv_prestamosMaxAggregateInputType = {
+    idlegajo?: true
+    contrato?: true
+    archivo?: true
+    fecha_subida?: true
+    empresa?: true
+    cod_ptm_leg?: true
+  }
+
+  export type Historial_lv_prestamosCountAggregateInputType = {
+    idlegajo?: true
+    contrato?: true
+    archivo?: true
+    fecha_subida?: true
+    empresa?: true
+    cod_ptm_leg?: true
+    _all?: true
+  }
+
+  export type Historial_lv_prestamosAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which historial_lv_prestamos to aggregate.
+     */
+    where?: historial_lv_prestamosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historial_lv_prestamos to fetch.
+     */
+    orderBy?: historial_lv_prestamosOrderByWithRelationInput | historial_lv_prestamosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: historial_lv_prestamosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historial_lv_prestamos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historial_lv_prestamos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned historial_lv_prestamos
+    **/
+    _count?: true | Historial_lv_prestamosCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Historial_lv_prestamosAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Historial_lv_prestamosSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Historial_lv_prestamosMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Historial_lv_prestamosMaxAggregateInputType
+  }
+
+  export type GetHistorial_lv_prestamosAggregateType<T extends Historial_lv_prestamosAggregateArgs> = {
+        [P in keyof T & keyof AggregateHistorial_lv_prestamos]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHistorial_lv_prestamos[P]>
+      : GetScalarType<T[P], AggregateHistorial_lv_prestamos[P]>
+  }
+
+
+
+
+  export type historial_lv_prestamosGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: historial_lv_prestamosWhereInput
+    orderBy?: historial_lv_prestamosOrderByWithAggregationInput | historial_lv_prestamosOrderByWithAggregationInput[]
+    by: Historial_lv_prestamosScalarFieldEnum[] | Historial_lv_prestamosScalarFieldEnum
+    having?: historial_lv_prestamosScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Historial_lv_prestamosCountAggregateInputType | true
+    _avg?: Historial_lv_prestamosAvgAggregateInputType
+    _sum?: Historial_lv_prestamosSumAggregateInputType
+    _min?: Historial_lv_prestamosMinAggregateInputType
+    _max?: Historial_lv_prestamosMaxAggregateInputType
+  }
+
+
+  export type Historial_lv_prestamosGroupByOutputType = {
+    idlegajo: number
+    contrato: number | null
+    archivo: string | null
+    fecha_subida: Date | null
+    empresa: string | null
+    cod_ptm_leg: string | null
+    _count: Historial_lv_prestamosCountAggregateOutputType | null
+    _avg: Historial_lv_prestamosAvgAggregateOutputType | null
+    _sum: Historial_lv_prestamosSumAggregateOutputType | null
+    _min: Historial_lv_prestamosMinAggregateOutputType | null
+    _max: Historial_lv_prestamosMaxAggregateOutputType | null
+  }
+
+  type GetHistorial_lv_prestamosGroupByPayload<T extends historial_lv_prestamosGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Historial_lv_prestamosGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Historial_lv_prestamosGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Historial_lv_prestamosGroupByOutputType[P]>
+            : GetScalarType<T[P], Historial_lv_prestamosGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type historial_lv_prestamosSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idlegajo?: boolean
+    contrato?: boolean
+    archivo?: boolean
+    fecha_subida?: boolean
+    empresa?: boolean
+    cod_ptm_leg?: boolean
+  }, ExtArgs["result"]["historial_lv_prestamos"]>
+
+  export type historial_lv_prestamosSelectScalar = {
+    idlegajo?: boolean
+    contrato?: boolean
+    archivo?: boolean
+    fecha_subida?: boolean
+    empresa?: boolean
+    cod_ptm_leg?: boolean
+  }
+
+
+  type historial_lv_prestamosGetPayload<S extends boolean | null | undefined | historial_lv_prestamosArgs> = $Types.GetResult<historial_lv_prestamosPayload, S>
+
+  type historial_lv_prestamosCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<historial_lv_prestamosFindManyArgs, 'select' | 'include'> & {
+      select?: Historial_lv_prestamosCountAggregateInputType | true
+    }
+
+  export interface historial_lv_prestamosDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['historial_lv_prestamos'], meta: { name: 'historial_lv_prestamos' } }
+    /**
+     * Find zero or one Historial_lv_prestamos that matches the filter.
+     * @param {historial_lv_prestamosFindUniqueArgs} args - Arguments to find a Historial_lv_prestamos
+     * @example
+     * // Get one Historial_lv_prestamos
+     * const historial_lv_prestamos = await prisma.historial_lv_prestamos.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends historial_lv_prestamosFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, historial_lv_prestamosFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'historial_lv_prestamos'> extends True ? Prisma__historial_lv_prestamosClient<$Types.GetResult<historial_lv_prestamosPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__historial_lv_prestamosClient<$Types.GetResult<historial_lv_prestamosPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Historial_lv_prestamos that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {historial_lv_prestamosFindUniqueOrThrowArgs} args - Arguments to find a Historial_lv_prestamos
+     * @example
+     * // Get one Historial_lv_prestamos
+     * const historial_lv_prestamos = await prisma.historial_lv_prestamos.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends historial_lv_prestamosFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, historial_lv_prestamosFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__historial_lv_prestamosClient<$Types.GetResult<historial_lv_prestamosPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Historial_lv_prestamos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historial_lv_prestamosFindFirstArgs} args - Arguments to find a Historial_lv_prestamos
+     * @example
+     * // Get one Historial_lv_prestamos
+     * const historial_lv_prestamos = await prisma.historial_lv_prestamos.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends historial_lv_prestamosFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, historial_lv_prestamosFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'historial_lv_prestamos'> extends True ? Prisma__historial_lv_prestamosClient<$Types.GetResult<historial_lv_prestamosPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__historial_lv_prestamosClient<$Types.GetResult<historial_lv_prestamosPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Historial_lv_prestamos that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historial_lv_prestamosFindFirstOrThrowArgs} args - Arguments to find a Historial_lv_prestamos
+     * @example
+     * // Get one Historial_lv_prestamos
+     * const historial_lv_prestamos = await prisma.historial_lv_prestamos.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends historial_lv_prestamosFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, historial_lv_prestamosFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__historial_lv_prestamosClient<$Types.GetResult<historial_lv_prestamosPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Historial_lv_prestamos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historial_lv_prestamosFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Historial_lv_prestamos
+     * const historial_lv_prestamos = await prisma.historial_lv_prestamos.findMany()
+     * 
+     * // Get first 10 Historial_lv_prestamos
+     * const historial_lv_prestamos = await prisma.historial_lv_prestamos.findMany({ take: 10 })
+     * 
+     * // Only select the `idlegajo`
+     * const historial_lv_prestamosWithIdlegajoOnly = await prisma.historial_lv_prestamos.findMany({ select: { idlegajo: true } })
+     * 
+    **/
+    findMany<T extends historial_lv_prestamosFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, historial_lv_prestamosFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<historial_lv_prestamosPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Historial_lv_prestamos.
+     * @param {historial_lv_prestamosCreateArgs} args - Arguments to create a Historial_lv_prestamos.
+     * @example
+     * // Create one Historial_lv_prestamos
+     * const Historial_lv_prestamos = await prisma.historial_lv_prestamos.create({
+     *   data: {
+     *     // ... data to create a Historial_lv_prestamos
+     *   }
+     * })
+     * 
+    **/
+    create<T extends historial_lv_prestamosCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, historial_lv_prestamosCreateArgs<ExtArgs>>
+    ): Prisma__historial_lv_prestamosClient<$Types.GetResult<historial_lv_prestamosPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Historial_lv_prestamos.
+     *     @param {historial_lv_prestamosCreateManyArgs} args - Arguments to create many Historial_lv_prestamos.
+     *     @example
+     *     // Create many Historial_lv_prestamos
+     *     const historial_lv_prestamos = await prisma.historial_lv_prestamos.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends historial_lv_prestamosCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, historial_lv_prestamosCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Historial_lv_prestamos.
+     * @param {historial_lv_prestamosDeleteArgs} args - Arguments to delete one Historial_lv_prestamos.
+     * @example
+     * // Delete one Historial_lv_prestamos
+     * const Historial_lv_prestamos = await prisma.historial_lv_prestamos.delete({
+     *   where: {
+     *     // ... filter to delete one Historial_lv_prestamos
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends historial_lv_prestamosDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, historial_lv_prestamosDeleteArgs<ExtArgs>>
+    ): Prisma__historial_lv_prestamosClient<$Types.GetResult<historial_lv_prestamosPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Historial_lv_prestamos.
+     * @param {historial_lv_prestamosUpdateArgs} args - Arguments to update one Historial_lv_prestamos.
+     * @example
+     * // Update one Historial_lv_prestamos
+     * const historial_lv_prestamos = await prisma.historial_lv_prestamos.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends historial_lv_prestamosUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, historial_lv_prestamosUpdateArgs<ExtArgs>>
+    ): Prisma__historial_lv_prestamosClient<$Types.GetResult<historial_lv_prestamosPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Historial_lv_prestamos.
+     * @param {historial_lv_prestamosDeleteManyArgs} args - Arguments to filter Historial_lv_prestamos to delete.
+     * @example
+     * // Delete a few Historial_lv_prestamos
+     * const { count } = await prisma.historial_lv_prestamos.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends historial_lv_prestamosDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, historial_lv_prestamosDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Historial_lv_prestamos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historial_lv_prestamosUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Historial_lv_prestamos
+     * const historial_lv_prestamos = await prisma.historial_lv_prestamos.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends historial_lv_prestamosUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, historial_lv_prestamosUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Historial_lv_prestamos.
+     * @param {historial_lv_prestamosUpsertArgs} args - Arguments to update or create a Historial_lv_prestamos.
+     * @example
+     * // Update or create a Historial_lv_prestamos
+     * const historial_lv_prestamos = await prisma.historial_lv_prestamos.upsert({
+     *   create: {
+     *     // ... data to create a Historial_lv_prestamos
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Historial_lv_prestamos we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends historial_lv_prestamosUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, historial_lv_prestamosUpsertArgs<ExtArgs>>
+    ): Prisma__historial_lv_prestamosClient<$Types.GetResult<historial_lv_prestamosPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Historial_lv_prestamos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historial_lv_prestamosCountArgs} args - Arguments to filter Historial_lv_prestamos to count.
+     * @example
+     * // Count the number of Historial_lv_prestamos
+     * const count = await prisma.historial_lv_prestamos.count({
+     *   where: {
+     *     // ... the filter for the Historial_lv_prestamos we want to count
+     *   }
+     * })
+    **/
+    count<T extends historial_lv_prestamosCountArgs>(
+      args?: Subset<T, historial_lv_prestamosCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Historial_lv_prestamosCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Historial_lv_prestamos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Historial_lv_prestamosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Historial_lv_prestamosAggregateArgs>(args: Subset<T, Historial_lv_prestamosAggregateArgs>): Prisma.PrismaPromise<GetHistorial_lv_prestamosAggregateType<T>>
+
+    /**
+     * Group by Historial_lv_prestamos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {historial_lv_prestamosGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends historial_lv_prestamosGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: historial_lv_prestamosGroupByArgs['orderBy'] }
+        : { orderBy?: historial_lv_prestamosGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, historial_lv_prestamosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHistorial_lv_prestamosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for historial_lv_prestamos.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__historial_lv_prestamosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * historial_lv_prestamos base type for findUnique actions
+   */
+  export type historial_lv_prestamosFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historial_lv_prestamos
+     */
+    select?: historial_lv_prestamosSelect<ExtArgs> | null
+    /**
+     * Filter, which historial_lv_prestamos to fetch.
+     */
+    where: historial_lv_prestamosWhereUniqueInput
+  }
+
+  /**
+   * historial_lv_prestamos findUnique
+   */
+  export interface historial_lv_prestamosFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends historial_lv_prestamosFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * historial_lv_prestamos findUniqueOrThrow
+   */
+  export type historial_lv_prestamosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historial_lv_prestamos
+     */
+    select?: historial_lv_prestamosSelect<ExtArgs> | null
+    /**
+     * Filter, which historial_lv_prestamos to fetch.
+     */
+    where: historial_lv_prestamosWhereUniqueInput
+  }
+
+
+  /**
+   * historial_lv_prestamos base type for findFirst actions
+   */
+  export type historial_lv_prestamosFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historial_lv_prestamos
+     */
+    select?: historial_lv_prestamosSelect<ExtArgs> | null
+    /**
+     * Filter, which historial_lv_prestamos to fetch.
+     */
+    where?: historial_lv_prestamosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historial_lv_prestamos to fetch.
+     */
+    orderBy?: historial_lv_prestamosOrderByWithRelationInput | historial_lv_prestamosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for historial_lv_prestamos.
+     */
+    cursor?: historial_lv_prestamosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historial_lv_prestamos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historial_lv_prestamos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of historial_lv_prestamos.
+     */
+    distinct?: Historial_lv_prestamosScalarFieldEnum | Historial_lv_prestamosScalarFieldEnum[]
+  }
+
+  /**
+   * historial_lv_prestamos findFirst
+   */
+  export interface historial_lv_prestamosFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends historial_lv_prestamosFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * historial_lv_prestamos findFirstOrThrow
+   */
+  export type historial_lv_prestamosFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historial_lv_prestamos
+     */
+    select?: historial_lv_prestamosSelect<ExtArgs> | null
+    /**
+     * Filter, which historial_lv_prestamos to fetch.
+     */
+    where?: historial_lv_prestamosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historial_lv_prestamos to fetch.
+     */
+    orderBy?: historial_lv_prestamosOrderByWithRelationInput | historial_lv_prestamosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for historial_lv_prestamos.
+     */
+    cursor?: historial_lv_prestamosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historial_lv_prestamos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historial_lv_prestamos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of historial_lv_prestamos.
+     */
+    distinct?: Historial_lv_prestamosScalarFieldEnum | Historial_lv_prestamosScalarFieldEnum[]
+  }
+
+
+  /**
+   * historial_lv_prestamos findMany
+   */
+  export type historial_lv_prestamosFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historial_lv_prestamos
+     */
+    select?: historial_lv_prestamosSelect<ExtArgs> | null
+    /**
+     * Filter, which historial_lv_prestamos to fetch.
+     */
+    where?: historial_lv_prestamosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of historial_lv_prestamos to fetch.
+     */
+    orderBy?: historial_lv_prestamosOrderByWithRelationInput | historial_lv_prestamosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing historial_lv_prestamos.
+     */
+    cursor?: historial_lv_prestamosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` historial_lv_prestamos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` historial_lv_prestamos.
+     */
+    skip?: number
+    distinct?: Historial_lv_prestamosScalarFieldEnum | Historial_lv_prestamosScalarFieldEnum[]
+  }
+
+
+  /**
+   * historial_lv_prestamos create
+   */
+  export type historial_lv_prestamosCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historial_lv_prestamos
+     */
+    select?: historial_lv_prestamosSelect<ExtArgs> | null
+    /**
+     * The data needed to create a historial_lv_prestamos.
+     */
+    data?: XOR<historial_lv_prestamosCreateInput, historial_lv_prestamosUncheckedCreateInput>
+  }
+
+
+  /**
+   * historial_lv_prestamos createMany
+   */
+  export type historial_lv_prestamosCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many historial_lv_prestamos.
+     */
+    data: historial_lv_prestamosCreateManyInput | historial_lv_prestamosCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * historial_lv_prestamos update
+   */
+  export type historial_lv_prestamosUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historial_lv_prestamos
+     */
+    select?: historial_lv_prestamosSelect<ExtArgs> | null
+    /**
+     * The data needed to update a historial_lv_prestamos.
+     */
+    data: XOR<historial_lv_prestamosUpdateInput, historial_lv_prestamosUncheckedUpdateInput>
+    /**
+     * Choose, which historial_lv_prestamos to update.
+     */
+    where: historial_lv_prestamosWhereUniqueInput
+  }
+
+
+  /**
+   * historial_lv_prestamos updateMany
+   */
+  export type historial_lv_prestamosUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update historial_lv_prestamos.
+     */
+    data: XOR<historial_lv_prestamosUpdateManyMutationInput, historial_lv_prestamosUncheckedUpdateManyInput>
+    /**
+     * Filter which historial_lv_prestamos to update
+     */
+    where?: historial_lv_prestamosWhereInput
+  }
+
+
+  /**
+   * historial_lv_prestamos upsert
+   */
+  export type historial_lv_prestamosUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historial_lv_prestamos
+     */
+    select?: historial_lv_prestamosSelect<ExtArgs> | null
+    /**
+     * The filter to search for the historial_lv_prestamos to update in case it exists.
+     */
+    where: historial_lv_prestamosWhereUniqueInput
+    /**
+     * In case the historial_lv_prestamos found by the `where` argument doesn't exist, create a new historial_lv_prestamos with this data.
+     */
+    create: XOR<historial_lv_prestamosCreateInput, historial_lv_prestamosUncheckedCreateInput>
+    /**
+     * In case the historial_lv_prestamos was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<historial_lv_prestamosUpdateInput, historial_lv_prestamosUncheckedUpdateInput>
+  }
+
+
+  /**
+   * historial_lv_prestamos delete
+   */
+  export type historial_lv_prestamosDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historial_lv_prestamos
+     */
+    select?: historial_lv_prestamosSelect<ExtArgs> | null
+    /**
+     * Filter which historial_lv_prestamos to delete.
+     */
+    where: historial_lv_prestamosWhereUniqueInput
+  }
+
+
+  /**
+   * historial_lv_prestamos deleteMany
+   */
+  export type historial_lv_prestamosDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which historial_lv_prestamos to delete
+     */
+    where?: historial_lv_prestamosWhereInput
+  }
+
+
+  /**
+   * historial_lv_prestamos without action
+   */
+  export type historial_lv_prestamosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the historial_lv_prestamos
+     */
+    select?: historial_lv_prestamosSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -76074,7 +77117,8 @@ export namespace Prisma {
     socios: 'socios',
     sepelio: 'sepelio',
     gestion: 'gestion',
-    contabilidad: 'contabilidad'
+    contabilidad: 'contabilidad',
+    cobranza: 'cobranza'
   };
 
   export type OperadorScalarFieldEnum = (typeof OperadorScalarFieldEnum)[keyof typeof OperadorScalarFieldEnum]
@@ -76560,6 +77604,18 @@ export namespace Prisma {
   };
 
   export type PuestosScalarFieldEnum = (typeof PuestosScalarFieldEnum)[keyof typeof PuestosScalarFieldEnum]
+
+
+  export const Historial_lv_prestamosScalarFieldEnum: {
+    idlegajo: 'idlegajo',
+    contrato: 'contrato',
+    archivo: 'archivo',
+    fecha_subida: 'fecha_subida',
+    empresa: 'empresa',
+    cod_ptm_leg: 'cod_ptm_leg'
+  };
+
+  export type Historial_lv_prestamosScalarFieldEnum = (typeof Historial_lv_prestamosScalarFieldEnum)[keyof typeof Historial_lv_prestamosScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -78826,6 +79882,7 @@ export namespace Prisma {
     sepelio?: BoolNullableFilter | boolean | null
     gestion?: BoolNullableFilter | boolean | null
     contabilidad?: BoolNullableFilter | boolean | null
+    cobranza?: BoolNullableFilter | boolean | null
   }
 
   export type operadorOrderByWithRelationInput = {
@@ -78851,6 +79908,7 @@ export namespace Prisma {
     sepelio?: SortOrderInput | SortOrder
     gestion?: SortOrderInput | SortOrder
     contabilidad?: SortOrderInput | SortOrder
+    cobranza?: SortOrderInput | SortOrder
   }
 
   export type operadorWhereUniqueInput = {
@@ -78880,6 +79938,7 @@ export namespace Prisma {
     sepelio?: SortOrderInput | SortOrder
     gestion?: SortOrderInput | SortOrder
     contabilidad?: SortOrderInput | SortOrder
+    cobranza?: SortOrderInput | SortOrder
     _count?: operadorCountOrderByAggregateInput
     _avg?: operadorAvgOrderByAggregateInput
     _max?: operadorMaxOrderByAggregateInput
@@ -78913,6 +79972,7 @@ export namespace Prisma {
     sepelio?: BoolNullableWithAggregatesFilter | boolean | null
     gestion?: BoolNullableWithAggregatesFilter | boolean | null
     contabilidad?: BoolNullableWithAggregatesFilter | boolean | null
+    cobranza?: BoolNullableWithAggregatesFilter | boolean | null
   }
 
   export type ordenes_pagoWhereInput = {
@@ -80943,6 +82003,57 @@ export namespace Prisma {
     serie_sm?: IntNullableWithAggregatesFilter | number | null
     puesto_isj?: IntNullableWithAggregatesFilter | number | null
     serie_isj?: IntNullableWithAggregatesFilter | number | null
+  }
+
+  export type historial_lv_prestamosWhereInput = {
+    AND?: historial_lv_prestamosWhereInput | historial_lv_prestamosWhereInput[]
+    OR?: historial_lv_prestamosWhereInput[]
+    NOT?: historial_lv_prestamosWhereInput | historial_lv_prestamosWhereInput[]
+    idlegajo?: IntFilter | number
+    contrato?: IntNullableFilter | number | null
+    archivo?: StringNullableFilter | string | null
+    fecha_subida?: DateTimeNullableFilter | Date | string | null
+    empresa?: StringNullableFilter | string | null
+    cod_ptm_leg?: StringNullableFilter | string | null
+  }
+
+  export type historial_lv_prestamosOrderByWithRelationInput = {
+    idlegajo?: SortOrder
+    contrato?: SortOrderInput | SortOrder
+    archivo?: SortOrderInput | SortOrder
+    fecha_subida?: SortOrderInput | SortOrder
+    empresa?: SortOrderInput | SortOrder
+    cod_ptm_leg?: SortOrderInput | SortOrder
+  }
+
+  export type historial_lv_prestamosWhereUniqueInput = {
+    idlegajo?: number
+  }
+
+  export type historial_lv_prestamosOrderByWithAggregationInput = {
+    idlegajo?: SortOrder
+    contrato?: SortOrderInput | SortOrder
+    archivo?: SortOrderInput | SortOrder
+    fecha_subida?: SortOrderInput | SortOrder
+    empresa?: SortOrderInput | SortOrder
+    cod_ptm_leg?: SortOrderInput | SortOrder
+    _count?: historial_lv_prestamosCountOrderByAggregateInput
+    _avg?: historial_lv_prestamosAvgOrderByAggregateInput
+    _max?: historial_lv_prestamosMaxOrderByAggregateInput
+    _min?: historial_lv_prestamosMinOrderByAggregateInput
+    _sum?: historial_lv_prestamosSumOrderByAggregateInput
+  }
+
+  export type historial_lv_prestamosScalarWhereWithAggregatesInput = {
+    AND?: historial_lv_prestamosScalarWhereWithAggregatesInput | historial_lv_prestamosScalarWhereWithAggregatesInput[]
+    OR?: historial_lv_prestamosScalarWhereWithAggregatesInput[]
+    NOT?: historial_lv_prestamosScalarWhereWithAggregatesInput | historial_lv_prestamosScalarWhereWithAggregatesInput[]
+    idlegajo?: IntWithAggregatesFilter | number
+    contrato?: IntNullableWithAggregatesFilter | number | null
+    archivo?: StringNullableWithAggregatesFilter | string | null
+    fecha_subida?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    empresa?: StringNullableWithAggregatesFilter | string | null
+    cod_ptm_leg?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type alta_novellCreateInput = {
@@ -83826,6 +84937,7 @@ export namespace Prisma {
     sepelio?: boolean | null
     gestion?: boolean | null
     contabilidad?: boolean | null
+    cobranza?: boolean | null
   }
 
   export type operadorUncheckedCreateInput = {
@@ -83851,6 +84963,7 @@ export namespace Prisma {
     sepelio?: boolean | null
     gestion?: boolean | null
     contabilidad?: boolean | null
+    cobranza?: boolean | null
   }
 
   export type operadorUpdateInput = {
@@ -83875,6 +84988,7 @@ export namespace Prisma {
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
     gestion?: NullableBoolFieldUpdateOperationsInput | boolean | null
     contabilidad?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cobranza?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type operadorUncheckedUpdateInput = {
@@ -83900,6 +85014,7 @@ export namespace Prisma {
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
     gestion?: NullableBoolFieldUpdateOperationsInput | boolean | null
     contabilidad?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cobranza?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type operadorCreateManyInput = {
@@ -83925,6 +85040,7 @@ export namespace Prisma {
     sepelio?: boolean | null
     gestion?: boolean | null
     contabilidad?: boolean | null
+    cobranza?: boolean | null
   }
 
   export type operadorUpdateManyMutationInput = {
@@ -83949,6 +85065,7 @@ export namespace Prisma {
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
     gestion?: NullableBoolFieldUpdateOperationsInput | boolean | null
     contabilidad?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cobranza?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type operadorUncheckedUpdateManyInput = {
@@ -83974,6 +85091,7 @@ export namespace Prisma {
     sepelio?: NullableBoolFieldUpdateOperationsInput | boolean | null
     gestion?: NullableBoolFieldUpdateOperationsInput | boolean | null
     contabilidad?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cobranza?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type ordenes_pagoCreateInput = {
@@ -86537,6 +87655,66 @@ export namespace Prisma {
     serie_isj?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
+  export type historial_lv_prestamosCreateInput = {
+    contrato?: number | null
+    archivo?: string | null
+    fecha_subida?: Date | string | null
+    empresa?: string | null
+    cod_ptm_leg?: string | null
+  }
+
+  export type historial_lv_prestamosUncheckedCreateInput = {
+    idlegajo?: number
+    contrato?: number | null
+    archivo?: string | null
+    fecha_subida?: Date | string | null
+    empresa?: string | null
+    cod_ptm_leg?: string | null
+  }
+
+  export type historial_lv_prestamosUpdateInput = {
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    archivo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_subida?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    cod_ptm_leg?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type historial_lv_prestamosUncheckedUpdateInput = {
+    idlegajo?: IntFieldUpdateOperationsInput | number
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    archivo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_subida?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    cod_ptm_leg?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type historial_lv_prestamosCreateManyInput = {
+    idlegajo?: number
+    contrato?: number | null
+    archivo?: string | null
+    fecha_subida?: Date | string | null
+    empresa?: string | null
+    cod_ptm_leg?: string | null
+  }
+
+  export type historial_lv_prestamosUpdateManyMutationInput = {
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    archivo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_subida?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    cod_ptm_leg?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type historial_lv_prestamosUncheckedUpdateManyInput = {
+    idlegajo?: IntFieldUpdateOperationsInput | number
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    archivo?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_subida?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    empresa?: NullableStringFieldUpdateOperationsInput | string | null
+    cod_ptm_leg?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type IntFilter = {
     equals?: number
     in?: number[]
@@ -88503,6 +89681,7 @@ export namespace Prisma {
     sepelio?: SortOrder
     gestion?: SortOrder
     contabilidad?: SortOrder
+    cobranza?: SortOrder
   }
 
   export type operadorAvgOrderByAggregateInput = {
@@ -88534,6 +89713,7 @@ export namespace Prisma {
     sepelio?: SortOrder
     gestion?: SortOrder
     contabilidad?: SortOrder
+    cobranza?: SortOrder
   }
 
   export type operadorMinOrderByAggregateInput = {
@@ -88559,6 +89739,7 @@ export namespace Prisma {
     sepelio?: SortOrder
     gestion?: SortOrder
     contabilidad?: SortOrder
+    cobranza?: SortOrder
   }
 
   export type operadorSumOrderByAggregateInput = {
@@ -90155,6 +91336,43 @@ export namespace Prisma {
     serie_sm?: SortOrder
     puesto_isj?: SortOrder
     serie_isj?: SortOrder
+  }
+
+  export type historial_lv_prestamosCountOrderByAggregateInput = {
+    idlegajo?: SortOrder
+    contrato?: SortOrder
+    archivo?: SortOrder
+    fecha_subida?: SortOrder
+    empresa?: SortOrder
+    cod_ptm_leg?: SortOrder
+  }
+
+  export type historial_lv_prestamosAvgOrderByAggregateInput = {
+    idlegajo?: SortOrder
+    contrato?: SortOrder
+  }
+
+  export type historial_lv_prestamosMaxOrderByAggregateInput = {
+    idlegajo?: SortOrder
+    contrato?: SortOrder
+    archivo?: SortOrder
+    fecha_subida?: SortOrder
+    empresa?: SortOrder
+    cod_ptm_leg?: SortOrder
+  }
+
+  export type historial_lv_prestamosMinOrderByAggregateInput = {
+    idlegajo?: SortOrder
+    contrato?: SortOrder
+    archivo?: SortOrder
+    fecha_subida?: SortOrder
+    empresa?: SortOrder
+    cod_ptm_leg?: SortOrder
+  }
+
+  export type historial_lv_prestamosSumOrderByAggregateInput = {
+    idlegajo?: SortOrder
+    contrato?: SortOrder
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {

@@ -550,7 +550,8 @@ exports.Prisma.OperadorScalarFieldEnum = {
   socios: 'socios',
   sepelio: 'sepelio',
   gestion: 'gestion',
-  contabilidad: 'contabilidad'
+  contabilidad: 'contabilidad',
+  cobranza: 'cobranza'
 };
 
 exports.Prisma.Ordenes_pagoScalarFieldEnum = {
@@ -933,6 +934,15 @@ exports.Prisma.PuestosScalarFieldEnum = {
   serie_isj: 'serie_isj'
 };
 
+exports.Prisma.Historial_lv_prestamosScalarFieldEnum = {
+  idlegajo: 'idlegajo',
+  contrato: 'contrato',
+  archivo: 'archivo',
+  fecha_subida: 'fecha_subida',
+  empresa: 'empresa',
+  cod_ptm_leg: 'cod_ptm_leg'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1014,7 +1024,8 @@ exports.Prisma.ModelName = {
   legajo_operador: 'legajo_operador',
   recibo_liquidacion: 'recibo_liquidacion',
   recibo_movimientos: 'recibo_movimientos',
-  puestos: 'puestos'
+  puestos: 'puestos',
+  historial_lv_prestamos: 'historial_lv_prestamos'
 };
 
 /**

@@ -139,7 +139,7 @@ model campanas {
 }
 
 model campanatemporal {
-  SUCURSAL          String?   @db.VarChar(1)
+  SUCURSAL          String?   @db.VarChar(2)
   CONTRATO          Int
   NRO_DOC           Int?
   APELLIDOS         String?   @db.VarChar(15)
@@ -589,6 +589,7 @@ model operador {
   sepelio        Boolean?
   gestion        Boolean?
   contabilidad   Boolean?
+  cobranza       Boolean?
 }
 
 model ordenes_pago {
@@ -1056,4 +1057,13 @@ model puestos {
   serie_sm   Int?
   puesto_isj Int?
   serie_isj  Int?
+}
+
+model historial_lv_prestamos {
+  idlegajo     Int       @id @default(autoincrement())
+  contrato     Int?
+  archivo      String?   @db.VarChar(255)
+  fecha_subida DateTime? @db.Date
+  empresa      String?   @db.VarChar(255)
+  cod_ptm_leg  String?   @db.VarChar(255)
 }

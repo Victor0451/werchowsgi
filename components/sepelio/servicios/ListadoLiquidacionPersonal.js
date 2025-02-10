@@ -47,14 +47,14 @@ const ListadoLiquidacionPersonal = ({
       name: "Operador",
       selector: (row) => `${row.operador}`,
       sortable: true,
-      width: "80px",
+      width: "120px",
     },
 
     {
       name: "Tarea",
       selector: (row) => `${row.tarea}`,
       sortable: true,
-      width: "100px",
+      width: "120px",
     },
 
     {
@@ -80,6 +80,52 @@ const ListadoLiquidacionPersonal = ({
       selector: (row) => `$${row.monto}`,
       sortable: true,
       width: "100px",
+    },
+    {
+      name: "Aprobado",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {row.aprobado === 0 ? (
+            <div>Pendiente</div>
+          ) : row.aprobado === 1 ? (
+            <div>Aprobado</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Fecha Ap.",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.fecha_aprobado ? (
+            <div>---</div>
+          ) : row.fecha_aprobado ? (
+            <div>
+              {moment(row.fecha_aprobado)
+                .utcOffset("+0300")
+                .format("DD/MM/YYYY")}
+            </div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Operdador Ap.",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.operadorap ? (
+            <div>---</div>
+          ) : row.operadorap ? (
+            <div>{row.operadorap}</div>
+          ) : null}
+        </>
+      ),
     },
     {
       name: "Liquidado",
@@ -161,14 +207,14 @@ const ListadoLiquidacionPersonal = ({
     {
       name: "#",
       button: true,
-      width: "80px",
+      width: "50px",
       cell: (row, index) => <>{index + 1}</>,
     },
     {
       name: "Operador",
       selector: (row) => `${row.operador}`,
       sortable: true,
-      width: "100px",
+      width: "120px",
     },
 
     {
@@ -209,6 +255,52 @@ const ListadoLiquidacionPersonal = ({
       selector: (row) => `$${row.importe}`,
       sortable: true,
       width: "100px",
+    },
+    {
+      name: "Aprobado",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {row.aprobado === 0 ? (
+            <div>Pendiente</div>
+          ) : row.aprobado === 1 ? (
+            <div>Aprobado</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Fecha Ap.",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.fecha_aprobado ? (
+            <div>---</div>
+          ) : row.fecha_aprobado ? (
+            <div>
+              {moment(row.fecha_aprobado)
+                .utcOffset("+0300")
+                .format("DD/MM/YYYY")}
+            </div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Operdador Ap.",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.operadorap ? (
+            <div>---</div>
+          ) : row.operadorap ? (
+            <div>{row.operadorap}</div>
+          ) : null}
+        </>
+      ),
     },
     {
       name: "Liquidado",
