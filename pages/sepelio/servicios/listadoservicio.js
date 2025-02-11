@@ -12,6 +12,9 @@ import Router from "next/router";
 import ListadoServicios from "@/components/sepelio/servicios/ListadoServicios";
 
 function ListadoServicio(props) {
+  let desdeRef = React.createRef();
+  let hastaRef = React.createRef();
+
   const [listado, guardarListado] = useState([]);
   const [listadoHist, guardarListadoHist] = useState([]);
   const [noData, guardarNoData] = useState(false);
@@ -121,6 +124,56 @@ function ListadoServicio(props) {
     });
   };
 
+  const filtrarServs = async () => {
+    let desde = desdeRef.current.value;
+    let hasta = hastaRef.current.value;
+
+    if (desde === "") {
+      toast.warning(
+        "Debes ingresar la fecha (DESDE) en donde comienza el rango del filtro "
+      );
+    } else if (hasta === "") {
+      toast.warning(
+        "Debes ingresar la fecha (HASTA) en donde termina el rango del filtro "
+      );
+    } else if (desde > hasta) {
+      toast.warning("La fecha HASTA no puede ser mayor a la fecha DESDE");
+    } else {
+      await axios
+        .get("/api/sepelio/servicios", {
+          params: {
+            f: "filtrar servicios",
+            desde: desde,
+            hasta: hasta,
+          },
+        })
+        .then((res) => {
+          if (res.data) {
+            let data = JSON.parse(res.data);
+            guardarListado(data);
+            guardarNoData(false);
+          } else if (!res.data) {
+            toast.info("No hay servicios registrados en este rango de fechas");
+            guardarNoData(true);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar el listado");
+        });
+    }
+  };
+
+  const calTotalImporte = (arr) => {
+    let total = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      total += arr[i].importe_servicio;
+    }
+
+    return total.toFixed(2);
+  };
+
   useSWR("/api/sepelio/servicios", traerServicios);
 
   if (isLoading === true) return <Skeleton />;
@@ -138,7 +191,11 @@ function ListadoServicio(props) {
             listadoHist={listadoHist}
             ServiciosHistoricos={ServiciosHistoricos}
             eliminarServicio={eliminarServicio}
-        
+            traerServicios={traerServicios}
+            desdeRef={desdeRef}
+            hastaRef={hastaRef}
+            filtrarServs={filtrarServs}
+            calTotalImporte={calTotalImporte}
           />
         </>
       )}

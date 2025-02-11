@@ -48,7 +48,7 @@ export default function ExportarServiciosHist({ listado }) {
 
   return (
     <Button color="green" onClick={descargarExcel}>
-      Exportar Servicios Historicos
+      Exportar Serv. Historicos
     </Button>
   );
 }

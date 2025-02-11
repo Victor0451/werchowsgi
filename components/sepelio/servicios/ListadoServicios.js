@@ -34,6 +34,11 @@ const ListadoServicios = ({
   listadoHist,
   ServiciosHistoricos,
   eliminarServicio,
+  traerServicios,
+  desdeRef,
+  hastaRef,
+  filtrarServs,
+  calTotalImporte,
 }) => {
   let columns = [
     {
@@ -73,6 +78,21 @@ const ListadoServicios = ({
       selector: (row) => `${row.tipo_servicio}`,
       sortable: true,
       width: "120px",
+    },
+
+    {
+      name: "Importe",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.importe_servicio ? (
+            <div>---</div>
+          ) : (
+            <div>${row.importe_servicio}</div>
+          )}
+        </>
+      ),
     },
     {
       name: "Fecha Fallec.",
@@ -201,21 +221,63 @@ const ListadoServicios = ({
           <Typography color="gray" className="mt-1 font-normal">
             <u>Total</u>: {listado.length}
           </Typography>
+          <Typography color="gray" className="mt-1 font-normal">
+            <u>Importe</u>: {calTotalImporte(listado)}
+          </Typography>
 
           <div className="mt-5 mb-5 border-2 rounded-xl p-4">
             <Typography variant="h5" color="blue-gray">
               Opciones
             </Typography>
 
-            <div className=" mt-4 grid gap-6 mb-6 md:grid-cols-5">
-              <ModalServHistoricos
-                listado={listadoHist}
-                ServiciosHistoricos={ServiciosHistoricos}
-              />
+            <div className="flex flex-wrap -mx-3 mt-6 mb-6">
+              <div className="w-full md:w-1/4 px-3 mt-3 mb-3 md:mb-0">
+                <ModalServHistoricos
+                  listado={listadoHist}
+                  ServiciosHistoricos={ServiciosHistoricos}
+                />
+              </div>
+              <div className="w-full md:w-1/4 px-3 mt-3 mb-3 md:mb-0">
+                <ExportarServiciosHist listado={listadoHist} />
+              </div>
+              <div className="w-full md:w-1/4 px-3 mt-3 mb-3 md:mb-0">
+                <ExportarServicios listado={listado} />
+              </div>
+            </div>
 
-              <ExportarServiciosHist listado={listadoHist} />
+            <hr className="border-2 mt-5 mb-5" />
 
-              <ExportarServicios listado={listado} />
+            <Typography variant="h5" color="blue-gray">
+              Filtrar Servicios
+            </Typography>
+            <div className="flex flex-wrap -mx-3 mt-6 mb-6">
+              <div className="w-full md:w-1/4 px-3 mt-3 mb-3 md:mb-0">
+                <Input
+                  size="md"
+                  label="Desde"
+                  type="date"
+                  inputRef={desdeRef}
+                />
+              </div>
+
+              <div className="w-full md:w-1/4 px-3 mt-3 mb-3 md:mb-0">
+                <Input
+                  size="md"
+                  label="Hasta"
+                  type="date"
+                  inputRef={hastaRef}
+                />
+              </div>
+
+              <div className="w-full md:w-1/4 px-3 mt-3 mb-3 md:mb-0">
+                <Button onClick={filtrarServs}>Buscar</Button>
+              </div>
+
+              <div className="w-full md:w-1/4 px-3 mt-3 mb-3 md:mb-0">
+                <Button className=" bg-black" onClick={traerServicios}>
+                  Borrar Filtro
+                </Button>
+              </div>
             </div>
           </div>
 

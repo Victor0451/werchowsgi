@@ -455,6 +455,7 @@ export const FormNuevoServicio = ({
                       label="Importe Servicio (Serv. Particular)"
                       type="number"
                       inputRef={impServRef}
+                      defaultValue={0}
                     />
                   </div>
                 </div>

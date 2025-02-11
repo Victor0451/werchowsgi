@@ -32,6 +32,32 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(servicios);
+    } else if (req.query.f && req.query.f === "filtrar servicios") {
+      const filtServ = await Sep.$queryRawUnsafe(
+        `                
+        SELECT
+         *
+        FROM
+          servicios
+        WHERE fecha_fallecimiento >= '${moment(req.query.desde).format(
+          "YYYY-MM-DD"
+        )}'
+        AND fecha_fallecimiento <= '${moment(req.query.hasta).format(
+          "YYYY-MM-DD"
+        )}'
+
+        ORDER BY fecha_fallecimiento DESC
+
+               `
+      );
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(filtServ, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     } else if (req.query.f && req.query.f === "traer servicios historicos") {
       const servicios = await Sep.servicios_historico.findMany();
 
