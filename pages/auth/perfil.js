@@ -36,13 +36,13 @@ function Perfil(props) {
             label: "Si",
             onClick: () => {
               let data = {
-                id: usu.usuario,
+                id: usu.id,
                 contra: contra,
                 f: "cambiar contrasena",
               };
 
               axios
-                .put(`/api/auth`, data)
+                .put("/api/auth", data)
                 .then((res) => {
                   if (res.status === 200) {
                     toast.success("Contraseña actualizada");

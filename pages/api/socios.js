@@ -1333,8 +1333,7 @@ export default async function handler(req, res) {
 
       res.status(200).json(regCuota);
     }
-  }
-  if (req.method === "PUT") {
+  } else if (req.method === "PUT") {
     if (req.body.f && req.body.f === "renov poliza") {
       const regAuto = await Sep.autos.update({
         data: {

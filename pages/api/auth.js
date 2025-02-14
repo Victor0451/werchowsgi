@@ -100,7 +100,7 @@ export default async function handler(req, res) {
                 contrasena: contra,
               },
               where: {
-                usuario: req.body.id,
+                id: req.body.id,
               },
             })
             .then((operador) => {
@@ -108,6 +108,7 @@ export default async function handler(req, res) {
             })
             .catch((err) => {
               res.status(400).json(err);
+              console.log(err);
             });
         });
       });
