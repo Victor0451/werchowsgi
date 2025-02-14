@@ -75,6 +75,10 @@ function Sucursales(props) {
         guardarEmp("Werchow S.A.");
       } else if (mov.empresa === "M") {
         guardarEmp("Mutual San Valentin");
+      } else if (mov.empresa === "SM") {
+        guardarEmp("San Miguel Sepelios");
+      } else if (mov.empresa === "ISJ") {
+        guardarEmp("Mutual ISJ");
       }
 
       if (mov.movimiento === "I") {

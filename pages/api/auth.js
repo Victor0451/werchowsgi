@@ -72,6 +72,7 @@ export default async function handler(req, res) {
                         administracion: user.administracion,
                         contabilidad: user.contabilidad,
                         gestion: user.gestion,
+                        cobranza: user.cobranza,
                         createdAt: user.createdAt,
                         updatedAt: user.updatedAt,
                       },

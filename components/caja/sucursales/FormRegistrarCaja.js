@@ -76,6 +76,8 @@ const FormRegistrarCaja = ({
                 <Option value="WSRL">Werchow S.R.L.</Option>
                 <Option value="WSA">Werchow S.A.</Option>
                 <Option value="M">Mutual San Valentin</Option>
+                <Option value="SM">San Miguel Sepelios</Option>
+                <Option value="IJS">Mutual ISJ</Option>
               </Select>
             </div>
             <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
