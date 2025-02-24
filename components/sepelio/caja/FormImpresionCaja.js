@@ -30,20 +30,20 @@ const FormImpresionCaja = ({
       name: "Fecha",
       selector: (row) => `${moment(row.fecha).format("DD/MM/YYYY")}`,
       sortable: true,
-      grow: 0.2,
+      width: "110px",
     },
 
     {
       name: "Ingresos",
       selector: (row) => `${row.concepto}`,
       sortable: true,
-      grow: 0.6,
+      width: "400px",
     },
     {
       name: "Monto",
       selector: (row) => `$${row.monto}`,
       sortable: true,
-      grow: 0.1,
+      width: "400px",
     },
   ];
 
@@ -52,21 +52,48 @@ const FormImpresionCaja = ({
       name: "Fecha",
       selector: (row) => `${moment(row.fecha).format("DD/MM/YYYY")}`,
       sortable: true,
-      grow: 0.2,
+      width: "110px",
     },
 
     {
       name: "Egresos",
       selector: (row) => `${row.concepto}`,
       sortable: true,
-      grow: 0.6,
+      width: "350px",
     },
 
     {
       name: "Monto",
       selector: (row) => `$${row.total}`,
+      width: "120px",
+    },
+
+    {
+      name: "Mont. IVA",
+      selector: (row) => `$${row.montoiva}`,
       sortable: true,
-      grow: 0.1,
+      width: "120px",
+    },
+
+    {
+      name: "Ret. IIBB",
+      selector: (row) => `$${row.retiibb}`,
+      sortable: true,
+      width: "120px",
+    },
+
+    {
+      name: "Ret. Gcias",
+      selector: (row) => `$${row.retggcias}`,
+      sortable: true,
+      width: "120px",
+    },
+
+    {
+      name: "Per IVA",
+      selector: (row) => `$${row.perciva}`,
+      sortable: true,
+      width: "120px",
     },
   ];
 
@@ -112,8 +139,11 @@ const FormImpresionCaja = ({
               Cierre: {moment(caja.cierre).format("DD/MM/YYYY")}
             </Typography>
 
-            <div className=" mt-5 grid gap-6 mb-6 md:grid-cols-2">
-              <div className=" grid gap-6 mb-6 md:grid-cols-1">
+            <div className=" mt-5 grid gap-6 mb-6 md:grid-cols-1">
+              <div className="border-2 rounded-xl grid gap-6  md:grid-cols-1 p-4">
+                <Typography variant="h6" className="mt-2">
+                  INGRESOS
+                </Typography>
                 <Ingresos
                   columns={ingre}
                   data={ingresos}
@@ -121,7 +151,13 @@ const FormImpresionCaja = ({
                   striped
                 />
               </div>
-              <div className=" grid gap-6 mb-6 md:grid-cols-1">
+
+              <hr className="border-2 mt-3 mb-3" />
+
+              <div className="border-2 rounded-xl grid gap-6  md:grid-cols-1 p-4">
+                <Typography variant="h6" className="mt-2">
+                  EGRESOS
+                </Typography>
                 <Egresos
                   columns={egre}
                   data={gastos}
@@ -130,6 +166,9 @@ const FormImpresionCaja = ({
                 />
               </div>
             </div>
+
+            <hr className="border-2 mt-7 mb-7" />
+
             <div className=" grid gap-6 mb-6 md:grid-cols-2">
               <Alert
                 color="blue"
