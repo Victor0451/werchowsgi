@@ -581,7 +581,8 @@ exports.Prisma.MaestroScalarFieldEnum = {
   MAY_65: 'MAY_65',
   INTEG: 'INTEG',
   EDAD_PROM: 'EDAD_PROM',
-  MAIL: 'MAIL'
+  MAIL: 'MAIL',
+  id: 'id'
 };
 
 exports.Prisma.Maestro22ScalarFieldEnum = {
@@ -1106,7 +1107,8 @@ exports.Prisma.PrestamosScalarFieldEnum = {
   ptm_afi: 'ptm_afi',
   capinoaut: 'capinoaut',
   ptm_inicio: 'ptm_inicio',
-  ptm_fin: 'ptm_fin'
+  ptm_fin: 'ptm_fin',
+  ptm_fechaingreso: 'ptm_fechaingreso'
 };
 
 exports.Prisma.ProduccionScalarFieldEnum = {
@@ -1397,6 +1399,129 @@ exports.Prisma.EmiScalarFieldEnum = {
   id: 'id'
 };
 
+exports.Prisma.SO_01ScalarFieldEnum = {
+  CONTRATO: 'CONTRATO',
+  APE_NOM: 'APE_NOM',
+  ALTA: 'ALTA',
+  GRUPO: 'GRUPO',
+  ADHS: 'ADHS',
+  PLAN: 'PLAN',
+  SUB_PLAN: 'SUB_PLAN',
+  ZONA: 'ZONA',
+  CUOTA: 'CUOTA',
+  EMPRESA: 'EMPRESA',
+  SUCURSAL: 'SUCURSAL',
+  EDAD_PROM: 'EDAD_PROM',
+  PERMANEN: 'PERMANEN',
+  DEUDA: 'DEUDA'
+};
+
+exports.Prisma.SO_oldScalarFieldEnum = {
+  CONTRATO: 'CONTRATO',
+  APE_NOM: 'APE_NOM',
+  ALTA: 'ALTA',
+  GRUPO: 'GRUPO',
+  ADHS: 'ADHS',
+  PLAN: 'PLAN',
+  SUB_PLAN: 'SUB_PLAN',
+  ZONA: 'ZONA',
+  CUOTA: 'CUOTA',
+  EMPRESA: 'EMPRESA',
+  SUCURSAL: 'SUCURSAL',
+  EDAD_PROM: 'EDAD_PROM',
+  PERMANEN: 'PERMANEN',
+  DEUDA: 'DEUDA'
+};
+
+exports.Prisma.Maestro2ScalarFieldEnum = {
+  SUCURSAL: 'SUCURSAL',
+  CONTRATO: 'CONTRATO',
+  NRO_DOC: 'NRO_DOC',
+  APELLIDOS: 'APELLIDOS',
+  NOMBRES: 'NOMBRES',
+  NACIMIENTO: 'NACIMIENTO',
+  CALLE: 'CALLE',
+  LOCALIDAD: 'LOCALIDAD',
+  NRO_CALLE: 'NRO_CALLE',
+  BARRIO: 'BARRIO',
+  DOMI_COBR: 'DOMI_COBR',
+  DOM_LAB: 'DOM_LAB',
+  ZONA: 'ZONA',
+  ALTA: 'ALTA',
+  VIGENCIA: 'VIGENCIA',
+  ALT_SEG: 'ALT_SEG',
+  VIG_SEG: 'VIG_SEG',
+  ENC_SEG: 'ENC_SEG',
+  VIG_AYUDA: 'VIG_AYUDA',
+  GRUPO: 'GRUPO',
+  SEXO: 'SEXO',
+  ADHERENTES: 'ADHERENTES',
+  PRECIO: 'PRECIO',
+  CUO_VIEJA: 'CUO_VIEJA',
+  OPERADOR: 'OPERADOR',
+  ACTUALIZA: 'ACTUALIZA',
+  OBRA_SOC: 'OBRA_SOC',
+  PRODUCTOR: 'PRODUCTOR',
+  PROD_DEB: 'PROD_DEB',
+  PLAN: 'PLAN',
+  SUB_PLAN: 'SUB_PLAN',
+  FEC_PLAN: 'FEC_PLAN',
+  MOD_1: 'MOD_1',
+  PRO_1: 'PRO_1',
+  MOD_2: 'MOD_2',
+  PRO_2: 'PRO_2',
+  MOD_3: 'MOD_3',
+  PRO_3: 'PRO_3',
+  MOD_4: 'MOD_4',
+  PRO_4: 'PRO_4',
+  MOD_5: 'MOD_5',
+  TSEG: 'TSEG',
+  PRO_5: 'PRO_5',
+  MOD_6: 'MOD_6',
+  PRO_6: 'PRO_6',
+  MOD_7: 'MOD_7',
+  PRO_7: 'PRO_7',
+  MOD_8: 'MOD_8',
+  PRO_8: 'PRO_8',
+  MOD_9: 'MOD_9',
+  PRO_9: 'PRO_9',
+  MOD_10: 'MOD_10',
+  PRO_10: 'PRO_10',
+  MOD_11: 'MOD_11',
+  PRO_11: 'PRO_11',
+  MOD_12: 'MOD_12',
+  PRO_12: 'PRO_12',
+  TOT_MOD: 'TOT_MOD',
+  TRASPASO: 'TRASPASO',
+  FEC_REAFIL: 'FEC_REAFIL',
+  NUM_REAFIL: 'NUM_REAFIL',
+  SEGURO: 'SEGURO',
+  EMPRESA: 'EMPRESA',
+  EDAD: 'EDAD',
+  COD_POST: 'COD_POST',
+  TELEFONO: 'TELEFONO',
+  MOVIL: 'MOVIL',
+  VIG_OPT: 'VIG_OPT',
+  DECL_JUR: 'DECL_JUR',
+  VIG_SUB: 'VIG_SUB',
+  VIG_CONSU: 'VIG_CONSU',
+  VIG_SMEDI: 'VIG_SMEDI',
+  ANTICIPO: 'ANTICIPO',
+  CUOTAS: 'CUOTAS',
+  CAMBIO: 'CAMBIO',
+  TIPO_COMI: 'TIPO_COMI',
+  PAGA_COMI: 'PAGA_COMI',
+  TIPO_SEGU: 'TIPO_SEGU',
+  PAGO_SEGU: 'PAGO_SEGU',
+  CANT_TRASP: 'CANT_TRASP',
+  PGO_TRASP: 'PGO_TRASP',
+  MAY_21: 'MAY_21',
+  MAY_65: 'MAY_65',
+  INTEG: 'INTEG',
+  EDAD_PROM: 'EDAD_PROM',
+  MAIL: 'MAIL'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1459,7 +1584,10 @@ exports.Prisma.ModelName = {
   guardia: 'guardia',
   listado_rus: 'listado_rus',
   poliza_5380: 'poliza_5380',
-  emi: 'emi'
+  emi: 'emi',
+  SO_01: 'SO_01',
+  SO_old: 'SO_old',
+  maestro2: 'maestro2'
 };
 
 /**

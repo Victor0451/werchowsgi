@@ -16,6 +16,7 @@ export default function NuevoPrestamo() {
   let legajoRef = React.createRef();
   let sueldoNetoRef = React.createRef();
   let antiRef = React.createRef();
+  let ingresoRef = React.createRef();
 
   const [ficha, guardarFicha] = useState(null);
   const [capital, guardarCapital] = useState([]);
@@ -30,6 +31,8 @@ export default function NuevoPrestamo() {
   const [couPrest, guardarCuoPrest] = useState(0);
   const [flag, guardarFlag] = useState(false);
   const [capiNoAut, guardarCapiNoAut] = useState(true);
+  const [ant, guardarAnt] = useState(0);
+  const [alerJubi, guardarAlertJubi] = useState(null);
 
   const { usu } = useWerchow();
 
@@ -53,24 +56,24 @@ export default function NuevoPrestamo() {
           },
         })
         .then((res) => {
-          if (res.data && res.data.GRUPO === 6) {
-            guardarFicha(res.data);
+          if (res.data[0] && res.data[0].GRUPO === 6) {
+            guardarFicha(res.data[0]);
 
             let hoy = moment();
-            let alta = moment(res.data.ALTA);
+            let alta = moment(res.data[0].ALTA);
 
             if (hoy.diff(alta, "years") > 20) {
               toast.warning(
                 `El socio tiene una antigüedad de ${hoy.diff(
                   alta,
                   "years"
-                )}, consultar con gerencia como proceder.`
+                )} en la empresa, consultar con gerencia como proceder.`
               );
               guardarAlertas(
                 `El socio tiene una antigüedad de ${hoy.diff(
                   alta,
                   "years"
-                )}, consultar con gerencia como procede.`
+                )} en la empresa, consultar con gerencia como procede.`
               );
             }
           } else {
@@ -156,6 +159,29 @@ export default function NuevoPrestamo() {
     }
   };
 
+  const handleAnti = () => {
+    let ingre = moment(ingresoRef.current.value);
+
+    let hoy = moment();
+    console.log(parseInt(moment(ingre).format("YYYY")));
+
+    if (ingre._isValid === false) {
+      guardarAnt(0);
+    } else {
+      guardarAnt(hoy.diff(ingre, "years"));
+    }
+
+    if (parseInt(moment(ingre).format("YYYY")) === 2000) {
+      guardarAlertJubi(
+        "El efectivo policial que ingreso a partir del año 2000 (inclusive), tiene una jubilacion de 30 años para Suboficiales y de 35 para Oficiales"
+      );
+    } else if (parseInt(moment(ingre).format("YYYY")) < 2000) {
+      guardarAlertJubi(
+        "El efectivo policial que ingreso antes del año 2000, tiene una jubilacion de 25 años para Suboficiales y de 30 para Oficiales"
+      );
+    }
+  };
+
   const registrarPrestamo = async () => {
     let data = {
       fechacarga: moment().format("YYYY-MM-DD"),
@@ -163,7 +189,7 @@ export default function NuevoPrestamo() {
       operador: usu.codigo,
       ficha: ficha.CONTRATO,
       legajo: legajoRef.current.value,
-      anti: antiRef.current.value,
+      anti: ant,
       renova: renova,
       capital: capSelec,
       cuotas: planSelec,
@@ -173,13 +199,18 @@ export default function NuevoPrestamo() {
       codptmleg: `${ficha.CONTRATO}-${moment().format("YYYY-MM-DD")}`,
       ptm_afi: `${ficha.APELLIDOS}, ${ficha.NOMBRES}`,
       capinoaut: capiNoAut,
+      ingreso: ingresoRef.current.value,
+      inicio: moment().add(1, "months").format("MM/YYYY"),
+      fin: moment().add(planSelec, "months").format("MM/YYYY"),
       f: "reg prestamo",
     };
 
     if (data.legajo === "") {
       guardarErrores("Debe ingresa el legajo del policia.");
-    } else if (data.anti === "") {
-      guardarErrores("Debe ingresar la antigüedad del policia en su trabajo.");
+    } else if (data.ingreso === "") {
+      guardarErrores(
+        "Debe ingresar la fecha de ingreso del policia en su trabajo."
+      );
     } else if (data.neto === "") {
       guardarErrores("Debe ingresar el sueldo neto del policia.");
     } else if (data.renova === "") {
@@ -298,6 +329,10 @@ export default function NuevoPrestamo() {
           legajoRef={legajoRef}
           antiRef={antiRef}
           sueldoNetoRef={sueldoNetoRef}
+          ingresoRef={ingresoRef}
+          ant={ant}
+          handleAnti={handleAnti}
+          alerJubi={alerJubi}
         />
       )}
     </>

@@ -644,6 +644,7 @@ export type maestroPayload<ExtArgs extends $Extensions.Args = $Extensions.Defaul
     INTEG: number | null
     EDAD_PROM: number | null
     MAIL: string | null
+    id: number
   }, ExtArgs["result"]["maestro"]>
   composites: {}
 }
@@ -1304,6 +1305,7 @@ export type prestamosPayload<ExtArgs extends $Extensions.Args = $Extensions.Defa
     capinoaut: boolean | null
     ptm_inicio: string | null
     ptm_fin: string | null
+    ptm_fechaingreso: Date | null
   }, ExtArgs["result"]["prestamos"]>
   composites: {}
 }
@@ -1763,6 +1765,156 @@ export type emiPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArg
  * 
  */
 export type emi = runtime.Types.DefaultSelection<emiPayload>
+export type SO_01Payload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    CONTRATO: number
+    APE_NOM: string | null
+    ALTA: Date | null
+    GRUPO: number | null
+    ADHS: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    SUCURSAL: string | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+  }, ExtArgs["result"]["sO_01"]>
+  composites: {}
+}
+
+/**
+ * Model SO_01
+ * 
+ */
+export type SO_01 = runtime.Types.DefaultSelection<SO_01Payload>
+export type SO_oldPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    CONTRATO: number
+    APE_NOM: string | null
+    ALTA: Date | null
+    GRUPO: number | null
+    ADHS: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    SUCURSAL: string | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+  }, ExtArgs["result"]["sO_old"]>
+  composites: {}
+}
+
+/**
+ * Model SO_old
+ * 
+ */
+export type SO_old = runtime.Types.DefaultSelection<SO_oldPayload>
+export type maestro2Payload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    NACIMIENTO: Date | null
+    CALLE: string | null
+    LOCALIDAD: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    DOMI_COBR: string | null
+    DOM_LAB: string | null
+    ZONA: number | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    ALT_SEG: Date | null
+    VIG_SEG: Date | null
+    ENC_SEG: number | null
+    VIG_AYUDA: Date | null
+    GRUPO: number | null
+    SEXO: string | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    CUO_VIEJA: number | null
+    OPERADOR: number | null
+    ACTUALIZA: string | null
+    OBRA_SOC: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    FEC_PLAN: Date | null
+    MOD_1: Date | null
+    PRO_1: number | null
+    MOD_2: Date | null
+    PRO_2: number | null
+    MOD_3: Date | null
+    PRO_3: number | null
+    MOD_4: Date | null
+    PRO_4: number | null
+    MOD_5: Date | null
+    TSEG: string | null
+    PRO_5: number | null
+    MOD_6: Date | null
+    PRO_6: number | null
+    MOD_7: Date | null
+    PRO_7: number | null
+    MOD_8: Date | null
+    PRO_8: number | null
+    MOD_9: Date | null
+    PRO_9: number | null
+    MOD_10: Date | null
+    PRO_10: number | null
+    MOD_11: Date | null
+    PRO_11: number | null
+    MOD_12: Date | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    TRASPASO: Date | null
+    FEC_REAFIL: Date | null
+    NUM_REAFIL: number | null
+    SEGURO: number | null
+    EMPRESA: string | null
+    EDAD: number | null
+    COD_POST: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    VIG_OPT: Date | null
+    DECL_JUR: Date | null
+    VIG_SUB: Date | null
+    VIG_CONSU: Date | null
+    VIG_SMEDI: Date | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    CAMBIO: Date | null
+    TIPO_COMI: number | null
+    PAGA_COMI: number | null
+    TIPO_SEGU: number | null
+    PAGO_SEGU: number | null
+    CANT_TRASP: number | null
+    PGO_TRASP: number | null
+    MAY_21: number | null
+    MAY_65: number | null
+    INTEG: number | null
+    EDAD_PROM: number | null
+    MAIL: string | null
+  }, ExtArgs["result"]["maestro2"]>
+  composites: {}
+}
+
+/**
+ * Model maestro2
+ * 
+ */
+export type maestro2 = runtime.Types.DefaultSelection<maestro2Payload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2398,6 +2550,36 @@ export class PrismaClient<
     * ```
     */
   get emi(): Prisma.emiDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.sO_01`: Exposes CRUD operations for the **SO_01** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SO_01s
+    * const sO_01s = await prisma.sO_01.findMany()
+    * ```
+    */
+  get sO_01(): Prisma.SO_01Delegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.sO_old`: Exposes CRUD operations for the **SO_old** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SO_olds
+    * const sO_olds = await prisma.sO_old.findMany()
+    * ```
+    */
+  get sO_old(): Prisma.SO_oldDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.maestro2`: Exposes CRUD operations for the **maestro2** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Maestro2s
+    * const maestro2s = await prisma.maestro2.findMany()
+    * ```
+    */
+  get maestro2(): Prisma.maestro2Delegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -2931,7 +3113,10 @@ export namespace Prisma {
     guardia: 'guardia',
     listado_rus: 'listado_rus',
     poliza_5380: 'poliza_5380',
-    emi: 'emi'
+    emi: 'emi',
+    SO_01: 'SO_01',
+    SO_old: 'SO_old',
+    maestro2: 'maestro2'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2948,7 +3133,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'acciones' | 'adherent' | 'alta_adhe' | 'anticipos' | 'bajas' | 'bajas_mutual' | 'bancos' | 'caja_sucursal' | 'cajas' | 'certificados' | 'cuo_fija' | 'cuota_prestamo' | 'cuotas_adeudadas' | 'debitos' | 'liq_temporal' | 'liquidaciones' | 'localidad' | 'maestro' | 'maestro22' | 'maestro_bis' | 'memo' | 'meses' | 'mutual' | 'mutual_adh' | 'obra_soc' | 'pago_bco' | 'pago_bcom' | 'pagos' | 'pagos_mutual' | 'parcelas' | 'planificacion' | 'porcentaje_liq' | 'prestamos' | 'produccion' | 'produccion_copy' | 'puestos' | 'registro_diario_saldos' | 'registro_egreso_diario' | 'registro_ingreso_diario' | 'registro_sucursal' | 'semana_asesor' | 'semanas' | 'som' | 'sow' | 'sucursal' | 'sueldos' | 'usuario' | 'guardia' | 'listado_rus' | 'poliza_5380' | 'emi'
+      modelProps: 'acciones' | 'adherent' | 'alta_adhe' | 'anticipos' | 'bajas' | 'bajas_mutual' | 'bancos' | 'caja_sucursal' | 'cajas' | 'certificados' | 'cuo_fija' | 'cuota_prestamo' | 'cuotas_adeudadas' | 'debitos' | 'liq_temporal' | 'liquidaciones' | 'localidad' | 'maestro' | 'maestro22' | 'maestro_bis' | 'memo' | 'meses' | 'mutual' | 'mutual_adh' | 'obra_soc' | 'pago_bco' | 'pago_bcom' | 'pagos' | 'pagos_mutual' | 'parcelas' | 'planificacion' | 'porcentaje_liq' | 'prestamos' | 'produccion' | 'produccion_copy' | 'puestos' | 'registro_diario_saldos' | 'registro_egreso_diario' | 'registro_ingreso_diario' | 'registro_sucursal' | 'semana_asesor' | 'semanas' | 'som' | 'sow' | 'sucursal' | 'sueldos' | 'usuario' | 'guardia' | 'listado_rus' | 'poliza_5380' | 'emi' | 'sO_01' | 'sO_old' | 'maestro2'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -6978,6 +7163,243 @@ export namespace Prisma {
             args: Prisma.emiCountArgs<ExtArgs>,
             result: $Utils.Optional<EmiCountAggregateOutputType> | number
             payload: emiPayload<ExtArgs>
+          }
+        }
+      }
+      SO_01: {
+        operations: {
+          findUnique: {
+            args: Prisma.SO_01FindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_01Payload> | null
+            payload: SO_01Payload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SO_01FindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_01Payload>
+            payload: SO_01Payload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.SO_01FindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_01Payload> | null
+            payload: SO_01Payload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.SO_01FindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_01Payload>
+            payload: SO_01Payload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.SO_01FindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_01Payload>[]
+            payload: SO_01Payload<ExtArgs>
+          }
+          create: {
+            args: Prisma.SO_01CreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_01Payload>
+            payload: SO_01Payload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.SO_01CreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: SO_01Payload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.SO_01DeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_01Payload>
+            payload: SO_01Payload<ExtArgs>
+          }
+          update: {
+            args: Prisma.SO_01UpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_01Payload>
+            payload: SO_01Payload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.SO_01DeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: SO_01Payload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.SO_01UpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: SO_01Payload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.SO_01UpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_01Payload>
+            payload: SO_01Payload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.SO_01AggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateSO_01>
+            payload: SO_01Payload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.SO_01GroupByArgs<ExtArgs>,
+            result: $Utils.Optional<SO_01GroupByOutputType>[]
+            payload: SO_01Payload<ExtArgs>
+          }
+          count: {
+            args: Prisma.SO_01CountArgs<ExtArgs>,
+            result: $Utils.Optional<SO_01CountAggregateOutputType> | number
+            payload: SO_01Payload<ExtArgs>
+          }
+        }
+      }
+      SO_old: {
+        operations: {
+          findUnique: {
+            args: Prisma.SO_oldFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_oldPayload> | null
+            payload: SO_oldPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SO_oldFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_oldPayload>
+            payload: SO_oldPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.SO_oldFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_oldPayload> | null
+            payload: SO_oldPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.SO_oldFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_oldPayload>
+            payload: SO_oldPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.SO_oldFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_oldPayload>[]
+            payload: SO_oldPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.SO_oldCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_oldPayload>
+            payload: SO_oldPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.SO_oldCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: SO_oldPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.SO_oldDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_oldPayload>
+            payload: SO_oldPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.SO_oldUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_oldPayload>
+            payload: SO_oldPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.SO_oldDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: SO_oldPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.SO_oldUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: SO_oldPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.SO_oldUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<SO_oldPayload>
+            payload: SO_oldPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.SO_oldAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateSO_old>
+            payload: SO_oldPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.SO_oldGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<SO_oldGroupByOutputType>[]
+            payload: SO_oldPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.SO_oldCountArgs<ExtArgs>,
+            result: $Utils.Optional<SO_oldCountAggregateOutputType> | number
+            payload: SO_oldPayload<ExtArgs>
+          }
+        }
+      }
+      maestro2: {
+        operations: {
+          findUnique: {
+            args: Prisma.maestro2FindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<maestro2Payload> | null
+            payload: maestro2Payload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.maestro2FindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<maestro2Payload>
+            payload: maestro2Payload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.maestro2FindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<maestro2Payload> | null
+            payload: maestro2Payload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.maestro2FindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<maestro2Payload>
+            payload: maestro2Payload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.maestro2FindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<maestro2Payload>[]
+            payload: maestro2Payload<ExtArgs>
+          }
+          create: {
+            args: Prisma.maestro2CreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<maestro2Payload>
+            payload: maestro2Payload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.maestro2CreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: maestro2Payload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.maestro2DeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<maestro2Payload>
+            payload: maestro2Payload<ExtArgs>
+          }
+          update: {
+            args: Prisma.maestro2UpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<maestro2Payload>
+            payload: maestro2Payload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.maestro2DeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: maestro2Payload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.maestro2UpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: maestro2Payload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.maestro2UpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<maestro2Payload>
+            payload: maestro2Payload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.Maestro2AggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateMaestro2>
+            payload: maestro2Payload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.maestro2GroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Maestro2GroupByOutputType>[]
+            payload: maestro2Payload<ExtArgs>
+          }
+          count: {
+            args: Prisma.maestro2CountArgs<ExtArgs>,
+            result: $Utils.Optional<Maestro2CountAggregateOutputType> | number
+            payload: maestro2Payload<ExtArgs>
           }
         }
       }
@@ -25535,6 +25957,7 @@ export namespace Prisma {
     MAY_65: number | null
     INTEG: number | null
     EDAD_PROM: number | null
+    id: number | null
   }
 
   export type MaestroSumAggregateOutputType = {
@@ -25580,6 +26003,7 @@ export namespace Prisma {
     MAY_65: number | null
     INTEG: number | null
     EDAD_PROM: number | null
+    id: number | null
   }
 
   export type MaestroMinAggregateOutputType = {
@@ -25669,6 +26093,7 @@ export namespace Prisma {
     INTEG: number | null
     EDAD_PROM: number | null
     MAIL: string | null
+    id: number | null
   }
 
   export type MaestroMaxAggregateOutputType = {
@@ -25758,6 +26183,7 @@ export namespace Prisma {
     INTEG: number | null
     EDAD_PROM: number | null
     MAIL: string | null
+    id: number | null
   }
 
   export type MaestroCountAggregateOutputType = {
@@ -25847,6 +26273,7 @@ export namespace Prisma {
     INTEG: number
     EDAD_PROM: number
     MAIL: number
+    id: number
     _all: number
   }
 
@@ -25894,6 +26321,7 @@ export namespace Prisma {
     MAY_65?: true
     INTEG?: true
     EDAD_PROM?: true
+    id?: true
   }
 
   export type MaestroSumAggregateInputType = {
@@ -25939,6 +26367,7 @@ export namespace Prisma {
     MAY_65?: true
     INTEG?: true
     EDAD_PROM?: true
+    id?: true
   }
 
   export type MaestroMinAggregateInputType = {
@@ -26028,6 +26457,7 @@ export namespace Prisma {
     INTEG?: true
     EDAD_PROM?: true
     MAIL?: true
+    id?: true
   }
 
   export type MaestroMaxAggregateInputType = {
@@ -26117,6 +26547,7 @@ export namespace Prisma {
     INTEG?: true
     EDAD_PROM?: true
     MAIL?: true
+    id?: true
   }
 
   export type MaestroCountAggregateInputType = {
@@ -26206,6 +26637,7 @@ export namespace Prisma {
     INTEG?: true
     EDAD_PROM?: true
     MAIL?: true
+    id?: true
     _all?: true
   }
 
@@ -26383,6 +26815,7 @@ export namespace Prisma {
     INTEG: number | null
     EDAD_PROM: number | null
     MAIL: string | null
+    id: number
     _count: MaestroCountAggregateOutputType | null
     _avg: MaestroAvgAggregateOutputType | null
     _sum: MaestroSumAggregateOutputType | null
@@ -26491,6 +26924,7 @@ export namespace Prisma {
     INTEG?: boolean
     EDAD_PROM?: boolean
     MAIL?: boolean
+    id?: boolean
   }, ExtArgs["result"]["maestro"]>
 
   export type maestroSelectScalar = {
@@ -26580,6 +27014,7 @@ export namespace Prisma {
     INTEG?: boolean
     EDAD_PROM?: boolean
     MAIL?: boolean
+    id?: boolean
   }
 
 
@@ -44528,6 +44963,7 @@ export namespace Prisma {
     capinoaut: boolean | null
     ptm_inicio: string | null
     ptm_fin: string | null
+    ptm_fechaingreso: Date | null
   }
 
   export type PrestamosMaxAggregateOutputType = {
@@ -44549,6 +44985,7 @@ export namespace Prisma {
     capinoaut: boolean | null
     ptm_inicio: string | null
     ptm_fin: string | null
+    ptm_fechaingreso: Date | null
   }
 
   export type PrestamosCountAggregateOutputType = {
@@ -44570,6 +45007,7 @@ export namespace Prisma {
     capinoaut: number
     ptm_inicio: number
     ptm_fin: number
+    ptm_fechaingreso: number
     _all: number
   }
 
@@ -44617,6 +45055,7 @@ export namespace Prisma {
     capinoaut?: true
     ptm_inicio?: true
     ptm_fin?: true
+    ptm_fechaingreso?: true
   }
 
   export type PrestamosMaxAggregateInputType = {
@@ -44638,6 +45077,7 @@ export namespace Prisma {
     capinoaut?: true
     ptm_inicio?: true
     ptm_fin?: true
+    ptm_fechaingreso?: true
   }
 
   export type PrestamosCountAggregateInputType = {
@@ -44659,6 +45099,7 @@ export namespace Prisma {
     capinoaut?: true
     ptm_inicio?: true
     ptm_fin?: true
+    ptm_fechaingreso?: true
     _all?: true
   }
 
@@ -44768,6 +45209,7 @@ export namespace Prisma {
     capinoaut: boolean | null
     ptm_inicio: string | null
     ptm_fin: string | null
+    ptm_fechaingreso: Date | null
     _count: PrestamosCountAggregateOutputType | null
     _avg: PrestamosAvgAggregateOutputType | null
     _sum: PrestamosSumAggregateOutputType | null
@@ -44808,6 +45250,7 @@ export namespace Prisma {
     capinoaut?: boolean
     ptm_inicio?: boolean
     ptm_fin?: boolean
+    ptm_fechaingreso?: boolean
   }, ExtArgs["result"]["prestamos"]>
 
   export type prestamosSelectScalar = {
@@ -44829,6 +45272,7 @@ export namespace Prisma {
     capinoaut?: boolean
     ptm_inicio?: boolean
     ptm_fin?: boolean
+    ptm_fechaingreso?: boolean
   }
 
 
@@ -63612,6 +64056,3853 @@ export namespace Prisma {
 
 
   /**
+   * Model SO_01
+   */
+
+
+  export type AggregateSO_01 = {
+    _count: SO_01CountAggregateOutputType | null
+    _avg: SO_01AvgAggregateOutputType | null
+    _sum: SO_01SumAggregateOutputType | null
+    _min: SO_01MinAggregateOutputType | null
+    _max: SO_01MaxAggregateOutputType | null
+  }
+
+  export type SO_01AvgAggregateOutputType = {
+    CONTRATO: number | null
+    GRUPO: number | null
+    ADHS: number | null
+    ZONA: number | null
+    CUOTA: number | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+  }
+
+  export type SO_01SumAggregateOutputType = {
+    CONTRATO: number | null
+    GRUPO: number | null
+    ADHS: number | null
+    ZONA: number | null
+    CUOTA: number | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+  }
+
+  export type SO_01MinAggregateOutputType = {
+    CONTRATO: number | null
+    APE_NOM: string | null
+    ALTA: Date | null
+    GRUPO: number | null
+    ADHS: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    SUCURSAL: string | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+  }
+
+  export type SO_01MaxAggregateOutputType = {
+    CONTRATO: number | null
+    APE_NOM: string | null
+    ALTA: Date | null
+    GRUPO: number | null
+    ADHS: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    SUCURSAL: string | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+  }
+
+  export type SO_01CountAggregateOutputType = {
+    CONTRATO: number
+    APE_NOM: number
+    ALTA: number
+    GRUPO: number
+    ADHS: number
+    PLAN: number
+    SUB_PLAN: number
+    ZONA: number
+    CUOTA: number
+    EMPRESA: number
+    SUCURSAL: number
+    EDAD_PROM: number
+    PERMANEN: number
+    DEUDA: number
+    _all: number
+  }
+
+
+  export type SO_01AvgAggregateInputType = {
+    CONTRATO?: true
+    GRUPO?: true
+    ADHS?: true
+    ZONA?: true
+    CUOTA?: true
+    EDAD_PROM?: true
+    PERMANEN?: true
+    DEUDA?: true
+  }
+
+  export type SO_01SumAggregateInputType = {
+    CONTRATO?: true
+    GRUPO?: true
+    ADHS?: true
+    ZONA?: true
+    CUOTA?: true
+    EDAD_PROM?: true
+    PERMANEN?: true
+    DEUDA?: true
+  }
+
+  export type SO_01MinAggregateInputType = {
+    CONTRATO?: true
+    APE_NOM?: true
+    ALTA?: true
+    GRUPO?: true
+    ADHS?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    ZONA?: true
+    CUOTA?: true
+    EMPRESA?: true
+    SUCURSAL?: true
+    EDAD_PROM?: true
+    PERMANEN?: true
+    DEUDA?: true
+  }
+
+  export type SO_01MaxAggregateInputType = {
+    CONTRATO?: true
+    APE_NOM?: true
+    ALTA?: true
+    GRUPO?: true
+    ADHS?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    ZONA?: true
+    CUOTA?: true
+    EMPRESA?: true
+    SUCURSAL?: true
+    EDAD_PROM?: true
+    PERMANEN?: true
+    DEUDA?: true
+  }
+
+  export type SO_01CountAggregateInputType = {
+    CONTRATO?: true
+    APE_NOM?: true
+    ALTA?: true
+    GRUPO?: true
+    ADHS?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    ZONA?: true
+    CUOTA?: true
+    EMPRESA?: true
+    SUCURSAL?: true
+    EDAD_PROM?: true
+    PERMANEN?: true
+    DEUDA?: true
+    _all?: true
+  }
+
+  export type SO_01AggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SO_01 to aggregate.
+     */
+    where?: SO_01WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SO_01s to fetch.
+     */
+    orderBy?: SO_01OrderByWithRelationInput | SO_01OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SO_01WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SO_01s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SO_01s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SO_01s
+    **/
+    _count?: true | SO_01CountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SO_01AvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SO_01SumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SO_01MinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SO_01MaxAggregateInputType
+  }
+
+  export type GetSO_01AggregateType<T extends SO_01AggregateArgs> = {
+        [P in keyof T & keyof AggregateSO_01]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSO_01[P]>
+      : GetScalarType<T[P], AggregateSO_01[P]>
+  }
+
+
+
+
+  export type SO_01GroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: SO_01WhereInput
+    orderBy?: SO_01OrderByWithAggregationInput | SO_01OrderByWithAggregationInput[]
+    by: SO_01ScalarFieldEnum[] | SO_01ScalarFieldEnum
+    having?: SO_01ScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SO_01CountAggregateInputType | true
+    _avg?: SO_01AvgAggregateInputType
+    _sum?: SO_01SumAggregateInputType
+    _min?: SO_01MinAggregateInputType
+    _max?: SO_01MaxAggregateInputType
+  }
+
+
+  export type SO_01GroupByOutputType = {
+    CONTRATO: number
+    APE_NOM: string | null
+    ALTA: Date | null
+    GRUPO: number | null
+    ADHS: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    SUCURSAL: string | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+    _count: SO_01CountAggregateOutputType | null
+    _avg: SO_01AvgAggregateOutputType | null
+    _sum: SO_01SumAggregateOutputType | null
+    _min: SO_01MinAggregateOutputType | null
+    _max: SO_01MaxAggregateOutputType | null
+  }
+
+  type GetSO_01GroupByPayload<T extends SO_01GroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SO_01GroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SO_01GroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SO_01GroupByOutputType[P]>
+            : GetScalarType<T[P], SO_01GroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SO_01Select<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    CONTRATO?: boolean
+    APE_NOM?: boolean
+    ALTA?: boolean
+    GRUPO?: boolean
+    ADHS?: boolean
+    PLAN?: boolean
+    SUB_PLAN?: boolean
+    ZONA?: boolean
+    CUOTA?: boolean
+    EMPRESA?: boolean
+    SUCURSAL?: boolean
+    EDAD_PROM?: boolean
+    PERMANEN?: boolean
+    DEUDA?: boolean
+  }, ExtArgs["result"]["sO_01"]>
+
+  export type SO_01SelectScalar = {
+    CONTRATO?: boolean
+    APE_NOM?: boolean
+    ALTA?: boolean
+    GRUPO?: boolean
+    ADHS?: boolean
+    PLAN?: boolean
+    SUB_PLAN?: boolean
+    ZONA?: boolean
+    CUOTA?: boolean
+    EMPRESA?: boolean
+    SUCURSAL?: boolean
+    EDAD_PROM?: boolean
+    PERMANEN?: boolean
+    DEUDA?: boolean
+  }
+
+
+  type SO_01GetPayload<S extends boolean | null | undefined | SO_01Args> = $Types.GetResult<SO_01Payload, S>
+
+  type SO_01CountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<SO_01FindManyArgs, 'select' | 'include'> & {
+      select?: SO_01CountAggregateInputType | true
+    }
+
+  export interface SO_01Delegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SO_01'], meta: { name: 'SO_01' } }
+    /**
+     * Find zero or one SO_01 that matches the filter.
+     * @param {SO_01FindUniqueArgs} args - Arguments to find a SO_01
+     * @example
+     * // Get one SO_01
+     * const sO_01 = await prisma.sO_01.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends SO_01FindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, SO_01FindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'SO_01'> extends True ? Prisma__SO_01Client<$Types.GetResult<SO_01Payload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__SO_01Client<$Types.GetResult<SO_01Payload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one SO_01 that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {SO_01FindUniqueOrThrowArgs} args - Arguments to find a SO_01
+     * @example
+     * // Get one SO_01
+     * const sO_01 = await prisma.sO_01.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends SO_01FindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, SO_01FindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__SO_01Client<$Types.GetResult<SO_01Payload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first SO_01 that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_01FindFirstArgs} args - Arguments to find a SO_01
+     * @example
+     * // Get one SO_01
+     * const sO_01 = await prisma.sO_01.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends SO_01FindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, SO_01FindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'SO_01'> extends True ? Prisma__SO_01Client<$Types.GetResult<SO_01Payload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__SO_01Client<$Types.GetResult<SO_01Payload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first SO_01 that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_01FindFirstOrThrowArgs} args - Arguments to find a SO_01
+     * @example
+     * // Get one SO_01
+     * const sO_01 = await prisma.sO_01.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends SO_01FindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, SO_01FindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__SO_01Client<$Types.GetResult<SO_01Payload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more SO_01s that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_01FindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SO_01s
+     * const sO_01s = await prisma.sO_01.findMany()
+     * 
+     * // Get first 10 SO_01s
+     * const sO_01s = await prisma.sO_01.findMany({ take: 10 })
+     * 
+     * // Only select the `CONTRATO`
+     * const sO_01WithCONTRATOOnly = await prisma.sO_01.findMany({ select: { CONTRATO: true } })
+     * 
+    **/
+    findMany<T extends SO_01FindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SO_01FindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<SO_01Payload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a SO_01.
+     * @param {SO_01CreateArgs} args - Arguments to create a SO_01.
+     * @example
+     * // Create one SO_01
+     * const SO_01 = await prisma.sO_01.create({
+     *   data: {
+     *     // ... data to create a SO_01
+     *   }
+     * })
+     * 
+    **/
+    create<T extends SO_01CreateArgs<ExtArgs>>(
+      args: SelectSubset<T, SO_01CreateArgs<ExtArgs>>
+    ): Prisma__SO_01Client<$Types.GetResult<SO_01Payload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many SO_01s.
+     *     @param {SO_01CreateManyArgs} args - Arguments to create many SO_01s.
+     *     @example
+     *     // Create many SO_01s
+     *     const sO_01 = await prisma.sO_01.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends SO_01CreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SO_01CreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a SO_01.
+     * @param {SO_01DeleteArgs} args - Arguments to delete one SO_01.
+     * @example
+     * // Delete one SO_01
+     * const SO_01 = await prisma.sO_01.delete({
+     *   where: {
+     *     // ... filter to delete one SO_01
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends SO_01DeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, SO_01DeleteArgs<ExtArgs>>
+    ): Prisma__SO_01Client<$Types.GetResult<SO_01Payload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one SO_01.
+     * @param {SO_01UpdateArgs} args - Arguments to update one SO_01.
+     * @example
+     * // Update one SO_01
+     * const sO_01 = await prisma.sO_01.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends SO_01UpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, SO_01UpdateArgs<ExtArgs>>
+    ): Prisma__SO_01Client<$Types.GetResult<SO_01Payload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more SO_01s.
+     * @param {SO_01DeleteManyArgs} args - Arguments to filter SO_01s to delete.
+     * @example
+     * // Delete a few SO_01s
+     * const { count } = await prisma.sO_01.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends SO_01DeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SO_01DeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SO_01s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_01UpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SO_01s
+     * const sO_01 = await prisma.sO_01.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends SO_01UpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, SO_01UpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SO_01.
+     * @param {SO_01UpsertArgs} args - Arguments to update or create a SO_01.
+     * @example
+     * // Update or create a SO_01
+     * const sO_01 = await prisma.sO_01.upsert({
+     *   create: {
+     *     // ... data to create a SO_01
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SO_01 we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends SO_01UpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, SO_01UpsertArgs<ExtArgs>>
+    ): Prisma__SO_01Client<$Types.GetResult<SO_01Payload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of SO_01s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_01CountArgs} args - Arguments to filter SO_01s to count.
+     * @example
+     * // Count the number of SO_01s
+     * const count = await prisma.sO_01.count({
+     *   where: {
+     *     // ... the filter for the SO_01s we want to count
+     *   }
+     * })
+    **/
+    count<T extends SO_01CountArgs>(
+      args?: Subset<T, SO_01CountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SO_01CountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SO_01.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_01AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SO_01AggregateArgs>(args: Subset<T, SO_01AggregateArgs>): Prisma.PrismaPromise<GetSO_01AggregateType<T>>
+
+    /**
+     * Group by SO_01.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_01GroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SO_01GroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SO_01GroupByArgs['orderBy'] }
+        : { orderBy?: SO_01GroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SO_01GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSO_01GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SO_01.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__SO_01Client<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * SO_01 base type for findUnique actions
+   */
+  export type SO_01FindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_01
+     */
+    select?: SO_01Select<ExtArgs> | null
+    /**
+     * Filter, which SO_01 to fetch.
+     */
+    where: SO_01WhereUniqueInput
+  }
+
+  /**
+   * SO_01 findUnique
+   */
+  export interface SO_01FindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends SO_01FindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * SO_01 findUniqueOrThrow
+   */
+  export type SO_01FindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_01
+     */
+    select?: SO_01Select<ExtArgs> | null
+    /**
+     * Filter, which SO_01 to fetch.
+     */
+    where: SO_01WhereUniqueInput
+  }
+
+
+  /**
+   * SO_01 base type for findFirst actions
+   */
+  export type SO_01FindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_01
+     */
+    select?: SO_01Select<ExtArgs> | null
+    /**
+     * Filter, which SO_01 to fetch.
+     */
+    where?: SO_01WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SO_01s to fetch.
+     */
+    orderBy?: SO_01OrderByWithRelationInput | SO_01OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SO_01s.
+     */
+    cursor?: SO_01WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SO_01s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SO_01s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SO_01s.
+     */
+    distinct?: SO_01ScalarFieldEnum | SO_01ScalarFieldEnum[]
+  }
+
+  /**
+   * SO_01 findFirst
+   */
+  export interface SO_01FindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends SO_01FindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * SO_01 findFirstOrThrow
+   */
+  export type SO_01FindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_01
+     */
+    select?: SO_01Select<ExtArgs> | null
+    /**
+     * Filter, which SO_01 to fetch.
+     */
+    where?: SO_01WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SO_01s to fetch.
+     */
+    orderBy?: SO_01OrderByWithRelationInput | SO_01OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SO_01s.
+     */
+    cursor?: SO_01WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SO_01s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SO_01s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SO_01s.
+     */
+    distinct?: SO_01ScalarFieldEnum | SO_01ScalarFieldEnum[]
+  }
+
+
+  /**
+   * SO_01 findMany
+   */
+  export type SO_01FindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_01
+     */
+    select?: SO_01Select<ExtArgs> | null
+    /**
+     * Filter, which SO_01s to fetch.
+     */
+    where?: SO_01WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SO_01s to fetch.
+     */
+    orderBy?: SO_01OrderByWithRelationInput | SO_01OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SO_01s.
+     */
+    cursor?: SO_01WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SO_01s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SO_01s.
+     */
+    skip?: number
+    distinct?: SO_01ScalarFieldEnum | SO_01ScalarFieldEnum[]
+  }
+
+
+  /**
+   * SO_01 create
+   */
+  export type SO_01CreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_01
+     */
+    select?: SO_01Select<ExtArgs> | null
+    /**
+     * The data needed to create a SO_01.
+     */
+    data: XOR<SO_01CreateInput, SO_01UncheckedCreateInput>
+  }
+
+
+  /**
+   * SO_01 createMany
+   */
+  export type SO_01CreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SO_01s.
+     */
+    data: SO_01CreateManyInput | SO_01CreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * SO_01 update
+   */
+  export type SO_01UpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_01
+     */
+    select?: SO_01Select<ExtArgs> | null
+    /**
+     * The data needed to update a SO_01.
+     */
+    data: XOR<SO_01UpdateInput, SO_01UncheckedUpdateInput>
+    /**
+     * Choose, which SO_01 to update.
+     */
+    where: SO_01WhereUniqueInput
+  }
+
+
+  /**
+   * SO_01 updateMany
+   */
+  export type SO_01UpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SO_01s.
+     */
+    data: XOR<SO_01UpdateManyMutationInput, SO_01UncheckedUpdateManyInput>
+    /**
+     * Filter which SO_01s to update
+     */
+    where?: SO_01WhereInput
+  }
+
+
+  /**
+   * SO_01 upsert
+   */
+  export type SO_01UpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_01
+     */
+    select?: SO_01Select<ExtArgs> | null
+    /**
+     * The filter to search for the SO_01 to update in case it exists.
+     */
+    where: SO_01WhereUniqueInput
+    /**
+     * In case the SO_01 found by the `where` argument doesn't exist, create a new SO_01 with this data.
+     */
+    create: XOR<SO_01CreateInput, SO_01UncheckedCreateInput>
+    /**
+     * In case the SO_01 was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SO_01UpdateInput, SO_01UncheckedUpdateInput>
+  }
+
+
+  /**
+   * SO_01 delete
+   */
+  export type SO_01DeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_01
+     */
+    select?: SO_01Select<ExtArgs> | null
+    /**
+     * Filter which SO_01 to delete.
+     */
+    where: SO_01WhereUniqueInput
+  }
+
+
+  /**
+   * SO_01 deleteMany
+   */
+  export type SO_01DeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SO_01s to delete
+     */
+    where?: SO_01WhereInput
+  }
+
+
+  /**
+   * SO_01 without action
+   */
+  export type SO_01Args<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_01
+     */
+    select?: SO_01Select<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model SO_old
+   */
+
+
+  export type AggregateSO_old = {
+    _count: SO_oldCountAggregateOutputType | null
+    _avg: SO_oldAvgAggregateOutputType | null
+    _sum: SO_oldSumAggregateOutputType | null
+    _min: SO_oldMinAggregateOutputType | null
+    _max: SO_oldMaxAggregateOutputType | null
+  }
+
+  export type SO_oldAvgAggregateOutputType = {
+    CONTRATO: number | null
+    GRUPO: number | null
+    ADHS: number | null
+    ZONA: number | null
+    CUOTA: number | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+  }
+
+  export type SO_oldSumAggregateOutputType = {
+    CONTRATO: number | null
+    GRUPO: number | null
+    ADHS: number | null
+    ZONA: number | null
+    CUOTA: number | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+  }
+
+  export type SO_oldMinAggregateOutputType = {
+    CONTRATO: number | null
+    APE_NOM: string | null
+    ALTA: Date | null
+    GRUPO: number | null
+    ADHS: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    SUCURSAL: string | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+  }
+
+  export type SO_oldMaxAggregateOutputType = {
+    CONTRATO: number | null
+    APE_NOM: string | null
+    ALTA: Date | null
+    GRUPO: number | null
+    ADHS: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    SUCURSAL: string | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+  }
+
+  export type SO_oldCountAggregateOutputType = {
+    CONTRATO: number
+    APE_NOM: number
+    ALTA: number
+    GRUPO: number
+    ADHS: number
+    PLAN: number
+    SUB_PLAN: number
+    ZONA: number
+    CUOTA: number
+    EMPRESA: number
+    SUCURSAL: number
+    EDAD_PROM: number
+    PERMANEN: number
+    DEUDA: number
+    _all: number
+  }
+
+
+  export type SO_oldAvgAggregateInputType = {
+    CONTRATO?: true
+    GRUPO?: true
+    ADHS?: true
+    ZONA?: true
+    CUOTA?: true
+    EDAD_PROM?: true
+    PERMANEN?: true
+    DEUDA?: true
+  }
+
+  export type SO_oldSumAggregateInputType = {
+    CONTRATO?: true
+    GRUPO?: true
+    ADHS?: true
+    ZONA?: true
+    CUOTA?: true
+    EDAD_PROM?: true
+    PERMANEN?: true
+    DEUDA?: true
+  }
+
+  export type SO_oldMinAggregateInputType = {
+    CONTRATO?: true
+    APE_NOM?: true
+    ALTA?: true
+    GRUPO?: true
+    ADHS?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    ZONA?: true
+    CUOTA?: true
+    EMPRESA?: true
+    SUCURSAL?: true
+    EDAD_PROM?: true
+    PERMANEN?: true
+    DEUDA?: true
+  }
+
+  export type SO_oldMaxAggregateInputType = {
+    CONTRATO?: true
+    APE_NOM?: true
+    ALTA?: true
+    GRUPO?: true
+    ADHS?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    ZONA?: true
+    CUOTA?: true
+    EMPRESA?: true
+    SUCURSAL?: true
+    EDAD_PROM?: true
+    PERMANEN?: true
+    DEUDA?: true
+  }
+
+  export type SO_oldCountAggregateInputType = {
+    CONTRATO?: true
+    APE_NOM?: true
+    ALTA?: true
+    GRUPO?: true
+    ADHS?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    ZONA?: true
+    CUOTA?: true
+    EMPRESA?: true
+    SUCURSAL?: true
+    EDAD_PROM?: true
+    PERMANEN?: true
+    DEUDA?: true
+    _all?: true
+  }
+
+  export type SO_oldAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SO_old to aggregate.
+     */
+    where?: SO_oldWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SO_olds to fetch.
+     */
+    orderBy?: SO_oldOrderByWithRelationInput | SO_oldOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SO_oldWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SO_olds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SO_olds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SO_olds
+    **/
+    _count?: true | SO_oldCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SO_oldAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SO_oldSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SO_oldMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SO_oldMaxAggregateInputType
+  }
+
+  export type GetSO_oldAggregateType<T extends SO_oldAggregateArgs> = {
+        [P in keyof T & keyof AggregateSO_old]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSO_old[P]>
+      : GetScalarType<T[P], AggregateSO_old[P]>
+  }
+
+
+
+
+  export type SO_oldGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: SO_oldWhereInput
+    orderBy?: SO_oldOrderByWithAggregationInput | SO_oldOrderByWithAggregationInput[]
+    by: SO_oldScalarFieldEnum[] | SO_oldScalarFieldEnum
+    having?: SO_oldScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SO_oldCountAggregateInputType | true
+    _avg?: SO_oldAvgAggregateInputType
+    _sum?: SO_oldSumAggregateInputType
+    _min?: SO_oldMinAggregateInputType
+    _max?: SO_oldMaxAggregateInputType
+  }
+
+
+  export type SO_oldGroupByOutputType = {
+    CONTRATO: number
+    APE_NOM: string | null
+    ALTA: Date | null
+    GRUPO: number | null
+    ADHS: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    ZONA: number | null
+    CUOTA: number | null
+    EMPRESA: string | null
+    SUCURSAL: string | null
+    EDAD_PROM: number | null
+    PERMANEN: number | null
+    DEUDA: number | null
+    _count: SO_oldCountAggregateOutputType | null
+    _avg: SO_oldAvgAggregateOutputType | null
+    _sum: SO_oldSumAggregateOutputType | null
+    _min: SO_oldMinAggregateOutputType | null
+    _max: SO_oldMaxAggregateOutputType | null
+  }
+
+  type GetSO_oldGroupByPayload<T extends SO_oldGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SO_oldGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SO_oldGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SO_oldGroupByOutputType[P]>
+            : GetScalarType<T[P], SO_oldGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SO_oldSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    CONTRATO?: boolean
+    APE_NOM?: boolean
+    ALTA?: boolean
+    GRUPO?: boolean
+    ADHS?: boolean
+    PLAN?: boolean
+    SUB_PLAN?: boolean
+    ZONA?: boolean
+    CUOTA?: boolean
+    EMPRESA?: boolean
+    SUCURSAL?: boolean
+    EDAD_PROM?: boolean
+    PERMANEN?: boolean
+    DEUDA?: boolean
+  }, ExtArgs["result"]["sO_old"]>
+
+  export type SO_oldSelectScalar = {
+    CONTRATO?: boolean
+    APE_NOM?: boolean
+    ALTA?: boolean
+    GRUPO?: boolean
+    ADHS?: boolean
+    PLAN?: boolean
+    SUB_PLAN?: boolean
+    ZONA?: boolean
+    CUOTA?: boolean
+    EMPRESA?: boolean
+    SUCURSAL?: boolean
+    EDAD_PROM?: boolean
+    PERMANEN?: boolean
+    DEUDA?: boolean
+  }
+
+
+  type SO_oldGetPayload<S extends boolean | null | undefined | SO_oldArgs> = $Types.GetResult<SO_oldPayload, S>
+
+  type SO_oldCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<SO_oldFindManyArgs, 'select' | 'include'> & {
+      select?: SO_oldCountAggregateInputType | true
+    }
+
+  export interface SO_oldDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SO_old'], meta: { name: 'SO_old' } }
+    /**
+     * Find zero or one SO_old that matches the filter.
+     * @param {SO_oldFindUniqueArgs} args - Arguments to find a SO_old
+     * @example
+     * // Get one SO_old
+     * const sO_old = await prisma.sO_old.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends SO_oldFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, SO_oldFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'SO_old'> extends True ? Prisma__SO_oldClient<$Types.GetResult<SO_oldPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__SO_oldClient<$Types.GetResult<SO_oldPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one SO_old that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {SO_oldFindUniqueOrThrowArgs} args - Arguments to find a SO_old
+     * @example
+     * // Get one SO_old
+     * const sO_old = await prisma.sO_old.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends SO_oldFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, SO_oldFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__SO_oldClient<$Types.GetResult<SO_oldPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first SO_old that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_oldFindFirstArgs} args - Arguments to find a SO_old
+     * @example
+     * // Get one SO_old
+     * const sO_old = await prisma.sO_old.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends SO_oldFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, SO_oldFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'SO_old'> extends True ? Prisma__SO_oldClient<$Types.GetResult<SO_oldPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__SO_oldClient<$Types.GetResult<SO_oldPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first SO_old that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_oldFindFirstOrThrowArgs} args - Arguments to find a SO_old
+     * @example
+     * // Get one SO_old
+     * const sO_old = await prisma.sO_old.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends SO_oldFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, SO_oldFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__SO_oldClient<$Types.GetResult<SO_oldPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more SO_olds that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_oldFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SO_olds
+     * const sO_olds = await prisma.sO_old.findMany()
+     * 
+     * // Get first 10 SO_olds
+     * const sO_olds = await prisma.sO_old.findMany({ take: 10 })
+     * 
+     * // Only select the `CONTRATO`
+     * const sO_oldWithCONTRATOOnly = await prisma.sO_old.findMany({ select: { CONTRATO: true } })
+     * 
+    **/
+    findMany<T extends SO_oldFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SO_oldFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<SO_oldPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a SO_old.
+     * @param {SO_oldCreateArgs} args - Arguments to create a SO_old.
+     * @example
+     * // Create one SO_old
+     * const SO_old = await prisma.sO_old.create({
+     *   data: {
+     *     // ... data to create a SO_old
+     *   }
+     * })
+     * 
+    **/
+    create<T extends SO_oldCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, SO_oldCreateArgs<ExtArgs>>
+    ): Prisma__SO_oldClient<$Types.GetResult<SO_oldPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many SO_olds.
+     *     @param {SO_oldCreateManyArgs} args - Arguments to create many SO_olds.
+     *     @example
+     *     // Create many SO_olds
+     *     const sO_old = await prisma.sO_old.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends SO_oldCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SO_oldCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a SO_old.
+     * @param {SO_oldDeleteArgs} args - Arguments to delete one SO_old.
+     * @example
+     * // Delete one SO_old
+     * const SO_old = await prisma.sO_old.delete({
+     *   where: {
+     *     // ... filter to delete one SO_old
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends SO_oldDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, SO_oldDeleteArgs<ExtArgs>>
+    ): Prisma__SO_oldClient<$Types.GetResult<SO_oldPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one SO_old.
+     * @param {SO_oldUpdateArgs} args - Arguments to update one SO_old.
+     * @example
+     * // Update one SO_old
+     * const sO_old = await prisma.sO_old.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends SO_oldUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, SO_oldUpdateArgs<ExtArgs>>
+    ): Prisma__SO_oldClient<$Types.GetResult<SO_oldPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more SO_olds.
+     * @param {SO_oldDeleteManyArgs} args - Arguments to filter SO_olds to delete.
+     * @example
+     * // Delete a few SO_olds
+     * const { count } = await prisma.sO_old.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends SO_oldDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SO_oldDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SO_olds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_oldUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SO_olds
+     * const sO_old = await prisma.sO_old.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends SO_oldUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, SO_oldUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SO_old.
+     * @param {SO_oldUpsertArgs} args - Arguments to update or create a SO_old.
+     * @example
+     * // Update or create a SO_old
+     * const sO_old = await prisma.sO_old.upsert({
+     *   create: {
+     *     // ... data to create a SO_old
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SO_old we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends SO_oldUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, SO_oldUpsertArgs<ExtArgs>>
+    ): Prisma__SO_oldClient<$Types.GetResult<SO_oldPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of SO_olds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_oldCountArgs} args - Arguments to filter SO_olds to count.
+     * @example
+     * // Count the number of SO_olds
+     * const count = await prisma.sO_old.count({
+     *   where: {
+     *     // ... the filter for the SO_olds we want to count
+     *   }
+     * })
+    **/
+    count<T extends SO_oldCountArgs>(
+      args?: Subset<T, SO_oldCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SO_oldCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SO_old.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_oldAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SO_oldAggregateArgs>(args: Subset<T, SO_oldAggregateArgs>): Prisma.PrismaPromise<GetSO_oldAggregateType<T>>
+
+    /**
+     * Group by SO_old.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SO_oldGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SO_oldGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SO_oldGroupByArgs['orderBy'] }
+        : { orderBy?: SO_oldGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SO_oldGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSO_oldGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SO_old.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__SO_oldClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * SO_old base type for findUnique actions
+   */
+  export type SO_oldFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_old
+     */
+    select?: SO_oldSelect<ExtArgs> | null
+    /**
+     * Filter, which SO_old to fetch.
+     */
+    where: SO_oldWhereUniqueInput
+  }
+
+  /**
+   * SO_old findUnique
+   */
+  export interface SO_oldFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends SO_oldFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * SO_old findUniqueOrThrow
+   */
+  export type SO_oldFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_old
+     */
+    select?: SO_oldSelect<ExtArgs> | null
+    /**
+     * Filter, which SO_old to fetch.
+     */
+    where: SO_oldWhereUniqueInput
+  }
+
+
+  /**
+   * SO_old base type for findFirst actions
+   */
+  export type SO_oldFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_old
+     */
+    select?: SO_oldSelect<ExtArgs> | null
+    /**
+     * Filter, which SO_old to fetch.
+     */
+    where?: SO_oldWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SO_olds to fetch.
+     */
+    orderBy?: SO_oldOrderByWithRelationInput | SO_oldOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SO_olds.
+     */
+    cursor?: SO_oldWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SO_olds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SO_olds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SO_olds.
+     */
+    distinct?: SO_oldScalarFieldEnum | SO_oldScalarFieldEnum[]
+  }
+
+  /**
+   * SO_old findFirst
+   */
+  export interface SO_oldFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends SO_oldFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * SO_old findFirstOrThrow
+   */
+  export type SO_oldFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_old
+     */
+    select?: SO_oldSelect<ExtArgs> | null
+    /**
+     * Filter, which SO_old to fetch.
+     */
+    where?: SO_oldWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SO_olds to fetch.
+     */
+    orderBy?: SO_oldOrderByWithRelationInput | SO_oldOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SO_olds.
+     */
+    cursor?: SO_oldWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SO_olds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SO_olds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SO_olds.
+     */
+    distinct?: SO_oldScalarFieldEnum | SO_oldScalarFieldEnum[]
+  }
+
+
+  /**
+   * SO_old findMany
+   */
+  export type SO_oldFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_old
+     */
+    select?: SO_oldSelect<ExtArgs> | null
+    /**
+     * Filter, which SO_olds to fetch.
+     */
+    where?: SO_oldWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SO_olds to fetch.
+     */
+    orderBy?: SO_oldOrderByWithRelationInput | SO_oldOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SO_olds.
+     */
+    cursor?: SO_oldWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SO_olds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SO_olds.
+     */
+    skip?: number
+    distinct?: SO_oldScalarFieldEnum | SO_oldScalarFieldEnum[]
+  }
+
+
+  /**
+   * SO_old create
+   */
+  export type SO_oldCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_old
+     */
+    select?: SO_oldSelect<ExtArgs> | null
+    /**
+     * The data needed to create a SO_old.
+     */
+    data: XOR<SO_oldCreateInput, SO_oldUncheckedCreateInput>
+  }
+
+
+  /**
+   * SO_old createMany
+   */
+  export type SO_oldCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SO_olds.
+     */
+    data: SO_oldCreateManyInput | SO_oldCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * SO_old update
+   */
+  export type SO_oldUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_old
+     */
+    select?: SO_oldSelect<ExtArgs> | null
+    /**
+     * The data needed to update a SO_old.
+     */
+    data: XOR<SO_oldUpdateInput, SO_oldUncheckedUpdateInput>
+    /**
+     * Choose, which SO_old to update.
+     */
+    where: SO_oldWhereUniqueInput
+  }
+
+
+  /**
+   * SO_old updateMany
+   */
+  export type SO_oldUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SO_olds.
+     */
+    data: XOR<SO_oldUpdateManyMutationInput, SO_oldUncheckedUpdateManyInput>
+    /**
+     * Filter which SO_olds to update
+     */
+    where?: SO_oldWhereInput
+  }
+
+
+  /**
+   * SO_old upsert
+   */
+  export type SO_oldUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_old
+     */
+    select?: SO_oldSelect<ExtArgs> | null
+    /**
+     * The filter to search for the SO_old to update in case it exists.
+     */
+    where: SO_oldWhereUniqueInput
+    /**
+     * In case the SO_old found by the `where` argument doesn't exist, create a new SO_old with this data.
+     */
+    create: XOR<SO_oldCreateInput, SO_oldUncheckedCreateInput>
+    /**
+     * In case the SO_old was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SO_oldUpdateInput, SO_oldUncheckedUpdateInput>
+  }
+
+
+  /**
+   * SO_old delete
+   */
+  export type SO_oldDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_old
+     */
+    select?: SO_oldSelect<ExtArgs> | null
+    /**
+     * Filter which SO_old to delete.
+     */
+    where: SO_oldWhereUniqueInput
+  }
+
+
+  /**
+   * SO_old deleteMany
+   */
+  export type SO_oldDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SO_olds to delete
+     */
+    where?: SO_oldWhereInput
+  }
+
+
+  /**
+   * SO_old without action
+   */
+  export type SO_oldArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SO_old
+     */
+    select?: SO_oldSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model maestro2
+   */
+
+
+  export type AggregateMaestro2 = {
+    _count: Maestro2CountAggregateOutputType | null
+    _avg: Maestro2AvgAggregateOutputType | null
+    _sum: Maestro2SumAggregateOutputType | null
+    _min: Maestro2MinAggregateOutputType | null
+    _max: Maestro2MaxAggregateOutputType | null
+  }
+
+  export type Maestro2AvgAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    NRO_CALLE: number | null
+    ZONA: number | null
+    ENC_SEG: number | null
+    GRUPO: number | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    CUO_VIEJA: number | null
+    OPERADOR: number | null
+    OBRA_SOC: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PRO_1: number | null
+    PRO_2: number | null
+    PRO_3: number | null
+    PRO_4: number | null
+    PRO_5: number | null
+    PRO_6: number | null
+    PRO_7: number | null
+    PRO_8: number | null
+    PRO_9: number | null
+    PRO_10: number | null
+    PRO_11: number | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    NUM_REAFIL: number | null
+    SEGURO: number | null
+    EDAD: number | null
+    COD_POST: number | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    TIPO_COMI: number | null
+    PAGA_COMI: number | null
+    TIPO_SEGU: number | null
+    PAGO_SEGU: number | null
+    CANT_TRASP: number | null
+    PGO_TRASP: number | null
+    MAY_21: number | null
+    MAY_65: number | null
+    INTEG: number | null
+    EDAD_PROM: number | null
+  }
+
+  export type Maestro2SumAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    NRO_CALLE: number | null
+    ZONA: number | null
+    ENC_SEG: number | null
+    GRUPO: number | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    CUO_VIEJA: number | null
+    OPERADOR: number | null
+    OBRA_SOC: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PRO_1: number | null
+    PRO_2: number | null
+    PRO_3: number | null
+    PRO_4: number | null
+    PRO_5: number | null
+    PRO_6: number | null
+    PRO_7: number | null
+    PRO_8: number | null
+    PRO_9: number | null
+    PRO_10: number | null
+    PRO_11: number | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    NUM_REAFIL: number | null
+    SEGURO: number | null
+    EDAD: number | null
+    COD_POST: number | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    TIPO_COMI: number | null
+    PAGA_COMI: number | null
+    TIPO_SEGU: number | null
+    PAGO_SEGU: number | null
+    CANT_TRASP: number | null
+    PGO_TRASP: number | null
+    MAY_21: number | null
+    MAY_65: number | null
+    INTEG: number | null
+    EDAD_PROM: number | null
+  }
+
+  export type Maestro2MinAggregateOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    NACIMIENTO: Date | null
+    CALLE: string | null
+    LOCALIDAD: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    DOMI_COBR: string | null
+    DOM_LAB: string | null
+    ZONA: number | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    ALT_SEG: Date | null
+    VIG_SEG: Date | null
+    ENC_SEG: number | null
+    VIG_AYUDA: Date | null
+    GRUPO: number | null
+    SEXO: string | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    CUO_VIEJA: number | null
+    OPERADOR: number | null
+    ACTUALIZA: string | null
+    OBRA_SOC: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    FEC_PLAN: Date | null
+    MOD_1: Date | null
+    PRO_1: number | null
+    MOD_2: Date | null
+    PRO_2: number | null
+    MOD_3: Date | null
+    PRO_3: number | null
+    MOD_4: Date | null
+    PRO_4: number | null
+    MOD_5: Date | null
+    TSEG: string | null
+    PRO_5: number | null
+    MOD_6: Date | null
+    PRO_6: number | null
+    MOD_7: Date | null
+    PRO_7: number | null
+    MOD_8: Date | null
+    PRO_8: number | null
+    MOD_9: Date | null
+    PRO_9: number | null
+    MOD_10: Date | null
+    PRO_10: number | null
+    MOD_11: Date | null
+    PRO_11: number | null
+    MOD_12: Date | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    TRASPASO: Date | null
+    FEC_REAFIL: Date | null
+    NUM_REAFIL: number | null
+    SEGURO: number | null
+    EMPRESA: string | null
+    EDAD: number | null
+    COD_POST: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    VIG_OPT: Date | null
+    DECL_JUR: Date | null
+    VIG_SUB: Date | null
+    VIG_CONSU: Date | null
+    VIG_SMEDI: Date | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    CAMBIO: Date | null
+    TIPO_COMI: number | null
+    PAGA_COMI: number | null
+    TIPO_SEGU: number | null
+    PAGO_SEGU: number | null
+    CANT_TRASP: number | null
+    PGO_TRASP: number | null
+    MAY_21: number | null
+    MAY_65: number | null
+    INTEG: number | null
+    EDAD_PROM: number | null
+    MAIL: string | null
+  }
+
+  export type Maestro2MaxAggregateOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    NACIMIENTO: Date | null
+    CALLE: string | null
+    LOCALIDAD: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    DOMI_COBR: string | null
+    DOM_LAB: string | null
+    ZONA: number | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    ALT_SEG: Date | null
+    VIG_SEG: Date | null
+    ENC_SEG: number | null
+    VIG_AYUDA: Date | null
+    GRUPO: number | null
+    SEXO: string | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    CUO_VIEJA: number | null
+    OPERADOR: number | null
+    ACTUALIZA: string | null
+    OBRA_SOC: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    FEC_PLAN: Date | null
+    MOD_1: Date | null
+    PRO_1: number | null
+    MOD_2: Date | null
+    PRO_2: number | null
+    MOD_3: Date | null
+    PRO_3: number | null
+    MOD_4: Date | null
+    PRO_4: number | null
+    MOD_5: Date | null
+    TSEG: string | null
+    PRO_5: number | null
+    MOD_6: Date | null
+    PRO_6: number | null
+    MOD_7: Date | null
+    PRO_7: number | null
+    MOD_8: Date | null
+    PRO_8: number | null
+    MOD_9: Date | null
+    PRO_9: number | null
+    MOD_10: Date | null
+    PRO_10: number | null
+    MOD_11: Date | null
+    PRO_11: number | null
+    MOD_12: Date | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    TRASPASO: Date | null
+    FEC_REAFIL: Date | null
+    NUM_REAFIL: number | null
+    SEGURO: number | null
+    EMPRESA: string | null
+    EDAD: number | null
+    COD_POST: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    VIG_OPT: Date | null
+    DECL_JUR: Date | null
+    VIG_SUB: Date | null
+    VIG_CONSU: Date | null
+    VIG_SMEDI: Date | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    CAMBIO: Date | null
+    TIPO_COMI: number | null
+    PAGA_COMI: number | null
+    TIPO_SEGU: number | null
+    PAGO_SEGU: number | null
+    CANT_TRASP: number | null
+    PGO_TRASP: number | null
+    MAY_21: number | null
+    MAY_65: number | null
+    INTEG: number | null
+    EDAD_PROM: number | null
+    MAIL: string | null
+  }
+
+  export type Maestro2CountAggregateOutputType = {
+    SUCURSAL: number
+    CONTRATO: number
+    NRO_DOC: number
+    APELLIDOS: number
+    NOMBRES: number
+    NACIMIENTO: number
+    CALLE: number
+    LOCALIDAD: number
+    NRO_CALLE: number
+    BARRIO: number
+    DOMI_COBR: number
+    DOM_LAB: number
+    ZONA: number
+    ALTA: number
+    VIGENCIA: number
+    ALT_SEG: number
+    VIG_SEG: number
+    ENC_SEG: number
+    VIG_AYUDA: number
+    GRUPO: number
+    SEXO: number
+    ADHERENTES: number
+    PRECIO: number
+    CUO_VIEJA: number
+    OPERADOR: number
+    ACTUALIZA: number
+    OBRA_SOC: number
+    PRODUCTOR: number
+    PROD_DEB: number
+    PLAN: number
+    SUB_PLAN: number
+    FEC_PLAN: number
+    MOD_1: number
+    PRO_1: number
+    MOD_2: number
+    PRO_2: number
+    MOD_3: number
+    PRO_3: number
+    MOD_4: number
+    PRO_4: number
+    MOD_5: number
+    TSEG: number
+    PRO_5: number
+    MOD_6: number
+    PRO_6: number
+    MOD_7: number
+    PRO_7: number
+    MOD_8: number
+    PRO_8: number
+    MOD_9: number
+    PRO_9: number
+    MOD_10: number
+    PRO_10: number
+    MOD_11: number
+    PRO_11: number
+    MOD_12: number
+    PRO_12: number
+    TOT_MOD: number
+    TRASPASO: number
+    FEC_REAFIL: number
+    NUM_REAFIL: number
+    SEGURO: number
+    EMPRESA: number
+    EDAD: number
+    COD_POST: number
+    TELEFONO: number
+    MOVIL: number
+    VIG_OPT: number
+    DECL_JUR: number
+    VIG_SUB: number
+    VIG_CONSU: number
+    VIG_SMEDI: number
+    ANTICIPO: number
+    CUOTAS: number
+    CAMBIO: number
+    TIPO_COMI: number
+    PAGA_COMI: number
+    TIPO_SEGU: number
+    PAGO_SEGU: number
+    CANT_TRASP: number
+    PGO_TRASP: number
+    MAY_21: number
+    MAY_65: number
+    INTEG: number
+    EDAD_PROM: number
+    MAIL: number
+    _all: number
+  }
+
+
+  export type Maestro2AvgAggregateInputType = {
+    CONTRATO?: true
+    NRO_DOC?: true
+    NRO_CALLE?: true
+    ZONA?: true
+    ENC_SEG?: true
+    GRUPO?: true
+    ADHERENTES?: true
+    PRECIO?: true
+    CUO_VIEJA?: true
+    OPERADOR?: true
+    OBRA_SOC?: true
+    PRODUCTOR?: true
+    PROD_DEB?: true
+    PRO_1?: true
+    PRO_2?: true
+    PRO_3?: true
+    PRO_4?: true
+    PRO_5?: true
+    PRO_6?: true
+    PRO_7?: true
+    PRO_8?: true
+    PRO_9?: true
+    PRO_10?: true
+    PRO_11?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    NUM_REAFIL?: true
+    SEGURO?: true
+    EDAD?: true
+    COD_POST?: true
+    ANTICIPO?: true
+    CUOTAS?: true
+    TIPO_COMI?: true
+    PAGA_COMI?: true
+    TIPO_SEGU?: true
+    PAGO_SEGU?: true
+    CANT_TRASP?: true
+    PGO_TRASP?: true
+    MAY_21?: true
+    MAY_65?: true
+    INTEG?: true
+    EDAD_PROM?: true
+  }
+
+  export type Maestro2SumAggregateInputType = {
+    CONTRATO?: true
+    NRO_DOC?: true
+    NRO_CALLE?: true
+    ZONA?: true
+    ENC_SEG?: true
+    GRUPO?: true
+    ADHERENTES?: true
+    PRECIO?: true
+    CUO_VIEJA?: true
+    OPERADOR?: true
+    OBRA_SOC?: true
+    PRODUCTOR?: true
+    PROD_DEB?: true
+    PRO_1?: true
+    PRO_2?: true
+    PRO_3?: true
+    PRO_4?: true
+    PRO_5?: true
+    PRO_6?: true
+    PRO_7?: true
+    PRO_8?: true
+    PRO_9?: true
+    PRO_10?: true
+    PRO_11?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    NUM_REAFIL?: true
+    SEGURO?: true
+    EDAD?: true
+    COD_POST?: true
+    ANTICIPO?: true
+    CUOTAS?: true
+    TIPO_COMI?: true
+    PAGA_COMI?: true
+    TIPO_SEGU?: true
+    PAGO_SEGU?: true
+    CANT_TRASP?: true
+    PGO_TRASP?: true
+    MAY_21?: true
+    MAY_65?: true
+    INTEG?: true
+    EDAD_PROM?: true
+  }
+
+  export type Maestro2MinAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    NACIMIENTO?: true
+    CALLE?: true
+    LOCALIDAD?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    DOMI_COBR?: true
+    DOM_LAB?: true
+    ZONA?: true
+    ALTA?: true
+    VIGENCIA?: true
+    ALT_SEG?: true
+    VIG_SEG?: true
+    ENC_SEG?: true
+    VIG_AYUDA?: true
+    GRUPO?: true
+    SEXO?: true
+    ADHERENTES?: true
+    PRECIO?: true
+    CUO_VIEJA?: true
+    OPERADOR?: true
+    ACTUALIZA?: true
+    OBRA_SOC?: true
+    PRODUCTOR?: true
+    PROD_DEB?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    FEC_PLAN?: true
+    MOD_1?: true
+    PRO_1?: true
+    MOD_2?: true
+    PRO_2?: true
+    MOD_3?: true
+    PRO_3?: true
+    MOD_4?: true
+    PRO_4?: true
+    MOD_5?: true
+    TSEG?: true
+    PRO_5?: true
+    MOD_6?: true
+    PRO_6?: true
+    MOD_7?: true
+    PRO_7?: true
+    MOD_8?: true
+    PRO_8?: true
+    MOD_9?: true
+    PRO_9?: true
+    MOD_10?: true
+    PRO_10?: true
+    MOD_11?: true
+    PRO_11?: true
+    MOD_12?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    TRASPASO?: true
+    FEC_REAFIL?: true
+    NUM_REAFIL?: true
+    SEGURO?: true
+    EMPRESA?: true
+    EDAD?: true
+    COD_POST?: true
+    TELEFONO?: true
+    MOVIL?: true
+    VIG_OPT?: true
+    DECL_JUR?: true
+    VIG_SUB?: true
+    VIG_CONSU?: true
+    VIG_SMEDI?: true
+    ANTICIPO?: true
+    CUOTAS?: true
+    CAMBIO?: true
+    TIPO_COMI?: true
+    PAGA_COMI?: true
+    TIPO_SEGU?: true
+    PAGO_SEGU?: true
+    CANT_TRASP?: true
+    PGO_TRASP?: true
+    MAY_21?: true
+    MAY_65?: true
+    INTEG?: true
+    EDAD_PROM?: true
+    MAIL?: true
+  }
+
+  export type Maestro2MaxAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    NACIMIENTO?: true
+    CALLE?: true
+    LOCALIDAD?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    DOMI_COBR?: true
+    DOM_LAB?: true
+    ZONA?: true
+    ALTA?: true
+    VIGENCIA?: true
+    ALT_SEG?: true
+    VIG_SEG?: true
+    ENC_SEG?: true
+    VIG_AYUDA?: true
+    GRUPO?: true
+    SEXO?: true
+    ADHERENTES?: true
+    PRECIO?: true
+    CUO_VIEJA?: true
+    OPERADOR?: true
+    ACTUALIZA?: true
+    OBRA_SOC?: true
+    PRODUCTOR?: true
+    PROD_DEB?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    FEC_PLAN?: true
+    MOD_1?: true
+    PRO_1?: true
+    MOD_2?: true
+    PRO_2?: true
+    MOD_3?: true
+    PRO_3?: true
+    MOD_4?: true
+    PRO_4?: true
+    MOD_5?: true
+    TSEG?: true
+    PRO_5?: true
+    MOD_6?: true
+    PRO_6?: true
+    MOD_7?: true
+    PRO_7?: true
+    MOD_8?: true
+    PRO_8?: true
+    MOD_9?: true
+    PRO_9?: true
+    MOD_10?: true
+    PRO_10?: true
+    MOD_11?: true
+    PRO_11?: true
+    MOD_12?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    TRASPASO?: true
+    FEC_REAFIL?: true
+    NUM_REAFIL?: true
+    SEGURO?: true
+    EMPRESA?: true
+    EDAD?: true
+    COD_POST?: true
+    TELEFONO?: true
+    MOVIL?: true
+    VIG_OPT?: true
+    DECL_JUR?: true
+    VIG_SUB?: true
+    VIG_CONSU?: true
+    VIG_SMEDI?: true
+    ANTICIPO?: true
+    CUOTAS?: true
+    CAMBIO?: true
+    TIPO_COMI?: true
+    PAGA_COMI?: true
+    TIPO_SEGU?: true
+    PAGO_SEGU?: true
+    CANT_TRASP?: true
+    PGO_TRASP?: true
+    MAY_21?: true
+    MAY_65?: true
+    INTEG?: true
+    EDAD_PROM?: true
+    MAIL?: true
+  }
+
+  export type Maestro2CountAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    NACIMIENTO?: true
+    CALLE?: true
+    LOCALIDAD?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    DOMI_COBR?: true
+    DOM_LAB?: true
+    ZONA?: true
+    ALTA?: true
+    VIGENCIA?: true
+    ALT_SEG?: true
+    VIG_SEG?: true
+    ENC_SEG?: true
+    VIG_AYUDA?: true
+    GRUPO?: true
+    SEXO?: true
+    ADHERENTES?: true
+    PRECIO?: true
+    CUO_VIEJA?: true
+    OPERADOR?: true
+    ACTUALIZA?: true
+    OBRA_SOC?: true
+    PRODUCTOR?: true
+    PROD_DEB?: true
+    PLAN?: true
+    SUB_PLAN?: true
+    FEC_PLAN?: true
+    MOD_1?: true
+    PRO_1?: true
+    MOD_2?: true
+    PRO_2?: true
+    MOD_3?: true
+    PRO_3?: true
+    MOD_4?: true
+    PRO_4?: true
+    MOD_5?: true
+    TSEG?: true
+    PRO_5?: true
+    MOD_6?: true
+    PRO_6?: true
+    MOD_7?: true
+    PRO_7?: true
+    MOD_8?: true
+    PRO_8?: true
+    MOD_9?: true
+    PRO_9?: true
+    MOD_10?: true
+    PRO_10?: true
+    MOD_11?: true
+    PRO_11?: true
+    MOD_12?: true
+    PRO_12?: true
+    TOT_MOD?: true
+    TRASPASO?: true
+    FEC_REAFIL?: true
+    NUM_REAFIL?: true
+    SEGURO?: true
+    EMPRESA?: true
+    EDAD?: true
+    COD_POST?: true
+    TELEFONO?: true
+    MOVIL?: true
+    VIG_OPT?: true
+    DECL_JUR?: true
+    VIG_SUB?: true
+    VIG_CONSU?: true
+    VIG_SMEDI?: true
+    ANTICIPO?: true
+    CUOTAS?: true
+    CAMBIO?: true
+    TIPO_COMI?: true
+    PAGA_COMI?: true
+    TIPO_SEGU?: true
+    PAGO_SEGU?: true
+    CANT_TRASP?: true
+    PGO_TRASP?: true
+    MAY_21?: true
+    MAY_65?: true
+    INTEG?: true
+    EDAD_PROM?: true
+    MAIL?: true
+    _all?: true
+  }
+
+  export type Maestro2AggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which maestro2 to aggregate.
+     */
+    where?: maestro2WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of maestro2s to fetch.
+     */
+    orderBy?: maestro2OrderByWithRelationInput | maestro2OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: maestro2WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` maestro2s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` maestro2s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned maestro2s
+    **/
+    _count?: true | Maestro2CountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Maestro2AvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Maestro2SumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Maestro2MinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Maestro2MaxAggregateInputType
+  }
+
+  export type GetMaestro2AggregateType<T extends Maestro2AggregateArgs> = {
+        [P in keyof T & keyof AggregateMaestro2]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMaestro2[P]>
+      : GetScalarType<T[P], AggregateMaestro2[P]>
+  }
+
+
+
+
+  export type maestro2GroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: maestro2WhereInput
+    orderBy?: maestro2OrderByWithAggregationInput | maestro2OrderByWithAggregationInput[]
+    by: Maestro2ScalarFieldEnum[] | Maestro2ScalarFieldEnum
+    having?: maestro2ScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Maestro2CountAggregateInputType | true
+    _avg?: Maestro2AvgAggregateInputType
+    _sum?: Maestro2SumAggregateInputType
+    _min?: Maestro2MinAggregateInputType
+    _max?: Maestro2MaxAggregateInputType
+  }
+
+
+  export type Maestro2GroupByOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    NACIMIENTO: Date | null
+    CALLE: string | null
+    LOCALIDAD: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    DOMI_COBR: string | null
+    DOM_LAB: string | null
+    ZONA: number | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    ALT_SEG: Date | null
+    VIG_SEG: Date | null
+    ENC_SEG: number | null
+    VIG_AYUDA: Date | null
+    GRUPO: number | null
+    SEXO: string | null
+    ADHERENTES: number | null
+    PRECIO: number | null
+    CUO_VIEJA: number | null
+    OPERADOR: number | null
+    ACTUALIZA: string | null
+    OBRA_SOC: number | null
+    PRODUCTOR: number | null
+    PROD_DEB: number | null
+    PLAN: string | null
+    SUB_PLAN: string | null
+    FEC_PLAN: Date | null
+    MOD_1: Date | null
+    PRO_1: number | null
+    MOD_2: Date | null
+    PRO_2: number | null
+    MOD_3: Date | null
+    PRO_3: number | null
+    MOD_4: Date | null
+    PRO_4: number | null
+    MOD_5: Date | null
+    TSEG: string | null
+    PRO_5: number | null
+    MOD_6: Date | null
+    PRO_6: number | null
+    MOD_7: Date | null
+    PRO_7: number | null
+    MOD_8: Date | null
+    PRO_8: number | null
+    MOD_9: Date | null
+    PRO_9: number | null
+    MOD_10: Date | null
+    PRO_10: number | null
+    MOD_11: Date | null
+    PRO_11: number | null
+    MOD_12: Date | null
+    PRO_12: number | null
+    TOT_MOD: number | null
+    TRASPASO: Date | null
+    FEC_REAFIL: Date | null
+    NUM_REAFIL: number | null
+    SEGURO: number | null
+    EMPRESA: string | null
+    EDAD: number | null
+    COD_POST: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    VIG_OPT: Date | null
+    DECL_JUR: Date | null
+    VIG_SUB: Date | null
+    VIG_CONSU: Date | null
+    VIG_SMEDI: Date | null
+    ANTICIPO: number | null
+    CUOTAS: number | null
+    CAMBIO: Date | null
+    TIPO_COMI: number | null
+    PAGA_COMI: number | null
+    TIPO_SEGU: number | null
+    PAGO_SEGU: number | null
+    CANT_TRASP: number | null
+    PGO_TRASP: number | null
+    MAY_21: number | null
+    MAY_65: number | null
+    INTEG: number | null
+    EDAD_PROM: number | null
+    MAIL: string | null
+    _count: Maestro2CountAggregateOutputType | null
+    _avg: Maestro2AvgAggregateOutputType | null
+    _sum: Maestro2SumAggregateOutputType | null
+    _min: Maestro2MinAggregateOutputType | null
+    _max: Maestro2MaxAggregateOutputType | null
+  }
+
+  type GetMaestro2GroupByPayload<T extends maestro2GroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Maestro2GroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Maestro2GroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Maestro2GroupByOutputType[P]>
+            : GetScalarType<T[P], Maestro2GroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type maestro2Select<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    NACIMIENTO?: boolean
+    CALLE?: boolean
+    LOCALIDAD?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    DOMI_COBR?: boolean
+    DOM_LAB?: boolean
+    ZONA?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    ALT_SEG?: boolean
+    VIG_SEG?: boolean
+    ENC_SEG?: boolean
+    VIG_AYUDA?: boolean
+    GRUPO?: boolean
+    SEXO?: boolean
+    ADHERENTES?: boolean
+    PRECIO?: boolean
+    CUO_VIEJA?: boolean
+    OPERADOR?: boolean
+    ACTUALIZA?: boolean
+    OBRA_SOC?: boolean
+    PRODUCTOR?: boolean
+    PROD_DEB?: boolean
+    PLAN?: boolean
+    SUB_PLAN?: boolean
+    FEC_PLAN?: boolean
+    MOD_1?: boolean
+    PRO_1?: boolean
+    MOD_2?: boolean
+    PRO_2?: boolean
+    MOD_3?: boolean
+    PRO_3?: boolean
+    MOD_4?: boolean
+    PRO_4?: boolean
+    MOD_5?: boolean
+    TSEG?: boolean
+    PRO_5?: boolean
+    MOD_6?: boolean
+    PRO_6?: boolean
+    MOD_7?: boolean
+    PRO_7?: boolean
+    MOD_8?: boolean
+    PRO_8?: boolean
+    MOD_9?: boolean
+    PRO_9?: boolean
+    MOD_10?: boolean
+    PRO_10?: boolean
+    MOD_11?: boolean
+    PRO_11?: boolean
+    MOD_12?: boolean
+    PRO_12?: boolean
+    TOT_MOD?: boolean
+    TRASPASO?: boolean
+    FEC_REAFIL?: boolean
+    NUM_REAFIL?: boolean
+    SEGURO?: boolean
+    EMPRESA?: boolean
+    EDAD?: boolean
+    COD_POST?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    VIG_OPT?: boolean
+    DECL_JUR?: boolean
+    VIG_SUB?: boolean
+    VIG_CONSU?: boolean
+    VIG_SMEDI?: boolean
+    ANTICIPO?: boolean
+    CUOTAS?: boolean
+    CAMBIO?: boolean
+    TIPO_COMI?: boolean
+    PAGA_COMI?: boolean
+    TIPO_SEGU?: boolean
+    PAGO_SEGU?: boolean
+    CANT_TRASP?: boolean
+    PGO_TRASP?: boolean
+    MAY_21?: boolean
+    MAY_65?: boolean
+    INTEG?: boolean
+    EDAD_PROM?: boolean
+    MAIL?: boolean
+  }, ExtArgs["result"]["maestro2"]>
+
+  export type maestro2SelectScalar = {
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    NACIMIENTO?: boolean
+    CALLE?: boolean
+    LOCALIDAD?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    DOMI_COBR?: boolean
+    DOM_LAB?: boolean
+    ZONA?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    ALT_SEG?: boolean
+    VIG_SEG?: boolean
+    ENC_SEG?: boolean
+    VIG_AYUDA?: boolean
+    GRUPO?: boolean
+    SEXO?: boolean
+    ADHERENTES?: boolean
+    PRECIO?: boolean
+    CUO_VIEJA?: boolean
+    OPERADOR?: boolean
+    ACTUALIZA?: boolean
+    OBRA_SOC?: boolean
+    PRODUCTOR?: boolean
+    PROD_DEB?: boolean
+    PLAN?: boolean
+    SUB_PLAN?: boolean
+    FEC_PLAN?: boolean
+    MOD_1?: boolean
+    PRO_1?: boolean
+    MOD_2?: boolean
+    PRO_2?: boolean
+    MOD_3?: boolean
+    PRO_3?: boolean
+    MOD_4?: boolean
+    PRO_4?: boolean
+    MOD_5?: boolean
+    TSEG?: boolean
+    PRO_5?: boolean
+    MOD_6?: boolean
+    PRO_6?: boolean
+    MOD_7?: boolean
+    PRO_7?: boolean
+    MOD_8?: boolean
+    PRO_8?: boolean
+    MOD_9?: boolean
+    PRO_9?: boolean
+    MOD_10?: boolean
+    PRO_10?: boolean
+    MOD_11?: boolean
+    PRO_11?: boolean
+    MOD_12?: boolean
+    PRO_12?: boolean
+    TOT_MOD?: boolean
+    TRASPASO?: boolean
+    FEC_REAFIL?: boolean
+    NUM_REAFIL?: boolean
+    SEGURO?: boolean
+    EMPRESA?: boolean
+    EDAD?: boolean
+    COD_POST?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    VIG_OPT?: boolean
+    DECL_JUR?: boolean
+    VIG_SUB?: boolean
+    VIG_CONSU?: boolean
+    VIG_SMEDI?: boolean
+    ANTICIPO?: boolean
+    CUOTAS?: boolean
+    CAMBIO?: boolean
+    TIPO_COMI?: boolean
+    PAGA_COMI?: boolean
+    TIPO_SEGU?: boolean
+    PAGO_SEGU?: boolean
+    CANT_TRASP?: boolean
+    PGO_TRASP?: boolean
+    MAY_21?: boolean
+    MAY_65?: boolean
+    INTEG?: boolean
+    EDAD_PROM?: boolean
+    MAIL?: boolean
+  }
+
+
+  type maestro2GetPayload<S extends boolean | null | undefined | maestro2Args> = $Types.GetResult<maestro2Payload, S>
+
+  type maestro2CountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<maestro2FindManyArgs, 'select' | 'include'> & {
+      select?: Maestro2CountAggregateInputType | true
+    }
+
+  export interface maestro2Delegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['maestro2'], meta: { name: 'maestro2' } }
+    /**
+     * Find zero or one Maestro2 that matches the filter.
+     * @param {maestro2FindUniqueArgs} args - Arguments to find a Maestro2
+     * @example
+     * // Get one Maestro2
+     * const maestro2 = await prisma.maestro2.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends maestro2FindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, maestro2FindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'maestro2'> extends True ? Prisma__maestro2Client<$Types.GetResult<maestro2Payload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__maestro2Client<$Types.GetResult<maestro2Payload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Maestro2 that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {maestro2FindUniqueOrThrowArgs} args - Arguments to find a Maestro2
+     * @example
+     * // Get one Maestro2
+     * const maestro2 = await prisma.maestro2.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends maestro2FindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, maestro2FindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__maestro2Client<$Types.GetResult<maestro2Payload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Maestro2 that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {maestro2FindFirstArgs} args - Arguments to find a Maestro2
+     * @example
+     * // Get one Maestro2
+     * const maestro2 = await prisma.maestro2.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends maestro2FindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, maestro2FindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'maestro2'> extends True ? Prisma__maestro2Client<$Types.GetResult<maestro2Payload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__maestro2Client<$Types.GetResult<maestro2Payload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Maestro2 that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {maestro2FindFirstOrThrowArgs} args - Arguments to find a Maestro2
+     * @example
+     * // Get one Maestro2
+     * const maestro2 = await prisma.maestro2.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends maestro2FindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, maestro2FindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__maestro2Client<$Types.GetResult<maestro2Payload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Maestro2s that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {maestro2FindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Maestro2s
+     * const maestro2s = await prisma.maestro2.findMany()
+     * 
+     * // Get first 10 Maestro2s
+     * const maestro2s = await prisma.maestro2.findMany({ take: 10 })
+     * 
+     * // Only select the `SUCURSAL`
+     * const maestro2WithSUCURSALOnly = await prisma.maestro2.findMany({ select: { SUCURSAL: true } })
+     * 
+    **/
+    findMany<T extends maestro2FindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, maestro2FindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<maestro2Payload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Maestro2.
+     * @param {maestro2CreateArgs} args - Arguments to create a Maestro2.
+     * @example
+     * // Create one Maestro2
+     * const Maestro2 = await prisma.maestro2.create({
+     *   data: {
+     *     // ... data to create a Maestro2
+     *   }
+     * })
+     * 
+    **/
+    create<T extends maestro2CreateArgs<ExtArgs>>(
+      args: SelectSubset<T, maestro2CreateArgs<ExtArgs>>
+    ): Prisma__maestro2Client<$Types.GetResult<maestro2Payload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Maestro2s.
+     *     @param {maestro2CreateManyArgs} args - Arguments to create many Maestro2s.
+     *     @example
+     *     // Create many Maestro2s
+     *     const maestro2 = await prisma.maestro2.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends maestro2CreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, maestro2CreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Maestro2.
+     * @param {maestro2DeleteArgs} args - Arguments to delete one Maestro2.
+     * @example
+     * // Delete one Maestro2
+     * const Maestro2 = await prisma.maestro2.delete({
+     *   where: {
+     *     // ... filter to delete one Maestro2
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends maestro2DeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, maestro2DeleteArgs<ExtArgs>>
+    ): Prisma__maestro2Client<$Types.GetResult<maestro2Payload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Maestro2.
+     * @param {maestro2UpdateArgs} args - Arguments to update one Maestro2.
+     * @example
+     * // Update one Maestro2
+     * const maestro2 = await prisma.maestro2.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends maestro2UpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, maestro2UpdateArgs<ExtArgs>>
+    ): Prisma__maestro2Client<$Types.GetResult<maestro2Payload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Maestro2s.
+     * @param {maestro2DeleteManyArgs} args - Arguments to filter Maestro2s to delete.
+     * @example
+     * // Delete a few Maestro2s
+     * const { count } = await prisma.maestro2.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends maestro2DeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, maestro2DeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Maestro2s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {maestro2UpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Maestro2s
+     * const maestro2 = await prisma.maestro2.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends maestro2UpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, maestro2UpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Maestro2.
+     * @param {maestro2UpsertArgs} args - Arguments to update or create a Maestro2.
+     * @example
+     * // Update or create a Maestro2
+     * const maestro2 = await prisma.maestro2.upsert({
+     *   create: {
+     *     // ... data to create a Maestro2
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Maestro2 we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends maestro2UpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, maestro2UpsertArgs<ExtArgs>>
+    ): Prisma__maestro2Client<$Types.GetResult<maestro2Payload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Maestro2s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {maestro2CountArgs} args - Arguments to filter Maestro2s to count.
+     * @example
+     * // Count the number of Maestro2s
+     * const count = await prisma.maestro2.count({
+     *   where: {
+     *     // ... the filter for the Maestro2s we want to count
+     *   }
+     * })
+    **/
+    count<T extends maestro2CountArgs>(
+      args?: Subset<T, maestro2CountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Maestro2CountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Maestro2.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Maestro2AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Maestro2AggregateArgs>(args: Subset<T, Maestro2AggregateArgs>): Prisma.PrismaPromise<GetMaestro2AggregateType<T>>
+
+    /**
+     * Group by Maestro2.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {maestro2GroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends maestro2GroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: maestro2GroupByArgs['orderBy'] }
+        : { orderBy?: maestro2GroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, maestro2GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMaestro2GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for maestro2.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__maestro2Client<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * maestro2 base type for findUnique actions
+   */
+  export type maestro2FindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the maestro2
+     */
+    select?: maestro2Select<ExtArgs> | null
+    /**
+     * Filter, which maestro2 to fetch.
+     */
+    where: maestro2WhereUniqueInput
+  }
+
+  /**
+   * maestro2 findUnique
+   */
+  export interface maestro2FindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends maestro2FindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * maestro2 findUniqueOrThrow
+   */
+  export type maestro2FindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the maestro2
+     */
+    select?: maestro2Select<ExtArgs> | null
+    /**
+     * Filter, which maestro2 to fetch.
+     */
+    where: maestro2WhereUniqueInput
+  }
+
+
+  /**
+   * maestro2 base type for findFirst actions
+   */
+  export type maestro2FindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the maestro2
+     */
+    select?: maestro2Select<ExtArgs> | null
+    /**
+     * Filter, which maestro2 to fetch.
+     */
+    where?: maestro2WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of maestro2s to fetch.
+     */
+    orderBy?: maestro2OrderByWithRelationInput | maestro2OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for maestro2s.
+     */
+    cursor?: maestro2WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` maestro2s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` maestro2s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of maestro2s.
+     */
+    distinct?: Maestro2ScalarFieldEnum | Maestro2ScalarFieldEnum[]
+  }
+
+  /**
+   * maestro2 findFirst
+   */
+  export interface maestro2FindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends maestro2FindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * maestro2 findFirstOrThrow
+   */
+  export type maestro2FindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the maestro2
+     */
+    select?: maestro2Select<ExtArgs> | null
+    /**
+     * Filter, which maestro2 to fetch.
+     */
+    where?: maestro2WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of maestro2s to fetch.
+     */
+    orderBy?: maestro2OrderByWithRelationInput | maestro2OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for maestro2s.
+     */
+    cursor?: maestro2WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` maestro2s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` maestro2s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of maestro2s.
+     */
+    distinct?: Maestro2ScalarFieldEnum | Maestro2ScalarFieldEnum[]
+  }
+
+
+  /**
+   * maestro2 findMany
+   */
+  export type maestro2FindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the maestro2
+     */
+    select?: maestro2Select<ExtArgs> | null
+    /**
+     * Filter, which maestro2s to fetch.
+     */
+    where?: maestro2WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of maestro2s to fetch.
+     */
+    orderBy?: maestro2OrderByWithRelationInput | maestro2OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing maestro2s.
+     */
+    cursor?: maestro2WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` maestro2s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` maestro2s.
+     */
+    skip?: number
+    distinct?: Maestro2ScalarFieldEnum | Maestro2ScalarFieldEnum[]
+  }
+
+
+  /**
+   * maestro2 create
+   */
+  export type maestro2CreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the maestro2
+     */
+    select?: maestro2Select<ExtArgs> | null
+    /**
+     * The data needed to create a maestro2.
+     */
+    data: XOR<maestro2CreateInput, maestro2UncheckedCreateInput>
+  }
+
+
+  /**
+   * maestro2 createMany
+   */
+  export type maestro2CreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many maestro2s.
+     */
+    data: maestro2CreateManyInput | maestro2CreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * maestro2 update
+   */
+  export type maestro2UpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the maestro2
+     */
+    select?: maestro2Select<ExtArgs> | null
+    /**
+     * The data needed to update a maestro2.
+     */
+    data: XOR<maestro2UpdateInput, maestro2UncheckedUpdateInput>
+    /**
+     * Choose, which maestro2 to update.
+     */
+    where: maestro2WhereUniqueInput
+  }
+
+
+  /**
+   * maestro2 updateMany
+   */
+  export type maestro2UpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update maestro2s.
+     */
+    data: XOR<maestro2UpdateManyMutationInput, maestro2UncheckedUpdateManyInput>
+    /**
+     * Filter which maestro2s to update
+     */
+    where?: maestro2WhereInput
+  }
+
+
+  /**
+   * maestro2 upsert
+   */
+  export type maestro2UpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the maestro2
+     */
+    select?: maestro2Select<ExtArgs> | null
+    /**
+     * The filter to search for the maestro2 to update in case it exists.
+     */
+    where: maestro2WhereUniqueInput
+    /**
+     * In case the maestro2 found by the `where` argument doesn't exist, create a new maestro2 with this data.
+     */
+    create: XOR<maestro2CreateInput, maestro2UncheckedCreateInput>
+    /**
+     * In case the maestro2 was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<maestro2UpdateInput, maestro2UncheckedUpdateInput>
+  }
+
+
+  /**
+   * maestro2 delete
+   */
+  export type maestro2DeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the maestro2
+     */
+    select?: maestro2Select<ExtArgs> | null
+    /**
+     * Filter which maestro2 to delete.
+     */
+    where: maestro2WhereUniqueInput
+  }
+
+
+  /**
+   * maestro2 deleteMany
+   */
+  export type maestro2DeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which maestro2s to delete
+     */
+    where?: maestro2WhereInput
+  }
+
+
+  /**
+   * maestro2 without action
+   */
+  export type maestro2Args<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the maestro2
+     */
+    select?: maestro2Select<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -64152,7 +68443,8 @@ export namespace Prisma {
     MAY_65: 'MAY_65',
     INTEG: 'INTEG',
     EDAD_PROM: 'EDAD_PROM',
-    MAIL: 'MAIL'
+    MAIL: 'MAIL',
+    id: 'id'
   };
 
   export type MaestroScalarFieldEnum = (typeof MaestroScalarFieldEnum)[keyof typeof MaestroScalarFieldEnum]
@@ -64722,7 +69014,8 @@ export namespace Prisma {
     ptm_afi: 'ptm_afi',
     capinoaut: 'capinoaut',
     ptm_inicio: 'ptm_inicio',
-    ptm_fin: 'ptm_fin'
+    ptm_fin: 'ptm_fin',
+    ptm_fechaingreso: 'ptm_fechaingreso'
   };
 
   export type PrestamosScalarFieldEnum = (typeof PrestamosScalarFieldEnum)[keyof typeof PrestamosScalarFieldEnum]
@@ -65068,6 +69361,138 @@ export namespace Prisma {
   };
 
   export type EmiScalarFieldEnum = (typeof EmiScalarFieldEnum)[keyof typeof EmiScalarFieldEnum]
+
+
+  export const SO_01ScalarFieldEnum: {
+    CONTRATO: 'CONTRATO',
+    APE_NOM: 'APE_NOM',
+    ALTA: 'ALTA',
+    GRUPO: 'GRUPO',
+    ADHS: 'ADHS',
+    PLAN: 'PLAN',
+    SUB_PLAN: 'SUB_PLAN',
+    ZONA: 'ZONA',
+    CUOTA: 'CUOTA',
+    EMPRESA: 'EMPRESA',
+    SUCURSAL: 'SUCURSAL',
+    EDAD_PROM: 'EDAD_PROM',
+    PERMANEN: 'PERMANEN',
+    DEUDA: 'DEUDA'
+  };
+
+  export type SO_01ScalarFieldEnum = (typeof SO_01ScalarFieldEnum)[keyof typeof SO_01ScalarFieldEnum]
+
+
+  export const SO_oldScalarFieldEnum: {
+    CONTRATO: 'CONTRATO',
+    APE_NOM: 'APE_NOM',
+    ALTA: 'ALTA',
+    GRUPO: 'GRUPO',
+    ADHS: 'ADHS',
+    PLAN: 'PLAN',
+    SUB_PLAN: 'SUB_PLAN',
+    ZONA: 'ZONA',
+    CUOTA: 'CUOTA',
+    EMPRESA: 'EMPRESA',
+    SUCURSAL: 'SUCURSAL',
+    EDAD_PROM: 'EDAD_PROM',
+    PERMANEN: 'PERMANEN',
+    DEUDA: 'DEUDA'
+  };
+
+  export type SO_oldScalarFieldEnum = (typeof SO_oldScalarFieldEnum)[keyof typeof SO_oldScalarFieldEnum]
+
+
+  export const Maestro2ScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    NACIMIENTO: 'NACIMIENTO',
+    CALLE: 'CALLE',
+    LOCALIDAD: 'LOCALIDAD',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    DOMI_COBR: 'DOMI_COBR',
+    DOM_LAB: 'DOM_LAB',
+    ZONA: 'ZONA',
+    ALTA: 'ALTA',
+    VIGENCIA: 'VIGENCIA',
+    ALT_SEG: 'ALT_SEG',
+    VIG_SEG: 'VIG_SEG',
+    ENC_SEG: 'ENC_SEG',
+    VIG_AYUDA: 'VIG_AYUDA',
+    GRUPO: 'GRUPO',
+    SEXO: 'SEXO',
+    ADHERENTES: 'ADHERENTES',
+    PRECIO: 'PRECIO',
+    CUO_VIEJA: 'CUO_VIEJA',
+    OPERADOR: 'OPERADOR',
+    ACTUALIZA: 'ACTUALIZA',
+    OBRA_SOC: 'OBRA_SOC',
+    PRODUCTOR: 'PRODUCTOR',
+    PROD_DEB: 'PROD_DEB',
+    PLAN: 'PLAN',
+    SUB_PLAN: 'SUB_PLAN',
+    FEC_PLAN: 'FEC_PLAN',
+    MOD_1: 'MOD_1',
+    PRO_1: 'PRO_1',
+    MOD_2: 'MOD_2',
+    PRO_2: 'PRO_2',
+    MOD_3: 'MOD_3',
+    PRO_3: 'PRO_3',
+    MOD_4: 'MOD_4',
+    PRO_4: 'PRO_4',
+    MOD_5: 'MOD_5',
+    TSEG: 'TSEG',
+    PRO_5: 'PRO_5',
+    MOD_6: 'MOD_6',
+    PRO_6: 'PRO_6',
+    MOD_7: 'MOD_7',
+    PRO_7: 'PRO_7',
+    MOD_8: 'MOD_8',
+    PRO_8: 'PRO_8',
+    MOD_9: 'MOD_9',
+    PRO_9: 'PRO_9',
+    MOD_10: 'MOD_10',
+    PRO_10: 'PRO_10',
+    MOD_11: 'MOD_11',
+    PRO_11: 'PRO_11',
+    MOD_12: 'MOD_12',
+    PRO_12: 'PRO_12',
+    TOT_MOD: 'TOT_MOD',
+    TRASPASO: 'TRASPASO',
+    FEC_REAFIL: 'FEC_REAFIL',
+    NUM_REAFIL: 'NUM_REAFIL',
+    SEGURO: 'SEGURO',
+    EMPRESA: 'EMPRESA',
+    EDAD: 'EDAD',
+    COD_POST: 'COD_POST',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    VIG_OPT: 'VIG_OPT',
+    DECL_JUR: 'DECL_JUR',
+    VIG_SUB: 'VIG_SUB',
+    VIG_CONSU: 'VIG_CONSU',
+    VIG_SMEDI: 'VIG_SMEDI',
+    ANTICIPO: 'ANTICIPO',
+    CUOTAS: 'CUOTAS',
+    CAMBIO: 'CAMBIO',
+    TIPO_COMI: 'TIPO_COMI',
+    PAGA_COMI: 'PAGA_COMI',
+    TIPO_SEGU: 'TIPO_SEGU',
+    PAGO_SEGU: 'PAGO_SEGU',
+    CANT_TRASP: 'CANT_TRASP',
+    PGO_TRASP: 'PGO_TRASP',
+    MAY_21: 'MAY_21',
+    MAY_65: 'MAY_65',
+    INTEG: 'INTEG',
+    EDAD_PROM: 'EDAD_PROM',
+    MAIL: 'MAIL'
+  };
+
+  export type Maestro2ScalarFieldEnum = (typeof Maestro2ScalarFieldEnum)[keyof typeof Maestro2ScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -66996,6 +71421,7 @@ export namespace Prisma {
     INTEG?: IntNullableFilter | number | null
     EDAD_PROM?: FloatNullableFilter | number | null
     MAIL?: StringNullableFilter | string | null
+    id?: IntFilter | number
   }
 
   export type maestroOrderByWithRelationInput = {
@@ -67085,10 +71511,11 @@ export namespace Prisma {
     INTEG?: SortOrderInput | SortOrder
     EDAD_PROM?: SortOrderInput | SortOrder
     MAIL?: SortOrderInput | SortOrder
+    id?: SortOrder
   }
 
   export type maestroWhereUniqueInput = {
-    CONTRATO?: number
+    id_CONTRATO?: maestroIdCONTRATOCompoundUniqueInput
   }
 
   export type maestroOrderByWithAggregationInput = {
@@ -67178,6 +71605,7 @@ export namespace Prisma {
     INTEG?: SortOrderInput | SortOrder
     EDAD_PROM?: SortOrderInput | SortOrder
     MAIL?: SortOrderInput | SortOrder
+    id?: SortOrder
     _count?: maestroCountOrderByAggregateInput
     _avg?: maestroAvgOrderByAggregateInput
     _max?: maestroMaxOrderByAggregateInput
@@ -67275,6 +71703,7 @@ export namespace Prisma {
     INTEG?: IntNullableWithAggregatesFilter | number | null
     EDAD_PROM?: FloatNullableWithAggregatesFilter | number | null
     MAIL?: StringNullableWithAggregatesFilter | string | null
+    id?: IntWithAggregatesFilter | number
   }
 
   export type maestro22WhereInput = {
@@ -69525,6 +73954,7 @@ export namespace Prisma {
     capinoaut?: BoolNullableFilter | boolean | null
     ptm_inicio?: StringNullableFilter | string | null
     ptm_fin?: StringNullableFilter | string | null
+    ptm_fechaingreso?: DateTimeNullableFilter | Date | string | null
   }
 
   export type prestamosOrderByWithRelationInput = {
@@ -69546,6 +73976,7 @@ export namespace Prisma {
     capinoaut?: SortOrderInput | SortOrder
     ptm_inicio?: SortOrderInput | SortOrder
     ptm_fin?: SortOrderInput | SortOrder
+    ptm_fechaingreso?: SortOrderInput | SortOrder
   }
 
   export type prestamosWhereUniqueInput = {
@@ -69571,6 +74002,7 @@ export namespace Prisma {
     capinoaut?: SortOrderInput | SortOrder
     ptm_inicio?: SortOrderInput | SortOrder
     ptm_fin?: SortOrderInput | SortOrder
+    ptm_fechaingreso?: SortOrderInput | SortOrder
     _count?: prestamosCountOrderByAggregateInput
     _avg?: prestamosAvgOrderByAggregateInput
     _max?: prestamosMaxOrderByAggregateInput
@@ -69600,6 +74032,7 @@ export namespace Prisma {
     capinoaut?: BoolNullableWithAggregatesFilter | boolean | null
     ptm_inicio?: StringNullableWithAggregatesFilter | string | null
     ptm_fin?: StringNullableWithAggregatesFilter | string | null
+    ptm_fechaingreso?: DateTimeNullableWithAggregatesFilter | Date | string | null
   }
 
   export type produccionWhereInput = {
@@ -71021,6 +75454,543 @@ export namespace Prisma {
     CUOTAS_REF?: IntNullableWithAggregatesFilter | number | null
     IMPO_REF?: FloatNullableWithAggregatesFilter | number | null
     id?: IntWithAggregatesFilter | number
+  }
+
+  export type SO_01WhereInput = {
+    AND?: SO_01WhereInput | SO_01WhereInput[]
+    OR?: SO_01WhereInput[]
+    NOT?: SO_01WhereInput | SO_01WhereInput[]
+    CONTRATO?: IntFilter | number
+    APE_NOM?: StringNullableFilter | string | null
+    ALTA?: DateTimeNullableFilter | Date | string | null
+    GRUPO?: IntNullableFilter | number | null
+    ADHS?: IntNullableFilter | number | null
+    PLAN?: StringNullableFilter | string | null
+    SUB_PLAN?: StringNullableFilter | string | null
+    ZONA?: IntNullableFilter | number | null
+    CUOTA?: FloatNullableFilter | number | null
+    EMPRESA?: StringNullableFilter | string | null
+    SUCURSAL?: StringNullableFilter | string | null
+    EDAD_PROM?: FloatNullableFilter | number | null
+    PERMANEN?: FloatNullableFilter | number | null
+    DEUDA?: IntNullableFilter | number | null
+  }
+
+  export type SO_01OrderByWithRelationInput = {
+    CONTRATO?: SortOrder
+    APE_NOM?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ADHS?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    SUB_PLAN?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    CUOTA?: SortOrderInput | SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
+    EDAD_PROM?: SortOrderInput | SortOrder
+    PERMANEN?: SortOrderInput | SortOrder
+    DEUDA?: SortOrderInput | SortOrder
+  }
+
+  export type SO_01WhereUniqueInput = {
+    CONTRATO?: number
+  }
+
+  export type SO_01OrderByWithAggregationInput = {
+    CONTRATO?: SortOrder
+    APE_NOM?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ADHS?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    SUB_PLAN?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    CUOTA?: SortOrderInput | SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
+    EDAD_PROM?: SortOrderInput | SortOrder
+    PERMANEN?: SortOrderInput | SortOrder
+    DEUDA?: SortOrderInput | SortOrder
+    _count?: SO_01CountOrderByAggregateInput
+    _avg?: SO_01AvgOrderByAggregateInput
+    _max?: SO_01MaxOrderByAggregateInput
+    _min?: SO_01MinOrderByAggregateInput
+    _sum?: SO_01SumOrderByAggregateInput
+  }
+
+  export type SO_01ScalarWhereWithAggregatesInput = {
+    AND?: SO_01ScalarWhereWithAggregatesInput | SO_01ScalarWhereWithAggregatesInput[]
+    OR?: SO_01ScalarWhereWithAggregatesInput[]
+    NOT?: SO_01ScalarWhereWithAggregatesInput | SO_01ScalarWhereWithAggregatesInput[]
+    CONTRATO?: IntWithAggregatesFilter | number
+    APE_NOM?: StringNullableWithAggregatesFilter | string | null
+    ALTA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    GRUPO?: IntNullableWithAggregatesFilter | number | null
+    ADHS?: IntNullableWithAggregatesFilter | number | null
+    PLAN?: StringNullableWithAggregatesFilter | string | null
+    SUB_PLAN?: StringNullableWithAggregatesFilter | string | null
+    ZONA?: IntNullableWithAggregatesFilter | number | null
+    CUOTA?: FloatNullableWithAggregatesFilter | number | null
+    EMPRESA?: StringNullableWithAggregatesFilter | string | null
+    SUCURSAL?: StringNullableWithAggregatesFilter | string | null
+    EDAD_PROM?: FloatNullableWithAggregatesFilter | number | null
+    PERMANEN?: FloatNullableWithAggregatesFilter | number | null
+    DEUDA?: IntNullableWithAggregatesFilter | number | null
+  }
+
+  export type SO_oldWhereInput = {
+    AND?: SO_oldWhereInput | SO_oldWhereInput[]
+    OR?: SO_oldWhereInput[]
+    NOT?: SO_oldWhereInput | SO_oldWhereInput[]
+    CONTRATO?: IntFilter | number
+    APE_NOM?: StringNullableFilter | string | null
+    ALTA?: DateTimeNullableFilter | Date | string | null
+    GRUPO?: IntNullableFilter | number | null
+    ADHS?: IntNullableFilter | number | null
+    PLAN?: StringNullableFilter | string | null
+    SUB_PLAN?: StringNullableFilter | string | null
+    ZONA?: IntNullableFilter | number | null
+    CUOTA?: FloatNullableFilter | number | null
+    EMPRESA?: StringNullableFilter | string | null
+    SUCURSAL?: StringNullableFilter | string | null
+    EDAD_PROM?: FloatNullableFilter | number | null
+    PERMANEN?: FloatNullableFilter | number | null
+    DEUDA?: IntNullableFilter | number | null
+  }
+
+  export type SO_oldOrderByWithRelationInput = {
+    CONTRATO?: SortOrder
+    APE_NOM?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ADHS?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    SUB_PLAN?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    CUOTA?: SortOrderInput | SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
+    EDAD_PROM?: SortOrderInput | SortOrder
+    PERMANEN?: SortOrderInput | SortOrder
+    DEUDA?: SortOrderInput | SortOrder
+  }
+
+  export type SO_oldWhereUniqueInput = {
+    CONTRATO?: number
+  }
+
+  export type SO_oldOrderByWithAggregationInput = {
+    CONTRATO?: SortOrder
+    APE_NOM?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ADHS?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    SUB_PLAN?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    CUOTA?: SortOrderInput | SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
+    EDAD_PROM?: SortOrderInput | SortOrder
+    PERMANEN?: SortOrderInput | SortOrder
+    DEUDA?: SortOrderInput | SortOrder
+    _count?: SO_oldCountOrderByAggregateInput
+    _avg?: SO_oldAvgOrderByAggregateInput
+    _max?: SO_oldMaxOrderByAggregateInput
+    _min?: SO_oldMinOrderByAggregateInput
+    _sum?: SO_oldSumOrderByAggregateInput
+  }
+
+  export type SO_oldScalarWhereWithAggregatesInput = {
+    AND?: SO_oldScalarWhereWithAggregatesInput | SO_oldScalarWhereWithAggregatesInput[]
+    OR?: SO_oldScalarWhereWithAggregatesInput[]
+    NOT?: SO_oldScalarWhereWithAggregatesInput | SO_oldScalarWhereWithAggregatesInput[]
+    CONTRATO?: IntWithAggregatesFilter | number
+    APE_NOM?: StringNullableWithAggregatesFilter | string | null
+    ALTA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    GRUPO?: IntNullableWithAggregatesFilter | number | null
+    ADHS?: IntNullableWithAggregatesFilter | number | null
+    PLAN?: StringNullableWithAggregatesFilter | string | null
+    SUB_PLAN?: StringNullableWithAggregatesFilter | string | null
+    ZONA?: IntNullableWithAggregatesFilter | number | null
+    CUOTA?: FloatNullableWithAggregatesFilter | number | null
+    EMPRESA?: StringNullableWithAggregatesFilter | string | null
+    SUCURSAL?: StringNullableWithAggregatesFilter | string | null
+    EDAD_PROM?: FloatNullableWithAggregatesFilter | number | null
+    PERMANEN?: FloatNullableWithAggregatesFilter | number | null
+    DEUDA?: IntNullableWithAggregatesFilter | number | null
+  }
+
+  export type maestro2WhereInput = {
+    AND?: maestro2WhereInput | maestro2WhereInput[]
+    OR?: maestro2WhereInput[]
+    NOT?: maestro2WhereInput | maestro2WhereInput[]
+    SUCURSAL?: StringNullableFilter | string | null
+    CONTRATO?: IntFilter | number
+    NRO_DOC?: IntNullableFilter | number | null
+    APELLIDOS?: StringNullableFilter | string | null
+    NOMBRES?: StringNullableFilter | string | null
+    NACIMIENTO?: DateTimeNullableFilter | Date | string | null
+    CALLE?: StringNullableFilter | string | null
+    LOCALIDAD?: StringNullableFilter | string | null
+    NRO_CALLE?: IntNullableFilter | number | null
+    BARRIO?: StringNullableFilter | string | null
+    DOMI_COBR?: StringNullableFilter | string | null
+    DOM_LAB?: StringNullableFilter | string | null
+    ZONA?: IntNullableFilter | number | null
+    ALTA?: DateTimeNullableFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableFilter | Date | string | null
+    ALT_SEG?: DateTimeNullableFilter | Date | string | null
+    VIG_SEG?: DateTimeNullableFilter | Date | string | null
+    ENC_SEG?: IntNullableFilter | number | null
+    VIG_AYUDA?: DateTimeNullableFilter | Date | string | null
+    GRUPO?: IntNullableFilter | number | null
+    SEXO?: StringNullableFilter | string | null
+    ADHERENTES?: IntNullableFilter | number | null
+    PRECIO?: FloatNullableFilter | number | null
+    CUO_VIEJA?: FloatNullableFilter | number | null
+    OPERADOR?: IntNullableFilter | number | null
+    ACTUALIZA?: StringNullableFilter | string | null
+    OBRA_SOC?: IntNullableFilter | number | null
+    PRODUCTOR?: IntNullableFilter | number | null
+    PROD_DEB?: IntNullableFilter | number | null
+    PLAN?: StringNullableFilter | string | null
+    SUB_PLAN?: StringNullableFilter | string | null
+    FEC_PLAN?: DateTimeNullableFilter | Date | string | null
+    MOD_1?: DateTimeNullableFilter | Date | string | null
+    PRO_1?: IntNullableFilter | number | null
+    MOD_2?: DateTimeNullableFilter | Date | string | null
+    PRO_2?: IntNullableFilter | number | null
+    MOD_3?: DateTimeNullableFilter | Date | string | null
+    PRO_3?: IntNullableFilter | number | null
+    MOD_4?: DateTimeNullableFilter | Date | string | null
+    PRO_4?: IntNullableFilter | number | null
+    MOD_5?: DateTimeNullableFilter | Date | string | null
+    TSEG?: StringNullableFilter | string | null
+    PRO_5?: IntNullableFilter | number | null
+    MOD_6?: DateTimeNullableFilter | Date | string | null
+    PRO_6?: IntNullableFilter | number | null
+    MOD_7?: DateTimeNullableFilter | Date | string | null
+    PRO_7?: IntNullableFilter | number | null
+    MOD_8?: DateTimeNullableFilter | Date | string | null
+    PRO_8?: IntNullableFilter | number | null
+    MOD_9?: DateTimeNullableFilter | Date | string | null
+    PRO_9?: IntNullableFilter | number | null
+    MOD_10?: DateTimeNullableFilter | Date | string | null
+    PRO_10?: IntNullableFilter | number | null
+    MOD_11?: DateTimeNullableFilter | Date | string | null
+    PRO_11?: IntNullableFilter | number | null
+    MOD_12?: DateTimeNullableFilter | Date | string | null
+    PRO_12?: IntNullableFilter | number | null
+    TOT_MOD?: FloatNullableFilter | number | null
+    TRASPASO?: DateTimeNullableFilter | Date | string | null
+    FEC_REAFIL?: DateTimeNullableFilter | Date | string | null
+    NUM_REAFIL?: IntNullableFilter | number | null
+    SEGURO?: IntNullableFilter | number | null
+    EMPRESA?: StringNullableFilter | string | null
+    EDAD?: IntNullableFilter | number | null
+    COD_POST?: IntNullableFilter | number | null
+    TELEFONO?: StringNullableFilter | string | null
+    MOVIL?: StringNullableFilter | string | null
+    VIG_OPT?: DateTimeNullableFilter | Date | string | null
+    DECL_JUR?: DateTimeNullableFilter | Date | string | null
+    VIG_SUB?: DateTimeNullableFilter | Date | string | null
+    VIG_CONSU?: DateTimeNullableFilter | Date | string | null
+    VIG_SMEDI?: DateTimeNullableFilter | Date | string | null
+    ANTICIPO?: FloatNullableFilter | number | null
+    CUOTAS?: IntNullableFilter | number | null
+    CAMBIO?: DateTimeNullableFilter | Date | string | null
+    TIPO_COMI?: IntNullableFilter | number | null
+    PAGA_COMI?: IntNullableFilter | number | null
+    TIPO_SEGU?: IntNullableFilter | number | null
+    PAGO_SEGU?: IntNullableFilter | number | null
+    CANT_TRASP?: IntNullableFilter | number | null
+    PGO_TRASP?: IntNullableFilter | number | null
+    MAY_21?: IntNullableFilter | number | null
+    MAY_65?: IntNullableFilter | number | null
+    INTEG?: IntNullableFilter | number | null
+    EDAD_PROM?: FloatNullableFilter | number | null
+    MAIL?: StringNullableFilter | string | null
+  }
+
+  export type maestro2OrderByWithRelationInput = {
+    SUCURSAL?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    NACIMIENTO?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    DOMI_COBR?: SortOrderInput | SortOrder
+    DOM_LAB?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    ALT_SEG?: SortOrderInput | SortOrder
+    VIG_SEG?: SortOrderInput | SortOrder
+    ENC_SEG?: SortOrderInput | SortOrder
+    VIG_AYUDA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    SEXO?: SortOrderInput | SortOrder
+    ADHERENTES?: SortOrderInput | SortOrder
+    PRECIO?: SortOrderInput | SortOrder
+    CUO_VIEJA?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    OBRA_SOC?: SortOrderInput | SortOrder
+    PRODUCTOR?: SortOrderInput | SortOrder
+    PROD_DEB?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    SUB_PLAN?: SortOrderInput | SortOrder
+    FEC_PLAN?: SortOrderInput | SortOrder
+    MOD_1?: SortOrderInput | SortOrder
+    PRO_1?: SortOrderInput | SortOrder
+    MOD_2?: SortOrderInput | SortOrder
+    PRO_2?: SortOrderInput | SortOrder
+    MOD_3?: SortOrderInput | SortOrder
+    PRO_3?: SortOrderInput | SortOrder
+    MOD_4?: SortOrderInput | SortOrder
+    PRO_4?: SortOrderInput | SortOrder
+    MOD_5?: SortOrderInput | SortOrder
+    TSEG?: SortOrderInput | SortOrder
+    PRO_5?: SortOrderInput | SortOrder
+    MOD_6?: SortOrderInput | SortOrder
+    PRO_6?: SortOrderInput | SortOrder
+    MOD_7?: SortOrderInput | SortOrder
+    PRO_7?: SortOrderInput | SortOrder
+    MOD_8?: SortOrderInput | SortOrder
+    PRO_8?: SortOrderInput | SortOrder
+    MOD_9?: SortOrderInput | SortOrder
+    PRO_9?: SortOrderInput | SortOrder
+    MOD_10?: SortOrderInput | SortOrder
+    PRO_10?: SortOrderInput | SortOrder
+    MOD_11?: SortOrderInput | SortOrder
+    PRO_11?: SortOrderInput | SortOrder
+    MOD_12?: SortOrderInput | SortOrder
+    PRO_12?: SortOrderInput | SortOrder
+    TOT_MOD?: SortOrderInput | SortOrder
+    TRASPASO?: SortOrderInput | SortOrder
+    FEC_REAFIL?: SortOrderInput | SortOrder
+    NUM_REAFIL?: SortOrderInput | SortOrder
+    SEGURO?: SortOrderInput | SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    COD_POST?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    VIG_OPT?: SortOrderInput | SortOrder
+    DECL_JUR?: SortOrderInput | SortOrder
+    VIG_SUB?: SortOrderInput | SortOrder
+    VIG_CONSU?: SortOrderInput | SortOrder
+    VIG_SMEDI?: SortOrderInput | SortOrder
+    ANTICIPO?: SortOrderInput | SortOrder
+    CUOTAS?: SortOrderInput | SortOrder
+    CAMBIO?: SortOrderInput | SortOrder
+    TIPO_COMI?: SortOrderInput | SortOrder
+    PAGA_COMI?: SortOrderInput | SortOrder
+    TIPO_SEGU?: SortOrderInput | SortOrder
+    PAGO_SEGU?: SortOrderInput | SortOrder
+    CANT_TRASP?: SortOrderInput | SortOrder
+    PGO_TRASP?: SortOrderInput | SortOrder
+    MAY_21?: SortOrderInput | SortOrder
+    MAY_65?: SortOrderInput | SortOrder
+    INTEG?: SortOrderInput | SortOrder
+    EDAD_PROM?: SortOrderInput | SortOrder
+    MAIL?: SortOrderInput | SortOrder
+  }
+
+  export type maestro2WhereUniqueInput = {
+    CONTRATO?: number
+  }
+
+  export type maestro2OrderByWithAggregationInput = {
+    SUCURSAL?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    NACIMIENTO?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    DOMI_COBR?: SortOrderInput | SortOrder
+    DOM_LAB?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    ALT_SEG?: SortOrderInput | SortOrder
+    VIG_SEG?: SortOrderInput | SortOrder
+    ENC_SEG?: SortOrderInput | SortOrder
+    VIG_AYUDA?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    SEXO?: SortOrderInput | SortOrder
+    ADHERENTES?: SortOrderInput | SortOrder
+    PRECIO?: SortOrderInput | SortOrder
+    CUO_VIEJA?: SortOrderInput | SortOrder
+    OPERADOR?: SortOrderInput | SortOrder
+    ACTUALIZA?: SortOrderInput | SortOrder
+    OBRA_SOC?: SortOrderInput | SortOrder
+    PRODUCTOR?: SortOrderInput | SortOrder
+    PROD_DEB?: SortOrderInput | SortOrder
+    PLAN?: SortOrderInput | SortOrder
+    SUB_PLAN?: SortOrderInput | SortOrder
+    FEC_PLAN?: SortOrderInput | SortOrder
+    MOD_1?: SortOrderInput | SortOrder
+    PRO_1?: SortOrderInput | SortOrder
+    MOD_2?: SortOrderInput | SortOrder
+    PRO_2?: SortOrderInput | SortOrder
+    MOD_3?: SortOrderInput | SortOrder
+    PRO_3?: SortOrderInput | SortOrder
+    MOD_4?: SortOrderInput | SortOrder
+    PRO_4?: SortOrderInput | SortOrder
+    MOD_5?: SortOrderInput | SortOrder
+    TSEG?: SortOrderInput | SortOrder
+    PRO_5?: SortOrderInput | SortOrder
+    MOD_6?: SortOrderInput | SortOrder
+    PRO_6?: SortOrderInput | SortOrder
+    MOD_7?: SortOrderInput | SortOrder
+    PRO_7?: SortOrderInput | SortOrder
+    MOD_8?: SortOrderInput | SortOrder
+    PRO_8?: SortOrderInput | SortOrder
+    MOD_9?: SortOrderInput | SortOrder
+    PRO_9?: SortOrderInput | SortOrder
+    MOD_10?: SortOrderInput | SortOrder
+    PRO_10?: SortOrderInput | SortOrder
+    MOD_11?: SortOrderInput | SortOrder
+    PRO_11?: SortOrderInput | SortOrder
+    MOD_12?: SortOrderInput | SortOrder
+    PRO_12?: SortOrderInput | SortOrder
+    TOT_MOD?: SortOrderInput | SortOrder
+    TRASPASO?: SortOrderInput | SortOrder
+    FEC_REAFIL?: SortOrderInput | SortOrder
+    NUM_REAFIL?: SortOrderInput | SortOrder
+    SEGURO?: SortOrderInput | SortOrder
+    EMPRESA?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    COD_POST?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    VIG_OPT?: SortOrderInput | SortOrder
+    DECL_JUR?: SortOrderInput | SortOrder
+    VIG_SUB?: SortOrderInput | SortOrder
+    VIG_CONSU?: SortOrderInput | SortOrder
+    VIG_SMEDI?: SortOrderInput | SortOrder
+    ANTICIPO?: SortOrderInput | SortOrder
+    CUOTAS?: SortOrderInput | SortOrder
+    CAMBIO?: SortOrderInput | SortOrder
+    TIPO_COMI?: SortOrderInput | SortOrder
+    PAGA_COMI?: SortOrderInput | SortOrder
+    TIPO_SEGU?: SortOrderInput | SortOrder
+    PAGO_SEGU?: SortOrderInput | SortOrder
+    CANT_TRASP?: SortOrderInput | SortOrder
+    PGO_TRASP?: SortOrderInput | SortOrder
+    MAY_21?: SortOrderInput | SortOrder
+    MAY_65?: SortOrderInput | SortOrder
+    INTEG?: SortOrderInput | SortOrder
+    EDAD_PROM?: SortOrderInput | SortOrder
+    MAIL?: SortOrderInput | SortOrder
+    _count?: maestro2CountOrderByAggregateInput
+    _avg?: maestro2AvgOrderByAggregateInput
+    _max?: maestro2MaxOrderByAggregateInput
+    _min?: maestro2MinOrderByAggregateInput
+    _sum?: maestro2SumOrderByAggregateInput
+  }
+
+  export type maestro2ScalarWhereWithAggregatesInput = {
+    AND?: maestro2ScalarWhereWithAggregatesInput | maestro2ScalarWhereWithAggregatesInput[]
+    OR?: maestro2ScalarWhereWithAggregatesInput[]
+    NOT?: maestro2ScalarWhereWithAggregatesInput | maestro2ScalarWhereWithAggregatesInput[]
+    SUCURSAL?: StringNullableWithAggregatesFilter | string | null
+    CONTRATO?: IntWithAggregatesFilter | number
+    NRO_DOC?: IntNullableWithAggregatesFilter | number | null
+    APELLIDOS?: StringNullableWithAggregatesFilter | string | null
+    NOMBRES?: StringNullableWithAggregatesFilter | string | null
+    NACIMIENTO?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    CALLE?: StringNullableWithAggregatesFilter | string | null
+    LOCALIDAD?: StringNullableWithAggregatesFilter | string | null
+    NRO_CALLE?: IntNullableWithAggregatesFilter | number | null
+    BARRIO?: StringNullableWithAggregatesFilter | string | null
+    DOMI_COBR?: StringNullableWithAggregatesFilter | string | null
+    DOM_LAB?: StringNullableWithAggregatesFilter | string | null
+    ZONA?: IntNullableWithAggregatesFilter | number | null
+    ALTA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    ALT_SEG?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_SEG?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    ENC_SEG?: IntNullableWithAggregatesFilter | number | null
+    VIG_AYUDA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    GRUPO?: IntNullableWithAggregatesFilter | number | null
+    SEXO?: StringNullableWithAggregatesFilter | string | null
+    ADHERENTES?: IntNullableWithAggregatesFilter | number | null
+    PRECIO?: FloatNullableWithAggregatesFilter | number | null
+    CUO_VIEJA?: FloatNullableWithAggregatesFilter | number | null
+    OPERADOR?: IntNullableWithAggregatesFilter | number | null
+    ACTUALIZA?: StringNullableWithAggregatesFilter | string | null
+    OBRA_SOC?: IntNullableWithAggregatesFilter | number | null
+    PRODUCTOR?: IntNullableWithAggregatesFilter | number | null
+    PROD_DEB?: IntNullableWithAggregatesFilter | number | null
+    PLAN?: StringNullableWithAggregatesFilter | string | null
+    SUB_PLAN?: StringNullableWithAggregatesFilter | string | null
+    FEC_PLAN?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    MOD_1?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_1?: IntNullableWithAggregatesFilter | number | null
+    MOD_2?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_2?: IntNullableWithAggregatesFilter | number | null
+    MOD_3?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_3?: IntNullableWithAggregatesFilter | number | null
+    MOD_4?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_4?: IntNullableWithAggregatesFilter | number | null
+    MOD_5?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    TSEG?: StringNullableWithAggregatesFilter | string | null
+    PRO_5?: IntNullableWithAggregatesFilter | number | null
+    MOD_6?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_6?: IntNullableWithAggregatesFilter | number | null
+    MOD_7?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_7?: IntNullableWithAggregatesFilter | number | null
+    MOD_8?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_8?: IntNullableWithAggregatesFilter | number | null
+    MOD_9?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_9?: IntNullableWithAggregatesFilter | number | null
+    MOD_10?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_10?: IntNullableWithAggregatesFilter | number | null
+    MOD_11?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_11?: IntNullableWithAggregatesFilter | number | null
+    MOD_12?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    PRO_12?: IntNullableWithAggregatesFilter | number | null
+    TOT_MOD?: FloatNullableWithAggregatesFilter | number | null
+    TRASPASO?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    FEC_REAFIL?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    NUM_REAFIL?: IntNullableWithAggregatesFilter | number | null
+    SEGURO?: IntNullableWithAggregatesFilter | number | null
+    EMPRESA?: StringNullableWithAggregatesFilter | string | null
+    EDAD?: IntNullableWithAggregatesFilter | number | null
+    COD_POST?: IntNullableWithAggregatesFilter | number | null
+    TELEFONO?: StringNullableWithAggregatesFilter | string | null
+    MOVIL?: StringNullableWithAggregatesFilter | string | null
+    VIG_OPT?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    DECL_JUR?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_SUB?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_CONSU?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIG_SMEDI?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    ANTICIPO?: FloatNullableWithAggregatesFilter | number | null
+    CUOTAS?: IntNullableWithAggregatesFilter | number | null
+    CAMBIO?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    TIPO_COMI?: IntNullableWithAggregatesFilter | number | null
+    PAGA_COMI?: IntNullableWithAggregatesFilter | number | null
+    TIPO_SEGU?: IntNullableWithAggregatesFilter | number | null
+    PAGO_SEGU?: IntNullableWithAggregatesFilter | number | null
+    CANT_TRASP?: IntNullableWithAggregatesFilter | number | null
+    PGO_TRASP?: IntNullableWithAggregatesFilter | number | null
+    MAY_21?: IntNullableWithAggregatesFilter | number | null
+    MAY_65?: IntNullableWithAggregatesFilter | number | null
+    INTEG?: IntNullableWithAggregatesFilter | number | null
+    EDAD_PROM?: FloatNullableWithAggregatesFilter | number | null
+    MAIL?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type accionesCreateInput = {
@@ -73795,6 +78765,7 @@ export namespace Prisma {
     INTEG?: number | null
     EDAD_PROM?: number | null
     MAIL?: string | null
+    id?: number
   }
 
   export type maestroUncheckedCreateInput = {
@@ -73884,6 +78855,7 @@ export namespace Prisma {
     INTEG?: number | null
     EDAD_PROM?: number | null
     MAIL?: string | null
+    id?: number
   }
 
   export type maestroUpdateInput = {
@@ -73973,6 +78945,7 @@ export namespace Prisma {
     INTEG?: NullableIntFieldUpdateOperationsInput | number | null
     EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
     MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type maestroUncheckedUpdateInput = {
@@ -74062,6 +79035,7 @@ export namespace Prisma {
     INTEG?: NullableIntFieldUpdateOperationsInput | number | null
     EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
     MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type maestroCreateManyInput = {
@@ -74151,6 +79125,7 @@ export namespace Prisma {
     INTEG?: number | null
     EDAD_PROM?: number | null
     MAIL?: string | null
+    id?: number
   }
 
   export type maestroUpdateManyMutationInput = {
@@ -74240,6 +79215,7 @@ export namespace Prisma {
     INTEG?: NullableIntFieldUpdateOperationsInput | number | null
     EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
     MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type maestroUncheckedUpdateManyInput = {
@@ -74329,6 +79305,7 @@ export namespace Prisma {
     INTEG?: NullableIntFieldUpdateOperationsInput | number | null
     EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
     MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type maestro22CreateInput = {
@@ -77844,6 +82821,7 @@ export namespace Prisma {
     capinoaut?: boolean | null
     ptm_inicio?: string | null
     ptm_fin?: string | null
+    ptm_fechaingreso?: Date | string | null
   }
 
   export type prestamosUncheckedCreateInput = {
@@ -77865,6 +82843,7 @@ export namespace Prisma {
     capinoaut?: boolean | null
     ptm_inicio?: string | null
     ptm_fin?: string | null
+    ptm_fechaingreso?: Date | string | null
   }
 
   export type prestamosUpdateInput = {
@@ -77885,6 +82864,7 @@ export namespace Prisma {
     capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ptm_inicio?: NullableStringFieldUpdateOperationsInput | string | null
     ptm_fin?: NullableStringFieldUpdateOperationsInput | string | null
+    ptm_fechaingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type prestamosUncheckedUpdateInput = {
@@ -77906,6 +82886,7 @@ export namespace Prisma {
     capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ptm_inicio?: NullableStringFieldUpdateOperationsInput | string | null
     ptm_fin?: NullableStringFieldUpdateOperationsInput | string | null
+    ptm_fechaingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type prestamosCreateManyInput = {
@@ -77927,6 +82908,7 @@ export namespace Prisma {
     capinoaut?: boolean | null
     ptm_inicio?: string | null
     ptm_fin?: string | null
+    ptm_fechaingreso?: Date | string | null
   }
 
   export type prestamosUpdateManyMutationInput = {
@@ -77947,6 +82929,7 @@ export namespace Prisma {
     capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ptm_inicio?: NullableStringFieldUpdateOperationsInput | string | null
     ptm_fin?: NullableStringFieldUpdateOperationsInput | string | null
+    ptm_fechaingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type prestamosUncheckedUpdateManyInput = {
@@ -77968,6 +82951,7 @@ export namespace Prisma {
     capinoaut?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ptm_inicio?: NullableStringFieldUpdateOperationsInput | string | null
     ptm_fin?: NullableStringFieldUpdateOperationsInput | string | null
+    ptm_fechaingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type produccionCreateInput = {
@@ -79947,6 +84931,867 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type SO_01CreateInput = {
+    CONTRATO: number
+    APE_NOM?: string | null
+    ALTA?: Date | string | null
+    GRUPO?: number | null
+    ADHS?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    ZONA?: number | null
+    CUOTA?: number | null
+    EMPRESA?: string | null
+    SUCURSAL?: string | null
+    EDAD_PROM?: number | null
+    PERMANEN?: number | null
+    DEUDA?: number | null
+  }
+
+  export type SO_01UncheckedCreateInput = {
+    CONTRATO: number
+    APE_NOM?: string | null
+    ALTA?: Date | string | null
+    GRUPO?: number | null
+    ADHS?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    ZONA?: number | null
+    CUOTA?: number | null
+    EMPRESA?: string | null
+    SUCURSAL?: string | null
+    EDAD_PROM?: number | null
+    PERMANEN?: number | null
+    DEUDA?: number | null
+  }
+
+  export type SO_01UpdateInput = {
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
+    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type SO_01UncheckedUpdateInput = {
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
+    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type SO_01CreateManyInput = {
+    CONTRATO: number
+    APE_NOM?: string | null
+    ALTA?: Date | string | null
+    GRUPO?: number | null
+    ADHS?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    ZONA?: number | null
+    CUOTA?: number | null
+    EMPRESA?: string | null
+    SUCURSAL?: string | null
+    EDAD_PROM?: number | null
+    PERMANEN?: number | null
+    DEUDA?: number | null
+  }
+
+  export type SO_01UpdateManyMutationInput = {
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
+    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type SO_01UncheckedUpdateManyInput = {
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
+    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type SO_oldCreateInput = {
+    CONTRATO: number
+    APE_NOM?: string | null
+    ALTA?: Date | string | null
+    GRUPO?: number | null
+    ADHS?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    ZONA?: number | null
+    CUOTA?: number | null
+    EMPRESA?: string | null
+    SUCURSAL?: string | null
+    EDAD_PROM?: number | null
+    PERMANEN?: number | null
+    DEUDA?: number | null
+  }
+
+  export type SO_oldUncheckedCreateInput = {
+    CONTRATO: number
+    APE_NOM?: string | null
+    ALTA?: Date | string | null
+    GRUPO?: number | null
+    ADHS?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    ZONA?: number | null
+    CUOTA?: number | null
+    EMPRESA?: string | null
+    SUCURSAL?: string | null
+    EDAD_PROM?: number | null
+    PERMANEN?: number | null
+    DEUDA?: number | null
+  }
+
+  export type SO_oldUpdateInput = {
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
+    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type SO_oldUncheckedUpdateInput = {
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
+    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type SO_oldCreateManyInput = {
+    CONTRATO: number
+    APE_NOM?: string | null
+    ALTA?: Date | string | null
+    GRUPO?: number | null
+    ADHS?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    ZONA?: number | null
+    CUOTA?: number | null
+    EMPRESA?: string | null
+    SUCURSAL?: string | null
+    EDAD_PROM?: number | null
+    PERMANEN?: number | null
+    DEUDA?: number | null
+  }
+
+  export type SO_oldUpdateManyMutationInput = {
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
+    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type SO_oldUncheckedUpdateManyInput = {
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    APE_NOM?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ADHS?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    CUOTA?: NullableFloatFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PERMANEN?: NullableFloatFieldUpdateOperationsInput | number | null
+    DEUDA?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type maestro2CreateInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    NACIMIENTO?: Date | string | null
+    CALLE?: string | null
+    LOCALIDAD?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    DOMI_COBR?: string | null
+    DOM_LAB?: string | null
+    ZONA?: number | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    ALT_SEG?: Date | string | null
+    VIG_SEG?: Date | string | null
+    ENC_SEG?: number | null
+    VIG_AYUDA?: Date | string | null
+    GRUPO?: number | null
+    SEXO?: string | null
+    ADHERENTES?: number | null
+    PRECIO?: number | null
+    CUO_VIEJA?: number | null
+    OPERADOR?: number | null
+    ACTUALIZA?: string | null
+    OBRA_SOC?: number | null
+    PRODUCTOR?: number | null
+    PROD_DEB?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    FEC_PLAN?: Date | string | null
+    MOD_1?: Date | string | null
+    PRO_1?: number | null
+    MOD_2?: Date | string | null
+    PRO_2?: number | null
+    MOD_3?: Date | string | null
+    PRO_3?: number | null
+    MOD_4?: Date | string | null
+    PRO_4?: number | null
+    MOD_5?: Date | string | null
+    TSEG?: string | null
+    PRO_5?: number | null
+    MOD_6?: Date | string | null
+    PRO_6?: number | null
+    MOD_7?: Date | string | null
+    PRO_7?: number | null
+    MOD_8?: Date | string | null
+    PRO_8?: number | null
+    MOD_9?: Date | string | null
+    PRO_9?: number | null
+    MOD_10?: Date | string | null
+    PRO_10?: number | null
+    MOD_11?: Date | string | null
+    PRO_11?: number | null
+    MOD_12?: Date | string | null
+    PRO_12?: number | null
+    TOT_MOD?: number | null
+    TRASPASO?: Date | string | null
+    FEC_REAFIL?: Date | string | null
+    NUM_REAFIL?: number | null
+    SEGURO?: number | null
+    EMPRESA?: string | null
+    EDAD?: number | null
+    COD_POST?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    VIG_OPT?: Date | string | null
+    DECL_JUR?: Date | string | null
+    VIG_SUB?: Date | string | null
+    VIG_CONSU?: Date | string | null
+    VIG_SMEDI?: Date | string | null
+    ANTICIPO?: number | null
+    CUOTAS?: number | null
+    CAMBIO?: Date | string | null
+    TIPO_COMI?: number | null
+    PAGA_COMI?: number | null
+    TIPO_SEGU?: number | null
+    PAGO_SEGU?: number | null
+    CANT_TRASP?: number | null
+    PGO_TRASP?: number | null
+    MAY_21?: number | null
+    MAY_65?: number | null
+    INTEG?: number | null
+    EDAD_PROM?: number | null
+    MAIL?: string | null
+  }
+
+  export type maestro2UncheckedCreateInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    NACIMIENTO?: Date | string | null
+    CALLE?: string | null
+    LOCALIDAD?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    DOMI_COBR?: string | null
+    DOM_LAB?: string | null
+    ZONA?: number | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    ALT_SEG?: Date | string | null
+    VIG_SEG?: Date | string | null
+    ENC_SEG?: number | null
+    VIG_AYUDA?: Date | string | null
+    GRUPO?: number | null
+    SEXO?: string | null
+    ADHERENTES?: number | null
+    PRECIO?: number | null
+    CUO_VIEJA?: number | null
+    OPERADOR?: number | null
+    ACTUALIZA?: string | null
+    OBRA_SOC?: number | null
+    PRODUCTOR?: number | null
+    PROD_DEB?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    FEC_PLAN?: Date | string | null
+    MOD_1?: Date | string | null
+    PRO_1?: number | null
+    MOD_2?: Date | string | null
+    PRO_2?: number | null
+    MOD_3?: Date | string | null
+    PRO_3?: number | null
+    MOD_4?: Date | string | null
+    PRO_4?: number | null
+    MOD_5?: Date | string | null
+    TSEG?: string | null
+    PRO_5?: number | null
+    MOD_6?: Date | string | null
+    PRO_6?: number | null
+    MOD_7?: Date | string | null
+    PRO_7?: number | null
+    MOD_8?: Date | string | null
+    PRO_8?: number | null
+    MOD_9?: Date | string | null
+    PRO_9?: number | null
+    MOD_10?: Date | string | null
+    PRO_10?: number | null
+    MOD_11?: Date | string | null
+    PRO_11?: number | null
+    MOD_12?: Date | string | null
+    PRO_12?: number | null
+    TOT_MOD?: number | null
+    TRASPASO?: Date | string | null
+    FEC_REAFIL?: Date | string | null
+    NUM_REAFIL?: number | null
+    SEGURO?: number | null
+    EMPRESA?: string | null
+    EDAD?: number | null
+    COD_POST?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    VIG_OPT?: Date | string | null
+    DECL_JUR?: Date | string | null
+    VIG_SUB?: Date | string | null
+    VIG_CONSU?: Date | string | null
+    VIG_SMEDI?: Date | string | null
+    ANTICIPO?: number | null
+    CUOTAS?: number | null
+    CAMBIO?: Date | string | null
+    TIPO_COMI?: number | null
+    PAGA_COMI?: number | null
+    TIPO_SEGU?: number | null
+    PAGO_SEGU?: number | null
+    CANT_TRASP?: number | null
+    PGO_TRASP?: number | null
+    MAY_21?: number | null
+    MAY_65?: number | null
+    INTEG?: number | null
+    EDAD_PROM?: number | null
+    MAIL?: string | null
+  }
+
+  export type maestro2UpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_COBR?: NullableStringFieldUpdateOperationsInput | string | null
+    DOM_LAB?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
+    PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PROD_DEB?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    FEC_REAFIL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NUM_REAFIL?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMBIO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TIPO_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGA_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    TIPO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    CANT_TRASP?: NullableIntFieldUpdateOperationsInput | number | null
+    PGO_TRASP?: NullableIntFieldUpdateOperationsInput | number | null
+    MAY_21?: NullableIntFieldUpdateOperationsInput | number | null
+    MAY_65?: NullableIntFieldUpdateOperationsInput | number | null
+    INTEG?: NullableIntFieldUpdateOperationsInput | number | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type maestro2UncheckedUpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_COBR?: NullableStringFieldUpdateOperationsInput | string | null
+    DOM_LAB?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
+    PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PROD_DEB?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    FEC_REAFIL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NUM_REAFIL?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMBIO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TIPO_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGA_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    TIPO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    CANT_TRASP?: NullableIntFieldUpdateOperationsInput | number | null
+    PGO_TRASP?: NullableIntFieldUpdateOperationsInput | number | null
+    MAY_21?: NullableIntFieldUpdateOperationsInput | number | null
+    MAY_65?: NullableIntFieldUpdateOperationsInput | number | null
+    INTEG?: NullableIntFieldUpdateOperationsInput | number | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type maestro2CreateManyInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    NACIMIENTO?: Date | string | null
+    CALLE?: string | null
+    LOCALIDAD?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    DOMI_COBR?: string | null
+    DOM_LAB?: string | null
+    ZONA?: number | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    ALT_SEG?: Date | string | null
+    VIG_SEG?: Date | string | null
+    ENC_SEG?: number | null
+    VIG_AYUDA?: Date | string | null
+    GRUPO?: number | null
+    SEXO?: string | null
+    ADHERENTES?: number | null
+    PRECIO?: number | null
+    CUO_VIEJA?: number | null
+    OPERADOR?: number | null
+    ACTUALIZA?: string | null
+    OBRA_SOC?: number | null
+    PRODUCTOR?: number | null
+    PROD_DEB?: number | null
+    PLAN?: string | null
+    SUB_PLAN?: string | null
+    FEC_PLAN?: Date | string | null
+    MOD_1?: Date | string | null
+    PRO_1?: number | null
+    MOD_2?: Date | string | null
+    PRO_2?: number | null
+    MOD_3?: Date | string | null
+    PRO_3?: number | null
+    MOD_4?: Date | string | null
+    PRO_4?: number | null
+    MOD_5?: Date | string | null
+    TSEG?: string | null
+    PRO_5?: number | null
+    MOD_6?: Date | string | null
+    PRO_6?: number | null
+    MOD_7?: Date | string | null
+    PRO_7?: number | null
+    MOD_8?: Date | string | null
+    PRO_8?: number | null
+    MOD_9?: Date | string | null
+    PRO_9?: number | null
+    MOD_10?: Date | string | null
+    PRO_10?: number | null
+    MOD_11?: Date | string | null
+    PRO_11?: number | null
+    MOD_12?: Date | string | null
+    PRO_12?: number | null
+    TOT_MOD?: number | null
+    TRASPASO?: Date | string | null
+    FEC_REAFIL?: Date | string | null
+    NUM_REAFIL?: number | null
+    SEGURO?: number | null
+    EMPRESA?: string | null
+    EDAD?: number | null
+    COD_POST?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    VIG_OPT?: Date | string | null
+    DECL_JUR?: Date | string | null
+    VIG_SUB?: Date | string | null
+    VIG_CONSU?: Date | string | null
+    VIG_SMEDI?: Date | string | null
+    ANTICIPO?: number | null
+    CUOTAS?: number | null
+    CAMBIO?: Date | string | null
+    TIPO_COMI?: number | null
+    PAGA_COMI?: number | null
+    TIPO_SEGU?: number | null
+    PAGO_SEGU?: number | null
+    CANT_TRASP?: number | null
+    PGO_TRASP?: number | null
+    MAY_21?: number | null
+    MAY_65?: number | null
+    INTEG?: number | null
+    EDAD_PROM?: number | null
+    MAIL?: string | null
+  }
+
+  export type maestro2UpdateManyMutationInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_COBR?: NullableStringFieldUpdateOperationsInput | string | null
+    DOM_LAB?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
+    PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PROD_DEB?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    FEC_REAFIL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NUM_REAFIL?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMBIO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TIPO_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGA_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    TIPO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    CANT_TRASP?: NullableIntFieldUpdateOperationsInput | number | null
+    PGO_TRASP?: NullableIntFieldUpdateOperationsInput | number | null
+    MAY_21?: NullableIntFieldUpdateOperationsInput | number | null
+    MAY_65?: NullableIntFieldUpdateOperationsInput | number | null
+    INTEG?: NullableIntFieldUpdateOperationsInput | number | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type maestro2UncheckedUpdateManyInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    NACIMIENTO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    DOMI_COBR?: NullableStringFieldUpdateOperationsInput | string | null
+    DOM_LAB?: NullableStringFieldUpdateOperationsInput | string | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ALT_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SEG?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ENC_SEG?: NullableIntFieldUpdateOperationsInput | number | null
+    VIG_AYUDA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    SEXO?: NullableStringFieldUpdateOperationsInput | string | null
+    ADHERENTES?: NullableIntFieldUpdateOperationsInput | number | null
+    PRECIO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUO_VIEJA?: NullableFloatFieldUpdateOperationsInput | number | null
+    OPERADOR?: NullableIntFieldUpdateOperationsInput | number | null
+    ACTUALIZA?: NullableStringFieldUpdateOperationsInput | string | null
+    OBRA_SOC?: NullableIntFieldUpdateOperationsInput | number | null
+    PRODUCTOR?: NullableIntFieldUpdateOperationsInput | number | null
+    PROD_DEB?: NullableIntFieldUpdateOperationsInput | number | null
+    PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    SUB_PLAN?: NullableStringFieldUpdateOperationsInput | string | null
+    FEC_PLAN?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    MOD_1?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_1?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_2?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_2?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_3?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_3?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_4?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_4?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_5?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TSEG?: NullableStringFieldUpdateOperationsInput | string | null
+    PRO_5?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_6?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_6?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_7?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_7?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_8?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_8?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_9?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_9?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_10?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_10?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_11?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_11?: NullableIntFieldUpdateOperationsInput | number | null
+    MOD_12?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    PRO_12?: NullableIntFieldUpdateOperationsInput | number | null
+    TOT_MOD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TRASPASO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    FEC_REAFIL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NUM_REAFIL?: NullableIntFieldUpdateOperationsInput | number | null
+    SEGURO?: NullableIntFieldUpdateOperationsInput | number | null
+    EMPRESA?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    COD_POST?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    VIG_OPT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DECL_JUR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SUB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_CONSU?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIG_SMEDI?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ANTICIPO?: NullableFloatFieldUpdateOperationsInput | number | null
+    CUOTAS?: NullableIntFieldUpdateOperationsInput | number | null
+    CAMBIO?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    TIPO_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGA_COMI?: NullableIntFieldUpdateOperationsInput | number | null
+    TIPO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    PAGO_SEGU?: NullableIntFieldUpdateOperationsInput | number | null
+    CANT_TRASP?: NullableIntFieldUpdateOperationsInput | number | null
+    PGO_TRASP?: NullableIntFieldUpdateOperationsInput | number | null
+    MAY_21?: NullableIntFieldUpdateOperationsInput | number | null
+    MAY_65?: NullableIntFieldUpdateOperationsInput | number | null
+    INTEG?: NullableIntFieldUpdateOperationsInput | number | null
+    EDAD_PROM?: NullableFloatFieldUpdateOperationsInput | number | null
+    MAIL?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type IntFilter = {
     equals?: number
     in?: number[]
@@ -81728,6 +87573,11 @@ export namespace Prisma {
     local_id?: SortOrder
   }
 
+  export type maestroIdCONTRATOCompoundUniqueInput = {
+    id: number
+    CONTRATO: number
+  }
+
   export type maestroCountOrderByAggregateInput = {
     SUCURSAL?: SortOrder
     CONTRATO?: SortOrder
@@ -81815,6 +87665,7 @@ export namespace Prisma {
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
     MAIL?: SortOrder
+    id?: SortOrder
   }
 
   export type maestroAvgOrderByAggregateInput = {
@@ -81860,6 +87711,7 @@ export namespace Prisma {
     MAY_65?: SortOrder
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
+    id?: SortOrder
   }
 
   export type maestroMaxOrderByAggregateInput = {
@@ -81949,6 +87801,7 @@ export namespace Prisma {
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
     MAIL?: SortOrder
+    id?: SortOrder
   }
 
   export type maestroMinOrderByAggregateInput = {
@@ -82038,6 +87891,7 @@ export namespace Prisma {
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
     MAIL?: SortOrder
+    id?: SortOrder
   }
 
   export type maestroSumOrderByAggregateInput = {
@@ -82083,6 +87937,7 @@ export namespace Prisma {
     MAY_65?: SortOrder
     INTEG?: SortOrder
     EDAD_PROM?: SortOrder
+    id?: SortOrder
   }
 
   export type maestro22CountOrderByAggregateInput = {
@@ -84199,6 +90054,7 @@ export namespace Prisma {
     capinoaut?: SortOrder
     ptm_inicio?: SortOrder
     ptm_fin?: SortOrder
+    ptm_fechaingreso?: SortOrder
   }
 
   export type prestamosAvgOrderByAggregateInput = {
@@ -84232,6 +90088,7 @@ export namespace Prisma {
     capinoaut?: SortOrder
     ptm_inicio?: SortOrder
     ptm_fin?: SortOrder
+    ptm_fechaingreso?: SortOrder
   }
 
   export type prestamosMinOrderByAggregateInput = {
@@ -84253,6 +90110,7 @@ export namespace Prisma {
     capinoaut?: SortOrder
     ptm_inicio?: SortOrder
     ptm_fin?: SortOrder
+    ptm_fechaingreso?: SortOrder
   }
 
   export type prestamosSumOrderByAggregateInput = {
@@ -85497,6 +91355,509 @@ export namespace Prisma {
     CUOTAS_REF?: SortOrder
     IMPO_REF?: SortOrder
     id?: SortOrder
+  }
+
+  export type SO_01CountOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    APE_NOM?: SortOrder
+    ALTA?: SortOrder
+    GRUPO?: SortOrder
+    ADHS?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EMPRESA?: SortOrder
+    SUCURSAL?: SortOrder
+    EDAD_PROM?: SortOrder
+    PERMANEN?: SortOrder
+    DEUDA?: SortOrder
+  }
+
+  export type SO_01AvgOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    GRUPO?: SortOrder
+    ADHS?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EDAD_PROM?: SortOrder
+    PERMANEN?: SortOrder
+    DEUDA?: SortOrder
+  }
+
+  export type SO_01MaxOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    APE_NOM?: SortOrder
+    ALTA?: SortOrder
+    GRUPO?: SortOrder
+    ADHS?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EMPRESA?: SortOrder
+    SUCURSAL?: SortOrder
+    EDAD_PROM?: SortOrder
+    PERMANEN?: SortOrder
+    DEUDA?: SortOrder
+  }
+
+  export type SO_01MinOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    APE_NOM?: SortOrder
+    ALTA?: SortOrder
+    GRUPO?: SortOrder
+    ADHS?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EMPRESA?: SortOrder
+    SUCURSAL?: SortOrder
+    EDAD_PROM?: SortOrder
+    PERMANEN?: SortOrder
+    DEUDA?: SortOrder
+  }
+
+  export type SO_01SumOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    GRUPO?: SortOrder
+    ADHS?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EDAD_PROM?: SortOrder
+    PERMANEN?: SortOrder
+    DEUDA?: SortOrder
+  }
+
+  export type SO_oldCountOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    APE_NOM?: SortOrder
+    ALTA?: SortOrder
+    GRUPO?: SortOrder
+    ADHS?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EMPRESA?: SortOrder
+    SUCURSAL?: SortOrder
+    EDAD_PROM?: SortOrder
+    PERMANEN?: SortOrder
+    DEUDA?: SortOrder
+  }
+
+  export type SO_oldAvgOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    GRUPO?: SortOrder
+    ADHS?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EDAD_PROM?: SortOrder
+    PERMANEN?: SortOrder
+    DEUDA?: SortOrder
+  }
+
+  export type SO_oldMaxOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    APE_NOM?: SortOrder
+    ALTA?: SortOrder
+    GRUPO?: SortOrder
+    ADHS?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EMPRESA?: SortOrder
+    SUCURSAL?: SortOrder
+    EDAD_PROM?: SortOrder
+    PERMANEN?: SortOrder
+    DEUDA?: SortOrder
+  }
+
+  export type SO_oldMinOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    APE_NOM?: SortOrder
+    ALTA?: SortOrder
+    GRUPO?: SortOrder
+    ADHS?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EMPRESA?: SortOrder
+    SUCURSAL?: SortOrder
+    EDAD_PROM?: SortOrder
+    PERMANEN?: SortOrder
+    DEUDA?: SortOrder
+  }
+
+  export type SO_oldSumOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    GRUPO?: SortOrder
+    ADHS?: SortOrder
+    ZONA?: SortOrder
+    CUOTA?: SortOrder
+    EDAD_PROM?: SortOrder
+    PERMANEN?: SortOrder
+    DEUDA?: SortOrder
+  }
+
+  export type maestro2CountOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    NACIMIENTO?: SortOrder
+    CALLE?: SortOrder
+    LOCALIDAD?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    DOMI_COBR?: SortOrder
+    DOM_LAB?: SortOrder
+    ZONA?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    ALT_SEG?: SortOrder
+    VIG_SEG?: SortOrder
+    ENC_SEG?: SortOrder
+    VIG_AYUDA?: SortOrder
+    GRUPO?: SortOrder
+    SEXO?: SortOrder
+    ADHERENTES?: SortOrder
+    PRECIO?: SortOrder
+    CUO_VIEJA?: SortOrder
+    OPERADOR?: SortOrder
+    ACTUALIZA?: SortOrder
+    OBRA_SOC?: SortOrder
+    PRODUCTOR?: SortOrder
+    PROD_DEB?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    FEC_PLAN?: SortOrder
+    MOD_1?: SortOrder
+    PRO_1?: SortOrder
+    MOD_2?: SortOrder
+    PRO_2?: SortOrder
+    MOD_3?: SortOrder
+    PRO_3?: SortOrder
+    MOD_4?: SortOrder
+    PRO_4?: SortOrder
+    MOD_5?: SortOrder
+    TSEG?: SortOrder
+    PRO_5?: SortOrder
+    MOD_6?: SortOrder
+    PRO_6?: SortOrder
+    MOD_7?: SortOrder
+    PRO_7?: SortOrder
+    MOD_8?: SortOrder
+    PRO_8?: SortOrder
+    MOD_9?: SortOrder
+    PRO_9?: SortOrder
+    MOD_10?: SortOrder
+    PRO_10?: SortOrder
+    MOD_11?: SortOrder
+    PRO_11?: SortOrder
+    MOD_12?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    TRASPASO?: SortOrder
+    FEC_REAFIL?: SortOrder
+    NUM_REAFIL?: SortOrder
+    SEGURO?: SortOrder
+    EMPRESA?: SortOrder
+    EDAD?: SortOrder
+    COD_POST?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    VIG_OPT?: SortOrder
+    DECL_JUR?: SortOrder
+    VIG_SUB?: SortOrder
+    VIG_CONSU?: SortOrder
+    VIG_SMEDI?: SortOrder
+    ANTICIPO?: SortOrder
+    CUOTAS?: SortOrder
+    CAMBIO?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    CANT_TRASP?: SortOrder
+    PGO_TRASP?: SortOrder
+    MAY_21?: SortOrder
+    MAY_65?: SortOrder
+    INTEG?: SortOrder
+    EDAD_PROM?: SortOrder
+    MAIL?: SortOrder
+  }
+
+  export type maestro2AvgOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    NRO_CALLE?: SortOrder
+    ZONA?: SortOrder
+    ENC_SEG?: SortOrder
+    GRUPO?: SortOrder
+    ADHERENTES?: SortOrder
+    PRECIO?: SortOrder
+    CUO_VIEJA?: SortOrder
+    OPERADOR?: SortOrder
+    OBRA_SOC?: SortOrder
+    PRODUCTOR?: SortOrder
+    PROD_DEB?: SortOrder
+    PRO_1?: SortOrder
+    PRO_2?: SortOrder
+    PRO_3?: SortOrder
+    PRO_4?: SortOrder
+    PRO_5?: SortOrder
+    PRO_6?: SortOrder
+    PRO_7?: SortOrder
+    PRO_8?: SortOrder
+    PRO_9?: SortOrder
+    PRO_10?: SortOrder
+    PRO_11?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    NUM_REAFIL?: SortOrder
+    SEGURO?: SortOrder
+    EDAD?: SortOrder
+    COD_POST?: SortOrder
+    ANTICIPO?: SortOrder
+    CUOTAS?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    CANT_TRASP?: SortOrder
+    PGO_TRASP?: SortOrder
+    MAY_21?: SortOrder
+    MAY_65?: SortOrder
+    INTEG?: SortOrder
+    EDAD_PROM?: SortOrder
+  }
+
+  export type maestro2MaxOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    NACIMIENTO?: SortOrder
+    CALLE?: SortOrder
+    LOCALIDAD?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    DOMI_COBR?: SortOrder
+    DOM_LAB?: SortOrder
+    ZONA?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    ALT_SEG?: SortOrder
+    VIG_SEG?: SortOrder
+    ENC_SEG?: SortOrder
+    VIG_AYUDA?: SortOrder
+    GRUPO?: SortOrder
+    SEXO?: SortOrder
+    ADHERENTES?: SortOrder
+    PRECIO?: SortOrder
+    CUO_VIEJA?: SortOrder
+    OPERADOR?: SortOrder
+    ACTUALIZA?: SortOrder
+    OBRA_SOC?: SortOrder
+    PRODUCTOR?: SortOrder
+    PROD_DEB?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    FEC_PLAN?: SortOrder
+    MOD_1?: SortOrder
+    PRO_1?: SortOrder
+    MOD_2?: SortOrder
+    PRO_2?: SortOrder
+    MOD_3?: SortOrder
+    PRO_3?: SortOrder
+    MOD_4?: SortOrder
+    PRO_4?: SortOrder
+    MOD_5?: SortOrder
+    TSEG?: SortOrder
+    PRO_5?: SortOrder
+    MOD_6?: SortOrder
+    PRO_6?: SortOrder
+    MOD_7?: SortOrder
+    PRO_7?: SortOrder
+    MOD_8?: SortOrder
+    PRO_8?: SortOrder
+    MOD_9?: SortOrder
+    PRO_9?: SortOrder
+    MOD_10?: SortOrder
+    PRO_10?: SortOrder
+    MOD_11?: SortOrder
+    PRO_11?: SortOrder
+    MOD_12?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    TRASPASO?: SortOrder
+    FEC_REAFIL?: SortOrder
+    NUM_REAFIL?: SortOrder
+    SEGURO?: SortOrder
+    EMPRESA?: SortOrder
+    EDAD?: SortOrder
+    COD_POST?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    VIG_OPT?: SortOrder
+    DECL_JUR?: SortOrder
+    VIG_SUB?: SortOrder
+    VIG_CONSU?: SortOrder
+    VIG_SMEDI?: SortOrder
+    ANTICIPO?: SortOrder
+    CUOTAS?: SortOrder
+    CAMBIO?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    CANT_TRASP?: SortOrder
+    PGO_TRASP?: SortOrder
+    MAY_21?: SortOrder
+    MAY_65?: SortOrder
+    INTEG?: SortOrder
+    EDAD_PROM?: SortOrder
+    MAIL?: SortOrder
+  }
+
+  export type maestro2MinOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    NACIMIENTO?: SortOrder
+    CALLE?: SortOrder
+    LOCALIDAD?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    DOMI_COBR?: SortOrder
+    DOM_LAB?: SortOrder
+    ZONA?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    ALT_SEG?: SortOrder
+    VIG_SEG?: SortOrder
+    ENC_SEG?: SortOrder
+    VIG_AYUDA?: SortOrder
+    GRUPO?: SortOrder
+    SEXO?: SortOrder
+    ADHERENTES?: SortOrder
+    PRECIO?: SortOrder
+    CUO_VIEJA?: SortOrder
+    OPERADOR?: SortOrder
+    ACTUALIZA?: SortOrder
+    OBRA_SOC?: SortOrder
+    PRODUCTOR?: SortOrder
+    PROD_DEB?: SortOrder
+    PLAN?: SortOrder
+    SUB_PLAN?: SortOrder
+    FEC_PLAN?: SortOrder
+    MOD_1?: SortOrder
+    PRO_1?: SortOrder
+    MOD_2?: SortOrder
+    PRO_2?: SortOrder
+    MOD_3?: SortOrder
+    PRO_3?: SortOrder
+    MOD_4?: SortOrder
+    PRO_4?: SortOrder
+    MOD_5?: SortOrder
+    TSEG?: SortOrder
+    PRO_5?: SortOrder
+    MOD_6?: SortOrder
+    PRO_6?: SortOrder
+    MOD_7?: SortOrder
+    PRO_7?: SortOrder
+    MOD_8?: SortOrder
+    PRO_8?: SortOrder
+    MOD_9?: SortOrder
+    PRO_9?: SortOrder
+    MOD_10?: SortOrder
+    PRO_10?: SortOrder
+    MOD_11?: SortOrder
+    PRO_11?: SortOrder
+    MOD_12?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    TRASPASO?: SortOrder
+    FEC_REAFIL?: SortOrder
+    NUM_REAFIL?: SortOrder
+    SEGURO?: SortOrder
+    EMPRESA?: SortOrder
+    EDAD?: SortOrder
+    COD_POST?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    VIG_OPT?: SortOrder
+    DECL_JUR?: SortOrder
+    VIG_SUB?: SortOrder
+    VIG_CONSU?: SortOrder
+    VIG_SMEDI?: SortOrder
+    ANTICIPO?: SortOrder
+    CUOTAS?: SortOrder
+    CAMBIO?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    CANT_TRASP?: SortOrder
+    PGO_TRASP?: SortOrder
+    MAY_21?: SortOrder
+    MAY_65?: SortOrder
+    INTEG?: SortOrder
+    EDAD_PROM?: SortOrder
+    MAIL?: SortOrder
+  }
+
+  export type maestro2SumOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    NRO_CALLE?: SortOrder
+    ZONA?: SortOrder
+    ENC_SEG?: SortOrder
+    GRUPO?: SortOrder
+    ADHERENTES?: SortOrder
+    PRECIO?: SortOrder
+    CUO_VIEJA?: SortOrder
+    OPERADOR?: SortOrder
+    OBRA_SOC?: SortOrder
+    PRODUCTOR?: SortOrder
+    PROD_DEB?: SortOrder
+    PRO_1?: SortOrder
+    PRO_2?: SortOrder
+    PRO_3?: SortOrder
+    PRO_4?: SortOrder
+    PRO_5?: SortOrder
+    PRO_6?: SortOrder
+    PRO_7?: SortOrder
+    PRO_8?: SortOrder
+    PRO_9?: SortOrder
+    PRO_10?: SortOrder
+    PRO_11?: SortOrder
+    PRO_12?: SortOrder
+    TOT_MOD?: SortOrder
+    NUM_REAFIL?: SortOrder
+    SEGURO?: SortOrder
+    EDAD?: SortOrder
+    COD_POST?: SortOrder
+    ANTICIPO?: SortOrder
+    CUOTAS?: SortOrder
+    TIPO_COMI?: SortOrder
+    PAGA_COMI?: SortOrder
+    TIPO_SEGU?: SortOrder
+    PAGO_SEGU?: SortOrder
+    CANT_TRASP?: SortOrder
+    PGO_TRASP?: SortOrder
+    MAY_21?: SortOrder
+    MAY_65?: SortOrder
+    INTEG?: SortOrder
+    EDAD_PROM?: SortOrder
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {

@@ -32,8 +32,11 @@ export const FormNuevoPrestamo = ({
   capADev,
   couPrest,
   legajoRef,
-  antiRef,
   sueldoNetoRef,
+  ingresoRef,
+  ant,
+  handleAnti,
+  alerJubi,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -282,6 +285,21 @@ export const FormNuevoPrestamo = ({
                     Confeccionar Subsidio
                   </Typography>
 
+                  {alerJubi ? (
+                    <Alert
+                      color="orange"
+                      className="max-w-screen mt-5 mb-5"
+                      icon={<InformationCircleIcon className="mt-px h-6 w-6" />}
+                    >
+                      <Typography variant="h5" color="white">
+                        ATENCION
+                      </Typography>
+                      <Typography color="white" className="mt-2 font-normal ">
+                        {alerJubi}
+                      </Typography>
+                    </Alert>
+                  ) : null}
+
                   <div className=" p-4 grid gap-6 mb-6 md:grid-cols-5">
                     <div className="mt-2">
                       <Input
@@ -294,9 +312,20 @@ export const FormNuevoPrestamo = ({
                     <div className="mt-2">
                       <Input
                         size="md"
+                        label="Fecha Ingreso"
+                        type="date"
+                        inputRef={ingresoRef}
+                        onChange={handleAnti}
+                      />
+                    </div>
+
+                    <div className="mt-2">
+                      <Input
+                        size="md"
                         label="Antigüerdad"
                         type="text"
-                        inputRef={antiRef}
+                        value={ant}
+                        readOnly
                       />
                     </div>
                     <div className="mt-2">
@@ -323,11 +352,11 @@ export const FormNuevoPrestamo = ({
                         <Option value={"NO"}>NO</Option>
                       </Select>
                     </div>
-                    <div className="mt-2">
-                      <Button onClick={registrarPrestamo}>
-                        Registrar Subsidio
-                      </Button>
-                    </div>
+                  </div>
+                  <div className=" flex justify-end mt-2">
+                    <Button onClick={registrarPrestamo}>
+                      Registrar Subsidio
+                    </Button>
                   </div>
 
                   {errores ? (

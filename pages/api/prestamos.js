@@ -48,11 +48,13 @@ export default async function handler(req, res) {
       res.status(200).json(planes);
     }
     if (req.query.f && req.query.f === "traer poli") {
-      const poli = await Werchow.maestro.findUnique({
-        where: {
-          CONTRATO: parseInt(req.query.hc),
-        },
-      });
+      const poli = await Werchow.$queryRaw`
+            SELECT *            
+            FROM maestro   
+            WHERE CONTRATO = ${parseInt(req.query.hc)}
+         
+        
+        `;
       res.status(200).json(poli);
     }
     if (req.query.f && req.query.f === "traer empleados") {
@@ -201,6 +203,9 @@ export default async function handler(req, res) {
           cod_ptm_leg: req.body.codptmleg,
           ptm_afi: req.body.ptm_afi,
           capinoaut: req.body.capinoaut,
+          ptm_fechaingreso: new Date(req.body.ingreso),
+          ptm_inicio: req.body.inicio,
+          ptm_fin: req.body.fin,
         },
       });
 
