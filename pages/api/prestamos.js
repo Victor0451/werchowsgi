@@ -115,13 +115,30 @@ export default async function handler(req, res) {
       res.status(200).json(prest);
     }
     if (req.query.f && req.query.f === "prest socio") {
-      const prest = await Werchow.maestro.findUnique({
-        where: {
-          CONTRATO: parseInt(req.query.hc),
-        },
-      });
+      const ficha = await Werchow.$queryRaw`
+            
+            SELECT  *                    
+            FROM maestro
+            WHERE CONTRATO  = ${parseInt(req.query.hc)}
+            
+        
+        `;
 
-      res.status(200).json(prest);
+      res
+        .status(200)
+        .json(
+          JSON.stringify(ficha, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+
+      // const prest = await Werchow.maestro.find({
+      //   where: {
+      //     CONTRATO: parseInt(req.query.hc),
+      //   },
+      // });
+
+      // res.status(200).json(prest);
     }
     if (req.query.f && req.query.f === "traer archivos") {
       const prest = await prisma.legajo_virtual_prestamos.findMany({

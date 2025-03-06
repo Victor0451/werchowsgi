@@ -51,7 +51,8 @@ export default function legajo() {
               })
               .then((res1) => {
                 if (res1.data) {
-                  guardarSocio(res1.data);
+                  let dat = JSON.parse(res1.data);
+                  guardarSocio(dat[0]);
                 }
               })
               .catch((error) => {
