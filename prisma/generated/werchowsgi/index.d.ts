@@ -965,43 +965,6 @@ export type prestamos_empleados_cobroPayload<ExtArgs extends $Extensions.Args = 
  * 
  */
 export type prestamos_empleados_cobro = runtime.Types.DefaultSelection<prestamos_empleados_cobroPayload>
-export type produccionPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  objects: {}
-  scalars: $Extensions.GetResult<{
-    prod_ide: number
-    prod_fechacarga: Date | null
-    prod_fechaafi: Date | null
-    prod_asesor: number | null
-    prod_empre: string | null
-    prod_mes: string | null
-    prod_anio: number | null
-    prod_apeafi: string | null
-    prod_nomafi: string | null
-    prod_dniafi: number | null
-    prod_local: number | null
-    prod_recibo: number | null
-    prod_monto: number | null
-    prod_plan: string | null
-    prod_pago: string | null
-    prod_cta_tar: bigint | null
-    prod_obs: string | null
-    prod_semana: number | null
-    prod_estado: string | null
-    prod_cierre: number | null
-    prod_afiliado: number | null
-    prod_rendido: string | null
-    prod_recibosis: number | null
-    prod_fechren: Date | null
-    prod_tel: string | null
-  }, ExtArgs["result"]["produccion"]>
-  composites: {}
-}
-
-/**
- * Model produccion
- * 
- */
-export type produccion = runtime.Types.DefaultSelection<produccionPayload>
 export type registro_constancia_afiliacionPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   objects: {}
   scalars: $Extensions.GetResult<{
@@ -1489,6 +1452,26 @@ export type historial_lv_prestamosPayload<ExtArgs extends $Extensions.Args = $Ex
  * 
  */
 export type historial_lv_prestamos = runtime.Types.DefaultSelection<historial_lv_prestamosPayload>
+export type beneficiosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    idbeneficio: number
+    contrato: number | null
+    dni: number | null
+    socio: string | null
+    beneficio: string | null
+    fecha: Date | null
+    observacion: string | null
+    operador: string | null
+  }, ExtArgs["result"]["beneficios"]>
+  composites: {}
+}
+
+/**
+ * Model beneficios
+ * 
+ */
+export type beneficios = runtime.Types.DefaultSelection<beneficiosPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2066,16 +2049,6 @@ export class PrismaClient<
   get prestamos_empleados_cobro(): Prisma.prestamos_empleados_cobroDelegate<GlobalReject, ExtArgs>;
 
   /**
-   * `prisma.produccion`: Exposes CRUD operations for the **produccion** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Produccions
-    * const produccions = await prisma.produccion.findMany()
-    * ```
-    */
-  get produccion(): Prisma.produccionDelegate<GlobalReject, ExtArgs>;
-
-  /**
    * `prisma.registro_constancia_afiliacion`: Exposes CRUD operations for the **registro_constancia_afiliacion** model.
     * Example usage:
     * ```ts
@@ -2324,6 +2297,16 @@ export class PrismaClient<
     * ```
     */
   get historial_lv_prestamos(): Prisma.historial_lv_prestamosDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.beneficios`: Exposes CRUD operations for the **beneficios** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Beneficios
+    * const beneficios = await prisma.beneficios.findMany()
+    * ```
+    */
+  get beneficios(): Prisma.beneficiosDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -2852,7 +2835,6 @@ export namespace Prisma {
     porcentaje_liq: 'porcentaje_liq',
     prestamos_empleados: 'prestamos_empleados',
     prestamos_empleados_cobro: 'prestamos_empleados_cobro',
-    produccion: 'produccion',
     registro_constancia_afiliacion: 'registro_constancia_afiliacion',
     rehabilitaciones: 'rehabilitaciones',
     rol_personal: 'rol_personal',
@@ -2877,7 +2859,8 @@ export namespace Prisma {
     recibo_liquidacion: 'recibo_liquidacion',
     recibo_movimientos: 'recibo_movimientos',
     puestos: 'puestos',
-    historial_lv_prestamos: 'historial_lv_prestamos'
+    historial_lv_prestamos: 'historial_lv_prestamos',
+    beneficios: 'beneficios'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2894,7 +2877,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'produccion' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'reintegros' | 'conceptos_liquidacion' | 'legajo_operador' | 'recibo_liquidacion' | 'recibo_movimientos' | 'puestos' | 'historial_lv_prestamos'
+      modelProps: 'alta_novell' | 'caja_sucursales' | 'campanacasos' | 'campanas' | 'campanatemporal' | 'capital_prestamo' | 'capital_prestamo_empleados' | 'categoria_obsequio' | 'contratos' | 'convenio_deuda' | 'datos' | 'datos_atencion' | 'detalle_orden_pago' | 'empresas' | 'eventos' | 'fabricante_ataud' | 'gestioncaso' | 'historial_acciones' | 'historial_aprobacion_prestamos' | 'historial_liquidaciones' | 'intereses_tarjetas' | 'legajo_virtual' | 'legajo_virtual_cajas' | 'legajo_virtual_ordenes' | 'legajo_virtual_personal' | 'legajo_virtual_prestamos' | 'locador' | 'mails' | 'mails_adjuntos' | 'mbanconv' | 'movimiento_caja_sucursales' | 'noticia' | 'novedades' | 'obsequios' | 'openia_keys' | 'operador' | 'ordenes_pago' | 'personal' | 'plan_cuentas' | 'plan_cuentas_x' | 'plan_detalle' | 'plan_precio' | 'porcentaje_liq' | 'prestamos_empleados' | 'prestamos_empleados_cobro' | 'registro_constancia_afiliacion' | 'rehabilitaciones' | 'rol_personal' | 'sucursal' | 'sueldos' | 'tab_ef' | 'tablero_efectividad' | 'tareas_sucursales' | 'tipo_contratos' | 'tipo_facturas' | 'turno_bajas' | 'vacaciones' | 'motivos_atencion' | 'prestamos_plan_cuotas' | 'prestamos_tasas' | 'certificado_estudiantes' | 'cartera' | 'gasto_luto' | 'reintegros' | 'conceptos_liquidacion' | 'legajo_operador' | 'recibo_liquidacion' | 'recibo_movimientos' | 'puestos' | 'historial_lv_prestamos' | 'beneficios'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -6453,85 +6436,6 @@ export namespace Prisma {
           }
         }
       }
-      produccion: {
-        operations: {
-          findUnique: {
-            args: Prisma.produccionFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<produccionPayload> | null
-            payload: produccionPayload<ExtArgs>
-          }
-          findUniqueOrThrow: {
-            args: Prisma.produccionFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<produccionPayload>
-            payload: produccionPayload<ExtArgs>
-          }
-          findFirst: {
-            args: Prisma.produccionFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<produccionPayload> | null
-            payload: produccionPayload<ExtArgs>
-          }
-          findFirstOrThrow: {
-            args: Prisma.produccionFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<produccionPayload>
-            payload: produccionPayload<ExtArgs>
-          }
-          findMany: {
-            args: Prisma.produccionFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<produccionPayload>[]
-            payload: produccionPayload<ExtArgs>
-          }
-          create: {
-            args: Prisma.produccionCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<produccionPayload>
-            payload: produccionPayload<ExtArgs>
-          }
-          createMany: {
-            args: Prisma.produccionCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: produccionPayload<ExtArgs>
-          }
-          delete: {
-            args: Prisma.produccionDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<produccionPayload>
-            payload: produccionPayload<ExtArgs>
-          }
-          update: {
-            args: Prisma.produccionUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<produccionPayload>
-            payload: produccionPayload<ExtArgs>
-          }
-          deleteMany: {
-            args: Prisma.produccionDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: produccionPayload<ExtArgs>
-          }
-          updateMany: {
-            args: Prisma.produccionUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-            payload: produccionPayload<ExtArgs>
-          }
-          upsert: {
-            args: Prisma.produccionUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<produccionPayload>
-            payload: produccionPayload<ExtArgs>
-          }
-          aggregate: {
-            args: Prisma.ProduccionAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateProduccion>
-            payload: produccionPayload<ExtArgs>
-          }
-          groupBy: {
-            args: Prisma.produccionGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<ProduccionGroupByOutputType>[]
-            payload: produccionPayload<ExtArgs>
-          }
-          count: {
-            args: Prisma.produccionCountArgs<ExtArgs>,
-            result: $Utils.Optional<ProduccionCountAggregateOutputType> | number
-            payload: produccionPayload<ExtArgs>
-          }
-        }
-      }
       registro_constancia_afiliacion: {
         operations: {
           findUnique: {
@@ -8504,6 +8408,85 @@ export namespace Prisma {
             args: Prisma.historial_lv_prestamosCountArgs<ExtArgs>,
             result: $Utils.Optional<Historial_lv_prestamosCountAggregateOutputType> | number
             payload: historial_lv_prestamosPayload<ExtArgs>
+          }
+        }
+      }
+      beneficios: {
+        operations: {
+          findUnique: {
+            args: Prisma.beneficiosFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<beneficiosPayload> | null
+            payload: beneficiosPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.beneficiosFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<beneficiosPayload>
+            payload: beneficiosPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.beneficiosFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<beneficiosPayload> | null
+            payload: beneficiosPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.beneficiosFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<beneficiosPayload>
+            payload: beneficiosPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.beneficiosFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<beneficiosPayload>[]
+            payload: beneficiosPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.beneficiosCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<beneficiosPayload>
+            payload: beneficiosPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.beneficiosCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: beneficiosPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.beneficiosDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<beneficiosPayload>
+            payload: beneficiosPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.beneficiosUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<beneficiosPayload>
+            payload: beneficiosPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.beneficiosDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: beneficiosPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.beneficiosUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: beneficiosPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.beneficiosUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<beneficiosPayload>
+            payload: beneficiosPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.BeneficiosAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateBeneficios>
+            payload: beneficiosPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.beneficiosGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<BeneficiosGroupByOutputType>[]
+            payload: beneficiosPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.beneficiosCountArgs<ExtArgs>,
+            result: $Utils.Optional<BeneficiosCountAggregateOutputType> | number
+            payload: beneficiosPayload<ExtArgs>
           }
         }
       }
@@ -51848,1142 +51831,6 @@ export namespace Prisma {
 
 
   /**
-   * Model produccion
-   */
-
-
-  export type AggregateProduccion = {
-    _count: ProduccionCountAggregateOutputType | null
-    _avg: ProduccionAvgAggregateOutputType | null
-    _sum: ProduccionSumAggregateOutputType | null
-    _min: ProduccionMinAggregateOutputType | null
-    _max: ProduccionMaxAggregateOutputType | null
-  }
-
-  export type ProduccionAvgAggregateOutputType = {
-    prod_ide: number | null
-    prod_asesor: number | null
-    prod_anio: number | null
-    prod_dniafi: number | null
-    prod_local: number | null
-    prod_recibo: number | null
-    prod_monto: number | null
-    prod_cta_tar: number | null
-    prod_semana: number | null
-    prod_cierre: number | null
-    prod_afiliado: number | null
-    prod_recibosis: number | null
-  }
-
-  export type ProduccionSumAggregateOutputType = {
-    prod_ide: number | null
-    prod_asesor: number | null
-    prod_anio: number | null
-    prod_dniafi: number | null
-    prod_local: number | null
-    prod_recibo: number | null
-    prod_monto: number | null
-    prod_cta_tar: bigint | null
-    prod_semana: number | null
-    prod_cierre: number | null
-    prod_afiliado: number | null
-    prod_recibosis: number | null
-  }
-
-  export type ProduccionMinAggregateOutputType = {
-    prod_ide: number | null
-    prod_fechacarga: Date | null
-    prod_fechaafi: Date | null
-    prod_asesor: number | null
-    prod_empre: string | null
-    prod_mes: string | null
-    prod_anio: number | null
-    prod_apeafi: string | null
-    prod_nomafi: string | null
-    prod_dniafi: number | null
-    prod_local: number | null
-    prod_recibo: number | null
-    prod_monto: number | null
-    prod_plan: string | null
-    prod_pago: string | null
-    prod_cta_tar: bigint | null
-    prod_obs: string | null
-    prod_semana: number | null
-    prod_estado: string | null
-    prod_cierre: number | null
-    prod_afiliado: number | null
-    prod_rendido: string | null
-    prod_recibosis: number | null
-    prod_fechren: Date | null
-    prod_tel: string | null
-  }
-
-  export type ProduccionMaxAggregateOutputType = {
-    prod_ide: number | null
-    prod_fechacarga: Date | null
-    prod_fechaafi: Date | null
-    prod_asesor: number | null
-    prod_empre: string | null
-    prod_mes: string | null
-    prod_anio: number | null
-    prod_apeafi: string | null
-    prod_nomafi: string | null
-    prod_dniafi: number | null
-    prod_local: number | null
-    prod_recibo: number | null
-    prod_monto: number | null
-    prod_plan: string | null
-    prod_pago: string | null
-    prod_cta_tar: bigint | null
-    prod_obs: string | null
-    prod_semana: number | null
-    prod_estado: string | null
-    prod_cierre: number | null
-    prod_afiliado: number | null
-    prod_rendido: string | null
-    prod_recibosis: number | null
-    prod_fechren: Date | null
-    prod_tel: string | null
-  }
-
-  export type ProduccionCountAggregateOutputType = {
-    prod_ide: number
-    prod_fechacarga: number
-    prod_fechaafi: number
-    prod_asesor: number
-    prod_empre: number
-    prod_mes: number
-    prod_anio: number
-    prod_apeafi: number
-    prod_nomafi: number
-    prod_dniafi: number
-    prod_local: number
-    prod_recibo: number
-    prod_monto: number
-    prod_plan: number
-    prod_pago: number
-    prod_cta_tar: number
-    prod_obs: number
-    prod_semana: number
-    prod_estado: number
-    prod_cierre: number
-    prod_afiliado: number
-    prod_rendido: number
-    prod_recibosis: number
-    prod_fechren: number
-    prod_tel: number
-    _all: number
-  }
-
-
-  export type ProduccionAvgAggregateInputType = {
-    prod_ide?: true
-    prod_asesor?: true
-    prod_anio?: true
-    prod_dniafi?: true
-    prod_local?: true
-    prod_recibo?: true
-    prod_monto?: true
-    prod_cta_tar?: true
-    prod_semana?: true
-    prod_cierre?: true
-    prod_afiliado?: true
-    prod_recibosis?: true
-  }
-
-  export type ProduccionSumAggregateInputType = {
-    prod_ide?: true
-    prod_asesor?: true
-    prod_anio?: true
-    prod_dniafi?: true
-    prod_local?: true
-    prod_recibo?: true
-    prod_monto?: true
-    prod_cta_tar?: true
-    prod_semana?: true
-    prod_cierre?: true
-    prod_afiliado?: true
-    prod_recibosis?: true
-  }
-
-  export type ProduccionMinAggregateInputType = {
-    prod_ide?: true
-    prod_fechacarga?: true
-    prod_fechaafi?: true
-    prod_asesor?: true
-    prod_empre?: true
-    prod_mes?: true
-    prod_anio?: true
-    prod_apeafi?: true
-    prod_nomafi?: true
-    prod_dniafi?: true
-    prod_local?: true
-    prod_recibo?: true
-    prod_monto?: true
-    prod_plan?: true
-    prod_pago?: true
-    prod_cta_tar?: true
-    prod_obs?: true
-    prod_semana?: true
-    prod_estado?: true
-    prod_cierre?: true
-    prod_afiliado?: true
-    prod_rendido?: true
-    prod_recibosis?: true
-    prod_fechren?: true
-    prod_tel?: true
-  }
-
-  export type ProduccionMaxAggregateInputType = {
-    prod_ide?: true
-    prod_fechacarga?: true
-    prod_fechaafi?: true
-    prod_asesor?: true
-    prod_empre?: true
-    prod_mes?: true
-    prod_anio?: true
-    prod_apeafi?: true
-    prod_nomafi?: true
-    prod_dniafi?: true
-    prod_local?: true
-    prod_recibo?: true
-    prod_monto?: true
-    prod_plan?: true
-    prod_pago?: true
-    prod_cta_tar?: true
-    prod_obs?: true
-    prod_semana?: true
-    prod_estado?: true
-    prod_cierre?: true
-    prod_afiliado?: true
-    prod_rendido?: true
-    prod_recibosis?: true
-    prod_fechren?: true
-    prod_tel?: true
-  }
-
-  export type ProduccionCountAggregateInputType = {
-    prod_ide?: true
-    prod_fechacarga?: true
-    prod_fechaafi?: true
-    prod_asesor?: true
-    prod_empre?: true
-    prod_mes?: true
-    prod_anio?: true
-    prod_apeafi?: true
-    prod_nomafi?: true
-    prod_dniafi?: true
-    prod_local?: true
-    prod_recibo?: true
-    prod_monto?: true
-    prod_plan?: true
-    prod_pago?: true
-    prod_cta_tar?: true
-    prod_obs?: true
-    prod_semana?: true
-    prod_estado?: true
-    prod_cierre?: true
-    prod_afiliado?: true
-    prod_rendido?: true
-    prod_recibosis?: true
-    prod_fechren?: true
-    prod_tel?: true
-    _all?: true
-  }
-
-  export type ProduccionAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which produccion to aggregate.
-     */
-    where?: produccionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of produccions to fetch.
-     */
-    orderBy?: produccionOrderByWithRelationInput | produccionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: produccionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` produccions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` produccions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned produccions
-    **/
-    _count?: true | ProduccionCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: ProduccionAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ProduccionSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ProduccionMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ProduccionMaxAggregateInputType
-  }
-
-  export type GetProduccionAggregateType<T extends ProduccionAggregateArgs> = {
-        [P in keyof T & keyof AggregateProduccion]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateProduccion[P]>
-      : GetScalarType<T[P], AggregateProduccion[P]>
-  }
-
-
-
-
-  export type produccionGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: produccionWhereInput
-    orderBy?: produccionOrderByWithAggregationInput | produccionOrderByWithAggregationInput[]
-    by: ProduccionScalarFieldEnum[] | ProduccionScalarFieldEnum
-    having?: produccionScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ProduccionCountAggregateInputType | true
-    _avg?: ProduccionAvgAggregateInputType
-    _sum?: ProduccionSumAggregateInputType
-    _min?: ProduccionMinAggregateInputType
-    _max?: ProduccionMaxAggregateInputType
-  }
-
-
-  export type ProduccionGroupByOutputType = {
-    prod_ide: number
-    prod_fechacarga: Date | null
-    prod_fechaafi: Date | null
-    prod_asesor: number | null
-    prod_empre: string | null
-    prod_mes: string | null
-    prod_anio: number | null
-    prod_apeafi: string | null
-    prod_nomafi: string | null
-    prod_dniafi: number | null
-    prod_local: number | null
-    prod_recibo: number | null
-    prod_monto: number | null
-    prod_plan: string | null
-    prod_pago: string | null
-    prod_cta_tar: bigint | null
-    prod_obs: string | null
-    prod_semana: number | null
-    prod_estado: string | null
-    prod_cierre: number | null
-    prod_afiliado: number | null
-    prod_rendido: string | null
-    prod_recibosis: number | null
-    prod_fechren: Date | null
-    prod_tel: string | null
-    _count: ProduccionCountAggregateOutputType | null
-    _avg: ProduccionAvgAggregateOutputType | null
-    _sum: ProduccionSumAggregateOutputType | null
-    _min: ProduccionMinAggregateOutputType | null
-    _max: ProduccionMaxAggregateOutputType | null
-  }
-
-  type GetProduccionGroupByPayload<T extends produccionGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ProduccionGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ProduccionGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ProduccionGroupByOutputType[P]>
-            : GetScalarType<T[P], ProduccionGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type produccionSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    prod_ide?: boolean
-    prod_fechacarga?: boolean
-    prod_fechaafi?: boolean
-    prod_asesor?: boolean
-    prod_empre?: boolean
-    prod_mes?: boolean
-    prod_anio?: boolean
-    prod_apeafi?: boolean
-    prod_nomafi?: boolean
-    prod_dniafi?: boolean
-    prod_local?: boolean
-    prod_recibo?: boolean
-    prod_monto?: boolean
-    prod_plan?: boolean
-    prod_pago?: boolean
-    prod_cta_tar?: boolean
-    prod_obs?: boolean
-    prod_semana?: boolean
-    prod_estado?: boolean
-    prod_cierre?: boolean
-    prod_afiliado?: boolean
-    prod_rendido?: boolean
-    prod_recibosis?: boolean
-    prod_fechren?: boolean
-    prod_tel?: boolean
-  }, ExtArgs["result"]["produccion"]>
-
-  export type produccionSelectScalar = {
-    prod_ide?: boolean
-    prod_fechacarga?: boolean
-    prod_fechaafi?: boolean
-    prod_asesor?: boolean
-    prod_empre?: boolean
-    prod_mes?: boolean
-    prod_anio?: boolean
-    prod_apeafi?: boolean
-    prod_nomafi?: boolean
-    prod_dniafi?: boolean
-    prod_local?: boolean
-    prod_recibo?: boolean
-    prod_monto?: boolean
-    prod_plan?: boolean
-    prod_pago?: boolean
-    prod_cta_tar?: boolean
-    prod_obs?: boolean
-    prod_semana?: boolean
-    prod_estado?: boolean
-    prod_cierre?: boolean
-    prod_afiliado?: boolean
-    prod_rendido?: boolean
-    prod_recibosis?: boolean
-    prod_fechren?: boolean
-    prod_tel?: boolean
-  }
-
-
-  type produccionGetPayload<S extends boolean | null | undefined | produccionArgs> = $Types.GetResult<produccionPayload, S>
-
-  type produccionCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<produccionFindManyArgs, 'select' | 'include'> & {
-      select?: ProduccionCountAggregateInputType | true
-    }
-
-  export interface produccionDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['produccion'], meta: { name: 'produccion' } }
-    /**
-     * Find zero or one Produccion that matches the filter.
-     * @param {produccionFindUniqueArgs} args - Arguments to find a Produccion
-     * @example
-     * // Get one Produccion
-     * const produccion = await prisma.produccion.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends produccionFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, produccionFindUniqueArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'produccion'> extends True ? Prisma__produccionClient<$Types.GetResult<produccionPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__produccionClient<$Types.GetResult<produccionPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
-
-    /**
-     * Find one Produccion that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {produccionFindUniqueOrThrowArgs} args - Arguments to find a Produccion
-     * @example
-     * // Get one Produccion
-     * const produccion = await prisma.produccion.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends produccionFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, produccionFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__produccionClient<$Types.GetResult<produccionPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find the first Produccion that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {produccionFindFirstArgs} args - Arguments to find a Produccion
-     * @example
-     * // Get one Produccion
-     * const produccion = await prisma.produccion.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends produccionFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, produccionFindFirstArgs<ExtArgs>>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'produccion'> extends True ? Prisma__produccionClient<$Types.GetResult<produccionPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__produccionClient<$Types.GetResult<produccionPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
-
-    /**
-     * Find the first Produccion that matches the filter or
-     * throw `NotFoundError` if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {produccionFindFirstOrThrowArgs} args - Arguments to find a Produccion
-     * @example
-     * // Get one Produccion
-     * const produccion = await prisma.produccion.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends produccionFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, produccionFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__produccionClient<$Types.GetResult<produccionPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
-
-    /**
-     * Find zero or more Produccions that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {produccionFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Produccions
-     * const produccions = await prisma.produccion.findMany()
-     * 
-     * // Get first 10 Produccions
-     * const produccions = await prisma.produccion.findMany({ take: 10 })
-     * 
-     * // Only select the `prod_ide`
-     * const produccionWithProd_ideOnly = await prisma.produccion.findMany({ select: { prod_ide: true } })
-     * 
-    **/
-    findMany<T extends produccionFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, produccionFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<produccionPayload<ExtArgs>, T, 'findMany', never>>
-
-    /**
-     * Create a Produccion.
-     * @param {produccionCreateArgs} args - Arguments to create a Produccion.
-     * @example
-     * // Create one Produccion
-     * const Produccion = await prisma.produccion.create({
-     *   data: {
-     *     // ... data to create a Produccion
-     *   }
-     * })
-     * 
-    **/
-    create<T extends produccionCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, produccionCreateArgs<ExtArgs>>
-    ): Prisma__produccionClient<$Types.GetResult<produccionPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
-
-    /**
-     * Create many Produccions.
-     *     @param {produccionCreateManyArgs} args - Arguments to create many Produccions.
-     *     @example
-     *     // Create many Produccions
-     *     const produccion = await prisma.produccion.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends produccionCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, produccionCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Produccion.
-     * @param {produccionDeleteArgs} args - Arguments to delete one Produccion.
-     * @example
-     * // Delete one Produccion
-     * const Produccion = await prisma.produccion.delete({
-     *   where: {
-     *     // ... filter to delete one Produccion
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends produccionDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, produccionDeleteArgs<ExtArgs>>
-    ): Prisma__produccionClient<$Types.GetResult<produccionPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
-
-    /**
-     * Update one Produccion.
-     * @param {produccionUpdateArgs} args - Arguments to update one Produccion.
-     * @example
-     * // Update one Produccion
-     * const produccion = await prisma.produccion.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends produccionUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, produccionUpdateArgs<ExtArgs>>
-    ): Prisma__produccionClient<$Types.GetResult<produccionPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Produccions.
-     * @param {produccionDeleteManyArgs} args - Arguments to filter Produccions to delete.
-     * @example
-     * // Delete a few Produccions
-     * const { count } = await prisma.produccion.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends produccionDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, produccionDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Produccions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {produccionUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Produccions
-     * const produccion = await prisma.produccion.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends produccionUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, produccionUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Produccion.
-     * @param {produccionUpsertArgs} args - Arguments to update or create a Produccion.
-     * @example
-     * // Update or create a Produccion
-     * const produccion = await prisma.produccion.upsert({
-     *   create: {
-     *     // ... data to create a Produccion
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Produccion we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends produccionUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, produccionUpsertArgs<ExtArgs>>
-    ): Prisma__produccionClient<$Types.GetResult<produccionPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
-
-    /**
-     * Count the number of Produccions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {produccionCountArgs} args - Arguments to filter Produccions to count.
-     * @example
-     * // Count the number of Produccions
-     * const count = await prisma.produccion.count({
-     *   where: {
-     *     // ... the filter for the Produccions we want to count
-     *   }
-     * })
-    **/
-    count<T extends produccionCountArgs>(
-      args?: Subset<T, produccionCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ProduccionCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Produccion.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProduccionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ProduccionAggregateArgs>(args: Subset<T, ProduccionAggregateArgs>): Prisma.PrismaPromise<GetProduccionAggregateType<T>>
-
-    /**
-     * Group by Produccion.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {produccionGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends produccionGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: produccionGroupByArgs['orderBy'] }
-        : { orderBy?: produccionGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, produccionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProduccionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for produccion.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__produccionClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  // Custom InputTypes
-
-  /**
-   * produccion base type for findUnique actions
-   */
-  export type produccionFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produccion
-     */
-    select?: produccionSelect<ExtArgs> | null
-    /**
-     * Filter, which produccion to fetch.
-     */
-    where: produccionWhereUniqueInput
-  }
-
-  /**
-   * produccion findUnique
-   */
-  export interface produccionFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends produccionFindUniqueArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * produccion findUniqueOrThrow
-   */
-  export type produccionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produccion
-     */
-    select?: produccionSelect<ExtArgs> | null
-    /**
-     * Filter, which produccion to fetch.
-     */
-    where: produccionWhereUniqueInput
-  }
-
-
-  /**
-   * produccion base type for findFirst actions
-   */
-  export type produccionFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produccion
-     */
-    select?: produccionSelect<ExtArgs> | null
-    /**
-     * Filter, which produccion to fetch.
-     */
-    where?: produccionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of produccions to fetch.
-     */
-    orderBy?: produccionOrderByWithRelationInput | produccionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for produccions.
-     */
-    cursor?: produccionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` produccions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` produccions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of produccions.
-     */
-    distinct?: ProduccionScalarFieldEnum | ProduccionScalarFieldEnum[]
-  }
-
-  /**
-   * produccion findFirst
-   */
-  export interface produccionFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends produccionFindFirstArgsBase<ExtArgs> {
-   /**
-    * Throw an Error if query returns no results
-    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
-    */
-    rejectOnNotFound?: RejectOnNotFound
-  }
-      
-
-  /**
-   * produccion findFirstOrThrow
-   */
-  export type produccionFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produccion
-     */
-    select?: produccionSelect<ExtArgs> | null
-    /**
-     * Filter, which produccion to fetch.
-     */
-    where?: produccionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of produccions to fetch.
-     */
-    orderBy?: produccionOrderByWithRelationInput | produccionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for produccions.
-     */
-    cursor?: produccionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` produccions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` produccions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of produccions.
-     */
-    distinct?: ProduccionScalarFieldEnum | ProduccionScalarFieldEnum[]
-  }
-
-
-  /**
-   * produccion findMany
-   */
-  export type produccionFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produccion
-     */
-    select?: produccionSelect<ExtArgs> | null
-    /**
-     * Filter, which produccions to fetch.
-     */
-    where?: produccionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of produccions to fetch.
-     */
-    orderBy?: produccionOrderByWithRelationInput | produccionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing produccions.
-     */
-    cursor?: produccionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` produccions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` produccions.
-     */
-    skip?: number
-    distinct?: ProduccionScalarFieldEnum | ProduccionScalarFieldEnum[]
-  }
-
-
-  /**
-   * produccion create
-   */
-  export type produccionCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produccion
-     */
-    select?: produccionSelect<ExtArgs> | null
-    /**
-     * The data needed to create a produccion.
-     */
-    data?: XOR<produccionCreateInput, produccionUncheckedCreateInput>
-  }
-
-
-  /**
-   * produccion createMany
-   */
-  export type produccionCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many produccions.
-     */
-    data: produccionCreateManyInput | produccionCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * produccion update
-   */
-  export type produccionUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produccion
-     */
-    select?: produccionSelect<ExtArgs> | null
-    /**
-     * The data needed to update a produccion.
-     */
-    data: XOR<produccionUpdateInput, produccionUncheckedUpdateInput>
-    /**
-     * Choose, which produccion to update.
-     */
-    where: produccionWhereUniqueInput
-  }
-
-
-  /**
-   * produccion updateMany
-   */
-  export type produccionUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update produccions.
-     */
-    data: XOR<produccionUpdateManyMutationInput, produccionUncheckedUpdateManyInput>
-    /**
-     * Filter which produccions to update
-     */
-    where?: produccionWhereInput
-  }
-
-
-  /**
-   * produccion upsert
-   */
-  export type produccionUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produccion
-     */
-    select?: produccionSelect<ExtArgs> | null
-    /**
-     * The filter to search for the produccion to update in case it exists.
-     */
-    where: produccionWhereUniqueInput
-    /**
-     * In case the produccion found by the `where` argument doesn't exist, create a new produccion with this data.
-     */
-    create: XOR<produccionCreateInput, produccionUncheckedCreateInput>
-    /**
-     * In case the produccion was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<produccionUpdateInput, produccionUncheckedUpdateInput>
-  }
-
-
-  /**
-   * produccion delete
-   */
-  export type produccionDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produccion
-     */
-    select?: produccionSelect<ExtArgs> | null
-    /**
-     * Filter which produccion to delete.
-     */
-    where: produccionWhereUniqueInput
-  }
-
-
-  /**
-   * produccion deleteMany
-   */
-  export type produccionDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which produccions to delete
-     */
-    where?: produccionWhereInput
-  }
-
-
-  /**
-   * produccion without action
-   */
-  export type produccionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produccion
-     */
-    select?: produccionSelect<ExtArgs> | null
-  }
-
-
-
-  /**
    * Model registro_constancia_afiliacion
    */
 
@@ -76554,6 +75401,953 @@ export namespace Prisma {
 
 
   /**
+   * Model beneficios
+   */
+
+
+  export type AggregateBeneficios = {
+    _count: BeneficiosCountAggregateOutputType | null
+    _avg: BeneficiosAvgAggregateOutputType | null
+    _sum: BeneficiosSumAggregateOutputType | null
+    _min: BeneficiosMinAggregateOutputType | null
+    _max: BeneficiosMaxAggregateOutputType | null
+  }
+
+  export type BeneficiosAvgAggregateOutputType = {
+    idbeneficio: number | null
+    contrato: number | null
+    dni: number | null
+  }
+
+  export type BeneficiosSumAggregateOutputType = {
+    idbeneficio: number | null
+    contrato: number | null
+    dni: number | null
+  }
+
+  export type BeneficiosMinAggregateOutputType = {
+    idbeneficio: number | null
+    contrato: number | null
+    dni: number | null
+    socio: string | null
+    beneficio: string | null
+    fecha: Date | null
+    observacion: string | null
+    operador: string | null
+  }
+
+  export type BeneficiosMaxAggregateOutputType = {
+    idbeneficio: number | null
+    contrato: number | null
+    dni: number | null
+    socio: string | null
+    beneficio: string | null
+    fecha: Date | null
+    observacion: string | null
+    operador: string | null
+  }
+
+  export type BeneficiosCountAggregateOutputType = {
+    idbeneficio: number
+    contrato: number
+    dni: number
+    socio: number
+    beneficio: number
+    fecha: number
+    observacion: number
+    operador: number
+    _all: number
+  }
+
+
+  export type BeneficiosAvgAggregateInputType = {
+    idbeneficio?: true
+    contrato?: true
+    dni?: true
+  }
+
+  export type BeneficiosSumAggregateInputType = {
+    idbeneficio?: true
+    contrato?: true
+    dni?: true
+  }
+
+  export type BeneficiosMinAggregateInputType = {
+    idbeneficio?: true
+    contrato?: true
+    dni?: true
+    socio?: true
+    beneficio?: true
+    fecha?: true
+    observacion?: true
+    operador?: true
+  }
+
+  export type BeneficiosMaxAggregateInputType = {
+    idbeneficio?: true
+    contrato?: true
+    dni?: true
+    socio?: true
+    beneficio?: true
+    fecha?: true
+    observacion?: true
+    operador?: true
+  }
+
+  export type BeneficiosCountAggregateInputType = {
+    idbeneficio?: true
+    contrato?: true
+    dni?: true
+    socio?: true
+    beneficio?: true
+    fecha?: true
+    observacion?: true
+    operador?: true
+    _all?: true
+  }
+
+  export type BeneficiosAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which beneficios to aggregate.
+     */
+    where?: beneficiosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of beneficios to fetch.
+     */
+    orderBy?: beneficiosOrderByWithRelationInput | beneficiosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: beneficiosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` beneficios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` beneficios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned beneficios
+    **/
+    _count?: true | BeneficiosCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BeneficiosAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BeneficiosSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BeneficiosMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BeneficiosMaxAggregateInputType
+  }
+
+  export type GetBeneficiosAggregateType<T extends BeneficiosAggregateArgs> = {
+        [P in keyof T & keyof AggregateBeneficios]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBeneficios[P]>
+      : GetScalarType<T[P], AggregateBeneficios[P]>
+  }
+
+
+
+
+  export type beneficiosGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: beneficiosWhereInput
+    orderBy?: beneficiosOrderByWithAggregationInput | beneficiosOrderByWithAggregationInput[]
+    by: BeneficiosScalarFieldEnum[] | BeneficiosScalarFieldEnum
+    having?: beneficiosScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BeneficiosCountAggregateInputType | true
+    _avg?: BeneficiosAvgAggregateInputType
+    _sum?: BeneficiosSumAggregateInputType
+    _min?: BeneficiosMinAggregateInputType
+    _max?: BeneficiosMaxAggregateInputType
+  }
+
+
+  export type BeneficiosGroupByOutputType = {
+    idbeneficio: number
+    contrato: number | null
+    dni: number | null
+    socio: string | null
+    beneficio: string | null
+    fecha: Date | null
+    observacion: string | null
+    operador: string | null
+    _count: BeneficiosCountAggregateOutputType | null
+    _avg: BeneficiosAvgAggregateOutputType | null
+    _sum: BeneficiosSumAggregateOutputType | null
+    _min: BeneficiosMinAggregateOutputType | null
+    _max: BeneficiosMaxAggregateOutputType | null
+  }
+
+  type GetBeneficiosGroupByPayload<T extends beneficiosGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BeneficiosGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BeneficiosGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BeneficiosGroupByOutputType[P]>
+            : GetScalarType<T[P], BeneficiosGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type beneficiosSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idbeneficio?: boolean
+    contrato?: boolean
+    dni?: boolean
+    socio?: boolean
+    beneficio?: boolean
+    fecha?: boolean
+    observacion?: boolean
+    operador?: boolean
+  }, ExtArgs["result"]["beneficios"]>
+
+  export type beneficiosSelectScalar = {
+    idbeneficio?: boolean
+    contrato?: boolean
+    dni?: boolean
+    socio?: boolean
+    beneficio?: boolean
+    fecha?: boolean
+    observacion?: boolean
+    operador?: boolean
+  }
+
+
+  type beneficiosGetPayload<S extends boolean | null | undefined | beneficiosArgs> = $Types.GetResult<beneficiosPayload, S>
+
+  type beneficiosCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<beneficiosFindManyArgs, 'select' | 'include'> & {
+      select?: BeneficiosCountAggregateInputType | true
+    }
+
+  export interface beneficiosDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['beneficios'], meta: { name: 'beneficios' } }
+    /**
+     * Find zero or one Beneficios that matches the filter.
+     * @param {beneficiosFindUniqueArgs} args - Arguments to find a Beneficios
+     * @example
+     * // Get one Beneficios
+     * const beneficios = await prisma.beneficios.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends beneficiosFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, beneficiosFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'beneficios'> extends True ? Prisma__beneficiosClient<$Types.GetResult<beneficiosPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__beneficiosClient<$Types.GetResult<beneficiosPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Beneficios that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {beneficiosFindUniqueOrThrowArgs} args - Arguments to find a Beneficios
+     * @example
+     * // Get one Beneficios
+     * const beneficios = await prisma.beneficios.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends beneficiosFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, beneficiosFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__beneficiosClient<$Types.GetResult<beneficiosPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Beneficios that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {beneficiosFindFirstArgs} args - Arguments to find a Beneficios
+     * @example
+     * // Get one Beneficios
+     * const beneficios = await prisma.beneficios.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends beneficiosFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, beneficiosFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'beneficios'> extends True ? Prisma__beneficiosClient<$Types.GetResult<beneficiosPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__beneficiosClient<$Types.GetResult<beneficiosPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Beneficios that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {beneficiosFindFirstOrThrowArgs} args - Arguments to find a Beneficios
+     * @example
+     * // Get one Beneficios
+     * const beneficios = await prisma.beneficios.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends beneficiosFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, beneficiosFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__beneficiosClient<$Types.GetResult<beneficiosPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Beneficios that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {beneficiosFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Beneficios
+     * const beneficios = await prisma.beneficios.findMany()
+     * 
+     * // Get first 10 Beneficios
+     * const beneficios = await prisma.beneficios.findMany({ take: 10 })
+     * 
+     * // Only select the `idbeneficio`
+     * const beneficiosWithIdbeneficioOnly = await prisma.beneficios.findMany({ select: { idbeneficio: true } })
+     * 
+    **/
+    findMany<T extends beneficiosFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, beneficiosFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<beneficiosPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Beneficios.
+     * @param {beneficiosCreateArgs} args - Arguments to create a Beneficios.
+     * @example
+     * // Create one Beneficios
+     * const Beneficios = await prisma.beneficios.create({
+     *   data: {
+     *     // ... data to create a Beneficios
+     *   }
+     * })
+     * 
+    **/
+    create<T extends beneficiosCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, beneficiosCreateArgs<ExtArgs>>
+    ): Prisma__beneficiosClient<$Types.GetResult<beneficiosPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Beneficios.
+     *     @param {beneficiosCreateManyArgs} args - Arguments to create many Beneficios.
+     *     @example
+     *     // Create many Beneficios
+     *     const beneficios = await prisma.beneficios.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends beneficiosCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, beneficiosCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Beneficios.
+     * @param {beneficiosDeleteArgs} args - Arguments to delete one Beneficios.
+     * @example
+     * // Delete one Beneficios
+     * const Beneficios = await prisma.beneficios.delete({
+     *   where: {
+     *     // ... filter to delete one Beneficios
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends beneficiosDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, beneficiosDeleteArgs<ExtArgs>>
+    ): Prisma__beneficiosClient<$Types.GetResult<beneficiosPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Beneficios.
+     * @param {beneficiosUpdateArgs} args - Arguments to update one Beneficios.
+     * @example
+     * // Update one Beneficios
+     * const beneficios = await prisma.beneficios.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends beneficiosUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, beneficiosUpdateArgs<ExtArgs>>
+    ): Prisma__beneficiosClient<$Types.GetResult<beneficiosPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Beneficios.
+     * @param {beneficiosDeleteManyArgs} args - Arguments to filter Beneficios to delete.
+     * @example
+     * // Delete a few Beneficios
+     * const { count } = await prisma.beneficios.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends beneficiosDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, beneficiosDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Beneficios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {beneficiosUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Beneficios
+     * const beneficios = await prisma.beneficios.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends beneficiosUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, beneficiosUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Beneficios.
+     * @param {beneficiosUpsertArgs} args - Arguments to update or create a Beneficios.
+     * @example
+     * // Update or create a Beneficios
+     * const beneficios = await prisma.beneficios.upsert({
+     *   create: {
+     *     // ... data to create a Beneficios
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Beneficios we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends beneficiosUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, beneficiosUpsertArgs<ExtArgs>>
+    ): Prisma__beneficiosClient<$Types.GetResult<beneficiosPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Beneficios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {beneficiosCountArgs} args - Arguments to filter Beneficios to count.
+     * @example
+     * // Count the number of Beneficios
+     * const count = await prisma.beneficios.count({
+     *   where: {
+     *     // ... the filter for the Beneficios we want to count
+     *   }
+     * })
+    **/
+    count<T extends beneficiosCountArgs>(
+      args?: Subset<T, beneficiosCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BeneficiosCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Beneficios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BeneficiosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BeneficiosAggregateArgs>(args: Subset<T, BeneficiosAggregateArgs>): Prisma.PrismaPromise<GetBeneficiosAggregateType<T>>
+
+    /**
+     * Group by Beneficios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {beneficiosGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends beneficiosGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: beneficiosGroupByArgs['orderBy'] }
+        : { orderBy?: beneficiosGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, beneficiosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBeneficiosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for beneficios.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__beneficiosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * beneficios base type for findUnique actions
+   */
+  export type beneficiosFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the beneficios
+     */
+    select?: beneficiosSelect<ExtArgs> | null
+    /**
+     * Filter, which beneficios to fetch.
+     */
+    where: beneficiosWhereUniqueInput
+  }
+
+  /**
+   * beneficios findUnique
+   */
+  export interface beneficiosFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends beneficiosFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * beneficios findUniqueOrThrow
+   */
+  export type beneficiosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the beneficios
+     */
+    select?: beneficiosSelect<ExtArgs> | null
+    /**
+     * Filter, which beneficios to fetch.
+     */
+    where: beneficiosWhereUniqueInput
+  }
+
+
+  /**
+   * beneficios base type for findFirst actions
+   */
+  export type beneficiosFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the beneficios
+     */
+    select?: beneficiosSelect<ExtArgs> | null
+    /**
+     * Filter, which beneficios to fetch.
+     */
+    where?: beneficiosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of beneficios to fetch.
+     */
+    orderBy?: beneficiosOrderByWithRelationInput | beneficiosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for beneficios.
+     */
+    cursor?: beneficiosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` beneficios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` beneficios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of beneficios.
+     */
+    distinct?: BeneficiosScalarFieldEnum | BeneficiosScalarFieldEnum[]
+  }
+
+  /**
+   * beneficios findFirst
+   */
+  export interface beneficiosFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends beneficiosFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * beneficios findFirstOrThrow
+   */
+  export type beneficiosFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the beneficios
+     */
+    select?: beneficiosSelect<ExtArgs> | null
+    /**
+     * Filter, which beneficios to fetch.
+     */
+    where?: beneficiosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of beneficios to fetch.
+     */
+    orderBy?: beneficiosOrderByWithRelationInput | beneficiosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for beneficios.
+     */
+    cursor?: beneficiosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` beneficios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` beneficios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of beneficios.
+     */
+    distinct?: BeneficiosScalarFieldEnum | BeneficiosScalarFieldEnum[]
+  }
+
+
+  /**
+   * beneficios findMany
+   */
+  export type beneficiosFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the beneficios
+     */
+    select?: beneficiosSelect<ExtArgs> | null
+    /**
+     * Filter, which beneficios to fetch.
+     */
+    where?: beneficiosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of beneficios to fetch.
+     */
+    orderBy?: beneficiosOrderByWithRelationInput | beneficiosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing beneficios.
+     */
+    cursor?: beneficiosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` beneficios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` beneficios.
+     */
+    skip?: number
+    distinct?: BeneficiosScalarFieldEnum | BeneficiosScalarFieldEnum[]
+  }
+
+
+  /**
+   * beneficios create
+   */
+  export type beneficiosCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the beneficios
+     */
+    select?: beneficiosSelect<ExtArgs> | null
+    /**
+     * The data needed to create a beneficios.
+     */
+    data?: XOR<beneficiosCreateInput, beneficiosUncheckedCreateInput>
+  }
+
+
+  /**
+   * beneficios createMany
+   */
+  export type beneficiosCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many beneficios.
+     */
+    data: beneficiosCreateManyInput | beneficiosCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * beneficios update
+   */
+  export type beneficiosUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the beneficios
+     */
+    select?: beneficiosSelect<ExtArgs> | null
+    /**
+     * The data needed to update a beneficios.
+     */
+    data: XOR<beneficiosUpdateInput, beneficiosUncheckedUpdateInput>
+    /**
+     * Choose, which beneficios to update.
+     */
+    where: beneficiosWhereUniqueInput
+  }
+
+
+  /**
+   * beneficios updateMany
+   */
+  export type beneficiosUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update beneficios.
+     */
+    data: XOR<beneficiosUpdateManyMutationInput, beneficiosUncheckedUpdateManyInput>
+    /**
+     * Filter which beneficios to update
+     */
+    where?: beneficiosWhereInput
+  }
+
+
+  /**
+   * beneficios upsert
+   */
+  export type beneficiosUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the beneficios
+     */
+    select?: beneficiosSelect<ExtArgs> | null
+    /**
+     * The filter to search for the beneficios to update in case it exists.
+     */
+    where: beneficiosWhereUniqueInput
+    /**
+     * In case the beneficios found by the `where` argument doesn't exist, create a new beneficios with this data.
+     */
+    create: XOR<beneficiosCreateInput, beneficiosUncheckedCreateInput>
+    /**
+     * In case the beneficios was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<beneficiosUpdateInput, beneficiosUncheckedUpdateInput>
+  }
+
+
+  /**
+   * beneficios delete
+   */
+  export type beneficiosDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the beneficios
+     */
+    select?: beneficiosSelect<ExtArgs> | null
+    /**
+     * Filter which beneficios to delete.
+     */
+    where: beneficiosWhereUniqueInput
+  }
+
+
+  /**
+   * beneficios deleteMany
+   */
+  export type beneficiosDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which beneficios to delete
+     */
+    where?: beneficiosWhereInput
+  }
+
+
+  /**
+   * beneficios without action
+   */
+  export type beneficiosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the beneficios
+     */
+    select?: beneficiosSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -77250,37 +77044,6 @@ export namespace Prisma {
   export type Prestamos_empleados_cobroScalarFieldEnum = (typeof Prestamos_empleados_cobroScalarFieldEnum)[keyof typeof Prestamos_empleados_cobroScalarFieldEnum]
 
 
-  export const ProduccionScalarFieldEnum: {
-    prod_ide: 'prod_ide',
-    prod_fechacarga: 'prod_fechacarga',
-    prod_fechaafi: 'prod_fechaafi',
-    prod_asesor: 'prod_asesor',
-    prod_empre: 'prod_empre',
-    prod_mes: 'prod_mes',
-    prod_anio: 'prod_anio',
-    prod_apeafi: 'prod_apeafi',
-    prod_nomafi: 'prod_nomafi',
-    prod_dniafi: 'prod_dniafi',
-    prod_local: 'prod_local',
-    prod_recibo: 'prod_recibo',
-    prod_monto: 'prod_monto',
-    prod_plan: 'prod_plan',
-    prod_pago: 'prod_pago',
-    prod_cta_tar: 'prod_cta_tar',
-    prod_obs: 'prod_obs',
-    prod_semana: 'prod_semana',
-    prod_estado: 'prod_estado',
-    prod_cierre: 'prod_cierre',
-    prod_afiliado: 'prod_afiliado',
-    prod_rendido: 'prod_rendido',
-    prod_recibosis: 'prod_recibosis',
-    prod_fechren: 'prod_fechren',
-    prod_tel: 'prod_tel'
-  };
-
-  export type ProduccionScalarFieldEnum = (typeof ProduccionScalarFieldEnum)[keyof typeof ProduccionScalarFieldEnum]
-
-
   export const Registro_constancia_afiliacionScalarFieldEnum: {
     idconstancia: 'idconstancia',
     apellido_extinto: 'apellido_extinto',
@@ -77616,6 +77379,20 @@ export namespace Prisma {
   };
 
   export type Historial_lv_prestamosScalarFieldEnum = (typeof Historial_lv_prestamosScalarFieldEnum)[keyof typeof Historial_lv_prestamosScalarFieldEnum]
+
+
+  export const BeneficiosScalarFieldEnum: {
+    idbeneficio: 'idbeneficio',
+    contrato: 'contrato',
+    dni: 'dni',
+    socio: 'socio',
+    beneficio: 'beneficio',
+    fecha: 'fecha',
+    observacion: 'observacion',
+    operador: 'operador'
+  };
+
+  export type BeneficiosScalarFieldEnum = (typeof BeneficiosScalarFieldEnum)[keyof typeof BeneficiosScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -80506,133 +80283,6 @@ export namespace Prisma {
     operador?: StringNullableWithAggregatesFilter | string | null
   }
 
-  export type produccionWhereInput = {
-    AND?: produccionWhereInput | produccionWhereInput[]
-    OR?: produccionWhereInput[]
-    NOT?: produccionWhereInput | produccionWhereInput[]
-    prod_ide?: IntFilter | number
-    prod_fechacarga?: DateTimeNullableFilter | Date | string | null
-    prod_fechaafi?: DateTimeNullableFilter | Date | string | null
-    prod_asesor?: IntNullableFilter | number | null
-    prod_empre?: StringNullableFilter | string | null
-    prod_mes?: StringNullableFilter | string | null
-    prod_anio?: IntNullableFilter | number | null
-    prod_apeafi?: StringNullableFilter | string | null
-    prod_nomafi?: StringNullableFilter | string | null
-    prod_dniafi?: IntNullableFilter | number | null
-    prod_local?: IntNullableFilter | number | null
-    prod_recibo?: IntNullableFilter | number | null
-    prod_monto?: FloatNullableFilter | number | null
-    prod_plan?: StringNullableFilter | string | null
-    prod_pago?: StringNullableFilter | string | null
-    prod_cta_tar?: BigIntNullableFilter | bigint | number | null
-    prod_obs?: StringNullableFilter | string | null
-    prod_semana?: IntNullableFilter | number | null
-    prod_estado?: StringNullableFilter | string | null
-    prod_cierre?: IntNullableFilter | number | null
-    prod_afiliado?: IntNullableFilter | number | null
-    prod_rendido?: StringNullableFilter | string | null
-    prod_recibosis?: IntNullableFilter | number | null
-    prod_fechren?: DateTimeNullableFilter | Date | string | null
-    prod_tel?: StringNullableFilter | string | null
-  }
-
-  export type produccionOrderByWithRelationInput = {
-    prod_ide?: SortOrder
-    prod_fechacarga?: SortOrderInput | SortOrder
-    prod_fechaafi?: SortOrderInput | SortOrder
-    prod_asesor?: SortOrderInput | SortOrder
-    prod_empre?: SortOrderInput | SortOrder
-    prod_mes?: SortOrderInput | SortOrder
-    prod_anio?: SortOrderInput | SortOrder
-    prod_apeafi?: SortOrderInput | SortOrder
-    prod_nomafi?: SortOrderInput | SortOrder
-    prod_dniafi?: SortOrderInput | SortOrder
-    prod_local?: SortOrderInput | SortOrder
-    prod_recibo?: SortOrderInput | SortOrder
-    prod_monto?: SortOrderInput | SortOrder
-    prod_plan?: SortOrderInput | SortOrder
-    prod_pago?: SortOrderInput | SortOrder
-    prod_cta_tar?: SortOrderInput | SortOrder
-    prod_obs?: SortOrderInput | SortOrder
-    prod_semana?: SortOrderInput | SortOrder
-    prod_estado?: SortOrderInput | SortOrder
-    prod_cierre?: SortOrderInput | SortOrder
-    prod_afiliado?: SortOrderInput | SortOrder
-    prod_rendido?: SortOrderInput | SortOrder
-    prod_recibosis?: SortOrderInput | SortOrder
-    prod_fechren?: SortOrderInput | SortOrder
-    prod_tel?: SortOrderInput | SortOrder
-  }
-
-  export type produccionWhereUniqueInput = {
-    prod_ide?: number
-  }
-
-  export type produccionOrderByWithAggregationInput = {
-    prod_ide?: SortOrder
-    prod_fechacarga?: SortOrderInput | SortOrder
-    prod_fechaafi?: SortOrderInput | SortOrder
-    prod_asesor?: SortOrderInput | SortOrder
-    prod_empre?: SortOrderInput | SortOrder
-    prod_mes?: SortOrderInput | SortOrder
-    prod_anio?: SortOrderInput | SortOrder
-    prod_apeafi?: SortOrderInput | SortOrder
-    prod_nomafi?: SortOrderInput | SortOrder
-    prod_dniafi?: SortOrderInput | SortOrder
-    prod_local?: SortOrderInput | SortOrder
-    prod_recibo?: SortOrderInput | SortOrder
-    prod_monto?: SortOrderInput | SortOrder
-    prod_plan?: SortOrderInput | SortOrder
-    prod_pago?: SortOrderInput | SortOrder
-    prod_cta_tar?: SortOrderInput | SortOrder
-    prod_obs?: SortOrderInput | SortOrder
-    prod_semana?: SortOrderInput | SortOrder
-    prod_estado?: SortOrderInput | SortOrder
-    prod_cierre?: SortOrderInput | SortOrder
-    prod_afiliado?: SortOrderInput | SortOrder
-    prod_rendido?: SortOrderInput | SortOrder
-    prod_recibosis?: SortOrderInput | SortOrder
-    prod_fechren?: SortOrderInput | SortOrder
-    prod_tel?: SortOrderInput | SortOrder
-    _count?: produccionCountOrderByAggregateInput
-    _avg?: produccionAvgOrderByAggregateInput
-    _max?: produccionMaxOrderByAggregateInput
-    _min?: produccionMinOrderByAggregateInput
-    _sum?: produccionSumOrderByAggregateInput
-  }
-
-  export type produccionScalarWhereWithAggregatesInput = {
-    AND?: produccionScalarWhereWithAggregatesInput | produccionScalarWhereWithAggregatesInput[]
-    OR?: produccionScalarWhereWithAggregatesInput[]
-    NOT?: produccionScalarWhereWithAggregatesInput | produccionScalarWhereWithAggregatesInput[]
-    prod_ide?: IntWithAggregatesFilter | number
-    prod_fechacarga?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    prod_fechaafi?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    prod_asesor?: IntNullableWithAggregatesFilter | number | null
-    prod_empre?: StringNullableWithAggregatesFilter | string | null
-    prod_mes?: StringNullableWithAggregatesFilter | string | null
-    prod_anio?: IntNullableWithAggregatesFilter | number | null
-    prod_apeafi?: StringNullableWithAggregatesFilter | string | null
-    prod_nomafi?: StringNullableWithAggregatesFilter | string | null
-    prod_dniafi?: IntNullableWithAggregatesFilter | number | null
-    prod_local?: IntNullableWithAggregatesFilter | number | null
-    prod_recibo?: IntNullableWithAggregatesFilter | number | null
-    prod_monto?: FloatNullableWithAggregatesFilter | number | null
-    prod_plan?: StringNullableWithAggregatesFilter | string | null
-    prod_pago?: StringNullableWithAggregatesFilter | string | null
-    prod_cta_tar?: BigIntNullableWithAggregatesFilter | bigint | number | null
-    prod_obs?: StringNullableWithAggregatesFilter | string | null
-    prod_semana?: IntNullableWithAggregatesFilter | number | null
-    prod_estado?: StringNullableWithAggregatesFilter | string | null
-    prod_cierre?: IntNullableWithAggregatesFilter | number | null
-    prod_afiliado?: IntNullableWithAggregatesFilter | number | null
-    prod_rendido?: StringNullableWithAggregatesFilter | string | null
-    prod_recibosis?: IntNullableWithAggregatesFilter | number | null
-    prod_fechren?: DateTimeNullableWithAggregatesFilter | Date | string | null
-    prod_tel?: StringNullableWithAggregatesFilter | string | null
-  }
-
   export type registro_constancia_afiliacionWhereInput = {
     AND?: registro_constancia_afiliacionWhereInput | registro_constancia_afiliacionWhereInput[]
     OR?: registro_constancia_afiliacionWhereInput[]
@@ -82054,6 +81704,65 @@ export namespace Prisma {
     fecha_subida?: DateTimeNullableWithAggregatesFilter | Date | string | null
     empresa?: StringNullableWithAggregatesFilter | string | null
     cod_ptm_leg?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type beneficiosWhereInput = {
+    AND?: beneficiosWhereInput | beneficiosWhereInput[]
+    OR?: beneficiosWhereInput[]
+    NOT?: beneficiosWhereInput | beneficiosWhereInput[]
+    idbeneficio?: IntFilter | number
+    contrato?: IntNullableFilter | number | null
+    dni?: IntNullableFilter | number | null
+    socio?: StringNullableFilter | string | null
+    beneficio?: StringNullableFilter | string | null
+    fecha?: DateTimeNullableFilter | Date | string | null
+    observacion?: StringNullableFilter | string | null
+    operador?: StringNullableFilter | string | null
+  }
+
+  export type beneficiosOrderByWithRelationInput = {
+    idbeneficio?: SortOrder
+    contrato?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
+    socio?: SortOrderInput | SortOrder
+    beneficio?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    observacion?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+  }
+
+  export type beneficiosWhereUniqueInput = {
+    idbeneficio?: number
+  }
+
+  export type beneficiosOrderByWithAggregationInput = {
+    idbeneficio?: SortOrder
+    contrato?: SortOrderInput | SortOrder
+    dni?: SortOrderInput | SortOrder
+    socio?: SortOrderInput | SortOrder
+    beneficio?: SortOrderInput | SortOrder
+    fecha?: SortOrderInput | SortOrder
+    observacion?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
+    _count?: beneficiosCountOrderByAggregateInput
+    _avg?: beneficiosAvgOrderByAggregateInput
+    _max?: beneficiosMaxOrderByAggregateInput
+    _min?: beneficiosMinOrderByAggregateInput
+    _sum?: beneficiosSumOrderByAggregateInput
+  }
+
+  export type beneficiosScalarWhereWithAggregatesInput = {
+    AND?: beneficiosScalarWhereWithAggregatesInput | beneficiosScalarWhereWithAggregatesInput[]
+    OR?: beneficiosScalarWhereWithAggregatesInput[]
+    NOT?: beneficiosScalarWhereWithAggregatesInput | beneficiosScalarWhereWithAggregatesInput[]
+    idbeneficio?: IntWithAggregatesFilter | number
+    contrato?: IntNullableWithAggregatesFilter | number | null
+    dni?: IntNullableWithAggregatesFilter | number | null
+    socio?: StringNullableWithAggregatesFilter | string | null
+    beneficio?: StringNullableWithAggregatesFilter | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    observacion?: StringNullableWithAggregatesFilter | string | null
+    operador?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type alta_novellCreateInput = {
@@ -85760,199 +85469,6 @@ export namespace Prisma {
     operador?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type produccionCreateInput = {
-    prod_fechacarga?: Date | string | null
-    prod_fechaafi?: Date | string | null
-    prod_asesor?: number | null
-    prod_empre?: string | null
-    prod_mes?: string | null
-    prod_anio?: number | null
-    prod_apeafi?: string | null
-    prod_nomafi?: string | null
-    prod_dniafi?: number | null
-    prod_local?: number | null
-    prod_recibo?: number | null
-    prod_monto?: number | null
-    prod_plan?: string | null
-    prod_pago?: string | null
-    prod_cta_tar?: bigint | number | null
-    prod_obs?: string | null
-    prod_semana?: number | null
-    prod_estado?: string | null
-    prod_cierre?: number | null
-    prod_afiliado?: number | null
-    prod_rendido?: string | null
-    prod_recibosis?: number | null
-    prod_fechren?: Date | string | null
-    prod_tel?: string | null
-  }
-
-  export type produccionUncheckedCreateInput = {
-    prod_ide?: number
-    prod_fechacarga?: Date | string | null
-    prod_fechaafi?: Date | string | null
-    prod_asesor?: number | null
-    prod_empre?: string | null
-    prod_mes?: string | null
-    prod_anio?: number | null
-    prod_apeafi?: string | null
-    prod_nomafi?: string | null
-    prod_dniafi?: number | null
-    prod_local?: number | null
-    prod_recibo?: number | null
-    prod_monto?: number | null
-    prod_plan?: string | null
-    prod_pago?: string | null
-    prod_cta_tar?: bigint | number | null
-    prod_obs?: string | null
-    prod_semana?: number | null
-    prod_estado?: string | null
-    prod_cierre?: number | null
-    prod_afiliado?: number | null
-    prod_rendido?: string | null
-    prod_recibosis?: number | null
-    prod_fechren?: Date | string | null
-    prod_tel?: string | null
-  }
-
-  export type produccionUpdateInput = {
-    prod_fechacarga?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_fechaafi?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_asesor?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_empre?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_mes?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_anio?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_apeafi?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_nomafi?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_dniafi?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_local?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_recibo?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_monto?: NullableFloatFieldUpdateOperationsInput | number | null
-    prod_plan?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_pago?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_cta_tar?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    prod_obs?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_semana?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_estado?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_cierre?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_afiliado?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_rendido?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_recibosis?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_fechren?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_tel?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type produccionUncheckedUpdateInput = {
-    prod_ide?: IntFieldUpdateOperationsInput | number
-    prod_fechacarga?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_fechaafi?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_asesor?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_empre?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_mes?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_anio?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_apeafi?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_nomafi?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_dniafi?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_local?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_recibo?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_monto?: NullableFloatFieldUpdateOperationsInput | number | null
-    prod_plan?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_pago?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_cta_tar?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    prod_obs?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_semana?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_estado?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_cierre?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_afiliado?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_rendido?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_recibosis?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_fechren?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_tel?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type produccionCreateManyInput = {
-    prod_ide?: number
-    prod_fechacarga?: Date | string | null
-    prod_fechaafi?: Date | string | null
-    prod_asesor?: number | null
-    prod_empre?: string | null
-    prod_mes?: string | null
-    prod_anio?: number | null
-    prod_apeafi?: string | null
-    prod_nomafi?: string | null
-    prod_dniafi?: number | null
-    prod_local?: number | null
-    prod_recibo?: number | null
-    prod_monto?: number | null
-    prod_plan?: string | null
-    prod_pago?: string | null
-    prod_cta_tar?: bigint | number | null
-    prod_obs?: string | null
-    prod_semana?: number | null
-    prod_estado?: string | null
-    prod_cierre?: number | null
-    prod_afiliado?: number | null
-    prod_rendido?: string | null
-    prod_recibosis?: number | null
-    prod_fechren?: Date | string | null
-    prod_tel?: string | null
-  }
-
-  export type produccionUpdateManyMutationInput = {
-    prod_fechacarga?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_fechaafi?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_asesor?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_empre?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_mes?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_anio?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_apeafi?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_nomafi?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_dniafi?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_local?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_recibo?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_monto?: NullableFloatFieldUpdateOperationsInput | number | null
-    prod_plan?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_pago?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_cta_tar?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    prod_obs?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_semana?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_estado?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_cierre?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_afiliado?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_rendido?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_recibosis?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_fechren?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_tel?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type produccionUncheckedUpdateManyInput = {
-    prod_ide?: IntFieldUpdateOperationsInput | number
-    prod_fechacarga?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_fechaafi?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_asesor?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_empre?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_mes?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_anio?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_apeafi?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_nomafi?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_dniafi?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_local?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_recibo?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_monto?: NullableFloatFieldUpdateOperationsInput | number | null
-    prod_plan?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_pago?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_cta_tar?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    prod_obs?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_semana?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_estado?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_cierre?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_afiliado?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_rendido?: NullableStringFieldUpdateOperationsInput | string | null
-    prod_recibosis?: NullableIntFieldUpdateOperationsInput | number | null
-    prod_fechren?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prod_tel?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type registro_constancia_afiliacionCreateInput = {
     apellido_extinto?: string | null
     nombre_extinto?: string | null
@@ -87713,6 +87229,80 @@ export namespace Prisma {
     fecha_subida?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     empresa?: NullableStringFieldUpdateOperationsInput | string | null
     cod_ptm_leg?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type beneficiosCreateInput = {
+    contrato?: number | null
+    dni?: number | null
+    socio?: string | null
+    beneficio?: string | null
+    fecha?: Date | string | null
+    observacion?: string | null
+    operador?: string | null
+  }
+
+  export type beneficiosUncheckedCreateInput = {
+    idbeneficio?: number
+    contrato?: number | null
+    dni?: number | null
+    socio?: string | null
+    beneficio?: string | null
+    fecha?: Date | string | null
+    observacion?: string | null
+    operador?: string | null
+  }
+
+  export type beneficiosUpdateInput = {
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    socio?: NullableStringFieldUpdateOperationsInput | string | null
+    beneficio?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type beneficiosUncheckedUpdateInput = {
+    idbeneficio?: IntFieldUpdateOperationsInput | number
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    socio?: NullableStringFieldUpdateOperationsInput | string | null
+    beneficio?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type beneficiosCreateManyInput = {
+    idbeneficio?: number
+    contrato?: number | null
+    dni?: number | null
+    socio?: string | null
+    beneficio?: string | null
+    fecha?: Date | string | null
+    observacion?: string | null
+    operador?: string | null
+  }
+
+  export type beneficiosUpdateManyMutationInput = {
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    socio?: NullableStringFieldUpdateOperationsInput | string | null
+    beneficio?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type beneficiosUncheckedUpdateManyInput = {
+    idbeneficio?: IntFieldUpdateOperationsInput | number
+    contrato?: NullableIntFieldUpdateOperationsInput | number | null
+    dni?: NullableIntFieldUpdateOperationsInput | number | null
+    socio?: NullableStringFieldUpdateOperationsInput | string | null
+    beneficio?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter = {
@@ -90169,120 +89759,6 @@ export namespace Prisma {
     importe?: SortOrder
   }
 
-  export type produccionCountOrderByAggregateInput = {
-    prod_ide?: SortOrder
-    prod_fechacarga?: SortOrder
-    prod_fechaafi?: SortOrder
-    prod_asesor?: SortOrder
-    prod_empre?: SortOrder
-    prod_mes?: SortOrder
-    prod_anio?: SortOrder
-    prod_apeafi?: SortOrder
-    prod_nomafi?: SortOrder
-    prod_dniafi?: SortOrder
-    prod_local?: SortOrder
-    prod_recibo?: SortOrder
-    prod_monto?: SortOrder
-    prod_plan?: SortOrder
-    prod_pago?: SortOrder
-    prod_cta_tar?: SortOrder
-    prod_obs?: SortOrder
-    prod_semana?: SortOrder
-    prod_estado?: SortOrder
-    prod_cierre?: SortOrder
-    prod_afiliado?: SortOrder
-    prod_rendido?: SortOrder
-    prod_recibosis?: SortOrder
-    prod_fechren?: SortOrder
-    prod_tel?: SortOrder
-  }
-
-  export type produccionAvgOrderByAggregateInput = {
-    prod_ide?: SortOrder
-    prod_asesor?: SortOrder
-    prod_anio?: SortOrder
-    prod_dniafi?: SortOrder
-    prod_local?: SortOrder
-    prod_recibo?: SortOrder
-    prod_monto?: SortOrder
-    prod_cta_tar?: SortOrder
-    prod_semana?: SortOrder
-    prod_cierre?: SortOrder
-    prod_afiliado?: SortOrder
-    prod_recibosis?: SortOrder
-  }
-
-  export type produccionMaxOrderByAggregateInput = {
-    prod_ide?: SortOrder
-    prod_fechacarga?: SortOrder
-    prod_fechaafi?: SortOrder
-    prod_asesor?: SortOrder
-    prod_empre?: SortOrder
-    prod_mes?: SortOrder
-    prod_anio?: SortOrder
-    prod_apeafi?: SortOrder
-    prod_nomafi?: SortOrder
-    prod_dniafi?: SortOrder
-    prod_local?: SortOrder
-    prod_recibo?: SortOrder
-    prod_monto?: SortOrder
-    prod_plan?: SortOrder
-    prod_pago?: SortOrder
-    prod_cta_tar?: SortOrder
-    prod_obs?: SortOrder
-    prod_semana?: SortOrder
-    prod_estado?: SortOrder
-    prod_cierre?: SortOrder
-    prod_afiliado?: SortOrder
-    prod_rendido?: SortOrder
-    prod_recibosis?: SortOrder
-    prod_fechren?: SortOrder
-    prod_tel?: SortOrder
-  }
-
-  export type produccionMinOrderByAggregateInput = {
-    prod_ide?: SortOrder
-    prod_fechacarga?: SortOrder
-    prod_fechaafi?: SortOrder
-    prod_asesor?: SortOrder
-    prod_empre?: SortOrder
-    prod_mes?: SortOrder
-    prod_anio?: SortOrder
-    prod_apeafi?: SortOrder
-    prod_nomafi?: SortOrder
-    prod_dniafi?: SortOrder
-    prod_local?: SortOrder
-    prod_recibo?: SortOrder
-    prod_monto?: SortOrder
-    prod_plan?: SortOrder
-    prod_pago?: SortOrder
-    prod_cta_tar?: SortOrder
-    prod_obs?: SortOrder
-    prod_semana?: SortOrder
-    prod_estado?: SortOrder
-    prod_cierre?: SortOrder
-    prod_afiliado?: SortOrder
-    prod_rendido?: SortOrder
-    prod_recibosis?: SortOrder
-    prod_fechren?: SortOrder
-    prod_tel?: SortOrder
-  }
-
-  export type produccionSumOrderByAggregateInput = {
-    prod_ide?: SortOrder
-    prod_asesor?: SortOrder
-    prod_anio?: SortOrder
-    prod_dniafi?: SortOrder
-    prod_local?: SortOrder
-    prod_recibo?: SortOrder
-    prod_monto?: SortOrder
-    prod_cta_tar?: SortOrder
-    prod_semana?: SortOrder
-    prod_cierre?: SortOrder
-    prod_afiliado?: SortOrder
-    prod_recibosis?: SortOrder
-  }
-
   export type registro_constancia_afiliacionCountOrderByAggregateInput = {
     idconstancia?: SortOrder
     apellido_extinto?: SortOrder
@@ -91373,6 +90849,51 @@ export namespace Prisma {
   export type historial_lv_prestamosSumOrderByAggregateInput = {
     idlegajo?: SortOrder
     contrato?: SortOrder
+  }
+
+  export type beneficiosCountOrderByAggregateInput = {
+    idbeneficio?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+    socio?: SortOrder
+    beneficio?: SortOrder
+    fecha?: SortOrder
+    observacion?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type beneficiosAvgOrderByAggregateInput = {
+    idbeneficio?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+  }
+
+  export type beneficiosMaxOrderByAggregateInput = {
+    idbeneficio?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+    socio?: SortOrder
+    beneficio?: SortOrder
+    fecha?: SortOrder
+    observacion?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type beneficiosMinOrderByAggregateInput = {
+    idbeneficio?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
+    socio?: SortOrder
+    beneficio?: SortOrder
+    fecha?: SortOrder
+    observacion?: SortOrder
+    operador?: SortOrder
+  }
+
+  export type beneficiosSumOrderByAggregateInput = {
+    idbeneficio?: SortOrder
+    contrato?: SortOrder
+    dni?: SortOrder
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {

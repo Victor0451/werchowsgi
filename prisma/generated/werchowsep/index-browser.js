@@ -384,6 +384,9 @@ exports.Prisma.Informe_tareasScalarFieldEnum = {
   fin: 'fin',
   horas: 'horas',
   monto: 'monto',
+  aprobado: 'aprobado',
+  fecha_aprobado: 'fecha_aprobado',
+  operadorap: 'operadorap',
   liquidado: 'liquidado',
   fecha_liquidacion: 'fecha_liquidacion',
   operadorliq: 'operadorliq'
@@ -592,7 +595,8 @@ exports.Prisma.ServiciosScalarFieldEnum = {
   telefono: 'telefono',
   movil: 'movil',
   gasto_luto: 'gasto_luto',
-  conyugue: 'conyugue'
+  conyugue: 'conyugue',
+  serv_domicilio: 'serv_domicilio'
 };
 
 exports.Prisma.Servicios_historicoScalarFieldEnum = {

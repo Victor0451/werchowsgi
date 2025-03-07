@@ -300,7 +300,7 @@ export default function Campana() {
                 </CardBody>
               </Card>
 
-              <Card className="h-full w-full mt-5" >
+              <Card className="h-full w-full mt-5">
                 <CardBody
                   floated={false}
                   shadow={false}

@@ -450,6 +450,18 @@ export const FormNuevoServicio = ({
                   </div>
 
                   <div className="relative w-full mb-6 group">
+                    <Select
+                      label="Serv. en Domicilio"
+                      onChange={(value) => {
+                        handleChange("domicilio", value);
+                      }}
+                    >
+                      <Option value="SI">Si</Option>
+                      <Option value="NO">No</Option>
+                    </Select>
+                  </div>
+
+                  <div className="relative w-full mb-6 group">
                     <Input
                       size="md"
                       label="Importe Servicio (Serv. Particular)"

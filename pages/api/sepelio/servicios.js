@@ -502,6 +502,7 @@ export default async function handler(req, res) {
           importe_servicio: parseFloat(req.body.importe_servicio),
           gasto_luto: req.body.gasto,
           conyugue: req.body.conyugue,
+          serv_domicilio: req.body.serv_domicilio,
         },
       });
 

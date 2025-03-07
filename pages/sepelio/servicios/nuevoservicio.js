@@ -50,6 +50,8 @@ export default function nuevoservicio() {
   const [cremaSel, guardarCremaSel] = useState("");
   const [donacionSel, guardarDonacionSel] = useState(false);
   const [donaSel, guardarDonaSel] = useState("");
+  const [domicilioSel, guardarDomicilioSel] = useState(false);
+  const [domiSel, guardarDomiSel] = useState("");
   const [ataudes, guardarAtaudes] = useState([]);
   const [ataudSel, guardarAtaudSel] = useState([]);
   const [parcelas, guardarParcelas] = useState([]);
@@ -251,6 +253,14 @@ export default function nuevoservicio() {
       } else if (value === "NO") {
         guardarDonacionSel(false);
       }
+    } else if (f === "domicilio") {
+      guardarDomiSel(value);
+
+      if (value === "SI") {
+        guardarDomicilioSel(true);
+      } else if (value === "NO") {
+        guardarDomicilioSel(false);
+      }
     } else if (f === "parentezco") {
       guardarParentezcoSel(value);
     }
@@ -341,6 +351,7 @@ export default function nuevoservicio() {
       cremacion: cremacionSel,
       liquidado: false,
       donacion: donacionSel,
+      serv_domicilio: domicilioSel,
       idparcela: parceSel.idparcela,
       detalle_corona: detCoronaRef.current.value,
       religion: religionRef.current.value,
@@ -412,6 +423,10 @@ export default function nuevoservicio() {
       guardarErrores("Debes seleccionar si el servicios cuenta con cremacion");
     } else if (donaSel === "") {
       guardarErrores("Debes seleccionar si el servicios es donacion o no");
+    } else if (domiSel === "") {
+      guardarErrores(
+        "Debes seleccionar si el servicios se realizara en el domicilio o no"
+      );
     } else if (servicio.solicitado === "") {
       guardarErrores(
         "Debes ingresar el apellido y nombre del solicitante del servicio"

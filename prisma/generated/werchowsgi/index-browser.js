@@ -653,34 +653,6 @@ exports.Prisma.Prestamos_empleados_cobroScalarFieldEnum = {
   operador: 'operador'
 };
 
-exports.Prisma.ProduccionScalarFieldEnum = {
-  prod_ide: 'prod_ide',
-  prod_fechacarga: 'prod_fechacarga',
-  prod_fechaafi: 'prod_fechaafi',
-  prod_asesor: 'prod_asesor',
-  prod_empre: 'prod_empre',
-  prod_mes: 'prod_mes',
-  prod_anio: 'prod_anio',
-  prod_apeafi: 'prod_apeafi',
-  prod_nomafi: 'prod_nomafi',
-  prod_dniafi: 'prod_dniafi',
-  prod_local: 'prod_local',
-  prod_recibo: 'prod_recibo',
-  prod_monto: 'prod_monto',
-  prod_plan: 'prod_plan',
-  prod_pago: 'prod_pago',
-  prod_cta_tar: 'prod_cta_tar',
-  prod_obs: 'prod_obs',
-  prod_semana: 'prod_semana',
-  prod_estado: 'prod_estado',
-  prod_cierre: 'prod_cierre',
-  prod_afiliado: 'prod_afiliado',
-  prod_rendido: 'prod_rendido',
-  prod_recibosis: 'prod_recibosis',
-  prod_fechren: 'prod_fechren',
-  prod_tel: 'prod_tel'
-};
-
 exports.Prisma.Registro_constancia_afiliacionScalarFieldEnum = {
   idconstancia: 'idconstancia',
   apellido_extinto: 'apellido_extinto',
@@ -943,6 +915,17 @@ exports.Prisma.Historial_lv_prestamosScalarFieldEnum = {
   cod_ptm_leg: 'cod_ptm_leg'
 };
 
+exports.Prisma.BeneficiosScalarFieldEnum = {
+  idbeneficio: 'idbeneficio',
+  contrato: 'contrato',
+  dni: 'dni',
+  socio: 'socio',
+  beneficio: 'beneficio',
+  fecha: 'fecha',
+  observacion: 'observacion',
+  operador: 'operador'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1000,7 +983,6 @@ exports.Prisma.ModelName = {
   porcentaje_liq: 'porcentaje_liq',
   prestamos_empleados: 'prestamos_empleados',
   prestamos_empleados_cobro: 'prestamos_empleados_cobro',
-  produccion: 'produccion',
   registro_constancia_afiliacion: 'registro_constancia_afiliacion',
   rehabilitaciones: 'rehabilitaciones',
   rol_personal: 'rol_personal',
@@ -1025,7 +1007,8 @@ exports.Prisma.ModelName = {
   recibo_liquidacion: 'recibo_liquidacion',
   recibo_movimientos: 'recibo_movimientos',
   puestos: 'puestos',
-  historial_lv_prestamos: 'historial_lv_prestamos'
+  historial_lv_prestamos: 'historial_lv_prestamos',
+  beneficios: 'beneficios'
 };
 
 /**

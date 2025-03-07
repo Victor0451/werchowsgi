@@ -288,6 +288,9 @@ model informe_tareas {
   fin               String?   @db.VarChar(255)
   horas             Int?
   monto             Float?    @db.Float
+  aprobado          Boolean?
+  fecha_aprobado    DateTime? @db.Date
+  operadorap        String?   @db.VarChar(255)
   liquidado         Boolean?
   fecha_liquidacion DateTime? @db.Date
   operadorliq       String?   @db.VarChar(255)
@@ -497,6 +500,7 @@ model servicios {
   movil                 String?   @db.VarChar(255)
   gasto_luto            String?   @db.VarChar(255)
   conyugue              String?   @db.VarChar(255)
+  serv_domicilio        Boolean?
 }
 
 model servicios_historico {
@@ -672,4 +676,60 @@ model servicio_presupuesto {
   cuotas        Int?
   saldo         Float?    @db.Float
   operador      String?   @db.VarChar(255)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model CAJA {
+  SUCURSAL  String?   @db.VarChar(1)
+  PUESTO    String?   @db.VarChar(2)
+  CODIGO    Int?
+  MOVIM     String?   @db.VarChar(1)
+  CUENTA    String?   @db.VarChar(12)
+  IMPORTE   Float?
+  TIPO      String?   @db.VarChar(1)
+  SERIE     Int?
+  NUMERO    Int?
+  CUIT      String?   @db.VarChar(13)
+  DETALLE   String?   @db.VarChar(25)
+  DET_AUX   String?   @db.VarChar(50)
+  FECHA     DateTime? @db.Date
+  FEC_COMP  DateTime? @db.Date
+  HORA      Int?
+  ORIGEN    String?   @db.VarChar(1)
+  OPERADOR  Int?
+  ASIENTO   Int?
+  EXENTO    String?   @db.VarChar(2)
+  CANT_AFIL Int?
+  CAE       String?   @db.VarChar(14)
+  VTO_CAE   DateTime? @db.Date
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model CAJA_copy {
+  SUCURSAL  String?   @db.VarChar(1)
+  PUESTO    String?   @db.VarChar(2)
+  CODIGO    Int?
+  MOVIM     String?   @db.VarChar(1)
+  CUENTA    String?   @db.VarChar(12)
+  IMPORTE   Float?
+  TIPO      String?   @db.VarChar(1)
+  SERIE     Int?
+  NUMERO    Int?
+  CUIT      String?   @db.VarChar(13)
+  DETALLE   String?   @db.VarChar(25)
+  DET_AUX   String?   @db.VarChar(50)
+  FECHA     DateTime? @db.Date
+  FEC_COMP  DateTime? @db.Date
+  HORA      Int?
+  ORIGEN    String?   @db.VarChar(1)
+  OPERADOR  Int?
+  ASIENTO   Int?
+  EXENTO    String?   @db.VarChar(2)
+  CANT_AFIL Int?
+  CAE       String?   @db.VarChar(14)
+  VTO_CAE   DateTime? @db.Date
+
+  @@ignore
 }

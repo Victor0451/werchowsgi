@@ -31,6 +31,7 @@ import ListadoHistorial from "./ListadoHistorial";
 import Link from "next/link";
 import ModalActualizarCuota from "./ModalActualizarCuota";
 import ModalApellidos from "./ModalApellidos";
+import ModalBeneficio from "./ModalBeneficio";
 
 const FormLegajoSocio = ({
   dniRef,
@@ -72,6 +73,11 @@ const FormLegajoSocio = ({
   apellidoRef,
   listApe,
   gl,
+  regBeneficio,
+  beneficioRef,
+  observacionRef,
+  traerBeneficios,
+  beneficios
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -345,6 +351,18 @@ const FormLegajoSocio = ({
                         errores={errores}
                         showAfi={showAfi}
                         regAfi={regAfi}
+                      />
+                    </div>
+
+                    <div>
+                      <ModalBeneficio
+                        errores={errores}
+                        regBeneficio={regBeneficio}
+                        beneficioRef={beneficioRef}
+                        observacionRef={observacionRef}
+                        ficha={ficha}
+                        traerBeneficios={traerBeneficios}
+                        beneficios={beneficios}
                       />
                     </div>
 

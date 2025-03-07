@@ -1221,6 +1221,14 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
+    } else if (req.query.f && req.query.f === "traer beneficios") {
+      const beneficios = await SGI.beneficios.findMany({
+        where: {
+          contrato: parseInt(req.query.ficha),
+        },
+      });
+
+      res.status(200).json(beneficios);
     }
   }
   if (req.method === "POST") {
@@ -1332,6 +1340,20 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json(regCuota);
+    } else if (req.body.f && req.body.f === "reg beneficio") {
+      const regBene = await SGI.beneficios.create({
+        data: {
+          contrato: parseInt(req.body.contrato),
+          dni: parseInt(req.body.dni),
+          socio: req.body.socio,
+          beneficio: req.body.beneficio,
+          observacion: req.body.observacion,
+          fecha: new Date(req.body.fecha),
+          operador: req.body.operador,
+        },
+      });
+
+      res.status(200).json(regBene);
     }
   } else if (req.method === "PUT") {
     if (req.body.f && req.body.f === "renov poliza") {

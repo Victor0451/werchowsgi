@@ -691,34 +691,6 @@ model prestamos_empleados_cobro {
   operador    String?   @db.VarChar(255)
 }
 
-model produccion {
-  prod_ide        Int       @id @default(autoincrement())
-  prod_fechacarga DateTime? @db.Date
-  prod_fechaafi   DateTime? @db.Date
-  prod_asesor     Int?
-  prod_empre      String?   @db.VarChar(4)
-  prod_mes        String?   @db.VarChar(10)
-  prod_anio       Int?
-  prod_apeafi     String?   @db.VarChar(30)
-  prod_nomafi     String?   @db.VarChar(60)
-  prod_dniafi     Int?
-  prod_local      Int?
-  prod_recibo     Int?
-  prod_monto      Float?    @db.Float
-  prod_plan       String?   @db.VarChar(20)
-  prod_pago       String?   @db.VarChar(20)
-  prod_cta_tar    BigInt?
-  prod_obs        String?   @db.Text
-  prod_semana     Int?
-  prod_estado     String?   @db.VarChar(15)
-  prod_cierre     Int?
-  prod_afiliado   Int?
-  prod_rendido    String?   @db.VarChar(2)
-  prod_recibosis  Int?
-  prod_fechren    DateTime? @db.Date
-  prod_tel        String?   @db.VarChar(50)
-}
-
 model registro_constancia_afiliacion {
   idconstancia       Int       @id @default(autoincrement())
   apellido_extinto   String?   @db.VarChar(255)
@@ -1066,4 +1038,15 @@ model historial_lv_prestamos {
   fecha_subida DateTime? @db.Date
   empresa      String?   @db.VarChar(255)
   cod_ptm_leg  String?   @db.VarChar(255)
+}
+
+model beneficios {
+  idbeneficio Int       @id @default(autoincrement())
+  contrato    Int?
+  dni         Int?
+  socio       String?   @db.VarChar(500)
+  beneficio   String?   @db.VarChar(1000)
+  fecha       DateTime? @db.Date
+  observacion String?   @db.VarChar(1000)
+  operador    String?   @db.VarChar(255)
 }

@@ -28,7 +28,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                 <u>Solicitud de Servicio</u>
               </Typography>
             </div>
-            <div className="w-full md:w-1/2 px-3  md:mb-0">
+            {/* <div className="w-full md:w-1/2 px-3  md:mb-0">
               <Alert
                 color="blue"
                 className="max-w-screen "
@@ -38,7 +38,7 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   El gasto de luto estimado es de: ${servicio.gasto_luto}
                 </Typography>
               </Alert>
-            </div>
+            </div> */}
           </div>
 
           <div className="p-4 border-2 rounded-lg mt-3">
@@ -325,7 +325,30 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   />
                 </div>
               )}
+
+              {servicio.serv_domicilio === true ? (
+                <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
+                  <Input
+                    size="md"
+                    label="Serv. en Domicilio"
+                    type="text"
+                    readOnly
+                    defaultValue={"Si"}
+                  />
+                </div>
+              ) : (
+                <div className="w-full md:w-1/3 px-3 mt-3 mb-3 md:mb-0">
+                  <Input
+                    size="md"
+                    label="Serv. en Domicilio"
+                    type="text"
+                    readOnly
+                    defaultValue={"No"}
+                  />
+                </div>
+              )}
             </div>
+
             <Textarea
               label="Detalle Corona"
               rows={5}
@@ -417,33 +440,33 @@ const FormImpSolicitud = ({ servicio, ataud, componentRef }) => {
                   de los vehículos durante la inhumación no superará los 40
                   minutos; caso contrario La Empresa cobrará por la misma un
                   valor equivalente al alquiler de un automóvil. 7- La Empresa
-                  proveerá de un set de cafetería: 1 kg de azúcar, 1 bolsa de caramelos, 
-                  1 café, y bebidas gaseosas (
-                  3) . 8- El responsable designado es el único con exclusivo
-                  derecho a cobrar el gasto luto del plan queda excluido el
-                  subsidio de contención familiar que tiene beneficiarios
-                  designados por el titular. 9- El responsable es el único
-                  interlocutor con derecho a efectuar consultas o cambios en el
-                  servicio, siempre que las mismas estén a tiempo de realizarse
-                  10-.Por razones de bio seguridad, ante la eventual
-                  certificación de una enfermedad transmisible( neumonía, OMS
-                  b24, meningitis, u otra enfermedad infecto contagiosa) y si el
-                  velatorio se realiza en sala velatoria de la empresa, el mismo
-                  será a ataúd cerrado o en su defecto si se realizaría en
-                  domicilio ante la explicación idónea del personal se actuara
-                  de la misma forma , salvo criterio de los familiares, quedando
-                  exceptuado toda responsabilidad esta empresa si ocurriese
-                  algún contagio de dichas enfermedades antes mencionadas 11-
-                  Dada las circunstancias acontecidas de público conocimiento
-                  referidas a CORONA VIRUS COVID 19 Y EN ESPECIAL POR LO
-                  DISPUESTO POR EL DECRETO DE NECESIDAD Y URGENCIA NRO 297/2020
-                  EMITIDO POR EL PODER EJECUTIVO NACIONAL EN MARCO DE LA
-                  EMERGENCIA SANITARIA DECLARADA EN TODO EL PAIS. El servicio se
-                  bridara con el retiro del cuerpo en ataúd en un móvil
-                  sanitario, y traslado 12- El responsable manifiesta su total
-                  conformidad para que el Servicio de Sepelio se efectúe de
-                  acuerdo al detalle precedente, renunciando a cualquier reclamo
-                  o indemnización alguna.
+                  proveerá de un set de cafetería: 1 kg de azúcar, 1 bolsa de
+                  caramelos, 1 café, y bebidas gaseosas ( 3) . 8- El
+                  responsable designado es el único con exclusivo derecho
+                  a cobrar el gasto luto del plan queda excluido el subsidio de
+                  contención familiar que tiene beneficiarios designados por el
+                  titular. 9- El responsable es el único interlocutor con
+                  derecho a efectuar consultas o cambios en el servicio, siempre
+                  que las mismas estén a tiempo de realizarse 10-.Por razones de
+                  bio seguridad, ante la eventual certificación de una
+                  enfermedad transmisible( neumonía, OMS b24, meningitis, u otra
+                  enfermedad infecto contagiosa) y si el velatorio se realiza en
+                  sala velatoria de la empresa, el mismo será a ataúd cerrado o
+                  en su defecto si se realizaría en domicilio ante la
+                  explicación idónea del personal se actuara de la misma forma ,
+                  salvo criterio de los familiares, quedando exceptuado toda
+                  responsabilidad esta empresa si ocurriese algún contagio de
+                  dichas enfermedades antes mencionadas 11- Dada las
+                  circunstancias acontecidas de público conocimiento referidas a
+                  CORONA VIRUS COVID 19 Y EN ESPECIAL POR LO DISPUESTO POR EL
+                  DECRETO DE NECESIDAD Y URGENCIA NRO 297/2020 EMITIDO POR EL
+                  PODER EJECUTIVO NACIONAL EN MARCO DE LA EMERGENCIA SANITARIA
+                  DECLARADA EN TODO EL PAIS. El servicio se bridara con el
+                  retiro del cuerpo en ataúd en un móvil sanitario, y traslado
+                  12- El responsable manifiesta su total conformidad para que el
+                  Servicio de Sepelio se efectúe de acuerdo al detalle
+                  precedente, renunciando a cualquier reclamo o indemnización
+                  alguna.
                 </Typography>
 
                 <div className="mt-10">

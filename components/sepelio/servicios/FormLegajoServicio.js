@@ -310,6 +310,28 @@ export const FormLegajoServicio = ({
                 />
               </div>
             )}
+
+            {servicio.serv_domicilio === true ? (
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Serv. en Domicilio"
+                  type="text"
+                  readOnly
+                  defaultValue={"Si"}
+                />
+              </div>
+            ) : (
+              <div className="relative w-full mb-6 group">
+                <Input
+                  size="md"
+                  label="Serv. en Domicilio"
+                  type="text"
+                  readOnly
+                  defaultValue={"No"}
+                />
+              </div>
+            )}
           </div>
           <Textarea
             label="Detalle Corona"

@@ -23,6 +23,8 @@ function Legajo(props) {
   let contratoRef = React.createRef();
   let cuotasRef = React.createRef();
   let apellidoRef = React.createRef();
+  let beneficioRef = React.createRef();
+  let observacionRef = React.createRef();
 
   const [errores, guardarErrores] = useState(null);
   const [alertas, guardarAlertas] = useState(null);
@@ -43,6 +45,7 @@ function Legajo(props) {
   const [baja, guardarBaja] = useState(false);
   const [listApe, guardarApellidos] = useState([]);
   const [gl, guardarGastoLuto] = useState([]);
+  const [beneficios, guardarBeneficios] = useState([]);
 
   const { usu } = useWerchow();
 
@@ -874,7 +877,6 @@ function Legajo(props) {
     await axios
       .post(`/api/socios`, rehab)
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           toast.success(
             "La rehabilitacion del socio fue registrada, puede imprimir la notificacion"
@@ -921,8 +923,7 @@ function Legajo(props) {
       })
       .then((res) => {
         if (res.data) {
-
-          let list = JSON.parse(res.data)
+          let list = JSON.parse(res.data);
 
           guardarHistorial(list);
         }
@@ -990,6 +991,57 @@ function Legajo(props) {
       });
   };
 
+  const regBeneficio = async () => {
+    let bene = {
+      contrato: ficha[0].CONTRATO,
+      dni: ficha[0].NRO_DOC,
+      socio: `${ficha[0].APELLIDOS}, ${ficha[0].NOMBRES}`,
+      beneficio: beneficioRef.current.value,
+      observacion: observacionRef.current.value,
+      fecha: moment().format("YYYY-MM-DD"),
+      operador: usu.usuario,
+      f: "reg beneficio",
+    };
+
+    await axios
+      .post(`/api/socios`, bene)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success("El beneficio se registro en el historial del socio");
+
+          let accion = `Se registro el siguiente beneficio: ${bene.beneficio}, al socio: ${bene.contrato} - ${bene.socio}.`;
+
+          registrarHistoria(accion, usu.usuario);
+
+          setTimeout(() => {
+            traerBeneficios(bene.contrato);
+          }, 500);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Ocurrio un error al registrar el beneficio");
+      });
+  };
+
+  const traerBeneficios = async (ficha) => {
+    await axios
+      .get(`/api/socios`, {
+        params: {
+          ficha: ficha,
+          f: "traer beneficios",
+        },
+      })
+      .then((res1) => {
+        console.log(res1.data);
+        guardarBeneficios(res1.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Ocurrio un error al traer el listado de beneficios");
+      });
+  };
+
   useSWR("/api/sepelio/servicios", gasLuto);
 
   if (isLoading === true) return <Skeleton />;
@@ -1040,6 +1092,11 @@ function Legajo(props) {
             apellidoRef={apellidoRef}
             listApe={listApe}
             gl={gl}
+            regBeneficio={regBeneficio}
+            beneficioRef={beneficioRef}
+            observacionRef={observacionRef}
+            traerBeneficios={traerBeneficios}
+            beneficios={beneficios}
           />
         </>
       )}
