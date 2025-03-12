@@ -15,6 +15,10 @@ import {
 import moment from "moment";
 import Router from "next/router";
 import Select from "react-select";
+import {
+  PencilSquareIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/solid";
 
 function FormPracticas({
   norden,
@@ -23,6 +27,8 @@ function FormPracticas({
   handleChange,
   cuitPracRef,
   fechaPagPracRef,
+  sucusmed,
+  traerMed,
 }) {
   return (
     <Card className="h-full w-full p-4 mt-5 border-2 ">
@@ -31,8 +37,8 @@ function FormPracticas({
           <u>Practicas Medicas</u>
         </Typography>
 
-        <div className="mt-10 grid md:grid-cols-4 md:gap-6">
-          <div className="relative w-full mb-6 group">
+        <div className="flex flex-wrap -mx-3 mb-6">
+          <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
             <Input
               size="md"
               label="N° Orden"
@@ -42,7 +48,7 @@ function FormPracticas({
             />
           </div>
 
-          <div className="relative w-full mb-6 group">
+          <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
             <Input
               size="md"
               label="Fecha"
@@ -52,47 +58,78 @@ function FormPracticas({
             />
           </div>
 
-          <div className="relative w-full mb-6 group">
+          <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
             <Select
               className=" text-sm rounded-xl"
-              placeholder="Prestador"
-              options={medicos.map((i) => ({
-                label: i.NOMBRE,
-                value: `${i.COD_PRES}-${i.NOMBRE}`,
-              }))}
+              placeholder="Sucursal"
+              options={sucusmed}
               onChange={(value) => {
-                handleChange("prestador", value.value);
+                handleChange("sucursal", value.value);
               }}
             />
           </div>
 
-          <div className="relative w-full mb-6 group">
-            <Input
-              size="md"
-              label="CUIT/CUIL"
-              type="text"
-              inputRef={cuitPracRef}
-            />
+          <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
+            <Button onClick={traerMed}>Buscar Prestadores</Button>
           </div>
 
-          <div className="relative w-full mb-6 group">
-            <Input
-              size="md"
-              label="Fecha a Pagar"
-              type="date"
-              inputRef={fechaPagPracRef}
-            />
-          </div>
-        </div>
+          {medicos.length === 0 ? (
+            <div className="w-full md:w-full px-3 mt-6 mb-6 md:mb-0">
+              <Alert
+                color="blue"
+                icon={
+                  <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
+                }
+              >
+                Selecciona la sucursal para traer los prestadores
+                correspondientes.
+              </Alert>
+            </div>
+          ) : (
+            <>
+              <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
+                <Select
+                  className=" text-sm rounded-xl"
+                  placeholder="Prestador"
+                  options={medicos.map((i) => ({
+                    label: i.NOMBRE,
+                    value: `${i.COD_PRES}-${i.NOMBRE}`,
+                  }))}
+                  onChange={(value) => {
+                    handleChange("prestador", value.value);
+                  }}
+                />
+              </div>
 
-        <div>
-          <Textarea
-            rows={10}
-            label="Observacion"
-            onChange={(value) => {
-              handleChange("observ consultas", value);
-            }}
-          />
+              <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
+                <Input
+                  size="md"
+                  label="CUIT/CUIL"
+                  type="text"
+                  inputRef={cuitPracRef}
+                />
+              </div>
+
+              <div className="w-full md:w-1/4 px-3 mt-6 mb-6 md:mb-0">
+                <Input
+                  size="md"
+                  label="Fecha a Pagar"
+                  type="date"
+                  inputRef={fechaPagPracRef}
+                />
+              </div>
+
+              <div className="w-full md:w-full px-3 mt-6 mb-6 md:mb-0">
+                <Textarea
+                  rows={10}
+                  label="Observacion"
+                  onChange={(value) => {
+                    handleChange("observ consultas", value);
+                  }}
+                />
+              </div>
+            </>
+          )}
         </div>
 
         <div className="flex justify-end mt-6">

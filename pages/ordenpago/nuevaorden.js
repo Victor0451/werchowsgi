@@ -12,6 +12,7 @@ import { registrarHistoria } from "@/libs/funciones";
 import Router from "next/router";
 import jsCookie from "js-cookie";
 import FormOrdenPago from "@/components/ordenpago/FormOrdenPago";
+import { sucusmed } from "../../array/array";
 
 function NuevaOrden(props) {
   let medicoRef = React.createRef();
@@ -40,6 +41,7 @@ function NuevaOrden(props) {
   const [observContSel, guardarObservContSel] = useState("");
   const [observConsulSel, guardarObservConsulSel] = useState("");
   const [observPractSel, guardarObservPracSel] = useState("");
+  const [sucurSel, guardarSucurSel] = useState("");
   const [medicoSel, guardarMedicoSel] = useState("");
   const [exito, guardarExito] = useState(null);
   const [alertas, guardarAlertas] = useState(null);
@@ -99,6 +101,7 @@ function NuevaOrden(props) {
           guardarTipoFac(res.data);
         } else {
           toast.info("No hay facturas registradas");
+          guardarTipoFac([]);
         }
       })
 
@@ -106,11 +109,14 @@ function NuevaOrden(props) {
         console.log(error);
         toast.error("Ocurrio un error al traer los tipos de facturas");
       });
+  };
 
+  const traerMed = async () => {
     await axios
       .get(`/api/medicos`, {
         params: {
-          f: "prestadores",
+          f: "prestadores sucu",
+          sucu: sucurSel,
         },
       })
       .then((res) => {
@@ -321,6 +327,8 @@ function NuevaOrden(props) {
       guardarObservPracSel(value.target.value);
     } else if (f === "prestador") {
       guardarMedicoSel(value);
+    } else if (f === "sucursal") {
+      guardarSucurSel(value);
     }
   };
 
@@ -630,6 +638,8 @@ function NuevaOrden(props) {
             tipOrd={tipOrd}
             detMed={detMed}
             fTot={fTot}
+            sucusmed={sucusmed}
+            traerMed={traerMed}
           />
         </>
       )}

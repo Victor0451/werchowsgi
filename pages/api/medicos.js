@@ -9,6 +9,40 @@ export default async function handler(req, res) {
         },
       });
       res.status(200).json(prestadores);
+    }
+    if (req.query.f === "prestadores sucu") {
+      if (req.query.sucu === "O") {
+        const prestadores = await Serv.PRESTADO.findMany({
+          where: {
+            OTERO: 1,
+          },
+          orderBy: {
+            NOMBRE: "asc",
+          },
+        });
+        res.status(200).json(prestadores);
+      } else if (req.query.sucu === "W") {
+        const prestadores = await Serv.PRESTADO.findMany({
+          where: {
+            SUC: req.query.sucu,
+            OTERO: 0,
+          },
+          orderBy: {
+            NOMBRE: "asc",
+          },
+        });
+        res.status(200).json(prestadores);
+      } else {
+        const prestadores = await Serv.PRESTADO.findMany({
+          where: {
+            SUC: req.query.sucu,
+          },
+          orderBy: {
+            NOMBRE: "asc",
+          },
+        });
+        res.status(200).json(prestadores);
+      }
     } else if (req.query.f === "consultas otero") {
       const consultas = await Serv.USOS.findMany({
         where: {

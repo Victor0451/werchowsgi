@@ -58,7 +58,9 @@ const FormOrdenPago = ({
   exito,
   tipOrd,
   detMed,
-  fTot
+  fTot,
+  sucusmed,
+  traerMed
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -115,6 +117,8 @@ const FormOrdenPago = ({
             fechaPagRef={fechaPagRef}
             buscarOrdenes={buscarOrdenes}
             handleChange={handleChange}
+            sucusmed={sucusmed}
+            traerMed={traerMed}
           />
         ) : practicas === true ? (
           <FormPracticas
@@ -124,6 +128,8 @@ const FormOrdenPago = ({
             handleChange={handleChange}
             cuitPracRef={cuitPracRef}
             fechaPagPracRef={fechaPagPracRef}
+            sucusmed={sucusmed}
+            traerMed={traerMed}
           />
         ) : null}
 

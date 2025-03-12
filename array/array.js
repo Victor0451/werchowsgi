@@ -4,7 +4,7 @@ export const acciones = [
   { value: 3, label: "NO SE ENCUENTRA" },
   { value: 4, label: "NUMERO EQUIVOCADO" },
   { value: 5, label: "FUERA DE SERVICIO" },
-  { value: 6, label: "NO VIVE AHI" },  
+  { value: 6, label: "NO VIVE AHI" },
   { value: 8, label: "NO PAGA" },
   { value: 9, label: "CUOTA AL DIA" },
   { value: 10, label: "NOTIFICACION EN MANO" },
@@ -572,3 +572,12 @@ export const zonaPer = [{ value: 5, label: "Oficina Perico" }];
 export const zonaSP = [{ value: 60, label: "Oficina San Pedro" }];
 
 export const zonaCC = [{ value: 1, label: "Oficina Casa Central" }];
+
+export const sucusmed = [
+  { value: "W", label: "Casa Central" },
+  { value: "O", label: "Clinica Otero" },
+  { value: "L", label: "Palpala" },
+  { value: "R", label: "Perico" },
+  { value: "C", label: "El Carmen" },
+  { value: "P", label: "San Pedro" },
+];
