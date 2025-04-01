@@ -74,6 +74,32 @@ export const Gestion = ({ usu }) => {
                 </Link>
               </MenuList>
             </Menu>
+            {usu.usuario === "vlongo" ||
+            usu.usuario === "nquintana" ||
+            usu.usuario === "jcmorales" ||
+            usu.usuario === "rquispe" ||
+            usu.usuario === "joaquini" ||
+            usu.usuario === "isantiago" ||
+            usu.usuario === "jcmorales" ? (
+              <Menu placement="right-start">
+                <MenuHandler>
+                  <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
+                    <Typography color="black">Informes</Typography>
+                    <ChevronDownIcon
+                      strokeWidth={2}
+                      className={`h-3 w-3 transition-transform `}
+                    />
+                  </MenuItem>
+                </MenuHandler>
+                <MenuList>
+                  <Link href={"/medicos/informes"}>
+                    <MenuItem>
+                      <Typography color="black">Sistema Medico</Typography>
+                    </MenuItem>
+                  </Link>
+                </MenuList>
+              </Menu>
+            ) : null}
 
             {usu.usuario === "vlongo" ||
             usu.usuario === "nquintana" ||
