@@ -51,6 +51,12 @@ export default function ModalAdhs({ listado, usu, regAdh }) {
       grow: 0.1,
     },
     {
+      name: "Plan",
+      selector: (row) => `${row.PLAN}${row.SUB_PLAN}`,
+      sortable: true,
+      grow: 0.1,
+    },
+    {
       name: "Alta",
       selector: (row) =>
         `${moment(row.ALTA).utcOffset("+0300").format("DD/MM/YYYY")}`,

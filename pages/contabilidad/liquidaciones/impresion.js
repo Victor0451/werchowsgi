@@ -30,7 +30,7 @@ function impresion(props) {
 
   let router = useRouter();
   if (router.query.idrecibo) {
-    jsCookie.set("idrecibo", router.query.idrecibo);
+    jsCookie.set("idrecibo", router.query.idrecibo, { expires: 1 });
   }
 
   const traerDatos = async () => {

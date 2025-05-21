@@ -24,7 +24,7 @@ function CajaMail(props) {
   let params = useRouter();
 
   if (params.query.id) {
-    jsCookie.set("id", params.query.id);
+    jsCookie.set("id", params.query.id, { expires: 1 });
   }
 
   const traerMovimientos = async () => {

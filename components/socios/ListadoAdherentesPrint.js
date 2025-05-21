@@ -5,6 +5,7 @@ import { Card, Typography } from "@material-tailwind/react";
 const ListadoAdherentes = ({ listado }) => {
   const TABLE_HEAD = [
     "Integrantes",
+    "Plan",
     "Fecha Nac.",
     "DNI",
     "Alta",
@@ -47,6 +48,22 @@ const ListadoAdherentes = ({ listado }) => {
                   ) : (
                     <>
                       {l.APELLIDOS}, {l.NOMBRES}
+                    </>
+                  )}
+                </Typography>
+              </td>
+              <td className="p-1">
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal"
+                >
+                  {!l.NACIMIENTO ? (
+                    ""
+                  ) : (
+                    <>
+                      {l.PLAN}
+                      {l.SUB_PLAN}
                     </>
                   )}
                 </Typography>

@@ -26,7 +26,7 @@ function ImprimirOrden(props) {
 
   let router = useRouter();
   if (router.query.idorden) {
-    jsCookie.set("idorden", router.query.idorden);
+    jsCookie.set("idorden", router.query.idorden, { expires: 1 });
   }
 
   const traerCaja = async () => {

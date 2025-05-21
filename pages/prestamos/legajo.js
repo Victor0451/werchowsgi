@@ -26,7 +26,7 @@ export default function legajo() {
 
   let router = useRouter();
   if (router.query.idprest) {
-    jsCookie.set("idprest", router.query.idprest);
+    jsCookie.set("idprest", router.query.idprest, { expires: 1 });
   }
 
   const traerPrest = async () => {

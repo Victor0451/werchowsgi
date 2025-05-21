@@ -28,7 +28,7 @@ export const NavListItems = ({}) => {
         {usu.gestion === true ? <Gestion usu={usu} /> : null}
         {usu.contabilidad === true ? <Contabilidad /> : null}
         {usu.campanas === true ? <Campanas /> : null}
-        {usu.cobranza === true ? <Cobranza /> : null}
+        {/* {usu.cobranza === true ? <Cobranza /> : null} */}
         {usu.prestamos === true ? <Prestamos /> : null}
         {usu.sepelio === true ? <Sepelio usu={usu} /> : null}
         {usu.socios === true ? <Socios /> : null}

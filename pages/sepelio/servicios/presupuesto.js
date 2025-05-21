@@ -34,7 +34,7 @@ function presupuesto(props) {
 
   let router = useRouter();
   if (router.query.idservicio) {
-    jsCookie.set("idservicio", router.query.idservicio);
+    jsCookie.set("idservicio", router.query.idservicio, { expires: 1 });
   }
 
   const traerInfo = async () => {

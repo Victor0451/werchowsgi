@@ -22,7 +22,7 @@ function ImprimirNovell(props) {
 
   let router = useRouter();
   if (router.query.idnovell) {
-    jsCookie.set("idnovell", router.query.idnovell);
+    jsCookie.set("idnovell", router.query.idnovell , { expires: 1 });
   }
 
   const traerNovell = async () => {

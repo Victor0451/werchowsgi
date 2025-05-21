@@ -31,6 +31,12 @@ const ListadoAdherentes = ({ listado }) => {
       grow: 0.1,
     },
     {
+      name: "Plan",
+      selector: (row) => `${row.PLAN}${row.SUB_PLAN} `,
+      sortable: true,
+      grow: 0.1,
+    },
+    {
       name: "Fecha Alta",
       selector: (row) =>
         `${moment(row.ALTA).utcOffset("+0300").format("DD/MM/YYYY")}`,

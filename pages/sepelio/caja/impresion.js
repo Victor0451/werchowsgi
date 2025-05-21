@@ -26,7 +26,7 @@ export default function Impresion() {
 
   let router = useRouter();
   if (router.query.idcaja) {
-    jsCookie.set("idcaja", router.query.idcaja);
+    jsCookie.set("idcaja", router.query.idcaja, { expires: 1 });
   }
 
   const traerCaja = async () => {

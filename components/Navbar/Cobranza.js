@@ -31,7 +31,7 @@ export const Cobranza = () => {
               {...triggers}
               className="hidden items-center gap-2 lg:flex lg:rounded-full"
             >
-              <Square3Stack3DIcon className="h-[18px] w-[18px]" /> Ventas{" "}
+              <Square3Stack3DIcon className="h-[18px] w-[18px]" /> Cobranza{" "}
               <ChevronDownIcon
                 strokeWidth={2}
                 className={`h-3 w-3 transition-transform ${

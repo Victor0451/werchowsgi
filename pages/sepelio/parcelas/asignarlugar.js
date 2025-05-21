@@ -27,7 +27,7 @@ function AsignarLugares(props) {
 
   let router = useRouter();
   if (router.query.idparcela) {
-    jsCookie.set("idparcela", router.query.idparcela);
+    jsCookie.set("idparcela", router.query.idparcela, { expires: 1 });
   }
 
   const traerParcelas = async () => {

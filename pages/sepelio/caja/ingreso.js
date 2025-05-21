@@ -39,7 +39,7 @@ export default function Ingreso() {
 
   let router = useRouter();
   if (router.query.idcaja) {
-    jsCookie.set("idcaja", router.query.idcaja);
+    jsCookie.set("idcaja", router.query.idcaja, { expires: 1 });
   }
 
   const traerCaja = async () => {
@@ -224,7 +224,7 @@ export default function Ingreso() {
     await axios.put(`/api/sepelio/caja`, data).then((res) => {
       if (res.status === 200) {
         traerCaja();
-        traerIngresosCaja()
+        traerIngresosCaja();
       }
     });
   };

@@ -38,7 +38,7 @@ function recibo(props) {
 
   let router = useRouter();
   if (router.query.idlegajo) {
-    jsCookie.set("idlegajo", router.query.idlegajo);
+    jsCookie.set("idlegajo", router.query.idlegajo, { expires: 1 });
   }
 
   const traerDatos = async () => {
@@ -223,7 +223,7 @@ function recibo(props) {
                   if (res.status === 200) {
                     toast.success("Se creo el recibo con exito");
                     guardarIdRec(res.data.idrecibo);
-                    jsCookie.set("idRec", res.data.idrecibo);
+                    jsCookie.set("idRec", res.data.idrecibo, { expires: 1 });
                   }
                 })
                 .catch((error) => {

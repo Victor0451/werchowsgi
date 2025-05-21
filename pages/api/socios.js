@@ -242,7 +242,9 @@ export default async function handler(req, res) {
                 END 'EMPRESA'    ,
                 "A" as "perfil",
                 a.BAJA,
-                a.EDAD 'FALLE'
+                a.EDAD 'FALLE',
+                a.PLAN,
+                a.SUB_PLAN
                 FROM adherent as a
                 INNER JOIN maestro as m on a.CONTRATO = m.CONTRATO                  
                 INNER JOIN obra_soc as o on o.CODIGO = m.OBRA_SOC

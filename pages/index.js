@@ -52,8 +52,8 @@ export default function Index() {
         await axios.post(`/api/auth`, body, config).then((res) => {
           console.log(res.data.user);
           let user = JSON.stringify(res.data.user);
-          jsCookie.set("token", res.data.token);
-          jsCookie.set("usuario", user);
+          jsCookie.set("token", res.data.token, { expires: 1 });
+          jsCookie.set("usuario", user, { expires: 1 });
           setTimeout(() => {
             Router.reload();
           }, 500);
@@ -175,7 +175,7 @@ export default function Index() {
     })
       .then((res) => {
         if (res.status === 200) {
-          jsCookie.set("env", true);
+          jsCookie.set("env", true, { expires: 1 });
         }
       })
       .catch((error) => {
