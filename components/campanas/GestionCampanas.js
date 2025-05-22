@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Card,
-  CardHeader,
+  CardBody,
   Tabs,
   TabsHeader,
   TabsBody,
@@ -15,7 +15,7 @@ export const GestionCampanas = () => {
   let operadorNom = {};
   return (
     <Card className="h-full w-full">
-      <CardHeader floated={false} shadow={false} className="rounded-none">
+      <CardBody floated={false} shadow={false} className="rounded-none">
         <Tabs value="werchow">
           <TabsHeader>
             <Tab value={"werchow"}>
@@ -135,7 +135,7 @@ export const GestionCampanas = () => {
             </TabPanel>
           </TabsBody>
         </Tabs>
-      </CardHeader>
+      </CardBody>
     </Card>
   );
 };

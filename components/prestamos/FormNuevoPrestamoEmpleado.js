@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Card,
-  CardHeader,
+  CardBody,
   Typography,
   Alert,
   Button,
@@ -32,7 +32,7 @@ export const FormNuevoPrestamoEmpleado = ({
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
-      <CardHeader floated={false} shadow={false} className="rounded-none">
+      <CardBody floated={false} shadow={false} className="rounded-none">
         <Typography variant="h2">Registrar Prestamo Para Empleados</Typography>
 
         <div className="border-2 rounded-xl p-4 mt-5">
@@ -176,7 +176,7 @@ export const FormNuevoPrestamoEmpleado = ({
             </div>
           </>
         ) : null}
-      </CardHeader>
+      </CardBody>
     </Card>
   );
 };
