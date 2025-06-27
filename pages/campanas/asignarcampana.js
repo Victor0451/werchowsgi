@@ -108,6 +108,8 @@ export default function AsignarCampana() {
         idcamp = 11;
       } else if (camp === "atcampanaM") {
         idcamp = 28;
+      } else if (camp === "atcampanaSM") {
+        idcamp = 87;
       } else if (camp === "at2campana") {
         idcamp = 67;
       } else if (camp === "at2campanaM") {
@@ -116,6 +118,8 @@ export default function AsignarCampana() {
         idcamp = 1;
       } else if (camp === "reccampanaM") {
         idcamp = 33;
+      } else if (camp === "reccampanaSM") {
+        idcamp = 88;
       } else if (camp === "reincampana") {
         idcamp = 6;
       } else if (camp === "reincampanaM") {
@@ -134,6 +138,8 @@ export default function AsignarCampana() {
         idcamp = 12;
       } else if (camp === "atcampanaM") {
         idcamp = 29;
+      } else if (camp === "atcampanaSM") {
+        idcamp = 89;
       } else if (camp === "at2campana") {
         idcamp = 68;
       } else if (camp === "at2campanaM") {
@@ -142,6 +148,8 @@ export default function AsignarCampana() {
         idcamp = 2;
       } else if (camp === "reccampanaM") {
         idcamp = 34;
+      } else if (camp === "reccampanaSM") {
+        idcamp = 90;
       } else if (camp === "reincampana") {
         idcamp = 7;
       } else if (camp === "reincampanaM") {

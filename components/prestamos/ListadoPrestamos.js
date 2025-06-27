@@ -80,6 +80,8 @@ export const ListadoPrestamos = ({ listado, usu, estadoPrest }) => {
             <div>Alejandra Tejerina</div>
           ) : row.ptm_op === 107 ? (
             <div>Lucia Adorno</div>
+          ) : row.ptm_op === 125 ? (
+            <div>Paula Duran</div>
           ) : null}
         </>
       ),

@@ -162,6 +162,12 @@ export default async function handler(req, res) {
       } else if (tabla === "blancampanaM") {
         const asigCamp = await prismaWerCamp.blancampanaM.findMany();
         res.status(200).json(asigCamp);
+      } else if (tabla === "atcampanaSM") {
+        const asigCamp = await prismaWerCamp.atcampanaSM.findMany();
+        res.status(200).json(asigCamp);
+      } else if (tabla === "reccampanaSM") {
+        const asigCamp = await prismaWerCamp.reccampanaSM.findMany();
+        res.status(200).json(asigCamp);
       }
     } else if (req.query.f && req.query.f === "camp temp") {
       const campTemp = await prisma.campanatemporal.findMany({

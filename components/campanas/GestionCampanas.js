@@ -30,6 +30,12 @@ export const GestionCampanas = () => {
                 Campañas Mutual
               </div>
             </Tab>
+            <Tab value={"sanmiguel"}>
+              <div className="flex items-start gap-2">
+                {React.createElement(BellIcon, { className: "w-5 h-5" })}
+                Campañas San Miguel
+              </div>
+            </Tab>
           </TabsHeader>
 
           <hr />
@@ -129,6 +135,27 @@ export const GestionCampanas = () => {
                   titulo="BLANQUEOS"
                   camp="Blanqueo"
                   empresa="mutual"
+                  operador={operadorNom}
+                />
+              </div>
+            </TabPanel>
+
+            <TabPanel value={"sanmiguel"}>
+              <p className="text-2xl underline underline-offset-8">
+                San Miguel
+              </p>
+              <div className="mt-5 grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-3 ">
+                <Campana
+                  titulo="ATRASADOS 1 CUOTA"
+                  camp="Atrasados"
+                  empresa="sanmiguel"
+                  operador={operadorNom}
+                />
+
+                <Campana
+                  titulo="RECUPERACIONES"
+                  camp="Recuperacion"
+                  empresa="sanmiguel"
                   operador={operadorNom}
                 />
               </div>

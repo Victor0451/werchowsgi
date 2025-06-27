@@ -4,339 +4,495 @@
 **/
 
 import * as runtime from './runtime/library';
-type UnwrapPromise<P extends any> = P extends Promise<infer R> ? R : P
-type UnwrapTuple<Tuple extends readonly unknown[]> = {
-  [K in keyof Tuple]: K extends `${number}` ? Tuple[K] extends Prisma.PrismaPromise<infer X> ? X : UnwrapPromise<Tuple[K]> : UnwrapPromise<Tuple[K]>
-};
+import $Types = runtime.Types // general types
+import $Public = runtime.Types.Public
+import $Utils = runtime.Types.Utils
+import $Extensions = runtime.Types.Extensions
 
-export type PrismaPromise<T> = runtime.Types.Public.PrismaPromise<T>
+export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
+
+export type at2campanaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["at2campana"]>
+  composites: {}
+}
 
 /**
  * Model at2campana
  * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
  */
-export type at2campana = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  IMPORTE: number | null
-  ID: number
+export type at2campana = runtime.Types.DefaultSelection<at2campanaPayload>
+export type atcampanaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    MAIL: string | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["atcampana"]>
+  composites: {}
 }
 
 /**
  * Model atcampana
  * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
  */
-export type atcampana = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  MAIL: string | null
-  IMPORTE: number | null
-  ID: number
+export type atcampana = runtime.Types.DefaultSelection<atcampanaPayload>
+export type blancampanaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["blancampana"]>
+  composites: {}
 }
 
 /**
  * Model blancampana
  * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
  */
-export type blancampana = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  IMPORTE: number | null
-  ID: number
+export type blancampana = runtime.Types.DefaultSelection<blancampanaPayload>
+export type reccampanaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["reccampana"]>
+  composites: {}
 }
 
 /**
  * Model reccampana
  * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
  */
-export type reccampana = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  IMPORTE: number | null
-  ID: number
+export type reccampana = runtime.Types.DefaultSelection<reccampanaPayload>
+export type reincampanaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["reincampana"]>
+  composites: {}
 }
 
 /**
  * Model reincampana
  * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
  */
-export type reincampana = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  IMPORTE: number | null
-  ID: number
+export type reincampana = runtime.Types.DefaultSelection<reincampanaPayload>
+export type auxcampanaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["auxcampana"]>
+  composites: {}
 }
 
 /**
  * Model auxcampana
  * 
  */
-export type auxcampana = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  IMPORTE: number | null
-  ID: number
+export type auxcampana = runtime.Types.DefaultSelection<auxcampanaPayload>
+export type policampanaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["policampana"]>
+  composites: {}
 }
 
 /**
  * Model policampana
  * 
  */
-export type policampana = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  IMPORTE: number | null
-  ID: number
+export type policampana = runtime.Types.DefaultSelection<policampanaPayload>
+export type at2campanaMPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["at2campanaM"]>
+  composites: {}
 }
 
 /**
  * Model at2campanaM
  * 
  */
-export type at2campanaM = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  IMPORTE: number | null
-  ID: number
+export type at2campanaM = runtime.Types.DefaultSelection<at2campanaMPayload>
+export type atcampanaMPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["atcampanaM"]>
+  composites: {}
 }
 
 /**
  * Model atcampanaM
  * 
  */
-export type atcampanaM = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  IMPORTE: number | null
-  ID: number
+export type atcampanaM = runtime.Types.DefaultSelection<atcampanaMPayload>
+export type blancampanaMPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["blancampanaM"]>
+  composites: {}
 }
 
 /**
  * Model blancampanaM
  * 
  */
-export type blancampanaM = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  IMPORTE: number | null
-  ID: number
+export type blancampanaM = runtime.Types.DefaultSelection<blancampanaMPayload>
+export type reccampanaMPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["reccampanaM"]>
+  composites: {}
 }
 
 /**
  * Model reccampanaM
  * 
  */
-export type reccampanaM = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  IMPORTE: number | null
-  ID: number
+export type reccampanaM = runtime.Types.DefaultSelection<reccampanaMPayload>
+export type reincampanaMPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["reincampanaM"]>
+  composites: {}
 }
 
 /**
  * Model reincampanaM
  * 
  */
-export type reincampanaM = {
-  SUCURSAL: string | null
-  CONTRATO: number
-  NRO_DOC: number | null
-  APELLIDOS: string | null
-  NOMBRES: string | null
-  ALTA: Date | null
-  VIGENCIA: Date | null
-  CALLE: string | null
-  NRO_CALLE: number | null
-  BARRIO: string | null
-  LOCALIDAD: string | null
-  GRUPO: number | null
-  ZONA: number | null
-  TELEFONO: string | null
-  MOVIL: string | null
-  EDAD: number | null
-  MES: number | null
-  ANO: number | null
-  IMPORTE: number | null
-  ID: number
+export type reincampanaM = runtime.Types.DefaultSelection<reincampanaMPayload>
+export type atcampanaSMPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["atcampanaSM"]>
+  composites: {}
 }
 
+/**
+ * Model atcampanaSM
+ * 
+ */
+export type atcampanaSM = runtime.Types.DefaultSelection<atcampanaSMPayload>
+export type reccampanaSMPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["reccampanaSM"]>
+  composites: {}
+}
+
+/**
+ * Model reccampanaSM
+ * 
+ */
+export type reccampanaSM = runtime.Types.DefaultSelection<reccampanaSMPayload>
+export type tempcampanaPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  objects: {}
+  scalars: $Extensions.GetResult<{
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+  }, ExtArgs["result"]["tempcampana"]>
+  composites: {}
+}
+
+/**
+ * Model tempcampana
+ * 
+ */
+export type tempcampana = runtime.Types.DefaultSelection<tempcampanaPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -357,8 +513,11 @@ export class PrismaClient<
   U = 'log' extends keyof T ? T['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<T['log']> : never : never,
   GlobalReject extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined = 'rejectOnNotFound' extends keyof T
     ? T['rejectOnNotFound']
-    : false
-      > {
+    : false,
+  ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs
+> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
+
     /**
    * ##  Prisma Client ʲˢ
    * 
@@ -389,6 +548,8 @@ export class PrismaClient<
 
   /**
    * Add a middleware
+   * @deprecated since 4.16.0. For new code, prefer client extensions instead.
+   * @see https://pris.ly/d/extensions
    */
   $use(cb: Prisma.Middleware): void
 
@@ -451,9 +612,12 @@ export class PrismaClient<
    * 
    * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
    */
-  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { isolationLevel?: Prisma.TransactionIsolationLevel }): Promise<UnwrapTuple<P>>
+  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { isolationLevel?: Prisma.TransactionIsolationLevel }): Promise<runtime.Types.Utils.UnwrapTuple<P>>
 
-  $transaction<R>(fn: (prisma: Omit<this, "$connect" | "$disconnect" | "$on" | "$transaction" | "$use">) => Promise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): Promise<R>
+  $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => Promise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): Promise<R>
+
+
+  $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>
 
       /**
    * `prisma.at2campana`: Exposes CRUD operations for the **at2campana** model.
@@ -463,7 +627,7 @@ export class PrismaClient<
     * const at2campanas = await prisma.at2campana.findMany()
     * ```
     */
-  get at2campana(): Prisma.at2campanaDelegate<GlobalReject>;
+  get at2campana(): Prisma.at2campanaDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.atcampana`: Exposes CRUD operations for the **atcampana** model.
@@ -473,7 +637,7 @@ export class PrismaClient<
     * const atcampanas = await prisma.atcampana.findMany()
     * ```
     */
-  get atcampana(): Prisma.atcampanaDelegate<GlobalReject>;
+  get atcampana(): Prisma.atcampanaDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.blancampana`: Exposes CRUD operations for the **blancampana** model.
@@ -483,7 +647,7 @@ export class PrismaClient<
     * const blancampanas = await prisma.blancampana.findMany()
     * ```
     */
-  get blancampana(): Prisma.blancampanaDelegate<GlobalReject>;
+  get blancampana(): Prisma.blancampanaDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.reccampana`: Exposes CRUD operations for the **reccampana** model.
@@ -493,7 +657,7 @@ export class PrismaClient<
     * const reccampanas = await prisma.reccampana.findMany()
     * ```
     */
-  get reccampana(): Prisma.reccampanaDelegate<GlobalReject>;
+  get reccampana(): Prisma.reccampanaDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.reincampana`: Exposes CRUD operations for the **reincampana** model.
@@ -503,7 +667,7 @@ export class PrismaClient<
     * const reincampanas = await prisma.reincampana.findMany()
     * ```
     */
-  get reincampana(): Prisma.reincampanaDelegate<GlobalReject>;
+  get reincampana(): Prisma.reincampanaDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.auxcampana`: Exposes CRUD operations for the **auxcampana** model.
@@ -513,7 +677,7 @@ export class PrismaClient<
     * const auxcampanas = await prisma.auxcampana.findMany()
     * ```
     */
-  get auxcampana(): Prisma.auxcampanaDelegate<GlobalReject>;
+  get auxcampana(): Prisma.auxcampanaDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.policampana`: Exposes CRUD operations for the **policampana** model.
@@ -523,7 +687,7 @@ export class PrismaClient<
     * const policampanas = await prisma.policampana.findMany()
     * ```
     */
-  get policampana(): Prisma.policampanaDelegate<GlobalReject>;
+  get policampana(): Prisma.policampanaDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.at2campanaM`: Exposes CRUD operations for the **at2campanaM** model.
@@ -533,7 +697,7 @@ export class PrismaClient<
     * const at2campanaMS = await prisma.at2campanaM.findMany()
     * ```
     */
-  get at2campanaM(): Prisma.at2campanaMDelegate<GlobalReject>;
+  get at2campanaM(): Prisma.at2campanaMDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.atcampanaM`: Exposes CRUD operations for the **atcampanaM** model.
@@ -543,7 +707,7 @@ export class PrismaClient<
     * const atcampanaMS = await prisma.atcampanaM.findMany()
     * ```
     */
-  get atcampanaM(): Prisma.atcampanaMDelegate<GlobalReject>;
+  get atcampanaM(): Prisma.atcampanaMDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.blancampanaM`: Exposes CRUD operations for the **blancampanaM** model.
@@ -553,7 +717,7 @@ export class PrismaClient<
     * const blancampanaMS = await prisma.blancampanaM.findMany()
     * ```
     */
-  get blancampanaM(): Prisma.blancampanaMDelegate<GlobalReject>;
+  get blancampanaM(): Prisma.blancampanaMDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.reccampanaM`: Exposes CRUD operations for the **reccampanaM** model.
@@ -563,7 +727,7 @@ export class PrismaClient<
     * const reccampanaMS = await prisma.reccampanaM.findMany()
     * ```
     */
-  get reccampanaM(): Prisma.reccampanaMDelegate<GlobalReject>;
+  get reccampanaM(): Prisma.reccampanaMDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.reincampanaM`: Exposes CRUD operations for the **reincampanaM** model.
@@ -573,13 +737,48 @@ export class PrismaClient<
     * const reincampanaMS = await prisma.reincampanaM.findMany()
     * ```
     */
-  get reincampanaM(): Prisma.reincampanaMDelegate<GlobalReject>;
+  get reincampanaM(): Prisma.reincampanaMDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.atcampanaSM`: Exposes CRUD operations for the **atcampanaSM** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AtcampanaSMS
+    * const atcampanaSMS = await prisma.atcampanaSM.findMany()
+    * ```
+    */
+  get atcampanaSM(): Prisma.atcampanaSMDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.reccampanaSM`: Exposes CRUD operations for the **reccampanaSM** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ReccampanaSMS
+    * const reccampanaSMS = await prisma.reccampanaSM.findMany()
+    * ```
+    */
+  get reccampanaSM(): Prisma.reccampanaSMDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.tempcampana`: Exposes CRUD operations for the **tempcampana** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tempcampanas
+    * const tempcampanas = await prisma.tempcampana.findMany()
+    * ```
+    */
+  get tempcampana(): Prisma.tempcampanaDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
   export import DMMF = runtime.DMMF
 
-  export type PrismaPromise<T> = runtime.Types.Public.PrismaPromise<T>
+  export type PrismaPromise<T> = $Public.PrismaPromise<T>
+
+  /**
+   * Validator
+   */
+  export import validator = runtime.Public.validator
 
   /**
    * Prisma Errors
@@ -615,10 +814,19 @@ export namespace Prisma {
   export type MetricHistogram = runtime.MetricHistogram
   export type MetricHistogramBucket = runtime.MetricHistogramBucket
 
+  /**
+  * Extensions
+  */
+  export type Extension = $Extensions.UserArgs
+  export import getExtensionContext = runtime.Extensions.getExtensionContext
+  export type Args<T, F extends $Public.Operation> = $Public.Args<T, F>
+  export type Payload<T, F extends $Public.Operation> = $Public.Payload<T, F>
+  export type Result<T, A, F extends $Public.Operation> = $Public.Result<T, A, F>
+  export type Exact<T, W> = $Public.Exact<T, W>
 
   /**
-   * Prisma Client JS version: 4.13.0
-   * Query Engine version: 1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
+   * Prisma Client JS version: 4.17.0-dev.38
+   * Query Engine version: e6267db1c1bc827b8eb87f644288c3cb0800ec89
    */
   export type PrismaVersion = {
     client: string
@@ -986,7 +1194,7 @@ export namespace Prisma {
 
   export const type: unique symbol;
 
-  export function validator<V>(): <S>(select: runtime.Types.Utils.LegacyExact<S, V>) => S;
+
 
   /**
    * Used by group by
@@ -1027,9 +1235,9 @@ export namespace Prisma {
   type MaybeTupleToUnion<T> = T extends any[] ? TupleToUnion<T> : T
 
   /**
-   * Like `Pick`, but with an array
+   * Like `Pick`, but additionally can also accept an array of keys
    */
-  type PickArray<T, K extends Array<keyof T>> = Prisma__Pick<T, TupleToUnion<K>>
+  type PickEnumerable<T, K extends Enumerable<keyof T> | keyof T> = Prisma__Pick<T, MaybeTupleToUnion<K>>
 
   /**
    * Exclude all keys with underscores
@@ -1054,7 +1262,10 @@ export namespace Prisma {
     atcampanaM: 'atcampanaM',
     blancampanaM: 'blancampanaM',
     reccampanaM: 'reccampanaM',
-    reincampanaM: 'reincampanaM'
+    reincampanaM: 'reincampanaM',
+    atcampanaSM: 'atcampanaSM',
+    reccampanaSM: 'reccampanaSM',
+    tempcampana: 'tempcampana'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1064,6 +1275,1230 @@ export namespace Prisma {
     db?: Datasource
   }
 
+
+  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.Args}, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs']>
+  }
+
+  export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    meta: {
+      modelProps: 'at2campana' | 'atcampana' | 'blancampana' | 'reccampana' | 'reincampana' | 'auxcampana' | 'policampana' | 'at2campanaM' | 'atcampanaM' | 'blancampanaM' | 'reccampanaM' | 'reincampanaM' | 'atcampanaSM' | 'reccampanaSM' | 'tempcampana'
+      txIsolationLevel: Prisma.TransactionIsolationLevel
+    },
+    model: {
+      at2campana: {
+        operations: {
+          findUnique: {
+            args: Prisma.at2campanaFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaPayload> | null
+            payload: at2campanaPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.at2campanaFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaPayload>
+            payload: at2campanaPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.at2campanaFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaPayload> | null
+            payload: at2campanaPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.at2campanaFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaPayload>
+            payload: at2campanaPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.at2campanaFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaPayload>[]
+            payload: at2campanaPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.at2campanaCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaPayload>
+            payload: at2campanaPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.at2campanaCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: at2campanaPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.at2campanaDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaPayload>
+            payload: at2campanaPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.at2campanaUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaPayload>
+            payload: at2campanaPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.at2campanaDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: at2campanaPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.at2campanaUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: at2campanaPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.at2campanaUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaPayload>
+            payload: at2campanaPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.At2campanaAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAt2campana>
+            payload: at2campanaPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.at2campanaGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<At2campanaGroupByOutputType>[]
+            payload: at2campanaPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.at2campanaCountArgs<ExtArgs>,
+            result: $Utils.Optional<At2campanaCountAggregateOutputType> | number
+            payload: at2campanaPayload<ExtArgs>
+          }
+        }
+      }
+      atcampana: {
+        operations: {
+          findUnique: {
+            args: Prisma.atcampanaFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaPayload> | null
+            payload: atcampanaPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.atcampanaFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaPayload>
+            payload: atcampanaPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.atcampanaFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaPayload> | null
+            payload: atcampanaPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.atcampanaFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaPayload>
+            payload: atcampanaPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.atcampanaFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaPayload>[]
+            payload: atcampanaPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.atcampanaCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaPayload>
+            payload: atcampanaPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.atcampanaCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: atcampanaPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.atcampanaDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaPayload>
+            payload: atcampanaPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.atcampanaUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaPayload>
+            payload: atcampanaPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.atcampanaDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: atcampanaPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.atcampanaUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: atcampanaPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.atcampanaUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaPayload>
+            payload: atcampanaPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.AtcampanaAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAtcampana>
+            payload: atcampanaPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.atcampanaGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<AtcampanaGroupByOutputType>[]
+            payload: atcampanaPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.atcampanaCountArgs<ExtArgs>,
+            result: $Utils.Optional<AtcampanaCountAggregateOutputType> | number
+            payload: atcampanaPayload<ExtArgs>
+          }
+        }
+      }
+      blancampana: {
+        operations: {
+          findUnique: {
+            args: Prisma.blancampanaFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaPayload> | null
+            payload: blancampanaPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.blancampanaFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaPayload>
+            payload: blancampanaPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.blancampanaFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaPayload> | null
+            payload: blancampanaPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.blancampanaFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaPayload>
+            payload: blancampanaPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.blancampanaFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaPayload>[]
+            payload: blancampanaPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.blancampanaCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaPayload>
+            payload: blancampanaPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.blancampanaCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: blancampanaPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.blancampanaDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaPayload>
+            payload: blancampanaPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.blancampanaUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaPayload>
+            payload: blancampanaPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.blancampanaDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: blancampanaPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.blancampanaUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: blancampanaPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.blancampanaUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaPayload>
+            payload: blancampanaPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.BlancampanaAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateBlancampana>
+            payload: blancampanaPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.blancampanaGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<BlancampanaGroupByOutputType>[]
+            payload: blancampanaPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.blancampanaCountArgs<ExtArgs>,
+            result: $Utils.Optional<BlancampanaCountAggregateOutputType> | number
+            payload: blancampanaPayload<ExtArgs>
+          }
+        }
+      }
+      reccampana: {
+        operations: {
+          findUnique: {
+            args: Prisma.reccampanaFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaPayload> | null
+            payload: reccampanaPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.reccampanaFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaPayload>
+            payload: reccampanaPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.reccampanaFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaPayload> | null
+            payload: reccampanaPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.reccampanaFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaPayload>
+            payload: reccampanaPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.reccampanaFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaPayload>[]
+            payload: reccampanaPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.reccampanaCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaPayload>
+            payload: reccampanaPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.reccampanaCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reccampanaPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.reccampanaDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaPayload>
+            payload: reccampanaPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.reccampanaUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaPayload>
+            payload: reccampanaPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.reccampanaDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reccampanaPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.reccampanaUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reccampanaPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.reccampanaUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaPayload>
+            payload: reccampanaPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.ReccampanaAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateReccampana>
+            payload: reccampanaPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.reccampanaGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ReccampanaGroupByOutputType>[]
+            payload: reccampanaPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.reccampanaCountArgs<ExtArgs>,
+            result: $Utils.Optional<ReccampanaCountAggregateOutputType> | number
+            payload: reccampanaPayload<ExtArgs>
+          }
+        }
+      }
+      reincampana: {
+        operations: {
+          findUnique: {
+            args: Prisma.reincampanaFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaPayload> | null
+            payload: reincampanaPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.reincampanaFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaPayload>
+            payload: reincampanaPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.reincampanaFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaPayload> | null
+            payload: reincampanaPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.reincampanaFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaPayload>
+            payload: reincampanaPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.reincampanaFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaPayload>[]
+            payload: reincampanaPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.reincampanaCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaPayload>
+            payload: reincampanaPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.reincampanaCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reincampanaPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.reincampanaDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaPayload>
+            payload: reincampanaPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.reincampanaUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaPayload>
+            payload: reincampanaPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.reincampanaDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reincampanaPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.reincampanaUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reincampanaPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.reincampanaUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaPayload>
+            payload: reincampanaPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.ReincampanaAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateReincampana>
+            payload: reincampanaPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.reincampanaGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ReincampanaGroupByOutputType>[]
+            payload: reincampanaPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.reincampanaCountArgs<ExtArgs>,
+            result: $Utils.Optional<ReincampanaCountAggregateOutputType> | number
+            payload: reincampanaPayload<ExtArgs>
+          }
+        }
+      }
+      auxcampana: {
+        operations: {
+          findUnique: {
+            args: Prisma.auxcampanaFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auxcampanaPayload> | null
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.auxcampanaFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auxcampanaPayload>
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.auxcampanaFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auxcampanaPayload> | null
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.auxcampanaFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auxcampanaPayload>
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.auxcampanaFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auxcampanaPayload>[]
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.auxcampanaCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auxcampanaPayload>
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.auxcampanaCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.auxcampanaDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auxcampanaPayload>
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.auxcampanaUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auxcampanaPayload>
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.auxcampanaDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.auxcampanaUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.auxcampanaUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<auxcampanaPayload>
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.AuxcampanaAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAuxcampana>
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.auxcampanaGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<AuxcampanaGroupByOutputType>[]
+            payload: auxcampanaPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.auxcampanaCountArgs<ExtArgs>,
+            result: $Utils.Optional<AuxcampanaCountAggregateOutputType> | number
+            payload: auxcampanaPayload<ExtArgs>
+          }
+        }
+      }
+      policampana: {
+        operations: {
+          findUnique: {
+            args: Prisma.policampanaFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<policampanaPayload> | null
+            payload: policampanaPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.policampanaFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<policampanaPayload>
+            payload: policampanaPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.policampanaFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<policampanaPayload> | null
+            payload: policampanaPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.policampanaFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<policampanaPayload>
+            payload: policampanaPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.policampanaFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<policampanaPayload>[]
+            payload: policampanaPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.policampanaCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<policampanaPayload>
+            payload: policampanaPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.policampanaCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: policampanaPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.policampanaDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<policampanaPayload>
+            payload: policampanaPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.policampanaUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<policampanaPayload>
+            payload: policampanaPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.policampanaDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: policampanaPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.policampanaUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: policampanaPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.policampanaUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<policampanaPayload>
+            payload: policampanaPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.PolicampanaAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePolicampana>
+            payload: policampanaPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.policampanaGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PolicampanaGroupByOutputType>[]
+            payload: policampanaPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.policampanaCountArgs<ExtArgs>,
+            result: $Utils.Optional<PolicampanaCountAggregateOutputType> | number
+            payload: policampanaPayload<ExtArgs>
+          }
+        }
+      }
+      at2campanaM: {
+        operations: {
+          findUnique: {
+            args: Prisma.at2campanaMFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaMPayload> | null
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.at2campanaMFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaMPayload>
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.at2campanaMFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaMPayload> | null
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.at2campanaMFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaMPayload>
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.at2campanaMFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaMPayload>[]
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.at2campanaMCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaMPayload>
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.at2campanaMCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.at2campanaMDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaMPayload>
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.at2campanaMUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaMPayload>
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.at2campanaMDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.at2campanaMUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.at2campanaMUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<at2campanaMPayload>
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.At2campanaMAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAt2campanaM>
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.at2campanaMGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<At2campanaMGroupByOutputType>[]
+            payload: at2campanaMPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.at2campanaMCountArgs<ExtArgs>,
+            result: $Utils.Optional<At2campanaMCountAggregateOutputType> | number
+            payload: at2campanaMPayload<ExtArgs>
+          }
+        }
+      }
+      atcampanaM: {
+        operations: {
+          findUnique: {
+            args: Prisma.atcampanaMFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaMPayload> | null
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.atcampanaMFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaMPayload>
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.atcampanaMFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaMPayload> | null
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.atcampanaMFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaMPayload>
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.atcampanaMFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaMPayload>[]
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.atcampanaMCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaMPayload>
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.atcampanaMCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.atcampanaMDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaMPayload>
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.atcampanaMUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaMPayload>
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.atcampanaMDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.atcampanaMUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.atcampanaMUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaMPayload>
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.AtcampanaMAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAtcampanaM>
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.atcampanaMGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<AtcampanaMGroupByOutputType>[]
+            payload: atcampanaMPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.atcampanaMCountArgs<ExtArgs>,
+            result: $Utils.Optional<AtcampanaMCountAggregateOutputType> | number
+            payload: atcampanaMPayload<ExtArgs>
+          }
+        }
+      }
+      blancampanaM: {
+        operations: {
+          findUnique: {
+            args: Prisma.blancampanaMFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaMPayload> | null
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.blancampanaMFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaMPayload>
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.blancampanaMFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaMPayload> | null
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.blancampanaMFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaMPayload>
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.blancampanaMFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaMPayload>[]
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.blancampanaMCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaMPayload>
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.blancampanaMCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.blancampanaMDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaMPayload>
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.blancampanaMUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaMPayload>
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.blancampanaMDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.blancampanaMUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.blancampanaMUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<blancampanaMPayload>
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.BlancampanaMAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateBlancampanaM>
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.blancampanaMGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<BlancampanaMGroupByOutputType>[]
+            payload: blancampanaMPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.blancampanaMCountArgs<ExtArgs>,
+            result: $Utils.Optional<BlancampanaMCountAggregateOutputType> | number
+            payload: blancampanaMPayload<ExtArgs>
+          }
+        }
+      }
+      reccampanaM: {
+        operations: {
+          findUnique: {
+            args: Prisma.reccampanaMFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaMPayload> | null
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.reccampanaMFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaMPayload>
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.reccampanaMFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaMPayload> | null
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.reccampanaMFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaMPayload>
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.reccampanaMFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaMPayload>[]
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.reccampanaMCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaMPayload>
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.reccampanaMCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.reccampanaMDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaMPayload>
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.reccampanaMUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaMPayload>
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.reccampanaMDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.reccampanaMUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.reccampanaMUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaMPayload>
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.ReccampanaMAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateReccampanaM>
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.reccampanaMGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ReccampanaMGroupByOutputType>[]
+            payload: reccampanaMPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.reccampanaMCountArgs<ExtArgs>,
+            result: $Utils.Optional<ReccampanaMCountAggregateOutputType> | number
+            payload: reccampanaMPayload<ExtArgs>
+          }
+        }
+      }
+      reincampanaM: {
+        operations: {
+          findUnique: {
+            args: Prisma.reincampanaMFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaMPayload> | null
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.reincampanaMFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaMPayload>
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.reincampanaMFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaMPayload> | null
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.reincampanaMFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaMPayload>
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.reincampanaMFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaMPayload>[]
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.reincampanaMCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaMPayload>
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.reincampanaMCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.reincampanaMDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaMPayload>
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.reincampanaMUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaMPayload>
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.reincampanaMDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.reincampanaMUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.reincampanaMUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reincampanaMPayload>
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.ReincampanaMAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateReincampanaM>
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.reincampanaMGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ReincampanaMGroupByOutputType>[]
+            payload: reincampanaMPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.reincampanaMCountArgs<ExtArgs>,
+            result: $Utils.Optional<ReincampanaMCountAggregateOutputType> | number
+            payload: reincampanaMPayload<ExtArgs>
+          }
+        }
+      }
+      atcampanaSM: {
+        operations: {
+          findUnique: {
+            args: Prisma.atcampanaSMFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaSMPayload> | null
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.atcampanaSMFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaSMPayload>
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.atcampanaSMFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaSMPayload> | null
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.atcampanaSMFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaSMPayload>
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.atcampanaSMFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaSMPayload>[]
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.atcampanaSMCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaSMPayload>
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.atcampanaSMCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.atcampanaSMDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaSMPayload>
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.atcampanaSMUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaSMPayload>
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.atcampanaSMDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.atcampanaSMUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.atcampanaSMUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<atcampanaSMPayload>
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.AtcampanaSMAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAtcampanaSM>
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.atcampanaSMGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<AtcampanaSMGroupByOutputType>[]
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.atcampanaSMCountArgs<ExtArgs>,
+            result: $Utils.Optional<AtcampanaSMCountAggregateOutputType> | number
+            payload: atcampanaSMPayload<ExtArgs>
+          }
+        }
+      }
+      reccampanaSM: {
+        operations: {
+          findUnique: {
+            args: Prisma.reccampanaSMFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaSMPayload> | null
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.reccampanaSMFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaSMPayload>
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.reccampanaSMFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaSMPayload> | null
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.reccampanaSMFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaSMPayload>
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.reccampanaSMFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaSMPayload>[]
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.reccampanaSMCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaSMPayload>
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.reccampanaSMCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.reccampanaSMDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaSMPayload>
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.reccampanaSMUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaSMPayload>
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.reccampanaSMDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.reccampanaSMUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.reccampanaSMUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<reccampanaSMPayload>
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.ReccampanaSMAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateReccampanaSM>
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.reccampanaSMGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ReccampanaSMGroupByOutputType>[]
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.reccampanaSMCountArgs<ExtArgs>,
+            result: $Utils.Optional<ReccampanaSMCountAggregateOutputType> | number
+            payload: reccampanaSMPayload<ExtArgs>
+          }
+        }
+      }
+      tempcampana: {
+        operations: {
+          findUnique: {
+            args: Prisma.tempcampanaFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<tempcampanaPayload> | null
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          findUniqueOrThrow: {
+            args: Prisma.tempcampanaFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<tempcampanaPayload>
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          findFirst: {
+            args: Prisma.tempcampanaFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<tempcampanaPayload> | null
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          findFirstOrThrow: {
+            args: Prisma.tempcampanaFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<tempcampanaPayload>
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          findMany: {
+            args: Prisma.tempcampanaFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<tempcampanaPayload>[]
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          create: {
+            args: Prisma.tempcampanaCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<tempcampanaPayload>
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          createMany: {
+            args: Prisma.tempcampanaCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          delete: {
+            args: Prisma.tempcampanaDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<tempcampanaPayload>
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          update: {
+            args: Prisma.tempcampanaUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<tempcampanaPayload>
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          deleteMany: {
+            args: Prisma.tempcampanaDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          updateMany: {
+            args: Prisma.tempcampanaUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          upsert: {
+            args: Prisma.tempcampanaUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<tempcampanaPayload>
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          aggregate: {
+            args: Prisma.TempcampanaAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateTempcampana>
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          groupBy: {
+            args: Prisma.tempcampanaGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<TempcampanaGroupByOutputType>[]
+            payload: tempcampanaPayload<ExtArgs>
+          }
+          count: {
+            args: Prisma.tempcampanaCountArgs<ExtArgs>,
+            result: $Utils.Optional<TempcampanaCountAggregateOutputType> | number
+            payload: tempcampanaPayload<ExtArgs>
+          }
+        }
+      }
+    }
+  } & {
+    other: {
+      operations: {
+        $executeRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
+          payload: any
+        }
+        $executeRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+          payload: any
+        }
+        $queryRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
+          payload: any
+        }
+        $queryRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+          payload: any
+        }
+      }
+    }
+  }
+  export const defineExtension: $Extensions.ExtendsHook<'define', Prisma.TypeMapCb, $Extensions.DefaultArgs>
   export type DefaultPrismaClient = PrismaClient
   export type RejectOnNotFound = boolean | ((error: Error) => Error)
   export type RejectPerModel = { [P in ModelName]?: RejectOnNotFound }
@@ -1204,7 +2639,7 @@ export namespace Prisma {
   /**
    * `PrismaClient` proxy available in interactive transactions.
    */
-  export type TransactionClient = Omit<Prisma.DefaultPrismaClient, '$connect' | '$disconnect' | '$on' | '$transaction' | '$use'>
+  export type TransactionClient = Omit<Prisma.DefaultPrismaClient, runtime.ITXClientDenyList>
 
   export type Datasource = {
     url?: string
@@ -1426,7 +2861,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type At2campanaAggregateArgs = {
+  export type At2campanaAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which at2campana to aggregate.
      */
@@ -1436,7 +2871,7 @@ export namespace Prisma {
      * 
      * Determine the order of at2campanas to fetch.
      */
-    orderBy?: Enumerable<at2campanaOrderByWithRelationInput>
+    orderBy?: at2campanaOrderByWithRelationInput | at2campanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -1498,10 +2933,10 @@ export namespace Prisma {
 
 
 
-  export type At2campanaGroupByArgs = {
+  export type at2campanaGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: at2campanaWhereInput
-    orderBy?: Enumerable<at2campanaOrderByWithAggregationInput>
-    by: At2campanaScalarFieldEnum[]
+    orderBy?: at2campanaOrderByWithAggregationInput | at2campanaOrderByWithAggregationInput[]
+    by: At2campanaScalarFieldEnum[] | At2campanaScalarFieldEnum
     having?: at2campanaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -1541,9 +2976,9 @@ export namespace Prisma {
     _max: At2campanaMaxAggregateOutputType | null
   }
 
-  type GetAt2campanaGroupByPayload<T extends At2campanaGroupByArgs> = Prisma.PrismaPromise<
+  type GetAt2campanaGroupByPayload<T extends at2campanaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<At2campanaGroupByOutputType, T['by']> &
+      PickEnumerable<At2campanaGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof At2campanaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -1555,7 +2990,30 @@ export namespace Prisma {
     >
 
 
-  export type at2campanaSelect = {
+  export type at2campanaSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["at2campana"]>
+
+  export type at2campanaSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -1579,27 +3037,15 @@ export namespace Prisma {
   }
 
 
-  export type at2campanaGetPayload<S extends boolean | null | undefined | at2campanaArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? at2campana :
-    S extends undefined ? never :
-    S extends { include: any } & (at2campanaArgs | at2campanaFindManyArgs)
-    ? at2campana 
-    : S extends { select: any } & (at2campanaArgs | at2campanaFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof at2campana ? at2campana[P] : never
-  } 
-      : at2campana
+  type at2campanaGetPayload<S extends boolean | null | undefined | at2campanaArgs> = $Types.GetResult<at2campanaPayload, S>
 
-
-  type at2campanaCountArgs = 
+  type at2campanaCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<at2campanaFindManyArgs, 'select' | 'include'> & {
       select?: At2campanaCountAggregateInputType | true
     }
 
-  export interface at2campanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface at2campanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['at2campana'], meta: { name: 'at2campana' } }
     /**
      * Find zero or one At2campana that matches the filter.
      * @param {at2campanaFindUniqueArgs} args - Arguments to find a At2campana
@@ -1611,9 +3057,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends at2campanaFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, at2campanaFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'at2campana'> extends True ? Prisma__at2campanaClient<at2campanaGetPayload<T>> : Prisma__at2campanaClient<at2campanaGetPayload<T> | null, null>
+    findUnique<T extends at2campanaFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, at2campanaFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'at2campana'> extends True ? Prisma__at2campanaClient<$Types.GetResult<at2campanaPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__at2campanaClient<$Types.GetResult<at2campanaPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one At2campana that matches the filter or throw an error  with `error.code='P2025'` 
@@ -1627,9 +3073,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends at2campanaFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, at2campanaFindUniqueOrThrowArgs>
-    ): Prisma__at2campanaClient<at2campanaGetPayload<T>>
+    findUniqueOrThrow<T extends at2campanaFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, at2campanaFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__at2campanaClient<$Types.GetResult<at2campanaPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first At2campana that matches the filter.
@@ -1644,9 +3090,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends at2campanaFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, at2campanaFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'at2campana'> extends True ? Prisma__at2campanaClient<at2campanaGetPayload<T>> : Prisma__at2campanaClient<at2campanaGetPayload<T> | null, null>
+    findFirst<T extends at2campanaFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, at2campanaFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'at2campana'> extends True ? Prisma__at2campanaClient<$Types.GetResult<at2campanaPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__at2campanaClient<$Types.GetResult<at2campanaPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first At2campana that matches the filter or
@@ -1662,9 +3108,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends at2campanaFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, at2campanaFindFirstOrThrowArgs>
-    ): Prisma__at2campanaClient<at2campanaGetPayload<T>>
+    findFirstOrThrow<T extends at2campanaFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, at2campanaFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__at2campanaClient<$Types.GetResult<at2campanaPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more At2campanas that matches the filter.
@@ -1682,9 +3128,9 @@ export namespace Prisma {
      * const at2campanaWithSUCURSALOnly = await prisma.at2campana.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends at2campanaFindManyArgs>(
-      args?: SelectSubset<T, at2campanaFindManyArgs>
-    ): Prisma.PrismaPromise<Array<at2campanaGetPayload<T>>>
+    findMany<T extends at2campanaFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, at2campanaFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<at2campanaPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a At2campana.
@@ -1698,9 +3144,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends at2campanaCreateArgs>(
-      args: SelectSubset<T, at2campanaCreateArgs>
-    ): Prisma__at2campanaClient<at2campanaGetPayload<T>>
+    create<T extends at2campanaCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, at2campanaCreateArgs<ExtArgs>>
+    ): Prisma__at2campanaClient<$Types.GetResult<at2campanaPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many At2campanas.
@@ -1714,8 +3160,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends at2campanaCreateManyArgs>(
-      args?: SelectSubset<T, at2campanaCreateManyArgs>
+    createMany<T extends at2campanaCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, at2campanaCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -1730,9 +3176,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends at2campanaDeleteArgs>(
-      args: SelectSubset<T, at2campanaDeleteArgs>
-    ): Prisma__at2campanaClient<at2campanaGetPayload<T>>
+    delete<T extends at2campanaDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, at2campanaDeleteArgs<ExtArgs>>
+    ): Prisma__at2campanaClient<$Types.GetResult<at2campanaPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one At2campana.
@@ -1749,9 +3195,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends at2campanaUpdateArgs>(
-      args: SelectSubset<T, at2campanaUpdateArgs>
-    ): Prisma__at2campanaClient<at2campanaGetPayload<T>>
+    update<T extends at2campanaUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, at2campanaUpdateArgs<ExtArgs>>
+    ): Prisma__at2campanaClient<$Types.GetResult<at2campanaPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more At2campanas.
@@ -1765,8 +3211,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends at2campanaDeleteManyArgs>(
-      args?: SelectSubset<T, at2campanaDeleteManyArgs>
+    deleteMany<T extends at2campanaDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, at2campanaDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -1786,8 +3232,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends at2campanaUpdateManyArgs>(
-      args: SelectSubset<T, at2campanaUpdateManyArgs>
+    updateMany<T extends at2campanaUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, at2campanaUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -1807,9 +3253,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends at2campanaUpsertArgs>(
-      args: SelectSubset<T, at2campanaUpsertArgs>
-    ): Prisma__at2campanaClient<at2campanaGetPayload<T>>
+    upsert<T extends at2campanaUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, at2campanaUpsertArgs<ExtArgs>>
+    ): Prisma__at2campanaClient<$Types.GetResult<at2campanaPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of At2campanas.
@@ -1827,7 +3273,7 @@ export namespace Prisma {
     count<T extends at2campanaCountArgs>(
       args?: Subset<T, at2campanaCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], At2campanaCountAggregateOutputType>
@@ -1864,7 +3310,7 @@ export namespace Prisma {
      * Group by At2campana.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {At2campanaGroupByArgs} args - Group by arguments.
+     * @param {at2campanaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1879,16 +3325,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends At2campanaGroupByArgs,
+      T extends at2campanaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: At2campanaGroupByArgs['orderBy'] }
-        : { orderBy?: At2campanaGroupByArgs['orderBy'] },
+        ? { orderBy: at2campanaGroupByArgs['orderBy'] }
+        : { orderBy?: at2campanaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -1935,7 +3381,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, At2campanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAt2campanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, at2campanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAt2campanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -1945,7 +3391,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__at2campanaClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__at2campanaClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -1991,11 +3437,11 @@ export namespace Prisma {
   /**
    * at2campana base type for findUnique actions
    */
-  export type at2campanaFindUniqueArgsBase = {
+  export type at2campanaFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campana
      */
-    select?: at2campanaSelect | null
+    select?: at2campanaSelect<ExtArgs> | null
     /**
      * Filter, which at2campana to fetch.
      */
@@ -2005,7 +3451,7 @@ export namespace Prisma {
   /**
    * at2campana findUnique
    */
-  export interface at2campanaFindUniqueArgs extends at2campanaFindUniqueArgsBase {
+  export interface at2campanaFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends at2campanaFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -2017,11 +3463,11 @@ export namespace Prisma {
   /**
    * at2campana findUniqueOrThrow
    */
-  export type at2campanaFindUniqueOrThrowArgs = {
+  export type at2campanaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campana
      */
-    select?: at2campanaSelect | null
+    select?: at2campanaSelect<ExtArgs> | null
     /**
      * Filter, which at2campana to fetch.
      */
@@ -2032,11 +3478,11 @@ export namespace Prisma {
   /**
    * at2campana base type for findFirst actions
    */
-  export type at2campanaFindFirstArgsBase = {
+  export type at2campanaFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campana
      */
-    select?: at2campanaSelect | null
+    select?: at2campanaSelect<ExtArgs> | null
     /**
      * Filter, which at2campana to fetch.
      */
@@ -2046,7 +3492,7 @@ export namespace Prisma {
      * 
      * Determine the order of at2campanas to fetch.
      */
-    orderBy?: Enumerable<at2campanaOrderByWithRelationInput>
+    orderBy?: at2campanaOrderByWithRelationInput | at2campanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -2070,13 +3516,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of at2campanas.
      */
-    distinct?: Enumerable<At2campanaScalarFieldEnum>
+    distinct?: At2campanaScalarFieldEnum | At2campanaScalarFieldEnum[]
   }
 
   /**
    * at2campana findFirst
    */
-  export interface at2campanaFindFirstArgs extends at2campanaFindFirstArgsBase {
+  export interface at2campanaFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends at2campanaFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -2088,11 +3534,11 @@ export namespace Prisma {
   /**
    * at2campana findFirstOrThrow
    */
-  export type at2campanaFindFirstOrThrowArgs = {
+  export type at2campanaFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campana
      */
-    select?: at2campanaSelect | null
+    select?: at2campanaSelect<ExtArgs> | null
     /**
      * Filter, which at2campana to fetch.
      */
@@ -2102,7 +3548,7 @@ export namespace Prisma {
      * 
      * Determine the order of at2campanas to fetch.
      */
-    orderBy?: Enumerable<at2campanaOrderByWithRelationInput>
+    orderBy?: at2campanaOrderByWithRelationInput | at2campanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -2126,18 +3572,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of at2campanas.
      */
-    distinct?: Enumerable<At2campanaScalarFieldEnum>
+    distinct?: At2campanaScalarFieldEnum | At2campanaScalarFieldEnum[]
   }
 
 
   /**
    * at2campana findMany
    */
-  export type at2campanaFindManyArgs = {
+  export type at2campanaFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campana
      */
-    select?: at2campanaSelect | null
+    select?: at2campanaSelect<ExtArgs> | null
     /**
      * Filter, which at2campanas to fetch.
      */
@@ -2147,7 +3593,7 @@ export namespace Prisma {
      * 
      * Determine the order of at2campanas to fetch.
      */
-    orderBy?: Enumerable<at2campanaOrderByWithRelationInput>
+    orderBy?: at2campanaOrderByWithRelationInput | at2campanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -2166,18 +3612,18 @@ export namespace Prisma {
      * Skip the first `n` at2campanas.
      */
     skip?: number
-    distinct?: Enumerable<At2campanaScalarFieldEnum>
+    distinct?: At2campanaScalarFieldEnum | At2campanaScalarFieldEnum[]
   }
 
 
   /**
    * at2campana create
    */
-  export type at2campanaCreateArgs = {
+  export type at2campanaCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campana
      */
-    select?: at2campanaSelect | null
+    select?: at2campanaSelect<ExtArgs> | null
     /**
      * The data needed to create a at2campana.
      */
@@ -2188,11 +3634,11 @@ export namespace Prisma {
   /**
    * at2campana createMany
    */
-  export type at2campanaCreateManyArgs = {
+  export type at2campanaCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many at2campanas.
      */
-    data: Enumerable<at2campanaCreateManyInput>
+    data: at2campanaCreateManyInput | at2campanaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -2200,11 +3646,11 @@ export namespace Prisma {
   /**
    * at2campana update
    */
-  export type at2campanaUpdateArgs = {
+  export type at2campanaUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campana
      */
-    select?: at2campanaSelect | null
+    select?: at2campanaSelect<ExtArgs> | null
     /**
      * The data needed to update a at2campana.
      */
@@ -2219,7 +3665,7 @@ export namespace Prisma {
   /**
    * at2campana updateMany
    */
-  export type at2campanaUpdateManyArgs = {
+  export type at2campanaUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update at2campanas.
      */
@@ -2234,11 +3680,11 @@ export namespace Prisma {
   /**
    * at2campana upsert
    */
-  export type at2campanaUpsertArgs = {
+  export type at2campanaUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campana
      */
-    select?: at2campanaSelect | null
+    select?: at2campanaSelect<ExtArgs> | null
     /**
      * The filter to search for the at2campana to update in case it exists.
      */
@@ -2257,11 +3703,11 @@ export namespace Prisma {
   /**
    * at2campana delete
    */
-  export type at2campanaDeleteArgs = {
+  export type at2campanaDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campana
      */
-    select?: at2campanaSelect | null
+    select?: at2campanaSelect<ExtArgs> | null
     /**
      * Filter which at2campana to delete.
      */
@@ -2272,7 +3718,7 @@ export namespace Prisma {
   /**
    * at2campana deleteMany
    */
-  export type at2campanaDeleteManyArgs = {
+  export type at2campanaDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which at2campanas to delete
      */
@@ -2283,11 +3729,11 @@ export namespace Prisma {
   /**
    * at2campana without action
    */
-  export type at2campanaArgs = {
+  export type at2campanaArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campana
      */
-    select?: at2campanaSelect | null
+    select?: at2campanaSelect<ExtArgs> | null
   }
 
 
@@ -2504,7 +3950,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type AtcampanaAggregateArgs = {
+  export type AtcampanaAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which atcampana to aggregate.
      */
@@ -2514,7 +3960,7 @@ export namespace Prisma {
      * 
      * Determine the order of atcampanas to fetch.
      */
-    orderBy?: Enumerable<atcampanaOrderByWithRelationInput>
+    orderBy?: atcampanaOrderByWithRelationInput | atcampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -2576,10 +4022,10 @@ export namespace Prisma {
 
 
 
-  export type AtcampanaGroupByArgs = {
+  export type atcampanaGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: atcampanaWhereInput
-    orderBy?: Enumerable<atcampanaOrderByWithAggregationInput>
-    by: AtcampanaScalarFieldEnum[]
+    orderBy?: atcampanaOrderByWithAggregationInput | atcampanaOrderByWithAggregationInput[]
+    by: AtcampanaScalarFieldEnum[] | AtcampanaScalarFieldEnum
     having?: atcampanaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -2620,9 +4066,9 @@ export namespace Prisma {
     _max: AtcampanaMaxAggregateOutputType | null
   }
 
-  type GetAtcampanaGroupByPayload<T extends AtcampanaGroupByArgs> = Prisma.PrismaPromise<
+  type GetAtcampanaGroupByPayload<T extends atcampanaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<AtcampanaGroupByOutputType, T['by']> &
+      PickEnumerable<AtcampanaGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof AtcampanaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -2634,7 +4080,31 @@ export namespace Prisma {
     >
 
 
-  export type atcampanaSelect = {
+  export type atcampanaSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    MAIL?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["atcampana"]>
+
+  export type atcampanaSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -2659,27 +4129,15 @@ export namespace Prisma {
   }
 
 
-  export type atcampanaGetPayload<S extends boolean | null | undefined | atcampanaArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? atcampana :
-    S extends undefined ? never :
-    S extends { include: any } & (atcampanaArgs | atcampanaFindManyArgs)
-    ? atcampana 
-    : S extends { select: any } & (atcampanaArgs | atcampanaFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof atcampana ? atcampana[P] : never
-  } 
-      : atcampana
+  type atcampanaGetPayload<S extends boolean | null | undefined | atcampanaArgs> = $Types.GetResult<atcampanaPayload, S>
 
-
-  type atcampanaCountArgs = 
+  type atcampanaCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<atcampanaFindManyArgs, 'select' | 'include'> & {
       select?: AtcampanaCountAggregateInputType | true
     }
 
-  export interface atcampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface atcampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['atcampana'], meta: { name: 'atcampana' } }
     /**
      * Find zero or one Atcampana that matches the filter.
      * @param {atcampanaFindUniqueArgs} args - Arguments to find a Atcampana
@@ -2691,9 +4149,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends atcampanaFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, atcampanaFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'atcampana'> extends True ? Prisma__atcampanaClient<atcampanaGetPayload<T>> : Prisma__atcampanaClient<atcampanaGetPayload<T> | null, null>
+    findUnique<T extends atcampanaFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, atcampanaFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'atcampana'> extends True ? Prisma__atcampanaClient<$Types.GetResult<atcampanaPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__atcampanaClient<$Types.GetResult<atcampanaPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one Atcampana that matches the filter or throw an error  with `error.code='P2025'` 
@@ -2707,9 +4165,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends atcampanaFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, atcampanaFindUniqueOrThrowArgs>
-    ): Prisma__atcampanaClient<atcampanaGetPayload<T>>
+    findUniqueOrThrow<T extends atcampanaFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__atcampanaClient<$Types.GetResult<atcampanaPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first Atcampana that matches the filter.
@@ -2724,9 +4182,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends atcampanaFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, atcampanaFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'atcampana'> extends True ? Prisma__atcampanaClient<atcampanaGetPayload<T>> : Prisma__atcampanaClient<atcampanaGetPayload<T> | null, null>
+    findFirst<T extends atcampanaFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, atcampanaFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'atcampana'> extends True ? Prisma__atcampanaClient<$Types.GetResult<atcampanaPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__atcampanaClient<$Types.GetResult<atcampanaPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first Atcampana that matches the filter or
@@ -2742,9 +4200,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends atcampanaFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, atcampanaFindFirstOrThrowArgs>
-    ): Prisma__atcampanaClient<atcampanaGetPayload<T>>
+    findFirstOrThrow<T extends atcampanaFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__atcampanaClient<$Types.GetResult<atcampanaPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more Atcampanas that matches the filter.
@@ -2762,9 +4220,9 @@ export namespace Prisma {
      * const atcampanaWithSUCURSALOnly = await prisma.atcampana.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends atcampanaFindManyArgs>(
-      args?: SelectSubset<T, atcampanaFindManyArgs>
-    ): Prisma.PrismaPromise<Array<atcampanaGetPayload<T>>>
+    findMany<T extends atcampanaFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<atcampanaPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a Atcampana.
@@ -2778,9 +4236,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends atcampanaCreateArgs>(
-      args: SelectSubset<T, atcampanaCreateArgs>
-    ): Prisma__atcampanaClient<atcampanaGetPayload<T>>
+    create<T extends atcampanaCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaCreateArgs<ExtArgs>>
+    ): Prisma__atcampanaClient<$Types.GetResult<atcampanaPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many Atcampanas.
@@ -2794,8 +4252,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends atcampanaCreateManyArgs>(
-      args?: SelectSubset<T, atcampanaCreateManyArgs>
+    createMany<T extends atcampanaCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -2810,9 +4268,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends atcampanaDeleteArgs>(
-      args: SelectSubset<T, atcampanaDeleteArgs>
-    ): Prisma__atcampanaClient<atcampanaGetPayload<T>>
+    delete<T extends atcampanaDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaDeleteArgs<ExtArgs>>
+    ): Prisma__atcampanaClient<$Types.GetResult<atcampanaPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one Atcampana.
@@ -2829,9 +4287,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends atcampanaUpdateArgs>(
-      args: SelectSubset<T, atcampanaUpdateArgs>
-    ): Prisma__atcampanaClient<atcampanaGetPayload<T>>
+    update<T extends atcampanaUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaUpdateArgs<ExtArgs>>
+    ): Prisma__atcampanaClient<$Types.GetResult<atcampanaPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more Atcampanas.
@@ -2845,8 +4303,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends atcampanaDeleteManyArgs>(
-      args?: SelectSubset<T, atcampanaDeleteManyArgs>
+    deleteMany<T extends atcampanaDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -2866,8 +4324,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends atcampanaUpdateManyArgs>(
-      args: SelectSubset<T, atcampanaUpdateManyArgs>
+    updateMany<T extends atcampanaUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -2887,9 +4345,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends atcampanaUpsertArgs>(
-      args: SelectSubset<T, atcampanaUpsertArgs>
-    ): Prisma__atcampanaClient<atcampanaGetPayload<T>>
+    upsert<T extends atcampanaUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaUpsertArgs<ExtArgs>>
+    ): Prisma__atcampanaClient<$Types.GetResult<atcampanaPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of Atcampanas.
@@ -2907,7 +4365,7 @@ export namespace Prisma {
     count<T extends atcampanaCountArgs>(
       args?: Subset<T, atcampanaCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], AtcampanaCountAggregateOutputType>
@@ -2944,7 +4402,7 @@ export namespace Prisma {
      * Group by Atcampana.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AtcampanaGroupByArgs} args - Group by arguments.
+     * @param {atcampanaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2959,16 +4417,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AtcampanaGroupByArgs,
+      T extends atcampanaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AtcampanaGroupByArgs['orderBy'] }
-        : { orderBy?: AtcampanaGroupByArgs['orderBy'] },
+        ? { orderBy: atcampanaGroupByArgs['orderBy'] }
+        : { orderBy?: atcampanaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -3015,7 +4473,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AtcampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAtcampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, atcampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAtcampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -3025,7 +4483,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__atcampanaClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__atcampanaClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -3071,11 +4529,11 @@ export namespace Prisma {
   /**
    * atcampana base type for findUnique actions
    */
-  export type atcampanaFindUniqueArgsBase = {
+  export type atcampanaFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampana
      */
-    select?: atcampanaSelect | null
+    select?: atcampanaSelect<ExtArgs> | null
     /**
      * Filter, which atcampana to fetch.
      */
@@ -3085,7 +4543,7 @@ export namespace Prisma {
   /**
    * atcampana findUnique
    */
-  export interface atcampanaFindUniqueArgs extends atcampanaFindUniqueArgsBase {
+  export interface atcampanaFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends atcampanaFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -3097,11 +4555,11 @@ export namespace Prisma {
   /**
    * atcampana findUniqueOrThrow
    */
-  export type atcampanaFindUniqueOrThrowArgs = {
+  export type atcampanaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampana
      */
-    select?: atcampanaSelect | null
+    select?: atcampanaSelect<ExtArgs> | null
     /**
      * Filter, which atcampana to fetch.
      */
@@ -3112,11 +4570,11 @@ export namespace Prisma {
   /**
    * atcampana base type for findFirst actions
    */
-  export type atcampanaFindFirstArgsBase = {
+  export type atcampanaFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampana
      */
-    select?: atcampanaSelect | null
+    select?: atcampanaSelect<ExtArgs> | null
     /**
      * Filter, which atcampana to fetch.
      */
@@ -3126,7 +4584,7 @@ export namespace Prisma {
      * 
      * Determine the order of atcampanas to fetch.
      */
-    orderBy?: Enumerable<atcampanaOrderByWithRelationInput>
+    orderBy?: atcampanaOrderByWithRelationInput | atcampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -3150,13 +4608,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of atcampanas.
      */
-    distinct?: Enumerable<AtcampanaScalarFieldEnum>
+    distinct?: AtcampanaScalarFieldEnum | AtcampanaScalarFieldEnum[]
   }
 
   /**
    * atcampana findFirst
    */
-  export interface atcampanaFindFirstArgs extends atcampanaFindFirstArgsBase {
+  export interface atcampanaFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends atcampanaFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -3168,11 +4626,11 @@ export namespace Prisma {
   /**
    * atcampana findFirstOrThrow
    */
-  export type atcampanaFindFirstOrThrowArgs = {
+  export type atcampanaFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampana
      */
-    select?: atcampanaSelect | null
+    select?: atcampanaSelect<ExtArgs> | null
     /**
      * Filter, which atcampana to fetch.
      */
@@ -3182,7 +4640,7 @@ export namespace Prisma {
      * 
      * Determine the order of atcampanas to fetch.
      */
-    orderBy?: Enumerable<atcampanaOrderByWithRelationInput>
+    orderBy?: atcampanaOrderByWithRelationInput | atcampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -3206,18 +4664,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of atcampanas.
      */
-    distinct?: Enumerable<AtcampanaScalarFieldEnum>
+    distinct?: AtcampanaScalarFieldEnum | AtcampanaScalarFieldEnum[]
   }
 
 
   /**
    * atcampana findMany
    */
-  export type atcampanaFindManyArgs = {
+  export type atcampanaFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampana
      */
-    select?: atcampanaSelect | null
+    select?: atcampanaSelect<ExtArgs> | null
     /**
      * Filter, which atcampanas to fetch.
      */
@@ -3227,7 +4685,7 @@ export namespace Prisma {
      * 
      * Determine the order of atcampanas to fetch.
      */
-    orderBy?: Enumerable<atcampanaOrderByWithRelationInput>
+    orderBy?: atcampanaOrderByWithRelationInput | atcampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -3246,18 +4704,18 @@ export namespace Prisma {
      * Skip the first `n` atcampanas.
      */
     skip?: number
-    distinct?: Enumerable<AtcampanaScalarFieldEnum>
+    distinct?: AtcampanaScalarFieldEnum | AtcampanaScalarFieldEnum[]
   }
 
 
   /**
    * atcampana create
    */
-  export type atcampanaCreateArgs = {
+  export type atcampanaCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampana
      */
-    select?: atcampanaSelect | null
+    select?: atcampanaSelect<ExtArgs> | null
     /**
      * The data needed to create a atcampana.
      */
@@ -3268,11 +4726,11 @@ export namespace Prisma {
   /**
    * atcampana createMany
    */
-  export type atcampanaCreateManyArgs = {
+  export type atcampanaCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many atcampanas.
      */
-    data: Enumerable<atcampanaCreateManyInput>
+    data: atcampanaCreateManyInput | atcampanaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -3280,11 +4738,11 @@ export namespace Prisma {
   /**
    * atcampana update
    */
-  export type atcampanaUpdateArgs = {
+  export type atcampanaUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampana
      */
-    select?: atcampanaSelect | null
+    select?: atcampanaSelect<ExtArgs> | null
     /**
      * The data needed to update a atcampana.
      */
@@ -3299,7 +4757,7 @@ export namespace Prisma {
   /**
    * atcampana updateMany
    */
-  export type atcampanaUpdateManyArgs = {
+  export type atcampanaUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update atcampanas.
      */
@@ -3314,11 +4772,11 @@ export namespace Prisma {
   /**
    * atcampana upsert
    */
-  export type atcampanaUpsertArgs = {
+  export type atcampanaUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampana
      */
-    select?: atcampanaSelect | null
+    select?: atcampanaSelect<ExtArgs> | null
     /**
      * The filter to search for the atcampana to update in case it exists.
      */
@@ -3337,11 +4795,11 @@ export namespace Prisma {
   /**
    * atcampana delete
    */
-  export type atcampanaDeleteArgs = {
+  export type atcampanaDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampana
      */
-    select?: atcampanaSelect | null
+    select?: atcampanaSelect<ExtArgs> | null
     /**
      * Filter which atcampana to delete.
      */
@@ -3352,7 +4810,7 @@ export namespace Prisma {
   /**
    * atcampana deleteMany
    */
-  export type atcampanaDeleteManyArgs = {
+  export type atcampanaDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which atcampanas to delete
      */
@@ -3363,11 +4821,11 @@ export namespace Prisma {
   /**
    * atcampana without action
    */
-  export type atcampanaArgs = {
+  export type atcampanaArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampana
      */
-    select?: atcampanaSelect | null
+    select?: atcampanaSelect<ExtArgs> | null
   }
 
 
@@ -3578,7 +5036,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type BlancampanaAggregateArgs = {
+  export type BlancampanaAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which blancampana to aggregate.
      */
@@ -3588,7 +5046,7 @@ export namespace Prisma {
      * 
      * Determine the order of blancampanas to fetch.
      */
-    orderBy?: Enumerable<blancampanaOrderByWithRelationInput>
+    orderBy?: blancampanaOrderByWithRelationInput | blancampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -3650,10 +5108,10 @@ export namespace Prisma {
 
 
 
-  export type BlancampanaGroupByArgs = {
+  export type blancampanaGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: blancampanaWhereInput
-    orderBy?: Enumerable<blancampanaOrderByWithAggregationInput>
-    by: BlancampanaScalarFieldEnum[]
+    orderBy?: blancampanaOrderByWithAggregationInput | blancampanaOrderByWithAggregationInput[]
+    by: BlancampanaScalarFieldEnum[] | BlancampanaScalarFieldEnum
     having?: blancampanaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -3693,9 +5151,9 @@ export namespace Prisma {
     _max: BlancampanaMaxAggregateOutputType | null
   }
 
-  type GetBlancampanaGroupByPayload<T extends BlancampanaGroupByArgs> = Prisma.PrismaPromise<
+  type GetBlancampanaGroupByPayload<T extends blancampanaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<BlancampanaGroupByOutputType, T['by']> &
+      PickEnumerable<BlancampanaGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof BlancampanaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -3707,7 +5165,30 @@ export namespace Prisma {
     >
 
 
-  export type blancampanaSelect = {
+  export type blancampanaSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["blancampana"]>
+
+  export type blancampanaSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -3731,27 +5212,15 @@ export namespace Prisma {
   }
 
 
-  export type blancampanaGetPayload<S extends boolean | null | undefined | blancampanaArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? blancampana :
-    S extends undefined ? never :
-    S extends { include: any } & (blancampanaArgs | blancampanaFindManyArgs)
-    ? blancampana 
-    : S extends { select: any } & (blancampanaArgs | blancampanaFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof blancampana ? blancampana[P] : never
-  } 
-      : blancampana
+  type blancampanaGetPayload<S extends boolean | null | undefined | blancampanaArgs> = $Types.GetResult<blancampanaPayload, S>
 
-
-  type blancampanaCountArgs = 
+  type blancampanaCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<blancampanaFindManyArgs, 'select' | 'include'> & {
       select?: BlancampanaCountAggregateInputType | true
     }
 
-  export interface blancampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface blancampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['blancampana'], meta: { name: 'blancampana' } }
     /**
      * Find zero or one Blancampana that matches the filter.
      * @param {blancampanaFindUniqueArgs} args - Arguments to find a Blancampana
@@ -3763,9 +5232,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends blancampanaFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, blancampanaFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'blancampana'> extends True ? Prisma__blancampanaClient<blancampanaGetPayload<T>> : Prisma__blancampanaClient<blancampanaGetPayload<T> | null, null>
+    findUnique<T extends blancampanaFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, blancampanaFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'blancampana'> extends True ? Prisma__blancampanaClient<$Types.GetResult<blancampanaPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__blancampanaClient<$Types.GetResult<blancampanaPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one Blancampana that matches the filter or throw an error  with `error.code='P2025'` 
@@ -3779,9 +5248,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends blancampanaFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, blancampanaFindUniqueOrThrowArgs>
-    ): Prisma__blancampanaClient<blancampanaGetPayload<T>>
+    findUniqueOrThrow<T extends blancampanaFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, blancampanaFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__blancampanaClient<$Types.GetResult<blancampanaPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first Blancampana that matches the filter.
@@ -3796,9 +5265,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends blancampanaFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, blancampanaFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'blancampana'> extends True ? Prisma__blancampanaClient<blancampanaGetPayload<T>> : Prisma__blancampanaClient<blancampanaGetPayload<T> | null, null>
+    findFirst<T extends blancampanaFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, blancampanaFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'blancampana'> extends True ? Prisma__blancampanaClient<$Types.GetResult<blancampanaPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__blancampanaClient<$Types.GetResult<blancampanaPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first Blancampana that matches the filter or
@@ -3814,9 +5283,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends blancampanaFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, blancampanaFindFirstOrThrowArgs>
-    ): Prisma__blancampanaClient<blancampanaGetPayload<T>>
+    findFirstOrThrow<T extends blancampanaFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, blancampanaFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__blancampanaClient<$Types.GetResult<blancampanaPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more Blancampanas that matches the filter.
@@ -3834,9 +5303,9 @@ export namespace Prisma {
      * const blancampanaWithSUCURSALOnly = await prisma.blancampana.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends blancampanaFindManyArgs>(
-      args?: SelectSubset<T, blancampanaFindManyArgs>
-    ): Prisma.PrismaPromise<Array<blancampanaGetPayload<T>>>
+    findMany<T extends blancampanaFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, blancampanaFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<blancampanaPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a Blancampana.
@@ -3850,9 +5319,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends blancampanaCreateArgs>(
-      args: SelectSubset<T, blancampanaCreateArgs>
-    ): Prisma__blancampanaClient<blancampanaGetPayload<T>>
+    create<T extends blancampanaCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, blancampanaCreateArgs<ExtArgs>>
+    ): Prisma__blancampanaClient<$Types.GetResult<blancampanaPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many Blancampanas.
@@ -3866,8 +5335,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends blancampanaCreateManyArgs>(
-      args?: SelectSubset<T, blancampanaCreateManyArgs>
+    createMany<T extends blancampanaCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, blancampanaCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -3882,9 +5351,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends blancampanaDeleteArgs>(
-      args: SelectSubset<T, blancampanaDeleteArgs>
-    ): Prisma__blancampanaClient<blancampanaGetPayload<T>>
+    delete<T extends blancampanaDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, blancampanaDeleteArgs<ExtArgs>>
+    ): Prisma__blancampanaClient<$Types.GetResult<blancampanaPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one Blancampana.
@@ -3901,9 +5370,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends blancampanaUpdateArgs>(
-      args: SelectSubset<T, blancampanaUpdateArgs>
-    ): Prisma__blancampanaClient<blancampanaGetPayload<T>>
+    update<T extends blancampanaUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, blancampanaUpdateArgs<ExtArgs>>
+    ): Prisma__blancampanaClient<$Types.GetResult<blancampanaPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more Blancampanas.
@@ -3917,8 +5386,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends blancampanaDeleteManyArgs>(
-      args?: SelectSubset<T, blancampanaDeleteManyArgs>
+    deleteMany<T extends blancampanaDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, blancampanaDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -3938,8 +5407,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends blancampanaUpdateManyArgs>(
-      args: SelectSubset<T, blancampanaUpdateManyArgs>
+    updateMany<T extends blancampanaUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, blancampanaUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -3959,9 +5428,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends blancampanaUpsertArgs>(
-      args: SelectSubset<T, blancampanaUpsertArgs>
-    ): Prisma__blancampanaClient<blancampanaGetPayload<T>>
+    upsert<T extends blancampanaUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, blancampanaUpsertArgs<ExtArgs>>
+    ): Prisma__blancampanaClient<$Types.GetResult<blancampanaPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of Blancampanas.
@@ -3979,7 +5448,7 @@ export namespace Prisma {
     count<T extends blancampanaCountArgs>(
       args?: Subset<T, blancampanaCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], BlancampanaCountAggregateOutputType>
@@ -4016,7 +5485,7 @@ export namespace Prisma {
      * Group by Blancampana.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BlancampanaGroupByArgs} args - Group by arguments.
+     * @param {blancampanaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -4031,16 +5500,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends BlancampanaGroupByArgs,
+      T extends blancampanaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BlancampanaGroupByArgs['orderBy'] }
-        : { orderBy?: BlancampanaGroupByArgs['orderBy'] },
+        ? { orderBy: blancampanaGroupByArgs['orderBy'] }
+        : { orderBy?: blancampanaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -4087,7 +5556,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, BlancampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBlancampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, blancampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBlancampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -4097,7 +5566,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__blancampanaClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__blancampanaClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -4143,11 +5612,11 @@ export namespace Prisma {
   /**
    * blancampana base type for findUnique actions
    */
-  export type blancampanaFindUniqueArgsBase = {
+  export type blancampanaFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampana
      */
-    select?: blancampanaSelect | null
+    select?: blancampanaSelect<ExtArgs> | null
     /**
      * Filter, which blancampana to fetch.
      */
@@ -4157,7 +5626,7 @@ export namespace Prisma {
   /**
    * blancampana findUnique
    */
-  export interface blancampanaFindUniqueArgs extends blancampanaFindUniqueArgsBase {
+  export interface blancampanaFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends blancampanaFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -4169,11 +5638,11 @@ export namespace Prisma {
   /**
    * blancampana findUniqueOrThrow
    */
-  export type blancampanaFindUniqueOrThrowArgs = {
+  export type blancampanaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampana
      */
-    select?: blancampanaSelect | null
+    select?: blancampanaSelect<ExtArgs> | null
     /**
      * Filter, which blancampana to fetch.
      */
@@ -4184,11 +5653,11 @@ export namespace Prisma {
   /**
    * blancampana base type for findFirst actions
    */
-  export type blancampanaFindFirstArgsBase = {
+  export type blancampanaFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampana
      */
-    select?: blancampanaSelect | null
+    select?: blancampanaSelect<ExtArgs> | null
     /**
      * Filter, which blancampana to fetch.
      */
@@ -4198,7 +5667,7 @@ export namespace Prisma {
      * 
      * Determine the order of blancampanas to fetch.
      */
-    orderBy?: Enumerable<blancampanaOrderByWithRelationInput>
+    orderBy?: blancampanaOrderByWithRelationInput | blancampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -4222,13 +5691,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of blancampanas.
      */
-    distinct?: Enumerable<BlancampanaScalarFieldEnum>
+    distinct?: BlancampanaScalarFieldEnum | BlancampanaScalarFieldEnum[]
   }
 
   /**
    * blancampana findFirst
    */
-  export interface blancampanaFindFirstArgs extends blancampanaFindFirstArgsBase {
+  export interface blancampanaFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends blancampanaFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -4240,11 +5709,11 @@ export namespace Prisma {
   /**
    * blancampana findFirstOrThrow
    */
-  export type blancampanaFindFirstOrThrowArgs = {
+  export type blancampanaFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampana
      */
-    select?: blancampanaSelect | null
+    select?: blancampanaSelect<ExtArgs> | null
     /**
      * Filter, which blancampana to fetch.
      */
@@ -4254,7 +5723,7 @@ export namespace Prisma {
      * 
      * Determine the order of blancampanas to fetch.
      */
-    orderBy?: Enumerable<blancampanaOrderByWithRelationInput>
+    orderBy?: blancampanaOrderByWithRelationInput | blancampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -4278,18 +5747,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of blancampanas.
      */
-    distinct?: Enumerable<BlancampanaScalarFieldEnum>
+    distinct?: BlancampanaScalarFieldEnum | BlancampanaScalarFieldEnum[]
   }
 
 
   /**
    * blancampana findMany
    */
-  export type blancampanaFindManyArgs = {
+  export type blancampanaFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampana
      */
-    select?: blancampanaSelect | null
+    select?: blancampanaSelect<ExtArgs> | null
     /**
      * Filter, which blancampanas to fetch.
      */
@@ -4299,7 +5768,7 @@ export namespace Prisma {
      * 
      * Determine the order of blancampanas to fetch.
      */
-    orderBy?: Enumerable<blancampanaOrderByWithRelationInput>
+    orderBy?: blancampanaOrderByWithRelationInput | blancampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -4318,18 +5787,18 @@ export namespace Prisma {
      * Skip the first `n` blancampanas.
      */
     skip?: number
-    distinct?: Enumerable<BlancampanaScalarFieldEnum>
+    distinct?: BlancampanaScalarFieldEnum | BlancampanaScalarFieldEnum[]
   }
 
 
   /**
    * blancampana create
    */
-  export type blancampanaCreateArgs = {
+  export type blancampanaCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampana
      */
-    select?: blancampanaSelect | null
+    select?: blancampanaSelect<ExtArgs> | null
     /**
      * The data needed to create a blancampana.
      */
@@ -4340,11 +5809,11 @@ export namespace Prisma {
   /**
    * blancampana createMany
    */
-  export type blancampanaCreateManyArgs = {
+  export type blancampanaCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many blancampanas.
      */
-    data: Enumerable<blancampanaCreateManyInput>
+    data: blancampanaCreateManyInput | blancampanaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -4352,11 +5821,11 @@ export namespace Prisma {
   /**
    * blancampana update
    */
-  export type blancampanaUpdateArgs = {
+  export type blancampanaUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampana
      */
-    select?: blancampanaSelect | null
+    select?: blancampanaSelect<ExtArgs> | null
     /**
      * The data needed to update a blancampana.
      */
@@ -4371,7 +5840,7 @@ export namespace Prisma {
   /**
    * blancampana updateMany
    */
-  export type blancampanaUpdateManyArgs = {
+  export type blancampanaUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update blancampanas.
      */
@@ -4386,11 +5855,11 @@ export namespace Prisma {
   /**
    * blancampana upsert
    */
-  export type blancampanaUpsertArgs = {
+  export type blancampanaUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampana
      */
-    select?: blancampanaSelect | null
+    select?: blancampanaSelect<ExtArgs> | null
     /**
      * The filter to search for the blancampana to update in case it exists.
      */
@@ -4409,11 +5878,11 @@ export namespace Prisma {
   /**
    * blancampana delete
    */
-  export type blancampanaDeleteArgs = {
+  export type blancampanaDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampana
      */
-    select?: blancampanaSelect | null
+    select?: blancampanaSelect<ExtArgs> | null
     /**
      * Filter which blancampana to delete.
      */
@@ -4424,7 +5893,7 @@ export namespace Prisma {
   /**
    * blancampana deleteMany
    */
-  export type blancampanaDeleteManyArgs = {
+  export type blancampanaDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which blancampanas to delete
      */
@@ -4435,11 +5904,11 @@ export namespace Prisma {
   /**
    * blancampana without action
    */
-  export type blancampanaArgs = {
+  export type blancampanaArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampana
      */
-    select?: blancampanaSelect | null
+    select?: blancampanaSelect<ExtArgs> | null
   }
 
 
@@ -4650,7 +6119,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type ReccampanaAggregateArgs = {
+  export type ReccampanaAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which reccampana to aggregate.
      */
@@ -4660,7 +6129,7 @@ export namespace Prisma {
      * 
      * Determine the order of reccampanas to fetch.
      */
-    orderBy?: Enumerable<reccampanaOrderByWithRelationInput>
+    orderBy?: reccampanaOrderByWithRelationInput | reccampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -4722,10 +6191,10 @@ export namespace Prisma {
 
 
 
-  export type ReccampanaGroupByArgs = {
+  export type reccampanaGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: reccampanaWhereInput
-    orderBy?: Enumerable<reccampanaOrderByWithAggregationInput>
-    by: ReccampanaScalarFieldEnum[]
+    orderBy?: reccampanaOrderByWithAggregationInput | reccampanaOrderByWithAggregationInput[]
+    by: ReccampanaScalarFieldEnum[] | ReccampanaScalarFieldEnum
     having?: reccampanaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -4765,9 +6234,9 @@ export namespace Prisma {
     _max: ReccampanaMaxAggregateOutputType | null
   }
 
-  type GetReccampanaGroupByPayload<T extends ReccampanaGroupByArgs> = Prisma.PrismaPromise<
+  type GetReccampanaGroupByPayload<T extends reccampanaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<ReccampanaGroupByOutputType, T['by']> &
+      PickEnumerable<ReccampanaGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof ReccampanaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -4779,7 +6248,30 @@ export namespace Prisma {
     >
 
 
-  export type reccampanaSelect = {
+  export type reccampanaSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["reccampana"]>
+
+  export type reccampanaSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -4803,27 +6295,15 @@ export namespace Prisma {
   }
 
 
-  export type reccampanaGetPayload<S extends boolean | null | undefined | reccampanaArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? reccampana :
-    S extends undefined ? never :
-    S extends { include: any } & (reccampanaArgs | reccampanaFindManyArgs)
-    ? reccampana 
-    : S extends { select: any } & (reccampanaArgs | reccampanaFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof reccampana ? reccampana[P] : never
-  } 
-      : reccampana
+  type reccampanaGetPayload<S extends boolean | null | undefined | reccampanaArgs> = $Types.GetResult<reccampanaPayload, S>
 
-
-  type reccampanaCountArgs = 
+  type reccampanaCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<reccampanaFindManyArgs, 'select' | 'include'> & {
       select?: ReccampanaCountAggregateInputType | true
     }
 
-  export interface reccampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface reccampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['reccampana'], meta: { name: 'reccampana' } }
     /**
      * Find zero or one Reccampana that matches the filter.
      * @param {reccampanaFindUniqueArgs} args - Arguments to find a Reccampana
@@ -4835,9 +6315,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends reccampanaFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, reccampanaFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'reccampana'> extends True ? Prisma__reccampanaClient<reccampanaGetPayload<T>> : Prisma__reccampanaClient<reccampanaGetPayload<T> | null, null>
+    findUnique<T extends reccampanaFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, reccampanaFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'reccampana'> extends True ? Prisma__reccampanaClient<$Types.GetResult<reccampanaPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__reccampanaClient<$Types.GetResult<reccampanaPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one Reccampana that matches the filter or throw an error  with `error.code='P2025'` 
@@ -4851,9 +6331,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends reccampanaFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, reccampanaFindUniqueOrThrowArgs>
-    ): Prisma__reccampanaClient<reccampanaGetPayload<T>>
+    findUniqueOrThrow<T extends reccampanaFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__reccampanaClient<$Types.GetResult<reccampanaPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first Reccampana that matches the filter.
@@ -4868,9 +6348,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends reccampanaFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, reccampanaFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'reccampana'> extends True ? Prisma__reccampanaClient<reccampanaGetPayload<T>> : Prisma__reccampanaClient<reccampanaGetPayload<T> | null, null>
+    findFirst<T extends reccampanaFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, reccampanaFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'reccampana'> extends True ? Prisma__reccampanaClient<$Types.GetResult<reccampanaPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__reccampanaClient<$Types.GetResult<reccampanaPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first Reccampana that matches the filter or
@@ -4886,9 +6366,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends reccampanaFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, reccampanaFindFirstOrThrowArgs>
-    ): Prisma__reccampanaClient<reccampanaGetPayload<T>>
+    findFirstOrThrow<T extends reccampanaFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__reccampanaClient<$Types.GetResult<reccampanaPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more Reccampanas that matches the filter.
@@ -4906,9 +6386,9 @@ export namespace Prisma {
      * const reccampanaWithSUCURSALOnly = await prisma.reccampana.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends reccampanaFindManyArgs>(
-      args?: SelectSubset<T, reccampanaFindManyArgs>
-    ): Prisma.PrismaPromise<Array<reccampanaGetPayload<T>>>
+    findMany<T extends reccampanaFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<reccampanaPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a Reccampana.
@@ -4922,9 +6402,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends reccampanaCreateArgs>(
-      args: SelectSubset<T, reccampanaCreateArgs>
-    ): Prisma__reccampanaClient<reccampanaGetPayload<T>>
+    create<T extends reccampanaCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaCreateArgs<ExtArgs>>
+    ): Prisma__reccampanaClient<$Types.GetResult<reccampanaPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many Reccampanas.
@@ -4938,8 +6418,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends reccampanaCreateManyArgs>(
-      args?: SelectSubset<T, reccampanaCreateManyArgs>
+    createMany<T extends reccampanaCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -4954,9 +6434,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends reccampanaDeleteArgs>(
-      args: SelectSubset<T, reccampanaDeleteArgs>
-    ): Prisma__reccampanaClient<reccampanaGetPayload<T>>
+    delete<T extends reccampanaDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaDeleteArgs<ExtArgs>>
+    ): Prisma__reccampanaClient<$Types.GetResult<reccampanaPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one Reccampana.
@@ -4973,9 +6453,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends reccampanaUpdateArgs>(
-      args: SelectSubset<T, reccampanaUpdateArgs>
-    ): Prisma__reccampanaClient<reccampanaGetPayload<T>>
+    update<T extends reccampanaUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaUpdateArgs<ExtArgs>>
+    ): Prisma__reccampanaClient<$Types.GetResult<reccampanaPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more Reccampanas.
@@ -4989,8 +6469,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends reccampanaDeleteManyArgs>(
-      args?: SelectSubset<T, reccampanaDeleteManyArgs>
+    deleteMany<T extends reccampanaDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -5010,8 +6490,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends reccampanaUpdateManyArgs>(
-      args: SelectSubset<T, reccampanaUpdateManyArgs>
+    updateMany<T extends reccampanaUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -5031,9 +6511,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends reccampanaUpsertArgs>(
-      args: SelectSubset<T, reccampanaUpsertArgs>
-    ): Prisma__reccampanaClient<reccampanaGetPayload<T>>
+    upsert<T extends reccampanaUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaUpsertArgs<ExtArgs>>
+    ): Prisma__reccampanaClient<$Types.GetResult<reccampanaPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of Reccampanas.
@@ -5051,7 +6531,7 @@ export namespace Prisma {
     count<T extends reccampanaCountArgs>(
       args?: Subset<T, reccampanaCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], ReccampanaCountAggregateOutputType>
@@ -5088,7 +6568,7 @@ export namespace Prisma {
      * Group by Reccampana.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReccampanaGroupByArgs} args - Group by arguments.
+     * @param {reccampanaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5103,16 +6583,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ReccampanaGroupByArgs,
+      T extends reccampanaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ReccampanaGroupByArgs['orderBy'] }
-        : { orderBy?: ReccampanaGroupByArgs['orderBy'] },
+        ? { orderBy: reccampanaGroupByArgs['orderBy'] }
+        : { orderBy?: reccampanaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -5159,7 +6639,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ReccampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReccampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, reccampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReccampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -5169,7 +6649,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__reccampanaClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__reccampanaClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -5215,11 +6695,11 @@ export namespace Prisma {
   /**
    * reccampana base type for findUnique actions
    */
-  export type reccampanaFindUniqueArgsBase = {
+  export type reccampanaFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampana
      */
-    select?: reccampanaSelect | null
+    select?: reccampanaSelect<ExtArgs> | null
     /**
      * Filter, which reccampana to fetch.
      */
@@ -5229,7 +6709,7 @@ export namespace Prisma {
   /**
    * reccampana findUnique
    */
-  export interface reccampanaFindUniqueArgs extends reccampanaFindUniqueArgsBase {
+  export interface reccampanaFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reccampanaFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -5241,11 +6721,11 @@ export namespace Prisma {
   /**
    * reccampana findUniqueOrThrow
    */
-  export type reccampanaFindUniqueOrThrowArgs = {
+  export type reccampanaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampana
      */
-    select?: reccampanaSelect | null
+    select?: reccampanaSelect<ExtArgs> | null
     /**
      * Filter, which reccampana to fetch.
      */
@@ -5256,11 +6736,11 @@ export namespace Prisma {
   /**
    * reccampana base type for findFirst actions
    */
-  export type reccampanaFindFirstArgsBase = {
+  export type reccampanaFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampana
      */
-    select?: reccampanaSelect | null
+    select?: reccampanaSelect<ExtArgs> | null
     /**
      * Filter, which reccampana to fetch.
      */
@@ -5270,7 +6750,7 @@ export namespace Prisma {
      * 
      * Determine the order of reccampanas to fetch.
      */
-    orderBy?: Enumerable<reccampanaOrderByWithRelationInput>
+    orderBy?: reccampanaOrderByWithRelationInput | reccampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -5294,13 +6774,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of reccampanas.
      */
-    distinct?: Enumerable<ReccampanaScalarFieldEnum>
+    distinct?: ReccampanaScalarFieldEnum | ReccampanaScalarFieldEnum[]
   }
 
   /**
    * reccampana findFirst
    */
-  export interface reccampanaFindFirstArgs extends reccampanaFindFirstArgsBase {
+  export interface reccampanaFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reccampanaFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -5312,11 +6792,11 @@ export namespace Prisma {
   /**
    * reccampana findFirstOrThrow
    */
-  export type reccampanaFindFirstOrThrowArgs = {
+  export type reccampanaFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampana
      */
-    select?: reccampanaSelect | null
+    select?: reccampanaSelect<ExtArgs> | null
     /**
      * Filter, which reccampana to fetch.
      */
@@ -5326,7 +6806,7 @@ export namespace Prisma {
      * 
      * Determine the order of reccampanas to fetch.
      */
-    orderBy?: Enumerable<reccampanaOrderByWithRelationInput>
+    orderBy?: reccampanaOrderByWithRelationInput | reccampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -5350,18 +6830,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of reccampanas.
      */
-    distinct?: Enumerable<ReccampanaScalarFieldEnum>
+    distinct?: ReccampanaScalarFieldEnum | ReccampanaScalarFieldEnum[]
   }
 
 
   /**
    * reccampana findMany
    */
-  export type reccampanaFindManyArgs = {
+  export type reccampanaFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampana
      */
-    select?: reccampanaSelect | null
+    select?: reccampanaSelect<ExtArgs> | null
     /**
      * Filter, which reccampanas to fetch.
      */
@@ -5371,7 +6851,7 @@ export namespace Prisma {
      * 
      * Determine the order of reccampanas to fetch.
      */
-    orderBy?: Enumerable<reccampanaOrderByWithRelationInput>
+    orderBy?: reccampanaOrderByWithRelationInput | reccampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -5390,18 +6870,18 @@ export namespace Prisma {
      * Skip the first `n` reccampanas.
      */
     skip?: number
-    distinct?: Enumerable<ReccampanaScalarFieldEnum>
+    distinct?: ReccampanaScalarFieldEnum | ReccampanaScalarFieldEnum[]
   }
 
 
   /**
    * reccampana create
    */
-  export type reccampanaCreateArgs = {
+  export type reccampanaCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampana
      */
-    select?: reccampanaSelect | null
+    select?: reccampanaSelect<ExtArgs> | null
     /**
      * The data needed to create a reccampana.
      */
@@ -5412,11 +6892,11 @@ export namespace Prisma {
   /**
    * reccampana createMany
    */
-  export type reccampanaCreateManyArgs = {
+  export type reccampanaCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many reccampanas.
      */
-    data: Enumerable<reccampanaCreateManyInput>
+    data: reccampanaCreateManyInput | reccampanaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -5424,11 +6904,11 @@ export namespace Prisma {
   /**
    * reccampana update
    */
-  export type reccampanaUpdateArgs = {
+  export type reccampanaUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampana
      */
-    select?: reccampanaSelect | null
+    select?: reccampanaSelect<ExtArgs> | null
     /**
      * The data needed to update a reccampana.
      */
@@ -5443,7 +6923,7 @@ export namespace Prisma {
   /**
    * reccampana updateMany
    */
-  export type reccampanaUpdateManyArgs = {
+  export type reccampanaUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update reccampanas.
      */
@@ -5458,11 +6938,11 @@ export namespace Prisma {
   /**
    * reccampana upsert
    */
-  export type reccampanaUpsertArgs = {
+  export type reccampanaUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampana
      */
-    select?: reccampanaSelect | null
+    select?: reccampanaSelect<ExtArgs> | null
     /**
      * The filter to search for the reccampana to update in case it exists.
      */
@@ -5481,11 +6961,11 @@ export namespace Prisma {
   /**
    * reccampana delete
    */
-  export type reccampanaDeleteArgs = {
+  export type reccampanaDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampana
      */
-    select?: reccampanaSelect | null
+    select?: reccampanaSelect<ExtArgs> | null
     /**
      * Filter which reccampana to delete.
      */
@@ -5496,7 +6976,7 @@ export namespace Prisma {
   /**
    * reccampana deleteMany
    */
-  export type reccampanaDeleteManyArgs = {
+  export type reccampanaDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which reccampanas to delete
      */
@@ -5507,11 +6987,11 @@ export namespace Prisma {
   /**
    * reccampana without action
    */
-  export type reccampanaArgs = {
+  export type reccampanaArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampana
      */
-    select?: reccampanaSelect | null
+    select?: reccampanaSelect<ExtArgs> | null
   }
 
 
@@ -5722,7 +7202,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type ReincampanaAggregateArgs = {
+  export type ReincampanaAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which reincampana to aggregate.
      */
@@ -5732,7 +7212,7 @@ export namespace Prisma {
      * 
      * Determine the order of reincampanas to fetch.
      */
-    orderBy?: Enumerable<reincampanaOrderByWithRelationInput>
+    orderBy?: reincampanaOrderByWithRelationInput | reincampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -5794,10 +7274,10 @@ export namespace Prisma {
 
 
 
-  export type ReincampanaGroupByArgs = {
+  export type reincampanaGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: reincampanaWhereInput
-    orderBy?: Enumerable<reincampanaOrderByWithAggregationInput>
-    by: ReincampanaScalarFieldEnum[]
+    orderBy?: reincampanaOrderByWithAggregationInput | reincampanaOrderByWithAggregationInput[]
+    by: ReincampanaScalarFieldEnum[] | ReincampanaScalarFieldEnum
     having?: reincampanaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -5837,9 +7317,9 @@ export namespace Prisma {
     _max: ReincampanaMaxAggregateOutputType | null
   }
 
-  type GetReincampanaGroupByPayload<T extends ReincampanaGroupByArgs> = Prisma.PrismaPromise<
+  type GetReincampanaGroupByPayload<T extends reincampanaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<ReincampanaGroupByOutputType, T['by']> &
+      PickEnumerable<ReincampanaGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof ReincampanaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -5851,7 +7331,30 @@ export namespace Prisma {
     >
 
 
-  export type reincampanaSelect = {
+  export type reincampanaSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["reincampana"]>
+
+  export type reincampanaSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -5875,27 +7378,15 @@ export namespace Prisma {
   }
 
 
-  export type reincampanaGetPayload<S extends boolean | null | undefined | reincampanaArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? reincampana :
-    S extends undefined ? never :
-    S extends { include: any } & (reincampanaArgs | reincampanaFindManyArgs)
-    ? reincampana 
-    : S extends { select: any } & (reincampanaArgs | reincampanaFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof reincampana ? reincampana[P] : never
-  } 
-      : reincampana
+  type reincampanaGetPayload<S extends boolean | null | undefined | reincampanaArgs> = $Types.GetResult<reincampanaPayload, S>
 
-
-  type reincampanaCountArgs = 
+  type reincampanaCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<reincampanaFindManyArgs, 'select' | 'include'> & {
       select?: ReincampanaCountAggregateInputType | true
     }
 
-  export interface reincampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface reincampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['reincampana'], meta: { name: 'reincampana' } }
     /**
      * Find zero or one Reincampana that matches the filter.
      * @param {reincampanaFindUniqueArgs} args - Arguments to find a Reincampana
@@ -5907,9 +7398,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends reincampanaFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, reincampanaFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'reincampana'> extends True ? Prisma__reincampanaClient<reincampanaGetPayload<T>> : Prisma__reincampanaClient<reincampanaGetPayload<T> | null, null>
+    findUnique<T extends reincampanaFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, reincampanaFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'reincampana'> extends True ? Prisma__reincampanaClient<$Types.GetResult<reincampanaPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__reincampanaClient<$Types.GetResult<reincampanaPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one Reincampana that matches the filter or throw an error  with `error.code='P2025'` 
@@ -5923,9 +7414,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends reincampanaFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, reincampanaFindUniqueOrThrowArgs>
-    ): Prisma__reincampanaClient<reincampanaGetPayload<T>>
+    findUniqueOrThrow<T extends reincampanaFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reincampanaFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__reincampanaClient<$Types.GetResult<reincampanaPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first Reincampana that matches the filter.
@@ -5940,9 +7431,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends reincampanaFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, reincampanaFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'reincampana'> extends True ? Prisma__reincampanaClient<reincampanaGetPayload<T>> : Prisma__reincampanaClient<reincampanaGetPayload<T> | null, null>
+    findFirst<T extends reincampanaFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, reincampanaFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'reincampana'> extends True ? Prisma__reincampanaClient<$Types.GetResult<reincampanaPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__reincampanaClient<$Types.GetResult<reincampanaPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first Reincampana that matches the filter or
@@ -5958,9 +7449,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends reincampanaFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, reincampanaFindFirstOrThrowArgs>
-    ): Prisma__reincampanaClient<reincampanaGetPayload<T>>
+    findFirstOrThrow<T extends reincampanaFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reincampanaFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__reincampanaClient<$Types.GetResult<reincampanaPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more Reincampanas that matches the filter.
@@ -5978,9 +7469,9 @@ export namespace Prisma {
      * const reincampanaWithSUCURSALOnly = await prisma.reincampana.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends reincampanaFindManyArgs>(
-      args?: SelectSubset<T, reincampanaFindManyArgs>
-    ): Prisma.PrismaPromise<Array<reincampanaGetPayload<T>>>
+    findMany<T extends reincampanaFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reincampanaFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<reincampanaPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a Reincampana.
@@ -5994,9 +7485,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends reincampanaCreateArgs>(
-      args: SelectSubset<T, reincampanaCreateArgs>
-    ): Prisma__reincampanaClient<reincampanaGetPayload<T>>
+    create<T extends reincampanaCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, reincampanaCreateArgs<ExtArgs>>
+    ): Prisma__reincampanaClient<$Types.GetResult<reincampanaPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many Reincampanas.
@@ -6010,8 +7501,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends reincampanaCreateManyArgs>(
-      args?: SelectSubset<T, reincampanaCreateManyArgs>
+    createMany<T extends reincampanaCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reincampanaCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -6026,9 +7517,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends reincampanaDeleteArgs>(
-      args: SelectSubset<T, reincampanaDeleteArgs>
-    ): Prisma__reincampanaClient<reincampanaGetPayload<T>>
+    delete<T extends reincampanaDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, reincampanaDeleteArgs<ExtArgs>>
+    ): Prisma__reincampanaClient<$Types.GetResult<reincampanaPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one Reincampana.
@@ -6045,9 +7536,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends reincampanaUpdateArgs>(
-      args: SelectSubset<T, reincampanaUpdateArgs>
-    ): Prisma__reincampanaClient<reincampanaGetPayload<T>>
+    update<T extends reincampanaUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, reincampanaUpdateArgs<ExtArgs>>
+    ): Prisma__reincampanaClient<$Types.GetResult<reincampanaPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more Reincampanas.
@@ -6061,8 +7552,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends reincampanaDeleteManyArgs>(
-      args?: SelectSubset<T, reincampanaDeleteManyArgs>
+    deleteMany<T extends reincampanaDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reincampanaDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -6082,8 +7573,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends reincampanaUpdateManyArgs>(
-      args: SelectSubset<T, reincampanaUpdateManyArgs>
+    updateMany<T extends reincampanaUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, reincampanaUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -6103,9 +7594,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends reincampanaUpsertArgs>(
-      args: SelectSubset<T, reincampanaUpsertArgs>
-    ): Prisma__reincampanaClient<reincampanaGetPayload<T>>
+    upsert<T extends reincampanaUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, reincampanaUpsertArgs<ExtArgs>>
+    ): Prisma__reincampanaClient<$Types.GetResult<reincampanaPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of Reincampanas.
@@ -6123,7 +7614,7 @@ export namespace Prisma {
     count<T extends reincampanaCountArgs>(
       args?: Subset<T, reincampanaCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], ReincampanaCountAggregateOutputType>
@@ -6160,7 +7651,7 @@ export namespace Prisma {
      * Group by Reincampana.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReincampanaGroupByArgs} args - Group by arguments.
+     * @param {reincampanaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -6175,16 +7666,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ReincampanaGroupByArgs,
+      T extends reincampanaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ReincampanaGroupByArgs['orderBy'] }
-        : { orderBy?: ReincampanaGroupByArgs['orderBy'] },
+        ? { orderBy: reincampanaGroupByArgs['orderBy'] }
+        : { orderBy?: reincampanaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -6231,7 +7722,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ReincampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReincampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, reincampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReincampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -6241,7 +7732,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__reincampanaClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__reincampanaClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -6287,11 +7778,11 @@ export namespace Prisma {
   /**
    * reincampana base type for findUnique actions
    */
-  export type reincampanaFindUniqueArgsBase = {
+  export type reincampanaFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampana
      */
-    select?: reincampanaSelect | null
+    select?: reincampanaSelect<ExtArgs> | null
     /**
      * Filter, which reincampana to fetch.
      */
@@ -6301,7 +7792,7 @@ export namespace Prisma {
   /**
    * reincampana findUnique
    */
-  export interface reincampanaFindUniqueArgs extends reincampanaFindUniqueArgsBase {
+  export interface reincampanaFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reincampanaFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -6313,11 +7804,11 @@ export namespace Prisma {
   /**
    * reincampana findUniqueOrThrow
    */
-  export type reincampanaFindUniqueOrThrowArgs = {
+  export type reincampanaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampana
      */
-    select?: reincampanaSelect | null
+    select?: reincampanaSelect<ExtArgs> | null
     /**
      * Filter, which reincampana to fetch.
      */
@@ -6328,11 +7819,11 @@ export namespace Prisma {
   /**
    * reincampana base type for findFirst actions
    */
-  export type reincampanaFindFirstArgsBase = {
+  export type reincampanaFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampana
      */
-    select?: reincampanaSelect | null
+    select?: reincampanaSelect<ExtArgs> | null
     /**
      * Filter, which reincampana to fetch.
      */
@@ -6342,7 +7833,7 @@ export namespace Prisma {
      * 
      * Determine the order of reincampanas to fetch.
      */
-    orderBy?: Enumerable<reincampanaOrderByWithRelationInput>
+    orderBy?: reincampanaOrderByWithRelationInput | reincampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -6366,13 +7857,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of reincampanas.
      */
-    distinct?: Enumerable<ReincampanaScalarFieldEnum>
+    distinct?: ReincampanaScalarFieldEnum | ReincampanaScalarFieldEnum[]
   }
 
   /**
    * reincampana findFirst
    */
-  export interface reincampanaFindFirstArgs extends reincampanaFindFirstArgsBase {
+  export interface reincampanaFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reincampanaFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -6384,11 +7875,11 @@ export namespace Prisma {
   /**
    * reincampana findFirstOrThrow
    */
-  export type reincampanaFindFirstOrThrowArgs = {
+  export type reincampanaFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampana
      */
-    select?: reincampanaSelect | null
+    select?: reincampanaSelect<ExtArgs> | null
     /**
      * Filter, which reincampana to fetch.
      */
@@ -6398,7 +7889,7 @@ export namespace Prisma {
      * 
      * Determine the order of reincampanas to fetch.
      */
-    orderBy?: Enumerable<reincampanaOrderByWithRelationInput>
+    orderBy?: reincampanaOrderByWithRelationInput | reincampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -6422,18 +7913,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of reincampanas.
      */
-    distinct?: Enumerable<ReincampanaScalarFieldEnum>
+    distinct?: ReincampanaScalarFieldEnum | ReincampanaScalarFieldEnum[]
   }
 
 
   /**
    * reincampana findMany
    */
-  export type reincampanaFindManyArgs = {
+  export type reincampanaFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampana
      */
-    select?: reincampanaSelect | null
+    select?: reincampanaSelect<ExtArgs> | null
     /**
      * Filter, which reincampanas to fetch.
      */
@@ -6443,7 +7934,7 @@ export namespace Prisma {
      * 
      * Determine the order of reincampanas to fetch.
      */
-    orderBy?: Enumerable<reincampanaOrderByWithRelationInput>
+    orderBy?: reincampanaOrderByWithRelationInput | reincampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -6462,18 +7953,18 @@ export namespace Prisma {
      * Skip the first `n` reincampanas.
      */
     skip?: number
-    distinct?: Enumerable<ReincampanaScalarFieldEnum>
+    distinct?: ReincampanaScalarFieldEnum | ReincampanaScalarFieldEnum[]
   }
 
 
   /**
    * reincampana create
    */
-  export type reincampanaCreateArgs = {
+  export type reincampanaCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampana
      */
-    select?: reincampanaSelect | null
+    select?: reincampanaSelect<ExtArgs> | null
     /**
      * The data needed to create a reincampana.
      */
@@ -6484,11 +7975,11 @@ export namespace Prisma {
   /**
    * reincampana createMany
    */
-  export type reincampanaCreateManyArgs = {
+  export type reincampanaCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many reincampanas.
      */
-    data: Enumerable<reincampanaCreateManyInput>
+    data: reincampanaCreateManyInput | reincampanaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -6496,11 +7987,11 @@ export namespace Prisma {
   /**
    * reincampana update
    */
-  export type reincampanaUpdateArgs = {
+  export type reincampanaUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampana
      */
-    select?: reincampanaSelect | null
+    select?: reincampanaSelect<ExtArgs> | null
     /**
      * The data needed to update a reincampana.
      */
@@ -6515,7 +8006,7 @@ export namespace Prisma {
   /**
    * reincampana updateMany
    */
-  export type reincampanaUpdateManyArgs = {
+  export type reincampanaUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update reincampanas.
      */
@@ -6530,11 +8021,11 @@ export namespace Prisma {
   /**
    * reincampana upsert
    */
-  export type reincampanaUpsertArgs = {
+  export type reincampanaUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampana
      */
-    select?: reincampanaSelect | null
+    select?: reincampanaSelect<ExtArgs> | null
     /**
      * The filter to search for the reincampana to update in case it exists.
      */
@@ -6553,11 +8044,11 @@ export namespace Prisma {
   /**
    * reincampana delete
    */
-  export type reincampanaDeleteArgs = {
+  export type reincampanaDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampana
      */
-    select?: reincampanaSelect | null
+    select?: reincampanaSelect<ExtArgs> | null
     /**
      * Filter which reincampana to delete.
      */
@@ -6568,7 +8059,7 @@ export namespace Prisma {
   /**
    * reincampana deleteMany
    */
-  export type reincampanaDeleteManyArgs = {
+  export type reincampanaDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which reincampanas to delete
      */
@@ -6579,11 +8070,11 @@ export namespace Prisma {
   /**
    * reincampana without action
    */
-  export type reincampanaArgs = {
+  export type reincampanaArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampana
      */
-    select?: reincampanaSelect | null
+    select?: reincampanaSelect<ExtArgs> | null
   }
 
 
@@ -6794,7 +8285,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type AuxcampanaAggregateArgs = {
+  export type AuxcampanaAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which auxcampana to aggregate.
      */
@@ -6804,7 +8295,7 @@ export namespace Prisma {
      * 
      * Determine the order of auxcampanas to fetch.
      */
-    orderBy?: Enumerable<auxcampanaOrderByWithRelationInput>
+    orderBy?: auxcampanaOrderByWithRelationInput | auxcampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -6866,10 +8357,10 @@ export namespace Prisma {
 
 
 
-  export type AuxcampanaGroupByArgs = {
+  export type auxcampanaGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: auxcampanaWhereInput
-    orderBy?: Enumerable<auxcampanaOrderByWithAggregationInput>
-    by: AuxcampanaScalarFieldEnum[]
+    orderBy?: auxcampanaOrderByWithAggregationInput | auxcampanaOrderByWithAggregationInput[]
+    by: AuxcampanaScalarFieldEnum[] | AuxcampanaScalarFieldEnum
     having?: auxcampanaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -6909,9 +8400,9 @@ export namespace Prisma {
     _max: AuxcampanaMaxAggregateOutputType | null
   }
 
-  type GetAuxcampanaGroupByPayload<T extends AuxcampanaGroupByArgs> = Prisma.PrismaPromise<
+  type GetAuxcampanaGroupByPayload<T extends auxcampanaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<AuxcampanaGroupByOutputType, T['by']> &
+      PickEnumerable<AuxcampanaGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof AuxcampanaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -6923,7 +8414,30 @@ export namespace Prisma {
     >
 
 
-  export type auxcampanaSelect = {
+  export type auxcampanaSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["auxcampana"]>
+
+  export type auxcampanaSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -6947,27 +8461,15 @@ export namespace Prisma {
   }
 
 
-  export type auxcampanaGetPayload<S extends boolean | null | undefined | auxcampanaArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? auxcampana :
-    S extends undefined ? never :
-    S extends { include: any } & (auxcampanaArgs | auxcampanaFindManyArgs)
-    ? auxcampana 
-    : S extends { select: any } & (auxcampanaArgs | auxcampanaFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof auxcampana ? auxcampana[P] : never
-  } 
-      : auxcampana
+  type auxcampanaGetPayload<S extends boolean | null | undefined | auxcampanaArgs> = $Types.GetResult<auxcampanaPayload, S>
 
-
-  type auxcampanaCountArgs = 
+  type auxcampanaCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<auxcampanaFindManyArgs, 'select' | 'include'> & {
       select?: AuxcampanaCountAggregateInputType | true
     }
 
-  export interface auxcampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface auxcampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['auxcampana'], meta: { name: 'auxcampana' } }
     /**
      * Find zero or one Auxcampana that matches the filter.
      * @param {auxcampanaFindUniqueArgs} args - Arguments to find a Auxcampana
@@ -6979,9 +8481,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends auxcampanaFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, auxcampanaFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'auxcampana'> extends True ? Prisma__auxcampanaClient<auxcampanaGetPayload<T>> : Prisma__auxcampanaClient<auxcampanaGetPayload<T> | null, null>
+    findUnique<T extends auxcampanaFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, auxcampanaFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'auxcampana'> extends True ? Prisma__auxcampanaClient<$Types.GetResult<auxcampanaPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__auxcampanaClient<$Types.GetResult<auxcampanaPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one Auxcampana that matches the filter or throw an error  with `error.code='P2025'` 
@@ -6995,9 +8497,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends auxcampanaFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, auxcampanaFindUniqueOrThrowArgs>
-    ): Prisma__auxcampanaClient<auxcampanaGetPayload<T>>
+    findUniqueOrThrow<T extends auxcampanaFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, auxcampanaFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__auxcampanaClient<$Types.GetResult<auxcampanaPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first Auxcampana that matches the filter.
@@ -7012,9 +8514,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends auxcampanaFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, auxcampanaFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'auxcampana'> extends True ? Prisma__auxcampanaClient<auxcampanaGetPayload<T>> : Prisma__auxcampanaClient<auxcampanaGetPayload<T> | null, null>
+    findFirst<T extends auxcampanaFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, auxcampanaFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'auxcampana'> extends True ? Prisma__auxcampanaClient<$Types.GetResult<auxcampanaPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__auxcampanaClient<$Types.GetResult<auxcampanaPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first Auxcampana that matches the filter or
@@ -7030,9 +8532,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends auxcampanaFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, auxcampanaFindFirstOrThrowArgs>
-    ): Prisma__auxcampanaClient<auxcampanaGetPayload<T>>
+    findFirstOrThrow<T extends auxcampanaFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, auxcampanaFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__auxcampanaClient<$Types.GetResult<auxcampanaPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more Auxcampanas that matches the filter.
@@ -7050,9 +8552,9 @@ export namespace Prisma {
      * const auxcampanaWithSUCURSALOnly = await prisma.auxcampana.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends auxcampanaFindManyArgs>(
-      args?: SelectSubset<T, auxcampanaFindManyArgs>
-    ): Prisma.PrismaPromise<Array<auxcampanaGetPayload<T>>>
+    findMany<T extends auxcampanaFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, auxcampanaFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<auxcampanaPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a Auxcampana.
@@ -7066,9 +8568,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends auxcampanaCreateArgs>(
-      args: SelectSubset<T, auxcampanaCreateArgs>
-    ): Prisma__auxcampanaClient<auxcampanaGetPayload<T>>
+    create<T extends auxcampanaCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, auxcampanaCreateArgs<ExtArgs>>
+    ): Prisma__auxcampanaClient<$Types.GetResult<auxcampanaPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many Auxcampanas.
@@ -7082,8 +8584,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends auxcampanaCreateManyArgs>(
-      args?: SelectSubset<T, auxcampanaCreateManyArgs>
+    createMany<T extends auxcampanaCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, auxcampanaCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -7098,9 +8600,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends auxcampanaDeleteArgs>(
-      args: SelectSubset<T, auxcampanaDeleteArgs>
-    ): Prisma__auxcampanaClient<auxcampanaGetPayload<T>>
+    delete<T extends auxcampanaDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, auxcampanaDeleteArgs<ExtArgs>>
+    ): Prisma__auxcampanaClient<$Types.GetResult<auxcampanaPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one Auxcampana.
@@ -7117,9 +8619,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends auxcampanaUpdateArgs>(
-      args: SelectSubset<T, auxcampanaUpdateArgs>
-    ): Prisma__auxcampanaClient<auxcampanaGetPayload<T>>
+    update<T extends auxcampanaUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, auxcampanaUpdateArgs<ExtArgs>>
+    ): Prisma__auxcampanaClient<$Types.GetResult<auxcampanaPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more Auxcampanas.
@@ -7133,8 +8635,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends auxcampanaDeleteManyArgs>(
-      args?: SelectSubset<T, auxcampanaDeleteManyArgs>
+    deleteMany<T extends auxcampanaDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, auxcampanaDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -7154,8 +8656,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends auxcampanaUpdateManyArgs>(
-      args: SelectSubset<T, auxcampanaUpdateManyArgs>
+    updateMany<T extends auxcampanaUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, auxcampanaUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -7175,9 +8677,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends auxcampanaUpsertArgs>(
-      args: SelectSubset<T, auxcampanaUpsertArgs>
-    ): Prisma__auxcampanaClient<auxcampanaGetPayload<T>>
+    upsert<T extends auxcampanaUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, auxcampanaUpsertArgs<ExtArgs>>
+    ): Prisma__auxcampanaClient<$Types.GetResult<auxcampanaPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of Auxcampanas.
@@ -7195,7 +8697,7 @@ export namespace Prisma {
     count<T extends auxcampanaCountArgs>(
       args?: Subset<T, auxcampanaCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], AuxcampanaCountAggregateOutputType>
@@ -7232,7 +8734,7 @@ export namespace Prisma {
      * Group by Auxcampana.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuxcampanaGroupByArgs} args - Group by arguments.
+     * @param {auxcampanaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -7247,16 +8749,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AuxcampanaGroupByArgs,
+      T extends auxcampanaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AuxcampanaGroupByArgs['orderBy'] }
-        : { orderBy?: AuxcampanaGroupByArgs['orderBy'] },
+        ? { orderBy: auxcampanaGroupByArgs['orderBy'] }
+        : { orderBy?: auxcampanaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -7303,7 +8805,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AuxcampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAuxcampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, auxcampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAuxcampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -7313,7 +8815,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__auxcampanaClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__auxcampanaClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -7359,11 +8861,11 @@ export namespace Prisma {
   /**
    * auxcampana base type for findUnique actions
    */
-  export type auxcampanaFindUniqueArgsBase = {
+  export type auxcampanaFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the auxcampana
      */
-    select?: auxcampanaSelect | null
+    select?: auxcampanaSelect<ExtArgs> | null
     /**
      * Filter, which auxcampana to fetch.
      */
@@ -7373,7 +8875,7 @@ export namespace Prisma {
   /**
    * auxcampana findUnique
    */
-  export interface auxcampanaFindUniqueArgs extends auxcampanaFindUniqueArgsBase {
+  export interface auxcampanaFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends auxcampanaFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -7385,11 +8887,11 @@ export namespace Prisma {
   /**
    * auxcampana findUniqueOrThrow
    */
-  export type auxcampanaFindUniqueOrThrowArgs = {
+  export type auxcampanaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the auxcampana
      */
-    select?: auxcampanaSelect | null
+    select?: auxcampanaSelect<ExtArgs> | null
     /**
      * Filter, which auxcampana to fetch.
      */
@@ -7400,11 +8902,11 @@ export namespace Prisma {
   /**
    * auxcampana base type for findFirst actions
    */
-  export type auxcampanaFindFirstArgsBase = {
+  export type auxcampanaFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the auxcampana
      */
-    select?: auxcampanaSelect | null
+    select?: auxcampanaSelect<ExtArgs> | null
     /**
      * Filter, which auxcampana to fetch.
      */
@@ -7414,7 +8916,7 @@ export namespace Prisma {
      * 
      * Determine the order of auxcampanas to fetch.
      */
-    orderBy?: Enumerable<auxcampanaOrderByWithRelationInput>
+    orderBy?: auxcampanaOrderByWithRelationInput | auxcampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -7438,13 +8940,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of auxcampanas.
      */
-    distinct?: Enumerable<AuxcampanaScalarFieldEnum>
+    distinct?: AuxcampanaScalarFieldEnum | AuxcampanaScalarFieldEnum[]
   }
 
   /**
    * auxcampana findFirst
    */
-  export interface auxcampanaFindFirstArgs extends auxcampanaFindFirstArgsBase {
+  export interface auxcampanaFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends auxcampanaFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -7456,11 +8958,11 @@ export namespace Prisma {
   /**
    * auxcampana findFirstOrThrow
    */
-  export type auxcampanaFindFirstOrThrowArgs = {
+  export type auxcampanaFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the auxcampana
      */
-    select?: auxcampanaSelect | null
+    select?: auxcampanaSelect<ExtArgs> | null
     /**
      * Filter, which auxcampana to fetch.
      */
@@ -7470,7 +8972,7 @@ export namespace Prisma {
      * 
      * Determine the order of auxcampanas to fetch.
      */
-    orderBy?: Enumerable<auxcampanaOrderByWithRelationInput>
+    orderBy?: auxcampanaOrderByWithRelationInput | auxcampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -7494,18 +8996,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of auxcampanas.
      */
-    distinct?: Enumerable<AuxcampanaScalarFieldEnum>
+    distinct?: AuxcampanaScalarFieldEnum | AuxcampanaScalarFieldEnum[]
   }
 
 
   /**
    * auxcampana findMany
    */
-  export type auxcampanaFindManyArgs = {
+  export type auxcampanaFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the auxcampana
      */
-    select?: auxcampanaSelect | null
+    select?: auxcampanaSelect<ExtArgs> | null
     /**
      * Filter, which auxcampanas to fetch.
      */
@@ -7515,7 +9017,7 @@ export namespace Prisma {
      * 
      * Determine the order of auxcampanas to fetch.
      */
-    orderBy?: Enumerable<auxcampanaOrderByWithRelationInput>
+    orderBy?: auxcampanaOrderByWithRelationInput | auxcampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -7534,18 +9036,18 @@ export namespace Prisma {
      * Skip the first `n` auxcampanas.
      */
     skip?: number
-    distinct?: Enumerable<AuxcampanaScalarFieldEnum>
+    distinct?: AuxcampanaScalarFieldEnum | AuxcampanaScalarFieldEnum[]
   }
 
 
   /**
    * auxcampana create
    */
-  export type auxcampanaCreateArgs = {
+  export type auxcampanaCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the auxcampana
      */
-    select?: auxcampanaSelect | null
+    select?: auxcampanaSelect<ExtArgs> | null
     /**
      * The data needed to create a auxcampana.
      */
@@ -7556,11 +9058,11 @@ export namespace Prisma {
   /**
    * auxcampana createMany
    */
-  export type auxcampanaCreateManyArgs = {
+  export type auxcampanaCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many auxcampanas.
      */
-    data: Enumerable<auxcampanaCreateManyInput>
+    data: auxcampanaCreateManyInput | auxcampanaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -7568,11 +9070,11 @@ export namespace Prisma {
   /**
    * auxcampana update
    */
-  export type auxcampanaUpdateArgs = {
+  export type auxcampanaUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the auxcampana
      */
-    select?: auxcampanaSelect | null
+    select?: auxcampanaSelect<ExtArgs> | null
     /**
      * The data needed to update a auxcampana.
      */
@@ -7587,7 +9089,7 @@ export namespace Prisma {
   /**
    * auxcampana updateMany
    */
-  export type auxcampanaUpdateManyArgs = {
+  export type auxcampanaUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update auxcampanas.
      */
@@ -7602,11 +9104,11 @@ export namespace Prisma {
   /**
    * auxcampana upsert
    */
-  export type auxcampanaUpsertArgs = {
+  export type auxcampanaUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the auxcampana
      */
-    select?: auxcampanaSelect | null
+    select?: auxcampanaSelect<ExtArgs> | null
     /**
      * The filter to search for the auxcampana to update in case it exists.
      */
@@ -7625,11 +9127,11 @@ export namespace Prisma {
   /**
    * auxcampana delete
    */
-  export type auxcampanaDeleteArgs = {
+  export type auxcampanaDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the auxcampana
      */
-    select?: auxcampanaSelect | null
+    select?: auxcampanaSelect<ExtArgs> | null
     /**
      * Filter which auxcampana to delete.
      */
@@ -7640,7 +9142,7 @@ export namespace Prisma {
   /**
    * auxcampana deleteMany
    */
-  export type auxcampanaDeleteManyArgs = {
+  export type auxcampanaDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which auxcampanas to delete
      */
@@ -7651,11 +9153,11 @@ export namespace Prisma {
   /**
    * auxcampana without action
    */
-  export type auxcampanaArgs = {
+  export type auxcampanaArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the auxcampana
      */
-    select?: auxcampanaSelect | null
+    select?: auxcampanaSelect<ExtArgs> | null
   }
 
 
@@ -7866,7 +9368,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type PolicampanaAggregateArgs = {
+  export type PolicampanaAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which policampana to aggregate.
      */
@@ -7876,7 +9378,7 @@ export namespace Prisma {
      * 
      * Determine the order of policampanas to fetch.
      */
-    orderBy?: Enumerable<policampanaOrderByWithRelationInput>
+    orderBy?: policampanaOrderByWithRelationInput | policampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -7938,10 +9440,10 @@ export namespace Prisma {
 
 
 
-  export type PolicampanaGroupByArgs = {
+  export type policampanaGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: policampanaWhereInput
-    orderBy?: Enumerable<policampanaOrderByWithAggregationInput>
-    by: PolicampanaScalarFieldEnum[]
+    orderBy?: policampanaOrderByWithAggregationInput | policampanaOrderByWithAggregationInput[]
+    by: PolicampanaScalarFieldEnum[] | PolicampanaScalarFieldEnum
     having?: policampanaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -7981,9 +9483,9 @@ export namespace Prisma {
     _max: PolicampanaMaxAggregateOutputType | null
   }
 
-  type GetPolicampanaGroupByPayload<T extends PolicampanaGroupByArgs> = Prisma.PrismaPromise<
+  type GetPolicampanaGroupByPayload<T extends policampanaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<PolicampanaGroupByOutputType, T['by']> &
+      PickEnumerable<PolicampanaGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof PolicampanaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -7995,7 +9497,30 @@ export namespace Prisma {
     >
 
 
-  export type policampanaSelect = {
+  export type policampanaSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["policampana"]>
+
+  export type policampanaSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -8019,27 +9544,15 @@ export namespace Prisma {
   }
 
 
-  export type policampanaGetPayload<S extends boolean | null | undefined | policampanaArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? policampana :
-    S extends undefined ? never :
-    S extends { include: any } & (policampanaArgs | policampanaFindManyArgs)
-    ? policampana 
-    : S extends { select: any } & (policampanaArgs | policampanaFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof policampana ? policampana[P] : never
-  } 
-      : policampana
+  type policampanaGetPayload<S extends boolean | null | undefined | policampanaArgs> = $Types.GetResult<policampanaPayload, S>
 
-
-  type policampanaCountArgs = 
+  type policampanaCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<policampanaFindManyArgs, 'select' | 'include'> & {
       select?: PolicampanaCountAggregateInputType | true
     }
 
-  export interface policampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface policampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['policampana'], meta: { name: 'policampana' } }
     /**
      * Find zero or one Policampana that matches the filter.
      * @param {policampanaFindUniqueArgs} args - Arguments to find a Policampana
@@ -8051,9 +9564,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends policampanaFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, policampanaFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'policampana'> extends True ? Prisma__policampanaClient<policampanaGetPayload<T>> : Prisma__policampanaClient<policampanaGetPayload<T> | null, null>
+    findUnique<T extends policampanaFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, policampanaFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'policampana'> extends True ? Prisma__policampanaClient<$Types.GetResult<policampanaPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__policampanaClient<$Types.GetResult<policampanaPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one Policampana that matches the filter or throw an error  with `error.code='P2025'` 
@@ -8067,9 +9580,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends policampanaFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, policampanaFindUniqueOrThrowArgs>
-    ): Prisma__policampanaClient<policampanaGetPayload<T>>
+    findUniqueOrThrow<T extends policampanaFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, policampanaFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__policampanaClient<$Types.GetResult<policampanaPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first Policampana that matches the filter.
@@ -8084,9 +9597,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends policampanaFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, policampanaFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'policampana'> extends True ? Prisma__policampanaClient<policampanaGetPayload<T>> : Prisma__policampanaClient<policampanaGetPayload<T> | null, null>
+    findFirst<T extends policampanaFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, policampanaFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'policampana'> extends True ? Prisma__policampanaClient<$Types.GetResult<policampanaPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__policampanaClient<$Types.GetResult<policampanaPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first Policampana that matches the filter or
@@ -8102,9 +9615,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends policampanaFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, policampanaFindFirstOrThrowArgs>
-    ): Prisma__policampanaClient<policampanaGetPayload<T>>
+    findFirstOrThrow<T extends policampanaFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, policampanaFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__policampanaClient<$Types.GetResult<policampanaPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more Policampanas that matches the filter.
@@ -8122,9 +9635,9 @@ export namespace Prisma {
      * const policampanaWithSUCURSALOnly = await prisma.policampana.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends policampanaFindManyArgs>(
-      args?: SelectSubset<T, policampanaFindManyArgs>
-    ): Prisma.PrismaPromise<Array<policampanaGetPayload<T>>>
+    findMany<T extends policampanaFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, policampanaFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<policampanaPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a Policampana.
@@ -8138,9 +9651,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends policampanaCreateArgs>(
-      args: SelectSubset<T, policampanaCreateArgs>
-    ): Prisma__policampanaClient<policampanaGetPayload<T>>
+    create<T extends policampanaCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, policampanaCreateArgs<ExtArgs>>
+    ): Prisma__policampanaClient<$Types.GetResult<policampanaPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many Policampanas.
@@ -8154,8 +9667,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends policampanaCreateManyArgs>(
-      args?: SelectSubset<T, policampanaCreateManyArgs>
+    createMany<T extends policampanaCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, policampanaCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -8170,9 +9683,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends policampanaDeleteArgs>(
-      args: SelectSubset<T, policampanaDeleteArgs>
-    ): Prisma__policampanaClient<policampanaGetPayload<T>>
+    delete<T extends policampanaDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, policampanaDeleteArgs<ExtArgs>>
+    ): Prisma__policampanaClient<$Types.GetResult<policampanaPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one Policampana.
@@ -8189,9 +9702,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends policampanaUpdateArgs>(
-      args: SelectSubset<T, policampanaUpdateArgs>
-    ): Prisma__policampanaClient<policampanaGetPayload<T>>
+    update<T extends policampanaUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, policampanaUpdateArgs<ExtArgs>>
+    ): Prisma__policampanaClient<$Types.GetResult<policampanaPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more Policampanas.
@@ -8205,8 +9718,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends policampanaDeleteManyArgs>(
-      args?: SelectSubset<T, policampanaDeleteManyArgs>
+    deleteMany<T extends policampanaDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, policampanaDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -8226,8 +9739,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends policampanaUpdateManyArgs>(
-      args: SelectSubset<T, policampanaUpdateManyArgs>
+    updateMany<T extends policampanaUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, policampanaUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -8247,9 +9760,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends policampanaUpsertArgs>(
-      args: SelectSubset<T, policampanaUpsertArgs>
-    ): Prisma__policampanaClient<policampanaGetPayload<T>>
+    upsert<T extends policampanaUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, policampanaUpsertArgs<ExtArgs>>
+    ): Prisma__policampanaClient<$Types.GetResult<policampanaPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of Policampanas.
@@ -8267,7 +9780,7 @@ export namespace Prisma {
     count<T extends policampanaCountArgs>(
       args?: Subset<T, policampanaCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], PolicampanaCountAggregateOutputType>
@@ -8304,7 +9817,7 @@ export namespace Prisma {
      * Group by Policampana.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PolicampanaGroupByArgs} args - Group by arguments.
+     * @param {policampanaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -8319,16 +9832,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends PolicampanaGroupByArgs,
+      T extends policampanaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PolicampanaGroupByArgs['orderBy'] }
-        : { orderBy?: PolicampanaGroupByArgs['orderBy'] },
+        ? { orderBy: policampanaGroupByArgs['orderBy'] }
+        : { orderBy?: policampanaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -8375,7 +9888,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, PolicampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPolicampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, policampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPolicampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -8385,7 +9898,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__policampanaClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__policampanaClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -8431,11 +9944,11 @@ export namespace Prisma {
   /**
    * policampana base type for findUnique actions
    */
-  export type policampanaFindUniqueArgsBase = {
+  export type policampanaFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the policampana
      */
-    select?: policampanaSelect | null
+    select?: policampanaSelect<ExtArgs> | null
     /**
      * Filter, which policampana to fetch.
      */
@@ -8445,7 +9958,7 @@ export namespace Prisma {
   /**
    * policampana findUnique
    */
-  export interface policampanaFindUniqueArgs extends policampanaFindUniqueArgsBase {
+  export interface policampanaFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends policampanaFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -8457,11 +9970,11 @@ export namespace Prisma {
   /**
    * policampana findUniqueOrThrow
    */
-  export type policampanaFindUniqueOrThrowArgs = {
+  export type policampanaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the policampana
      */
-    select?: policampanaSelect | null
+    select?: policampanaSelect<ExtArgs> | null
     /**
      * Filter, which policampana to fetch.
      */
@@ -8472,11 +9985,11 @@ export namespace Prisma {
   /**
    * policampana base type for findFirst actions
    */
-  export type policampanaFindFirstArgsBase = {
+  export type policampanaFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the policampana
      */
-    select?: policampanaSelect | null
+    select?: policampanaSelect<ExtArgs> | null
     /**
      * Filter, which policampana to fetch.
      */
@@ -8486,7 +9999,7 @@ export namespace Prisma {
      * 
      * Determine the order of policampanas to fetch.
      */
-    orderBy?: Enumerable<policampanaOrderByWithRelationInput>
+    orderBy?: policampanaOrderByWithRelationInput | policampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -8510,13 +10023,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of policampanas.
      */
-    distinct?: Enumerable<PolicampanaScalarFieldEnum>
+    distinct?: PolicampanaScalarFieldEnum | PolicampanaScalarFieldEnum[]
   }
 
   /**
    * policampana findFirst
    */
-  export interface policampanaFindFirstArgs extends policampanaFindFirstArgsBase {
+  export interface policampanaFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends policampanaFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -8528,11 +10041,11 @@ export namespace Prisma {
   /**
    * policampana findFirstOrThrow
    */
-  export type policampanaFindFirstOrThrowArgs = {
+  export type policampanaFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the policampana
      */
-    select?: policampanaSelect | null
+    select?: policampanaSelect<ExtArgs> | null
     /**
      * Filter, which policampana to fetch.
      */
@@ -8542,7 +10055,7 @@ export namespace Prisma {
      * 
      * Determine the order of policampanas to fetch.
      */
-    orderBy?: Enumerable<policampanaOrderByWithRelationInput>
+    orderBy?: policampanaOrderByWithRelationInput | policampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -8566,18 +10079,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of policampanas.
      */
-    distinct?: Enumerable<PolicampanaScalarFieldEnum>
+    distinct?: PolicampanaScalarFieldEnum | PolicampanaScalarFieldEnum[]
   }
 
 
   /**
    * policampana findMany
    */
-  export type policampanaFindManyArgs = {
+  export type policampanaFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the policampana
      */
-    select?: policampanaSelect | null
+    select?: policampanaSelect<ExtArgs> | null
     /**
      * Filter, which policampanas to fetch.
      */
@@ -8587,7 +10100,7 @@ export namespace Prisma {
      * 
      * Determine the order of policampanas to fetch.
      */
-    orderBy?: Enumerable<policampanaOrderByWithRelationInput>
+    orderBy?: policampanaOrderByWithRelationInput | policampanaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -8606,18 +10119,18 @@ export namespace Prisma {
      * Skip the first `n` policampanas.
      */
     skip?: number
-    distinct?: Enumerable<PolicampanaScalarFieldEnum>
+    distinct?: PolicampanaScalarFieldEnum | PolicampanaScalarFieldEnum[]
   }
 
 
   /**
    * policampana create
    */
-  export type policampanaCreateArgs = {
+  export type policampanaCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the policampana
      */
-    select?: policampanaSelect | null
+    select?: policampanaSelect<ExtArgs> | null
     /**
      * The data needed to create a policampana.
      */
@@ -8628,11 +10141,11 @@ export namespace Prisma {
   /**
    * policampana createMany
    */
-  export type policampanaCreateManyArgs = {
+  export type policampanaCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many policampanas.
      */
-    data: Enumerable<policampanaCreateManyInput>
+    data: policampanaCreateManyInput | policampanaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -8640,11 +10153,11 @@ export namespace Prisma {
   /**
    * policampana update
    */
-  export type policampanaUpdateArgs = {
+  export type policampanaUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the policampana
      */
-    select?: policampanaSelect | null
+    select?: policampanaSelect<ExtArgs> | null
     /**
      * The data needed to update a policampana.
      */
@@ -8659,7 +10172,7 @@ export namespace Prisma {
   /**
    * policampana updateMany
    */
-  export type policampanaUpdateManyArgs = {
+  export type policampanaUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update policampanas.
      */
@@ -8674,11 +10187,11 @@ export namespace Prisma {
   /**
    * policampana upsert
    */
-  export type policampanaUpsertArgs = {
+  export type policampanaUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the policampana
      */
-    select?: policampanaSelect | null
+    select?: policampanaSelect<ExtArgs> | null
     /**
      * The filter to search for the policampana to update in case it exists.
      */
@@ -8697,11 +10210,11 @@ export namespace Prisma {
   /**
    * policampana delete
    */
-  export type policampanaDeleteArgs = {
+  export type policampanaDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the policampana
      */
-    select?: policampanaSelect | null
+    select?: policampanaSelect<ExtArgs> | null
     /**
      * Filter which policampana to delete.
      */
@@ -8712,7 +10225,7 @@ export namespace Prisma {
   /**
    * policampana deleteMany
    */
-  export type policampanaDeleteManyArgs = {
+  export type policampanaDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which policampanas to delete
      */
@@ -8723,11 +10236,11 @@ export namespace Prisma {
   /**
    * policampana without action
    */
-  export type policampanaArgs = {
+  export type policampanaArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the policampana
      */
-    select?: policampanaSelect | null
+    select?: policampanaSelect<ExtArgs> | null
   }
 
 
@@ -8938,7 +10451,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type At2campanaMAggregateArgs = {
+  export type At2campanaMAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which at2campanaM to aggregate.
      */
@@ -8948,7 +10461,7 @@ export namespace Prisma {
      * 
      * Determine the order of at2campanaMS to fetch.
      */
-    orderBy?: Enumerable<at2campanaMOrderByWithRelationInput>
+    orderBy?: at2campanaMOrderByWithRelationInput | at2campanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -9010,10 +10523,10 @@ export namespace Prisma {
 
 
 
-  export type At2campanaMGroupByArgs = {
+  export type at2campanaMGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: at2campanaMWhereInput
-    orderBy?: Enumerable<at2campanaMOrderByWithAggregationInput>
-    by: At2campanaMScalarFieldEnum[]
+    orderBy?: at2campanaMOrderByWithAggregationInput | at2campanaMOrderByWithAggregationInput[]
+    by: At2campanaMScalarFieldEnum[] | At2campanaMScalarFieldEnum
     having?: at2campanaMScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -9053,9 +10566,9 @@ export namespace Prisma {
     _max: At2campanaMMaxAggregateOutputType | null
   }
 
-  type GetAt2campanaMGroupByPayload<T extends At2campanaMGroupByArgs> = Prisma.PrismaPromise<
+  type GetAt2campanaMGroupByPayload<T extends at2campanaMGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<At2campanaMGroupByOutputType, T['by']> &
+      PickEnumerable<At2campanaMGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof At2campanaMGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -9067,7 +10580,30 @@ export namespace Prisma {
     >
 
 
-  export type at2campanaMSelect = {
+  export type at2campanaMSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["at2campanaM"]>
+
+  export type at2campanaMSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -9091,27 +10627,15 @@ export namespace Prisma {
   }
 
 
-  export type at2campanaMGetPayload<S extends boolean | null | undefined | at2campanaMArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? at2campanaM :
-    S extends undefined ? never :
-    S extends { include: any } & (at2campanaMArgs | at2campanaMFindManyArgs)
-    ? at2campanaM 
-    : S extends { select: any } & (at2campanaMArgs | at2campanaMFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof at2campanaM ? at2campanaM[P] : never
-  } 
-      : at2campanaM
+  type at2campanaMGetPayload<S extends boolean | null | undefined | at2campanaMArgs> = $Types.GetResult<at2campanaMPayload, S>
 
-
-  type at2campanaMCountArgs = 
+  type at2campanaMCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<at2campanaMFindManyArgs, 'select' | 'include'> & {
       select?: At2campanaMCountAggregateInputType | true
     }
 
-  export interface at2campanaMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface at2campanaMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['at2campanaM'], meta: { name: 'at2campanaM' } }
     /**
      * Find zero or one At2campanaM that matches the filter.
      * @param {at2campanaMFindUniqueArgs} args - Arguments to find a At2campanaM
@@ -9123,9 +10647,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends at2campanaMFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, at2campanaMFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'at2campanaM'> extends True ? Prisma__at2campanaMClient<at2campanaMGetPayload<T>> : Prisma__at2campanaMClient<at2campanaMGetPayload<T> | null, null>
+    findUnique<T extends at2campanaMFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, at2campanaMFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'at2campanaM'> extends True ? Prisma__at2campanaMClient<$Types.GetResult<at2campanaMPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__at2campanaMClient<$Types.GetResult<at2campanaMPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one At2campanaM that matches the filter or throw an error  with `error.code='P2025'` 
@@ -9139,9 +10663,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends at2campanaMFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, at2campanaMFindUniqueOrThrowArgs>
-    ): Prisma__at2campanaMClient<at2campanaMGetPayload<T>>
+    findUniqueOrThrow<T extends at2campanaMFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, at2campanaMFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__at2campanaMClient<$Types.GetResult<at2campanaMPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first At2campanaM that matches the filter.
@@ -9156,9 +10680,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends at2campanaMFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, at2campanaMFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'at2campanaM'> extends True ? Prisma__at2campanaMClient<at2campanaMGetPayload<T>> : Prisma__at2campanaMClient<at2campanaMGetPayload<T> | null, null>
+    findFirst<T extends at2campanaMFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, at2campanaMFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'at2campanaM'> extends True ? Prisma__at2campanaMClient<$Types.GetResult<at2campanaMPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__at2campanaMClient<$Types.GetResult<at2campanaMPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first At2campanaM that matches the filter or
@@ -9174,9 +10698,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends at2campanaMFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, at2campanaMFindFirstOrThrowArgs>
-    ): Prisma__at2campanaMClient<at2campanaMGetPayload<T>>
+    findFirstOrThrow<T extends at2campanaMFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, at2campanaMFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__at2campanaMClient<$Types.GetResult<at2campanaMPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more At2campanaMS that matches the filter.
@@ -9194,9 +10718,9 @@ export namespace Prisma {
      * const at2campanaMWithSUCURSALOnly = await prisma.at2campanaM.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends at2campanaMFindManyArgs>(
-      args?: SelectSubset<T, at2campanaMFindManyArgs>
-    ): Prisma.PrismaPromise<Array<at2campanaMGetPayload<T>>>
+    findMany<T extends at2campanaMFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, at2campanaMFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<at2campanaMPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a At2campanaM.
@@ -9210,9 +10734,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends at2campanaMCreateArgs>(
-      args: SelectSubset<T, at2campanaMCreateArgs>
-    ): Prisma__at2campanaMClient<at2campanaMGetPayload<T>>
+    create<T extends at2campanaMCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, at2campanaMCreateArgs<ExtArgs>>
+    ): Prisma__at2campanaMClient<$Types.GetResult<at2campanaMPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many At2campanaMS.
@@ -9226,8 +10750,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends at2campanaMCreateManyArgs>(
-      args?: SelectSubset<T, at2campanaMCreateManyArgs>
+    createMany<T extends at2campanaMCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, at2campanaMCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -9242,9 +10766,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends at2campanaMDeleteArgs>(
-      args: SelectSubset<T, at2campanaMDeleteArgs>
-    ): Prisma__at2campanaMClient<at2campanaMGetPayload<T>>
+    delete<T extends at2campanaMDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, at2campanaMDeleteArgs<ExtArgs>>
+    ): Prisma__at2campanaMClient<$Types.GetResult<at2campanaMPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one At2campanaM.
@@ -9261,9 +10785,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends at2campanaMUpdateArgs>(
-      args: SelectSubset<T, at2campanaMUpdateArgs>
-    ): Prisma__at2campanaMClient<at2campanaMGetPayload<T>>
+    update<T extends at2campanaMUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, at2campanaMUpdateArgs<ExtArgs>>
+    ): Prisma__at2campanaMClient<$Types.GetResult<at2campanaMPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more At2campanaMS.
@@ -9277,8 +10801,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends at2campanaMDeleteManyArgs>(
-      args?: SelectSubset<T, at2campanaMDeleteManyArgs>
+    deleteMany<T extends at2campanaMDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, at2campanaMDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -9298,8 +10822,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends at2campanaMUpdateManyArgs>(
-      args: SelectSubset<T, at2campanaMUpdateManyArgs>
+    updateMany<T extends at2campanaMUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, at2campanaMUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -9319,9 +10843,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends at2campanaMUpsertArgs>(
-      args: SelectSubset<T, at2campanaMUpsertArgs>
-    ): Prisma__at2campanaMClient<at2campanaMGetPayload<T>>
+    upsert<T extends at2campanaMUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, at2campanaMUpsertArgs<ExtArgs>>
+    ): Prisma__at2campanaMClient<$Types.GetResult<at2campanaMPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of At2campanaMS.
@@ -9339,7 +10863,7 @@ export namespace Prisma {
     count<T extends at2campanaMCountArgs>(
       args?: Subset<T, at2campanaMCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], At2campanaMCountAggregateOutputType>
@@ -9376,7 +10900,7 @@ export namespace Prisma {
      * Group by At2campanaM.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {At2campanaMGroupByArgs} args - Group by arguments.
+     * @param {at2campanaMGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -9391,16 +10915,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends At2campanaMGroupByArgs,
+      T extends at2campanaMGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: At2campanaMGroupByArgs['orderBy'] }
-        : { orderBy?: At2campanaMGroupByArgs['orderBy'] },
+        ? { orderBy: at2campanaMGroupByArgs['orderBy'] }
+        : { orderBy?: at2campanaMGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -9447,7 +10971,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, At2campanaMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAt2campanaMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, at2campanaMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAt2campanaMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -9457,7 +10981,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__at2campanaMClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__at2campanaMClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -9503,11 +11027,11 @@ export namespace Prisma {
   /**
    * at2campanaM base type for findUnique actions
    */
-  export type at2campanaMFindUniqueArgsBase = {
+  export type at2campanaMFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campanaM
      */
-    select?: at2campanaMSelect | null
+    select?: at2campanaMSelect<ExtArgs> | null
     /**
      * Filter, which at2campanaM to fetch.
      */
@@ -9517,7 +11041,7 @@ export namespace Prisma {
   /**
    * at2campanaM findUnique
    */
-  export interface at2campanaMFindUniqueArgs extends at2campanaMFindUniqueArgsBase {
+  export interface at2campanaMFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends at2campanaMFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -9529,11 +11053,11 @@ export namespace Prisma {
   /**
    * at2campanaM findUniqueOrThrow
    */
-  export type at2campanaMFindUniqueOrThrowArgs = {
+  export type at2campanaMFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campanaM
      */
-    select?: at2campanaMSelect | null
+    select?: at2campanaMSelect<ExtArgs> | null
     /**
      * Filter, which at2campanaM to fetch.
      */
@@ -9544,11 +11068,11 @@ export namespace Prisma {
   /**
    * at2campanaM base type for findFirst actions
    */
-  export type at2campanaMFindFirstArgsBase = {
+  export type at2campanaMFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campanaM
      */
-    select?: at2campanaMSelect | null
+    select?: at2campanaMSelect<ExtArgs> | null
     /**
      * Filter, which at2campanaM to fetch.
      */
@@ -9558,7 +11082,7 @@ export namespace Prisma {
      * 
      * Determine the order of at2campanaMS to fetch.
      */
-    orderBy?: Enumerable<at2campanaMOrderByWithRelationInput>
+    orderBy?: at2campanaMOrderByWithRelationInput | at2campanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -9582,13 +11106,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of at2campanaMS.
      */
-    distinct?: Enumerable<At2campanaMScalarFieldEnum>
+    distinct?: At2campanaMScalarFieldEnum | At2campanaMScalarFieldEnum[]
   }
 
   /**
    * at2campanaM findFirst
    */
-  export interface at2campanaMFindFirstArgs extends at2campanaMFindFirstArgsBase {
+  export interface at2campanaMFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends at2campanaMFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -9600,11 +11124,11 @@ export namespace Prisma {
   /**
    * at2campanaM findFirstOrThrow
    */
-  export type at2campanaMFindFirstOrThrowArgs = {
+  export type at2campanaMFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campanaM
      */
-    select?: at2campanaMSelect | null
+    select?: at2campanaMSelect<ExtArgs> | null
     /**
      * Filter, which at2campanaM to fetch.
      */
@@ -9614,7 +11138,7 @@ export namespace Prisma {
      * 
      * Determine the order of at2campanaMS to fetch.
      */
-    orderBy?: Enumerable<at2campanaMOrderByWithRelationInput>
+    orderBy?: at2campanaMOrderByWithRelationInput | at2campanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -9638,18 +11162,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of at2campanaMS.
      */
-    distinct?: Enumerable<At2campanaMScalarFieldEnum>
+    distinct?: At2campanaMScalarFieldEnum | At2campanaMScalarFieldEnum[]
   }
 
 
   /**
    * at2campanaM findMany
    */
-  export type at2campanaMFindManyArgs = {
+  export type at2campanaMFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campanaM
      */
-    select?: at2campanaMSelect | null
+    select?: at2campanaMSelect<ExtArgs> | null
     /**
      * Filter, which at2campanaMS to fetch.
      */
@@ -9659,7 +11183,7 @@ export namespace Prisma {
      * 
      * Determine the order of at2campanaMS to fetch.
      */
-    orderBy?: Enumerable<at2campanaMOrderByWithRelationInput>
+    orderBy?: at2campanaMOrderByWithRelationInput | at2campanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -9678,18 +11202,18 @@ export namespace Prisma {
      * Skip the first `n` at2campanaMS.
      */
     skip?: number
-    distinct?: Enumerable<At2campanaMScalarFieldEnum>
+    distinct?: At2campanaMScalarFieldEnum | At2campanaMScalarFieldEnum[]
   }
 
 
   /**
    * at2campanaM create
    */
-  export type at2campanaMCreateArgs = {
+  export type at2campanaMCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campanaM
      */
-    select?: at2campanaMSelect | null
+    select?: at2campanaMSelect<ExtArgs> | null
     /**
      * The data needed to create a at2campanaM.
      */
@@ -9700,11 +11224,11 @@ export namespace Prisma {
   /**
    * at2campanaM createMany
    */
-  export type at2campanaMCreateManyArgs = {
+  export type at2campanaMCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many at2campanaMS.
      */
-    data: Enumerable<at2campanaMCreateManyInput>
+    data: at2campanaMCreateManyInput | at2campanaMCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -9712,11 +11236,11 @@ export namespace Prisma {
   /**
    * at2campanaM update
    */
-  export type at2campanaMUpdateArgs = {
+  export type at2campanaMUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campanaM
      */
-    select?: at2campanaMSelect | null
+    select?: at2campanaMSelect<ExtArgs> | null
     /**
      * The data needed to update a at2campanaM.
      */
@@ -9731,7 +11255,7 @@ export namespace Prisma {
   /**
    * at2campanaM updateMany
    */
-  export type at2campanaMUpdateManyArgs = {
+  export type at2campanaMUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update at2campanaMS.
      */
@@ -9746,11 +11270,11 @@ export namespace Prisma {
   /**
    * at2campanaM upsert
    */
-  export type at2campanaMUpsertArgs = {
+  export type at2campanaMUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campanaM
      */
-    select?: at2campanaMSelect | null
+    select?: at2campanaMSelect<ExtArgs> | null
     /**
      * The filter to search for the at2campanaM to update in case it exists.
      */
@@ -9769,11 +11293,11 @@ export namespace Prisma {
   /**
    * at2campanaM delete
    */
-  export type at2campanaMDeleteArgs = {
+  export type at2campanaMDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campanaM
      */
-    select?: at2campanaMSelect | null
+    select?: at2campanaMSelect<ExtArgs> | null
     /**
      * Filter which at2campanaM to delete.
      */
@@ -9784,7 +11308,7 @@ export namespace Prisma {
   /**
    * at2campanaM deleteMany
    */
-  export type at2campanaMDeleteManyArgs = {
+  export type at2campanaMDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which at2campanaMS to delete
      */
@@ -9795,11 +11319,11 @@ export namespace Prisma {
   /**
    * at2campanaM without action
    */
-  export type at2campanaMArgs = {
+  export type at2campanaMArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the at2campanaM
      */
-    select?: at2campanaMSelect | null
+    select?: at2campanaMSelect<ExtArgs> | null
   }
 
 
@@ -10010,7 +11534,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type AtcampanaMAggregateArgs = {
+  export type AtcampanaMAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which atcampanaM to aggregate.
      */
@@ -10020,7 +11544,7 @@ export namespace Prisma {
      * 
      * Determine the order of atcampanaMS to fetch.
      */
-    orderBy?: Enumerable<atcampanaMOrderByWithRelationInput>
+    orderBy?: atcampanaMOrderByWithRelationInput | atcampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -10082,10 +11606,10 @@ export namespace Prisma {
 
 
 
-  export type AtcampanaMGroupByArgs = {
+  export type atcampanaMGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: atcampanaMWhereInput
-    orderBy?: Enumerable<atcampanaMOrderByWithAggregationInput>
-    by: AtcampanaMScalarFieldEnum[]
+    orderBy?: atcampanaMOrderByWithAggregationInput | atcampanaMOrderByWithAggregationInput[]
+    by: AtcampanaMScalarFieldEnum[] | AtcampanaMScalarFieldEnum
     having?: atcampanaMScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -10125,9 +11649,9 @@ export namespace Prisma {
     _max: AtcampanaMMaxAggregateOutputType | null
   }
 
-  type GetAtcampanaMGroupByPayload<T extends AtcampanaMGroupByArgs> = Prisma.PrismaPromise<
+  type GetAtcampanaMGroupByPayload<T extends atcampanaMGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<AtcampanaMGroupByOutputType, T['by']> &
+      PickEnumerable<AtcampanaMGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof AtcampanaMGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -10139,7 +11663,30 @@ export namespace Prisma {
     >
 
 
-  export type atcampanaMSelect = {
+  export type atcampanaMSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["atcampanaM"]>
+
+  export type atcampanaMSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -10163,27 +11710,15 @@ export namespace Prisma {
   }
 
 
-  export type atcampanaMGetPayload<S extends boolean | null | undefined | atcampanaMArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? atcampanaM :
-    S extends undefined ? never :
-    S extends { include: any } & (atcampanaMArgs | atcampanaMFindManyArgs)
-    ? atcampanaM 
-    : S extends { select: any } & (atcampanaMArgs | atcampanaMFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof atcampanaM ? atcampanaM[P] : never
-  } 
-      : atcampanaM
+  type atcampanaMGetPayload<S extends boolean | null | undefined | atcampanaMArgs> = $Types.GetResult<atcampanaMPayload, S>
 
-
-  type atcampanaMCountArgs = 
+  type atcampanaMCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<atcampanaMFindManyArgs, 'select' | 'include'> & {
       select?: AtcampanaMCountAggregateInputType | true
     }
 
-  export interface atcampanaMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface atcampanaMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['atcampanaM'], meta: { name: 'atcampanaM' } }
     /**
      * Find zero or one AtcampanaM that matches the filter.
      * @param {atcampanaMFindUniqueArgs} args - Arguments to find a AtcampanaM
@@ -10195,9 +11730,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends atcampanaMFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, atcampanaMFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'atcampanaM'> extends True ? Prisma__atcampanaMClient<atcampanaMGetPayload<T>> : Prisma__atcampanaMClient<atcampanaMGetPayload<T> | null, null>
+    findUnique<T extends atcampanaMFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, atcampanaMFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'atcampanaM'> extends True ? Prisma__atcampanaMClient<$Types.GetResult<atcampanaMPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__atcampanaMClient<$Types.GetResult<atcampanaMPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one AtcampanaM that matches the filter or throw an error  with `error.code='P2025'` 
@@ -10211,9 +11746,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends atcampanaMFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, atcampanaMFindUniqueOrThrowArgs>
-    ): Prisma__atcampanaMClient<atcampanaMGetPayload<T>>
+    findUniqueOrThrow<T extends atcampanaMFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaMFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__atcampanaMClient<$Types.GetResult<atcampanaMPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first AtcampanaM that matches the filter.
@@ -10228,9 +11763,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends atcampanaMFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, atcampanaMFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'atcampanaM'> extends True ? Prisma__atcampanaMClient<atcampanaMGetPayload<T>> : Prisma__atcampanaMClient<atcampanaMGetPayload<T> | null, null>
+    findFirst<T extends atcampanaMFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, atcampanaMFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'atcampanaM'> extends True ? Prisma__atcampanaMClient<$Types.GetResult<atcampanaMPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__atcampanaMClient<$Types.GetResult<atcampanaMPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first AtcampanaM that matches the filter or
@@ -10246,9 +11781,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends atcampanaMFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, atcampanaMFindFirstOrThrowArgs>
-    ): Prisma__atcampanaMClient<atcampanaMGetPayload<T>>
+    findFirstOrThrow<T extends atcampanaMFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaMFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__atcampanaMClient<$Types.GetResult<atcampanaMPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more AtcampanaMS that matches the filter.
@@ -10266,9 +11801,9 @@ export namespace Prisma {
      * const atcampanaMWithSUCURSALOnly = await prisma.atcampanaM.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends atcampanaMFindManyArgs>(
-      args?: SelectSubset<T, atcampanaMFindManyArgs>
-    ): Prisma.PrismaPromise<Array<atcampanaMGetPayload<T>>>
+    findMany<T extends atcampanaMFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaMFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<atcampanaMPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a AtcampanaM.
@@ -10282,9 +11817,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends atcampanaMCreateArgs>(
-      args: SelectSubset<T, atcampanaMCreateArgs>
-    ): Prisma__atcampanaMClient<atcampanaMGetPayload<T>>
+    create<T extends atcampanaMCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaMCreateArgs<ExtArgs>>
+    ): Prisma__atcampanaMClient<$Types.GetResult<atcampanaMPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many AtcampanaMS.
@@ -10298,8 +11833,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends atcampanaMCreateManyArgs>(
-      args?: SelectSubset<T, atcampanaMCreateManyArgs>
+    createMany<T extends atcampanaMCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaMCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -10314,9 +11849,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends atcampanaMDeleteArgs>(
-      args: SelectSubset<T, atcampanaMDeleteArgs>
-    ): Prisma__atcampanaMClient<atcampanaMGetPayload<T>>
+    delete<T extends atcampanaMDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaMDeleteArgs<ExtArgs>>
+    ): Prisma__atcampanaMClient<$Types.GetResult<atcampanaMPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one AtcampanaM.
@@ -10333,9 +11868,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends atcampanaMUpdateArgs>(
-      args: SelectSubset<T, atcampanaMUpdateArgs>
-    ): Prisma__atcampanaMClient<atcampanaMGetPayload<T>>
+    update<T extends atcampanaMUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaMUpdateArgs<ExtArgs>>
+    ): Prisma__atcampanaMClient<$Types.GetResult<atcampanaMPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more AtcampanaMS.
@@ -10349,8 +11884,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends atcampanaMDeleteManyArgs>(
-      args?: SelectSubset<T, atcampanaMDeleteManyArgs>
+    deleteMany<T extends atcampanaMDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaMDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -10370,8 +11905,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends atcampanaMUpdateManyArgs>(
-      args: SelectSubset<T, atcampanaMUpdateManyArgs>
+    updateMany<T extends atcampanaMUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaMUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -10391,9 +11926,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends atcampanaMUpsertArgs>(
-      args: SelectSubset<T, atcampanaMUpsertArgs>
-    ): Prisma__atcampanaMClient<atcampanaMGetPayload<T>>
+    upsert<T extends atcampanaMUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaMUpsertArgs<ExtArgs>>
+    ): Prisma__atcampanaMClient<$Types.GetResult<atcampanaMPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of AtcampanaMS.
@@ -10411,7 +11946,7 @@ export namespace Prisma {
     count<T extends atcampanaMCountArgs>(
       args?: Subset<T, atcampanaMCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], AtcampanaMCountAggregateOutputType>
@@ -10448,7 +11983,7 @@ export namespace Prisma {
      * Group by AtcampanaM.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AtcampanaMGroupByArgs} args - Group by arguments.
+     * @param {atcampanaMGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -10463,16 +11998,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AtcampanaMGroupByArgs,
+      T extends atcampanaMGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AtcampanaMGroupByArgs['orderBy'] }
-        : { orderBy?: AtcampanaMGroupByArgs['orderBy'] },
+        ? { orderBy: atcampanaMGroupByArgs['orderBy'] }
+        : { orderBy?: atcampanaMGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -10519,7 +12054,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AtcampanaMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAtcampanaMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, atcampanaMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAtcampanaMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -10529,7 +12064,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__atcampanaMClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__atcampanaMClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -10575,11 +12110,11 @@ export namespace Prisma {
   /**
    * atcampanaM base type for findUnique actions
    */
-  export type atcampanaMFindUniqueArgsBase = {
+  export type atcampanaMFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampanaM
      */
-    select?: atcampanaMSelect | null
+    select?: atcampanaMSelect<ExtArgs> | null
     /**
      * Filter, which atcampanaM to fetch.
      */
@@ -10589,7 +12124,7 @@ export namespace Prisma {
   /**
    * atcampanaM findUnique
    */
-  export interface atcampanaMFindUniqueArgs extends atcampanaMFindUniqueArgsBase {
+  export interface atcampanaMFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends atcampanaMFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -10601,11 +12136,11 @@ export namespace Prisma {
   /**
    * atcampanaM findUniqueOrThrow
    */
-  export type atcampanaMFindUniqueOrThrowArgs = {
+  export type atcampanaMFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampanaM
      */
-    select?: atcampanaMSelect | null
+    select?: atcampanaMSelect<ExtArgs> | null
     /**
      * Filter, which atcampanaM to fetch.
      */
@@ -10616,11 +12151,11 @@ export namespace Prisma {
   /**
    * atcampanaM base type for findFirst actions
    */
-  export type atcampanaMFindFirstArgsBase = {
+  export type atcampanaMFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampanaM
      */
-    select?: atcampanaMSelect | null
+    select?: atcampanaMSelect<ExtArgs> | null
     /**
      * Filter, which atcampanaM to fetch.
      */
@@ -10630,7 +12165,7 @@ export namespace Prisma {
      * 
      * Determine the order of atcampanaMS to fetch.
      */
-    orderBy?: Enumerable<atcampanaMOrderByWithRelationInput>
+    orderBy?: atcampanaMOrderByWithRelationInput | atcampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -10654,13 +12189,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of atcampanaMS.
      */
-    distinct?: Enumerable<AtcampanaMScalarFieldEnum>
+    distinct?: AtcampanaMScalarFieldEnum | AtcampanaMScalarFieldEnum[]
   }
 
   /**
    * atcampanaM findFirst
    */
-  export interface atcampanaMFindFirstArgs extends atcampanaMFindFirstArgsBase {
+  export interface atcampanaMFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends atcampanaMFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -10672,11 +12207,11 @@ export namespace Prisma {
   /**
    * atcampanaM findFirstOrThrow
    */
-  export type atcampanaMFindFirstOrThrowArgs = {
+  export type atcampanaMFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampanaM
      */
-    select?: atcampanaMSelect | null
+    select?: atcampanaMSelect<ExtArgs> | null
     /**
      * Filter, which atcampanaM to fetch.
      */
@@ -10686,7 +12221,7 @@ export namespace Prisma {
      * 
      * Determine the order of atcampanaMS to fetch.
      */
-    orderBy?: Enumerable<atcampanaMOrderByWithRelationInput>
+    orderBy?: atcampanaMOrderByWithRelationInput | atcampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -10710,18 +12245,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of atcampanaMS.
      */
-    distinct?: Enumerable<AtcampanaMScalarFieldEnum>
+    distinct?: AtcampanaMScalarFieldEnum | AtcampanaMScalarFieldEnum[]
   }
 
 
   /**
    * atcampanaM findMany
    */
-  export type atcampanaMFindManyArgs = {
+  export type atcampanaMFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampanaM
      */
-    select?: atcampanaMSelect | null
+    select?: atcampanaMSelect<ExtArgs> | null
     /**
      * Filter, which atcampanaMS to fetch.
      */
@@ -10731,7 +12266,7 @@ export namespace Prisma {
      * 
      * Determine the order of atcampanaMS to fetch.
      */
-    orderBy?: Enumerable<atcampanaMOrderByWithRelationInput>
+    orderBy?: atcampanaMOrderByWithRelationInput | atcampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -10750,18 +12285,18 @@ export namespace Prisma {
      * Skip the first `n` atcampanaMS.
      */
     skip?: number
-    distinct?: Enumerable<AtcampanaMScalarFieldEnum>
+    distinct?: AtcampanaMScalarFieldEnum | AtcampanaMScalarFieldEnum[]
   }
 
 
   /**
    * atcampanaM create
    */
-  export type atcampanaMCreateArgs = {
+  export type atcampanaMCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampanaM
      */
-    select?: atcampanaMSelect | null
+    select?: atcampanaMSelect<ExtArgs> | null
     /**
      * The data needed to create a atcampanaM.
      */
@@ -10772,11 +12307,11 @@ export namespace Prisma {
   /**
    * atcampanaM createMany
    */
-  export type atcampanaMCreateManyArgs = {
+  export type atcampanaMCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many atcampanaMS.
      */
-    data: Enumerable<atcampanaMCreateManyInput>
+    data: atcampanaMCreateManyInput | atcampanaMCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -10784,11 +12319,11 @@ export namespace Prisma {
   /**
    * atcampanaM update
    */
-  export type atcampanaMUpdateArgs = {
+  export type atcampanaMUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampanaM
      */
-    select?: atcampanaMSelect | null
+    select?: atcampanaMSelect<ExtArgs> | null
     /**
      * The data needed to update a atcampanaM.
      */
@@ -10803,7 +12338,7 @@ export namespace Prisma {
   /**
    * atcampanaM updateMany
    */
-  export type atcampanaMUpdateManyArgs = {
+  export type atcampanaMUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update atcampanaMS.
      */
@@ -10818,11 +12353,11 @@ export namespace Prisma {
   /**
    * atcampanaM upsert
    */
-  export type atcampanaMUpsertArgs = {
+  export type atcampanaMUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampanaM
      */
-    select?: atcampanaMSelect | null
+    select?: atcampanaMSelect<ExtArgs> | null
     /**
      * The filter to search for the atcampanaM to update in case it exists.
      */
@@ -10841,11 +12376,11 @@ export namespace Prisma {
   /**
    * atcampanaM delete
    */
-  export type atcampanaMDeleteArgs = {
+  export type atcampanaMDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampanaM
      */
-    select?: atcampanaMSelect | null
+    select?: atcampanaMSelect<ExtArgs> | null
     /**
      * Filter which atcampanaM to delete.
      */
@@ -10856,7 +12391,7 @@ export namespace Prisma {
   /**
    * atcampanaM deleteMany
    */
-  export type atcampanaMDeleteManyArgs = {
+  export type atcampanaMDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which atcampanaMS to delete
      */
@@ -10867,11 +12402,11 @@ export namespace Prisma {
   /**
    * atcampanaM without action
    */
-  export type atcampanaMArgs = {
+  export type atcampanaMArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the atcampanaM
      */
-    select?: atcampanaMSelect | null
+    select?: atcampanaMSelect<ExtArgs> | null
   }
 
 
@@ -11082,7 +12617,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type BlancampanaMAggregateArgs = {
+  export type BlancampanaMAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which blancampanaM to aggregate.
      */
@@ -11092,7 +12627,7 @@ export namespace Prisma {
      * 
      * Determine the order of blancampanaMS to fetch.
      */
-    orderBy?: Enumerable<blancampanaMOrderByWithRelationInput>
+    orderBy?: blancampanaMOrderByWithRelationInput | blancampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -11154,10 +12689,10 @@ export namespace Prisma {
 
 
 
-  export type BlancampanaMGroupByArgs = {
+  export type blancampanaMGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: blancampanaMWhereInput
-    orderBy?: Enumerable<blancampanaMOrderByWithAggregationInput>
-    by: BlancampanaMScalarFieldEnum[]
+    orderBy?: blancampanaMOrderByWithAggregationInput | blancampanaMOrderByWithAggregationInput[]
+    by: BlancampanaMScalarFieldEnum[] | BlancampanaMScalarFieldEnum
     having?: blancampanaMScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -11197,9 +12732,9 @@ export namespace Prisma {
     _max: BlancampanaMMaxAggregateOutputType | null
   }
 
-  type GetBlancampanaMGroupByPayload<T extends BlancampanaMGroupByArgs> = Prisma.PrismaPromise<
+  type GetBlancampanaMGroupByPayload<T extends blancampanaMGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<BlancampanaMGroupByOutputType, T['by']> &
+      PickEnumerable<BlancampanaMGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof BlancampanaMGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -11211,7 +12746,30 @@ export namespace Prisma {
     >
 
 
-  export type blancampanaMSelect = {
+  export type blancampanaMSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["blancampanaM"]>
+
+  export type blancampanaMSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -11235,27 +12793,15 @@ export namespace Prisma {
   }
 
 
-  export type blancampanaMGetPayload<S extends boolean | null | undefined | blancampanaMArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? blancampanaM :
-    S extends undefined ? never :
-    S extends { include: any } & (blancampanaMArgs | blancampanaMFindManyArgs)
-    ? blancampanaM 
-    : S extends { select: any } & (blancampanaMArgs | blancampanaMFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof blancampanaM ? blancampanaM[P] : never
-  } 
-      : blancampanaM
+  type blancampanaMGetPayload<S extends boolean | null | undefined | blancampanaMArgs> = $Types.GetResult<blancampanaMPayload, S>
 
-
-  type blancampanaMCountArgs = 
+  type blancampanaMCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<blancampanaMFindManyArgs, 'select' | 'include'> & {
       select?: BlancampanaMCountAggregateInputType | true
     }
 
-  export interface blancampanaMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface blancampanaMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['blancampanaM'], meta: { name: 'blancampanaM' } }
     /**
      * Find zero or one BlancampanaM that matches the filter.
      * @param {blancampanaMFindUniqueArgs} args - Arguments to find a BlancampanaM
@@ -11267,9 +12813,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends blancampanaMFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, blancampanaMFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'blancampanaM'> extends True ? Prisma__blancampanaMClient<blancampanaMGetPayload<T>> : Prisma__blancampanaMClient<blancampanaMGetPayload<T> | null, null>
+    findUnique<T extends blancampanaMFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, blancampanaMFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'blancampanaM'> extends True ? Prisma__blancampanaMClient<$Types.GetResult<blancampanaMPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__blancampanaMClient<$Types.GetResult<blancampanaMPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one BlancampanaM that matches the filter or throw an error  with `error.code='P2025'` 
@@ -11283,9 +12829,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends blancampanaMFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, blancampanaMFindUniqueOrThrowArgs>
-    ): Prisma__blancampanaMClient<blancampanaMGetPayload<T>>
+    findUniqueOrThrow<T extends blancampanaMFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, blancampanaMFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__blancampanaMClient<$Types.GetResult<blancampanaMPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first BlancampanaM that matches the filter.
@@ -11300,9 +12846,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends blancampanaMFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, blancampanaMFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'blancampanaM'> extends True ? Prisma__blancampanaMClient<blancampanaMGetPayload<T>> : Prisma__blancampanaMClient<blancampanaMGetPayload<T> | null, null>
+    findFirst<T extends blancampanaMFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, blancampanaMFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'blancampanaM'> extends True ? Prisma__blancampanaMClient<$Types.GetResult<blancampanaMPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__blancampanaMClient<$Types.GetResult<blancampanaMPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first BlancampanaM that matches the filter or
@@ -11318,9 +12864,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends blancampanaMFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, blancampanaMFindFirstOrThrowArgs>
-    ): Prisma__blancampanaMClient<blancampanaMGetPayload<T>>
+    findFirstOrThrow<T extends blancampanaMFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, blancampanaMFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__blancampanaMClient<$Types.GetResult<blancampanaMPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more BlancampanaMS that matches the filter.
@@ -11338,9 +12884,9 @@ export namespace Prisma {
      * const blancampanaMWithSUCURSALOnly = await prisma.blancampanaM.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends blancampanaMFindManyArgs>(
-      args?: SelectSubset<T, blancampanaMFindManyArgs>
-    ): Prisma.PrismaPromise<Array<blancampanaMGetPayload<T>>>
+    findMany<T extends blancampanaMFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, blancampanaMFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<blancampanaMPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a BlancampanaM.
@@ -11354,9 +12900,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends blancampanaMCreateArgs>(
-      args: SelectSubset<T, blancampanaMCreateArgs>
-    ): Prisma__blancampanaMClient<blancampanaMGetPayload<T>>
+    create<T extends blancampanaMCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, blancampanaMCreateArgs<ExtArgs>>
+    ): Prisma__blancampanaMClient<$Types.GetResult<blancampanaMPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many BlancampanaMS.
@@ -11370,8 +12916,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends blancampanaMCreateManyArgs>(
-      args?: SelectSubset<T, blancampanaMCreateManyArgs>
+    createMany<T extends blancampanaMCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, blancampanaMCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -11386,9 +12932,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends blancampanaMDeleteArgs>(
-      args: SelectSubset<T, blancampanaMDeleteArgs>
-    ): Prisma__blancampanaMClient<blancampanaMGetPayload<T>>
+    delete<T extends blancampanaMDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, blancampanaMDeleteArgs<ExtArgs>>
+    ): Prisma__blancampanaMClient<$Types.GetResult<blancampanaMPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one BlancampanaM.
@@ -11405,9 +12951,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends blancampanaMUpdateArgs>(
-      args: SelectSubset<T, blancampanaMUpdateArgs>
-    ): Prisma__blancampanaMClient<blancampanaMGetPayload<T>>
+    update<T extends blancampanaMUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, blancampanaMUpdateArgs<ExtArgs>>
+    ): Prisma__blancampanaMClient<$Types.GetResult<blancampanaMPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more BlancampanaMS.
@@ -11421,8 +12967,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends blancampanaMDeleteManyArgs>(
-      args?: SelectSubset<T, blancampanaMDeleteManyArgs>
+    deleteMany<T extends blancampanaMDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, blancampanaMDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -11442,8 +12988,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends blancampanaMUpdateManyArgs>(
-      args: SelectSubset<T, blancampanaMUpdateManyArgs>
+    updateMany<T extends blancampanaMUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, blancampanaMUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -11463,9 +13009,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends blancampanaMUpsertArgs>(
-      args: SelectSubset<T, blancampanaMUpsertArgs>
-    ): Prisma__blancampanaMClient<blancampanaMGetPayload<T>>
+    upsert<T extends blancampanaMUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, blancampanaMUpsertArgs<ExtArgs>>
+    ): Prisma__blancampanaMClient<$Types.GetResult<blancampanaMPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of BlancampanaMS.
@@ -11483,7 +13029,7 @@ export namespace Prisma {
     count<T extends blancampanaMCountArgs>(
       args?: Subset<T, blancampanaMCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], BlancampanaMCountAggregateOutputType>
@@ -11520,7 +13066,7 @@ export namespace Prisma {
      * Group by BlancampanaM.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BlancampanaMGroupByArgs} args - Group by arguments.
+     * @param {blancampanaMGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -11535,16 +13081,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends BlancampanaMGroupByArgs,
+      T extends blancampanaMGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BlancampanaMGroupByArgs['orderBy'] }
-        : { orderBy?: BlancampanaMGroupByArgs['orderBy'] },
+        ? { orderBy: blancampanaMGroupByArgs['orderBy'] }
+        : { orderBy?: blancampanaMGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -11591,7 +13137,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, BlancampanaMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBlancampanaMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, blancampanaMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBlancampanaMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -11601,7 +13147,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__blancampanaMClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__blancampanaMClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -11647,11 +13193,11 @@ export namespace Prisma {
   /**
    * blancampanaM base type for findUnique actions
    */
-  export type blancampanaMFindUniqueArgsBase = {
+  export type blancampanaMFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampanaM
      */
-    select?: blancampanaMSelect | null
+    select?: blancampanaMSelect<ExtArgs> | null
     /**
      * Filter, which blancampanaM to fetch.
      */
@@ -11661,7 +13207,7 @@ export namespace Prisma {
   /**
    * blancampanaM findUnique
    */
-  export interface blancampanaMFindUniqueArgs extends blancampanaMFindUniqueArgsBase {
+  export interface blancampanaMFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends blancampanaMFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -11673,11 +13219,11 @@ export namespace Prisma {
   /**
    * blancampanaM findUniqueOrThrow
    */
-  export type blancampanaMFindUniqueOrThrowArgs = {
+  export type blancampanaMFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampanaM
      */
-    select?: blancampanaMSelect | null
+    select?: blancampanaMSelect<ExtArgs> | null
     /**
      * Filter, which blancampanaM to fetch.
      */
@@ -11688,11 +13234,11 @@ export namespace Prisma {
   /**
    * blancampanaM base type for findFirst actions
    */
-  export type blancampanaMFindFirstArgsBase = {
+  export type blancampanaMFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampanaM
      */
-    select?: blancampanaMSelect | null
+    select?: blancampanaMSelect<ExtArgs> | null
     /**
      * Filter, which blancampanaM to fetch.
      */
@@ -11702,7 +13248,7 @@ export namespace Prisma {
      * 
      * Determine the order of blancampanaMS to fetch.
      */
-    orderBy?: Enumerable<blancampanaMOrderByWithRelationInput>
+    orderBy?: blancampanaMOrderByWithRelationInput | blancampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -11726,13 +13272,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of blancampanaMS.
      */
-    distinct?: Enumerable<BlancampanaMScalarFieldEnum>
+    distinct?: BlancampanaMScalarFieldEnum | BlancampanaMScalarFieldEnum[]
   }
 
   /**
    * blancampanaM findFirst
    */
-  export interface blancampanaMFindFirstArgs extends blancampanaMFindFirstArgsBase {
+  export interface blancampanaMFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends blancampanaMFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -11744,11 +13290,11 @@ export namespace Prisma {
   /**
    * blancampanaM findFirstOrThrow
    */
-  export type blancampanaMFindFirstOrThrowArgs = {
+  export type blancampanaMFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampanaM
      */
-    select?: blancampanaMSelect | null
+    select?: blancampanaMSelect<ExtArgs> | null
     /**
      * Filter, which blancampanaM to fetch.
      */
@@ -11758,7 +13304,7 @@ export namespace Prisma {
      * 
      * Determine the order of blancampanaMS to fetch.
      */
-    orderBy?: Enumerable<blancampanaMOrderByWithRelationInput>
+    orderBy?: blancampanaMOrderByWithRelationInput | blancampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -11782,18 +13328,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of blancampanaMS.
      */
-    distinct?: Enumerable<BlancampanaMScalarFieldEnum>
+    distinct?: BlancampanaMScalarFieldEnum | BlancampanaMScalarFieldEnum[]
   }
 
 
   /**
    * blancampanaM findMany
    */
-  export type blancampanaMFindManyArgs = {
+  export type blancampanaMFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampanaM
      */
-    select?: blancampanaMSelect | null
+    select?: blancampanaMSelect<ExtArgs> | null
     /**
      * Filter, which blancampanaMS to fetch.
      */
@@ -11803,7 +13349,7 @@ export namespace Prisma {
      * 
      * Determine the order of blancampanaMS to fetch.
      */
-    orderBy?: Enumerable<blancampanaMOrderByWithRelationInput>
+    orderBy?: blancampanaMOrderByWithRelationInput | blancampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -11822,18 +13368,18 @@ export namespace Prisma {
      * Skip the first `n` blancampanaMS.
      */
     skip?: number
-    distinct?: Enumerable<BlancampanaMScalarFieldEnum>
+    distinct?: BlancampanaMScalarFieldEnum | BlancampanaMScalarFieldEnum[]
   }
 
 
   /**
    * blancampanaM create
    */
-  export type blancampanaMCreateArgs = {
+  export type blancampanaMCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampanaM
      */
-    select?: blancampanaMSelect | null
+    select?: blancampanaMSelect<ExtArgs> | null
     /**
      * The data needed to create a blancampanaM.
      */
@@ -11844,11 +13390,11 @@ export namespace Prisma {
   /**
    * blancampanaM createMany
    */
-  export type blancampanaMCreateManyArgs = {
+  export type blancampanaMCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many blancampanaMS.
      */
-    data: Enumerable<blancampanaMCreateManyInput>
+    data: blancampanaMCreateManyInput | blancampanaMCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -11856,11 +13402,11 @@ export namespace Prisma {
   /**
    * blancampanaM update
    */
-  export type blancampanaMUpdateArgs = {
+  export type blancampanaMUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampanaM
      */
-    select?: blancampanaMSelect | null
+    select?: blancampanaMSelect<ExtArgs> | null
     /**
      * The data needed to update a blancampanaM.
      */
@@ -11875,7 +13421,7 @@ export namespace Prisma {
   /**
    * blancampanaM updateMany
    */
-  export type blancampanaMUpdateManyArgs = {
+  export type blancampanaMUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update blancampanaMS.
      */
@@ -11890,11 +13436,11 @@ export namespace Prisma {
   /**
    * blancampanaM upsert
    */
-  export type blancampanaMUpsertArgs = {
+  export type blancampanaMUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampanaM
      */
-    select?: blancampanaMSelect | null
+    select?: blancampanaMSelect<ExtArgs> | null
     /**
      * The filter to search for the blancampanaM to update in case it exists.
      */
@@ -11913,11 +13459,11 @@ export namespace Prisma {
   /**
    * blancampanaM delete
    */
-  export type blancampanaMDeleteArgs = {
+  export type blancampanaMDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampanaM
      */
-    select?: blancampanaMSelect | null
+    select?: blancampanaMSelect<ExtArgs> | null
     /**
      * Filter which blancampanaM to delete.
      */
@@ -11928,7 +13474,7 @@ export namespace Prisma {
   /**
    * blancampanaM deleteMany
    */
-  export type blancampanaMDeleteManyArgs = {
+  export type blancampanaMDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which blancampanaMS to delete
      */
@@ -11939,11 +13485,11 @@ export namespace Prisma {
   /**
    * blancampanaM without action
    */
-  export type blancampanaMArgs = {
+  export type blancampanaMArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the blancampanaM
      */
-    select?: blancampanaMSelect | null
+    select?: blancampanaMSelect<ExtArgs> | null
   }
 
 
@@ -12154,7 +13700,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type ReccampanaMAggregateArgs = {
+  export type ReccampanaMAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which reccampanaM to aggregate.
      */
@@ -12164,7 +13710,7 @@ export namespace Prisma {
      * 
      * Determine the order of reccampanaMS to fetch.
      */
-    orderBy?: Enumerable<reccampanaMOrderByWithRelationInput>
+    orderBy?: reccampanaMOrderByWithRelationInput | reccampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -12226,10 +13772,10 @@ export namespace Prisma {
 
 
 
-  export type ReccampanaMGroupByArgs = {
+  export type reccampanaMGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: reccampanaMWhereInput
-    orderBy?: Enumerable<reccampanaMOrderByWithAggregationInput>
-    by: ReccampanaMScalarFieldEnum[]
+    orderBy?: reccampanaMOrderByWithAggregationInput | reccampanaMOrderByWithAggregationInput[]
+    by: ReccampanaMScalarFieldEnum[] | ReccampanaMScalarFieldEnum
     having?: reccampanaMScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -12269,9 +13815,9 @@ export namespace Prisma {
     _max: ReccampanaMMaxAggregateOutputType | null
   }
 
-  type GetReccampanaMGroupByPayload<T extends ReccampanaMGroupByArgs> = Prisma.PrismaPromise<
+  type GetReccampanaMGroupByPayload<T extends reccampanaMGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<ReccampanaMGroupByOutputType, T['by']> &
+      PickEnumerable<ReccampanaMGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof ReccampanaMGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -12283,7 +13829,30 @@ export namespace Prisma {
     >
 
 
-  export type reccampanaMSelect = {
+  export type reccampanaMSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["reccampanaM"]>
+
+  export type reccampanaMSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -12307,27 +13876,15 @@ export namespace Prisma {
   }
 
 
-  export type reccampanaMGetPayload<S extends boolean | null | undefined | reccampanaMArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? reccampanaM :
-    S extends undefined ? never :
-    S extends { include: any } & (reccampanaMArgs | reccampanaMFindManyArgs)
-    ? reccampanaM 
-    : S extends { select: any } & (reccampanaMArgs | reccampanaMFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof reccampanaM ? reccampanaM[P] : never
-  } 
-      : reccampanaM
+  type reccampanaMGetPayload<S extends boolean | null | undefined | reccampanaMArgs> = $Types.GetResult<reccampanaMPayload, S>
 
-
-  type reccampanaMCountArgs = 
+  type reccampanaMCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<reccampanaMFindManyArgs, 'select' | 'include'> & {
       select?: ReccampanaMCountAggregateInputType | true
     }
 
-  export interface reccampanaMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface reccampanaMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['reccampanaM'], meta: { name: 'reccampanaM' } }
     /**
      * Find zero or one ReccampanaM that matches the filter.
      * @param {reccampanaMFindUniqueArgs} args - Arguments to find a ReccampanaM
@@ -12339,9 +13896,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends reccampanaMFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, reccampanaMFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'reccampanaM'> extends True ? Prisma__reccampanaMClient<reccampanaMGetPayload<T>> : Prisma__reccampanaMClient<reccampanaMGetPayload<T> | null, null>
+    findUnique<T extends reccampanaMFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, reccampanaMFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'reccampanaM'> extends True ? Prisma__reccampanaMClient<$Types.GetResult<reccampanaMPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__reccampanaMClient<$Types.GetResult<reccampanaMPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one ReccampanaM that matches the filter or throw an error  with `error.code='P2025'` 
@@ -12355,9 +13912,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends reccampanaMFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, reccampanaMFindUniqueOrThrowArgs>
-    ): Prisma__reccampanaMClient<reccampanaMGetPayload<T>>
+    findUniqueOrThrow<T extends reccampanaMFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaMFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__reccampanaMClient<$Types.GetResult<reccampanaMPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first ReccampanaM that matches the filter.
@@ -12372,9 +13929,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends reccampanaMFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, reccampanaMFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'reccampanaM'> extends True ? Prisma__reccampanaMClient<reccampanaMGetPayload<T>> : Prisma__reccampanaMClient<reccampanaMGetPayload<T> | null, null>
+    findFirst<T extends reccampanaMFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, reccampanaMFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'reccampanaM'> extends True ? Prisma__reccampanaMClient<$Types.GetResult<reccampanaMPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__reccampanaMClient<$Types.GetResult<reccampanaMPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first ReccampanaM that matches the filter or
@@ -12390,9 +13947,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends reccampanaMFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, reccampanaMFindFirstOrThrowArgs>
-    ): Prisma__reccampanaMClient<reccampanaMGetPayload<T>>
+    findFirstOrThrow<T extends reccampanaMFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaMFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__reccampanaMClient<$Types.GetResult<reccampanaMPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more ReccampanaMS that matches the filter.
@@ -12410,9 +13967,9 @@ export namespace Prisma {
      * const reccampanaMWithSUCURSALOnly = await prisma.reccampanaM.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends reccampanaMFindManyArgs>(
-      args?: SelectSubset<T, reccampanaMFindManyArgs>
-    ): Prisma.PrismaPromise<Array<reccampanaMGetPayload<T>>>
+    findMany<T extends reccampanaMFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaMFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<reccampanaMPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a ReccampanaM.
@@ -12426,9 +13983,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends reccampanaMCreateArgs>(
-      args: SelectSubset<T, reccampanaMCreateArgs>
-    ): Prisma__reccampanaMClient<reccampanaMGetPayload<T>>
+    create<T extends reccampanaMCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaMCreateArgs<ExtArgs>>
+    ): Prisma__reccampanaMClient<$Types.GetResult<reccampanaMPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many ReccampanaMS.
@@ -12442,8 +13999,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends reccampanaMCreateManyArgs>(
-      args?: SelectSubset<T, reccampanaMCreateManyArgs>
+    createMany<T extends reccampanaMCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaMCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -12458,9 +14015,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends reccampanaMDeleteArgs>(
-      args: SelectSubset<T, reccampanaMDeleteArgs>
-    ): Prisma__reccampanaMClient<reccampanaMGetPayload<T>>
+    delete<T extends reccampanaMDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaMDeleteArgs<ExtArgs>>
+    ): Prisma__reccampanaMClient<$Types.GetResult<reccampanaMPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one ReccampanaM.
@@ -12477,9 +14034,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends reccampanaMUpdateArgs>(
-      args: SelectSubset<T, reccampanaMUpdateArgs>
-    ): Prisma__reccampanaMClient<reccampanaMGetPayload<T>>
+    update<T extends reccampanaMUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaMUpdateArgs<ExtArgs>>
+    ): Prisma__reccampanaMClient<$Types.GetResult<reccampanaMPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more ReccampanaMS.
@@ -12493,8 +14050,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends reccampanaMDeleteManyArgs>(
-      args?: SelectSubset<T, reccampanaMDeleteManyArgs>
+    deleteMany<T extends reccampanaMDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaMDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -12514,8 +14071,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends reccampanaMUpdateManyArgs>(
-      args: SelectSubset<T, reccampanaMUpdateManyArgs>
+    updateMany<T extends reccampanaMUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaMUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -12535,9 +14092,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends reccampanaMUpsertArgs>(
-      args: SelectSubset<T, reccampanaMUpsertArgs>
-    ): Prisma__reccampanaMClient<reccampanaMGetPayload<T>>
+    upsert<T extends reccampanaMUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaMUpsertArgs<ExtArgs>>
+    ): Prisma__reccampanaMClient<$Types.GetResult<reccampanaMPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of ReccampanaMS.
@@ -12555,7 +14112,7 @@ export namespace Prisma {
     count<T extends reccampanaMCountArgs>(
       args?: Subset<T, reccampanaMCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], ReccampanaMCountAggregateOutputType>
@@ -12592,7 +14149,7 @@ export namespace Prisma {
      * Group by ReccampanaM.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReccampanaMGroupByArgs} args - Group by arguments.
+     * @param {reccampanaMGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -12607,16 +14164,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ReccampanaMGroupByArgs,
+      T extends reccampanaMGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ReccampanaMGroupByArgs['orderBy'] }
-        : { orderBy?: ReccampanaMGroupByArgs['orderBy'] },
+        ? { orderBy: reccampanaMGroupByArgs['orderBy'] }
+        : { orderBy?: reccampanaMGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -12663,7 +14220,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ReccampanaMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReccampanaMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, reccampanaMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReccampanaMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -12673,7 +14230,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__reccampanaMClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__reccampanaMClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -12719,11 +14276,11 @@ export namespace Prisma {
   /**
    * reccampanaM base type for findUnique actions
    */
-  export type reccampanaMFindUniqueArgsBase = {
+  export type reccampanaMFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampanaM
      */
-    select?: reccampanaMSelect | null
+    select?: reccampanaMSelect<ExtArgs> | null
     /**
      * Filter, which reccampanaM to fetch.
      */
@@ -12733,7 +14290,7 @@ export namespace Prisma {
   /**
    * reccampanaM findUnique
    */
-  export interface reccampanaMFindUniqueArgs extends reccampanaMFindUniqueArgsBase {
+  export interface reccampanaMFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reccampanaMFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -12745,11 +14302,11 @@ export namespace Prisma {
   /**
    * reccampanaM findUniqueOrThrow
    */
-  export type reccampanaMFindUniqueOrThrowArgs = {
+  export type reccampanaMFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampanaM
      */
-    select?: reccampanaMSelect | null
+    select?: reccampanaMSelect<ExtArgs> | null
     /**
      * Filter, which reccampanaM to fetch.
      */
@@ -12760,11 +14317,11 @@ export namespace Prisma {
   /**
    * reccampanaM base type for findFirst actions
    */
-  export type reccampanaMFindFirstArgsBase = {
+  export type reccampanaMFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampanaM
      */
-    select?: reccampanaMSelect | null
+    select?: reccampanaMSelect<ExtArgs> | null
     /**
      * Filter, which reccampanaM to fetch.
      */
@@ -12774,7 +14331,7 @@ export namespace Prisma {
      * 
      * Determine the order of reccampanaMS to fetch.
      */
-    orderBy?: Enumerable<reccampanaMOrderByWithRelationInput>
+    orderBy?: reccampanaMOrderByWithRelationInput | reccampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -12798,13 +14355,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of reccampanaMS.
      */
-    distinct?: Enumerable<ReccampanaMScalarFieldEnum>
+    distinct?: ReccampanaMScalarFieldEnum | ReccampanaMScalarFieldEnum[]
   }
 
   /**
    * reccampanaM findFirst
    */
-  export interface reccampanaMFindFirstArgs extends reccampanaMFindFirstArgsBase {
+  export interface reccampanaMFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reccampanaMFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -12816,11 +14373,11 @@ export namespace Prisma {
   /**
    * reccampanaM findFirstOrThrow
    */
-  export type reccampanaMFindFirstOrThrowArgs = {
+  export type reccampanaMFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampanaM
      */
-    select?: reccampanaMSelect | null
+    select?: reccampanaMSelect<ExtArgs> | null
     /**
      * Filter, which reccampanaM to fetch.
      */
@@ -12830,7 +14387,7 @@ export namespace Prisma {
      * 
      * Determine the order of reccampanaMS to fetch.
      */
-    orderBy?: Enumerable<reccampanaMOrderByWithRelationInput>
+    orderBy?: reccampanaMOrderByWithRelationInput | reccampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -12854,18 +14411,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of reccampanaMS.
      */
-    distinct?: Enumerable<ReccampanaMScalarFieldEnum>
+    distinct?: ReccampanaMScalarFieldEnum | ReccampanaMScalarFieldEnum[]
   }
 
 
   /**
    * reccampanaM findMany
    */
-  export type reccampanaMFindManyArgs = {
+  export type reccampanaMFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampanaM
      */
-    select?: reccampanaMSelect | null
+    select?: reccampanaMSelect<ExtArgs> | null
     /**
      * Filter, which reccampanaMS to fetch.
      */
@@ -12875,7 +14432,7 @@ export namespace Prisma {
      * 
      * Determine the order of reccampanaMS to fetch.
      */
-    orderBy?: Enumerable<reccampanaMOrderByWithRelationInput>
+    orderBy?: reccampanaMOrderByWithRelationInput | reccampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -12894,18 +14451,18 @@ export namespace Prisma {
      * Skip the first `n` reccampanaMS.
      */
     skip?: number
-    distinct?: Enumerable<ReccampanaMScalarFieldEnum>
+    distinct?: ReccampanaMScalarFieldEnum | ReccampanaMScalarFieldEnum[]
   }
 
 
   /**
    * reccampanaM create
    */
-  export type reccampanaMCreateArgs = {
+  export type reccampanaMCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampanaM
      */
-    select?: reccampanaMSelect | null
+    select?: reccampanaMSelect<ExtArgs> | null
     /**
      * The data needed to create a reccampanaM.
      */
@@ -12916,11 +14473,11 @@ export namespace Prisma {
   /**
    * reccampanaM createMany
    */
-  export type reccampanaMCreateManyArgs = {
+  export type reccampanaMCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many reccampanaMS.
      */
-    data: Enumerable<reccampanaMCreateManyInput>
+    data: reccampanaMCreateManyInput | reccampanaMCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -12928,11 +14485,11 @@ export namespace Prisma {
   /**
    * reccampanaM update
    */
-  export type reccampanaMUpdateArgs = {
+  export type reccampanaMUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampanaM
      */
-    select?: reccampanaMSelect | null
+    select?: reccampanaMSelect<ExtArgs> | null
     /**
      * The data needed to update a reccampanaM.
      */
@@ -12947,7 +14504,7 @@ export namespace Prisma {
   /**
    * reccampanaM updateMany
    */
-  export type reccampanaMUpdateManyArgs = {
+  export type reccampanaMUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update reccampanaMS.
      */
@@ -12962,11 +14519,11 @@ export namespace Prisma {
   /**
    * reccampanaM upsert
    */
-  export type reccampanaMUpsertArgs = {
+  export type reccampanaMUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampanaM
      */
-    select?: reccampanaMSelect | null
+    select?: reccampanaMSelect<ExtArgs> | null
     /**
      * The filter to search for the reccampanaM to update in case it exists.
      */
@@ -12985,11 +14542,11 @@ export namespace Prisma {
   /**
    * reccampanaM delete
    */
-  export type reccampanaMDeleteArgs = {
+  export type reccampanaMDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampanaM
      */
-    select?: reccampanaMSelect | null
+    select?: reccampanaMSelect<ExtArgs> | null
     /**
      * Filter which reccampanaM to delete.
      */
@@ -13000,7 +14557,7 @@ export namespace Prisma {
   /**
    * reccampanaM deleteMany
    */
-  export type reccampanaMDeleteManyArgs = {
+  export type reccampanaMDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which reccampanaMS to delete
      */
@@ -13011,11 +14568,11 @@ export namespace Prisma {
   /**
    * reccampanaM without action
    */
-  export type reccampanaMArgs = {
+  export type reccampanaMArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reccampanaM
      */
-    select?: reccampanaMSelect | null
+    select?: reccampanaMSelect<ExtArgs> | null
   }
 
 
@@ -13226,7 +14783,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type ReincampanaMAggregateArgs = {
+  export type ReincampanaMAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which reincampanaM to aggregate.
      */
@@ -13236,7 +14793,7 @@ export namespace Prisma {
      * 
      * Determine the order of reincampanaMS to fetch.
      */
-    orderBy?: Enumerable<reincampanaMOrderByWithRelationInput>
+    orderBy?: reincampanaMOrderByWithRelationInput | reincampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -13298,10 +14855,10 @@ export namespace Prisma {
 
 
 
-  export type ReincampanaMGroupByArgs = {
+  export type reincampanaMGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: reincampanaMWhereInput
-    orderBy?: Enumerable<reincampanaMOrderByWithAggregationInput>
-    by: ReincampanaMScalarFieldEnum[]
+    orderBy?: reincampanaMOrderByWithAggregationInput | reincampanaMOrderByWithAggregationInput[]
+    by: ReincampanaMScalarFieldEnum[] | ReincampanaMScalarFieldEnum
     having?: reincampanaMScalarWhereWithAggregatesInput
     take?: number
     skip?: number
@@ -13341,9 +14898,9 @@ export namespace Prisma {
     _max: ReincampanaMMaxAggregateOutputType | null
   }
 
-  type GetReincampanaMGroupByPayload<T extends ReincampanaMGroupByArgs> = Prisma.PrismaPromise<
+  type GetReincampanaMGroupByPayload<T extends reincampanaMGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<ReincampanaMGroupByOutputType, T['by']> &
+      PickEnumerable<ReincampanaMGroupByOutputType, T['by']> &
         {
           [P in ((keyof T) & (keyof ReincampanaMGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
@@ -13355,7 +14912,30 @@ export namespace Prisma {
     >
 
 
-  export type reincampanaMSelect = {
+  export type reincampanaMSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["reincampanaM"]>
+
+  export type reincampanaMSelectScalar = {
     SUCURSAL?: boolean
     CONTRATO?: boolean
     NRO_DOC?: boolean
@@ -13379,27 +14959,15 @@ export namespace Prisma {
   }
 
 
-  export type reincampanaMGetPayload<S extends boolean | null | undefined | reincampanaMArgs> =
-    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? reincampanaM :
-    S extends undefined ? never :
-    S extends { include: any } & (reincampanaMArgs | reincampanaMFindManyArgs)
-    ? reincampanaM 
-    : S extends { select: any } & (reincampanaMArgs | reincampanaMFindManyArgs)
-      ? {
-    [P in TruthyKeys<S['select']>]:
-    P extends keyof reincampanaM ? reincampanaM[P] : never
-  } 
-      : reincampanaM
+  type reincampanaMGetPayload<S extends boolean | null | undefined | reincampanaMArgs> = $Types.GetResult<reincampanaMPayload, S>
 
-
-  type reincampanaMCountArgs = 
+  type reincampanaMCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
     Omit<reincampanaMFindManyArgs, 'select' | 'include'> & {
       select?: ReincampanaMCountAggregateInputType | true
     }
 
-  export interface reincampanaMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
-
+  export interface reincampanaMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['reincampanaM'], meta: { name: 'reincampanaM' } }
     /**
      * Find zero or one ReincampanaM that matches the filter.
      * @param {reincampanaMFindUniqueArgs} args - Arguments to find a ReincampanaM
@@ -13411,9 +14979,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUnique<T extends reincampanaMFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, reincampanaMFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'reincampanaM'> extends True ? Prisma__reincampanaMClient<reincampanaMGetPayload<T>> : Prisma__reincampanaMClient<reincampanaMGetPayload<T> | null, null>
+    findUnique<T extends reincampanaMFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, reincampanaMFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'reincampanaM'> extends True ? Prisma__reincampanaMClient<$Types.GetResult<reincampanaMPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__reincampanaMClient<$Types.GetResult<reincampanaMPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
 
     /**
      * Find one ReincampanaM that matches the filter or throw an error  with `error.code='P2025'` 
@@ -13427,9 +14995,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends reincampanaMFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, reincampanaMFindUniqueOrThrowArgs>
-    ): Prisma__reincampanaMClient<reincampanaMGetPayload<T>>
+    findUniqueOrThrow<T extends reincampanaMFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reincampanaMFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__reincampanaMClient<$Types.GetResult<reincampanaMPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
 
     /**
      * Find the first ReincampanaM that matches the filter.
@@ -13444,9 +15012,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirst<T extends reincampanaMFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, reincampanaMFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'reincampanaM'> extends True ? Prisma__reincampanaMClient<reincampanaMGetPayload<T>> : Prisma__reincampanaMClient<reincampanaMGetPayload<T> | null, null>
+    findFirst<T extends reincampanaMFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, reincampanaMFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'reincampanaM'> extends True ? Prisma__reincampanaMClient<$Types.GetResult<reincampanaMPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__reincampanaMClient<$Types.GetResult<reincampanaMPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
 
     /**
      * Find the first ReincampanaM that matches the filter or
@@ -13462,9 +15030,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    findFirstOrThrow<T extends reincampanaMFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, reincampanaMFindFirstOrThrowArgs>
-    ): Prisma__reincampanaMClient<reincampanaMGetPayload<T>>
+    findFirstOrThrow<T extends reincampanaMFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reincampanaMFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__reincampanaMClient<$Types.GetResult<reincampanaMPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
 
     /**
      * Find zero or more ReincampanaMS that matches the filter.
@@ -13482,9 +15050,9 @@ export namespace Prisma {
      * const reincampanaMWithSUCURSALOnly = await prisma.reincampanaM.findMany({ select: { SUCURSAL: true } })
      * 
     **/
-    findMany<T extends reincampanaMFindManyArgs>(
-      args?: SelectSubset<T, reincampanaMFindManyArgs>
-    ): Prisma.PrismaPromise<Array<reincampanaMGetPayload<T>>>
+    findMany<T extends reincampanaMFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reincampanaMFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<reincampanaMPayload<ExtArgs>, T, 'findMany', never>>
 
     /**
      * Create a ReincampanaM.
@@ -13498,9 +15066,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    create<T extends reincampanaMCreateArgs>(
-      args: SelectSubset<T, reincampanaMCreateArgs>
-    ): Prisma__reincampanaMClient<reincampanaMGetPayload<T>>
+    create<T extends reincampanaMCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, reincampanaMCreateArgs<ExtArgs>>
+    ): Prisma__reincampanaMClient<$Types.GetResult<reincampanaMPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
 
     /**
      * Create many ReincampanaMS.
@@ -13514,8 +15082,8 @@ export namespace Prisma {
      *     })
      *     
     **/
-    createMany<T extends reincampanaMCreateManyArgs>(
-      args?: SelectSubset<T, reincampanaMCreateManyArgs>
+    createMany<T extends reincampanaMCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reincampanaMCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -13530,9 +15098,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    delete<T extends reincampanaMDeleteArgs>(
-      args: SelectSubset<T, reincampanaMDeleteArgs>
-    ): Prisma__reincampanaMClient<reincampanaMGetPayload<T>>
+    delete<T extends reincampanaMDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, reincampanaMDeleteArgs<ExtArgs>>
+    ): Prisma__reincampanaMClient<$Types.GetResult<reincampanaMPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
 
     /**
      * Update one ReincampanaM.
@@ -13549,9 +15117,9 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends reincampanaMUpdateArgs>(
-      args: SelectSubset<T, reincampanaMUpdateArgs>
-    ): Prisma__reincampanaMClient<reincampanaMGetPayload<T>>
+    update<T extends reincampanaMUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, reincampanaMUpdateArgs<ExtArgs>>
+    ): Prisma__reincampanaMClient<$Types.GetResult<reincampanaMPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
 
     /**
      * Delete zero or more ReincampanaMS.
@@ -13565,8 +15133,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    deleteMany<T extends reincampanaMDeleteManyArgs>(
-      args?: SelectSubset<T, reincampanaMDeleteManyArgs>
+    deleteMany<T extends reincampanaMDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reincampanaMDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -13586,8 +15154,8 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends reincampanaMUpdateManyArgs>(
-      args: SelectSubset<T, reincampanaMUpdateManyArgs>
+    updateMany<T extends reincampanaMUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, reincampanaMUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -13607,9 +15175,9 @@ export namespace Prisma {
      *   }
      * })
     **/
-    upsert<T extends reincampanaMUpsertArgs>(
-      args: SelectSubset<T, reincampanaMUpsertArgs>
-    ): Prisma__reincampanaMClient<reincampanaMGetPayload<T>>
+    upsert<T extends reincampanaMUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, reincampanaMUpsertArgs<ExtArgs>>
+    ): Prisma__reincampanaMClient<$Types.GetResult<reincampanaMPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
 
     /**
      * Count the number of ReincampanaMS.
@@ -13627,7 +15195,7 @@ export namespace Prisma {
     count<T extends reincampanaMCountArgs>(
       args?: Subset<T, reincampanaMCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends _Record<'select', any>
+      T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], ReincampanaMCountAggregateOutputType>
@@ -13664,7 +15232,7 @@ export namespace Prisma {
      * Group by ReincampanaM.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReincampanaMGroupByArgs} args - Group by arguments.
+     * @param {reincampanaMGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -13679,16 +15247,16 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ReincampanaMGroupByArgs,
+      T extends reincampanaMGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ReincampanaMGroupByArgs['orderBy'] }
-        : { orderBy?: ReincampanaMGroupByArgs['orderBy'] },
+        ? { orderBy: reincampanaMGroupByArgs['orderBy'] }
+        : { orderBy?: reincampanaMGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
@@ -13735,7 +15303,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ReincampanaMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReincampanaMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, reincampanaMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReincampanaMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
@@ -13745,7 +15313,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__reincampanaMClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__reincampanaMClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -13791,11 +15359,11 @@ export namespace Prisma {
   /**
    * reincampanaM base type for findUnique actions
    */
-  export type reincampanaMFindUniqueArgsBase = {
+  export type reincampanaMFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampanaM
      */
-    select?: reincampanaMSelect | null
+    select?: reincampanaMSelect<ExtArgs> | null
     /**
      * Filter, which reincampanaM to fetch.
      */
@@ -13805,7 +15373,7 @@ export namespace Prisma {
   /**
    * reincampanaM findUnique
    */
-  export interface reincampanaMFindUniqueArgs extends reincampanaMFindUniqueArgsBase {
+  export interface reincampanaMFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reincampanaMFindUniqueArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -13817,11 +15385,11 @@ export namespace Prisma {
   /**
    * reincampanaM findUniqueOrThrow
    */
-  export type reincampanaMFindUniqueOrThrowArgs = {
+  export type reincampanaMFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampanaM
      */
-    select?: reincampanaMSelect | null
+    select?: reincampanaMSelect<ExtArgs> | null
     /**
      * Filter, which reincampanaM to fetch.
      */
@@ -13832,11 +15400,11 @@ export namespace Prisma {
   /**
    * reincampanaM base type for findFirst actions
    */
-  export type reincampanaMFindFirstArgsBase = {
+  export type reincampanaMFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampanaM
      */
-    select?: reincampanaMSelect | null
+    select?: reincampanaMSelect<ExtArgs> | null
     /**
      * Filter, which reincampanaM to fetch.
      */
@@ -13846,7 +15414,7 @@ export namespace Prisma {
      * 
      * Determine the order of reincampanaMS to fetch.
      */
-    orderBy?: Enumerable<reincampanaMOrderByWithRelationInput>
+    orderBy?: reincampanaMOrderByWithRelationInput | reincampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -13870,13 +15438,13 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of reincampanaMS.
      */
-    distinct?: Enumerable<ReincampanaMScalarFieldEnum>
+    distinct?: ReincampanaMScalarFieldEnum | ReincampanaMScalarFieldEnum[]
   }
 
   /**
    * reincampanaM findFirst
    */
-  export interface reincampanaMFindFirstArgs extends reincampanaMFindFirstArgsBase {
+  export interface reincampanaMFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reincampanaMFindFirstArgsBase<ExtArgs> {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -13888,11 +15456,11 @@ export namespace Prisma {
   /**
    * reincampanaM findFirstOrThrow
    */
-  export type reincampanaMFindFirstOrThrowArgs = {
+  export type reincampanaMFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampanaM
      */
-    select?: reincampanaMSelect | null
+    select?: reincampanaMSelect<ExtArgs> | null
     /**
      * Filter, which reincampanaM to fetch.
      */
@@ -13902,7 +15470,7 @@ export namespace Prisma {
      * 
      * Determine the order of reincampanaMS to fetch.
      */
-    orderBy?: Enumerable<reincampanaMOrderByWithRelationInput>
+    orderBy?: reincampanaMOrderByWithRelationInput | reincampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -13926,18 +15494,18 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of reincampanaMS.
      */
-    distinct?: Enumerable<ReincampanaMScalarFieldEnum>
+    distinct?: ReincampanaMScalarFieldEnum | ReincampanaMScalarFieldEnum[]
   }
 
 
   /**
    * reincampanaM findMany
    */
-  export type reincampanaMFindManyArgs = {
+  export type reincampanaMFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampanaM
      */
-    select?: reincampanaMSelect | null
+    select?: reincampanaMSelect<ExtArgs> | null
     /**
      * Filter, which reincampanaMS to fetch.
      */
@@ -13947,7 +15515,7 @@ export namespace Prisma {
      * 
      * Determine the order of reincampanaMS to fetch.
      */
-    orderBy?: Enumerable<reincampanaMOrderByWithRelationInput>
+    orderBy?: reincampanaMOrderByWithRelationInput | reincampanaMOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -13966,18 +15534,18 @@ export namespace Prisma {
      * Skip the first `n` reincampanaMS.
      */
     skip?: number
-    distinct?: Enumerable<ReincampanaMScalarFieldEnum>
+    distinct?: ReincampanaMScalarFieldEnum | ReincampanaMScalarFieldEnum[]
   }
 
 
   /**
    * reincampanaM create
    */
-  export type reincampanaMCreateArgs = {
+  export type reincampanaMCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampanaM
      */
-    select?: reincampanaMSelect | null
+    select?: reincampanaMSelect<ExtArgs> | null
     /**
      * The data needed to create a reincampanaM.
      */
@@ -13988,11 +15556,11 @@ export namespace Prisma {
   /**
    * reincampanaM createMany
    */
-  export type reincampanaMCreateManyArgs = {
+  export type reincampanaMCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many reincampanaMS.
      */
-    data: Enumerable<reincampanaMCreateManyInput>
+    data: reincampanaMCreateManyInput | reincampanaMCreateManyInput[]
     skipDuplicates?: boolean
   }
 
@@ -14000,11 +15568,11 @@ export namespace Prisma {
   /**
    * reincampanaM update
    */
-  export type reincampanaMUpdateArgs = {
+  export type reincampanaMUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampanaM
      */
-    select?: reincampanaMSelect | null
+    select?: reincampanaMSelect<ExtArgs> | null
     /**
      * The data needed to update a reincampanaM.
      */
@@ -14019,7 +15587,7 @@ export namespace Prisma {
   /**
    * reincampanaM updateMany
    */
-  export type reincampanaMUpdateManyArgs = {
+  export type reincampanaMUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * The data used to update reincampanaMS.
      */
@@ -14034,11 +15602,11 @@ export namespace Prisma {
   /**
    * reincampanaM upsert
    */
-  export type reincampanaMUpsertArgs = {
+  export type reincampanaMUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampanaM
      */
-    select?: reincampanaMSelect | null
+    select?: reincampanaMSelect<ExtArgs> | null
     /**
      * The filter to search for the reincampanaM to update in case it exists.
      */
@@ -14057,11 +15625,11 @@ export namespace Prisma {
   /**
    * reincampanaM delete
    */
-  export type reincampanaMDeleteArgs = {
+  export type reincampanaMDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampanaM
      */
-    select?: reincampanaMSelect | null
+    select?: reincampanaMSelect<ExtArgs> | null
     /**
      * Filter which reincampanaM to delete.
      */
@@ -14072,7 +15640,7 @@ export namespace Prisma {
   /**
    * reincampanaM deleteMany
    */
-  export type reincampanaMDeleteManyArgs = {
+  export type reincampanaMDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Filter which reincampanaMS to delete
      */
@@ -14083,11 +15651,3260 @@ export namespace Prisma {
   /**
    * reincampanaM without action
    */
-  export type reincampanaMArgs = {
+  export type reincampanaMArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the reincampanaM
      */
-    select?: reincampanaMSelect | null
+    select?: reincampanaMSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model atcampanaSM
+   */
+
+
+  export type AggregateAtcampanaSM = {
+    _count: AtcampanaSMCountAggregateOutputType | null
+    _avg: AtcampanaSMAvgAggregateOutputType | null
+    _sum: AtcampanaSMSumAggregateOutputType | null
+    _min: AtcampanaSMMinAggregateOutputType | null
+    _max: AtcampanaSMMaxAggregateOutputType | null
+  }
+
+  export type AtcampanaSMAvgAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    NRO_CALLE: number | null
+    GRUPO: number | null
+    ZONA: number | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type AtcampanaSMSumAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    NRO_CALLE: number | null
+    GRUPO: number | null
+    ZONA: number | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type AtcampanaSMMinAggregateOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type AtcampanaSMMaxAggregateOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type AtcampanaSMCountAggregateOutputType = {
+    SUCURSAL: number
+    CONTRATO: number
+    NRO_DOC: number
+    APELLIDOS: number
+    NOMBRES: number
+    ALTA: number
+    VIGENCIA: number
+    CALLE: number
+    NRO_CALLE: number
+    BARRIO: number
+    LOCALIDAD: number
+    GRUPO: number
+    ZONA: number
+    TELEFONO: number
+    MOVIL: number
+    EDAD: number
+    MES: number
+    ANO: number
+    IMPORTE: number
+    ID: number
+    _all: number
+  }
+
+
+  export type AtcampanaSMAvgAggregateInputType = {
+    CONTRATO?: true
+    NRO_DOC?: true
+    NRO_CALLE?: true
+    GRUPO?: true
+    ZONA?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type AtcampanaSMSumAggregateInputType = {
+    CONTRATO?: true
+    NRO_DOC?: true
+    NRO_CALLE?: true
+    GRUPO?: true
+    ZONA?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type AtcampanaSMMinAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    ALTA?: true
+    VIGENCIA?: true
+    CALLE?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    LOCALIDAD?: true
+    GRUPO?: true
+    ZONA?: true
+    TELEFONO?: true
+    MOVIL?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type AtcampanaSMMaxAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    ALTA?: true
+    VIGENCIA?: true
+    CALLE?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    LOCALIDAD?: true
+    GRUPO?: true
+    ZONA?: true
+    TELEFONO?: true
+    MOVIL?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type AtcampanaSMCountAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    ALTA?: true
+    VIGENCIA?: true
+    CALLE?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    LOCALIDAD?: true
+    GRUPO?: true
+    ZONA?: true
+    TELEFONO?: true
+    MOVIL?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+    _all?: true
+  }
+
+  export type AtcampanaSMAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which atcampanaSM to aggregate.
+     */
+    where?: atcampanaSMWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of atcampanaSMS to fetch.
+     */
+    orderBy?: atcampanaSMOrderByWithRelationInput | atcampanaSMOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: atcampanaSMWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` atcampanaSMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` atcampanaSMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned atcampanaSMS
+    **/
+    _count?: true | AtcampanaSMCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AtcampanaSMAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AtcampanaSMSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AtcampanaSMMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AtcampanaSMMaxAggregateInputType
+  }
+
+  export type GetAtcampanaSMAggregateType<T extends AtcampanaSMAggregateArgs> = {
+        [P in keyof T & keyof AggregateAtcampanaSM]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAtcampanaSM[P]>
+      : GetScalarType<T[P], AggregateAtcampanaSM[P]>
+  }
+
+
+
+
+  export type atcampanaSMGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: atcampanaSMWhereInput
+    orderBy?: atcampanaSMOrderByWithAggregationInput | atcampanaSMOrderByWithAggregationInput[]
+    by: AtcampanaSMScalarFieldEnum[] | AtcampanaSMScalarFieldEnum
+    having?: atcampanaSMScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AtcampanaSMCountAggregateInputType | true
+    _avg?: AtcampanaSMAvgAggregateInputType
+    _sum?: AtcampanaSMSumAggregateInputType
+    _min?: AtcampanaSMMinAggregateInputType
+    _max?: AtcampanaSMMaxAggregateInputType
+  }
+
+
+  export type AtcampanaSMGroupByOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+    _count: AtcampanaSMCountAggregateOutputType | null
+    _avg: AtcampanaSMAvgAggregateOutputType | null
+    _sum: AtcampanaSMSumAggregateOutputType | null
+    _min: AtcampanaSMMinAggregateOutputType | null
+    _max: AtcampanaSMMaxAggregateOutputType | null
+  }
+
+  type GetAtcampanaSMGroupByPayload<T extends atcampanaSMGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AtcampanaSMGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AtcampanaSMGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AtcampanaSMGroupByOutputType[P]>
+            : GetScalarType<T[P], AtcampanaSMGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type atcampanaSMSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["atcampanaSM"]>
+
+  export type atcampanaSMSelectScalar = {
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }
+
+
+  type atcampanaSMGetPayload<S extends boolean | null | undefined | atcampanaSMArgs> = $Types.GetResult<atcampanaSMPayload, S>
+
+  type atcampanaSMCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<atcampanaSMFindManyArgs, 'select' | 'include'> & {
+      select?: AtcampanaSMCountAggregateInputType | true
+    }
+
+  export interface atcampanaSMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['atcampanaSM'], meta: { name: 'atcampanaSM' } }
+    /**
+     * Find zero or one AtcampanaSM that matches the filter.
+     * @param {atcampanaSMFindUniqueArgs} args - Arguments to find a AtcampanaSM
+     * @example
+     * // Get one AtcampanaSM
+     * const atcampanaSM = await prisma.atcampanaSM.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends atcampanaSMFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, atcampanaSMFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'atcampanaSM'> extends True ? Prisma__atcampanaSMClient<$Types.GetResult<atcampanaSMPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__atcampanaSMClient<$Types.GetResult<atcampanaSMPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one AtcampanaSM that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {atcampanaSMFindUniqueOrThrowArgs} args - Arguments to find a AtcampanaSM
+     * @example
+     * // Get one AtcampanaSM
+     * const atcampanaSM = await prisma.atcampanaSM.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends atcampanaSMFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaSMFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__atcampanaSMClient<$Types.GetResult<atcampanaSMPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first AtcampanaSM that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atcampanaSMFindFirstArgs} args - Arguments to find a AtcampanaSM
+     * @example
+     * // Get one AtcampanaSM
+     * const atcampanaSM = await prisma.atcampanaSM.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends atcampanaSMFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, atcampanaSMFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'atcampanaSM'> extends True ? Prisma__atcampanaSMClient<$Types.GetResult<atcampanaSMPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__atcampanaSMClient<$Types.GetResult<atcampanaSMPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first AtcampanaSM that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atcampanaSMFindFirstOrThrowArgs} args - Arguments to find a AtcampanaSM
+     * @example
+     * // Get one AtcampanaSM
+     * const atcampanaSM = await prisma.atcampanaSM.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends atcampanaSMFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaSMFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__atcampanaSMClient<$Types.GetResult<atcampanaSMPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more AtcampanaSMS that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atcampanaSMFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AtcampanaSMS
+     * const atcampanaSMS = await prisma.atcampanaSM.findMany()
+     * 
+     * // Get first 10 AtcampanaSMS
+     * const atcampanaSMS = await prisma.atcampanaSM.findMany({ take: 10 })
+     * 
+     * // Only select the `SUCURSAL`
+     * const atcampanaSMWithSUCURSALOnly = await prisma.atcampanaSM.findMany({ select: { SUCURSAL: true } })
+     * 
+    **/
+    findMany<T extends atcampanaSMFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaSMFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<atcampanaSMPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a AtcampanaSM.
+     * @param {atcampanaSMCreateArgs} args - Arguments to create a AtcampanaSM.
+     * @example
+     * // Create one AtcampanaSM
+     * const AtcampanaSM = await prisma.atcampanaSM.create({
+     *   data: {
+     *     // ... data to create a AtcampanaSM
+     *   }
+     * })
+     * 
+    **/
+    create<T extends atcampanaSMCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaSMCreateArgs<ExtArgs>>
+    ): Prisma__atcampanaSMClient<$Types.GetResult<atcampanaSMPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many AtcampanaSMS.
+     *     @param {atcampanaSMCreateManyArgs} args - Arguments to create many AtcampanaSMS.
+     *     @example
+     *     // Create many AtcampanaSMS
+     *     const atcampanaSM = await prisma.atcampanaSM.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends atcampanaSMCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaSMCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a AtcampanaSM.
+     * @param {atcampanaSMDeleteArgs} args - Arguments to delete one AtcampanaSM.
+     * @example
+     * // Delete one AtcampanaSM
+     * const AtcampanaSM = await prisma.atcampanaSM.delete({
+     *   where: {
+     *     // ... filter to delete one AtcampanaSM
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends atcampanaSMDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaSMDeleteArgs<ExtArgs>>
+    ): Prisma__atcampanaSMClient<$Types.GetResult<atcampanaSMPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one AtcampanaSM.
+     * @param {atcampanaSMUpdateArgs} args - Arguments to update one AtcampanaSM.
+     * @example
+     * // Update one AtcampanaSM
+     * const atcampanaSM = await prisma.atcampanaSM.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends atcampanaSMUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaSMUpdateArgs<ExtArgs>>
+    ): Prisma__atcampanaSMClient<$Types.GetResult<atcampanaSMPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more AtcampanaSMS.
+     * @param {atcampanaSMDeleteManyArgs} args - Arguments to filter AtcampanaSMS to delete.
+     * @example
+     * // Delete a few AtcampanaSMS
+     * const { count } = await prisma.atcampanaSM.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends atcampanaSMDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, atcampanaSMDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AtcampanaSMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atcampanaSMUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AtcampanaSMS
+     * const atcampanaSM = await prisma.atcampanaSM.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends atcampanaSMUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaSMUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one AtcampanaSM.
+     * @param {atcampanaSMUpsertArgs} args - Arguments to update or create a AtcampanaSM.
+     * @example
+     * // Update or create a AtcampanaSM
+     * const atcampanaSM = await prisma.atcampanaSM.upsert({
+     *   create: {
+     *     // ... data to create a AtcampanaSM
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AtcampanaSM we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends atcampanaSMUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, atcampanaSMUpsertArgs<ExtArgs>>
+    ): Prisma__atcampanaSMClient<$Types.GetResult<atcampanaSMPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of AtcampanaSMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atcampanaSMCountArgs} args - Arguments to filter AtcampanaSMS to count.
+     * @example
+     * // Count the number of AtcampanaSMS
+     * const count = await prisma.atcampanaSM.count({
+     *   where: {
+     *     // ... the filter for the AtcampanaSMS we want to count
+     *   }
+     * })
+    **/
+    count<T extends atcampanaSMCountArgs>(
+      args?: Subset<T, atcampanaSMCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AtcampanaSMCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AtcampanaSM.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AtcampanaSMAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AtcampanaSMAggregateArgs>(args: Subset<T, AtcampanaSMAggregateArgs>): Prisma.PrismaPromise<GetAtcampanaSMAggregateType<T>>
+
+    /**
+     * Group by AtcampanaSM.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atcampanaSMGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends atcampanaSMGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: atcampanaSMGroupByArgs['orderBy'] }
+        : { orderBy?: atcampanaSMGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, atcampanaSMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAtcampanaSMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for atcampanaSM.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__atcampanaSMClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * atcampanaSM base type for findUnique actions
+   */
+  export type atcampanaSMFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atcampanaSM
+     */
+    select?: atcampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter, which atcampanaSM to fetch.
+     */
+    where: atcampanaSMWhereUniqueInput
+  }
+
+  /**
+   * atcampanaSM findUnique
+   */
+  export interface atcampanaSMFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends atcampanaSMFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * atcampanaSM findUniqueOrThrow
+   */
+  export type atcampanaSMFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atcampanaSM
+     */
+    select?: atcampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter, which atcampanaSM to fetch.
+     */
+    where: atcampanaSMWhereUniqueInput
+  }
+
+
+  /**
+   * atcampanaSM base type for findFirst actions
+   */
+  export type atcampanaSMFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atcampanaSM
+     */
+    select?: atcampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter, which atcampanaSM to fetch.
+     */
+    where?: atcampanaSMWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of atcampanaSMS to fetch.
+     */
+    orderBy?: atcampanaSMOrderByWithRelationInput | atcampanaSMOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for atcampanaSMS.
+     */
+    cursor?: atcampanaSMWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` atcampanaSMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` atcampanaSMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of atcampanaSMS.
+     */
+    distinct?: AtcampanaSMScalarFieldEnum | AtcampanaSMScalarFieldEnum[]
+  }
+
+  /**
+   * atcampanaSM findFirst
+   */
+  export interface atcampanaSMFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends atcampanaSMFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * atcampanaSM findFirstOrThrow
+   */
+  export type atcampanaSMFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atcampanaSM
+     */
+    select?: atcampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter, which atcampanaSM to fetch.
+     */
+    where?: atcampanaSMWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of atcampanaSMS to fetch.
+     */
+    orderBy?: atcampanaSMOrderByWithRelationInput | atcampanaSMOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for atcampanaSMS.
+     */
+    cursor?: atcampanaSMWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` atcampanaSMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` atcampanaSMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of atcampanaSMS.
+     */
+    distinct?: AtcampanaSMScalarFieldEnum | AtcampanaSMScalarFieldEnum[]
+  }
+
+
+  /**
+   * atcampanaSM findMany
+   */
+  export type atcampanaSMFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atcampanaSM
+     */
+    select?: atcampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter, which atcampanaSMS to fetch.
+     */
+    where?: atcampanaSMWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of atcampanaSMS to fetch.
+     */
+    orderBy?: atcampanaSMOrderByWithRelationInput | atcampanaSMOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing atcampanaSMS.
+     */
+    cursor?: atcampanaSMWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` atcampanaSMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` atcampanaSMS.
+     */
+    skip?: number
+    distinct?: AtcampanaSMScalarFieldEnum | AtcampanaSMScalarFieldEnum[]
+  }
+
+
+  /**
+   * atcampanaSM create
+   */
+  export type atcampanaSMCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atcampanaSM
+     */
+    select?: atcampanaSMSelect<ExtArgs> | null
+    /**
+     * The data needed to create a atcampanaSM.
+     */
+    data: XOR<atcampanaSMCreateInput, atcampanaSMUncheckedCreateInput>
+  }
+
+
+  /**
+   * atcampanaSM createMany
+   */
+  export type atcampanaSMCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many atcampanaSMS.
+     */
+    data: atcampanaSMCreateManyInput | atcampanaSMCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * atcampanaSM update
+   */
+  export type atcampanaSMUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atcampanaSM
+     */
+    select?: atcampanaSMSelect<ExtArgs> | null
+    /**
+     * The data needed to update a atcampanaSM.
+     */
+    data: XOR<atcampanaSMUpdateInput, atcampanaSMUncheckedUpdateInput>
+    /**
+     * Choose, which atcampanaSM to update.
+     */
+    where: atcampanaSMWhereUniqueInput
+  }
+
+
+  /**
+   * atcampanaSM updateMany
+   */
+  export type atcampanaSMUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update atcampanaSMS.
+     */
+    data: XOR<atcampanaSMUpdateManyMutationInput, atcampanaSMUncheckedUpdateManyInput>
+    /**
+     * Filter which atcampanaSMS to update
+     */
+    where?: atcampanaSMWhereInput
+  }
+
+
+  /**
+   * atcampanaSM upsert
+   */
+  export type atcampanaSMUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atcampanaSM
+     */
+    select?: atcampanaSMSelect<ExtArgs> | null
+    /**
+     * The filter to search for the atcampanaSM to update in case it exists.
+     */
+    where: atcampanaSMWhereUniqueInput
+    /**
+     * In case the atcampanaSM found by the `where` argument doesn't exist, create a new atcampanaSM with this data.
+     */
+    create: XOR<atcampanaSMCreateInput, atcampanaSMUncheckedCreateInput>
+    /**
+     * In case the atcampanaSM was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<atcampanaSMUpdateInput, atcampanaSMUncheckedUpdateInput>
+  }
+
+
+  /**
+   * atcampanaSM delete
+   */
+  export type atcampanaSMDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atcampanaSM
+     */
+    select?: atcampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter which atcampanaSM to delete.
+     */
+    where: atcampanaSMWhereUniqueInput
+  }
+
+
+  /**
+   * atcampanaSM deleteMany
+   */
+  export type atcampanaSMDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which atcampanaSMS to delete
+     */
+    where?: atcampanaSMWhereInput
+  }
+
+
+  /**
+   * atcampanaSM without action
+   */
+  export type atcampanaSMArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atcampanaSM
+     */
+    select?: atcampanaSMSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model reccampanaSM
+   */
+
+
+  export type AggregateReccampanaSM = {
+    _count: ReccampanaSMCountAggregateOutputType | null
+    _avg: ReccampanaSMAvgAggregateOutputType | null
+    _sum: ReccampanaSMSumAggregateOutputType | null
+    _min: ReccampanaSMMinAggregateOutputType | null
+    _max: ReccampanaSMMaxAggregateOutputType | null
+  }
+
+  export type ReccampanaSMAvgAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    NRO_CALLE: number | null
+    GRUPO: number | null
+    ZONA: number | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type ReccampanaSMSumAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    NRO_CALLE: number | null
+    GRUPO: number | null
+    ZONA: number | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type ReccampanaSMMinAggregateOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type ReccampanaSMMaxAggregateOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type ReccampanaSMCountAggregateOutputType = {
+    SUCURSAL: number
+    CONTRATO: number
+    NRO_DOC: number
+    APELLIDOS: number
+    NOMBRES: number
+    ALTA: number
+    VIGENCIA: number
+    CALLE: number
+    NRO_CALLE: number
+    BARRIO: number
+    LOCALIDAD: number
+    GRUPO: number
+    ZONA: number
+    TELEFONO: number
+    MOVIL: number
+    EDAD: number
+    MES: number
+    ANO: number
+    IMPORTE: number
+    ID: number
+    _all: number
+  }
+
+
+  export type ReccampanaSMAvgAggregateInputType = {
+    CONTRATO?: true
+    NRO_DOC?: true
+    NRO_CALLE?: true
+    GRUPO?: true
+    ZONA?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type ReccampanaSMSumAggregateInputType = {
+    CONTRATO?: true
+    NRO_DOC?: true
+    NRO_CALLE?: true
+    GRUPO?: true
+    ZONA?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type ReccampanaSMMinAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    ALTA?: true
+    VIGENCIA?: true
+    CALLE?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    LOCALIDAD?: true
+    GRUPO?: true
+    ZONA?: true
+    TELEFONO?: true
+    MOVIL?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type ReccampanaSMMaxAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    ALTA?: true
+    VIGENCIA?: true
+    CALLE?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    LOCALIDAD?: true
+    GRUPO?: true
+    ZONA?: true
+    TELEFONO?: true
+    MOVIL?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type ReccampanaSMCountAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    ALTA?: true
+    VIGENCIA?: true
+    CALLE?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    LOCALIDAD?: true
+    GRUPO?: true
+    ZONA?: true
+    TELEFONO?: true
+    MOVIL?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+    _all?: true
+  }
+
+  export type ReccampanaSMAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which reccampanaSM to aggregate.
+     */
+    where?: reccampanaSMWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of reccampanaSMS to fetch.
+     */
+    orderBy?: reccampanaSMOrderByWithRelationInput | reccampanaSMOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: reccampanaSMWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` reccampanaSMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` reccampanaSMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned reccampanaSMS
+    **/
+    _count?: true | ReccampanaSMCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ReccampanaSMAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ReccampanaSMSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ReccampanaSMMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ReccampanaSMMaxAggregateInputType
+  }
+
+  export type GetReccampanaSMAggregateType<T extends ReccampanaSMAggregateArgs> = {
+        [P in keyof T & keyof AggregateReccampanaSM]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReccampanaSM[P]>
+      : GetScalarType<T[P], AggregateReccampanaSM[P]>
+  }
+
+
+
+
+  export type reccampanaSMGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: reccampanaSMWhereInput
+    orderBy?: reccampanaSMOrderByWithAggregationInput | reccampanaSMOrderByWithAggregationInput[]
+    by: ReccampanaSMScalarFieldEnum[] | ReccampanaSMScalarFieldEnum
+    having?: reccampanaSMScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ReccampanaSMCountAggregateInputType | true
+    _avg?: ReccampanaSMAvgAggregateInputType
+    _sum?: ReccampanaSMSumAggregateInputType
+    _min?: ReccampanaSMMinAggregateInputType
+    _max?: ReccampanaSMMaxAggregateInputType
+  }
+
+
+  export type ReccampanaSMGroupByOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+    _count: ReccampanaSMCountAggregateOutputType | null
+    _avg: ReccampanaSMAvgAggregateOutputType | null
+    _sum: ReccampanaSMSumAggregateOutputType | null
+    _min: ReccampanaSMMinAggregateOutputType | null
+    _max: ReccampanaSMMaxAggregateOutputType | null
+  }
+
+  type GetReccampanaSMGroupByPayload<T extends reccampanaSMGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ReccampanaSMGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ReccampanaSMGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ReccampanaSMGroupByOutputType[P]>
+            : GetScalarType<T[P], ReccampanaSMGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type reccampanaSMSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["reccampanaSM"]>
+
+  export type reccampanaSMSelectScalar = {
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }
+
+
+  type reccampanaSMGetPayload<S extends boolean | null | undefined | reccampanaSMArgs> = $Types.GetResult<reccampanaSMPayload, S>
+
+  type reccampanaSMCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<reccampanaSMFindManyArgs, 'select' | 'include'> & {
+      select?: ReccampanaSMCountAggregateInputType | true
+    }
+
+  export interface reccampanaSMDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['reccampanaSM'], meta: { name: 'reccampanaSM' } }
+    /**
+     * Find zero or one ReccampanaSM that matches the filter.
+     * @param {reccampanaSMFindUniqueArgs} args - Arguments to find a ReccampanaSM
+     * @example
+     * // Get one ReccampanaSM
+     * const reccampanaSM = await prisma.reccampanaSM.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends reccampanaSMFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, reccampanaSMFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'reccampanaSM'> extends True ? Prisma__reccampanaSMClient<$Types.GetResult<reccampanaSMPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__reccampanaSMClient<$Types.GetResult<reccampanaSMPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one ReccampanaSM that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {reccampanaSMFindUniqueOrThrowArgs} args - Arguments to find a ReccampanaSM
+     * @example
+     * // Get one ReccampanaSM
+     * const reccampanaSM = await prisma.reccampanaSM.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends reccampanaSMFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaSMFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__reccampanaSMClient<$Types.GetResult<reccampanaSMPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first ReccampanaSM that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reccampanaSMFindFirstArgs} args - Arguments to find a ReccampanaSM
+     * @example
+     * // Get one ReccampanaSM
+     * const reccampanaSM = await prisma.reccampanaSM.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends reccampanaSMFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, reccampanaSMFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'reccampanaSM'> extends True ? Prisma__reccampanaSMClient<$Types.GetResult<reccampanaSMPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__reccampanaSMClient<$Types.GetResult<reccampanaSMPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first ReccampanaSM that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reccampanaSMFindFirstOrThrowArgs} args - Arguments to find a ReccampanaSM
+     * @example
+     * // Get one ReccampanaSM
+     * const reccampanaSM = await prisma.reccampanaSM.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends reccampanaSMFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaSMFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__reccampanaSMClient<$Types.GetResult<reccampanaSMPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more ReccampanaSMS that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reccampanaSMFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ReccampanaSMS
+     * const reccampanaSMS = await prisma.reccampanaSM.findMany()
+     * 
+     * // Get first 10 ReccampanaSMS
+     * const reccampanaSMS = await prisma.reccampanaSM.findMany({ take: 10 })
+     * 
+     * // Only select the `SUCURSAL`
+     * const reccampanaSMWithSUCURSALOnly = await prisma.reccampanaSM.findMany({ select: { SUCURSAL: true } })
+     * 
+    **/
+    findMany<T extends reccampanaSMFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaSMFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<reccampanaSMPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a ReccampanaSM.
+     * @param {reccampanaSMCreateArgs} args - Arguments to create a ReccampanaSM.
+     * @example
+     * // Create one ReccampanaSM
+     * const ReccampanaSM = await prisma.reccampanaSM.create({
+     *   data: {
+     *     // ... data to create a ReccampanaSM
+     *   }
+     * })
+     * 
+    **/
+    create<T extends reccampanaSMCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaSMCreateArgs<ExtArgs>>
+    ): Prisma__reccampanaSMClient<$Types.GetResult<reccampanaSMPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many ReccampanaSMS.
+     *     @param {reccampanaSMCreateManyArgs} args - Arguments to create many ReccampanaSMS.
+     *     @example
+     *     // Create many ReccampanaSMS
+     *     const reccampanaSM = await prisma.reccampanaSM.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends reccampanaSMCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaSMCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ReccampanaSM.
+     * @param {reccampanaSMDeleteArgs} args - Arguments to delete one ReccampanaSM.
+     * @example
+     * // Delete one ReccampanaSM
+     * const ReccampanaSM = await prisma.reccampanaSM.delete({
+     *   where: {
+     *     // ... filter to delete one ReccampanaSM
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends reccampanaSMDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaSMDeleteArgs<ExtArgs>>
+    ): Prisma__reccampanaSMClient<$Types.GetResult<reccampanaSMPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one ReccampanaSM.
+     * @param {reccampanaSMUpdateArgs} args - Arguments to update one ReccampanaSM.
+     * @example
+     * // Update one ReccampanaSM
+     * const reccampanaSM = await prisma.reccampanaSM.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends reccampanaSMUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaSMUpdateArgs<ExtArgs>>
+    ): Prisma__reccampanaSMClient<$Types.GetResult<reccampanaSMPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more ReccampanaSMS.
+     * @param {reccampanaSMDeleteManyArgs} args - Arguments to filter ReccampanaSMS to delete.
+     * @example
+     * // Delete a few ReccampanaSMS
+     * const { count } = await prisma.reccampanaSM.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends reccampanaSMDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, reccampanaSMDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ReccampanaSMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reccampanaSMUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ReccampanaSMS
+     * const reccampanaSM = await prisma.reccampanaSM.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends reccampanaSMUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaSMUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ReccampanaSM.
+     * @param {reccampanaSMUpsertArgs} args - Arguments to update or create a ReccampanaSM.
+     * @example
+     * // Update or create a ReccampanaSM
+     * const reccampanaSM = await prisma.reccampanaSM.upsert({
+     *   create: {
+     *     // ... data to create a ReccampanaSM
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ReccampanaSM we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends reccampanaSMUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, reccampanaSMUpsertArgs<ExtArgs>>
+    ): Prisma__reccampanaSMClient<$Types.GetResult<reccampanaSMPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of ReccampanaSMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reccampanaSMCountArgs} args - Arguments to filter ReccampanaSMS to count.
+     * @example
+     * // Count the number of ReccampanaSMS
+     * const count = await prisma.reccampanaSM.count({
+     *   where: {
+     *     // ... the filter for the ReccampanaSMS we want to count
+     *   }
+     * })
+    **/
+    count<T extends reccampanaSMCountArgs>(
+      args?: Subset<T, reccampanaSMCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ReccampanaSMCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ReccampanaSM.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReccampanaSMAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ReccampanaSMAggregateArgs>(args: Subset<T, ReccampanaSMAggregateArgs>): Prisma.PrismaPromise<GetReccampanaSMAggregateType<T>>
+
+    /**
+     * Group by ReccampanaSM.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {reccampanaSMGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends reccampanaSMGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: reccampanaSMGroupByArgs['orderBy'] }
+        : { orderBy?: reccampanaSMGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, reccampanaSMGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReccampanaSMGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for reccampanaSM.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__reccampanaSMClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * reccampanaSM base type for findUnique actions
+   */
+  export type reccampanaSMFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reccampanaSM
+     */
+    select?: reccampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter, which reccampanaSM to fetch.
+     */
+    where: reccampanaSMWhereUniqueInput
+  }
+
+  /**
+   * reccampanaSM findUnique
+   */
+  export interface reccampanaSMFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reccampanaSMFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * reccampanaSM findUniqueOrThrow
+   */
+  export type reccampanaSMFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reccampanaSM
+     */
+    select?: reccampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter, which reccampanaSM to fetch.
+     */
+    where: reccampanaSMWhereUniqueInput
+  }
+
+
+  /**
+   * reccampanaSM base type for findFirst actions
+   */
+  export type reccampanaSMFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reccampanaSM
+     */
+    select?: reccampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter, which reccampanaSM to fetch.
+     */
+    where?: reccampanaSMWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of reccampanaSMS to fetch.
+     */
+    orderBy?: reccampanaSMOrderByWithRelationInput | reccampanaSMOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for reccampanaSMS.
+     */
+    cursor?: reccampanaSMWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` reccampanaSMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` reccampanaSMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of reccampanaSMS.
+     */
+    distinct?: ReccampanaSMScalarFieldEnum | ReccampanaSMScalarFieldEnum[]
+  }
+
+  /**
+   * reccampanaSM findFirst
+   */
+  export interface reccampanaSMFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends reccampanaSMFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * reccampanaSM findFirstOrThrow
+   */
+  export type reccampanaSMFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reccampanaSM
+     */
+    select?: reccampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter, which reccampanaSM to fetch.
+     */
+    where?: reccampanaSMWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of reccampanaSMS to fetch.
+     */
+    orderBy?: reccampanaSMOrderByWithRelationInput | reccampanaSMOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for reccampanaSMS.
+     */
+    cursor?: reccampanaSMWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` reccampanaSMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` reccampanaSMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of reccampanaSMS.
+     */
+    distinct?: ReccampanaSMScalarFieldEnum | ReccampanaSMScalarFieldEnum[]
+  }
+
+
+  /**
+   * reccampanaSM findMany
+   */
+  export type reccampanaSMFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reccampanaSM
+     */
+    select?: reccampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter, which reccampanaSMS to fetch.
+     */
+    where?: reccampanaSMWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of reccampanaSMS to fetch.
+     */
+    orderBy?: reccampanaSMOrderByWithRelationInput | reccampanaSMOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing reccampanaSMS.
+     */
+    cursor?: reccampanaSMWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` reccampanaSMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` reccampanaSMS.
+     */
+    skip?: number
+    distinct?: ReccampanaSMScalarFieldEnum | ReccampanaSMScalarFieldEnum[]
+  }
+
+
+  /**
+   * reccampanaSM create
+   */
+  export type reccampanaSMCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reccampanaSM
+     */
+    select?: reccampanaSMSelect<ExtArgs> | null
+    /**
+     * The data needed to create a reccampanaSM.
+     */
+    data: XOR<reccampanaSMCreateInput, reccampanaSMUncheckedCreateInput>
+  }
+
+
+  /**
+   * reccampanaSM createMany
+   */
+  export type reccampanaSMCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many reccampanaSMS.
+     */
+    data: reccampanaSMCreateManyInput | reccampanaSMCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * reccampanaSM update
+   */
+  export type reccampanaSMUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reccampanaSM
+     */
+    select?: reccampanaSMSelect<ExtArgs> | null
+    /**
+     * The data needed to update a reccampanaSM.
+     */
+    data: XOR<reccampanaSMUpdateInput, reccampanaSMUncheckedUpdateInput>
+    /**
+     * Choose, which reccampanaSM to update.
+     */
+    where: reccampanaSMWhereUniqueInput
+  }
+
+
+  /**
+   * reccampanaSM updateMany
+   */
+  export type reccampanaSMUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update reccampanaSMS.
+     */
+    data: XOR<reccampanaSMUpdateManyMutationInput, reccampanaSMUncheckedUpdateManyInput>
+    /**
+     * Filter which reccampanaSMS to update
+     */
+    where?: reccampanaSMWhereInput
+  }
+
+
+  /**
+   * reccampanaSM upsert
+   */
+  export type reccampanaSMUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reccampanaSM
+     */
+    select?: reccampanaSMSelect<ExtArgs> | null
+    /**
+     * The filter to search for the reccampanaSM to update in case it exists.
+     */
+    where: reccampanaSMWhereUniqueInput
+    /**
+     * In case the reccampanaSM found by the `where` argument doesn't exist, create a new reccampanaSM with this data.
+     */
+    create: XOR<reccampanaSMCreateInput, reccampanaSMUncheckedCreateInput>
+    /**
+     * In case the reccampanaSM was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<reccampanaSMUpdateInput, reccampanaSMUncheckedUpdateInput>
+  }
+
+
+  /**
+   * reccampanaSM delete
+   */
+  export type reccampanaSMDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reccampanaSM
+     */
+    select?: reccampanaSMSelect<ExtArgs> | null
+    /**
+     * Filter which reccampanaSM to delete.
+     */
+    where: reccampanaSMWhereUniqueInput
+  }
+
+
+  /**
+   * reccampanaSM deleteMany
+   */
+  export type reccampanaSMDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which reccampanaSMS to delete
+     */
+    where?: reccampanaSMWhereInput
+  }
+
+
+  /**
+   * reccampanaSM without action
+   */
+  export type reccampanaSMArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the reccampanaSM
+     */
+    select?: reccampanaSMSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model tempcampana
+   */
+
+
+  export type AggregateTempcampana = {
+    _count: TempcampanaCountAggregateOutputType | null
+    _avg: TempcampanaAvgAggregateOutputType | null
+    _sum: TempcampanaSumAggregateOutputType | null
+    _min: TempcampanaMinAggregateOutputType | null
+    _max: TempcampanaMaxAggregateOutputType | null
+  }
+
+  export type TempcampanaAvgAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    NRO_CALLE: number | null
+    GRUPO: number | null
+    ZONA: number | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type TempcampanaSumAggregateOutputType = {
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    NRO_CALLE: number | null
+    GRUPO: number | null
+    ZONA: number | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type TempcampanaMinAggregateOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type TempcampanaMaxAggregateOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number | null
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number | null
+  }
+
+  export type TempcampanaCountAggregateOutputType = {
+    SUCURSAL: number
+    CONTRATO: number
+    NRO_DOC: number
+    APELLIDOS: number
+    NOMBRES: number
+    ALTA: number
+    VIGENCIA: number
+    CALLE: number
+    NRO_CALLE: number
+    BARRIO: number
+    LOCALIDAD: number
+    GRUPO: number
+    ZONA: number
+    TELEFONO: number
+    MOVIL: number
+    EDAD: number
+    MES: number
+    ANO: number
+    IMPORTE: number
+    ID: number
+    _all: number
+  }
+
+
+  export type TempcampanaAvgAggregateInputType = {
+    CONTRATO?: true
+    NRO_DOC?: true
+    NRO_CALLE?: true
+    GRUPO?: true
+    ZONA?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type TempcampanaSumAggregateInputType = {
+    CONTRATO?: true
+    NRO_DOC?: true
+    NRO_CALLE?: true
+    GRUPO?: true
+    ZONA?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type TempcampanaMinAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    ALTA?: true
+    VIGENCIA?: true
+    CALLE?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    LOCALIDAD?: true
+    GRUPO?: true
+    ZONA?: true
+    TELEFONO?: true
+    MOVIL?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type TempcampanaMaxAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    ALTA?: true
+    VIGENCIA?: true
+    CALLE?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    LOCALIDAD?: true
+    GRUPO?: true
+    ZONA?: true
+    TELEFONO?: true
+    MOVIL?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+  }
+
+  export type TempcampanaCountAggregateInputType = {
+    SUCURSAL?: true
+    CONTRATO?: true
+    NRO_DOC?: true
+    APELLIDOS?: true
+    NOMBRES?: true
+    ALTA?: true
+    VIGENCIA?: true
+    CALLE?: true
+    NRO_CALLE?: true
+    BARRIO?: true
+    LOCALIDAD?: true
+    GRUPO?: true
+    ZONA?: true
+    TELEFONO?: true
+    MOVIL?: true
+    EDAD?: true
+    MES?: true
+    ANO?: true
+    IMPORTE?: true
+    ID?: true
+    _all?: true
+  }
+
+  export type TempcampanaAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tempcampana to aggregate.
+     */
+    where?: tempcampanaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tempcampanas to fetch.
+     */
+    orderBy?: tempcampanaOrderByWithRelationInput | tempcampanaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: tempcampanaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tempcampanas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tempcampanas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tempcampanas
+    **/
+    _count?: true | TempcampanaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TempcampanaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TempcampanaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TempcampanaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TempcampanaMaxAggregateInputType
+  }
+
+  export type GetTempcampanaAggregateType<T extends TempcampanaAggregateArgs> = {
+        [P in keyof T & keyof AggregateTempcampana]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTempcampana[P]>
+      : GetScalarType<T[P], AggregateTempcampana[P]>
+  }
+
+
+
+
+  export type tempcampanaGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: tempcampanaWhereInput
+    orderBy?: tempcampanaOrderByWithAggregationInput | tempcampanaOrderByWithAggregationInput[]
+    by: TempcampanaScalarFieldEnum[] | TempcampanaScalarFieldEnum
+    having?: tempcampanaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TempcampanaCountAggregateInputType | true
+    _avg?: TempcampanaAvgAggregateInputType
+    _sum?: TempcampanaSumAggregateInputType
+    _min?: TempcampanaMinAggregateInputType
+    _max?: TempcampanaMaxAggregateInputType
+  }
+
+
+  export type TempcampanaGroupByOutputType = {
+    SUCURSAL: string | null
+    CONTRATO: number
+    NRO_DOC: number | null
+    APELLIDOS: string | null
+    NOMBRES: string | null
+    ALTA: Date | null
+    VIGENCIA: Date | null
+    CALLE: string | null
+    NRO_CALLE: number | null
+    BARRIO: string | null
+    LOCALIDAD: string | null
+    GRUPO: number | null
+    ZONA: number | null
+    TELEFONO: string | null
+    MOVIL: string | null
+    EDAD: number | null
+    MES: number | null
+    ANO: number | null
+    IMPORTE: number | null
+    ID: number
+    _count: TempcampanaCountAggregateOutputType | null
+    _avg: TempcampanaAvgAggregateOutputType | null
+    _sum: TempcampanaSumAggregateOutputType | null
+    _min: TempcampanaMinAggregateOutputType | null
+    _max: TempcampanaMaxAggregateOutputType | null
+  }
+
+  type GetTempcampanaGroupByPayload<T extends tempcampanaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TempcampanaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TempcampanaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TempcampanaGroupByOutputType[P]>
+            : GetScalarType<T[P], TempcampanaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type tempcampanaSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }, ExtArgs["result"]["tempcampana"]>
+
+  export type tempcampanaSelectScalar = {
+    SUCURSAL?: boolean
+    CONTRATO?: boolean
+    NRO_DOC?: boolean
+    APELLIDOS?: boolean
+    NOMBRES?: boolean
+    ALTA?: boolean
+    VIGENCIA?: boolean
+    CALLE?: boolean
+    NRO_CALLE?: boolean
+    BARRIO?: boolean
+    LOCALIDAD?: boolean
+    GRUPO?: boolean
+    ZONA?: boolean
+    TELEFONO?: boolean
+    MOVIL?: boolean
+    EDAD?: boolean
+    MES?: boolean
+    ANO?: boolean
+    IMPORTE?: boolean
+    ID?: boolean
+  }
+
+
+  type tempcampanaGetPayload<S extends boolean | null | undefined | tempcampanaArgs> = $Types.GetResult<tempcampanaPayload, S>
+
+  type tempcampanaCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<tempcampanaFindManyArgs, 'select' | 'include'> & {
+      select?: TempcampanaCountAggregateInputType | true
+    }
+
+  export interface tempcampanaDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tempcampana'], meta: { name: 'tempcampana' } }
+    /**
+     * Find zero or one Tempcampana that matches the filter.
+     * @param {tempcampanaFindUniqueArgs} args - Arguments to find a Tempcampana
+     * @example
+     * // Get one Tempcampana
+     * const tempcampana = await prisma.tempcampana.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends tempcampanaFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, tempcampanaFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'tempcampana'> extends True ? Prisma__tempcampanaClient<$Types.GetResult<tempcampanaPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__tempcampanaClient<$Types.GetResult<tempcampanaPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Tempcampana that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {tempcampanaFindUniqueOrThrowArgs} args - Arguments to find a Tempcampana
+     * @example
+     * // Get one Tempcampana
+     * const tempcampana = await prisma.tempcampana.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends tempcampanaFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, tempcampanaFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__tempcampanaClient<$Types.GetResult<tempcampanaPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Tempcampana that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tempcampanaFindFirstArgs} args - Arguments to find a Tempcampana
+     * @example
+     * // Get one Tempcampana
+     * const tempcampana = await prisma.tempcampana.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends tempcampanaFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, tempcampanaFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'tempcampana'> extends True ? Prisma__tempcampanaClient<$Types.GetResult<tempcampanaPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__tempcampanaClient<$Types.GetResult<tempcampanaPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Tempcampana that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tempcampanaFindFirstOrThrowArgs} args - Arguments to find a Tempcampana
+     * @example
+     * // Get one Tempcampana
+     * const tempcampana = await prisma.tempcampana.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends tempcampanaFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, tempcampanaFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__tempcampanaClient<$Types.GetResult<tempcampanaPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Tempcampanas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tempcampanaFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tempcampanas
+     * const tempcampanas = await prisma.tempcampana.findMany()
+     * 
+     * // Get first 10 Tempcampanas
+     * const tempcampanas = await prisma.tempcampana.findMany({ take: 10 })
+     * 
+     * // Only select the `SUCURSAL`
+     * const tempcampanaWithSUCURSALOnly = await prisma.tempcampana.findMany({ select: { SUCURSAL: true } })
+     * 
+    **/
+    findMany<T extends tempcampanaFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, tempcampanaFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<tempcampanaPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Tempcampana.
+     * @param {tempcampanaCreateArgs} args - Arguments to create a Tempcampana.
+     * @example
+     * // Create one Tempcampana
+     * const Tempcampana = await prisma.tempcampana.create({
+     *   data: {
+     *     // ... data to create a Tempcampana
+     *   }
+     * })
+     * 
+    **/
+    create<T extends tempcampanaCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, tempcampanaCreateArgs<ExtArgs>>
+    ): Prisma__tempcampanaClient<$Types.GetResult<tempcampanaPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Tempcampanas.
+     *     @param {tempcampanaCreateManyArgs} args - Arguments to create many Tempcampanas.
+     *     @example
+     *     // Create many Tempcampanas
+     *     const tempcampana = await prisma.tempcampana.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends tempcampanaCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, tempcampanaCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Tempcampana.
+     * @param {tempcampanaDeleteArgs} args - Arguments to delete one Tempcampana.
+     * @example
+     * // Delete one Tempcampana
+     * const Tempcampana = await prisma.tempcampana.delete({
+     *   where: {
+     *     // ... filter to delete one Tempcampana
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends tempcampanaDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, tempcampanaDeleteArgs<ExtArgs>>
+    ): Prisma__tempcampanaClient<$Types.GetResult<tempcampanaPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Tempcampana.
+     * @param {tempcampanaUpdateArgs} args - Arguments to update one Tempcampana.
+     * @example
+     * // Update one Tempcampana
+     * const tempcampana = await prisma.tempcampana.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends tempcampanaUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, tempcampanaUpdateArgs<ExtArgs>>
+    ): Prisma__tempcampanaClient<$Types.GetResult<tempcampanaPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Tempcampanas.
+     * @param {tempcampanaDeleteManyArgs} args - Arguments to filter Tempcampanas to delete.
+     * @example
+     * // Delete a few Tempcampanas
+     * const { count } = await prisma.tempcampana.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends tempcampanaDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, tempcampanaDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tempcampanas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tempcampanaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tempcampanas
+     * const tempcampana = await prisma.tempcampana.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends tempcampanaUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, tempcampanaUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Tempcampana.
+     * @param {tempcampanaUpsertArgs} args - Arguments to update or create a Tempcampana.
+     * @example
+     * // Update or create a Tempcampana
+     * const tempcampana = await prisma.tempcampana.upsert({
+     *   create: {
+     *     // ... data to create a Tempcampana
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tempcampana we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends tempcampanaUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, tempcampanaUpsertArgs<ExtArgs>>
+    ): Prisma__tempcampanaClient<$Types.GetResult<tempcampanaPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Tempcampanas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tempcampanaCountArgs} args - Arguments to filter Tempcampanas to count.
+     * @example
+     * // Count the number of Tempcampanas
+     * const count = await prisma.tempcampana.count({
+     *   where: {
+     *     // ... the filter for the Tempcampanas we want to count
+     *   }
+     * })
+    **/
+    count<T extends tempcampanaCountArgs>(
+      args?: Subset<T, tempcampanaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TempcampanaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tempcampana.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempcampanaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TempcampanaAggregateArgs>(args: Subset<T, TempcampanaAggregateArgs>): Prisma.PrismaPromise<GetTempcampanaAggregateType<T>>
+
+    /**
+     * Group by Tempcampana.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tempcampanaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends tempcampanaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: tempcampanaGroupByArgs['orderBy'] }
+        : { orderBy?: tempcampanaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, tempcampanaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTempcampanaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for tempcampana.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__tempcampanaClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * tempcampana base type for findUnique actions
+   */
+  export type tempcampanaFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tempcampana
+     */
+    select?: tempcampanaSelect<ExtArgs> | null
+    /**
+     * Filter, which tempcampana to fetch.
+     */
+    where: tempcampanaWhereUniqueInput
+  }
+
+  /**
+   * tempcampana findUnique
+   */
+  export interface tempcampanaFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends tempcampanaFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * tempcampana findUniqueOrThrow
+   */
+  export type tempcampanaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tempcampana
+     */
+    select?: tempcampanaSelect<ExtArgs> | null
+    /**
+     * Filter, which tempcampana to fetch.
+     */
+    where: tempcampanaWhereUniqueInput
+  }
+
+
+  /**
+   * tempcampana base type for findFirst actions
+   */
+  export type tempcampanaFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tempcampana
+     */
+    select?: tempcampanaSelect<ExtArgs> | null
+    /**
+     * Filter, which tempcampana to fetch.
+     */
+    where?: tempcampanaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tempcampanas to fetch.
+     */
+    orderBy?: tempcampanaOrderByWithRelationInput | tempcampanaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tempcampanas.
+     */
+    cursor?: tempcampanaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tempcampanas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tempcampanas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tempcampanas.
+     */
+    distinct?: TempcampanaScalarFieldEnum | TempcampanaScalarFieldEnum[]
+  }
+
+  /**
+   * tempcampana findFirst
+   */
+  export interface tempcampanaFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends tempcampanaFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * tempcampana findFirstOrThrow
+   */
+  export type tempcampanaFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tempcampana
+     */
+    select?: tempcampanaSelect<ExtArgs> | null
+    /**
+     * Filter, which tempcampana to fetch.
+     */
+    where?: tempcampanaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tempcampanas to fetch.
+     */
+    orderBy?: tempcampanaOrderByWithRelationInput | tempcampanaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tempcampanas.
+     */
+    cursor?: tempcampanaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tempcampanas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tempcampanas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tempcampanas.
+     */
+    distinct?: TempcampanaScalarFieldEnum | TempcampanaScalarFieldEnum[]
+  }
+
+
+  /**
+   * tempcampana findMany
+   */
+  export type tempcampanaFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tempcampana
+     */
+    select?: tempcampanaSelect<ExtArgs> | null
+    /**
+     * Filter, which tempcampanas to fetch.
+     */
+    where?: tempcampanaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tempcampanas to fetch.
+     */
+    orderBy?: tempcampanaOrderByWithRelationInput | tempcampanaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tempcampanas.
+     */
+    cursor?: tempcampanaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tempcampanas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tempcampanas.
+     */
+    skip?: number
+    distinct?: TempcampanaScalarFieldEnum | TempcampanaScalarFieldEnum[]
+  }
+
+
+  /**
+   * tempcampana create
+   */
+  export type tempcampanaCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tempcampana
+     */
+    select?: tempcampanaSelect<ExtArgs> | null
+    /**
+     * The data needed to create a tempcampana.
+     */
+    data: XOR<tempcampanaCreateInput, tempcampanaUncheckedCreateInput>
+  }
+
+
+  /**
+   * tempcampana createMany
+   */
+  export type tempcampanaCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many tempcampanas.
+     */
+    data: tempcampanaCreateManyInput | tempcampanaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * tempcampana update
+   */
+  export type tempcampanaUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tempcampana
+     */
+    select?: tempcampanaSelect<ExtArgs> | null
+    /**
+     * The data needed to update a tempcampana.
+     */
+    data: XOR<tempcampanaUpdateInput, tempcampanaUncheckedUpdateInput>
+    /**
+     * Choose, which tempcampana to update.
+     */
+    where: tempcampanaWhereUniqueInput
+  }
+
+
+  /**
+   * tempcampana updateMany
+   */
+  export type tempcampanaUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update tempcampanas.
+     */
+    data: XOR<tempcampanaUpdateManyMutationInput, tempcampanaUncheckedUpdateManyInput>
+    /**
+     * Filter which tempcampanas to update
+     */
+    where?: tempcampanaWhereInput
+  }
+
+
+  /**
+   * tempcampana upsert
+   */
+  export type tempcampanaUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tempcampana
+     */
+    select?: tempcampanaSelect<ExtArgs> | null
+    /**
+     * The filter to search for the tempcampana to update in case it exists.
+     */
+    where: tempcampanaWhereUniqueInput
+    /**
+     * In case the tempcampana found by the `where` argument doesn't exist, create a new tempcampana with this data.
+     */
+    create: XOR<tempcampanaCreateInput, tempcampanaUncheckedCreateInput>
+    /**
+     * In case the tempcampana was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<tempcampanaUpdateInput, tempcampanaUncheckedUpdateInput>
+  }
+
+
+  /**
+   * tempcampana delete
+   */
+  export type tempcampanaDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tempcampana
+     */
+    select?: tempcampanaSelect<ExtArgs> | null
+    /**
+     * Filter which tempcampana to delete.
+     */
+    where: tempcampanaWhereUniqueInput
+  }
+
+
+  /**
+   * tempcampana deleteMany
+   */
+  export type tempcampanaDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tempcampanas to delete
+     */
+    where?: tempcampanaWhereInput
+  }
+
+
+  /**
+   * tempcampana without action
+   */
+  export type tempcampanaArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tempcampana
+     */
+    select?: tempcampanaSelect<ExtArgs> | null
   }
 
 
@@ -14096,33 +18913,14 @@ export namespace Prisma {
    * Enums
    */
 
-  // Based on
-  // https://github.com/microsoft/TypeScript/issues/3192#issuecomment-261720275
-
-  export const At2campanaMScalarFieldEnum: {
-    SUCURSAL: 'SUCURSAL',
-    CONTRATO: 'CONTRATO',
-    NRO_DOC: 'NRO_DOC',
-    APELLIDOS: 'APELLIDOS',
-    NOMBRES: 'NOMBRES',
-    ALTA: 'ALTA',
-    VIGENCIA: 'VIGENCIA',
-    CALLE: 'CALLE',
-    NRO_CALLE: 'NRO_CALLE',
-    BARRIO: 'BARRIO',
-    LOCALIDAD: 'LOCALIDAD',
-    GRUPO: 'GRUPO',
-    ZONA: 'ZONA',
-    TELEFONO: 'TELEFONO',
-    MOVIL: 'MOVIL',
-    EDAD: 'EDAD',
-    MES: 'MES',
-    ANO: 'ANO',
-    IMPORTE: 'IMPORTE',
-    ID: 'ID'
+  export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
+    Serializable: 'Serializable'
   };
 
-  export type At2campanaMScalarFieldEnum = (typeof At2campanaMScalarFieldEnum)[keyof typeof At2campanaMScalarFieldEnum]
+  export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
   export const At2campanaScalarFieldEnum: {
@@ -14149,32 +18947,6 @@ export namespace Prisma {
   };
 
   export type At2campanaScalarFieldEnum = (typeof At2campanaScalarFieldEnum)[keyof typeof At2campanaScalarFieldEnum]
-
-
-  export const AtcampanaMScalarFieldEnum: {
-    SUCURSAL: 'SUCURSAL',
-    CONTRATO: 'CONTRATO',
-    NRO_DOC: 'NRO_DOC',
-    APELLIDOS: 'APELLIDOS',
-    NOMBRES: 'NOMBRES',
-    ALTA: 'ALTA',
-    VIGENCIA: 'VIGENCIA',
-    CALLE: 'CALLE',
-    NRO_CALLE: 'NRO_CALLE',
-    BARRIO: 'BARRIO',
-    LOCALIDAD: 'LOCALIDAD',
-    GRUPO: 'GRUPO',
-    ZONA: 'ZONA',
-    TELEFONO: 'TELEFONO',
-    MOVIL: 'MOVIL',
-    EDAD: 'EDAD',
-    MES: 'MES',
-    ANO: 'ANO',
-    IMPORTE: 'IMPORTE',
-    ID: 'ID'
-  };
-
-  export type AtcampanaMScalarFieldEnum = (typeof AtcampanaMScalarFieldEnum)[keyof typeof AtcampanaMScalarFieldEnum]
 
 
   export const AtcampanaScalarFieldEnum: {
@@ -14204,58 +18976,6 @@ export namespace Prisma {
   export type AtcampanaScalarFieldEnum = (typeof AtcampanaScalarFieldEnum)[keyof typeof AtcampanaScalarFieldEnum]
 
 
-  export const AuxcampanaScalarFieldEnum: {
-    SUCURSAL: 'SUCURSAL',
-    CONTRATO: 'CONTRATO',
-    NRO_DOC: 'NRO_DOC',
-    APELLIDOS: 'APELLIDOS',
-    NOMBRES: 'NOMBRES',
-    ALTA: 'ALTA',
-    VIGENCIA: 'VIGENCIA',
-    CALLE: 'CALLE',
-    NRO_CALLE: 'NRO_CALLE',
-    BARRIO: 'BARRIO',
-    LOCALIDAD: 'LOCALIDAD',
-    GRUPO: 'GRUPO',
-    ZONA: 'ZONA',
-    TELEFONO: 'TELEFONO',
-    MOVIL: 'MOVIL',
-    EDAD: 'EDAD',
-    MES: 'MES',
-    ANO: 'ANO',
-    IMPORTE: 'IMPORTE',
-    ID: 'ID'
-  };
-
-  export type AuxcampanaScalarFieldEnum = (typeof AuxcampanaScalarFieldEnum)[keyof typeof AuxcampanaScalarFieldEnum]
-
-
-  export const BlancampanaMScalarFieldEnum: {
-    SUCURSAL: 'SUCURSAL',
-    CONTRATO: 'CONTRATO',
-    NRO_DOC: 'NRO_DOC',
-    APELLIDOS: 'APELLIDOS',
-    NOMBRES: 'NOMBRES',
-    ALTA: 'ALTA',
-    VIGENCIA: 'VIGENCIA',
-    CALLE: 'CALLE',
-    NRO_CALLE: 'NRO_CALLE',
-    BARRIO: 'BARRIO',
-    LOCALIDAD: 'LOCALIDAD',
-    GRUPO: 'GRUPO',
-    ZONA: 'ZONA',
-    TELEFONO: 'TELEFONO',
-    MOVIL: 'MOVIL',
-    EDAD: 'EDAD',
-    MES: 'MES',
-    ANO: 'ANO',
-    IMPORTE: 'IMPORTE',
-    ID: 'ID'
-  };
-
-  export type BlancampanaMScalarFieldEnum = (typeof BlancampanaMScalarFieldEnum)[keyof typeof BlancampanaMScalarFieldEnum]
-
-
   export const BlancampanaScalarFieldEnum: {
     SUCURSAL: 'SUCURSAL',
     CONTRATO: 'CONTRATO',
@@ -14280,58 +19000,6 @@ export namespace Prisma {
   };
 
   export type BlancampanaScalarFieldEnum = (typeof BlancampanaScalarFieldEnum)[keyof typeof BlancampanaScalarFieldEnum]
-
-
-  export const PolicampanaScalarFieldEnum: {
-    SUCURSAL: 'SUCURSAL',
-    CONTRATO: 'CONTRATO',
-    NRO_DOC: 'NRO_DOC',
-    APELLIDOS: 'APELLIDOS',
-    NOMBRES: 'NOMBRES',
-    ALTA: 'ALTA',
-    VIGENCIA: 'VIGENCIA',
-    CALLE: 'CALLE',
-    NRO_CALLE: 'NRO_CALLE',
-    BARRIO: 'BARRIO',
-    LOCALIDAD: 'LOCALIDAD',
-    GRUPO: 'GRUPO',
-    ZONA: 'ZONA',
-    TELEFONO: 'TELEFONO',
-    MOVIL: 'MOVIL',
-    EDAD: 'EDAD',
-    MES: 'MES',
-    ANO: 'ANO',
-    IMPORTE: 'IMPORTE',
-    ID: 'ID'
-  };
-
-  export type PolicampanaScalarFieldEnum = (typeof PolicampanaScalarFieldEnum)[keyof typeof PolicampanaScalarFieldEnum]
-
-
-  export const ReccampanaMScalarFieldEnum: {
-    SUCURSAL: 'SUCURSAL',
-    CONTRATO: 'CONTRATO',
-    NRO_DOC: 'NRO_DOC',
-    APELLIDOS: 'APELLIDOS',
-    NOMBRES: 'NOMBRES',
-    ALTA: 'ALTA',
-    VIGENCIA: 'VIGENCIA',
-    CALLE: 'CALLE',
-    NRO_CALLE: 'NRO_CALLE',
-    BARRIO: 'BARRIO',
-    LOCALIDAD: 'LOCALIDAD',
-    GRUPO: 'GRUPO',
-    ZONA: 'ZONA',
-    TELEFONO: 'TELEFONO',
-    MOVIL: 'MOVIL',
-    EDAD: 'EDAD',
-    MES: 'MES',
-    ANO: 'ANO',
-    IMPORTE: 'IMPORTE',
-    ID: 'ID'
-  };
-
-  export type ReccampanaMScalarFieldEnum = (typeof ReccampanaMScalarFieldEnum)[keyof typeof ReccampanaMScalarFieldEnum]
 
 
   export const ReccampanaScalarFieldEnum: {
@@ -14360,32 +19028,6 @@ export namespace Prisma {
   export type ReccampanaScalarFieldEnum = (typeof ReccampanaScalarFieldEnum)[keyof typeof ReccampanaScalarFieldEnum]
 
 
-  export const ReincampanaMScalarFieldEnum: {
-    SUCURSAL: 'SUCURSAL',
-    CONTRATO: 'CONTRATO',
-    NRO_DOC: 'NRO_DOC',
-    APELLIDOS: 'APELLIDOS',
-    NOMBRES: 'NOMBRES',
-    ALTA: 'ALTA',
-    VIGENCIA: 'VIGENCIA',
-    CALLE: 'CALLE',
-    NRO_CALLE: 'NRO_CALLE',
-    BARRIO: 'BARRIO',
-    LOCALIDAD: 'LOCALIDAD',
-    GRUPO: 'GRUPO',
-    ZONA: 'ZONA',
-    TELEFONO: 'TELEFONO',
-    MOVIL: 'MOVIL',
-    EDAD: 'EDAD',
-    MES: 'MES',
-    ANO: 'ANO',
-    IMPORTE: 'IMPORTE',
-    ID: 'ID'
-  };
-
-  export type ReincampanaMScalarFieldEnum = (typeof ReincampanaMScalarFieldEnum)[keyof typeof ReincampanaMScalarFieldEnum]
-
-
   export const ReincampanaScalarFieldEnum: {
     SUCURSAL: 'SUCURSAL',
     CONTRATO: 'CONTRATO',
@@ -14412,6 +19054,266 @@ export namespace Prisma {
   export type ReincampanaScalarFieldEnum = (typeof ReincampanaScalarFieldEnum)[keyof typeof ReincampanaScalarFieldEnum]
 
 
+  export const AuxcampanaScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    ALTA: 'ALTA',
+    VIGENCIA: 'VIGENCIA',
+    CALLE: 'CALLE',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    LOCALIDAD: 'LOCALIDAD',
+    GRUPO: 'GRUPO',
+    ZONA: 'ZONA',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    EDAD: 'EDAD',
+    MES: 'MES',
+    ANO: 'ANO',
+    IMPORTE: 'IMPORTE',
+    ID: 'ID'
+  };
+
+  export type AuxcampanaScalarFieldEnum = (typeof AuxcampanaScalarFieldEnum)[keyof typeof AuxcampanaScalarFieldEnum]
+
+
+  export const PolicampanaScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    ALTA: 'ALTA',
+    VIGENCIA: 'VIGENCIA',
+    CALLE: 'CALLE',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    LOCALIDAD: 'LOCALIDAD',
+    GRUPO: 'GRUPO',
+    ZONA: 'ZONA',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    EDAD: 'EDAD',
+    MES: 'MES',
+    ANO: 'ANO',
+    IMPORTE: 'IMPORTE',
+    ID: 'ID'
+  };
+
+  export type PolicampanaScalarFieldEnum = (typeof PolicampanaScalarFieldEnum)[keyof typeof PolicampanaScalarFieldEnum]
+
+
+  export const At2campanaMScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    ALTA: 'ALTA',
+    VIGENCIA: 'VIGENCIA',
+    CALLE: 'CALLE',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    LOCALIDAD: 'LOCALIDAD',
+    GRUPO: 'GRUPO',
+    ZONA: 'ZONA',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    EDAD: 'EDAD',
+    MES: 'MES',
+    ANO: 'ANO',
+    IMPORTE: 'IMPORTE',
+    ID: 'ID'
+  };
+
+  export type At2campanaMScalarFieldEnum = (typeof At2campanaMScalarFieldEnum)[keyof typeof At2campanaMScalarFieldEnum]
+
+
+  export const AtcampanaMScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    ALTA: 'ALTA',
+    VIGENCIA: 'VIGENCIA',
+    CALLE: 'CALLE',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    LOCALIDAD: 'LOCALIDAD',
+    GRUPO: 'GRUPO',
+    ZONA: 'ZONA',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    EDAD: 'EDAD',
+    MES: 'MES',
+    ANO: 'ANO',
+    IMPORTE: 'IMPORTE',
+    ID: 'ID'
+  };
+
+  export type AtcampanaMScalarFieldEnum = (typeof AtcampanaMScalarFieldEnum)[keyof typeof AtcampanaMScalarFieldEnum]
+
+
+  export const BlancampanaMScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    ALTA: 'ALTA',
+    VIGENCIA: 'VIGENCIA',
+    CALLE: 'CALLE',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    LOCALIDAD: 'LOCALIDAD',
+    GRUPO: 'GRUPO',
+    ZONA: 'ZONA',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    EDAD: 'EDAD',
+    MES: 'MES',
+    ANO: 'ANO',
+    IMPORTE: 'IMPORTE',
+    ID: 'ID'
+  };
+
+  export type BlancampanaMScalarFieldEnum = (typeof BlancampanaMScalarFieldEnum)[keyof typeof BlancampanaMScalarFieldEnum]
+
+
+  export const ReccampanaMScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    ALTA: 'ALTA',
+    VIGENCIA: 'VIGENCIA',
+    CALLE: 'CALLE',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    LOCALIDAD: 'LOCALIDAD',
+    GRUPO: 'GRUPO',
+    ZONA: 'ZONA',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    EDAD: 'EDAD',
+    MES: 'MES',
+    ANO: 'ANO',
+    IMPORTE: 'IMPORTE',
+    ID: 'ID'
+  };
+
+  export type ReccampanaMScalarFieldEnum = (typeof ReccampanaMScalarFieldEnum)[keyof typeof ReccampanaMScalarFieldEnum]
+
+
+  export const ReincampanaMScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    ALTA: 'ALTA',
+    VIGENCIA: 'VIGENCIA',
+    CALLE: 'CALLE',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    LOCALIDAD: 'LOCALIDAD',
+    GRUPO: 'GRUPO',
+    ZONA: 'ZONA',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    EDAD: 'EDAD',
+    MES: 'MES',
+    ANO: 'ANO',
+    IMPORTE: 'IMPORTE',
+    ID: 'ID'
+  };
+
+  export type ReincampanaMScalarFieldEnum = (typeof ReincampanaMScalarFieldEnum)[keyof typeof ReincampanaMScalarFieldEnum]
+
+
+  export const AtcampanaSMScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    ALTA: 'ALTA',
+    VIGENCIA: 'VIGENCIA',
+    CALLE: 'CALLE',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    LOCALIDAD: 'LOCALIDAD',
+    GRUPO: 'GRUPO',
+    ZONA: 'ZONA',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    EDAD: 'EDAD',
+    MES: 'MES',
+    ANO: 'ANO',
+    IMPORTE: 'IMPORTE',
+    ID: 'ID'
+  };
+
+  export type AtcampanaSMScalarFieldEnum = (typeof AtcampanaSMScalarFieldEnum)[keyof typeof AtcampanaSMScalarFieldEnum]
+
+
+  export const ReccampanaSMScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    ALTA: 'ALTA',
+    VIGENCIA: 'VIGENCIA',
+    CALLE: 'CALLE',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    LOCALIDAD: 'LOCALIDAD',
+    GRUPO: 'GRUPO',
+    ZONA: 'ZONA',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    EDAD: 'EDAD',
+    MES: 'MES',
+    ANO: 'ANO',
+    IMPORTE: 'IMPORTE',
+    ID: 'ID'
+  };
+
+  export type ReccampanaSMScalarFieldEnum = (typeof ReccampanaSMScalarFieldEnum)[keyof typeof ReccampanaSMScalarFieldEnum]
+
+
+  export const TempcampanaScalarFieldEnum: {
+    SUCURSAL: 'SUCURSAL',
+    CONTRATO: 'CONTRATO',
+    NRO_DOC: 'NRO_DOC',
+    APELLIDOS: 'APELLIDOS',
+    NOMBRES: 'NOMBRES',
+    ALTA: 'ALTA',
+    VIGENCIA: 'VIGENCIA',
+    CALLE: 'CALLE',
+    NRO_CALLE: 'NRO_CALLE',
+    BARRIO: 'BARRIO',
+    LOCALIDAD: 'LOCALIDAD',
+    GRUPO: 'GRUPO',
+    ZONA: 'ZONA',
+    TELEFONO: 'TELEFONO',
+    MOVIL: 'MOVIL',
+    EDAD: 'EDAD',
+    MES: 'MES',
+    ANO: 'ANO',
+    IMPORTE: 'IMPORTE',
+    ID: 'ID'
+  };
+
+  export type TempcampanaScalarFieldEnum = (typeof TempcampanaScalarFieldEnum)[keyof typeof TempcampanaScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -14420,14 +19322,12 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const TransactionIsolationLevel: {
-    ReadUncommitted: 'ReadUncommitted',
-    ReadCommitted: 'ReadCommitted',
-    RepeatableRead: 'RepeatableRead',
-    Serializable: 'Serializable'
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
   };
 
-  export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -14436,9 +19336,9 @@ export namespace Prisma {
 
 
   export type at2campanaWhereInput = {
-    AND?: Enumerable<at2campanaWhereInput>
-    OR?: Enumerable<at2campanaWhereInput>
-    NOT?: Enumerable<at2campanaWhereInput>
+    AND?: at2campanaWhereInput | at2campanaWhereInput[]
+    OR?: at2campanaWhereInput[]
+    NOT?: at2campanaWhereInput | at2campanaWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -14462,25 +19362,25 @@ export namespace Prisma {
   }
 
   export type at2campanaOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -14489,25 +19389,25 @@ export namespace Prisma {
   }
 
   export type at2campanaOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: at2campanaCountOrderByAggregateInput
     _avg?: at2campanaAvgOrderByAggregateInput
@@ -14517,9 +19417,9 @@ export namespace Prisma {
   }
 
   export type at2campanaScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<at2campanaScalarWhereWithAggregatesInput>
-    OR?: Enumerable<at2campanaScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<at2campanaScalarWhereWithAggregatesInput>
+    AND?: at2campanaScalarWhereWithAggregatesInput | at2campanaScalarWhereWithAggregatesInput[]
+    OR?: at2campanaScalarWhereWithAggregatesInput[]
+    NOT?: at2campanaScalarWhereWithAggregatesInput | at2campanaScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -14543,9 +19443,9 @@ export namespace Prisma {
   }
 
   export type atcampanaWhereInput = {
-    AND?: Enumerable<atcampanaWhereInput>
-    OR?: Enumerable<atcampanaWhereInput>
-    NOT?: Enumerable<atcampanaWhereInput>
+    AND?: atcampanaWhereInput | atcampanaWhereInput[]
+    OR?: atcampanaWhereInput[]
+    NOT?: atcampanaWhereInput | atcampanaWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -14570,26 +19470,26 @@ export namespace Prisma {
   }
 
   export type atcampanaOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    MAIL?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    MAIL?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -14598,26 +19498,26 @@ export namespace Prisma {
   }
 
   export type atcampanaOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    MAIL?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    MAIL?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: atcampanaCountOrderByAggregateInput
     _avg?: atcampanaAvgOrderByAggregateInput
@@ -14627,9 +19527,9 @@ export namespace Prisma {
   }
 
   export type atcampanaScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<atcampanaScalarWhereWithAggregatesInput>
-    OR?: Enumerable<atcampanaScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<atcampanaScalarWhereWithAggregatesInput>
+    AND?: atcampanaScalarWhereWithAggregatesInput | atcampanaScalarWhereWithAggregatesInput[]
+    OR?: atcampanaScalarWhereWithAggregatesInput[]
+    NOT?: atcampanaScalarWhereWithAggregatesInput | atcampanaScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -14654,9 +19554,9 @@ export namespace Prisma {
   }
 
   export type blancampanaWhereInput = {
-    AND?: Enumerable<blancampanaWhereInput>
-    OR?: Enumerable<blancampanaWhereInput>
-    NOT?: Enumerable<blancampanaWhereInput>
+    AND?: blancampanaWhereInput | blancampanaWhereInput[]
+    OR?: blancampanaWhereInput[]
+    NOT?: blancampanaWhereInput | blancampanaWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -14680,25 +19580,25 @@ export namespace Prisma {
   }
 
   export type blancampanaOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -14707,25 +19607,25 @@ export namespace Prisma {
   }
 
   export type blancampanaOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: blancampanaCountOrderByAggregateInput
     _avg?: blancampanaAvgOrderByAggregateInput
@@ -14735,9 +19635,9 @@ export namespace Prisma {
   }
 
   export type blancampanaScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<blancampanaScalarWhereWithAggregatesInput>
-    OR?: Enumerable<blancampanaScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<blancampanaScalarWhereWithAggregatesInput>
+    AND?: blancampanaScalarWhereWithAggregatesInput | blancampanaScalarWhereWithAggregatesInput[]
+    OR?: blancampanaScalarWhereWithAggregatesInput[]
+    NOT?: blancampanaScalarWhereWithAggregatesInput | blancampanaScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -14761,9 +19661,9 @@ export namespace Prisma {
   }
 
   export type reccampanaWhereInput = {
-    AND?: Enumerable<reccampanaWhereInput>
-    OR?: Enumerable<reccampanaWhereInput>
-    NOT?: Enumerable<reccampanaWhereInput>
+    AND?: reccampanaWhereInput | reccampanaWhereInput[]
+    OR?: reccampanaWhereInput[]
+    NOT?: reccampanaWhereInput | reccampanaWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -14787,25 +19687,25 @@ export namespace Prisma {
   }
 
   export type reccampanaOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -14814,25 +19714,25 @@ export namespace Prisma {
   }
 
   export type reccampanaOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: reccampanaCountOrderByAggregateInput
     _avg?: reccampanaAvgOrderByAggregateInput
@@ -14842,9 +19742,9 @@ export namespace Prisma {
   }
 
   export type reccampanaScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<reccampanaScalarWhereWithAggregatesInput>
-    OR?: Enumerable<reccampanaScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<reccampanaScalarWhereWithAggregatesInput>
+    AND?: reccampanaScalarWhereWithAggregatesInput | reccampanaScalarWhereWithAggregatesInput[]
+    OR?: reccampanaScalarWhereWithAggregatesInput[]
+    NOT?: reccampanaScalarWhereWithAggregatesInput | reccampanaScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -14868,9 +19768,9 @@ export namespace Prisma {
   }
 
   export type reincampanaWhereInput = {
-    AND?: Enumerable<reincampanaWhereInput>
-    OR?: Enumerable<reincampanaWhereInput>
-    NOT?: Enumerable<reincampanaWhereInput>
+    AND?: reincampanaWhereInput | reincampanaWhereInput[]
+    OR?: reincampanaWhereInput[]
+    NOT?: reincampanaWhereInput | reincampanaWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -14894,25 +19794,25 @@ export namespace Prisma {
   }
 
   export type reincampanaOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -14921,25 +19821,25 @@ export namespace Prisma {
   }
 
   export type reincampanaOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: reincampanaCountOrderByAggregateInput
     _avg?: reincampanaAvgOrderByAggregateInput
@@ -14949,9 +19849,9 @@ export namespace Prisma {
   }
 
   export type reincampanaScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<reincampanaScalarWhereWithAggregatesInput>
-    OR?: Enumerable<reincampanaScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<reincampanaScalarWhereWithAggregatesInput>
+    AND?: reincampanaScalarWhereWithAggregatesInput | reincampanaScalarWhereWithAggregatesInput[]
+    OR?: reincampanaScalarWhereWithAggregatesInput[]
+    NOT?: reincampanaScalarWhereWithAggregatesInput | reincampanaScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -14975,9 +19875,9 @@ export namespace Prisma {
   }
 
   export type auxcampanaWhereInput = {
-    AND?: Enumerable<auxcampanaWhereInput>
-    OR?: Enumerable<auxcampanaWhereInput>
-    NOT?: Enumerable<auxcampanaWhereInput>
+    AND?: auxcampanaWhereInput | auxcampanaWhereInput[]
+    OR?: auxcampanaWhereInput[]
+    NOT?: auxcampanaWhereInput | auxcampanaWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -15001,25 +19901,25 @@ export namespace Prisma {
   }
 
   export type auxcampanaOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -15028,25 +19928,25 @@ export namespace Prisma {
   }
 
   export type auxcampanaOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: auxcampanaCountOrderByAggregateInput
     _avg?: auxcampanaAvgOrderByAggregateInput
@@ -15056,9 +19956,9 @@ export namespace Prisma {
   }
 
   export type auxcampanaScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<auxcampanaScalarWhereWithAggregatesInput>
-    OR?: Enumerable<auxcampanaScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<auxcampanaScalarWhereWithAggregatesInput>
+    AND?: auxcampanaScalarWhereWithAggregatesInput | auxcampanaScalarWhereWithAggregatesInput[]
+    OR?: auxcampanaScalarWhereWithAggregatesInput[]
+    NOT?: auxcampanaScalarWhereWithAggregatesInput | auxcampanaScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -15082,9 +19982,9 @@ export namespace Prisma {
   }
 
   export type policampanaWhereInput = {
-    AND?: Enumerable<policampanaWhereInput>
-    OR?: Enumerable<policampanaWhereInput>
-    NOT?: Enumerable<policampanaWhereInput>
+    AND?: policampanaWhereInput | policampanaWhereInput[]
+    OR?: policampanaWhereInput[]
+    NOT?: policampanaWhereInput | policampanaWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -15108,25 +20008,25 @@ export namespace Prisma {
   }
 
   export type policampanaOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -15135,25 +20035,25 @@ export namespace Prisma {
   }
 
   export type policampanaOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: policampanaCountOrderByAggregateInput
     _avg?: policampanaAvgOrderByAggregateInput
@@ -15163,9 +20063,9 @@ export namespace Prisma {
   }
 
   export type policampanaScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<policampanaScalarWhereWithAggregatesInput>
-    OR?: Enumerable<policampanaScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<policampanaScalarWhereWithAggregatesInput>
+    AND?: policampanaScalarWhereWithAggregatesInput | policampanaScalarWhereWithAggregatesInput[]
+    OR?: policampanaScalarWhereWithAggregatesInput[]
+    NOT?: policampanaScalarWhereWithAggregatesInput | policampanaScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -15189,9 +20089,9 @@ export namespace Prisma {
   }
 
   export type at2campanaMWhereInput = {
-    AND?: Enumerable<at2campanaMWhereInput>
-    OR?: Enumerable<at2campanaMWhereInput>
-    NOT?: Enumerable<at2campanaMWhereInput>
+    AND?: at2campanaMWhereInput | at2campanaMWhereInput[]
+    OR?: at2campanaMWhereInput[]
+    NOT?: at2campanaMWhereInput | at2campanaMWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -15215,25 +20115,25 @@ export namespace Prisma {
   }
 
   export type at2campanaMOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -15242,25 +20142,25 @@ export namespace Prisma {
   }
 
   export type at2campanaMOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: at2campanaMCountOrderByAggregateInput
     _avg?: at2campanaMAvgOrderByAggregateInput
@@ -15270,9 +20170,9 @@ export namespace Prisma {
   }
 
   export type at2campanaMScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<at2campanaMScalarWhereWithAggregatesInput>
-    OR?: Enumerable<at2campanaMScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<at2campanaMScalarWhereWithAggregatesInput>
+    AND?: at2campanaMScalarWhereWithAggregatesInput | at2campanaMScalarWhereWithAggregatesInput[]
+    OR?: at2campanaMScalarWhereWithAggregatesInput[]
+    NOT?: at2campanaMScalarWhereWithAggregatesInput | at2campanaMScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -15296,9 +20196,9 @@ export namespace Prisma {
   }
 
   export type atcampanaMWhereInput = {
-    AND?: Enumerable<atcampanaMWhereInput>
-    OR?: Enumerable<atcampanaMWhereInput>
-    NOT?: Enumerable<atcampanaMWhereInput>
+    AND?: atcampanaMWhereInput | atcampanaMWhereInput[]
+    OR?: atcampanaMWhereInput[]
+    NOT?: atcampanaMWhereInput | atcampanaMWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -15322,25 +20222,25 @@ export namespace Prisma {
   }
 
   export type atcampanaMOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -15349,25 +20249,25 @@ export namespace Prisma {
   }
 
   export type atcampanaMOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: atcampanaMCountOrderByAggregateInput
     _avg?: atcampanaMAvgOrderByAggregateInput
@@ -15377,9 +20277,9 @@ export namespace Prisma {
   }
 
   export type atcampanaMScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<atcampanaMScalarWhereWithAggregatesInput>
-    OR?: Enumerable<atcampanaMScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<atcampanaMScalarWhereWithAggregatesInput>
+    AND?: atcampanaMScalarWhereWithAggregatesInput | atcampanaMScalarWhereWithAggregatesInput[]
+    OR?: atcampanaMScalarWhereWithAggregatesInput[]
+    NOT?: atcampanaMScalarWhereWithAggregatesInput | atcampanaMScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -15403,9 +20303,9 @@ export namespace Prisma {
   }
 
   export type blancampanaMWhereInput = {
-    AND?: Enumerable<blancampanaMWhereInput>
-    OR?: Enumerable<blancampanaMWhereInput>
-    NOT?: Enumerable<blancampanaMWhereInput>
+    AND?: blancampanaMWhereInput | blancampanaMWhereInput[]
+    OR?: blancampanaMWhereInput[]
+    NOT?: blancampanaMWhereInput | blancampanaMWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -15429,25 +20329,25 @@ export namespace Prisma {
   }
 
   export type blancampanaMOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -15456,25 +20356,25 @@ export namespace Prisma {
   }
 
   export type blancampanaMOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: blancampanaMCountOrderByAggregateInput
     _avg?: blancampanaMAvgOrderByAggregateInput
@@ -15484,9 +20384,9 @@ export namespace Prisma {
   }
 
   export type blancampanaMScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<blancampanaMScalarWhereWithAggregatesInput>
-    OR?: Enumerable<blancampanaMScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<blancampanaMScalarWhereWithAggregatesInput>
+    AND?: blancampanaMScalarWhereWithAggregatesInput | blancampanaMScalarWhereWithAggregatesInput[]
+    OR?: blancampanaMScalarWhereWithAggregatesInput[]
+    NOT?: blancampanaMScalarWhereWithAggregatesInput | blancampanaMScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -15510,9 +20410,9 @@ export namespace Prisma {
   }
 
   export type reccampanaMWhereInput = {
-    AND?: Enumerable<reccampanaMWhereInput>
-    OR?: Enumerable<reccampanaMWhereInput>
-    NOT?: Enumerable<reccampanaMWhereInput>
+    AND?: reccampanaMWhereInput | reccampanaMWhereInput[]
+    OR?: reccampanaMWhereInput[]
+    NOT?: reccampanaMWhereInput | reccampanaMWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -15536,25 +20436,25 @@ export namespace Prisma {
   }
 
   export type reccampanaMOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -15563,25 +20463,25 @@ export namespace Prisma {
   }
 
   export type reccampanaMOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: reccampanaMCountOrderByAggregateInput
     _avg?: reccampanaMAvgOrderByAggregateInput
@@ -15591,9 +20491,9 @@ export namespace Prisma {
   }
 
   export type reccampanaMScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<reccampanaMScalarWhereWithAggregatesInput>
-    OR?: Enumerable<reccampanaMScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<reccampanaMScalarWhereWithAggregatesInput>
+    AND?: reccampanaMScalarWhereWithAggregatesInput | reccampanaMScalarWhereWithAggregatesInput[]
+    OR?: reccampanaMScalarWhereWithAggregatesInput[]
+    NOT?: reccampanaMScalarWhereWithAggregatesInput | reccampanaMScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -15617,9 +20517,9 @@ export namespace Prisma {
   }
 
   export type reincampanaMWhereInput = {
-    AND?: Enumerable<reincampanaMWhereInput>
-    OR?: Enumerable<reincampanaMWhereInput>
-    NOT?: Enumerable<reincampanaMWhereInput>
+    AND?: reincampanaMWhereInput | reincampanaMWhereInput[]
+    OR?: reincampanaMWhereInput[]
+    NOT?: reincampanaMWhereInput | reincampanaMWhereInput[]
     SUCURSAL?: StringNullableFilter | string | null
     CONTRATO?: IntFilter | number
     NRO_DOC?: IntNullableFilter | number | null
@@ -15643,25 +20543,25 @@ export namespace Prisma {
   }
 
   export type reincampanaMOrderByWithRelationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
   }
 
@@ -15670,25 +20570,25 @@ export namespace Prisma {
   }
 
   export type reincampanaMOrderByWithAggregationInput = {
-    SUCURSAL?: SortOrder
+    SUCURSAL?: SortOrderInput | SortOrder
     CONTRATO?: SortOrder
-    NRO_DOC?: SortOrder
-    APELLIDOS?: SortOrder
-    NOMBRES?: SortOrder
-    ALTA?: SortOrder
-    VIGENCIA?: SortOrder
-    CALLE?: SortOrder
-    NRO_CALLE?: SortOrder
-    BARRIO?: SortOrder
-    LOCALIDAD?: SortOrder
-    GRUPO?: SortOrder
-    ZONA?: SortOrder
-    TELEFONO?: SortOrder
-    MOVIL?: SortOrder
-    EDAD?: SortOrder
-    MES?: SortOrder
-    ANO?: SortOrder
-    IMPORTE?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
     ID?: SortOrder
     _count?: reincampanaMCountOrderByAggregateInput
     _avg?: reincampanaMAvgOrderByAggregateInput
@@ -15698,9 +20598,330 @@ export namespace Prisma {
   }
 
   export type reincampanaMScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<reincampanaMScalarWhereWithAggregatesInput>
-    OR?: Enumerable<reincampanaMScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<reincampanaMScalarWhereWithAggregatesInput>
+    AND?: reincampanaMScalarWhereWithAggregatesInput | reincampanaMScalarWhereWithAggregatesInput[]
+    OR?: reincampanaMScalarWhereWithAggregatesInput[]
+    NOT?: reincampanaMScalarWhereWithAggregatesInput | reincampanaMScalarWhereWithAggregatesInput[]
+    SUCURSAL?: StringNullableWithAggregatesFilter | string | null
+    CONTRATO?: IntWithAggregatesFilter | number
+    NRO_DOC?: IntNullableWithAggregatesFilter | number | null
+    APELLIDOS?: StringNullableWithAggregatesFilter | string | null
+    NOMBRES?: StringNullableWithAggregatesFilter | string | null
+    ALTA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    CALLE?: StringNullableWithAggregatesFilter | string | null
+    NRO_CALLE?: IntNullableWithAggregatesFilter | number | null
+    BARRIO?: StringNullableWithAggregatesFilter | string | null
+    LOCALIDAD?: StringNullableWithAggregatesFilter | string | null
+    GRUPO?: IntNullableWithAggregatesFilter | number | null
+    ZONA?: IntNullableWithAggregatesFilter | number | null
+    TELEFONO?: StringNullableWithAggregatesFilter | string | null
+    MOVIL?: StringNullableWithAggregatesFilter | string | null
+    EDAD?: IntNullableWithAggregatesFilter | number | null
+    MES?: IntNullableWithAggregatesFilter | number | null
+    ANO?: IntNullableWithAggregatesFilter | number | null
+    IMPORTE?: FloatNullableWithAggregatesFilter | number | null
+    ID?: IntWithAggregatesFilter | number
+  }
+
+  export type atcampanaSMWhereInput = {
+    AND?: atcampanaSMWhereInput | atcampanaSMWhereInput[]
+    OR?: atcampanaSMWhereInput[]
+    NOT?: atcampanaSMWhereInput | atcampanaSMWhereInput[]
+    SUCURSAL?: StringNullableFilter | string | null
+    CONTRATO?: IntFilter | number
+    NRO_DOC?: IntNullableFilter | number | null
+    APELLIDOS?: StringNullableFilter | string | null
+    NOMBRES?: StringNullableFilter | string | null
+    ALTA?: DateTimeNullableFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableFilter | Date | string | null
+    CALLE?: StringNullableFilter | string | null
+    NRO_CALLE?: IntNullableFilter | number | null
+    BARRIO?: StringNullableFilter | string | null
+    LOCALIDAD?: StringNullableFilter | string | null
+    GRUPO?: IntNullableFilter | number | null
+    ZONA?: IntNullableFilter | number | null
+    TELEFONO?: StringNullableFilter | string | null
+    MOVIL?: StringNullableFilter | string | null
+    EDAD?: IntNullableFilter | number | null
+    MES?: IntNullableFilter | number | null
+    ANO?: IntNullableFilter | number | null
+    IMPORTE?: FloatNullableFilter | number | null
+    ID?: IntFilter | number
+  }
+
+  export type atcampanaSMOrderByWithRelationInput = {
+    SUCURSAL?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
+    ID?: SortOrder
+  }
+
+  export type atcampanaSMWhereUniqueInput = {
+    ID?: number
+  }
+
+  export type atcampanaSMOrderByWithAggregationInput = {
+    SUCURSAL?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
+    ID?: SortOrder
+    _count?: atcampanaSMCountOrderByAggregateInput
+    _avg?: atcampanaSMAvgOrderByAggregateInput
+    _max?: atcampanaSMMaxOrderByAggregateInput
+    _min?: atcampanaSMMinOrderByAggregateInput
+    _sum?: atcampanaSMSumOrderByAggregateInput
+  }
+
+  export type atcampanaSMScalarWhereWithAggregatesInput = {
+    AND?: atcampanaSMScalarWhereWithAggregatesInput | atcampanaSMScalarWhereWithAggregatesInput[]
+    OR?: atcampanaSMScalarWhereWithAggregatesInput[]
+    NOT?: atcampanaSMScalarWhereWithAggregatesInput | atcampanaSMScalarWhereWithAggregatesInput[]
+    SUCURSAL?: StringNullableWithAggregatesFilter | string | null
+    CONTRATO?: IntWithAggregatesFilter | number
+    NRO_DOC?: IntNullableWithAggregatesFilter | number | null
+    APELLIDOS?: StringNullableWithAggregatesFilter | string | null
+    NOMBRES?: StringNullableWithAggregatesFilter | string | null
+    ALTA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    CALLE?: StringNullableWithAggregatesFilter | string | null
+    NRO_CALLE?: IntNullableWithAggregatesFilter | number | null
+    BARRIO?: StringNullableWithAggregatesFilter | string | null
+    LOCALIDAD?: StringNullableWithAggregatesFilter | string | null
+    GRUPO?: IntNullableWithAggregatesFilter | number | null
+    ZONA?: IntNullableWithAggregatesFilter | number | null
+    TELEFONO?: StringNullableWithAggregatesFilter | string | null
+    MOVIL?: StringNullableWithAggregatesFilter | string | null
+    EDAD?: IntNullableWithAggregatesFilter | number | null
+    MES?: IntNullableWithAggregatesFilter | number | null
+    ANO?: IntNullableWithAggregatesFilter | number | null
+    IMPORTE?: FloatNullableWithAggregatesFilter | number | null
+    ID?: IntWithAggregatesFilter | number
+  }
+
+  export type reccampanaSMWhereInput = {
+    AND?: reccampanaSMWhereInput | reccampanaSMWhereInput[]
+    OR?: reccampanaSMWhereInput[]
+    NOT?: reccampanaSMWhereInput | reccampanaSMWhereInput[]
+    SUCURSAL?: StringNullableFilter | string | null
+    CONTRATO?: IntFilter | number
+    NRO_DOC?: IntNullableFilter | number | null
+    APELLIDOS?: StringNullableFilter | string | null
+    NOMBRES?: StringNullableFilter | string | null
+    ALTA?: DateTimeNullableFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableFilter | Date | string | null
+    CALLE?: StringNullableFilter | string | null
+    NRO_CALLE?: IntNullableFilter | number | null
+    BARRIO?: StringNullableFilter | string | null
+    LOCALIDAD?: StringNullableFilter | string | null
+    GRUPO?: IntNullableFilter | number | null
+    ZONA?: IntNullableFilter | number | null
+    TELEFONO?: StringNullableFilter | string | null
+    MOVIL?: StringNullableFilter | string | null
+    EDAD?: IntNullableFilter | number | null
+    MES?: IntNullableFilter | number | null
+    ANO?: IntNullableFilter | number | null
+    IMPORTE?: FloatNullableFilter | number | null
+    ID?: IntFilter | number
+  }
+
+  export type reccampanaSMOrderByWithRelationInput = {
+    SUCURSAL?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
+    ID?: SortOrder
+  }
+
+  export type reccampanaSMWhereUniqueInput = {
+    ID?: number
+  }
+
+  export type reccampanaSMOrderByWithAggregationInput = {
+    SUCURSAL?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
+    ID?: SortOrder
+    _count?: reccampanaSMCountOrderByAggregateInput
+    _avg?: reccampanaSMAvgOrderByAggregateInput
+    _max?: reccampanaSMMaxOrderByAggregateInput
+    _min?: reccampanaSMMinOrderByAggregateInput
+    _sum?: reccampanaSMSumOrderByAggregateInput
+  }
+
+  export type reccampanaSMScalarWhereWithAggregatesInput = {
+    AND?: reccampanaSMScalarWhereWithAggregatesInput | reccampanaSMScalarWhereWithAggregatesInput[]
+    OR?: reccampanaSMScalarWhereWithAggregatesInput[]
+    NOT?: reccampanaSMScalarWhereWithAggregatesInput | reccampanaSMScalarWhereWithAggregatesInput[]
+    SUCURSAL?: StringNullableWithAggregatesFilter | string | null
+    CONTRATO?: IntWithAggregatesFilter | number
+    NRO_DOC?: IntNullableWithAggregatesFilter | number | null
+    APELLIDOS?: StringNullableWithAggregatesFilter | string | null
+    NOMBRES?: StringNullableWithAggregatesFilter | string | null
+    ALTA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    CALLE?: StringNullableWithAggregatesFilter | string | null
+    NRO_CALLE?: IntNullableWithAggregatesFilter | number | null
+    BARRIO?: StringNullableWithAggregatesFilter | string | null
+    LOCALIDAD?: StringNullableWithAggregatesFilter | string | null
+    GRUPO?: IntNullableWithAggregatesFilter | number | null
+    ZONA?: IntNullableWithAggregatesFilter | number | null
+    TELEFONO?: StringNullableWithAggregatesFilter | string | null
+    MOVIL?: StringNullableWithAggregatesFilter | string | null
+    EDAD?: IntNullableWithAggregatesFilter | number | null
+    MES?: IntNullableWithAggregatesFilter | number | null
+    ANO?: IntNullableWithAggregatesFilter | number | null
+    IMPORTE?: FloatNullableWithAggregatesFilter | number | null
+    ID?: IntWithAggregatesFilter | number
+  }
+
+  export type tempcampanaWhereInput = {
+    AND?: tempcampanaWhereInput | tempcampanaWhereInput[]
+    OR?: tempcampanaWhereInput[]
+    NOT?: tempcampanaWhereInput | tempcampanaWhereInput[]
+    SUCURSAL?: StringNullableFilter | string | null
+    CONTRATO?: IntFilter | number
+    NRO_DOC?: IntNullableFilter | number | null
+    APELLIDOS?: StringNullableFilter | string | null
+    NOMBRES?: StringNullableFilter | string | null
+    ALTA?: DateTimeNullableFilter | Date | string | null
+    VIGENCIA?: DateTimeNullableFilter | Date | string | null
+    CALLE?: StringNullableFilter | string | null
+    NRO_CALLE?: IntNullableFilter | number | null
+    BARRIO?: StringNullableFilter | string | null
+    LOCALIDAD?: StringNullableFilter | string | null
+    GRUPO?: IntNullableFilter | number | null
+    ZONA?: IntNullableFilter | number | null
+    TELEFONO?: StringNullableFilter | string | null
+    MOVIL?: StringNullableFilter | string | null
+    EDAD?: IntNullableFilter | number | null
+    MES?: IntNullableFilter | number | null
+    ANO?: IntNullableFilter | number | null
+    IMPORTE?: FloatNullableFilter | number | null
+    ID?: IntFilter | number
+  }
+
+  export type tempcampanaOrderByWithRelationInput = {
+    SUCURSAL?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
+    ID?: SortOrder
+  }
+
+  export type tempcampanaWhereUniqueInput = {
+    ID?: number
+  }
+
+  export type tempcampanaOrderByWithAggregationInput = {
+    SUCURSAL?: SortOrderInput | SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrderInput | SortOrder
+    APELLIDOS?: SortOrderInput | SortOrder
+    NOMBRES?: SortOrderInput | SortOrder
+    ALTA?: SortOrderInput | SortOrder
+    VIGENCIA?: SortOrderInput | SortOrder
+    CALLE?: SortOrderInput | SortOrder
+    NRO_CALLE?: SortOrderInput | SortOrder
+    BARRIO?: SortOrderInput | SortOrder
+    LOCALIDAD?: SortOrderInput | SortOrder
+    GRUPO?: SortOrderInput | SortOrder
+    ZONA?: SortOrderInput | SortOrder
+    TELEFONO?: SortOrderInput | SortOrder
+    MOVIL?: SortOrderInput | SortOrder
+    EDAD?: SortOrderInput | SortOrder
+    MES?: SortOrderInput | SortOrder
+    ANO?: SortOrderInput | SortOrder
+    IMPORTE?: SortOrderInput | SortOrder
+    ID?: SortOrder
+    _count?: tempcampanaCountOrderByAggregateInput
+    _avg?: tempcampanaAvgOrderByAggregateInput
+    _max?: tempcampanaMaxOrderByAggregateInput
+    _min?: tempcampanaMinOrderByAggregateInput
+    _sum?: tempcampanaSumOrderByAggregateInput
+  }
+
+  export type tempcampanaScalarWhereWithAggregatesInput = {
+    AND?: tempcampanaScalarWhereWithAggregatesInput | tempcampanaScalarWhereWithAggregatesInput[]
+    OR?: tempcampanaScalarWhereWithAggregatesInput[]
+    NOT?: tempcampanaScalarWhereWithAggregatesInput | tempcampanaScalarWhereWithAggregatesInput[]
     SUCURSAL?: StringNullableWithAggregatesFilter | string | null
     CONTRATO?: IntWithAggregatesFilter | number
     NRO_DOC?: IntNullableWithAggregatesFilter | number | null
@@ -17626,10 +22847,484 @@ export namespace Prisma {
     ID?: IntFieldUpdateOperationsInput | number
   }
 
+  export type atcampanaSMCreateInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    CALLE?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    LOCALIDAD?: string | null
+    GRUPO?: number | null
+    ZONA?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    EDAD?: number | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+  }
+
+  export type atcampanaSMUncheckedCreateInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    CALLE?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    LOCALIDAD?: string | null
+    GRUPO?: number | null
+    ZONA?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    EDAD?: number | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+    ID?: number
+  }
+
+  export type atcampanaSMUpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type atcampanaSMUncheckedUpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type atcampanaSMCreateManyInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    CALLE?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    LOCALIDAD?: string | null
+    GRUPO?: number | null
+    ZONA?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    EDAD?: number | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+    ID?: number
+  }
+
+  export type atcampanaSMUpdateManyMutationInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type atcampanaSMUncheckedUpdateManyInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type reccampanaSMCreateInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    CALLE?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    LOCALIDAD?: string | null
+    GRUPO?: number | null
+    ZONA?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    EDAD?: number | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+  }
+
+  export type reccampanaSMUncheckedCreateInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    CALLE?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    LOCALIDAD?: string | null
+    GRUPO?: number | null
+    ZONA?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    EDAD?: number | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+    ID?: number
+  }
+
+  export type reccampanaSMUpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type reccampanaSMUncheckedUpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type reccampanaSMCreateManyInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    CALLE?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    LOCALIDAD?: string | null
+    GRUPO?: number | null
+    ZONA?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    EDAD?: number | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+    ID?: number
+  }
+
+  export type reccampanaSMUpdateManyMutationInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type reccampanaSMUncheckedUpdateManyInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type tempcampanaCreateInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    CALLE?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    LOCALIDAD?: string | null
+    GRUPO?: number | null
+    ZONA?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    EDAD?: number | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+  }
+
+  export type tempcampanaUncheckedCreateInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    CALLE?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    LOCALIDAD?: string | null
+    GRUPO?: number | null
+    ZONA?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    EDAD?: number | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+    ID?: number
+  }
+
+  export type tempcampanaUpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type tempcampanaUncheckedUpdateInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type tempcampanaCreateManyInput = {
+    SUCURSAL?: string | null
+    CONTRATO: number
+    NRO_DOC?: number | null
+    APELLIDOS?: string | null
+    NOMBRES?: string | null
+    ALTA?: Date | string | null
+    VIGENCIA?: Date | string | null
+    CALLE?: string | null
+    NRO_CALLE?: number | null
+    BARRIO?: string | null
+    LOCALIDAD?: string | null
+    GRUPO?: number | null
+    ZONA?: number | null
+    TELEFONO?: string | null
+    MOVIL?: string | null
+    EDAD?: number | null
+    MES?: number | null
+    ANO?: number | null
+    IMPORTE?: number | null
+    ID?: number
+  }
+
+  export type tempcampanaUpdateManyMutationInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type tempcampanaUncheckedUpdateManyInput = {
+    SUCURSAL?: NullableStringFieldUpdateOperationsInput | string | null
+    CONTRATO?: IntFieldUpdateOperationsInput | number
+    NRO_DOC?: NullableIntFieldUpdateOperationsInput | number | null
+    APELLIDOS?: NullableStringFieldUpdateOperationsInput | string | null
+    NOMBRES?: NullableStringFieldUpdateOperationsInput | string | null
+    ALTA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    VIGENCIA?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    CALLE?: NullableStringFieldUpdateOperationsInput | string | null
+    NRO_CALLE?: NullableIntFieldUpdateOperationsInput | number | null
+    BARRIO?: NullableStringFieldUpdateOperationsInput | string | null
+    LOCALIDAD?: NullableStringFieldUpdateOperationsInput | string | null
+    GRUPO?: NullableIntFieldUpdateOperationsInput | number | null
+    ZONA?: NullableIntFieldUpdateOperationsInput | number | null
+    TELEFONO?: NullableStringFieldUpdateOperationsInput | string | null
+    MOVIL?: NullableStringFieldUpdateOperationsInput | string | null
+    EDAD?: NullableIntFieldUpdateOperationsInput | number | null
+    MES?: NullableIntFieldUpdateOperationsInput | number | null
+    ANO?: NullableIntFieldUpdateOperationsInput | number | null
+    IMPORTE?: NullableFloatFieldUpdateOperationsInput | number | null
+    ID?: IntFieldUpdateOperationsInput | number
+  }
+
   export type StringNullableFilter = {
     equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string
     lte?: string
     gt?: string
@@ -17642,8 +23337,8 @@ export namespace Prisma {
 
   export type IntFilter = {
     equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
+    in?: number[]
+    notIn?: number[]
     lt?: number
     lte?: number
     gt?: number
@@ -17653,8 +23348,8 @@ export namespace Prisma {
 
   export type IntNullableFilter = {
     equals?: number | null
-    in?: Enumerable<number> | null
-    notIn?: Enumerable<number> | null
+    in?: number[] | null
+    notIn?: number[] | null
     lt?: number
     lte?: number
     gt?: number
@@ -17664,8 +23359,8 @@ export namespace Prisma {
 
   export type DateTimeNullableFilter = {
     equals?: Date | string | null
-    in?: Enumerable<Date> | Enumerable<string> | null
-    notIn?: Enumerable<Date> | Enumerable<string> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
     lt?: Date | string
     lte?: Date | string
     gt?: Date | string
@@ -17675,13 +23370,18 @@ export namespace Prisma {
 
   export type FloatNullableFilter = {
     equals?: number | null
-    in?: Enumerable<number> | null
-    notIn?: Enumerable<number> | null
+    in?: number[] | null
+    notIn?: number[] | null
     lt?: number
     lte?: number
     gt?: number
     gte?: number
     not?: NestedFloatNullableFilter | number | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type at2campanaCountOrderByAggregateInput = {
@@ -17781,8 +23481,8 @@ export namespace Prisma {
 
   export type StringNullableWithAggregatesFilter = {
     equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string
     lte?: string
     gt?: string
@@ -17798,8 +23498,8 @@ export namespace Prisma {
 
   export type IntWithAggregatesFilter = {
     equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
+    in?: number[]
+    notIn?: number[]
     lt?: number
     lte?: number
     gt?: number
@@ -17814,8 +23514,8 @@ export namespace Prisma {
 
   export type IntNullableWithAggregatesFilter = {
     equals?: number | null
-    in?: Enumerable<number> | null
-    notIn?: Enumerable<number> | null
+    in?: number[] | null
+    notIn?: number[] | null
     lt?: number
     lte?: number
     gt?: number
@@ -17830,8 +23530,8 @@ export namespace Prisma {
 
   export type DateTimeNullableWithAggregatesFilter = {
     equals?: Date | string | null
-    in?: Enumerable<Date> | Enumerable<string> | null
-    notIn?: Enumerable<Date> | Enumerable<string> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
     lt?: Date | string
     lte?: Date | string
     gt?: Date | string
@@ -17844,8 +23544,8 @@ export namespace Prisma {
 
   export type FloatNullableWithAggregatesFilter = {
     equals?: number | null
-    in?: Enumerable<number> | null
-    notIn?: Enumerable<number> | null
+    in?: number[] | null
+    notIn?: number[] | null
     lt?: number
     lte?: number
     gt?: number
@@ -18906,6 +24606,291 @@ export namespace Prisma {
     ID?: SortOrder
   }
 
+  export type atcampanaSMCountOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    CALLE?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    LOCALIDAD?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type atcampanaSMAvgOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    NRO_CALLE?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type atcampanaSMMaxOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    CALLE?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    LOCALIDAD?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type atcampanaSMMinOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    CALLE?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    LOCALIDAD?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type atcampanaSMSumOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    NRO_CALLE?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type reccampanaSMCountOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    CALLE?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    LOCALIDAD?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type reccampanaSMAvgOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    NRO_CALLE?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type reccampanaSMMaxOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    CALLE?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    LOCALIDAD?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type reccampanaSMMinOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    CALLE?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    LOCALIDAD?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type reccampanaSMSumOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    NRO_CALLE?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type tempcampanaCountOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    CALLE?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    LOCALIDAD?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type tempcampanaAvgOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    NRO_CALLE?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type tempcampanaMaxOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    CALLE?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    LOCALIDAD?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type tempcampanaMinOrderByAggregateInput = {
+    SUCURSAL?: SortOrder
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    APELLIDOS?: SortOrder
+    NOMBRES?: SortOrder
+    ALTA?: SortOrder
+    VIGENCIA?: SortOrder
+    CALLE?: SortOrder
+    NRO_CALLE?: SortOrder
+    BARRIO?: SortOrder
+    LOCALIDAD?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    TELEFONO?: SortOrder
+    MOVIL?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
+  export type tempcampanaSumOrderByAggregateInput = {
+    CONTRATO?: SortOrder
+    NRO_DOC?: SortOrder
+    NRO_CALLE?: SortOrder
+    GRUPO?: SortOrder
+    ZONA?: SortOrder
+    EDAD?: SortOrder
+    MES?: SortOrder
+    ANO?: SortOrder
+    IMPORTE?: SortOrder
+    ID?: SortOrder
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
@@ -18940,8 +24925,8 @@ export namespace Prisma {
 
   export type NestedStringNullableFilter = {
     equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string
     lte?: string
     gt?: string
@@ -18954,8 +24939,8 @@ export namespace Prisma {
 
   export type NestedIntFilter = {
     equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
+    in?: number[]
+    notIn?: number[]
     lt?: number
     lte?: number
     gt?: number
@@ -18965,8 +24950,8 @@ export namespace Prisma {
 
   export type NestedIntNullableFilter = {
     equals?: number | null
-    in?: Enumerable<number> | null
-    notIn?: Enumerable<number> | null
+    in?: number[] | null
+    notIn?: number[] | null
     lt?: number
     lte?: number
     gt?: number
@@ -18976,8 +24961,8 @@ export namespace Prisma {
 
   export type NestedDateTimeNullableFilter = {
     equals?: Date | string | null
-    in?: Enumerable<Date> | Enumerable<string> | null
-    notIn?: Enumerable<Date> | Enumerable<string> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
     lt?: Date | string
     lte?: Date | string
     gt?: Date | string
@@ -18987,8 +24972,8 @@ export namespace Prisma {
 
   export type NestedFloatNullableFilter = {
     equals?: number | null
-    in?: Enumerable<number> | null
-    notIn?: Enumerable<number> | null
+    in?: number[] | null
+    notIn?: number[] | null
     lt?: number
     lte?: number
     gt?: number
@@ -18998,8 +24983,8 @@ export namespace Prisma {
 
   export type NestedStringNullableWithAggregatesFilter = {
     equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string
     lte?: string
     gt?: string
@@ -19015,8 +25000,8 @@ export namespace Prisma {
 
   export type NestedIntWithAggregatesFilter = {
     equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
+    in?: number[]
+    notIn?: number[]
     lt?: number
     lte?: number
     gt?: number
@@ -19031,8 +25016,8 @@ export namespace Prisma {
 
   export type NestedFloatFilter = {
     equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
+    in?: number[]
+    notIn?: number[]
     lt?: number
     lte?: number
     gt?: number
@@ -19042,8 +25027,8 @@ export namespace Prisma {
 
   export type NestedIntNullableWithAggregatesFilter = {
     equals?: number | null
-    in?: Enumerable<number> | null
-    notIn?: Enumerable<number> | null
+    in?: number[] | null
+    notIn?: number[] | null
     lt?: number
     lte?: number
     gt?: number
@@ -19058,8 +25043,8 @@ export namespace Prisma {
 
   export type NestedDateTimeNullableWithAggregatesFilter = {
     equals?: Date | string | null
-    in?: Enumerable<Date> | Enumerable<string> | null
-    notIn?: Enumerable<Date> | Enumerable<string> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
     lt?: Date | string
     lte?: Date | string
     gt?: Date | string
@@ -19072,8 +25057,8 @@ export namespace Prisma {
 
   export type NestedFloatNullableWithAggregatesFilter = {
     equals?: number | null
-    in?: Enumerable<number> | null
-    notIn?: Enumerable<number> | null
+    in?: number[] | null
+    notIn?: number[] | null
     lt?: number
     lte?: number
     gt?: number
