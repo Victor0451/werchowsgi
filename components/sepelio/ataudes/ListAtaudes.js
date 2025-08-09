@@ -32,50 +32,56 @@ export const ListAtaudes = ({
 }) => {
   let columns = [
     {
-      name: "Cod.",
-      button: true,
-      grow: 0.1,
-      cell: (row, index) => (
-        <>
-          {row.codigo !== null ? (
-            <div>{row.codigo}</div>
-          ) : row.codigo === null ? (
-            <div>Sin Codigo</div>
-          ) : null}
-        </>
-      ),
+      name: "ID Sist.",
+      selector: (row) => `${row.idataud}`,
+      sortable: true,
+      width: "100px",
     },
+    // {
+    //   name: "Cod.",
+    //   button: true,
+    //   grow: 0.1,
+    //   cell: (row, index) => (
+    //     <>
+    //       {row.codigo !== null ? (
+    //         <div>{row.codigo}</div>
+    //       ) : row.codigo === null ? (
+    //         <div>Sin Codigo</div>
+    //       ) : null}
+    //     </>
+    //   ),
+    // },
 
     {
       name: "Ataud",
       selector: (row) => `${row.nombre}`,
       sortable: true,
-      grow: 0.4,
+      width: "300px",
     },
 
     {
       name: "Tipo",
       selector: (row) => `${row.tipo}`,
       sortable: true,
-      grow: 0.1,
+      width: "200px",
     },
     {
       name: "Medidas",
       selector: (row) => `${row.medidas}`,
       sortable: true,
-      grow: 0.1,
+      width: "100px",
     },
     {
       name: "Uso",
       selector: (row) => `${row.uso}`,
       sortable: true,
-      grow: 0.1,
+      width: "100px",
     },
     {
       name: "Stock",
       selector: (row) => `${row.stock}`,
       sortable: true,
-      grow: 0.1,
+      width: "100px",
     },
 
     {

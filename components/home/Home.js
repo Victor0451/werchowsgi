@@ -12,7 +12,7 @@ export const Home = ({
   errores,
   alertas,
   caso,
-  gestion
+  gestion,
 }) => {
   return (
     <Card className="h-full w-full">

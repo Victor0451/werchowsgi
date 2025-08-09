@@ -91,6 +91,8 @@ export default function Index() {
   const buscarCaso = async (f) => {
     guardarAlertas(null);
     guardarErrores(null);
+    guardarCaso([]);
+    guardarGestion([]);
 
     if (f === "HC") {
       if (contratoRef.current.value === "") {
@@ -109,6 +111,8 @@ export default function Index() {
               guardarCaso(res.data);
 
               buscarGestion(res.data[0].idcaso, res.data[0].contrato);
+            } else {
+              guardarAlertas("El caso buscado no se encuentra en campaña");
             }
           })
           .catch((error) => {
