@@ -36,13 +36,23 @@ function CertPDF({ ficha }) {
 
           <div className="mt-4">
             <Typography variant="small" className=" font-bold">
-              A: {ficha.APELLIDOS}, {ficha.NOMBRES}
+              <u>A</u>: {ficha.APELLIDOS}, {ficha.NOMBRES}
             </Typography>
           </div>
 
           <div className="">
             <Typography variant="small" className=" font-bold">
-              <strong>DNI: {ficha.NRO_DOC}</strong>
+              <strong>
+                <u>N° Socio</u>: {ficha.CONTRATO}
+              </strong>
+            </Typography>
+          </div>
+
+          <div className="">
+            <Typography variant="small" className=" font-bold">
+              <strong>
+                <u>DNI</u>: {ficha.NRO_DOC}
+              </strong>
             </Typography>
           </div>
 
