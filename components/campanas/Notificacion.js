@@ -3,9 +3,7 @@ import ReactToPrint from "react-to-print";
 import moment from "moment";
 
 const Notificacion = ({ caso, userData }) => {
-
   let componentRef = React.createRef();
-
 
   if (!userData) return <div>cargando..</div>;
 
@@ -20,6 +18,8 @@ const Notificacion = ({ caso, userData }) => {
       return "Carriso Marisa - 388-4174570";
     } else if (userData === "sjuarez") {
       return "Juarez Silvia - 3888-569842";
+    } else if (userData === "vlongo") {
+      return "Galian Maria - 388-4301465";
     }
   };
 
@@ -75,7 +75,7 @@ const Notificacion = ({ caso, userData }) => {
 
             <p className="text-justify mt-2 p-2">
               Por medio de la presente se le informa que se encuentra con los
-              servicios de seperlios atrasados. Por este motivo lo invitamos a
+              servicios de sepelios atrasados. Por este motivo lo invitamos a
               concurrir a nuestras oficinas, ubicadas en la calle Lavalle 123,
               para regularizar su situación. Si al momento de recibir esta nota
               ud ya abono las cuotas pendientes, rogamos que nos disculpe. Sin
@@ -184,7 +184,6 @@ const Notificacion = ({ caso, userData }) => {
       <br />
       <br />
       <br />
-
     </div>
   );
 };
