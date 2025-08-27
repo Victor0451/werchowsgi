@@ -379,6 +379,25 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
+    } else if (req.query.f && req.query.f === "traer gastos operador") {
+      const gastoSinLiq = await Sep.$queryRawUnsafe(
+        `                
+                SELECT *
+                FROM informe_gastos
+                WHERE operador = '${req.query.operador}'                
+                AND gasto = 'Comision por Venta'
+                AND liquidado = 0
+              
+               `
+      );
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(gastoSinLiq, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     } else if (
       req.query.f &&
       req.query.f === "traer historial tareas operador"
@@ -387,6 +406,28 @@ export default async function handler(req, res) {
         `                
                 SELECT *
                 FROM informe_tareas
+                WHERE operador = '${req.query.operador}'                
+                AND liquidado = 1                
+               
+              
+               `
+      );
+
+      res
+        .status(200)
+        .json(
+          JSON.stringify(tareasSinLiq, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (
+      req.query.f &&
+      req.query.f === "traer historial gastos operador"
+    ) {
+      const tareasSinLiq = await Sep.$queryRawUnsafe(
+        `                
+                SELECT *
+                FROM informe_gastos
                 WHERE operador = '${req.query.operador}'                
                 AND liquidado = 1                
                
@@ -539,6 +580,7 @@ export default async function handler(req, res) {
         data: {
           idinforme: parseInt(req.body.idinforme),
           idservicio: parseInt(req.body.idservicio),
+          operador: req.body.operador,
           gasto: req.body.gasto,
           importe: parseFloat(req.body.importe),
           observacion: req.body.observacion,
@@ -819,6 +861,22 @@ export default async function handler(req, res) {
               fecha_liquidacion = '${req.body.fecha_liquidado}',
               operadorliq = '${req.body.operadorliq}'
           WHERE operador = '${req.body.operador}'
+          AND liquidado = 0
+
+          
+                       `
+      );
+
+      res.status(200).json(liqTarea);
+    } else if (req.body.f && req.body.f === "liquidar comisiones") {
+      const liqTarea = await Sep.$queryRawUnsafe(
+        `                
+          UPDATE informe_gastos 
+          SET liquidado = 1,
+              fecha_liquidado = '${req.body.fecha_liquidado}',
+              operadorliq = '${req.body.operadorliq}'
+          WHERE operador = '${req.body.operador}'
+          AND gasto = 'Comision por Venta'
           AND liquidado = 0
 
           

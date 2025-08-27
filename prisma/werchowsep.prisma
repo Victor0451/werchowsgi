@@ -501,6 +501,7 @@ model servicios {
   gasto_luto            String?   @db.VarChar(255)
   conyugue              String?   @db.VarChar(255)
   serv_domicilio        Boolean?
+  cartera               String?   @db.VarChar(255)
 }
 
 model servicios_historico {
@@ -597,6 +598,7 @@ model informe_gastos {
   idgastos        Int       @id @default(autoincrement())
   idinforme       Int?
   idservicio      Int?
+  operador        String?   @db.VarChar(255)
   gasto           String?   @db.VarChar(255)
   observacion     String?   @db.VarChar(1000)
   importe         Float?    @db.Float
@@ -730,6 +732,63 @@ model CAJA_copy {
   CANT_AFIL Int?
   CAE       String?   @db.VarChar(14)
   VTO_CAE   DateTime? @db.Date
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model caja_sa_copy {
+  codigo      Int?
+  cuenta      String?   @db.VarChar(255)
+  tipo        String?   @db.VarChar(255)
+  serie       Int?
+  factura     Int?
+  importe     Float?    @db.Float
+  comentarios String?   @db.VarChar(255)
+  movim       String?   @db.VarChar(5)
+  fecha       DateTime? @db.Date
+  puesto      Int?
+  operador    Int?
+  cuit        String?   @db.VarChar(255)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model caja_srl_copy {
+  codigo      Int?
+  cuenta      String?   @db.VarChar(255)
+  tipo        String?   @db.VarChar(255)
+  serie       Int?
+  factura     Int?
+  importe     Float?    @db.Float
+  comentarios String?   @db.VarChar(255)
+  movim       String?   @db.VarChar(5)
+  fecha       DateTime? @db.Date
+  puesto      Int?
+  operador    Int?
+  cuit        String?   @db.VarChar(255)
+  sucursal    String?   @db.VarChar(255)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model so {
+  CONTRATO  Int?
+  APE_NOM   String?   @db.VarChar(30)
+  ALTA      DateTime? @db.Date
+  GRUPO     Int?
+  ADHS      Int?
+  PLAN      String?   @db.VarChar(2)
+  SUB_PLAN  String?   @db.VarChar(2)
+  ZONA      Int?
+  CUOTA     Float?
+  EMPRESA   String?   @db.VarChar(1)
+  SUCURSAL  String?   @db.VarChar(1)
+  EDAD_PROM Float?
+  PERMANEN  Float?
+  DEUDA     Int?
 
   @@ignore
 }

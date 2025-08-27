@@ -596,7 +596,8 @@ exports.Prisma.ServiciosScalarFieldEnum = {
   movil: 'movil',
   gasto_luto: 'gasto_luto',
   conyugue: 'conyugue',
-  serv_domicilio: 'serv_domicilio'
+  serv_domicilio: 'serv_domicilio',
+  cartera: 'cartera'
 };
 
 exports.Prisma.Servicios_historicoScalarFieldEnum = {
@@ -693,6 +694,7 @@ exports.Prisma.Informe_gastosScalarFieldEnum = {
   idgastos: 'idgastos',
   idinforme: 'idinforme',
   idservicio: 'idservicio',
+  operador: 'operador',
   gasto: 'gasto',
   observacion: 'observacion',
   importe: 'importe',

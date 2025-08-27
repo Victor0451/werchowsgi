@@ -20,7 +20,9 @@ const FormLiquidacionPersonal = ({
   buscarLiquidacion,
   tareas,
   guardias,
+  gastos,
   tareasH,
+  gastosH,
   guardiasH,
   opSel,
   calcTotal,
@@ -29,7 +31,7 @@ const FormLiquidacionPersonal = ({
   liquidarGuardia,
   alertas,
   usu,
-  buscarHistorial
+  buscarHistorial,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -74,7 +76,7 @@ const FormLiquidacionPersonal = ({
           </div>
         </div>
 
-        {tareas.length > 0 || guardias.length > 0 ? (
+        {tareas.length > 0 || guardias.length > 0 || gastos.length > 0 ? (
           <>
             <hr className="border-2 mt-5 mb-5" />
 
@@ -82,7 +84,9 @@ const FormLiquidacionPersonal = ({
               operador={opSel}
               tareas={tareas}
               guardias={guardias}
+              gastos={gastos}
               tareasH={tareasH}
+              gastosH={gastosH}
               guardiasH={guardiasH}
               calcTotal={calcTotal}
               pagarLiquidacion={pagarLiquidacion}
@@ -92,7 +96,7 @@ const FormLiquidacionPersonal = ({
               buscarHistorial={buscarHistorial}
             />
           </>
-        ) : tareas.length === 0 && guardias.length === 0 ? (
+        ) : tareas.length === 0 && guardias.length === 0 && gastos.length === 0 ? (
           <>
             {alertas ? (
               <Alert color="orange" icon={<IconSolid />} className="mt-5 mb-5">

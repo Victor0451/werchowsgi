@@ -325,6 +325,24 @@ const FormInformeServicio = ({
               <div className="grid md:grid-cols-3 md:gap-6">
                 <div className="relative w-full mb-6 group">
                   <Select
+                    label="Operador"
+                    animate={{
+                      mount: { y: 0 },
+                      unmount: { y: 25 },
+                    }}
+                    onChange={(value) => {
+                      handleChange("operador", value);
+                    }}
+                  >
+                    {operadores.map((f, index) => (
+                      <Option key={index} value={f.operador}>
+                        {f.operador}
+                      </Option>
+                    ))}
+                  </Select>
+                </div>
+                <div className="relative w-full mb-6 group">
+                  <Select
                     label="Gastos"
                     animate={{
                       mount: { y: 0 },
@@ -344,13 +362,13 @@ const FormInformeServicio = ({
                 <div className="relative w-full mb-6 group">
                   <Input type="number" label="Monto" inputRef={importeRef} />
                 </div>
-                <div className="relative w-full mb-6 group">
-                  <Textarea
-                    rows={5}
-                    label="Observacion"
-                    onChange={(e) => handleChange("gasto obse", e.target.value)}
-                  />
-                </div>
+              </div>
+              <div className="relative w-full mb-6 group">
+                <Textarea
+                  rows={5}
+                  label="Observacion"
+                  onChange={(e) => handleChange("gasto obse", e.target.value)}
+                />
               </div>
 
               <div className="mt-4 flex justify-end mb-6 group">

@@ -27,6 +27,7 @@ import Link from "next/link";
 
 export default function ModalHistorialLiquidacion({
   tareasH,
+  gastosH,
   guardiasH,
   calcTotal,
   operador,
@@ -249,6 +250,107 @@ export default function ModalHistorialLiquidacion({
     },
   ];
 
+  let columns3 = [
+    {
+      name: "#",
+      button: true,
+      width: "50px",
+      cell: (row, index) => <>{index + 1}</>,
+    },
+
+    {
+      name: "Id Servicio",
+      selector: (row) => `${row.idservicio}`,
+      sortable: true,
+      width: "100px",
+    },
+
+    {
+      name: "Operador",
+      selector: (row) => `${row.operador}`,
+      sortable: true,
+      width: "90px",
+    },
+
+    {
+      name: "Gasto",
+      selector: (row) => `${row.gasto}`,
+      sortable: true,
+      width: "180px",
+    },
+
+    {
+      name: "Monto",
+      selector: (row) => `$${row.importe}`,
+      sortable: true,
+      width: "130px",
+    },
+    {
+      name: "Liquidado",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {row.liquidado === 0 ? (
+            <div>Pendiente</div>
+          ) : row.liquidado === 1 ? (
+            <div>Liquidado</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Fecha Liquidacion",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.fecha_liquidado ? (
+            <div>---</div>
+          ) : row.fecha_liquidado ? (
+            <div>
+              {moment(row.fecha_liquidado)
+                .utcOffset("+0300")
+                .format("DD/MM/YYYY")}
+            </div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Operdador Liq.",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.operadorliq ? (
+            <div>---</div>
+          ) : row.operadorliq ? (
+            <div>{row.operadorliq}</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Acciones",
+      button: true,
+      grow: 0.1,
+      cell: (row, index) => (
+        <>
+          <Link
+            href={{
+              pathname: "/sepelio/servicios/informe",
+              query: { idservicio: row.idservicio, f: "vista" },
+            }}
+            target="__blank"
+          >
+            <EyeIcon color="blue" className="butlist mt-px h-6 w-6 mr-1" />
+          </Link>
+        </>
+      ),
+    },
+  ];
+
   const [filterText, setFilterText] = React.useState("");
   const [resetPaginationToggle, setResetPaginationToggle] =
     React.useState(false);
@@ -351,6 +453,52 @@ export default function ModalHistorialLiquidacion({
 
           <hr className="border-2 mt-5 mb-5" />
 
+          {gastosH.length === 0 ? (
+            <div className="border-2 rounded-xl p-4 mt-4 mb-4">
+              <Typography variant="h4">Comisiones a Liquidar</Typography>
+              <Alert color="orange" icon={<IconSolid />} className="mt-5 mb-5">
+                El operador seleccionado no posee tareas a liquidar.
+              </Alert>
+            </div>
+          ) : (
+            <div className="border-2 rounded-xl p-4 mt-4 mb-4">
+              <Typography variant="h4">Comisiones Registradas</Typography>
+              <div className="flex flex-wrap -mx-3 mb-6">
+                <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                  <Alert className="" color="green" icon={<IconSolid />}>
+                    <Typography variant="h5">Comisiones Liquidadas</Typography>
+
+                    <Typography color="black" className="mt-1 font-normal">
+                      <u>Total</u>: {calcTotal(gastosH, "gconp")}
+                    </Typography>
+                    <Typography color="black" className="mt-1 font-normal">
+                      <u>Total a Pagar</u>: ${calcTotal(gastosH, "gp")}
+                    </Typography>
+                  </Alert>
+                </div>
+
+                <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                  <Alert className="" color="blue" icon={<IconSolid />}>
+                    Las comisiones liquidadas se van ordenando y mostrando
+                    automaticamente al final del listado.
+                  </Alert>
+                </div>
+              </div>
+
+              <div className=" border-2 rounded-xl p-4">
+                <DataTable
+                  columns={columns3}
+                  data={gastosH}
+                  defaultSortField="name"
+                  striped
+                  pagination
+                  subHeader
+                />
+              </div>
+            </div>
+          )}
+          <hr className="border-2 mt-5 mb-5" />
+
           {guardiasH.length === 0 ? (
             <div className="border-2 rounded-xl p-4 mt-4 mb-4">
               <Typography variant="h4">Guardias a Liquidar</Typography>
@@ -414,6 +562,7 @@ export default function ModalHistorialLiquidacion({
                     {" "}
                     MONTO FINAL PAGADO: $
                     {parseFloat(calcTotal(tareasH, "tp")) +
+                      parseFloat(calcTotal(gastosH, "gp")) +
                       parseFloat(calcTotal(guardiasH, "gp"))}
                   </span>
                 </div>

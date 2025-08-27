@@ -16,13 +16,16 @@ import { Alert } from "@material-tailwind/react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import FormLiquidacionPersonal from "@/components/sepelio/servicios/FormLiquidacionPersonal";
 import { data } from "autoprefixer";
+import { TableRow } from "@mui/material";
 
 function liquidacion(props) {
   const [operadores, guardarOperadores] = useState([]);
   const [tareas, guardarTareas] = useState([]);
+  const [gastos, guardarGastos] = useState([]);
   const [guardias, guardarGuardias] = useState([]);
   const [tareasH, guardarTareasH] = useState([]);
   const [guardiasH, guardarGuardiasH] = useState([]);
+  const [gastosH, guardarGastosH] = useState([]);
   const [errores, guardarErrores] = useState(null);
   const [alertas, guardarAlertas] = useState(null);
   const [opSel, guardarOpSel] = useState("");
@@ -61,6 +64,7 @@ function liquidacion(props) {
     guardarErrores(null);
     guardarTareas([]);
     guardarGuardias([]);
+    guardarGastos([]);
 
     toast.info(`Buscando liquidacion del operador ${opSel}...`);
 
@@ -71,6 +75,7 @@ function liquidacion(props) {
     } else {
       let tar = [];
       let guar = [];
+      let gas = [];
 
       await axios
         .get("/api/sepelio/servicios", {
@@ -86,6 +91,27 @@ function liquidacion(props) {
             toast.success("Liquidacion entontrada");
 
             guardarTareas(tar);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar el listado de tareas");
+        });
+
+      await axios
+        .get("/api/sepelio/servicios", {
+          params: {
+            f: "traer gastos operador",
+            operador: opSel,
+          },
+        })
+        .then((res) => {
+          gas = JSON.parse(res.data);
+
+          if (gas.length > 0) {
+            toast.success("Liquidacion entontrada");
+
+            guardarGastos(gas);
           }
         })
         .catch((error) => {
@@ -111,13 +137,13 @@ function liquidacion(props) {
           toast.error("Ocurrio un error al generar el listado de guardias");
         });
 
-      if (tar.length === 0 && guar.length === 0) {
+      if (tar.length === 0 && guar.length === 0 && gas.length === 0) {
         toast.warning(
-          `El operador ${opSel} no posee tareas o guardias a liquidar.`
+          `El operador ${opSel} no posee tareas, gastos o guardias a liquidar.`
         );
 
         guardarAlertas(
-          `El operador ${opSel} no posee tareas o guardias a liquidar.`
+          `El operador ${opSel} no posee tareas, gastos o guardias a liquidar.`
         );
       }
     }
@@ -127,6 +153,7 @@ function liquidacion(props) {
     guardarErrores(null);
     guardarTareasH([]);
     guardarGuardiasH([]);
+    guardarGastosH([]);
 
     toast.info(`Buscando liquidacion del operador ${opSel}...`);
 
@@ -137,6 +164,7 @@ function liquidacion(props) {
     } else {
       let tar = [];
       let guar = [];
+      let gas = [];
 
       await axios
         .get("/api/sepelio/servicios", {
@@ -160,6 +188,27 @@ function liquidacion(props) {
         });
 
       await axios
+        .get("/api/sepelio/servicios", {
+          params: {
+            f: "traer historial gastos operador",
+            operador: opSel,
+          },
+        })
+        .then((res) => {
+          gas = JSON.parse(res.data);
+
+          if (gas.length > 0) {
+            toast.success("Liquidacion entontrada");
+
+            guardarGastosH(gas);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Ocurrio un error al generar el listado de gastos");
+        });
+
+      await axios
         .get("/api/sepelio/guardias", {
           params: {
             f: "traer historial guardias operador",
@@ -177,13 +226,13 @@ function liquidacion(props) {
           toast.error("Ocurrio un error al generar el listado de guardias");
         });
 
-      if (tar.length === 0 && guar.length === 0) {
+      if (tar.length === 0 && guar.length === 0 && gas.length === 0) {
         toast.warning(
-          `El operador ${opSel} no posee tareas o guardias a liquidar.`
+          `El operador ${opSel} no posee tareas, gastos o guardias a liquidar.`
         );
 
         guardarAlertas(
-          `El operador ${opSel} no posee tareas o guardias a liquidar.`
+          `El operador ${opSel} no posee tareas, gastos o guardias a liquidar.`
         );
       }
     }
@@ -334,10 +383,54 @@ function liquidacion(props) {
           },
         ],
       });
+    } else if (f === "Gt") {
+      await confirmAlert({
+        title: "ATENCION",
+        message: "¿Seguro quieres liquidar todas las comisiones?",
+        buttons: [
+          {
+            label: "Si",
+            onClick: () => {
+              let info = {
+                operadorliq: usu.usuario,
+                fecha_liquidado: moment().format("YYYY-MM-DD"),
+                f: "liquidar comisiones",
+                operador: opSel,
+              };
+
+              axios
+                .put("/api/sepelio/servicios", info)
+                .then((res) => {
+                  if (res.status === 200) {
+                    toast.success("Comisiones liquidadas");
+
+                    let accionHis = `Todas las comisiones del operador ${opSel} fueron liquidadas.`;
+
+                    registrarHistoria(accionHis, usu.usuario);
+
+                    setTimeout(() => {
+                      buscarLiquidacion();
+                    }, 1000);
+                  }
+                })
+                .catch((error) => {
+                  console.log(error);
+                  toast.error("Ocurrio un error al liquidar");
+                });
+            },
+          },
+          {
+            label: "No",
+            onClick: () => {
+              toast.info("Ninguna tarea fue liquidada");
+            },
+          },
+        ],
+      });
     }
   };
 
-  const liqItem = async (f, id) => {
+  const liqItem = async (f, id, item, monto, oper) => {
     await confirmAlert({
       title: "ATENCION",
       message: "¿Seguro quieres liquidar este item?",
@@ -356,7 +449,11 @@ function liquidacion(props) {
               .put("/api/sepelio/servicios", info)
               .then((res) => {
                 if (res.status === 200) {
-                  toast.success("Tarea/Gasto liquidado");
+                  toast.success("Tarea/Comision liquidado");
+
+                  let accionHis = `Liquidacion de Tarea/Comision ID: ${id} - "${item}" realizada por el operador: ${oper}, por un importe de $${monto}.`;
+
+                  registrarHistoria(accionHis, usu.usuario);
 
                   setTimeout(() => {
                     buscarLiquidacion();
@@ -379,7 +476,7 @@ function liquidacion(props) {
     });
   };
 
-  const liquidarGuardia = async (id) => {
+  const liquidarGuardia = async (id, lugar, inicio, oper) => {
     await confirmAlert({
       title: "ATENCION",
       message: "¿Seguro quieres liquidar de esta guardia?",
@@ -403,7 +500,7 @@ function liquidacion(props) {
                     `La guardia fue marcado como liquidado con exito`
                   );
 
-                  let accionHis = `La guardia de sepelio ID ${id} fue marcado como liquidada.`;
+                  let accionHis = `La guardia de sepelio ID ${id} realizada en ${lugar}, el dia ${inicio} perteneciente al operador ${oper} fue marcado como liquidada.`;
 
                   registrarHistoria(accionHis, usu.usuario);
 
@@ -445,7 +542,9 @@ function liquidacion(props) {
             buscarLiquidacion={buscarLiquidacion}
             tareas={tareas}
             guardias={guardias}
+            gastos={gastos}
             tareasH={tareasH}
+            gastosH={gastosH}
             guardiasH={guardiasH}
             opSel={opSel}
             calcTotal={calcTotal}

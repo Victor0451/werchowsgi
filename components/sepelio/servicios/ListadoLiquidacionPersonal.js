@@ -26,7 +26,9 @@ import ModalHistorialLiquidacion from "./ModalHistorialLiquidacion";
 const ListadoLiquidacionPersonal = ({
   tareas,
   guardias,
+  gastos,
   tareasH,
+  gastosH,
   guardiasH,
   calcTotal,
   operador,
@@ -193,7 +195,15 @@ const ListadoLiquidacionPersonal = ({
             <CurrencyDollarIcon
               color="orange"
               className="butlist mt-px h-6 w-6 "
-              onClick={() => liqItem("liquidar tarea individual", row.idtareas)}
+              onClick={() =>
+                liqItem(
+                  "liquidar tarea individual",
+                  row.idtareas,
+                  row.tarea,
+                  row.monto,
+                  row.operador
+                )
+              }
             />
           ) : (
             <>Sin accion </>
@@ -358,10 +368,182 @@ const ListadoLiquidacionPersonal = ({
             <CurrencyDollarIcon
               color="orange"
               className="butlist mt-px h-6 w-6 "
-              onClick={() => liquidarGuardia(row.idturno)}
+              onClick={() =>
+                liquidarGuardia(
+                  row.idturno,
+                  row.lugar,
+                  row.inicio,
+                  row.operador
+                )
+              }
             />
           ) : (
             <>Sin accion</>
+          )}
+        </>
+      ),
+    },
+  ];
+
+  let columns3 = [
+    {
+      name: "#",
+      button: true,
+      width: "50px",
+      cell: (row, index) => <>{index + 1}</>,
+    },
+
+    {
+      name: "Id Servicio",
+      selector: (row) => `${row.idservicio}`,
+      sortable: true,
+      width: "100px",
+    },
+
+    {
+      name: "Operador",
+      selector: (row) => `${row.operador}`,
+      sortable: true,
+      width: "90px",
+    },
+
+    {
+      name: "Gasto",
+      selector: (row) => `${row.gasto}`,
+      sortable: true,
+      width: "180px",
+    },
+
+    {
+      name: "Monto",
+      selector: (row) => `$${row.importe}`,
+      sortable: true,
+      width: "130px",
+    },
+    // {
+    //   name: "Aprobado",
+    //   button: true,
+    //   width: "100px",
+    //   cell: (row, index) => (
+    //     <>
+    //       {row.aprobado === 0 ? (
+    //         <div>Pendiente</div>
+    //       ) : row.aprobado === 1 ? (
+    //         <div>Aprobado</div>
+    //       ) : null}
+    //     </>
+    //   ),
+    // },
+    // {
+    //   name: "Fecha Ap.",
+    //   button: true,
+    //   width: "100px",
+    //   cell: (row, index) => (
+    //     <>
+    //       {!row.fecha_aprobado ? (
+    //         <div>---</div>
+    //       ) : row.fecha_aprobado ? (
+    //         <div>
+    //           {moment(row.fecha_aprobado)
+    //             .utcOffset("+0300")
+    //             .format("DD/MM/YYYY")}
+    //         </div>
+    //       ) : null}
+    //     </>
+    //   ),
+    // },
+    // {
+    //   name: "Operdador Ap.",
+    //   button: true,
+    //   width: "100px",
+    //   cell: (row, index) => (
+    //     <>
+    //       {!row.operadorap ? (
+    //         <div>---</div>
+    //       ) : row.operadorap ? (
+    //         <div>{row.operadorap}</div>
+    //       ) : null}
+    //     </>
+    //   ),
+    // },
+    {
+      name: "Liquidado",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {row.liquidado === 0 ? (
+            <div>Pendiente</div>
+          ) : row.liquidado === 1 ? (
+            <div>Liquidado</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Fecha Liquidacion",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.fecha_liquidado ? (
+            <div>---</div>
+          ) : row.fecha_liquidado ? (
+            <div>
+              {moment(row.fecha_liquidado)
+                .utcOffset("+0300")
+                .format("DD/MM/YYYY")}
+            </div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Operdador Liq.",
+      button: true,
+      width: "100px",
+      cell: (row, index) => (
+        <>
+          {!row.operadorliq ? (
+            <div>---</div>
+          ) : row.operadorliq ? (
+            <div>{row.operadorliq}</div>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      name: "Acciones",
+      button: true,
+      grow: 0.1,
+      cell: (row, index) => (
+        <>
+          <Link
+            href={{
+              pathname: "/sepelio/servicios/informe",
+              query: { idservicio: row.idservicio, f: "vista" },
+            }}
+            target="__blank"
+          >
+            <EyeIcon color="blue" className="butlist mt-px h-6 w-6 mr-1" />
+          </Link>
+
+          {row.liquidado === 0 && usu.usuario !== "joaquini" ? (
+            <CurrencyDollarIcon
+              color="orange"
+              className="butlist mt-px h-6 w-6 "
+              onClick={() =>
+                liqItem(
+                  "liquidar gasto individual",
+                  row.idgastos,
+                  row.gasto,
+                  row.importe,
+                  row.operador
+                )
+              }
+            />
+          ) : (
+            <>Sin accion </>
           )}
         </>
       ),
@@ -380,6 +562,7 @@ const ListadoLiquidacionPersonal = ({
           <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 ">
             <ModalHistorialLiquidacion
               tareasH={tareasH}
+              gastosH={gastosH}
               guardiasH={guardiasH}
               calcTotal={calcTotal}
               operador={operador}
@@ -461,6 +644,80 @@ const ListadoLiquidacionPersonal = ({
           </div>
         )}
 
+        <hr className="border-2 mt-5 mb-5" />
+
+        {gastos.length === 0 ? (
+          <div className="border-2 rounded-xl p-4 mt-4 mb-4">
+            <Typography variant="h4">
+              Comisiones de Ventas a Liquidar
+            </Typography>
+            <Alert color="orange" icon={<IconSolid />} className="mt-5 mb-5">
+              El operador seleccionado no posee comisiones por ventas.
+            </Alert>
+          </div>
+        ) : (
+          <div className="border-2 rounded-xl p-4 mt-4 mb-4">
+            <Typography variant="h4">Comisiones Registradas</Typography>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <Alert className="" color="orange" icon={<IconSolid />}>
+                  <Typography variant="h5">Comisiones a Liquidar</Typography>
+
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total</u>: {calcTotal(gastos, "gcon")}
+                  </Typography>
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total a Pagar</u>: ${calcTotal(gastos, "g")}
+                  </Typography>
+                </Alert>
+              </div>
+
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <Alert className="" color="green" icon={<IconSolid />}>
+                  <Typography variant="h5">Comisiones Liquidadas</Typography>
+
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total</u>: {calcTotal(gastos, "gconp")}
+                  </Typography>
+                  <Typography color="black" className="mt-1 font-normal">
+                    <u>Total a Pagar</u>: ${calcTotal(gastos, "gp")}
+                  </Typography>
+                </Alert>
+              </div>
+
+              <div className="w-full md:w-1/3 px-3 mt-6 mb-6 md:mb-0">
+                <Alert className="" color="blue" icon={<IconSolid />}>
+                  Las comisiones liquidadas se van ordenando y mostrando
+                  automaticamente al final del listado.
+                </Alert>
+              </div>
+            </div>
+
+            <div className=" border-2 rounded-xl p-4">
+              <div className="flex justify-end">
+                {usu.usuario !== "joaquini" ? (
+                  <Button
+                    color="green"
+                    className=""
+                    onClick={() => {
+                      pagarLiquidacion("Gt");
+                    }}
+                  >
+                    Liquidar todas las comisiones
+                  </Button>
+                ) : null}
+              </div>
+              <DataTable
+                columns={columns3}
+                data={gastos}
+                defaultSortField="name"
+                striped
+                pagination
+                subHeader
+              />
+            </div>
+          </div>
+        )}
         <hr className="border-2 mt-5 mb-5" />
 
         {guardias.length === 0 ? (
@@ -551,6 +808,7 @@ const ListadoLiquidacionPersonal = ({
                   {" "}
                   MONTO FINAL PENDIENTE DE PAGO: $
                   {parseFloat(calcTotal(tareas, "t")) +
+                    parseFloat(calcTotal(gastos, "g")) +
                     parseFloat(calcTotal(guardias, "g"))}
                 </span>
               </div>
@@ -570,6 +828,7 @@ const ListadoLiquidacionPersonal = ({
                   {" "}
                   MONTO FINAL PAGADO: $
                   {parseFloat(calcTotal(tareas, "tp")) +
+                    parseFloat(calcTotal(gastos, "gp")) +
                     parseFloat(calcTotal(guardias, "gp"))}
                 </span>
               </div>

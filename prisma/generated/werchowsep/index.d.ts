@@ -812,6 +812,7 @@ export type serviciosPayload<ExtArgs extends $Extensions.Args = $Extensions.Defa
     gasto_luto: string | null
     conyugue: string | null
     serv_domicilio: boolean | null
+    cartera: string | null
   }, ExtArgs["result"]["servicios"]>
   composites: {}
 }
@@ -944,6 +945,7 @@ export type informe_gastosPayload<ExtArgs extends $Extensions.Args = $Extensions
     idgastos: number
     idinforme: number | null
     idservicio: number | null
+    operador: string | null
     gasto: string | null
     observacion: string | null
     importe: number | null
@@ -38918,6 +38920,7 @@ export namespace Prisma {
     gasto_luto: string | null
     conyugue: string | null
     serv_domicilio: boolean | null
+    cartera: string | null
   }
 
   export type ServiciosMaxAggregateOutputType = {
@@ -38967,6 +38970,7 @@ export namespace Prisma {
     gasto_luto: string | null
     conyugue: string | null
     serv_domicilio: boolean | null
+    cartera: string | null
   }
 
   export type ServiciosCountAggregateOutputType = {
@@ -39016,6 +39020,7 @@ export namespace Prisma {
     gasto_luto: number
     conyugue: number
     serv_domicilio: number
+    cartera: number
     _all: number
   }
 
@@ -39099,6 +39104,7 @@ export namespace Prisma {
     gasto_luto?: true
     conyugue?: true
     serv_domicilio?: true
+    cartera?: true
   }
 
   export type ServiciosMaxAggregateInputType = {
@@ -39148,6 +39154,7 @@ export namespace Prisma {
     gasto_luto?: true
     conyugue?: true
     serv_domicilio?: true
+    cartera?: true
   }
 
   export type ServiciosCountAggregateInputType = {
@@ -39197,6 +39204,7 @@ export namespace Prisma {
     gasto_luto?: true
     conyugue?: true
     serv_domicilio?: true
+    cartera?: true
     _all?: true
   }
 
@@ -39334,6 +39342,7 @@ export namespace Prisma {
     gasto_luto: string | null
     conyugue: string | null
     serv_domicilio: boolean | null
+    cartera: string | null
     _count: ServiciosCountAggregateOutputType | null
     _avg: ServiciosAvgAggregateOutputType | null
     _sum: ServiciosSumAggregateOutputType | null
@@ -39402,6 +39411,7 @@ export namespace Prisma {
     gasto_luto?: boolean
     conyugue?: boolean
     serv_domicilio?: boolean
+    cartera?: boolean
   }, ExtArgs["result"]["servicios"]>
 
   export type serviciosSelectScalar = {
@@ -39451,6 +39461,7 @@ export namespace Prisma {
     gasto_luto?: boolean
     conyugue?: boolean
     serv_domicilio?: boolean
+    cartera?: boolean
   }
 
 
@@ -43616,6 +43627,7 @@ export namespace Prisma {
     idgastos: number | null
     idinforme: number | null
     idservicio: number | null
+    operador: string | null
     gasto: string | null
     observacion: string | null
     importe: number | null
@@ -43628,6 +43640,7 @@ export namespace Prisma {
     idgastos: number | null
     idinforme: number | null
     idservicio: number | null
+    operador: string | null
     gasto: string | null
     observacion: string | null
     importe: number | null
@@ -43640,6 +43653,7 @@ export namespace Prisma {
     idgastos: number
     idinforme: number
     idservicio: number
+    operador: number
     gasto: number
     observacion: number
     importe: number
@@ -43668,6 +43682,7 @@ export namespace Prisma {
     idgastos?: true
     idinforme?: true
     idservicio?: true
+    operador?: true
     gasto?: true
     observacion?: true
     importe?: true
@@ -43680,6 +43695,7 @@ export namespace Prisma {
     idgastos?: true
     idinforme?: true
     idservicio?: true
+    operador?: true
     gasto?: true
     observacion?: true
     importe?: true
@@ -43692,6 +43708,7 @@ export namespace Prisma {
     idgastos?: true
     idinforme?: true
     idservicio?: true
+    operador?: true
     gasto?: true
     observacion?: true
     importe?: true
@@ -43792,6 +43809,7 @@ export namespace Prisma {
     idgastos: number
     idinforme: number | null
     idservicio: number | null
+    operador: string | null
     gasto: string | null
     observacion: string | null
     importe: number | null
@@ -43823,6 +43841,7 @@ export namespace Prisma {
     idgastos?: boolean
     idinforme?: boolean
     idservicio?: boolean
+    operador?: boolean
     gasto?: boolean
     observacion?: boolean
     importe?: boolean
@@ -43835,6 +43854,7 @@ export namespace Prisma {
     idgastos?: boolean
     idinforme?: boolean
     idservicio?: boolean
+    operador?: boolean
     gasto?: boolean
     observacion?: boolean
     importe?: boolean
@@ -50089,7 +50109,8 @@ export namespace Prisma {
     movil: 'movil',
     gasto_luto: 'gasto_luto',
     conyugue: 'conyugue',
-    serv_domicilio: 'serv_domicilio'
+    serv_domicilio: 'serv_domicilio',
+    cartera: 'cartera'
   };
 
   export type ServiciosScalarFieldEnum = (typeof ServiciosScalarFieldEnum)[keyof typeof ServiciosScalarFieldEnum]
@@ -50198,6 +50219,7 @@ export namespace Prisma {
     idgastos: 'idgastos',
     idinforme: 'idinforme',
     idservicio: 'idservicio',
+    operador: 'operador',
     gasto: 'gasto',
     observacion: 'observacion',
     importe: 'importe',
@@ -52658,6 +52680,7 @@ export namespace Prisma {
     gasto_luto?: StringNullableFilter | string | null
     conyugue?: StringNullableFilter | string | null
     serv_domicilio?: BoolNullableFilter | boolean | null
+    cartera?: StringNullableFilter | string | null
   }
 
   export type serviciosOrderByWithRelationInput = {
@@ -52707,6 +52730,7 @@ export namespace Prisma {
     gasto_luto?: SortOrderInput | SortOrder
     conyugue?: SortOrderInput | SortOrder
     serv_domicilio?: SortOrderInput | SortOrder
+    cartera?: SortOrderInput | SortOrder
   }
 
   export type serviciosWhereUniqueInput = {
@@ -52760,6 +52784,7 @@ export namespace Prisma {
     gasto_luto?: SortOrderInput | SortOrder
     conyugue?: SortOrderInput | SortOrder
     serv_domicilio?: SortOrderInput | SortOrder
+    cartera?: SortOrderInput | SortOrder
     _count?: serviciosCountOrderByAggregateInput
     _avg?: serviciosAvgOrderByAggregateInput
     _max?: serviciosMaxOrderByAggregateInput
@@ -52817,6 +52842,7 @@ export namespace Prisma {
     gasto_luto?: StringNullableWithAggregatesFilter | string | null
     conyugue?: StringNullableWithAggregatesFilter | string | null
     serv_domicilio?: BoolNullableWithAggregatesFilter | boolean | null
+    cartera?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type servicios_historicoWhereInput = {
@@ -53231,6 +53257,7 @@ export namespace Prisma {
     idgastos?: IntFilter | number
     idinforme?: IntNullableFilter | number | null
     idservicio?: IntNullableFilter | number | null
+    operador?: StringNullableFilter | string | null
     gasto?: StringNullableFilter | string | null
     observacion?: StringNullableFilter | string | null
     importe?: FloatNullableFilter | number | null
@@ -53243,6 +53270,7 @@ export namespace Prisma {
     idgastos?: SortOrder
     idinforme?: SortOrderInput | SortOrder
     idservicio?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
     gasto?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     importe?: SortOrderInput | SortOrder
@@ -53259,6 +53287,7 @@ export namespace Prisma {
     idgastos?: SortOrder
     idinforme?: SortOrderInput | SortOrder
     idservicio?: SortOrderInput | SortOrder
+    operador?: SortOrderInput | SortOrder
     gasto?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     importe?: SortOrderInput | SortOrder
@@ -53279,6 +53308,7 @@ export namespace Prisma {
     idgastos?: IntWithAggregatesFilter | number
     idinforme?: IntNullableWithAggregatesFilter | number | null
     idservicio?: IntNullableWithAggregatesFilter | number | null
+    operador?: StringNullableWithAggregatesFilter | string | null
     gasto?: StringNullableWithAggregatesFilter | string | null
     observacion?: StringNullableWithAggregatesFilter | string | null
     importe?: FloatNullableWithAggregatesFilter | number | null
@@ -56713,6 +56743,7 @@ export namespace Prisma {
     gasto_luto?: string | null
     conyugue?: string | null
     serv_domicilio?: boolean | null
+    cartera?: string | null
   }
 
   export type serviciosUncheckedCreateInput = {
@@ -56762,6 +56793,7 @@ export namespace Prisma {
     gasto_luto?: string | null
     conyugue?: string | null
     serv_domicilio?: boolean | null
+    cartera?: string | null
   }
 
   export type serviciosUpdateInput = {
@@ -56810,6 +56842,7 @@ export namespace Prisma {
     gasto_luto?: NullableStringFieldUpdateOperationsInput | string | null
     conyugue?: NullableStringFieldUpdateOperationsInput | string | null
     serv_domicilio?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cartera?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type serviciosUncheckedUpdateInput = {
@@ -56859,6 +56892,7 @@ export namespace Prisma {
     gasto_luto?: NullableStringFieldUpdateOperationsInput | string | null
     conyugue?: NullableStringFieldUpdateOperationsInput | string | null
     serv_domicilio?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cartera?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type serviciosCreateManyInput = {
@@ -56908,6 +56942,7 @@ export namespace Prisma {
     gasto_luto?: string | null
     conyugue?: string | null
     serv_domicilio?: boolean | null
+    cartera?: string | null
   }
 
   export type serviciosUpdateManyMutationInput = {
@@ -56956,6 +56991,7 @@ export namespace Prisma {
     gasto_luto?: NullableStringFieldUpdateOperationsInput | string | null
     conyugue?: NullableStringFieldUpdateOperationsInput | string | null
     serv_domicilio?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cartera?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type serviciosUncheckedUpdateManyInput = {
@@ -57005,6 +57041,7 @@ export namespace Prisma {
     gasto_luto?: NullableStringFieldUpdateOperationsInput | string | null
     conyugue?: NullableStringFieldUpdateOperationsInput | string | null
     serv_domicilio?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    cartera?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type servicios_historicoCreateInput = {
@@ -57631,6 +57668,7 @@ export namespace Prisma {
   export type informe_gastosCreateInput = {
     idinforme?: number | null
     idservicio?: number | null
+    operador?: string | null
     gasto?: string | null
     observacion?: string | null
     importe?: number | null
@@ -57643,6 +57681,7 @@ export namespace Prisma {
     idgastos?: number
     idinforme?: number | null
     idservicio?: number | null
+    operador?: string | null
     gasto?: string | null
     observacion?: string | null
     importe?: number | null
@@ -57654,6 +57693,7 @@ export namespace Prisma {
   export type informe_gastosUpdateInput = {
     idinforme?: NullableIntFieldUpdateOperationsInput | number | null
     idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
     gasto?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     importe?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -57666,6 +57706,7 @@ export namespace Prisma {
     idgastos?: IntFieldUpdateOperationsInput | number
     idinforme?: NullableIntFieldUpdateOperationsInput | number | null
     idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
     gasto?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     importe?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -57678,6 +57719,7 @@ export namespace Prisma {
     idgastos?: number
     idinforme?: number | null
     idservicio?: number | null
+    operador?: string | null
     gasto?: string | null
     observacion?: string | null
     importe?: number | null
@@ -57689,6 +57731,7 @@ export namespace Prisma {
   export type informe_gastosUpdateManyMutationInput = {
     idinforme?: NullableIntFieldUpdateOperationsInput | number | null
     idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
     gasto?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     importe?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -57701,6 +57744,7 @@ export namespace Prisma {
     idgastos?: IntFieldUpdateOperationsInput | number
     idinforme?: NullableIntFieldUpdateOperationsInput | number | null
     idservicio?: NullableIntFieldUpdateOperationsInput | number | null
+    operador?: NullableStringFieldUpdateOperationsInput | string | null
     gasto?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     importe?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -60220,6 +60264,7 @@ export namespace Prisma {
     gasto_luto?: SortOrder
     conyugue?: SortOrder
     serv_domicilio?: SortOrder
+    cartera?: SortOrder
   }
 
   export type serviciosAvgOrderByAggregateInput = {
@@ -60285,6 +60330,7 @@ export namespace Prisma {
     gasto_luto?: SortOrder
     conyugue?: SortOrder
     serv_domicilio?: SortOrder
+    cartera?: SortOrder
   }
 
   export type serviciosMinOrderByAggregateInput = {
@@ -60334,6 +60380,7 @@ export namespace Prisma {
     gasto_luto?: SortOrder
     conyugue?: SortOrder
     serv_domicilio?: SortOrder
+    cartera?: SortOrder
   }
 
   export type serviciosSumOrderByAggregateInput = {
@@ -60700,6 +60747,7 @@ export namespace Prisma {
     idgastos?: SortOrder
     idinforme?: SortOrder
     idservicio?: SortOrder
+    operador?: SortOrder
     gasto?: SortOrder
     observacion?: SortOrder
     importe?: SortOrder
@@ -60719,6 +60767,7 @@ export namespace Prisma {
     idgastos?: SortOrder
     idinforme?: SortOrder
     idservicio?: SortOrder
+    operador?: SortOrder
     gasto?: SortOrder
     observacion?: SortOrder
     importe?: SortOrder
@@ -60731,6 +60780,7 @@ export namespace Prisma {
     idgastos?: SortOrder
     idinforme?: SortOrder
     idservicio?: SortOrder
+    operador?: SortOrder
     gasto?: SortOrder
     observacion?: SortOrder
     importe?: SortOrder

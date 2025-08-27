@@ -285,6 +285,7 @@ function informe(props) {
       idservicio: servicio.idservicio,
       gasto: gastoSel,
       importe: importeRef.current.value,
+      operador: opSel,
       observacion: gasObseSel,
       liquidado: false,
       f: "reg gasto informe",
