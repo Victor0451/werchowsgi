@@ -31,7 +31,20 @@ const ListadoGastos = ({
       width: "80px",
       cell: (row, index) => <>{index + 1}</>,
     },
-
+    {
+      name: "Operador",
+      button: true,
+      width: "120",
+      cell: (row, index) => (
+        <>
+          {!row.operador ? (
+            <div>---</div>
+          ) : row.operador ? (
+            <div>{row.operador}</div>
+          ) : null}
+        </>
+      ),
+    },
     {
       name: "Gasto",
       selector: (row) => `${row.gasto}`,
