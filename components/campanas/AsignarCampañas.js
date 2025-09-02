@@ -8,6 +8,8 @@ import {
   Tab,
   TabPanel,
   Button,
+  Spinner,
+  Typography,
 } from "@material-tailwind/react";
 import { BellIcon } from "@heroicons/react/24/solid";
 import { ListadoCampana } from "./ListadoCampana";
@@ -22,6 +24,7 @@ export const AsignarCampañas = ({
   palpala,
   sanPedro,
   crearCampana,
+  spin,
 }) => {
   return (
     <Card className="h-full w-full">
@@ -113,16 +116,29 @@ export const AsignarCampañas = ({
               </div>
 
               {listado.length > 0 ? (
-                <ListadoCampana
-                  listado={listado}
-                  camp={campana}
-                  CasaCentralMG={CasaCentralMG}
-                  CasaCentralGG={CasaCentralGG}
-                  perico={perico}
-                  palpala={palpala}
-                  sanPedro={sanPedro}
-                  crearCampana={crearCampana}
-                />
+                <>
+                  {spin === true ? (
+                    <>
+                      <div className=" flex justify-center">
+                        <Spinner className="mt-5 h-16 w-16 text-gray-900/50" />
+                      </div>
+                      <div className="mt-5 flex justify-center">
+                        <Typography variant="h6">Asignando...</Typography>
+                      </div>
+                    </>
+                  ) : spin === false ? (
+                    <ListadoCampana
+                      listado={listado}
+                      camp={campana}
+                      CasaCentralMG={CasaCentralMG}
+                      CasaCentralGG={CasaCentralGG}
+                      perico={perico}
+                      palpala={palpala}
+                      sanPedro={sanPedro}
+                      crearCampana={crearCampana}
+                    />
+                  ) : null}
+                </>
               ) : null}
             </TabPanel>
             <TabPanel value={"mutual"}>

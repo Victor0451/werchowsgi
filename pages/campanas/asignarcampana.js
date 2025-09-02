@@ -11,7 +11,6 @@ import { registrarHistoria } from "@/libs/funciones";
 
 export default function AsignarCampana() {
   const [campana, guardarCampana] = useState("");
-  const [final, guardarFinal] = useState(false);
   const [array, guardarArray] = useState({});
   const [perico, guardarPerico] = useState({});
   const [palpala, guardarPalpala] = useState({});
@@ -19,6 +18,7 @@ export default function AsignarCampana() {
   const [CasaCentralMG, guardarCCMG] = useState({});
   const [CasaCentralGG, guardarCCGG] = useState({});
   //const [CasaCentralVF, guardarCCVF] = useState({});
+  const [spin, guardarSpin] = useState(false);
 
   const segmentacion = (array) => {
     let perico = array.filter((at) => {
@@ -196,6 +196,8 @@ export default function AsignarCampana() {
         "Asignando... Esto tomara unos segundos, espera a que el proceso termine."
       );
 
+      guardarSpin(true);
+
       for (let i = 0; i < array.length; i++) {
         const caso = {
           idcampana: idcamp,
@@ -226,7 +228,7 @@ export default function AsignarCampana() {
         let fin = i + 1;
 
         if (array.length === fin) {
-          guardarFinal(true);
+          guardarSpin(false);
           toast.success(
             `Los casos ya estan asignados en la campaña: ${camp} del operador: ${op}`
           );
@@ -262,6 +264,7 @@ export default function AsignarCampana() {
           palpala={palpala}
           sanPedro={sanPedro}
           crearCampana={crearCampana}
+          spin={spin}
         />
       ) : null}
     </>
