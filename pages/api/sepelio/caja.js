@@ -1,91 +1,144 @@
-import { Werchow, SGI, Camp, Sep } from "../../../libs/config";
+import {
+  werchow,
+  sgi,
+  serv,
+  sep,
+  camp,
+  arch,
+  club,
+} from "../../../libs/db/index";
 import moment from "moment";
-//import { PrismaClient as WerchowSepClient } from '../../../prisma/generated/werchowsep'
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     if (req.query.f && req.query.f === "traer facturas") {
-      const tipoFac = await SGI.tipo_facturas.findMany({
-        where: {
-          estado: true,
-        },
-      });
+      const tipoFac = await sgi.query(
+        `
+          SELECT * 
+          FROM tipo_facturas
+          WHERE estado = true
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(tipoFac);
     } else if (req.query.f && req.query.f === "traer conceptos") {
-      const tipoFac = await Sep.conceptos.findMany();
+      const tipoFac = await sep.query(
+        `
+          SELECT *
+          FROM conceptos
+        `
+      );
+
+      await sep.end();
 
       res.status(200).json(tipoFac);
     } else if (req.query.f && req.query.f === "traer cajas") {
-      const cajaSep = await Sep.caja_sepelio.findMany({
-        orderBy: {
-          fecha: "desc",
-        },
-      });
+      const cajaSep = await sep.query(
+        `
+            SELECT *
+            FROM caja_sepelio
+            ORDER BY fecha DESC
+            
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(cajaSep);
     } else if (req.query.f && req.query.f === "traer caja") {
-      const cajaSep = await Sep.caja_sepelio.findUnique({
-        where: {
-          idcaja: parseInt(req.query.idcaja),
-        },
-      });
+      const cajaSep = await sep.query(
+        `
+            SELECT *
+            FROM caja_sepelio
+            WHERE idcaja = ${parseInt(req.query.idcaja)}
+            
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(cajaSep);
     } else if (req.query.f && req.query.f === "traer ingresos") {
-      const cajaSep = await Sep.ingreso_caja.findMany({
-        where: {
-          idcaja: parseInt(req.query.idcaja),
-        },
-      });
+      const cajaSep = await sep.query(
+        `
+            SELECT *
+            FROM ingreso_caja
+            WHERE idcaja = ${parseInt(req.query.idcaja)}
+            
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(cajaSep);
     } else if (req.query.f && req.query.f === "traer gastos caja") {
-      const cajaSep = await Sep.gastos_caja.findMany({
-        where: {
-          idcaja: parseInt(req.query.idcaja),
-        },
-      });
+      const cajaSep = await sep.query(
+        `
+            SELECT *
+            FROM gastos_caja
+            WHERE idcaja = ${parseInt(req.query.idcaja)}
+            
+          `
+      );
 
+      await sep.end();
       res.status(200).json(cajaSep);
     } else if (req.query.f && req.query.f === "traer proveedores") {
-      const prov = await Sep.proveedores.findMany();
+      const prov = await sep.query(
+        `
+          SELECT *
+          FROM proveedores
 
+        `
+      );
+      await sep.end();
       res.status(200).json(prov);
     } else if (req.query.f && req.query.f === "traer operadores") {
-      const prov = await Sep.operadorsep.findMany({
-        select: {
-          operador: true,
-        },
-      });
+      const prov = await sep.query(
+        `
+            SELECT operador
+            FROM operadorsep
+
+          `
+      );
+      await sep.end();
 
       res.status(200).json(prov);
     } else if (req.query.f && req.query.f === "traer servicios") {
-      const prov = await Sep.servicios.findMany({
-        select: {
-          idservicio: true,
-          apellido: true,
-          nombre: true,
-        },
-        orderBy: {
-          idservicio: "desc",
-        },
-      });
+      const prov = await sep.query(
+        `
+            SELECT idservicio,
+                   apellido,
+                   nombre
+            FROM servicios
+            ORDER BY idservicio DESC
+
+        `
+      );
+
+      await sep.end();
 
       res.status(200).json(prov);
     } else if (req.query.f && req.query.f === "ingresos sa") {
-      const ingresos = await Sep.$queryRaw`
-                  select ca.idcaja as 'nro_caja', ca.fecha as 'fecha', 6 as 'puesto', cs.sc_cuenta as 'codigo', c.tipo as 'movim' , cs.sc_descripcion as 'cuenta', ca.tipofactura as 'tipo', ca.ptoventa as 'serie', ca.nfactura as 'factura',  ca.monto as 'importe' ,  ca.concepto as 'comentarios', 88 as 'operador' 
-                  from caja_sepelio as ca
+      const ingresos = await sep.query(`
+                 
+                  SELECT ca.idcaja as 'nro_caja', ca.fecha as 'fecha', 6 as 'puesto', cs.sc_cuenta as 'codigo', c.tipo as 'movim' , cs.sc_descripcion as 'cuenta', ca.tipofactura as 'tipo', ca.ptoventa as 'serie', ca.nfactura as 'factura',  ca.monto as 'importe' ,  ca.concepto as 'comentarios', 88 as 'operador' 
+                  FROM caja_sepelio as ca
                   INNER JOIN conceptos as c on c.concepto = ca.concepto
                   INNER JOIN conceptos_sepelio_cuentas as cs on cs.idconcepto = c.idconcepto
       
-                  where ca.empresa = 'WERCHOW S.A.'
-                  and cs.idempresa = 1
-                  and ca.fecha BETWEEN ${req.query.desde} AND ${req.query.hasta}
+                  WHERE ca.empresa = 'WERCHOW S.A.'
+                  AND cs.idempresa = 1
+                   AND ca.fecha BETWEEN '${moment(req.query.desde).format(
+                     "YYYY-MM-DD"
+                   )}' AND '${moment(req.query.hasta).format("YYYY-MM-DD")}'
       
                   ORDER BY ca.fecha ASC
-          `;
+          `);
+
+      await sep.end();
 
       res
         .status(200)
@@ -95,18 +148,22 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "ingresos srl") {
-      const ingresos = await Sep.$queryRaw`
-                    select ca.idcaja as 'nro_caja', ca.fecha as 'fecha', 16 as 'puesto', cs.sc_cuenta as 'codigo', c.tipo as 'movim' , cs.sc_descripcion as 'cuenta', ca.tipofactura as 'tipo', ca.ptoventa as 'serie', ca.nfactura as 'factura',  ca.monto as 'importe' ,  ca.concepto as 'comentarios', 88 as 'operador' 
-                    from caja_sepelio as ca
+      const ingresos = await sep.query(`
+                    SELECT ca.idcaja as 'nro_caja', ca.fecha as 'fecha', 16 as 'puesto', cs.sc_cuenta as 'codigo', c.tipo as 'movim' , cs.sc_descripcion as 'cuenta', ca.tipofactura as 'tipo', ca.ptoventa as 'serie', ca.nfactura as 'factura',  ca.monto as 'importe' ,  ca.concepto as 'comentarios', 88 as 'operador' 
+                    FROM caja_sepelio as ca
                     INNER JOIN conceptos as c on c.concepto = ca.concepto
                     INNER JOIN conceptos_sepelio_cuentas as cs on cs.idconcepto = c.idconcepto
         
-                    where ca.empresa = 'WERCHOW S.R.L.'
-                    and cs.idempresa = 2
-                    and ca.fecha BETWEEN ${req.query.desde} AND ${req.query.hasta}
+                    WHERE ca.empresa = 'WERCHOW S.R.L.'
+                    AND cs.idempresa = 2
+                     AND ca.fecha BETWEEN '${moment(req.query.desde).format(
+                       "YYYY-MM-DD"
+                     )}' AND '${moment(req.query.hasta).format("YYYY-MM-DD")}'
       
                     ORDER BY ca.fecha ASC
-            `;
+            `);
+
+      await sep.end();
 
       res
         .status(200)
@@ -116,19 +173,23 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "egresos sa") {
-      const egresos = await Sep.$queryRaw`
-                      select ca.idcaja as 'nro_caja', ca.fecha as 'fecha', 6 as 'puesto', cs.sc_cuenta as 'codigo', c.tipo as 'movim' , cs.sc_descripcion as 'cuenta', ca.tipofactura as 'tipo', ca.ptoventa as 'serie', ca.nfactura as 'factura',  ca.total as 'importe', ca.concepto as 'comentarios', 88 as 'operador', p.cuit as 'cuit', p.razon as 'proveedor'
-                      from gastos_caja as ca
+      const egresos = await sep.query(`
+                      SELECT ca.idcaja as 'nro_caja', ca.fecha as 'fecha', 6 as 'puesto', cs.sc_cuenta as 'codigo', c.tipo as 'movim' , cs.sc_descripcion as 'cuenta', ca.tipofactura as 'tipo', ca.ptoventa as 'serie', ca.nfactura as 'factura',  ca.total as 'importe', ca.concepto as 'comentarios', 88 as 'operador', p.cuit as 'cuit', p.razon as 'proveedor'
+                      FROM gastos_caja as ca
                       INNER JOIN conceptos as c on c.concepto = ca.concepto
                       INNER JOIN conceptos_sepelio_cuentas as cs on cs.idconcepto = c.idconcepto
                       INNER JOIN proveedores as p on p.razon = ca.proveedor
           
-                      where ca.empresa = 'WERCHOW S.A.'
-                      and cs.idempresa = 1
-                      and ca.fecha BETWEEN ${req.query.desde} AND ${req.query.hasta}
+                      WHERE ca.empresa = 'WERCHOW S.A.'
+                      AND cs.idempresa = 1
+                       AND ca.fecha BETWEEN '${moment(req.query.desde).format(
+                         "YYYY-MM-DD"
+                       )}' AND '${moment(req.query.hasta).format("YYYY-MM-DD")}'
         
                       ORDER BY ca.fecha ASC
-              `;
+              `);
+
+      await sep.end();
 
       res
         .status(200)
@@ -138,19 +199,25 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "egresos srl") {
-      const egresos = await Sep.$queryRaw`
-                        select ca.idcaja as 'nro_caja', ca.fecha as 'fecha', 16 as 'puesto', cs.sc_cuenta as 'codigo', c.tipo as 'movim' , cs.sc_descripcion as 'cuenta', ca.tipofactura as 'tipo', ca.ptoventa as 'serie', ca.nfactura as 'factura',  ca.total as 'importe', ca.concepto as 'comentarios', 88 as 'operador', p.cuit as 'cuit', p.razon as 'proveedor'
-                        from gastos_caja as ca
+      const egresos = await sep.query(`
+                        SELECT ca.idcaja as 'nro_caja', ca.fecha as 'fecha', 16 as 'puesto', cs.sc_cuenta as 'codigo', c.tipo as 'movim' , cs.sc_descripcion as 'cuenta', ca.tipofactura as 'tipo', ca.ptoventa as 'serie', ca.nfactura as 'factura',  ca.total as 'importe', ca.concepto as 'comentarios', 88 as 'operador', p.cuit as 'cuit', p.razon as 'proveedor'
+                        FROM gastos_caja as ca
                         INNER JOIN conceptos as c on c.concepto = ca.concepto
                         INNER JOIN conceptos_sepelio_cuentas as cs on cs.idconcepto = c.idconcepto
                         INNER JOIN proveedores as p on p.razon = ca.proveedor
             
-                        where ca.empresa = 'WERCHOW S.R.L.'
-                          and cs.idempresa = 2
-                        and ca.fecha BETWEEN ${req.query.desde} AND ${req.query.hasta}
-          
+                        WHERE ca.empresa = 'WERCHOW S.R.L.'
+                        AND cs.idempresa = 2
+                        AND ca.fecha BETWEEN '${moment(req.query.desde).format(
+                          "YYYY-MM-DD"
+                        )}' AND '${moment(req.query.hasta).format(
+        "YYYY-MM-DD"
+      )}'
+                            
                         ORDER BY ca.fecha ASC
-                `;
+                `);
+
+      await sep.end();
 
       res
         .status(200)
@@ -160,41 +227,54 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "consulta caja") {
-      const consulta = await Sep.generacion_cajas.findMany({
-        where: {
-          desde: new Date(req.query.desde),
-          hasta: new Date(req.query.hasta),
-          empresa: req.query.emp,
-        },
-      });
+      const consulta = await sep.query(
+        `
+            SELECT *
+            FROM generacion_cajas
+            WHERE desde = '${momen(req.query.desde).format("YYYY-MM-DD")}'
+            AND hasta = '${momen(req.query.hasta).format("YYYY-MM-DD")}'
+            AND empresa = '${req.query.emp}'
+        `
+      );
+      await sep.end();
+
       res.status(200).json(consulta);
     } else if (req.query.f && req.query.f === "reporte caja sa") {
-      const consulta = await Sep.caja_sa.findMany({
-        where: {
-          fecha: {
-            lte: new Date(req.query.hasta),
-            gte: new Date(req.query.desde),
-          },
-        },
-      });
+      const consulta = await sep.query(
+        `
+            SELECT *
+            FROM caja_sa
+            WHERE fecha BETWEEN '${moment(req.query.desde).format(
+              "YYYY-MM-DD"
+            )}' AND '${moment(req.query.hasta).format("YYYY-MM-DD")}'
+        `
+      );
+      await sep.end();
+
       res.status(200).json(consulta);
     } else if (req.query.f && req.query.f === "reporte caja srl") {
-      const consulta = await Sep.caja_srl.findMany({
-        where: {
-          fecha: {
-            lte: new Date(req.query.hasta),
-            gte: new Date(req.query.desde),
-          },
-        },
-      });
+      const consulta = await sep.query(
+        `
+            SELECT *
+            FROM caja_srl
+            WHERE fecha BETWEEN '${moment(req.query.desde).format(
+              "YYYY-MM-DD"
+            )}' AND '${moment(req.query.hasta).format("YYYY-MM-DD")}'
+        `
+      );
+      await sep.end();
+
       res.status(200).json(consulta);
     } else if (req.query.f && req.query.f === "total gastos") {
-      const gastos = await Sep.$queryRaw`
-             select SUM(total) as total
-             from gastos_caja  
-             where idcaja = ${parseInt(req.query.idcaja)}
+      const gastos = await sep.query(`
+  
+             SELECT SUM(total) as total
+             FROM gastos_caja  
+             WHERE idcaja = ${parseInt(req.query.idcaja)}
       
-`;
+`);
+
+      await sep.end();
 
       res
         .status(200)
@@ -207,218 +287,368 @@ export default async function handler(req, res) {
   }
   if (req.method === "POST") {
     if (req.body.f && req.body.f === "reg caja") {
-      const regCaja = await Sep.caja_sepelio.create({
-        data: {
-          empresa: req.body.empresa,
-          monto: parseFloat(req.body.monto),
-          concepto: req.body.concepto,
-          detalle: req.body.detalle,
-          fecha: new Date(req.body.fecha),
-          tipofactura: req.body.tipofactura,
-          ptoventa: parseInt(req.body.ptoventa),
-          nfactura: parseInt(req.body.nfactura),
-          operador: req.body.operador,
-          estado: req.body.estado,
-          gastos: parseFloat(req.body.gastos),
-          totalcaja: parseFloat(req.body.totalcaja),
-        },
-      });
+      const regCaja = await sep.query(
+        `
+            INSERT INTO caja_sepelio
+            (
+              empresa,
+              monto,
+              concepto,
+              detalle,
+              fecha,
+              tipofactura,
+              ptoventa,
+              nfactura,
+              operador,
+              estado,
+              gastos,
+              totalcaja
+            
+            )
+
+            VALUES
+            (
+               '${req.body.empresa}',
+               ${parseFloat(req.body.monto)},
+               '${req.body.concepto}',
+               '${req.body.detalle}',
+               '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+               '${req.body.tipofactura}',
+               ${parseInt(req.body.ptoventa)},
+               ${parseInt(req.body.nfactura)},
+               '${req.body.operador}',
+               ${req.body.estado},
+               ${parseFloat(req.body.gastos)},
+               ${parseFloat(req.body.totalcaja)}
+            )
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(regCaja);
     } else if (req.body.f && req.body.f === "reg gasto caja") {
-      const regCaja = await Sep.gastos_caja.create({
-        data: {
-          idcaja: parseInt(req.body.idcaja),
-          concepto: req.body.concepto,
-          mediopago: req.body.mediopago,
-          tipofactura: req.body.tipofactura,
-          proveedor: req.body.proveedor,
-          empresa: req.body.empresa,
-          porciva: req.body.porciva,
-          fecha: new Date(req.body.fecha),
-          nfactura: req.body.nfactura,
-          ptoventa: parseFloat(req.body.ptoventa),
-          operadorgestion: req.body.operadorgestion,
-          operadortramite: req.body.operadortramite,
-          montoiva: parseFloat(req.body.montoiva),
-          retiibb: parseFloat(req.body.retiibb),
-          retggcias: parseFloat(req.body.retggcias),
-          perciva: parseFloat(req.body.perciva),
-          detalle: req.body.detalle,
-          total: parseFloat(req.body.total),
-          idservicio: parseInt(req.body.idservicio),
-        },
-      });
+      const regCaja = await sep.query(
+        `
+            INSERT INTO gastos_caja
+            (
+              idcaja,
+              concepto,
+              mediopago,
+              tipofactura,
+              proveedor,
+              empresa,
+              porciva,
+              fecha,
+              nfactura,
+              ptoventa,
+              operadorgestion,
+              operadortramite,
+              montoiva,
+              retiibb,
+              retggcias,
+              perciva,
+              detalle,
+              total,
+              idservicio
+            )
+            
+            VALUES
+            (
+               ${parseInt(req.body.idcaja)},
+               '${req.body.concepto}',
+               '${req.body.mediopago}',
+               '${req.body.tipofactura}',
+               '${req.body.proveedor}',
+               '${req.body.empresa}',
+'               ${req.body.porciva}',
+               '${momen(req.body.fecha).format("YYYY-MM-DD")}',
+               '${req.body.nfactura}',
+               ${parseFloat(req.body.ptoventa)},
+               ${req.body.operadorgestion},
+               ${req.body.operadortramite},
+               ${parseFloat(req.body.montoiva)},
+               ${parseFloat(req.body.retiibb)},
+               ${parseFloat(req.body.retggcias)},
+               ${parseFloat(req.body.perciva)},
+               ${req.body.detalle},
+               ${parseFloat(req.body.total)},
+               ${parseInt(req.body.idservicio)}
+            )
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(regCaja);
     } else if (req.body.f && req.body.f === "reg ingreso caja") {
-      const regCaja = await Sep.ingreso_caja.create({
-        data: {
-          idcaja: parseInt(req.body.idcaja),
-          concepto: req.body.concepto,
-          tipofactura: req.body.tipofactura,
-          empresa: req.body.empresa,
-          fecha: new Date(req.body.fecha),
-          nfactura: req.body.nfactura,
-          ptoventa: parseFloat(req.body.ptoventa),
-          detalle: req.body.detalle,
-          monto: parseFloat(req.body.total),
-        },
-      });
+      const regCaja = await sep.query(
+        `
+              INSERT INTO ingreso_caja
+              (
+                idcaja,
+                concepto,
+                tipofactura,
+                empresa,
+                fecha,
+                nfactura,
+                ptoventa,
+                detalle,
+                monto
+              )
+
+              VALUES
+              (
+                 ${parseInt(req.body.idcaja)},
+                 '${req.body.concepto},
+                 '${req.body.tipofactura}',
+                 '${req.body.empresa}',
+                 '${momen(req.body.fecha).format("YYYY-MM-DD")}',
+                 '${req.body.nfactura}',
+                 ${parseFloat(req.body.ptoventa)},
+                 '${req.body.detalle}',
+                 ${parseFloat(req.body.total)}
+                
+              )
+            
+            `
+      );
+
+      await sep.end();
 
       res.status(200).json(regCaja);
     } else if (req.body.f && req.body.f === "reg periodo") {
-      const genCaja = await Sep.generacion_cajas.create({
-        data: {
-          desde: new Date(req.body.desde),
-          hasta: new Date(req.body.hasta),
-          empresa: req.body.empresa,
-          operador: req.body.operador,
-          fecha: new Date(req.body.fecha),
-        },
-      });
+      const genCaja = await sep.query(
+        `
+              INSERT INTO generacion_cajas
+              (
+                desde,
+                hasta,
+                empresa,
+                operador,
+                fecha
+              )
+              
+              VALUES 
+              (
+                 '${moment(req.body.desde).format("YYYY-MM-DD")}',
+                 '${moment(req.body.hasta).format("YYYY-MM-DD")}',
+                 '${req.body.empresa}',
+                 '${req.body.operador}',
+                 '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+              )
+            `
+      );
+      await sep.end();
 
       res.status(200).json(genCaja);
     } else if (req.body.f && req.body.f === "reg sa") {
-      const cajaSA = await Sep.caja_sa.create({
-        data: {
-          nro_caja: parseInt(req.body.nro_caja),
-          fecha: new Date(req.body.fecha),
-          puesto: parseInt(req.body.puesto),
-          codigo: parseInt(req.body.codigo),
-          movim: req.body.movim,
-          cuenta: req.body.cuenta,
-          tipo: req.body.tipo,
-          serie: parseInt(req.body.serie),
-          factura: parseInt(req.body.factura),
-          importe: parseFloat(req.body.importe),
-          comentarios: req.body.comentarios,
-          operador: parseInt(req.body.operador),
-          cuit: req.body.cuit,
-          proveedor: req.body.proveedor,
-        },
-      });
+      const cajaSA = await sep.query(
+        `
+              INSERT INTO caja_sa
+              (
+                nro_caja,
+                fecha,
+                puesto,
+                codigo,
+                movim,
+                cuenta,
+                tipo,
+                serie,
+                factura,
+                importe,
+                comentarios,
+                operador,
+                cuit,
+                proveedor
+              
+              )
+
+              VALUES 
+              (
+                 ${parseInt(req.body.nro_caja)},
+                 '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+                 ${parseInt(req.body.puesto)},
+                 ${parseInt(req.body.codigo)},
+                 '${req.body.movim}',
+                 '${req.body.cuenta}',
+                 '${req.body.tipo}',
+                 ${parseInt(req.body.serie)},
+                 ${parseInt(req.body.factura)},
+                 ${parseFloat(req.body.importe)},
+                 '${req.body.comentarios}',
+                 ${parseInt(req.body.operador)},
+                 '${req.body.cuit}',
+                 '${req.body.proveedor}'
+              
+              )
+            `
+      );
+
+      await sep.end();
 
       res.status(200).json(cajaSA);
     } else if (req.body.f && req.body.f === "reg srl") {
-      const cajaSRL = await Sep.caja_srl.create({
-        data: {
-          nro_caja: parseInt(req.body.nro_caja),
-          fecha: new Date(req.body.fecha),
-          puesto: parseInt(req.body.puesto),
-          codigo: parseInt(req.body.codigo),
-          movim: req.body.movim,
-          cuenta: req.body.cuenta,
-          tipo: req.body.tipo,
-          serie: parseInt(req.body.serie),
-          factura: parseInt(req.body.factura),
-          importe: parseFloat(req.body.importe),
-          comentarios: req.body.comentarios,
-          operador: parseInt(req.body.operador),
-          cuit: req.body.cuit,
-          proveedor: req.body.proveedor,
-        },
-      });
+      const cajaSRL = await sep.query(
+        `
+              INSERT INTO caja_srl
+              (
+                nro_caja,
+                fecha,
+                puesto,
+                codigo,
+                movim,
+                cuenta,
+                tipo,
+                serie,
+                factura,
+                importe,
+                comentarios,
+                operador,
+                cuit,
+                proveedor
+              
+              )
+
+              VALUES 
+              (
+                 ${parseInt(req.body.nro_caja)},
+                 '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+                 ${parseInt(req.body.puesto)},
+                 ${parseInt(req.body.codigo)},
+                 '${req.body.movim}',
+                 '${req.body.cuenta}',
+                 '${req.body.tipo}',
+                 ${parseInt(req.body.serie)},
+                 ${parseInt(req.body.factura)},
+                 ${parseFloat(req.body.importe)},
+                 '${req.body.comentarios}',
+                 ${parseInt(req.body.operador)},
+                 '${req.body.cuit}',
+                 '${req.body.proveedor}'
+              
+              )
+            `
+      );
+
+      await sep.end();
 
       res.status(200).json(cajaSRL);
     }
   }
   if (req.method === "PUT") {
     if (req.body.f && req.body.f === "cerrar caja") {
-      const cerrarCaja = await Sep.caja_sepelio.update({
-        data: {
-          estado: req.body.estado,
-          cierre: new Date(req.body.cierre),
-        },
-        where: {
-          idcaja: parseInt(req.body.idcaja),
-        },
-      });
+      const cerrarCaja = await sep.query(
+        `
+                UPDATE caja_sepelio
+                SET  estado= ${req.body.estado},
+                     cierre= '${moment(req.body.cierre).format("YYYY-MM-DD")}'
+                WHERE idcaja = ${parseInt(req.body.idcaja)}
+              
+              `
+      );
+
+      await sep.end();
 
       res.status(200).json(cerrarCaja);
     } else if (req.body.f && req.body.f === "ultima carga") {
-      const cerrarCaja = await Sep.caja_sepelio.update({
-        data: {
-          ultimacarga: new Date(req.body.ultimacarga),
-        },
-        where: {
-          idcaja: parseInt(req.body.idcaja),
-        },
-      });
+      const cerrarCaja = await sep.query(
+        `
+              UPDATE caja_sepelio
+              SET ultimacarga = '${moment(req.body.ultimacarga).format(
+                "YYYY-MM-DD"
+              )}'
+              WHERE idcaja = ${parseInt(req.body.idcaja)}
+            
+            `
+      );
+      await sep.end();
 
       res.status(200).json(cerrarCaja);
     } else if (req.body.f && req.body.f === "update valores") {
-      const cerrarCaja = await Sep.caja_sepelio.update({
-        data: {
-          gastos: parseFloat(req.body.gastos),
-          totalcaja: parseFloat(req.body.totalcaja),
-        },
-        where: {
-          idcaja: parseInt(req.body.idcaja),
-        },
-      });
+      const cerrarCaja = await sep.query(
+        `
+            UPDATE caja_sepelio
+            SET gastos= ${parseFloat(req.body.gastos)},
+                totalcaja= ${parseFloat(req.body.totalcaja)}
+            WHERE idcaja = ${parseInt(req.body.idcaja)}
+          `
+      );
+      await sep.end();
 
       res.status(200).json(cerrarCaja);
     } else if (req.body.f && req.body.f === "update valores ing") {
-      const cerrarCaja = await Sep.caja_sepelio.update({
-        data: {
-          monto: parseFloat(req.body.monto),
-          totalcaja: parseFloat(req.body.totalcaja),
-        },
-        where: {
-          idcaja: parseInt(req.body.idcaja),
-        },
-      });
+      const cerrarCaja = await sep.query(
+        `
+            UPDATE caja_sepelio
+            SET monto= ${parseFloat(req.body.monto)},
+                totalcaja= ${parseFloat(req.body.totalcaja)}
+            WHERE idcaja = ${parseInt(req.body.idcaja)}
+
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(cerrarCaja);
     } else if (req.body.f && req.body.f === "reajustar caja") {
-      const reajusteCaja = await Sep.caja_sepelio.update({
-        data: {
-          gastos: parseFloat(req.body.gastos),
-          totalcaja: parseFloat(req.body.totalcaja),
-        },
-        where: {
-          idcaja: parseInt(req.body.idcaja),
-        },
-      });
+      const reajusteCaja = await sep.query(
+        `
+            UPDATE caja_sepelio
+            SET gastos= ${parseFloat(req.body.gastos)},
+                totalcaja= ${parseFloat(req.body.totalcaja)}
+            WHERE idcaja = ${parseInt(req.body.idcaja)}
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(reajusteCaja);
     }
   }
   if (req.method === "DELETE") {
     if (req.query.f && req.query.f === "eliminar gastos reg") {
-      const delGastos = await Sep.gastos_caja.delete({
-        where: {
-          idgastos: parseInt(req.query.idgastos),
-        },
-      });
+      const delGastos = await sep.query(
+        `
+        DELETE FROM gastos_caja
+        WHERE idgastos= ${parseInt(req.query.idgastos)}
+      `
+      );
+
+      await sep.end();
 
       res.status(200).json(delGastos);
     } else if (req.query.f && req.query.f === "eliminar caja") {
-      const delCaja = await Sep.caja_sepelio.delete({
-        where: {
-          idcaja: parseInt(req.query.idcaja),
-        },
-      });
+      const delCaja = await sep.query(
+        `
+        DELETE FROM caja_sepelio
+        WHERE idcaja = ${parseInt(req.query.idcaja)}
+      `
+      );
 
+      await sep.end();
       res.status(200).json(delCaja);
     } else if (req.query.f && req.query.f === "eliminar ingresos caja") {
-      const delIngreso = await Sep.$queryRaw`
+      const delIngreso = await sep.query(`
       
       DELETE
       FROM ingreso_caja 
       WHERE idcaja = ${parseInt(req.query.idcaja)}
      
-`;
+`);
+
+      await sep.end();
 
       res.status(200).json(delIngreso);
     } else if (req.query.f && req.query.f === "eliminar egresos caja") {
-      const delEgreso = await Sep.$queryRaw`
+      const delEgreso = await sep.query(`
       
       DELETE
       FROM gastos_caja 
       WHERE idcaja = ${parseInt(req.query.idcaja)}     
-`;
+`);
+
+      await sep.end();
 
       res.status(200).json(delEgreso);
     }

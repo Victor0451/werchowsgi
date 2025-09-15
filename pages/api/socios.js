@@ -1,11 +1,10 @@
-import { Werchow, SGI, Camp, Sep, Serv, Arch } from "../../libs/config";
 import moment from "moment";
-//import { PrismaClient as WerchowSepClient } from '../../../prisma/generated/werchowsep'
+import { werchow, sgi, serv, sep } from "../../libs/db/index";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     if (req.query.f && req.query.f === "maestro") {
-      const mae = await Werchow.$queryRaw`
+      const mae = await werchow.query(`
             SELECT
                 m.CONTRATO, 
                 m.GRUPO, 
@@ -46,7 +45,9 @@ export default async function handler(req, res) {
                 INNER JOIN obra_soc as o on o.CODIGO = m.OBRA_SOC
                 WHERE m.NRO_DOC = ${req.query.dni}
 
-    `;
+    `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -56,49 +57,50 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "maestro contrato") {
-      const mae = await Werchow.$queryRaw`
-            SELECT
-                m.CONTRATO, 
-                m.GRUPO, 
-                m.SUCURSAL, 
-                m.NRO_DOC, 
-                m.APELLIDOS,
-                m.NOMBRES, 
-                m.ALTA, 
-                m.VIGENCIA, 
-                m.DOM_LAB, 
-                m.PLAN,
-                m.SUB_PLAN, 
-                m.CALLE, 
-                m.NRO_CALLE,
-                m.BARRIO, 
-                m.NACIMIENTO, 
-                m.TELEFONO, 
-                m.MOVIL, 
-                m.MAIL, 
-                c.IMPORTE, 
-                m.PRODUCTOR, 
-                m.LOCALIDAD, 
-                m.DOM_LAB , 
-                m.TSEG , 
-                "T" as "perfil", 
-                o.NOMBRE "OBRA_SOC",
-                o.CODIGO "COD_OBRA", 
-                m.ADHERENTES, 
-                TIMESTAMPDIFF(YEAR,m.NACIMIENTO,CURDATE()) "EDAD",  
-                m.SEXO,
-                CASE 
-                    WHEN m.EMPRESA = "W" THEN  "WERCHOW"
-                    WHEN m.EMPRESA = "M" THEN  "MUTUAL"
-                    ELSE  null
-                END 'EMPRESA'                        
-                FROM maestro as m
-                INNER JOIN cuo_fija as c on c.CONTRATO = m.CONTRATO
-                INNER JOIN obra_soc as o on o.CODIGO = m.OBRA_SOC
-                WHERE m.CONTRATO = ${req.query.ficha}
+      let mae = await werchow.query(`
+        SELECT
+                   m.CONTRATO,
+                   m.GRUPO,
+                   m.SUCURSAL,
+                   m.NRO_DOC,
+                   m.APELLIDOS,
+                   m.NOMBRES,
+                   m.ALTA,
+                   m.VIGENCIA,
+                   m.DOM_LAB,
+                   m.PLAN,
+                   m.SUB_PLAN,
+                   m.CALLE,
+                   m.NRO_CALLE,
+                   m.BARRIO,
+                   m.NACIMIENTO,
+                   m.TELEFONO,
+                   m.MOVIL,
+                   m.MAIL,
+                   c.IMPORTE,
+                   m.PRODUCTOR,
+                   m.LOCALIDAD,
+                   m.DOM_LAB ,
+                   m.TSEG ,
+                   "T" as "perfil",
+                   o.NOMBRE "OBRA_SOC",
+                   o.CODIGO "COD_OBRA",
+                   m.ADHERENTES,
+                   TIMESTAMPDIFF(YEAR,m.NACIMIENTO,CURDATE()) "EDAD",
+                   m.SEXO,
+                   CASE
+                      WHEN m.EMPRESA = "W" THEN  "WERCHOW"
+                       WHEN m.EMPRESA = "M" THEN  "MUTUAL"
+                       ELSE  null
+                   END 'EMPRESA'
+                   FROM maestro as m
+                   INNER JOIN cuo_fija as c on c.CONTRATO = m.CONTRATO
+                   INNER JOIN obra_soc as o on o.CODIGO = m.OBRA_SOC
+                   WHERE m.CONTRATO = ${req.query.ficha}
+        
+        `);
 
-    `;
-
+      await werchow.end();
       res
         .status(200)
         .json(
@@ -107,13 +109,15 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "maestro apellido") {
-      const mae = await Werchow.$queryRawUnsafe(`
+      const mae = await await werchow.query(`
             SELECT
                *     
             FROM maestro as m               
             WHERE m.APELLIDOS LIKE UPPER('%${req.query.apellido}%')
 
     `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -123,7 +127,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "maestro baja") {
-      const mae = await Werchow.$queryRaw`
+      const mae = await werchow.query(`
             SELECT
                 m.CONTRATO, 
                 m.GRUPO, 
@@ -161,7 +165,9 @@ export default async function handler(req, res) {
                 FROM bajas as m              
                 WHERE m.NRO_DOC = ${req.query.dni}
 
-    `;
+    `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -171,7 +177,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "maestro baja contrato") {
-      const mae = await Werchow.$queryRaw`
+      const mae = await werchow.query(`
             SELECT
                 m.CONTRATO, 
                 m.GRUPO, 
@@ -209,7 +215,9 @@ export default async function handler(req, res) {
                 FROM bajas as m              
                 WHERE m.CONTRATO = ${req.query.ficha}
 
-    `;
+    `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -219,7 +227,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "adh") {
-      const adh = await Werchow.$queryRaw`
+      const adh = await await werchow.query(`
           SELECT
                 a.CONTRATO, 
                 a.SUCURSAL, 
@@ -251,7 +259,9 @@ export default async function handler(req, res) {
                 WHERE a.CONTRATO = ${req.query.contrato}
                 
 
-    `;
+    `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -261,7 +271,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "mutual") {
-      const mut = await Werchow.$queryRaw`
+      const mut = await await werchow.query(`
                     SELECT
                         m.CONTRATO, 
                         m.GRUPO, 
@@ -302,7 +312,9 @@ export default async function handler(req, res) {
                         INNER JOIN obra_soc as o on o.CODIGO = m.OBRA_SOC
                         WHERE m.NRO_DOC = ${req.query.dni}
 
-            `;
+            `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -312,7 +324,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "mutual contrato") {
-      const mut = await Werchow.$queryRaw`
+      const mut = await werchow.query(`
                     SELECT
                         m.CONTRATO, 
                         m.GRUPO, 
@@ -353,7 +365,9 @@ export default async function handler(req, res) {
                         INNER JOIN obra_soc as o on o.CODIGO = m.OBRA_SOC
                         WHERE m.CONTRATO = ${req.query.ficha}
 
-            `;
+            `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -363,13 +377,15 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "mutual apellido") {
-      const mae = await Werchow.$queryRawUnsafe(`
+      const mae = await await werchow.query(`
             SELECT
                *    
             FROM mutual as m               
             WHERE m.APELLIDOS LIKE UPPER('%${req.query.apellido}%')
 
     `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -379,7 +395,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "mutual baja") {
-      const mae = await Werchow.$queryRaw`
+      const mae = await werchow.query(`
             SELECT
                 m.CONTRATO, 
                 m.GRUPO, 
@@ -417,7 +433,9 @@ export default async function handler(req, res) {
                 FROM bajas_mutual as m              
                 WHERE m.NRO_DOC = ${req.query.dni}
 
-    `;
+    `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -427,7 +445,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "mutual baja contrato") {
-      const mae = await Werchow.$queryRaw`
+      const mae = await await werchow.query(`
             SELECT
                 m.CONTRATO, 
                 m.GRUPO, 
@@ -465,7 +483,9 @@ export default async function handler(req, res) {
                 FROM bajas_mutual as m              
                 WHERE m.CONTRATO = ${req.query.ficha}
 
-    `;
+    `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -475,7 +495,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "mutual adh") {
-      const mutAdh = await Werchow.$queryRaw`
+      const mutAdh = await werchow.query(`
         SELECT
                 a.CONTRATO, 
                 a.SUCURSAL, 
@@ -505,7 +525,9 @@ export default async function handler(req, res) {
                 WHERE a.CONTRATO = ${req.query.contrato}
                 AND BAJA IS NULL
 
-    `;
+    `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -515,7 +537,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "mae adh") {
-      const maeAdh = await Werchow.$queryRaw`
+      const maeAdh = await werchow.query(`
             SELECT
                 a.CONTRATO, 
                 a.SUCURSAL, 
@@ -544,7 +566,9 @@ export default async function handler(req, res) {
                 WHERE a.NRO_DOC = ${req.query.dni}
                 AND BAJA IS NULL
 
-    `;
+    `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -554,7 +578,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "mae adh baja") {
-      const maeAdh = await Werchow.$queryRaw`
+      const maeAdh = await werchow.query(`
             SELECT
                 a.CONTRATO, 
                 a.SUCURSAL, 
@@ -583,7 +607,9 @@ export default async function handler(req, res) {
                 WHERE a.NRO_DOC = ${req.query.dni}
                 AND BAJA IS NOT NULL
 
-    `;
+    `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -593,7 +619,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "mut adh") {
-      const mutAdh = await Werchow.$queryRaw`
+      const mutAdh = await werchow.query(`
             SELECT
                 a.CONTRATO, 
                 a.SUCURSAL, 
@@ -622,7 +648,9 @@ export default async function handler(req, res) {
                 WHERE a.NRO_DOC = ${req.query.dni}
                 AND BAJA IS NULL
 
-    `;
+    `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -632,7 +660,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "mut adh baja") {
-      const mutAdh = await Werchow.$queryRaw`
+      const mutAdh = await werchow.query(`
             SELECT
                 a.CONTRATO, 
                 a.SUCURSAL, 
@@ -661,7 +689,9 @@ export default async function handler(req, res) {
                 WHERE a.NRO_DOC = ${req.query.dni}
                 AND BAJA IS NOT NULL
 
-    `;
+    `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -671,7 +701,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer grupo") {
-      const grup = await Werchow.$queryRaw`
+      const grup = await werchow.query(`
             SELECT
                 CODIGO,
                 DESCRIP                
@@ -679,63 +709,76 @@ export default async function handler(req, res) {
             WHERE CODIGO = ${req.query.grupo}
                 
 
-    `;
+    `);
+
+      await werchow.end();
 
       res.status(200).json(grup);
     } else if (req.query.f && req.query.f === "traer pagos") {
       if (req.query.empre === "WERCHOW") {
-        const pagos = await Werchow.pagos.findMany({
-          where: {
-            CONTRATO: parseInt(req.query.ficha),
-            MOVIM: "P",
-          },
-          orderBy: {
-            DIA_PAG: "desc",
-          },
-        });
+        const pagos = await werchow.query(
+          `
+                SELECT *
+                FROM pagos
+                WHERE CONTRATO = ${parseInt(req.query.ficha)}
+                AND MOVIM = 'P'
+                ORDER BY DIA_PAG DESC
+          `
+        );
+
+        await werchow.end();
 
         res.status(200).json(pagos);
       } else if (req.query.empre === "MUTUAL") {
-        const pagos = await Werchow.pagos_mutual.findMany({
-          where: {
-            CONTRATO: parseInt(req.query.ficha),
-            MOVIM: "P",
-          },
-          orderBy: {
-            DIA_PAG: "desc",
-          },
-        });
+        const pagos = await werchow.query(
+          `
+                SELECT *
+                FROM pagos_mutual
+                WHERE CONTRATO = ${parseInt(req.query.ficha)}
+                AND MOVIM = 'P'
+                ORDER BY DIA_PAG DESC
+          `
+        );
+
+        await werchow.end();
 
         res.status(200).json(pagos);
       }
     } else if (req.query.f && req.query.f === "traer pagosb") {
       if (req.query.empre === "WERCHOW") {
-        const pagos = await Werchow.pago_bco.findMany({
-          where: {
-            CONTRATO: parseInt(req.query.ficha),
-          },
-          orderBy: {
-            DIA_PAGO: "desc",
-          },
-        });
+        const pagos = await werchow.query(
+          `
+          SELECT *
+          FROM pago_bco
+          WHERE CONTRATO = ${parseInt(req.query.ficha)}  
+          ORDER BY DIA_PAGO DESC
+          `
+        );
+        await werchow.end();
         res.status(200).json(pagos);
       } else if (req.query.empre === "MUTUAL") {
-        const pagos = await Werchow.pago_bcom.findMany({
-          where: {
-            CONTRATO: parseInt(req.query.ficha),
-          },
-          orderBy: {
-            DIA_PAGO: "desc",
-          },
-        });
+        const pagos = await werchow.query(
+          `
+                SELECT *
+                FROM pago_bcom
+                WHERE CONTRATO = ${parseInt(req.query.ficha)}                
+                ORDER BY DIA_PAGO DESC
+          `
+        );
+
+        await werchow.end();
         res.status(200).json(pagos);
       }
     } else if (req.query.f && req.query.f === "traer archivos") {
-      const archivos = await SGI.legajo_virtual.findMany({
-        where: {
-          contrato: parseInt(req.query.ficha),
-        },
-      });
+      const archivos = await sgi.query(`
+                SELECT *
+                FROM legajo_virtual
+                WHERE contrato = ${parseInt(req.query.ficha)}
+
+                `);
+
+      await sgi.end();
+
       res.status(200).json(archivos);
     } else if (req.query.f && req.query.f === "reporte cartera") {
       let mes = parseInt(req.query.mes);
@@ -763,7 +806,7 @@ export default async function handler(req, res) {
         zona = "99";
       } else if (cartera === 3) {
         if (req.query.emp === "W") {
-          const reporte = await Werchow.$queryRaw`
+          const reporte = await werchow.query(`
             
                SELECT 
                   m.SUCURSAL,
@@ -812,7 +855,9 @@ export default async function handler(req, res) {
                   AND m.GRUPO NOT IN(7777,8500,9999)
          
   
-      `;
+      `);
+
+          await werchow.end();
 
           res
             .status(200)
@@ -825,7 +870,7 @@ export default async function handler(req, res) {
       }
 
       if (req.query.emp === "W") {
-        const reporte = await Werchow.$queryRaw`
+        const reporte = await werchow.query(`
           
              SELECT 
                 m.SUCURSAL,
@@ -873,7 +918,9 @@ export default async function handler(req, res) {
                 AND FIND_IN_SET(GRUPO, ${grupo} )
                 AND FIND_IN_SET(ZONA, ${zona} )
 
-    `;
+    `);
+
+        await werchow.end();
 
         res
           .status(200)
@@ -883,7 +930,7 @@ export default async function handler(req, res) {
             )
           );
       } else if (req.query.emp === "M") {
-        const reporte = await Werchow.$queryRaw`
+        const reporte = await werchow.query(`
           
         SELECT 
            m.SUCURSAL,
@@ -931,7 +978,8 @@ export default async function handler(req, res) {
            AND FIND_IN_SET(GRUPO, ${grupo} )
            AND FIND_IN_SET(ZONA, ${zona} )
 
-`;
+`);
+        await werchow.end();
 
         res
           .status(200)
@@ -942,17 +990,20 @@ export default async function handler(req, res) {
           );
       }
     } else if (req.query.f && req.query.f === "generar ncert") {
-      const nCert = await SGI.certificado_estudiantes.findFirst({
-        select: {
-          idcertificado: true,
-        },
-        orderBy: {
-          idcertificado: "desc",
-        },
-      });
+      const nCert = await sgi.query(
+        `
+          SELECT *
+          FROM certificado_estudiantes
+          ORDER BY idcertificado DESC
+          
+          `
+      );
+
+      await sgi.end();
+
       res.status(200).json(nCert);
     } else if (req.query.f && req.query.f === "traer usos") {
-      const usos = await Serv.$queryRaw`
+      const usos = await serv.query(`
          
          SELECT
           u.CONTRATO,
@@ -971,9 +1022,11 @@ export default async function handler(req, res) {
         WHERE
           u.CONTRATO = ${parseInt(req.query.contrato)}
         ORDER BY u.FECHA DESC
-              `;
+              `);
 
-      const usosFa = await Serv.$queryRaw`
+      await serv.end();
+
+      const usosFa = await serv.query(`
          
          SELECT
           u.CONTRATO,
@@ -992,7 +1045,9 @@ export default async function handler(req, res) {
         WHERE
           u.CONTRATO = ${parseInt(req.query.contrato)}
         ORDER BY u.FECHA DESC
-`;
+`);
+
+      await serv.end();
 
       let historial = usos.concat(usosFa);
 
@@ -1004,7 +1059,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer grupos") {
-      const grupos = await SGI.$queryRaw`
+      const grupos = await sgi.query(`
          
             SELECT
                CODIGO,
@@ -1013,7 +1068,9 @@ export default async function handler(req, res) {
                grupos       
         
             ORDER BY CODIGO ASC
-              `;
+              `);
+
+      await sgi.end();
 
       res
         .status(200)
@@ -1023,7 +1080,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer zonas") {
-      const zonas = await SGI.$queryRaw`
+      const zonas = await sgi.query(`
          
             SELECT
                CODIGO,
@@ -1032,7 +1089,9 @@ export default async function handler(req, res) {
                zonas       
         
             ORDER BY CODIGO ASC
-              `;
+              `);
+
+      await sgi.end();
 
       res
         .status(200)
@@ -1042,7 +1101,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer sucursales") {
-      const sucursales = await SGI.$queryRaw`
+      const sucursales = await sgi.query(`
          
             SELECT
               codigo,
@@ -1050,7 +1109,9 @@ export default async function handler(req, res) {
             FROM
                sucursal        
             
-              `;
+              `);
+
+      await sgi.end();
 
       res
         .status(200)
@@ -1060,7 +1121,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer productores") {
-      const producto = await SGI.$queryRaw`
+      const producto = await sgi.query(`
          
             SELECT
                CODIGO,
@@ -1070,7 +1131,9 @@ export default async function handler(req, res) {
         
             ORDER BY CODIGO ASC      
             
-              `;
+              `);
+
+      await sgi.end();
 
       res
         .status(200)
@@ -1080,7 +1143,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer localidades") {
-      const localida = await SGI.$queryRaw`
+      const localida = await sgi.query(`
          
             SELECT
                CODIGO,
@@ -1090,7 +1153,9 @@ export default async function handler(req, res) {
         
             ORDER BY CODIGO ASC      
             
-              `;
+              `);
+
+      await sgi.end();
 
       res
         .status(200)
@@ -1100,7 +1165,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer obra social") {
-      const localida = await Werchow.$queryRaw`
+      const localida = await werchow.query(`
          
             SELECT
                CODIGO,
@@ -1110,7 +1175,9 @@ export default async function handler(req, res) {
         
             ORDER BY CODIGO ASC      
             
-              `;
+              `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -1120,7 +1187,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer planes") {
-      const planes = await Werchow.$queryRaw`
+      const planes = await werchow.query(`
          
             SELECT
                PLAN,
@@ -1130,7 +1197,9 @@ export default async function handler(req, res) {
                planes   
                      
             
-              `;
+              `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -1140,22 +1209,20 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer n ficha") {
-      const nFicha = await Werchow.maestro.findFirst({
-        select: {
-          CONTRATO: true,
-        },
-        where: {
-          CONTRATO: {
-            lte: 100000,
-          },
-        },
-        orderBy: {
-          CONTRATO: "desc",
-        },
-      });
+      const nFicha = await werchow.query(
+        `
+          SELECT CONTRATO
+          FROM maestro
+          WHERE CONTRATO <= 100000
+          ORDER BY CONTRATO DESC
+          `
+      );
+
+      await werchow.end();
+
       res.status(200).json(nFicha);
     } else if (req.query.f && req.query.f === "traer historial") {
-      const histCuota = await Werchow.$queryRaw`
+      const histCuota = await werchow.query(`
          
       SELECT
             *
@@ -1165,7 +1232,9 @@ export default async function handler(req, res) {
          CONTRATO = ${parseInt(req.query.contrato)}                
 
       ORDER BY idhistoria DESC
-        `;
+        `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -1175,15 +1244,19 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer cuota mensual") {
-      const cuotaMensual = await Werchow.cuo_fija.findMany({
-        where: {
-          CONTRATO: parseInt(req.query.contrato),
-        },
-      });
+      const cuotaMensual = await werchow.query(
+        `
+          SELECT *
+          FROM cuo_fija
+          WHERE CONTRATO = ${parseInt(req.query.contrato)}
+        `
+      );
+
+      await werchow.end();
 
       res.status(200).json(cuotaMensual);
     } else if (req.query.f && req.query.f === "traer cuotas") {
-      const histCuota = await Werchow.$queryRaw`
+      const histCuota = await werchow.query(`
          
             SELECT
                CONTRATO,
@@ -1197,7 +1270,9 @@ export default async function handler(req, res) {
             AND 
                NUEVO like '%AUMENTO%'                       
             ORDER BY idhistoria DESC
-              `;
+              `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -1207,14 +1282,16 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "listado reintegros") {
-      const listReintegros = await SGI.$queryRaw`
+      const listReintegros = await sgi.query(`
          
       SELECT
         *
       FROM
         reintegros
       
-        `;
+        `);
+
+      await sgi.end();
 
       res
         .status(200)
@@ -1224,154 +1301,298 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer beneficios") {
-      const beneficios = await SGI.beneficios.findMany({
-        where: {
-          contrato: parseInt(req.query.ficha),
-        },
-      });
+      const beneficios = await sgi.query(
+        `
+          SELECT *
+          FROM beneficios
+          WHERE contrato = ${parseInt(req.query.ficha)}  
+  
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(beneficios);
     }
   }
   if (req.method === "POST") {
     if (req.body.f && req.body.f === "soli afi") {
-      const regSoli = await SGI.rehabilitaciones.create({
-        data: {
-          contrato: `${req.body.contrato}`,
-          apellido: req.body.apellido,
-          nombre: req.body.nombre,
-          operador: req.body.operador,
-          idoperador: parseInt(req.body.idoperador),
-          vigencia: new Date(req.body.vigencia),
-          fecha: new Date(req.body.fecha),
-          cuotas: parseInt(req.body.cuotas),
-          dni: parseInt(req.body.dni),
-          empresa: req.body.empresa,
-        },
-      });
+      const regSoli = await sgi.query(
+        `
+        INSERT INTO rehabilitaciones
+
+         (contrato,
+          apellido,
+          nombre,
+          operador,
+          idoperador,
+          vigencia,
+          fecha,
+          cuotas,
+          dni,
+          empresa)
+
+        VALUES (
+         ${req.body.contrato},
+           '${req.body.apellido}',
+           '${req.body.nombre}',
+           '${req.body.operador}',
+           ${parseInt(req.body.idoperador)},
+           '${moment(req.body.vigencia).format("YYYY-MM-DD")}',
+           '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+           ${parseInt(req.body.cuotas)},
+           ${parseInt(req.body.dni)},
+           '${req.body.empresa}'
+        
+        )
+
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(regSoli);
     } else if (req.body.f && req.body.f === "reg certificado") {
-      const regSoli = await SGI.certificado_estudiantes.create({
-        data: {
-          contrato: parseInt(req.body.contrato),
-          socio: req.body.socio,
-          fecha: new Date(req.body.fecha),
-          operador: req.body.operador,
-          ncert: req.body.ncert,
-        },
-      });
+      const regSoli = await sgi.query(
+        `
+         INSERT INTO certificado_estudiantes 
+         (
+          contrato,
+          socio,
+          fecha,
+          operador,
+          ncert
+         )
+
+         VALUES
+
+        (
+           ${parseInt(req.body.contrato)},
+           '${req.body.socio}',
+           '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+           '${req.body.operador}',
+           ${req.body.ncert},
+        
+        )
+
+
+  `
+      );
+
+      await sgi.end();
 
       res.status(200).json(regSoli);
     } else if (req.body.f && req.body.f === "reg socio") {
-      const regSocio = await Werchow.maestro.create({
-        data: {
-          CONTRATO: parseInt(req.body.CONTRATO),
-          GRUPO: parseInt(req.body.GRUPO),
-          ZONA: parseInt(req.body.ZONA),
-          SUCURSAL: req.body.SUCURSAL,
-          PRODUCTOR: parseInt(req.body.PRODUCTO),
-          APELLIDOS: req.body.APELLIDOS,
-          NOMBRES: req.body.NOMBRES,
-          NRO_DOC: parseInt(req.body.NRO_DOC),
-          NACIMIENTO: new Date(req.body.NACIMIENTO),
-          CALLE: req.body.CALLE,
-          NRO_CALLE: parseInt(req.body.NRO_CALLE),
-          BARRIO: req.body.BARRIO,
-          LOCALIDAD: req.body.LOCALIDAD,
-          DOMI_COBR: req.body.DOMI_COBR,
-          DOM_LAB: req.body.DOMI_LAB,
-          ALTA: new Date(req.body.ALTA),
-          VIGENCIA: new Date(req.body.VIGENCIA),
-          TELEFONO: req.body.TELEFONO,
-          MOVIL: req.body.MOVIL,
-          MAIL: req.body.MAIL,
-          EMPRESA: req.body.EMPRESA,
-          OPERADOR: parseInt(req.body.OPERADOR),
-          OBRA_SOC: parseInt(req.body.OBRA_SOC),
-          PLAN: req.body.PLAN,
-          SUB_PLAN: req.body.SUB_PLAN,
-        },
-      });
+      const regSocio = await werchow.query(
+        `
+      INSERT INTO maestro
+         (
+          CONTRATO,
+          GRUPO,
+          ZONA,
+          SUCURSAL,
+          PRODUCTOR,
+          APELLIDOS,
+          NOMBRES,
+          NRO_DOC,
+          NACIMIENTO,
+          CALLE,
+          NRO_CALLE,
+          BARRIO,
+          LOCALIDAD,
+          DOMI_COBR,
+          DOM_LAB,
+          ALTA,
+          VIGENCIA,
+          TELEFONO,
+          MOVIL,
+          MAIL,
+          EMPRESA,
+          OPERADOR,
+          OBRA_SOC,
+          PLAN,
+          SUB_PLAN
+
+      )
+
+      VALUES 
+      (
+           ${parseInt(req.body.CONTRATO)},
+           ${parseInt(req.body.GRUPO)},
+           ${parseInt(req.body.ZONA)},
+           '${req.body.SUCURSAL}',
+           ${parseInt(req.body.PRODUCTO)},
+           '${req.body.APELLIDOS}',
+           '${req.body.NOMBRES}',
+           ${parseInt(req.body.NRO_DOC)},
+           ${moment(req.body.NACIMIENTO).format("YYYY-MM-DD")},
+           '${req.body.CALLE}',
+           ${parseInt(req.body.NRO_CALLE)},
+           '${req.body.BARRIO}',
+           '${req.body.LOCALIDAD}',
+           '${req.body.DOMI_COBR}',
+           '${req.body.DOMI_LAB}',
+           ${moment(req.body.ALTA).format("YYYY-MM-DD")},
+           ${moment(req.body.VIGENCIA).format("YYYY-MM-DD")},
+           '${req.body.TELEFONO}',
+           '${req.body.MOVIL}',
+           '${req.body.MAIL}',
+           '${req.body.EMPRESA}',
+           ${parseInt(req.body.OPERADOR)},
+           ${parseInt(req.body.OBRA_SOC)},
+           '${req.body.PLAN}',
+           '${req.body.SUB_PLAN}',
+      
+      )
+
+`
+      );
+
+      await werchow.end();
 
       res.status(200).json(regSocio);
     } else if (req.body.f && req.body.f === "reg adh") {
-      const regAdh = await Werchow.adherent.create({
-        data: {
-          CONTRATO: parseInt(req.body.CONTRATO),
-          SUCURSAL: req.body.SUCURSAL,
-          PRODUCTOR: parseInt(req.body.PRODUCTOR),
-          APELLIDOS: req.body.APELLIDOS,
-          NOMBRES: req.body.NOMBRES,
-          NRO_DOC: parseInt(req.body.NRO_DOC),
-          NACIMIENTO: new Date(req.body.NACIMIENTO),
-          ALTA: new Date(req.body.ALTA),
-          VIGENCIA: new Date(req.body.VIGENCIA),
-          OBRA_SOC: req.body.OBRA_SOC,
-          PLAN: req.body.PLAN,
-          SUB_PLAN: req.body.SUB_PLAN,
-        },
-      });
+      const regAdh = await werchow.query(
+        `
+      INSERT INTO adherent
+       (
+          CONTRATO,
+          SUCURSAL,
+          PRODUCTOR,
+          APELLIDOS,
+          NOMBRES,
+          NRO_DOC,
+          NACIMIENTO,
+          ALTA,
+          VIGENCIA,
+          OBRA_SOC,
+          PLAN,
+          SUB_PLAN
+       )
+
+      VALUES 
+      (
+           ${parseInt(req.body.CONTRATO)},
+           '${req.body.SUCURSAL}',
+           ${parseInt(req.body.PRODUCTOR)},
+           '${req.body.APELLIDOS}',
+           '${req.body.NOMBRES}',
+           ${parseInt(req.body.NRO_DOC)},
+           ${moment(req.body.NACIMIENTO).format("YYYY-MM-DD")},
+           ${moment(req.body.ALTA).format("YYYY-MM-DD")},
+           ${moment(req.body.VIGENCIA).format("YYYY-MM-DD")},
+           ${parseInt(req.body.OBRA_SOC)},
+           '${req.body.PLAN}',
+           '${req.body.SUB_PLAN}',
+      
+      ) 
+`
+      );
+
+      await werchow.end();
 
       res.status(200).json(regAdh);
     } else if (req.body.f && req.body.f === "reg cuota") {
-      const regCuota = await Werchow.cuo_fija.create({
-        data: {
-          CONTRATO: parseInt(req.body.CONTRATO),
-          IMPORTE: parseFloat(req.body.IMPORTE),
-          CUO_ANT: parseFloat(req.body.CUO_ANT),
-          DESDE: new Date(req.body.DESDE),
-          OPERADOR: req.body.OPERADOR,
-        },
-      });
+      const regCuota = await werchow.query(
+        `
+        INSERT INTO cuo_fija
+          (
+            CONTRATO,
+            IMPORTE,
+            CUO_ANT,
+            DESDE,
+            OPERADOR
+          
+          )
+        VALUES 
+          (
+            ${parseInt(req.body.CONTRATO)},
+            ${parseFloat(req.body.IMPORTE)},
+            ${parseFloat(req.body.CUO_ANT)},
+            ${moment(req.body.DESDE).format("YYYY-MM-DD")},
+            '${req.body.OPERADOR}',
+
+          )
+
+        
+        `
+      );
+
+      await werchow.end();
 
       res.status(200).json(regCuota);
     } else if (req.body.f && req.body.f === "solicitud reintegro") {
-      const regCuota = await SGI.reintegros.create({
-        data: {
-          contrato: parseInt(req.body.contrato),
-          socio: req.body.socio,
-          dni: parseInt(req.body.dni),
-          entidad: req.body.entidad,
-          norden: req.body.nOrden,
-          importe: parseFloat(req.body.importe),
-          observacion: req.body.observacion,
-          operador: req.body.operador,
-          fecha: new Date(req.body.fecha),
-        },
-      });
+      const regCuota = await sgi.query(
+        `
+          INSERT INTO reintegros
+            (
+                contrato,
+                socio,
+                dni,
+                entidad,
+                norden,
+                importe,
+                observacion,
+                operador,
+                fecha
+
+            )
+
+          VALUES 
+            (
+                ${parseInt(req.body.contrato)},
+                '${req.body.socio}',
+                ${parseInt(req.body.dni)},
+                '${req.body.entidad}',
+                '${req.body.nOrden}',
+                ${parseFloat(req.body.importe)},
+                '${req.body.observacion}',
+                '${req.body.operador}',
+                ${moment(req.body.fecha).format("YYYY-MM-DD")},
+
+
+            )  
+  
+  `
+      );
+
+      await sgi.end();
 
       res.status(200).json(regCuota);
     } else if (req.body.f && req.body.f === "reg beneficio") {
-      const regBene = await SGI.beneficios.create({
-        data: {
-          contrato: parseInt(req.body.contrato),
-          dni: parseInt(req.body.dni),
-          socio: req.body.socio,
-          beneficio: req.body.beneficio,
-          observacion: req.body.observacion,
-          fecha: new Date(req.body.fecha),
-          operador: req.body.operador,
-        },
-      });
+      const regBene = await sgi.query(
+        `
+          INSERT INTO beneficios
+            (
+            contrato,
+            dni,
+            socio,
+            beneficio,
+            observacion,
+            fecha,
+            operador
+            
+            )
+
+          VALUES
+            (
+              ${parseInt(req.body.contrato)},
+              ${parseInt(req.body.dni)},
+              '${req.body.socio}',
+              '${req.body.beneficio}',
+              '${req.body.observacion}',
+              '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+              '${req.body.operador}'
+
+            )
+
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(regBene);
     }
   } else if (req.method === "PUT") {
-    if (req.body.f && req.body.f === "renov poliza") {
-      const regAuto = await Sep.autos.update({
-        data: {
-          nro_poliza: req.body.nro_poliza,
-          empresa: req.body.empresa,
-          vencimiento: new Date(req.body.vencimiento),
-          cobertura: req.body.cobertura,
-        },
-        where: {
-          idauto: req.body.idauto,
-        },
-      });
-
-      res.status(200).json(regAuto);
-    }
   }
 }

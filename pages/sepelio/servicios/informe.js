@@ -258,6 +258,8 @@ function informe(props) {
         }
       }
 
+      console.log(data);
+
       await axios
         .post("/api/sepelio/servicios", data)
         .then((res) => {

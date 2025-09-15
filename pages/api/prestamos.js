@@ -1,128 +1,177 @@
-import { Werchow, SGI, Camp } from "../../libs/config";
-//import { PrismaClient as WerchowsClient } from '../../prisma/generated/werchow'
+import { werchow, sgi, serv, sep, camp, arch, club } from "../../libs/db/index";
+import moment from "moment";
 
 export default async function handler(req, res) {
-  let prisma = SGI;
-
   if (req.method === "GET") {
     if (req.query.f && req.query.f === "tasas") {
-      const tasas = await prisma.prestamos_tasas.findMany({
-        where: {
-          estado: true,
-          tipo: "policias",
-        },
-      });
+      const tasas = await sgi.query(
+        `
+         SELECT *
+         FROM prestamos_tasas
+         WHERE estado = true
+         AND tipo = "policias"
+        `
+      );
+
+      await sgi.end();
+
       res.status(200).json(tasas);
     }
     if (req.query.f && req.query.f === "tasas emp") {
-      const tasas = await prisma.prestamos_tasas.findMany({
-        where: {
-          estado: true,
-          tipo: "empleados",
-        },
-      });
+      const tasas = await sgi.query(
+        `
+         SELECT *
+         FROM prestamos_tasas
+         WHERE estado = true
+         AND tipo = "empleados"
+        `
+      );
+
+      await sgi.end();
       res.status(200).json(tasas);
     }
     if (req.query.f && req.query.f === "capital") {
-      const capital = await prisma.capital_prestamo.findMany({
-        where: {
-          estado: true,
-        },
-      });
+      const capital = await sgi.query(
+        `
+        SELECT *
+        FROM capital_prestamo
+        WHERE estado =  true        
+        
+        `
+      );
+
+      await sgi.end();
+
       res.status(200).json(capital);
     }
     if (req.query.f && req.query.f === "capital emp") {
-      const capitalEmp = await prisma.capital_prestamo_empleados.findMany({
-        where: {
-          estado: true,
-        },
-      });
+      const capitalEmp = await sgi.query(
+        `
+        SELECT *
+        FROM capital_prestamo_empleados
+        WHERE estado =  true        
+        
+        `
+      );
+
+      await sgi.end();
       res.status(200).json(capitalEmp);
     }
     if (req.query.f && req.query.f === "plan cuotas") {
-      const planes = await prisma.prestamos_plan_cuotas.findMany({
-        where: {
-          estado: true,
-        },
-      });
+      const planes = await sgi.query(
+        `
+        SELECT *
+        FROM prestamos_plan_cuotas
+        WHERE estado =  true        
+        
+        `
+      );
+
+      await sgi.end();
       res.status(200).json(planes);
     }
     if (req.query.f && req.query.f === "traer poli") {
-      const poli = await Werchow.$queryRaw`
+      const poli = await werchow.query(`
             SELECT *            
             FROM maestro   
             WHERE CONTRATO = ${parseInt(req.query.hc)}
          
         
-        `;
+        `);
+
+      await werchow.end();
       res.status(200).json(poli);
     }
     if (req.query.f && req.query.f === "traer empleados") {
-      const emple = await prisma.$queryRaw`
+      const emple = await sgi.query(`
             SELECT usuario as 'value',
               CONCAT(apellido, ', ', nombre) as 'label'    
             FROM operador            
             WHERE estado = 1            
             ORDER BY apellido ASC
         
-        `;
+        `);
+
+      await sgi.end();
       res.status(200).json(emple);
     }
     if (req.query.f && req.query.f === "list prest") {
-      const prest = await Werchow.$queryRaw`
+      const prest = await werchow.query(`
             SELECT *              
             FROM prestamos
             WHERE ptm_op = ${parseInt(req.query.op)}      
            
             ORDER BY ptm_fechasol DESC
         
-        `;
+        `);
+
+      await werchow.end();
       res.status(200).json(prest);
     }
     if (req.query.f && req.query.f === "list prest pendientes") {
-      const prest = await Werchow.prestamos.findMany({
-        where: {
-          ptm_estado: "PENDIENTE",
-        },
-        orderBy: {
-          ptm_fechasol: "desc",
-        },
-      });
+      const prest = await werchow.query(
+        `
+        SELECT *
+        FROM prestamos
+        WHERE ptm_estado = "PENDIENTE"  
+        ORDER BY ptm_fechasol DESC
+      `
+      );
+
+      await werchow.end();
 
       res.status(200).json(prest);
     }
     if (req.query.f && req.query.f === "list prest emp") {
-      const emple = await prisma.prestamos_empleados.findMany();
+      const emple = await sgi.query(
+        `
+          SELECT *
+          FROM prestamos_empleados
+          
+          `
+      );
+
+      await sgi.end();
 
       res.status(200).json(emple);
     }
     if (req.query.f && req.query.f === "list prest pagos") {
-      const listPagos = await prisma.prestamos_empleados_cobro.findMany({
-        where: {
-          idprestamo: parseInt(req.query.id),
-        },
-      });
+      const listPagos = await sgi.query(
+        `
+          SELECT *
+          FROM prestamos_empleados_cobro
+          WHERE idprestamo = ${parseInt(req.query.id)}
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(listPagos);
     }
     if (req.query.f && req.query.f === "prest id") {
-      const prest = await Werchow.prestamos.findUnique({
-        where: {
-          ptm_id: parseInt(req.query.id),
-        },
-      });
+      const prest = await werchow.query(
+        `
+          SELECT * 
+          FROM prestamos
+          WHERE ptm_id= ${parseInt(req.query.id)}
+        `
+      );
+
+      await werchow.end();
 
       res.status(200).json(prest);
     }
     if (req.query.f && req.query.f === "prest socio") {
-      const ficha = await Werchow.$queryRaw`
+      const ficha = await werchow.query(`
             
             SELECT  *                    
             FROM maestro
             WHERE CONTRATO  = ${parseInt(req.query.hc)}
             
         
-        `;
+        `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -131,31 +180,24 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
-
-      // const prest = await Werchow.maestro.find({
-      //   where: {
-      //     CONTRATO: parseInt(req.query.hc),
-      //   },
-      // });
-
-      // res.status(200).json(prest);
     }
     if (req.query.f && req.query.f === "traer archivos") {
-      const prest = await prisma.legajo_virtual_prestamos.findMany({
-        where: {
-          cod_ptm_leg: req.query.id,
-          contrato: parseInt(req.query.hc),
-        },
+      const prest = await sgi.query(
+        `
+          SELECT archivo
+          FROM legajo_virtual_prestamos
+          WHERE cod_ptm_leg= '${req.query.id}'
+          AND contrato = ${parseInt(req.query.hc)}
 
-        select: {
-          archivo: true,
-        },
-      });
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(prest);
     }
     if (req.query.f && req.query.f === "reporte prestamos") {
-      const reporte = await Werchow.$queryRaw`
+      const reporte = await werchow.query(`
             
             SELECT  
              CONCAT(u.usu_apellido, ', ', u.usu_nombre) as 'operador',
@@ -166,10 +208,12 @@ export default async function handler(req, res) {
             FROM prestamos as p
             INNER JOIN usuario as u on u.usu_ide = p.ptm_op           
             WHERE ptm_estado  = 'APROBADO'
-            AND ptm_fechasol BETWEEN ${req.query.desde} AND ${req.query.hasta}
+            AND ptm_fechasol BETWEEN '${req.query.desde}' AND '${req.query.hasta}'
             GROUP BY ptm_op
         
-        `;
+        `);
+
+      await werchow.end();
 
       res
         .status(200)
@@ -180,7 +224,7 @@ export default async function handler(req, res) {
         );
     }
     if (req.query.f && req.query.f === "rep list prestamos") {
-      const reporte = await Werchow.$queryRaw`
+      const reporte = await werchow.query(`
             
             SELECT  
              p.ptm_fechasol,
@@ -194,109 +238,176 @@ export default async function handler(req, res) {
              CONCAT(u.usu_apellido, ', ', u.usu_nombre) as 'operador'
             FROM prestamos as p    
             INNER JOIN usuario as u on u.usu_ide = p.ptm_op     
-            WHERE ptm_fechasol BETWEEN ${req.query.desde} AND ${req.query.hasta}
+            WHERE ptm_fechasol BETWEEN '${req.query.desde}' AND '${req.query.hasta}'
                     
-        `;
+        `);
+
+      await werchow.end();
 
       res.status(200).json(reporte);
     }
   }
   if (req.method === "POST") {
     if (req.body.f && req.body.f === "reg prestamo") {
-      const nuPrest = await Werchow.prestamos.create({
-        data: {
-          ptm_fechacarga: new Date(req.body.fechacarga),
-          ptm_fechasol: new Date(req.body.fechasol),
-          ptm_op: parseInt(req.body.operador),
-          ptm_ficha: parseInt(req.body.ficha),
-          ptm_legajo: parseInt(req.body.legajo),
-          ptm_ant: parseInt(req.body.anti),
-          ptm_renov: req.body.renova,
-          ptm_prestamo: parseFloat(req.body.capital),
-          ptm_cuotas: parseInt(req.body.cuotas),
-          ptm_valcuota: parseFloat(req.body.valcuota),
-          ptm_neto: parseFloat(req.body.neto),
-          ptm_estado: req.body.estado,
-          cod_ptm_leg: req.body.codptmleg,
-          ptm_afi: req.body.ptm_afi,
-          capinoaut: req.body.capinoaut,
-          ptm_fechaingreso: new Date(req.body.ingreso),
-          ptm_inicio: req.body.inicio,
-          ptm_fin: req.body.fin,
-        },
-      });
+      const nuPrest = await werchow.query(
+        `
+          INSERT INTO prestamos
+              (
+                ptm_fechacarga,
+                ptm_fechasol,
+                ptm_op,
+                ptm_ficha,
+                ptm_legajo,
+                ptm_ant,
+                ptm_renov,
+                ptm_prestamo,
+                ptm_cuotas,
+                ptm_valcuota,
+                ptm_neto,
+                ptm_estado,
+                cod_ptm_leg,
+                ptm_afi,
+                capinoaut,
+                ptm_fechaingreso,
+                ptm_inicio,
+                ptm_fin
+              )
+        VALUES
+              (
+                '${moment(req.body.fechacarga).format("YYYY-MM-DD")}',
+                '${moment(req.body.fechasol).format("YYYY-MM-DD")}',
+                ${parseInt(req.body.operador)},
+                ${parseInt(req.body.ficha)},
+                ${parseInt(req.body.legajo)},
+                ${parseInt(req.body.anti)},
+                '${req.body.renova}',
+                ${parseFloat(req.body.capital)},
+                ${parseInt(req.body.cuotas)},
+                ${parseFloat(req.body.valcuota)},
+                ${parseFloat(req.body.neto)},
+                '${req.body.estado}',
+                '${req.body.codptmleg}',
+                '${req.body.ptm_afi}',
+                ${req.body.capinoaut},
+                '${moment(req.body.ingreso).format("YYYY-MM-DD")}',
+                '${req.body.inicio}',
+                '${req.body.fin}'
+              )
+  `
+      );
+
+      await werchow.end();
 
       res.status(200).json(nuPrest);
     }
     if (req.body.f && req.body.f === "reg prestamo emp") {
-      const nuPrest = await prisma.prestamos_empleados.create({
-        data: {
-          empleado: req.body.empleado,
-          fecha_solicitud: new Date(req.body.fecha_solicitud),
-          capital: parseFloat(req.body.capital),
-          plan_cuotas: parseInt(req.body.plan_cuotas),
-          cuota_mensual: parseFloat(req.body.cuota_mensual),
-          capital_dev: parseFloat(req.body.capital_dev),
-          inicia: req.body.inicia,
-          termina: req.body.termina,
-          estado: req.body.estado,
-          capinoaut: req.body.capinoaut,
-        },
-      });
+      const nuPrest = await sgi.query(
+        `
+            INSERT INTO prestamos_empleados
+            (
+              empleado,
+              fecha_solicitud,
+              capital,
+              plan_cuotas,
+              cuota_mensual,
+              capital_dev,
+              inicia,
+              termina,
+              estado,
+              capinoaut,
+            )
+            VALUES
+            (
+               '${req.body.empleado}',
+               '${moment(req.body.fecha_solicitud).format("YYYY-MM-DD")}',
+               ${parseFloat(req.body.capital)},
+               ${parseInt(req.body.plan_cuotas)},
+               ${parseFloat(req.body.cuota_mensual)},
+               ${parseFloat(req.body.capital_dev)},
+               '${req.body.inicia}',
+               '${req.body.termina}',
+               '${req.body.estado}',
+               ${req.body.capinoaut},
+            
+            )  
+
+
+
+          `
+      );
+
+      await sgi.end();
 
       res.status(200).json(nuPrest);
     }
     if (req.body.f && req.body.f === "reg plan pagos") {
-      const planPagos = await prisma.prestamos_empleados_cobro.create({
-        data: {
-          idprestamo: parseInt(req.body.idprestamo),
-          cuota: parseInt(req.body.cuota),
-          importe: parseFloat(req.body.importe),
-          fecha_cobro: new Date(req.body.fecha_cobro),
-          estado: req.body.estado,
-        },
-      });
+      const planPagos = await sgi.query(
+        `
+            INSERT INTO prestamos_empleados_cobro
+            (
+              idprestamo,
+              cuota,
+              importe,
+              fecha_cobro,
+              estado,
+            )
+            VALUE
+            (
+              ${parseInt(req.body.idprestamo)},
+              ${parseInt(req.body.cuota)},
+              ${parseFloat(req.body.importe)},
+              '${moment(req.body.fecha_cobro).format("YYYY-MM-DD")}',
+              ${req.body.estado}
+            )          
+          `
+      );
 
       res.status(200).json(planPagos);
     }
   }
   if (req.method === "PUT") {
     if (req.body.f && req.body.f === "est prest emp") {
-      const apPrest = await prisma.prestamos_empleados.update({
-        data: {
-          estado: req.body.estado,
-        },
+      const apPrest = await sgi.query(
+        `
+          UPDATE prestamos_empleados
+          SET estado = '${req.body.estado}'
+          WHERE idprestamo = ${parseInt(req.body.id)}
+        
+        `
+      );
 
-        where: {
-          idprestamo: parseInt(req.body.id),
-        },
-      });
+      await sgi.end();
+
       res.status(200).json(apPrest);
     }
     if (req.body.f && req.body.f === "est prest") {
-      const apPrest = await Werchow.prestamos.update({
-        data: {
-          ptm_estado: req.body.estado,
-        },
+      const apPrest = await werchow.query(
+        `
+      UPDATE prestamos
+      SET ptm_estado='${req.body.estado}'
+      WHERE ptm_id= ${parseInt(req.body.id)}
+     `
+      );
 
-        where: {
-          ptm_id: parseInt(req.body.id),
-        },
-      });
+      await werchow.end();
+
       res.status(200).json(apPrest);
     }
     if (req.body.f && req.body.f === "cobro cuota prest") {
-      const apPrest = await prisma.prestamos_empleados_cobro.update({
-        data: {
-          fecha_pago: new Date(req.body.fecha_pago),
-          estado: req.body.estado,
-          operador: req.body.operador,
-        },
+      const apPrest = await sgi.query(
+        `
+            UPDATE prestamos_empleados_cobro
+            SET fecha_pago= '${moment(req.body.fecha_pago).format(
+              "YYYY-MM-DD"
+            )}',
+                estado: ${req.body.estado},
+                operador: ${req.body.operador}
+            
+            `
+      );
 
-        where: {
-          idpago: parseInt(req.body.id),
-        },
-      });
+      await sgi.end();
+
       res.status(200).json(apPrest);
     }
   }

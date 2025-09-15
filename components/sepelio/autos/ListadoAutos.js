@@ -87,7 +87,7 @@ export const ListadoAutos = ({
         <>
           {usu.perfil === 1 || usu.perfil === 3 || usu.perfil === 4 ? (
             <>
-              {row.estado === true ? (
+              {row.estado === 1 ? (
                 <>
                   <ModalRenovPoliza
                     row={row}
@@ -122,7 +122,7 @@ export const ListadoAutos = ({
                     histNov={histNov}
                   />
                 </>
-              ) : row.estado === false ? (
+              ) : row.estado === 0 ? (
                 <>Vehiculo dado de baja, sin acciones</>
               ) : null}
             </>

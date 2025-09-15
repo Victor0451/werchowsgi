@@ -1,10 +1,18 @@
-import { Werchow, SGI, Camp, Sep } from "../../../libs/config";
+import {
+  werchow,
+  sgi,
+  serv,
+  sep,
+  camp,
+  arch,
+  club,
+} from "../../../libs/db/index";
 import moment from "moment";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     if (req.query.f && req.query.f === "traer guardias") {
-      const plani = await Sep.$queryRawUnsafe(
+      const plani = await sep.query(
         `                
         SELECT
           *
@@ -15,115 +23,142 @@ export default async function handler(req, res) {
                `
       );
 
+      await sep.end();
+
       res.status(200).json(plani);
     } else if (req.query.f && req.query.f === "traer liquidacion") {
-      const plani = await Sep.liquidacion_guardias.findMany();
+      const plani = await sep.query(
+        `
+              SELECT *
+              FROM liquidacion_guardias
+            `
+      );
+
+      await sep.end();
 
       res.status(200).json(plani);
     } else if (req.query.f && req.query.f === "traer guardias operador") {
-      const guardiasOp = await Sep.liquidacion_guardias.findMany({
-        where: {
-          operador: req.query.operador,
-          liquidado: 0,
-        },
-        orderBy: {
-          liquidado: "asc",
-        },
-      });
+      const guardiasOp = await sep.query(
+        `
+              SELECT *
+              FROM liquidacion_guardias
+              WHERE operador = '${req.query.operador}'
+              AND liquidado = 0
+              ORDER BY liquidado ASC
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(guardiasOp);
     } else if (
       req.query.f &&
       req.query.f === "traer historial guardias operador"
     ) {
-      const guardiasOp = await Sep.liquidacion_guardias.findMany({
-        where: {
-          operador: req.query.operador,
-          liquidado: 1,
-        },
-        orderBy: {
-          liquidado: "asc",
-        },
-      });
+      const guardiasOp = await sep.query(
+        `
+        SELECT *
+        FROM liquidacion_guardias
+        WHERE operador = '${req.query.operador}'
+        AND liquidado = 1
+        ORDER BY liquidado ASC 
+      `
+      );
+
+      await sep.end();
 
       res.status(200).json(guardiasOp);
     }
   } else if (req.method === "POST") {
     if (req.body.f && req.body.f === "nueva liquidacion") {
-      const regTarea = await Sep.liquidacion_guardias.create({
-        data: {
-          lugar: req.body.lugar,
-          inicio: req.body.inicio,
-          fin: req.body.fin,
-          horas: parseInt(req.body.horas),
-          importe: parseFloat(req.body.importe),
-          feriado: req.body.feriado,
-          mes: parseInt(req.body.mes),
-          ano: parseInt(req.body.ano),
-          operador: req.body.operador,
-          aprobado: parseInt(req.body.aprobado),
-          liquidado: parseInt(req.body.liquidado),
-        },
-      });
+      const regTarea = await sep.query(
+        `
+              INSERT INTO liquidacion_guardias
+              (
+                lugar,
+                inicio,
+                fin,
+                horas,
+                importe,
+                feriado,
+                mes,
+                ano,
+                operador,
+                aprobado,
+                liquidado
+              )
+
+              VALUES
+              (
+                '${req.body.lugar}',
+                '${req.body.inicio}',
+                '${req.body.fin}',
+                ${parseInt(req.body.horas)},
+                ${parseFloat(req.body.importe)},
+                ${req.body.feriado},
+                ${parseInt(req.body.mes)},
+                ${parseInt(req.body.ano)},
+                '${req.body.operador}',
+                ${parseInt(req.body.aprobado)},
+                ${parseInt(req.body.liquidado)}
+              )
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(regTarea);
     }
   } else if (req.method === "PUT") {
-    if (req.body.f && req.body.f === "editar evento") {
-      const regAuto = await Sep.tareas.update({
-        data: {
-          title: req.body.title,
-          start: req.body.start,
-          end: req.body.end,
-          allDay: req.body.allDay,
-        },
-        where: {
-          idevents: parseInt(req.body.id),
-        },
-      });
+    if (req.body.f && req.body.f === "estado liquidacion") {
+      const regAuto = await sep.query(
+        `
+            UPDATE liquidacion_guardias
+            SET aprobado= ${parseInt(req.body.estado)},
+                operadorap= '${req.body.usu}',
+                fecha_aprobacion= '${moment(req.body.fecha).format(
+                  "YYYY-MM-DD"
+                )}'
+            WHERE idturno= ${parseInt(req.body.id)}
+          `
+      );
 
-      res.status(200).json(regAuto);
-    } else if (req.body.f && req.body.f === "estado liquidacion") {
-      const regAuto = await Sep.liquidacion_guardias.update({
-        data: {
-          aprobado: parseInt(req.body.estado),
-          operadorap: req.body.usu,
-          fecha_aprobacion: new Date(req.body.fecha),
-        },
-        where: {
-          idturno: parseInt(req.body.id),
-        },
-      });
+      await sep.end();
 
       res.status(200).json(regAuto);
     } else if (req.body.f && req.body.f === "liquidar guardia") {
-      const regAuto = await Sep.liquidacion_guardias.update({
-        data: {
-          liquidado: parseInt(req.body.estado),
-          operadorliq: req.body.usu,
-          fecha_liquidacion: new Date(req.body.fecha),
-        },
-        where: {
-          idturno: parseInt(req.body.id),
-        },
-      });
+      const regAuto = await sep.query(
+        `
+              UPDATE liquidacion_guardias
+              SET liquidado= ${parseInt(req.body.estado)},
+                  operadorliq= '${req.body.usu}',
+                  fecha_liquidacion= '${moment(req.body.fecha).format(
+                    "YYYY-MM-DD"
+                  )}'
+              WHERE idturno= ${parseInt(req.body.id)}
+            `
+      );
+      await sep.end();
 
       res.status(200).json(regAuto);
     } else if (req.body.f && req.body.f === "liquidar guardia 2") {
-      const liqGuardia = await Sep.liquidacion_guardias.update({
-        data: {
-          liquidado: parseInt(req.body.liquidado),
-          operadorliq: req.body.operadorliq,
-          fecha_liquidacion: new Date(req.body.fecha_liquidacion),
-        },
-        where: {
-          idturno: parseInt(req.body.idturno),
-        },
-      });
+      const liqGuardia = await sep.query(
+        `
+              UPDATE liquidacion_guardias
+              SET liquidado= ${parseInt(req.body.liquidado)},
+                  operadorliq= '${req.body.operadorliq}',
+                  fecha_liquidacion= '${moment(
+                    req.body.fecha_liquidacion
+                  ).format("YYYY-MM-DD")}'
+              WHERE idturno= ${parseInt(req.body.id)}
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(liqGuardia);
     } else if (req.body.f && req.body.f === "liquidar guardias") {
-      const liqGuardia = await Sep.$queryRawUnsafe(
+      const liqGuardia = await sep.query(
         `                
           UPDATE liquidacion_guardias
           SET liquidado = 1,
@@ -136,23 +171,20 @@ export default async function handler(req, res) {
                        `
       );
 
+      await sep.end();
+
       res.status(200).json(liqGuardia);
     }
   } else if (req.method === "DELETE") {
-    if (req.query.f && req.query.f === "eliminar tarea") {
-      const delTarea = await Sep.tareas.delete({
-        where: {
-          idevents: parseInt(req.query.id),
-        },
-      });
+    if (req.query.f && req.query.f === "eliminar guardia") {
+      const delGuardia = await sep.query(
+        `
+            DELETE FROM liquidacion_guardias
+            WHERE idturno = ${parseInt(req.query.idturno)}
+          `
+      );
 
-      res.status(200).json(delTarea);
-    } else if (req.query.f && req.query.f === "eliminar guardia") {
-      const delGuardia = await Sep.liquidacion_guardias.delete({
-        where: {
-          idturno: parseInt(req.query.idturno),
-        },
-      });
+      await sep.end();
 
       res.status(200).json(delGuardia);
     }

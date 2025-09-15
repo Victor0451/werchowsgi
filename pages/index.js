@@ -33,38 +33,40 @@ export default function Index() {
     } else if (contrasena === "") {
       guardarErrores("Debes ingresar una contraseña");
     } else {
-      try {
-        //headers
-        const config = {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
+      //headers
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
 
-        //Req body
+      //Req body
 
-        const body = {
-          usuario: usuario,
-          contrasena: contrasena,
-          f: "login",
-        };
+      const body = {
+        usuario: usuario,
+        contrasena: contrasena,
+        f: "login",
+      };
 
-        await axios.post(`/api/auth`, body, config).then((res) => {
-          console.log(res.data.user);
+      await axios
+        .post(`/api/auth`, body)
+        .then((res) => {
           let user = JSON.stringify(res.data.user);
           jsCookie.set("token", res.data.token, { expires: 1 });
           jsCookie.set("usuario", user, { expires: 1 });
           setTimeout(() => {
             Router.reload();
           }, 500);
+        })
+        .catch((error) => {
+          console.log(error);
+          if (error.response.status && error.response.status === 400) {
+            guardarErrores(error.response.data.msg);
+          } else {
+            console.log(error, "LOGIN_FAIL");
+            error.response.status(400);
+          }
         });
-      } catch (error) {
-        if (error.response.status && error.response.status === 400) {
-          guardarErrores(error.response.data.msg);
-        } else {
-          console.log(error, "LOGIN_FAIL");
-        }
-      }
     }
   };
 
@@ -157,7 +159,7 @@ export default function Index() {
       })
       .then((res) => {
         if (res.status === 200) {
-          guardarNoticias(res.data);
+          guardarNoticias(res.data[0]);
         }
       })
       .catch((error) => {

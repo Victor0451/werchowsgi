@@ -1,27 +1,57 @@
-import { Werchow, SGI, Camp, Sep } from "../../../libs/config";
+import {
+  werchow,
+  sgi,
+  serv,
+  sep,
+  camp,
+  arch,
+  club,
+} from "../../../libs/db/index";
 import moment from "moment";
-//import { PrismaClient as WerchowSepClient } from '../../../prisma/generated/werchowsep'
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     if (req.query.f && req.query.f === "traer proveedores") {
-      const prov = await Sep.proveedores.findMany();
+      const prov = await sep.query(
+        `
+            SELECT *
+            FROM proveedores
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(prov);
     }
   }
   if (req.method === "POST") {
     if (req.body.f && req.body.f === "nuevo proveedor") {
-      const regProv = await Sep.proveedores.create({
-        data: {
-          razon: req.body.razon,
-          cuit: req.body.cuit,
-          telefonos: req.body.telefono,
-          domicilio: req.body.domicilio,
-          estado: req.body.estado,
-          operador: req.body.operador,
-        },
-      });
+      const regProv = await sep.query(
+        `
+              INSERT INTO proveedores
+              (
+                razon,
+                cuit,
+                telefonos,
+                domicilio,
+                estado,
+                operador,
+              )
+              
+              VALUES
+              (
+                 '${req.body.razon}',
+                 '${req.body.cuit}',
+                 '${req.body.telefono}',
+                 '${req.body.domicilio}',
+                 ${req.body.estado},
+                 '${req.body.operador}',
+              )
+
+            `
+      );
+
+      await sep.end();
 
       res.status(200).json(regProv);
     }

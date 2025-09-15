@@ -343,7 +343,7 @@ export default function nuevoservicio() {
       fecha_recepcion: moment().format("YYYY-MM-DD HH:mm:ss"),
       sucursal: "",
       estado: true,
-      dni_nuevotitular: "",
+      dni_nuevotitular: 0,
       operador: usu.usuario,
       idataud: ataudSel.idataud,
       dni_solicitante: dniSolicRef.current.value,
@@ -459,8 +459,10 @@ export default function nuevoservicio() {
       } else {
         servicio.tipo_servicio = `Particular`;
 
-        servicio.dni_nuevotitular = null;
+        servicio.dni_nuevotitular = 0;
       }
+
+      console.log(servicio);
 
       await axios
         .post(`/api/sepelio/servicios`, servicio)
@@ -469,7 +471,7 @@ export default function nuevoservicio() {
             toast.success("Servicio cargado correctamente");
 
             let accionHis = `Se cargo el servicio ID: ${
-              res.data.idservicio
+              res.data.insertId
             } del extinto: ${servicio.apellido}, ${servicio.nombre} - DNI: ${
               servicio.dni
             }, fallecido el dia ${moment(servicio.fecha_fallecimiento).format(

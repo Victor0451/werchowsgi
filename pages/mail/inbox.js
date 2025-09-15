@@ -239,14 +239,13 @@ function Inbox(props) {
       guardarErrores("Debes ingresar un asunto");
     } else {
       const mail = {
-        fecha: moment().format("YYYY-MM-DD HH:mm:ss"),
+        fecha: moment().format("YYYY-MM-DD HH:mm"),
         envia: usu.usuario,
         recibe: "",
         descrip: descrip,
         codmail: codmail,
         asunto: asuntoRef.current.value,
         leido: false,
-        fecha_leido: null,
         url_caja: cajasMailSel[0],
         f: "enviar mail",
       };
@@ -259,7 +258,9 @@ function Inbox(props) {
 
           let accion = `${mail.envia} envio un mail interno al destinatario ${
             operadoSel[i]
-          } el dia ${moment(mail.fecha).format("DD/MM/YYYY HH:mm:ss")}.`;
+          } el dia ${moment(mail.fecha).format("DD/MM/YYYY HH:mm")}.`;
+
+          console.log(accion);
 
           registrarHistoria(accion, usu.usuario);
         }

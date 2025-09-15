@@ -1,30 +1,45 @@
-import { Werchow, SGI, Camp, Sep } from "../../../libs/config";
+import {
+  werchow,
+  sgi,
+  serv,
+  sep,
+  camp,
+  arch,
+  club,
+} from "../../../libs/db/index";
+import moment from "moment";
 
 export default async function handler(req, res) {
-  if (req.method === "GET") {
-    if (req.query.f && req.query.f === "traer noticias") {
-      const noti = await prisma.noticia.findFirst({
-        where: {
-          perfil: parseInt(req.query.perfil),
-        },
-        orderBy: {
-          fecha: "desc",
-        },
-      });
-      res.status(200).json(noti);
-    }
-  } else if (req.method === "POST") {
+  if (req.method === "POST") {
     if (req.body.f && req.body.f === "liquidacion registro") {
-      const regLiq = await Sep.liquidacion_registro.create({
-        data: {
-          fecha: new Date(req.body.fecha),
-          empleado: req.body.empleado,
-          concepto: req.body.concepto,
-          fecha_concepto: new Date(req.body.fecha_concepto),
-          importe: parseFloat(req.body.importe),
-          operador: req.body.operador,
-        },
-      });
+      const regLiq = await sep.query(
+        `
+            INSERT INTO liquidacion_registro
+            (
+
+            fecha,
+            empleado,
+            concepto,
+            fecha_concepto,
+            importe,
+            operador
+            )
+            
+            VALUES
+            (
+              '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+              '${req.body.empleado}',
+              '${req.body.concepto}',
+              '${moment(req.body.fecha_concepto).format("YYYY-MM-DD")}',
+              ${parseFloat(req.body.importe)},
+             ' ${req.body.operador}',
+            )
+        
+        `
+      );
+
+      await sep.end();
+
       res.status(200).json(regLiq);
     }
   }

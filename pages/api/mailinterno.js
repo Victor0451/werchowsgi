@@ -1,70 +1,111 @@
-import { Werchow, SGI, Camp } from "../../libs/config";
+import { werchow, sgi, serv, sep, camp, arch, club } from "../../libs/db/index";
+import moment from "moment";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     if (req.query.f && req.query.f === "entrada") {
-      const entrada = await SGI.mails.findMany({
-        where: { recibe: req.query.usu },
-        orderBy: {
-          fecha: "desc",
-        },
-      });
+      const entrada = await sgi.query(
+        `
+          SELECT *
+          FROM mails
+          WHERE recibe = '${req.query.usu}'
+          ORDER BY fecha DESC
+        
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(entrada);
     } else if (req.query.f && req.query.f === "salida") {
-      const salida = await SGI.mails.findMany({
-        where: { envia: req.query.usu },
-        orderBy: {
-          fecha: "desc",
-        },
-      });
+      const salida = await sgi.query(
+        `
+          SELECT *
+          FROM mails
+          WHERE envia = '${req.query.usu}'
+          ORDER BY fecha DESC
+        
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(salida);
     } else if (req.query.f && req.query.f === "traer archivos") {
-      const archivos = await SGI.mails_adjuntos.findMany({
-        where: { codmail: req.query.codmail },
-      });
+      const archivos = await sgi.query(
+        `
+         SELECT *
+         FROM mails_adjuntos
+         WHERE codmail = '${req.query.codmail}'  
+         
+
+         `
+      );
+
+      await sgi.end();
 
       res.status(200).json(archivos);
     } else if (req.query.f && req.query.f === "traer cajas mail") {
-      const cajasMail = await SGI.$queryRaw`
+      const cajasMail = await sgi.query(`
        SELECT 
                 CONCAT(empresa, '-' , idcaja, '-', fecha_carga) 'label',                
                 CONCAT('/caja/sucursales/cajamail?id=',idcaja) 'value'
         FROM caja_sucursales
-        WHERE operador_carga = ${req.query.op}
+        WHERE operador_carga = '${req.query.op}'
         ORDER BY idcaja DESC
   
-  `;
+  `);
+
+      await sgi.end();
       res.status(200).json(cajasMail);
     } else if (req.query.f && req.query.f === "noti entrada") {
-      const entrada = await SGI.mails.findMany({
-        where: {
-          recibe: req.query.usu,
-          leido: false,
-        },
-        orderBy: {
-          fecha: "desc",
-        },
-      });
+      const entrada = await sgi.query(
+        `
+          SELECT *
+          FROM mails
+          WHERE  recibe = '${req.query.usu}'
+          AND leido = false
+          ORDER BY fecha DESC
+        
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(entrada);
     }
   } else if (req.method === "POST") {
     if (req.body.f && req.body.f === "enviar mail") {
-      const enviarMail = await SGI.mails.create({
-        data: {
-          fecha: new Date(req.body.fecha),
-          envia: req.body.envia,
-          recibe: req.body.recibe,
-          descrip: req.body.descrip,
-          codmail: req.body.codmail,
-          asunto: req.body.asunto,
-          leido: req.body.leido,
-          fecha_leido: new Date(req.body.fecha_leido),
-          url_caja: req.body.url_caja,
-        },
-      });
+      const enviarMail = await sgi.query(
+        `
+              INSERT INTO mails
+              (
+                fecha,
+                envia,
+                recibe,
+                descrip,
+                codmail,
+                asunto,
+                leido,                
+                url_caja
+              
+              )
+
+              VALUES
+              (
+                '${moment(req.body.fecha).format("YYYY-MM-DD HH:mm")}',
+                '${req.body.envia}',
+                '${req.body.recibe}',
+                '${req.body.descrip}',
+                '${req.body.codmail}',
+                '${req.body.asunto}',
+                ${req.body.leido},               
+                '${req.body.url_caja}'
+                    
+              )
+          `
+      );
+      await sgi.end();
 
       res.status(200).json(enviarMail);
     }

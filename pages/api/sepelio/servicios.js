@@ -1,39 +1,56 @@
-import { Werchow, SGI, Camp, Sep } from "../../../libs/config";
+import {
+  werchow,
+  sgi,
+  serv,
+  sep,
+  camp,
+  arch,
+  club,
+} from "../../../libs/db/index";
 import moment from "moment";
-//import { PrismaClient as WerchowSepClient } from '../../../prisma/generated/werchowsep'
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     if (req.query.f && req.query.f === "gasto luto") {
-      const gastoLuto = await SGI.gasto_luto.findMany();
+      const gastoLuto = await sgi.query(
+        `
+          SELECT *
+          FROM gasto_luto
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(gastoLuto);
-    } else if (req.query.f && req.query.f === "servicios") {
-      const servicios = await Sep.servicios.findMany({
-        where: {
-          dni: parseInt(req.query.dni),
-        },
-      });
+    } else if (
+      (req.query.f && req.query.f === "servicios") ||
+      req.query.f === "check servicio"
+    ) {
+      const servicios = await sep.query(
+        `
+          SELECT *
+          FROM servicios
+          WHERE dni= ${parseInt(req.query.dni)}
+        `
+      );
 
-      res.status(200).json(servicios);
-    } else if (req.query.f && req.query.f === "check servicio") {
-      const servicios = await Sep.servicios.findFirst({
-        where: {
-          dni: parseInt(req.query.dni),
-        },
-      });
+      await sep.end();
 
       res.status(200).json(servicios);
     } else if (req.query.f && req.query.f === "traer servicios") {
-      const servicios = await Sep.servicios.findMany({
-        orderBy: {
-          fecha_fallecimiento: "desc",
-        },
-      });
+      const servicios = await sep.query(
+        `
+          SELECT *
+          FROM servicios
+          ORDER BY fecha_fallecimiento DESC
+        `
+      );
+
+      await sep.end();
 
       res.status(200).json(servicios);
     } else if (req.query.f && req.query.f === "filtrar servicios") {
-      const filtServ = await Sep.$queryRawUnsafe(
+      const filtServ = await sep.query(
         `                
         SELECT
          *
@@ -51,6 +68,8 @@ export default async function handler(req, res) {
                `
       );
 
+      await sep.end();
+
       res
         .status(200)
         .json(
@@ -59,27 +78,42 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer servicios historicos") {
-      const servicios = await Sep.servicios_historico.findMany();
+      const servicios = await sep.query(
+        `
+          SELECT *
+          FROM servicios_historico
+                  `
+      );
+
+      await sep.end();
 
       res.status(200).json(servicios);
     } else if (req.query.f && req.query.f === "legajo servicio") {
-      const servicios = await Sep.servicios.findMany({
-        where: {
-          idservicio: parseInt(req.query.id),
-        },
-      });
+      const servicios = await sep.query(
+        `
+          SELECT *
+          FROM servicios
+          WHERE idservicio = ${parseInt(req.query.id)}      
+       `
+      );
+
+      await sep.end();
 
       res.status(200).json(servicios);
     } else if (req.query.f && req.query.f === "traer archivos") {
-      const servicios = await Sep.legajo_virtual_servicios.findMany({
-        where: {
-          servicio: parseInt(req.query.dni),
-        },
-      });
+      const servicios = await sep.query(
+        `
+          SELECT *
+          FROM legajo_virtual_servicios
+          WHERE servicio = ${parseInt(req.query.dni)}      
+       `
+      );
+
+      await sep.end();
 
       res.status(200).json(servicios);
     } else if (req.query.f && req.query.f === "servicios sin impactar") {
-      const servImp = await Sep.$queryRawUnsafe(
+      const servImp = await sep.query(
         `                
                 SELECT
                 s.empresa,
@@ -327,6 +361,7 @@ export default async function handler(req, res) {
               AND dni IS NOT NULL
                `
       );
+      await sep.end();
 
       res
         .status(200)
@@ -336,31 +371,55 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer tareas") {
-      const tareas = await Sep.honorarios.findMany();
+      const tareas = await sep.query(
+        `
+            SELECT *
+            FROM honorarios
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(tareas);
     } else if (req.query.f && req.query.f === "traer valor guardia") {
-      const tareas = await Sep.honorarios.findMany({
-        where: {
-          trabajo: "Guardia oficina",
-        },
-      });
+      const tareas = await sep.query(
+        `
+            SELECT *
+            FROM honorarios
+            WHERE trabajo = "Guardia oficina"
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(tareas);
     } else if (req.query.f && req.query.f === "traer gastos") {
-      const gastos = await Sep.servicios_gastos.findMany();
+      const gastos = await sep.query(
+        `
+            SELECT *
+            FROM servicios_gastos
+            
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(gastos);
     } else if (req.query.f && req.query.f === "traer tareas reg") {
-      const tareasReg = await Sep.informe_tareas.findMany({
-        where: {
-          idservicio: parseInt(req.query.idservicio),
-        },
-      });
+      const tareasReg = await sep.query(
+        `
+            SELECT *
+            FROM informe_tareas
+            WHERE idservicio = ${parseInt(req.query.idservicio)}
+            
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(tareasReg);
     } else if (req.query.f && req.query.f === "traer tareas operador") {
-      const tareasSinLiq = await Sep.$queryRawUnsafe(
+      const tareasSinLiq = await sep.query(
         `                
                 SELECT *
                 FROM informe_tareas
@@ -372,6 +431,8 @@ export default async function handler(req, res) {
                `
       );
 
+      await sep.end();
+
       res
         .status(200)
         .json(
@@ -380,7 +441,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer gastos operador") {
-      const gastoSinLiq = await Sep.$queryRawUnsafe(
+      const gastoSinLiq = await sep.query(
         `                
                 SELECT *
                 FROM informe_gastos
@@ -390,6 +451,7 @@ export default async function handler(req, res) {
               
                `
       );
+      await sep.end();
 
       res
         .status(200)
@@ -402,7 +464,7 @@ export default async function handler(req, res) {
       req.query.f &&
       req.query.f === "traer historial tareas operador"
     ) {
-      const tareasSinLiq = await Sep.$queryRawUnsafe(
+      const tareasSinLiq = await sep.query(
         `                
                 SELECT *
                 FROM informe_tareas
@@ -412,6 +474,8 @@ export default async function handler(req, res) {
               
                `
       );
+
+      await sep.end();
 
       res
         .status(200)
@@ -424,7 +488,7 @@ export default async function handler(req, res) {
       req.query.f &&
       req.query.f === "traer historial gastos operador"
     ) {
-      const tareasSinLiq = await Sep.$queryRawUnsafe(
+      const tareasSinLiq = await sep.query(
         `                
                 SELECT *
                 FROM informe_gastos
@@ -434,6 +498,7 @@ export default async function handler(req, res) {
               
                `
       );
+      await sep.end();
 
       res
         .status(200)
@@ -443,23 +508,33 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer gastos reg") {
-      const tareasReg = await Sep.informe_gastos.findMany({
-        where: {
-          idservicio: parseInt(req.query.idservicio),
-        },
-      });
+      const tareasReg = await sep.query(
+        `                
+                SELECT *
+                FROM informe_gastos
+                WHERE idservicio = ${parseInt(req.query.idservicio)}           
+               
+              
+               `
+      );
+      await sep.end();
 
       res.status(200).json(tareasReg);
     } else if (req.query.f && req.query.f === "traer informe servicio") {
-      const tareasReg = await Sep.servicio_informes.findMany({
-        where: {
-          idservicio: parseInt(req.query.idservicio),
-        },
-      });
+      const tareasReg = await sep.query(
+        `                
+                SELECT *
+                FROM servicio_informes
+                WHERE idservicio = ${parseInt(req.query.idservicio)}           
+               
+              
+               `
+      );
+      await sep.end();
 
       res.status(200).json(tareasReg);
     } else if (req.query.f && req.query.f === "traer informes servicios") {
-      const servImp = await Sep.$queryRawUnsafe(
+      const servImp = await sep.query(
         `                
         SELECT
           s.idservicio,
@@ -492,6 +567,8 @@ export default async function handler(req, res) {
                `
       );
 
+      await sep.end();
+
       res
         .status(200)
         .json(
@@ -502,129 +579,229 @@ export default async function handler(req, res) {
     }
   } else if (req.method === "POST") {
     if (req.body.f && req.body.f === "nuevo servicio") {
-      const regServ = await Sep.servicios.create({
-        data: {
-          contrato: parseInt(req.body.contrato),
-          empresa: req.body.empresa,
-          dni: parseInt(req.body.dni),
-          obra_soc: req.body.obra_soc,
-          apellido: req.body.apellido,
-          nombre: req.body.nombre,
-          edad: parseInt(req.body.edad),
-          telefono: req.body.telefono,
-          movil: req.body.movil,
-          fecha_fallecimiento: new Date(req.body.fecha_fallecimiento),
-          lugar_fallecimiento: req.body.lugar_fallecimiento,
-          tipo_servicio: req.body.tipo_servicio,
-          casa_mortuaria: req.body.casa_mortuaria,
-          fecha_inhumacion: new Date(req.body.fecha_inhumacion),
-          hora_inhumacion: req.body.hora_inhumacion,
-          cementerio: req.body.cementerio,
-          altura: parseFloat(req.body.altura),
-          peso: parseFloat(req.body.peso),
-          motivo: req.body.motivo,
-          retiro: req.body.retiro,
-          solicitado: req.body.solicitado,
-          parentesco: req.body.parentesco,
-          fecha_recepcion: req.body.fecha_recepcion,
-          sucursal: req.body.sucursal,
-          estado: req.body.estado,
-          dni_nuevotitular: parseInt(req.body.dni_nuevotitular),
-          operador: req.body.operador,
-          idataud: parseInt(req.body.idataud),
-          dni_solicitante: parseInt(req.body.dni_solicitante),
-          domicilio_solicitante: req.body.domicilio_solicitante,
-          cremacion: req.body.cremacion,
-          liquidado: req.body.liquidado,
-          donacion: req.body.donacion,
-          detalle_corona: req.body.detalle_corona,
-          religion: req.body.religion,
-          estado_civil: req.body.estado_civil,
-          importe_servicio: parseFloat(req.body.importe_servicio),
-          gasto_luto: req.body.gasto,
-          conyugue: req.body.conyugue,
-          serv_domicilio: req.body.serv_domicilio,
-        },
-      });
+      
+      const regServ = await sep.query(
+        `
+          INSERT INTO servicios
+          (
+                contrato,
+                empresa,
+                dni,
+                obra_soc,
+                apellido,
+                nombre,
+                edad,
+                telefono,
+                movil,
+                fecha_fallecimiento,
+                lugar_fallecimiento,
+                tipo_servicio,
+                casa_mortuaria,
+                fecha_inhumacion,
+                hora_inhumacion,
+                cementerio,
+                altura,
+                peso,
+                motivo,
+                retiro,
+                solicitado,
+                parentesco,
+                fecha_recepcion,
+                sucursal,
+                estado,
+                dni_nuevotitular,
+                operador,
+                idataud,
+                dni_solicitante,
+                domicilio_solicitante,
+                cremacion,
+                liquidado,
+                donacion,
+                detalle_corona,
+                religion,
+                estado_civil,
+                importe_servicio,
+                gasto_luto,
+                conyugue,
+                serv_domicilio
+          )
+
+          VALUES 
+          (
+                 ${parseInt(req.body.contrato)},
+                 '${req.body.empresa}',
+                 ${parseInt(req.body.dni)},
+                 '${req.body.obra_soc}',
+                 '${req.body.apellido}',
+                 '${req.body.nombre}',
+                 ${parseInt(req.body.edad)},
+                 '${req.body.telefono}',
+                 '${req.body.movil}',
+                 '${moment(req.body.fecha_fallecimiento).format("YYYY-MM-DD")}',
+                 '${req.body.lugar_fallecimiento}',
+                 '${req.body.tipo_servicio}',
+                 '${req.body.casa_mortuaria}',
+                 '${moment(req.body.fecha_inhumacion).format("YYYY-MM-DD")}',
+                 '${req.body.hora_inhumacion}',
+                 '${req.body.cementerio}',
+                 ${parseFloat(req.body.altura)},
+                 ${parseFloat(req.body.peso)},
+                 '${req.body.motivo}',
+                 '${req.body.retiro}',
+                 '${req.body.solicitado}',
+                 '${req.body.parentesco}',
+                 '${req.body.fecha_recepcion}',
+                 '${req.body.sucursal}',
+                 ${req.body.estado},
+                 ${parseInt(req.body.dni_nuevotitular)},
+                 '${req.body.operador}',
+                 ${parseInt(req.body.idataud)},
+                 ${parseInt(req.body.dni_solicitante)},
+                 '${req.body.domicilio_solicitante}',
+                 ${req.body.cremacion},
+                 ${req.body.liquidado},
+                 ${req.body.donacion},
+                 '${req.body.detalle_corona}',
+                 '${req.body.religion}',
+                 '${req.body.estado_civil}',
+                 ${parseFloat(req.body.importe_servicio)},
+                 '${req.body.gasto}',
+                 '${req.body.conyugue}',
+                 ${req.body.serv_domicilio}
+          )
+
+        `
+      );
+
+      await sep.end();
 
       res.status(200).json(regServ);
     } else if (req.body.f && req.body.f === "reg informe servicio") {
-      const regInforme = await Sep.servicio_informes.create({
-        data: {
-          idservicio: parseInt(req.body.idservicio),
-          fecha: new Date(req.body.fecha),
-          liquidado: req.body.liquidado,
-          aprobado: req.body.aprobado,
-        },
-      });
+      const regInforme = await sep.query(
+        `
+          INSERT INTO servicio_informes
+          (
+            idservicio,
+            fecha,
+            liquidado,
+            aprobado
+          )
+          VALUES
+          (
+             ${parseInt(req.body.idservicio)},
+             '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+             ${req.body.liquidado},
+             ${req.body.aprobado}
+          )
+        `
+      );
+
+      await sep.end();
 
       res.status(200).json(regInforme);
     } else if (req.body.f && req.body.f === "reg tarea informe") {
-      const regInforme = await Sep.informe_tareas.create({
-        data: {
-          idinforme: parseInt(req.body.idinforme),
-          idservicio: parseInt(req.body.idservicio),
-          operador: req.body.operador,
-          tarea: req.body.tarea,
-          inicio: req.body.inicio,
-          fin: req.body.fin,
-          horas: parseInt(req.body.horas),
-          monto: parseFloat(req.body.monto),
-          liquidado: req.body.liquidado,
-        },
-      });
+      const regInforme = await sep.query(
+        `
+          INSERT INTO informe_tareas
+          (
+            idinforme,
+            idservicio,
+            operador,
+            tarea,
+            inicio,
+            fin,
+            horas,
+            monto,
+            liquidado
+          )
+          VALUE
+          (
+             ${parseInt(req.body.idinforme)},
+             ${parseInt(req.body.idservicio)},
+             '${req.body.operador}',
+             '${req.body.tarea}',
+             '${req.body.inicio}',
+             '${req.body.fin}',
+             ${parseInt(req.body.horas)},
+             ${parseFloat(req.body.monto)},
+             ${req.body.liquidado}
+          )
+        `
+      );
+
+      await sep.end();
 
       res.status(200).json(regInforme);
     } else if (req.body.f && req.body.f === "reg gasto informe") {
-      const regGato = await Sep.informe_gastos.create({
-        data: {
-          idinforme: parseInt(req.body.idinforme),
-          idservicio: parseInt(req.body.idservicio),
-          operador: req.body.operador,
-          gasto: req.body.gasto,
-          importe: parseFloat(req.body.importe),
-          observacion: req.body.observacion,
-          liquidado: req.body.liquidado,
-        },
-      });
+      const regGato = await sep.query(
+        ` 
+          INSERT INTO informe_gastos
+          (
+            idinforme,
+            idservicio,
+            operador,
+            gasto,
+            importe,
+            observacion,
+            liquidado
+          )
+          VALUES
+          (
+             ${parseInt(req.body.idinforme)},
+             ${parseInt(req.body.idservicio)},
+             '${req.body.operador}',
+             '${req.body.gasto}',
+             ${parseFloat(req.body.importe)},
+             '${req.body.observacion}',
+             ${req.body.liquidado}
+          )
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(regGato);
     } else if (req.body.f && req.body.f === "reg presupuesto servicio") {
-      const regPresupuesto = await Sep.servicio_presupuesto.create({
-        data: {
-          fecha: new Date(req.body.fecha),
-          idservicio: parseInt(req.body.idservicio),
-          apoderado: req.body.apoderado,
-          domicilio: req.body.domicilio,
-          telefono: req.body.telefono,
-          detalle: req.body.detalle,
-          total: parseFloat(req.body.total),
-          anticipo: parseFloat(req.body.anticipo),
-          cuotas: parseInt(req.body.cuotas),
-          saldo: parseFloat(req.body.saldo),
-          operador: req.body.operador,
-        },
-      });
+      const regPresupuesto = await sep.query(
+        `
+      INSERT INTO servicio_presupuesto
+      (
+          fecha,
+          idservicio,
+          apoderado,
+          domicilio,
+          telefono,
+          detalle,
+          total,
+          anticipo,
+          cuotas,
+          saldo,
+          operador
+      )
+      VALUES
+      (
+           '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+           ${parseInt(req.body.idservicio)},
+           '${req.body.apoderado}',
+           '${req.body.domicilio}',
+           '${req.body.telefono}',
+           '${req.body.detalle}',
+           ${parseFloat(req.body.total)},
+           ${parseFloat(req.body.anticipo)},
+           ${parseInt(req.body.cuotas)},
+           ${parseFloat(req.body.saldo)},
+           '${req.body.operador}'
+      )
+    `
+      );
+
+      await sep.end();
 
       res.status(200).json(regPresupuesto);
     }
   } else if (req.method === "PUT") {
-    if (req.body.f && req.body.f === "renov poliza") {
-      const regAuto = await Sep.autos.update({
-        data: {
-          nro_poliza: req.body.nro_poliza,
-          empresa: req.body.empresa,
-          vencimiento: new Date(req.body.vencimiento),
-          cobertura: req.body.cobertura,
-        },
-        where: {
-          idauto: req.body.idauto,
-        },
-      });
-
-      res.status(200).json(regAuto);
-    } else if (req.body.f && req.body.f === "act titulares werchow") {
-      const servImp = await Sep.$queryRawUnsafe(
+    if (req.body.f && req.body.f === "act titulares werchow") {
+      const servImp = await sep.query(
         `                
             UPDATE servicios AS s
 
@@ -659,6 +836,8 @@ export default async function handler(req, res) {
                    `
       );
 
+      await sep.end();
+
       res
         .status(200)
         .json(
@@ -667,7 +846,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.body.f && req.body.f === "act titulares mutual") {
-      const servImp = await Sep.$queryRawUnsafe(
+      const servImp = await sep.query(
         `                
           UPDATE servicios AS s
 
@@ -703,6 +882,8 @@ export default async function handler(req, res) {
                      `
       );
 
+      await sep.end();
+
       res
         .status(200)
         .json(
@@ -711,7 +892,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.body.f && req.body.f === "act adherentes werchow") {
-      const servImp = await Sep.$queryRawUnsafe(
+      const servImp = await sep.query(
         `                
           UPDATE servicios AS s
 
@@ -748,6 +929,8 @@ export default async function handler(req, res) {
                        `
       );
 
+      await sep.end();
+
       res
         .status(200)
         .json(
@@ -756,7 +939,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.body.f && req.body.f === "act adherentes mutual") {
-      const servImp = await Sep.$queryRawUnsafe(
+      const servImp = await sep.query(
         `                
           UPDATE servicios AS s
             
@@ -793,6 +976,8 @@ export default async function handler(req, res) {
                        `
       );
 
+      await sep.end();
+
       res
         .status(200)
         .json(
@@ -801,7 +986,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.body.f && req.body.f === "estado informe") {
-      const estadoInforme = await Sep.$queryRawUnsafe(
+      const estadoInforme = await sep.query(
         `                
           UPDATE servicio_informes 
           SET aprobado = ${req.body.estado},
@@ -813,6 +998,8 @@ export default async function handler(req, res) {
                        `
       );
 
+      await sep.end();
+
       res
         .status(200)
         .json(
@@ -821,7 +1008,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.body.f && req.body.f === "liquidar informe") {
-      const estadoInforme = await Sep.$queryRawUnsafe(
+      const estadoInforme = await sep.query(
         `                
           UPDATE servicio_informes 
           SET liquidado = ${req.body.liquidado},
@@ -833,6 +1020,8 @@ export default async function handler(req, res) {
                        `
       );
 
+      await sep.end();
+
       res
         .status(200)
         .json(
@@ -841,20 +1030,23 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.body.f && req.body.f === "liquidar tarea individual") {
-      const liqTarea = await Sep.informe_tareas.update({
-        data: {
-          liquidado: true,
-          operadorliq: req.body.operadorliq,
-          fecha_liquidacion: new Date(req.body.fecha_liquidado),
-        },
-        where: {
-          idtareas: parseInt(req.body.id),
-        },
-      });
+      const liqTarea = await sep.query(
+        `
+            UPDATE informe_tareas
+            SET liquidado= true,
+                operadorliq= '${req.body.operadorliq}',
+                fecha_liquidacion= '${moment(req.body.fecha_liquidado).format(
+                  "YYYY-MM-DD"
+                )}'
+            WHERE  idtareas= ${parseInt(req.body.id)}   
+          `
+      );
+
+      await sep.end();
 
       res.status(200).json(liqTarea);
     } else if (req.body.f && req.body.f === "liquidar tareas") {
-      const liqTarea = await Sep.$queryRawUnsafe(
+      const liqTarea = await sep.query(
         `                
           UPDATE informe_tareas 
           SET liquidado = 1,
@@ -867,9 +1059,11 @@ export default async function handler(req, res) {
                        `
       );
 
+      await sep.end();
+
       res.status(200).json(liqTarea);
     } else if (req.body.f && req.body.f === "liquidar comisiones") {
-      const liqTarea = await Sep.$queryRawUnsafe(
+      const liqTarea = await sep.query(
         `                
           UPDATE informe_gastos 
           SET liquidado = 1,
@@ -882,23 +1076,30 @@ export default async function handler(req, res) {
           
                        `
       );
+      await sep.end();
 
       res.status(200).json(liqTarea);
     } else if (req.body.f && req.body.f === "liquidar gasto individual") {
-      const liqGasto = await Sep.informe_gastos.update({
-        data: {
-          liquidado: true,
-          operadorliq: req.body.operadorliq,
-          fecha_liquidado: new Date(req.body.fecha_liquidado),
-        },
-        where: {
-          idgastos: parseInt(req.body.id),
-        },
-      });
+      const liqGasto = await sep.query(
+        `                
+          UPDATE informe_gastos 
+          SET liquidado = true,
+              fecha_liquidado = '${moment(req.body.fecha_liquidado).format(
+                "YYYY-MM-DD"
+              )}',
+              operadorliq = '${req.body.operadorliq}'
+          WHERE operador = '${req.body.operador}'
+          AND liquidado = 0
+
+          
+                       `
+      );
+
+      await sep.end();
 
       res.status(200).json(liqGasto);
     } else if (req.body.f && req.body.f === "liquidar tarea informe") {
-      const liqTarea = await Sep.$queryRawUnsafe(
+      const liqTarea = await sep.query(
         `                
           UPDATE informe_tareas 
           SET liquidado = ${req.body.liquidado},
@@ -909,10 +1110,11 @@ export default async function handler(req, res) {
           
                        `
       );
+      await sep.end();
 
       res.status(200).json(liqTarea);
     } else if (req.body.f && req.body.f === "act idinformes tareas") {
-      const liqTarea = await Sep.$queryRawUnsafe(
+      const liqTarea = await sep.query(
         `                
         UPDATE informe_tareas as t
         INNER JOIN servicio_informes as i on i.idservicio = t.idservicio 
@@ -922,10 +1124,11 @@ export default async function handler(req, res) {
           
                        `
       );
+      await sep.end();
 
       res.status(200).json(liqTarea);
     } else if (req.body.f && req.body.f === "act idinformes gastos") {
-      const liqTarea = await Sep.$queryRawUnsafe(
+      const liqTarea = await sep.query(
         `                
         UPDATE informe_gastos as t
         INNER JOIN servicio_informes as i on i.idservicio = t.idservicio 
@@ -936,31 +1139,42 @@ export default async function handler(req, res) {
                        `
       );
 
+      await sep.end();
+
       res.status(200).json(liqTarea);
     }
   } else if (req.method === "DELETE") {
     if (req.query.f && req.query.f === "eliminar tarea") {
-      const delTarea = await Sep.informe_tareas.delete({
-        where: {
-          idtareas: parseInt(req.query.idtarea),
-        },
-      });
+      const delTarea = await sep.query(
+        `
+          DELETE FROM informe_tareas
+          WHERE idtareas = ${parseInt(req.query.idtarea)}
+        `
+      );
+
+      await sep.end();
 
       res.status(200).json(delTarea);
     } else if (req.query.f && req.query.f === "eliminar gasto") {
-      const delGasto = await Sep.informe_gastos.delete({
-        where: {
-          idgastos: parseInt(req.query.idgastos),
-        },
-      });
+      const delGasto = await sep.query(
+        `
+          DELETE FROM informe_gastos
+          WHERE idgastos = ${parseInt(req.query.idgastos)}
+        `
+      );
+
+      await sep.end();
 
       res.status(200).json(delGasto);
     } else if (req.query.f && req.query.f === "eliminar servicio") {
-      const delServ = await Sep.servicios.delete({
-        where: {
-          idservicio: parseInt(req.query.idservicio),
-        },
-      });
+      const delServ = await sep.query(
+        `
+          DELETE FROM servicios
+          WHERE idservicio = ${parseInt(req.query.idservicio)}
+        `
+      );
+
+      await sep.end();
 
       res.status(200).json(delServ);
     }

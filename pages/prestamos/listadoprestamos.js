@@ -99,7 +99,7 @@ export default function ListadoPrestamos() {
                 if (res.status === 200) {
                   toast.success(`El subsidio fue ${toastMsg} con exito`);
 
-                  let accionHis = `El prestamo ID ${id} fue ${toastMsg}, cambiando su estado de 'PENDIENTE' a ${data.estado}.`;
+                  let accionHis = `El prestamo ID ${id} fue ${toastMsg}, cambiando su estado de PENDIENTE a ${data.estado}.`;
 
                   registrarHistoria(accionHis, usu.usuario);
 

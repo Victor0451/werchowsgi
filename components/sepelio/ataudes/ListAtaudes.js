@@ -90,9 +90,9 @@ export const ListAtaudes = ({
       grow: 0.1,
       cell: (row, index) => (
         <>
-          {row.estado === true ? (
+          {row.estado === 1 ? (
             <div>Activo</div>
-          ) : row.estado === false ? (
+          ) : row.estado === 0 ? (
             <div>Baja</div>
           ) : null}
         </>
@@ -107,7 +107,7 @@ export const ListAtaudes = ({
         <>
           {usu.perfil === 1 || usu.perfil === 3 || usu.perfil === 4 ? (
             <>
-              {row.estado === true ? (
+              {row.estado === 1 ? (
                 <>
                   <Link
                     href={{

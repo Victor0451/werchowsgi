@@ -1,10 +1,10 @@
-import { Werchow, SGI, Camp, Sep, Serv } from "../../libs/config";
+import { werchow, sgi, serv, sep, camp, arch, club } from "../../libs/db/index";
 import moment from "moment";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     if (req.query.f && req.query.f === "traer detalle medico") {
-      const detalleMedico = await Serv.$queryRaw`
+      const detalleMedico = await serv.query(`
          
         SELECT 
             COD_PRES, 
@@ -21,8 +21,10 @@ export default async function handler(req, res) {
             PROMO, 
             AUSENTE
         FROM PRESTADO
-        WHERE COD_PRES = ${req.query.prestado}   
-      `;
+        WHERE COD_PRES = '${req.query.prestado}'
+      `);
+
+      await serv.end();
       res
         .status(200)
         .json(
@@ -31,14 +33,16 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "norden") {
-      const nOrden = await SGI.ordenes_pago.findFirst({
-        select: {
-          idorden: true,
-        },
-        orderBy: {
-          idorden: "desc",
-        },
-      });
+      const nOrden = await sgi.query(
+        `
+          SELECT idorden
+          FROM ordenes_pago
+          ORDER BY idorden DESC
+        
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(nOrden);
     } else if (req.query.f && req.query.f === "traer ordenes") {
@@ -46,56 +50,79 @@ export default async function handler(req, res) {
         parseInt(req.query.perfil) === 1 ||
         parseInt(req.query.perfil) === 3
       ) {
-        const listado = await SGI.ordenes_pago.findMany({
-          orderBy: {
-            idorden: "desc",
-          },
-        });
+        const listado = await sgi.query(
+          `
+            SELECT *
+            FROM ordenes_pago
+            ORDER BY idorden DESC
+          `
+        );
+
+        await sgi.end();
 
         res.status(200).json(listado);
       } else {
-        const listado = await SGI.ordenes_pago.findMany({
-          where: {
-            operador_carga: req.query.usu,
-          },
-          orderBy: {
-            idorden: "desc",
-          },
-        });
+        const listado = await sgi.query(
+          `
+            SELECT *
+            FROM ordenes_pago
+            WHERE operador_carga = '${req.query.usu}'
+            ORDER BY idorden DESC
+          `
+        );
+
+        await sgi.end();
 
         res.status(200).json(listado);
       }
     } else if (req.query.f && req.query.f === "traer orden") {
-      const Orden = await SGI.ordenes_pago.findMany({
-        where: {
-          idorden: parseInt(req.query.idorden),
-        },
-      });
+      const Orden = await sgi.query(
+        `
+           SELECT *
+            FROM ordenes_pago
+            WHERE idorden = ${parseInt(req.query.idorden)}
+  
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "traer detalle orden") {
-      const Orden = await SGI.detalle_orden_pago.findMany({
-        where: {
-          norden: req.query.idorden,
-        },
-      });
+      const Orden = await sgi.query(
+        `
+          SELECT *
+          FROM detalle_orden_pago
+           WHERE norden = '${req.query.idorden}'
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "traer datos orden") {
-      const Orden = await SGI.ordenes_pago.findMany({
-        where: {
-          norden: req.query.idorden,
-        },
-      });
+      const Orden = await sgi.query(
+        `
+            SELECT *
+            FROM ordenes_pago
+            WHERE norden = '${req.query.idorden}'
+          `
+      );
+
+      await sgi.end();
 
       res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "traer ordenes pendientes") {
-      const Orden = await SGI.ordenes_pago.findMany({
-        where: {
-          autorizado: false,
-          estado: true,
-        },
-      });
+      const Orden = await sgi.query(
+        `
+            SELECT *
+            FROM ordenes_pago
+            WHERE autorizado = false
+            AND estado = true
+          `
+      );
+
+      await sgi.end();
 
       res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "usos sin puntear") {
@@ -105,25 +132,27 @@ export default async function handler(req, res) {
         .format("YYYY-MM-DD");
       let hasta = moment().endOf("month").format("YYYY-MM-DD");
 
-      const detUsos = await SGI.$queryRaw`
+      const detUsos = await sgi.query(`
       SELECT nconsulta, norden, fecha  
       FROM detalle_orden_pago
-      WHERE fecha BETWEEN ${desde} AND ${hasta}
+      WHERE fecha BETWEEN '${desde}' AND '${hasta}'
 
-`;
+        `);
 
       const usosSinPun = [];
 
       for (let i = 0; i < detUsos.length; i++) {
-        const response = await Serv.$queryRaw`
+        const response = await serv.query(`
             SELECT * 
             FROM USOS
-            WHERE ORDEN = ${detUsos[i].nconsulta}
+            WHERE ORDEN = '${detUsos[i].nconsulta}'
             AND CONTROL IS NULL
-  `;
+  `);
 
         if (response[0]) usosSinPun.push(response[0]);
       }
+
+      sgi.end();
 
       res.status(200).json(usosSinPun);
     } else if (req.query.f && req.query.f === "usos fa sin puntear") {
@@ -133,181 +162,254 @@ export default async function handler(req, res) {
         .format("YYYY-MM-DD");
       let hasta = moment().endOf("month").format("YYYY-MM-DD");
 
-      const detUsos = await SGI.$queryRaw`
+      const detUsos = await sgi.query(`
       SELECT nconsulta, norden, fecha  
       FROM detalle_orden_pago
-      WHERE fecha BETWEEN ${desde} AND ${hasta}
+      WHERE fecha BETWEEN '${desde}' AND '${hasta}'
 
-`;
+        `);
+
       const usosSinPun = [];
 
       for (let i = 0; i < detUsos.length; i++) {
-        const response = await Serv.$queryRaw`
+        const response = await serv.query(`
             SELECT * 
             FROM USOSFA
-            WHERE ORDEN = ${detUsos[i].nconsulta}
+            WHERE ORDEN = '${detUsos[i].nconsulta}'
             AND CONTROL IS NULL
-  `;
+  `);
 
         if (response[0]) usosSinPun.push(response[0]);
       }
 
+      sgi.end();
+
       res.status(200).json(usosSinPun);
     } else if (req.query.f && req.query.f === "traer orden otero") {
-      const Orden = await Serv.USOS.findMany({
-        where: {
-          ORDEN: req.query.orden,
-        },
-      });
+      const Orden = await serv.query(
+        `
+        SELECT *
+        FROM USOS
+        WHERE ORDEN = '${req.query.orden}'
+        
+        `
+      );
+
+      await serv.end();
 
       res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "traer orden fabian") {
-      const Orden = await Serv.USOSFA.findMany({
-        where: {
-          ORDEN: req.query.orden,
-        },
-      });
+      const Orden = await serv.query(
+        `
+        SELECT *
+        FROM USOSFA
+        WHERE ORDEN = '${req.query.orden}'
+        
+        `
+      );
+
+      await serv.end();
 
       res.status(200).json(Orden);
     }
   }
   if (req.method === "POST") {
     if (req.body.f && req.body.f === "nueva orden") {
-      const regNovell = await SGI.ordenes_pago.create({
-        data: {
-          fecha: new Date(req.body.fecha),
-          proveedor: req.body.proveedor,
-          nombre: req.body.nombre,
-          cuit_cuil: req.body.cuit_cuil,
-          total: parseFloat(req.body.total),
-          operador_carga: req.body.operador_carga,
-          norden: req.body.norden,
-          observacion: req.body.observacion,
-          autorizado: req.body.autorizado,
-          tipo_orden: req.body.tipo_orden,
-          nfactura: req.body.nfactura,
-          tipo_factura: req.body.tipo_factura,
-          fecha_pago: new Date(req.body.fecha_pago),
-          pagado: req.body.pagado,
-          estado: req.body.estado,
-        },
-      });
+      const regNovell = await sgi.query(
+        `
+          INSERT INTO ordenes_pago
+          (
+            fecha,
+            proveedor,
+            nombre,
+            cuit_cuil,
+            total,
+            operador_carga,
+            norden,
+            observacion,
+            autorizado,
+            tipo_orden,
+            nfactura,
+            tipo_factura,
+            fecha_pago,
+            pagado,
+            estado
+          )
+          
+          VALUES
+
+          (
+            '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+            '${req.body.proveedor},'
+            '${req.body.nombre}',
+            '${req.body.cuit_cuil}',
+            ${parseFloat(req.body.total)},
+            '${req.body.operador_carga}',
+            '${req.body.norden}',
+           ' ${req.body.observacion}',
+            ${req.body.autorizado},
+            '${req.body.tipo_orden}',
+            '${req.body.nfactura}',
+            '${req.body.tipo_factura}',
+            '${moment(req.body.fecha_pago).format("YYYY-MM-DD")}',
+            ${req.body.pagado},
+            ${req.body.estado}
+          )
+          
+          `
+      );
+
+      await sgi.end();
 
       res.status(200).json(regNovell);
     } else if (req.body.f && req.body.f === "nuevo detalle") {
-      const regNovell = await SGI.detalle_orden_pago.create({
-        data: {
-          norden: req.body.norden,
-          nconsulta: req.body.nconsulta,
-          sucursal: req.body.sucursal,
-          prestador: req.body.prestador,
-          servicio: req.body.servicio,
-          importe: req.body.importe,
-          operador_carga: req.body.operador_carga,
-          fecha: new Date(req.body.fecha),
-        },
-      });
+      const regNovell = await sgi.query(
+        `
+            INSERT INTO detalle_orden_pago
+            (
+              norden,
+              nconsulta,
+              sucursal,
+              prestador,
+              servicio,
+              importe,
+              operador_carga,
+              fecha            
+            )
+
+            VALUES
+            (
+              '${req.body.norden}',
+              '${req.body.nconsulta}',
+              '${req.body.sucursal}',
+              '${req.body.prestador}',
+              '${req.body.servicio}',
+              '${req.body.importe}',
+              '${req.body.operador_carga}',
+              '${moment(req.body.fecha).format("YYYY-MM-DD")}'
+            )
+          `
+      );
+
+      await sgi.end();
 
       res.status(200).json(regNovell);
     }
   }
   if (req.method === "PUT") {
     if (req.body.f && req.body.f === "punteo orden") {
-      const checkUSOS = await Serv.USOS.update({
-        data: {
-          CONTROL: true,
-          NORDEN: req.body.nor,
-          FECHA_CONTROL: new Date(req.body.fec),
-        },
-        where: {
-          iduso: parseInt(req.body.iduso),
-        },
-      });
+      const checkUSOS = await serv.query(
+        `
+          UPDATE USOS
+          SET CONTROL= true,
+              NORDEN = '${req.body.nor}',
+              FECHA_CONTROL = '${moment(req.body.fec).format("YYYY-MM-DD")}'
+          WHERE iduso = ${parseInt(req.body.iduso)}
+        `
+      );
+
+      await serv.end();
+
       res.status(200).json(checkUSOS);
     } else if (req.body.f && req.body.f === "punteo orden FA") {
-      const checkUSOSFA = await Serv.USOSFA.update({
-        data: {
-          CONTROL: true,
-          NORDEN: req.body.nor,
-          FECHA_CONTROL: new Date(req.body.fec),
-        },
-        where: {
-          iduso: parseInt(req.body.iduso),
-        },
-      });
+      const checkUSOSFA = await serv.query(
+        `
+          UPDATE USOSFA
+          SET CONTROL= true,
+              NORDEN = '${req.body.nor}',
+              FECHA_CONTROL = '${moment(req.body.fec).format("YYYY-MM-DD")}'
+          WHERE iduso = ${parseInt(req.body.iduso)}
+        `
+      );
+
+      await serv.end();
 
       res.status(200).json(checkUSOSFA);
     } else if (req.body.f && req.body.f === "anular detalle orden") {
-      const checkUSOS = await Serv.$queryRaw`
+      const checkUSOS = await serv.query(`
       UPDATE USOS
       SET CONTROL = null,
           FECHA_CONTROL= null,
           NORDEN =null      
       WHERE NORDEN = ${req.body.norden}         
 
-      `;
+      `);
+
+      await serv.end();
+
       res.status(200).json(checkUSOS);
 
-      const checkUSOSFA = await Serv.$queryRaw`
+      const checkUSOSFA = await serv.query(`
       UPDATE USOSFA
       SET CONTROL = null,
           FECHA_CONTROL= null,
           NORDEN =null      
       WHERE NORDEN = ${req.body.norden}         
 
-      `;
+      `);
+
+      await serv.end();
 
       res.status(200).json(checkUSOSFA);
     } else if (req.body.f && req.body.f === "aprobar orden") {
-      const apOrden = await SGI.ordenes_pago.update({
-        data: {
-          autorizado: true,
-          operador_autorizacion: req.body.usu,
-        },
-        where: {
-          idorden: parseInt(req.body.idorden),
-        },
-      });
+      const apOrden = await sgi.query(
+        `
+          UPDATE ordenes_pago
+          SET autorizado =  true,
+              operador_autorizacion= '${req.body.usu}'
+          WHERE idorden = ${parseInt(req.body.idorden)}
+
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(apOrden);
     } else if (req.body.f && req.body.f === "anular orden") {
-      const apOrden = await SGI.ordenes_pago.update({
-        data: {
-          estado: false,
-        },
-        where: {
-          idorden: parseInt(req.body.idorden),
-        },
-      });
+      const apOrden = await sgi.query(
+        `
+          UPDATE ordenes_pago
+          SET estado= false
+          WHERE idorden = ${parseInt(req.body.idorden)}
+        `
+      );
+
+      await sgi.end();
 
       res.status(200).json(apOrden);
     } else if (req.body.f && req.body.f === "imp liq ordenes") {
-      const impLiq = await Serv.$queryRaw`
+      const impLiq = await serv.query(`
           UPDATE USOSFA as u
           INNER JOIN PRESTADO as p ON p.COD_PRES = u.PRESTADO
           SET u.IMP_LIQ = p.CON_PAGA
           WHERE u.SERVICIO = 'ORDE'     
 
-      `;
+      `);
+
+      await serv.end();
 
       res.status(200).json(impLiq);
     } else if (req.body.f && req.body.f === "imp liq practicas") {
-      const impLiq = await Serv.$queryRaw`
+      const impLiq = await serv.query(`
         UPDATE USOSFA as u        
         SET u.IMP_LIQ = u.IMPORTE
         WHERE u.SERVICIO NOT IN ('ORDE', 'FARM') 
 
-  `;
+  `);
+
+      await serv.end();
 
       res.status(200).json(impLiq);
     } else if (req.body.f && req.body.f === "imp liq sin valor") {
-      const impLiq = await Serv.$queryRaw`
+      const impLiq = await serv.query(`
             UPDATE USOSFA AS u
             SET u.IMP_LIQ = 0
             WHERE u.IMP_LIQ IS NULL            
             OR u.IMP_LIQ = ''
 
-`;
+`);
+
+      await serv.end();
 
       res.status(200).json(impLiq);
     } else if (req.body.f && req.body.f === "repunteo de usos web") {
@@ -317,27 +419,34 @@ export default async function handler(req, res) {
         .format("YYYY-MM-DD");
       let hasta = moment().endOf("month").format("YYYY-MM-DD");
 
-      const detUsos = await SGI.$queryRaw`
+      const detUsos = await sgi.query(`
       SELECT nconsulta, norden, fecha 
       FROM detalle_orden_pago
-      WHERE fecha BETWEEN ${desde} AND ${hasta}
+      WHERE fecha BETWEEN '${desde}' AND '${hasta}'
 
-`;
+`);
+
+      await sgi.end();
 
       const usosSinPun = [];
 
       for (let i = 0; i < detUsos.length; i++) {
-        const response = await Serv.$queryRaw`
+        const response = await serv.query(`
             UPDATE USOS
             SET CONTROL = 1,
-                NORDEN = ${detUsos[i].norden},
-                FECHA_CONTROL= ${moment(detUsos[i].fecha).format("YYYY-MM-DD")}
-            WHERE ORDEN = ${detUsos[i].nconsulta}    
+                NORDEN = '${detUsos[i].norden}',
+                FECHA_CONTROL= '${moment(detUsos[i].fecha).format(
+                  "YYYY-MM-DD"
+                )}'
+            WHERE ORDEN = '${detUsos[i].nconsulta}'    
 
-  `;
+  `);
 
         if (response[0]) usosSinPun.push(response[0]);
       }
+
+      await serv.end();
+
       res.status(200).json(usosSinPun);
     } else if (req.body.f && req.body.f === "repunteo de usos fox") {
       let desde = moment()
@@ -346,136 +455,166 @@ export default async function handler(req, res) {
         .format("YYYY-MM-DD");
       let hasta = moment().endOf("month").format("YYYY-MM-DD");
 
-      const detUsos = await SGI.$queryRaw`
+      const detUsos = await sgi.query(`
       SELECT nconsulta, norden, fecha 
       FROM detalle_orden_pago
       WHERE fecha BETWEEN ${desde} AND ${hasta}
 
-`;
+`);
+
+      await sgi.end();
 
       const usosSinPun = [];
 
       for (let i = 0; i < detUsos.length; i++) {
-        const response = await Serv.$queryRaw`
+        const response = await serv.query(`
             UPDATE USOSFA
             SET CONTROL = 1,
-                NORDEN = ${detUsos[i].norden},
-                FECHA_CONTROL= ${moment(detUsos[i].fecha).format("YYYY-MM-DD")}
-            WHERE ORDEN = ${detUsos[i].nconsulta}    
+                NORDEN = '${detUsos[i].norden}',
+                FECHA_CONTROL= '${moment(detUsos[i].fecha).format(
+                  "YYYY-MM-DD"
+                )}'
+            WHERE ORDEN = '${detUsos[i].nconsulta}' 
 
-  `;
+  `);
 
         if (response[0]) usosSinPun.push(response[0]);
       }
 
+      await serv.end();
+
       res.status(200).json(usosSinPun);
     } else if (req.body.f && req.body.f === "levantar anulado") {
       if (req.body.sis === "O") {
-        const levUso = await Serv.USOS.update({
-          data: {
-            ANULADO: 0,
-          },
-          where: {
-            iduso: parseInt(req.body.iduso),
-          },
-        });
+        const levUso = await serv.query(
+          `
+            UPDATE USOS
+            SET ANULADO = 0
+            WHERE iduso = ${parseInt(req.body.iduso)}
+  
+           `
+        );
+
+        await serv.end();
+
         res.status(200).json(levUso);
       } else if (req.body.sis === "F") {
-        const levUso = await Serv.USOSFA.update({
-          data: {
-            ANULADO: 0,
-          },
-          where: {
-            iduso: parseInt(req.body.iduso),
-          },
-        });
+        const levUso = await serv.query(
+          `
+            UPDATE USOSFA
+            SET ANULADO = 0
+            WHERE iduso = ${parseInt(req.body.iduso)}
+  
+           `
+        );
+
+        await serv.end();
         res.status(200).json(levUso);
       }
     } else if (req.body.f && req.body.f === "desbloquear uso") {
       if (req.body.sis === "O") {
-        const levUso = await Serv.USOS.update({
-          data: {
-            CONTROL: null,
-            NORDEN: null,
-            FECHA_CONTROL: null,
-          },
-          where: {
-            iduso: parseInt(req.body.iduso),
-          },
-        });
+        const levUso = await serv.query(
+          `
+            UPDATE USOS
+            SET CONTROL = null,
+                NORDEN = null,
+                FECHA_CONTROL = null
+            WHERE iduso = ${parseInt(req.body.iduso)}
+  
+           `
+        );
+
+        await serv.end();
+
         res.status(200).json(levUso);
       } else if (req.body.sis === "F") {
-        const levUso = await Serv.USOSFA.update({
-          data: {
-            CONTROL: null,
-            NORDEN: null,
-            FECHA_CONTROL: null,
-          },
-          where: {
-            iduso: parseInt(req.body.iduso),
-          },
-        });
+        const levUso = await serv.query(
+          `
+            UPDATE USOSFA
+            SET CONTROL = null,
+                NORDEN = null,
+                FECHA_CONTROL = null
+            WHERE iduso = ${parseInt(req.body.iduso)}
+  
+           `
+        );
+
+        await serv.end();
         res.status(200).json(levUso);
       }
     } else if (req.body.f && req.body.f === "modificar imp liq") {
       if (req.body.sis === "O") {
-        const levUso = await Serv.USOS.update({
-          data: {
-            IMP_LIQ: parseFloat(req.body.impliq),
-          },
-          where: {
-            iduso: parseInt(req.body.iduso),
-          },
-        });
+        const levUso = await serv.query(
+          `
+        UPDATE USOS
+        SET IMP_LIQ = ${parseInt(req.body.iduso)}
+        WHERE iduso = ${parseInt(req.body.iduso)}
+        `
+        );
+
+        await serv.end();
+
         res.status(200).json(levUso);
       } else if (req.body.sis === "F") {
-        const levUso = await Serv.USOSFA.update({
-          data: {
-            IMP_LIQ: req.body.impliq,
-          },
-          where: {
-            iduso: parseInt(req.body.iduso),
-          },
-        });
+        const levUso = await serv.query(
+          `
+        UPDATE USOSFA
+        SET IMP_LIQ = ${parseInt(req.body.iduso)}
+        WHERE iduso = ${parseInt(req.body.iduso)}
+        `
+        );
+
+        await serv.end();
         res.status(200).json(levUso);
       }
     } else if (req.body.f && req.body.f === "act importe ordenes") {
-      const actImpDetOrde = await SGI.$queryRaw`
+      const actImpDetOrde = await sgi.query(`
+      
         UPDATE detalle_orden_pago         
-        SET importe = ${req.body.importe} 
-        WHERE norden = ${req.body.orde} 
-        AND servicio = "ORDE"`;
+        SET importe = '${req.body.importe}' 
+        WHERE norden = '${req.body.orde}' 
+        AND servicio = "ORDE"`);
+      await sgi.end();
 
       res.status(200).json(actImpDetOrde);
     } else if (req.body.f && req.body.f === "act importe orden pago") {
-      const actTotOrdePag = await SGI.$queryRaw`
+      const actTotOrdePag = await sgi.query(`
+
         UPDATE ordenes_pago         
         SET total = ${parseFloat(req.body.total)} 
-        WHERE norden = ${req.body.orde} 
+        WHERE norden = '${req.body.orde}' 
         
-        `;
+        `);
+
+      await sgi.end();
 
       res.status(200).json(actTotOrdePag);
     } else if (req.body.f && req.body.f === "modificar importe orden") {
       if (req.body.sis === "-") {
-        const modImp = await Serv.USOS.update({
-          data: {
-            IMP_LIQ: parseFloat(req.body.importe),
-          },
-          where: {
-            iduso: parseInt(req.body.iduso),
-          },
-        });
+        const modImp = await serv.query(
+          `
+          UPDATE USOS
+          SET IMP_LIQ = ${parseFloat(req.body.importe)}
+          WHERE iduso = ${parseInt(req.body.iduso)}
+            
+          `
+        );
+
+        await serv.end();
+
         res.status(200).json(modImp);
       } else {
-        const modImp = await Serv.USOSFA.update({
-          data: {
-            IMP_LIQ: req.body.importe,
-          },
-          where: {
-            iduso: parseInt(req.body.iduso),
-          },
-        });
+        const modImp = await serv.query(
+          `
+          UPDATE USOSFA
+          SET IMP_LIQ = ${parseFloat(req.body.importe)}
+          WHERE iduso = ${parseInt(req.body.iduso)}
+            
+          `
+        );
+
+        await serv.end();
+
         res.status(200).json(modImp);
       }
     }
@@ -483,18 +622,28 @@ export default async function handler(req, res) {
   if (req.method === "DELETE") {
     if (req.query.f && req.query.f === "eliminar duplicado") {
       if (req.query.sis === "O") {
-        const levUso = await Serv.USOS.delete({
-          where: {
-            iduso: parseInt(req.query.iduso),
-          },
-        });
+        const levUso = await serv.query(
+          `
+        DELETE FROM USOS
+        WHERE iduso = ${parseInt(req.query.iduso)}
+        
+        `
+        );
+
+        await serv.end();
+
         res.status(200).json(levUso);
       } else if (req.query.sis === "F") {
-        const levUso = await Serv.USOSFA.delete({
-          where: {
-            iduso: parseInt(req.query.iduso),
-          },
-        });
+        const levUso = await serv.query(
+          `
+        DELETE FROM USOSFA
+        WHERE iduso = ${parseInt(req.query.iduso)}
+        
+        `
+        );
+
+        await serv.end();
+
         res.status(200).json(levUso);
       }
     }

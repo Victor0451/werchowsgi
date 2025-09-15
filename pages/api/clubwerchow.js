@@ -1,11 +1,10 @@
-import { Werchow, SGI, Camp, Arch, Club } from "../../libs/config";
+import { werchow, sgi, serv, sep, camp, arch, club } from "../../libs/db/index";
+import moment from "moment";
 
 export default async function handler(req, res) {
-  const prisma = SGI;
-
   if (req.method === "GET") {
     if (req.query.f && req.query.f === "traer ganadores") {
-      const ganadores = await Arch.$queryRaw`
+      const ganadores = await arch.query(`
          
             SELECT
                *
@@ -13,7 +12,9 @@ export default async function handler(req, res) {
                historial_ganadores
                   
             ORDER BY fecha DESC
-              `;
+              `);
+
+      await arch.end();
 
       res
         .status(200)
@@ -23,7 +24,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer ganadores becas") {
-      const ganadores = await Arch.$queryRaw`
+      const ganadores = await arch.query(`
          
             SELECT
                *
@@ -31,7 +32,9 @@ export default async function handler(req, res) {
                historial_ganadores_beca
                   
             ORDER BY fecha DESC
-              `;
+              `);
+
+      await arch.end();
 
       res
         .status(200)
@@ -41,7 +44,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer participantes sorteo") {
-      const participantes = await Club.$queryRaw`
+      const participantes = await club.query(`
          
             SELECT
                *
@@ -49,7 +52,9 @@ export default async function handler(req, res) {
                participantes_sorteo
                   
             
-              `;
+              `);
+
+      await club.end();
 
       res
         .status(200)
@@ -59,7 +64,7 @@ export default async function handler(req, res) {
           )
         );
     } else if (req.query.f && req.query.f === "traer ganadores sorteo") {
-      const ganadores = await Club.$queryRaw`
+      const ganadores = await club.query(`
          
             SELECT
                *
@@ -67,7 +72,9 @@ export default async function handler(req, res) {
                ganadores
                   
             
-              `;
+              `);
+
+      await club.end();
 
       res
         .status(200)
@@ -79,27 +86,54 @@ export default async function handler(req, res) {
     }
   } else if (req.method === "POST") {
     if (req.body.f && req.body.f === "reg ganador") {
-      const ganador = await Club.ganadores.create({
-        data: {
-          participante: req.body.participante,
-          premio: parseInt(req.body.premio),
-          fecha: new Date(req.body.fecha),
-          dni: parseInt(req.body.dni),
-          telefono: req.body.telefono,
-        },
-      });
+      const ganador = await club.query(
+        `
+          INSERT INTO ganadores
+            (
+              participante,
+              premio,
+              fecha,
+              dni,
+              telefono
+            )
+
+            VALUES 
+            (
+             '${req.body.participante}',
+             ${parseInt(req.body.premio)},
+             '${moment(req.body.fecha).format("YYYY-MM-DD")}',
+             ${parseInt(req.body.dni)},
+             '${req.body.telefono}'
+            
+            )
+
+        `
+      );
+
+      await club.end();
+
       res.status(200).json(ganador);
     }
   } else if (req.method === "DELETE") {
     if (req.query.f && req.query.f === "eliminar ganador") {
-      const eliminarGanador = await Club.ganadores.delete({
-        where: {
-          idganador: parseInt(req.query.idganador),
-        },
-      });
+      const eliminarGanador = await club.query(
+        `
+        DELETE FROM ganadores
+        WHERE idganador = ${parseInt(req.query.idganador)}
+        `
+      );
+
+      await club.end();
       res.status(200).json(eliminarGanador);
     } else if (req.query.f && req.query.f === "eliminar ganadores") {
-      const eliminarGanador = await Club.ganadores.deleteMany();
+      const eliminarGanador = await club.query(
+        `
+        DELETE FROM ganadores
+       
+        `
+      );
+
+      await club.end();
       res.status(200).json(eliminarGanador);
     }
   }

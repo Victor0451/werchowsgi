@@ -7,7 +7,7 @@ import { InformationCircleIcon as InformationCircleIconSolid } from "@heroicons/
 const Alertas = ({ noticia }) => {
   return (
     <>
-      {noticia ? (
+      {noticia.noticia ? (
         <div className="flex w-full flex-col gap-2">
           <Alert
             icon={<InformationCircleIcon strokeWidth={2} className="h-6 w-6" />}
