@@ -77,9 +77,9 @@ export const ListadoCajaSep = ({ listado, noData, usu, eliminarCaja }) => {
       grow: 0.1,
       cell: (row, index) => (
         <>
-          {row.estado === true ? (
+          {row.estado === 1 ? (
             <div>Abierta</div>
-          ) : row.estado === false ? (
+          ) : row.estado === 0 ? (
             <div>Cerrada</div>
           ) : null}
         </>
@@ -94,7 +94,7 @@ export const ListadoCajaSep = ({ listado, noData, usu, eliminarCaja }) => {
         <>
           {usu.perfil === 1 || usu.perfil === 3 || usu.perfil === 4 ? (
             <>
-              {row.estado === true ? (
+              {row.estado === 1 ? (
                 <>
                   <Link
                     href={{
@@ -138,7 +138,7 @@ export const ListadoCajaSep = ({ listado, noData, usu, eliminarCaja }) => {
                     onClick={() => eliminarCaja(row.idcaja)}
                   />
                 </>
-              ) : row.estado === false ? (
+              ) : row.estado === 0 ? (
                 <>
                   <Link
                     href={{

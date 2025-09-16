@@ -79,9 +79,9 @@ const ListParcelas = ({
       filterText: true,
       cell: (row, index) => (
         <>
-          {row.asignada === true ? (
+          {row.asignada === 1 ? (
             <div>Asignada</div>
-          ) : row.asignada === false ? (
+          ) : row.asignada === 0 ? (
             <div>Sin Asignar</div>
           ) : null}
         </>
