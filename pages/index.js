@@ -158,6 +158,7 @@ export default function Index() {
         },
       })
       .then((res) => {
+        console.log(res.data);
         if (res.status === 200) {
           guardarNoticias(res.data[0]);
         }
