@@ -155,7 +155,7 @@ export const FormCargaGasto = ({
       <CardBody className="rounded-none">
         <Typography variant="h2">Registrar Gasto</Typography>
 
-        {caja.estado === true ? (
+        {caja.estado === 1 ? (
           <div className="relative w-full mb-6 group mt-5 ">
             <Alert
               color="green"
@@ -169,7 +169,7 @@ export const FormCargaGasto = ({
               </Button>
             </Alert>
           </div>
-        ) : caja.estado === false ? (
+        ) : caja.estado === 0 ? (
           <div className="relative w-full mb-6 group mt-5 ">
             <Alert
               color="red"

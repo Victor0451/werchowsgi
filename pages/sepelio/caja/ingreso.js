@@ -53,7 +53,7 @@ export default function Ingreso() {
         })
         .then((res) => {
           if (res.status === 200) {
-            guardarCaja(res.data);
+            guardarCaja(res.data[0]);
           }
         })
         .catch((error) => {
@@ -156,7 +156,7 @@ export default function Ingreso() {
       ptoventa: ptoVentaRef.current.value,
       detalle: detalleSel,
       total: totalRef.current.value,
-
+      operador: usu.usuario,
       f: "reg ingreso caja",
     };
 

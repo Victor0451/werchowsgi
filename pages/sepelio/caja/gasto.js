@@ -51,7 +51,7 @@ export default function Gasto() {
 
   let router = useRouter();
   if (router.query.idcaja) {
-    jsCookie.set("idcaja", router.query.idcaja , { expires: 1 });
+    jsCookie.set("idcaja", router.query.idcaja, { expires: 1 });
   }
 
   const traerCaja = async () => {
@@ -65,7 +65,7 @@ export default function Gasto() {
         })
         .then((res) => {
           if (res.status === 200) {
-            guardarCaja(res.data);
+            guardarCaja(res.data[0]);
           }
         })
         .catch((error) => {
@@ -364,12 +364,12 @@ export default function Gasto() {
         {
           label: "Si",
           onClick: () => {
-            console.log(listado);
-
             if (listado.length === 0) {
               toast.info("No hay gastos precargados para registrar.");
             } else {
               for (let i = 0; i < listado.length; i++) {
+                console.log(listado[i]);
+
                 axios
                   .post(`/api/sepelio/caja`, listado[i])
                   .then((res) => {
@@ -591,7 +591,7 @@ export default function Gasto() {
       ],
     });
   };
-  
+
   const calTotalGastos = (arr) => {
     let total = 0;
 

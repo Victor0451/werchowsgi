@@ -231,8 +231,8 @@ export default async function handler(req, res) {
         `
             SELECT *
             FROM generacion_cajas
-            WHERE desde = '${momen(req.query.desde).format("YYYY-MM-DD")}'
-            AND hasta = '${momen(req.query.hasta).format("YYYY-MM-DD")}'
+            WHERE desde = '${moment(req.query.desde).format("YYYY-MM-DD")}'
+            AND hasta = '${moment(req.query.hasta).format("YYYY-MM-DD")}'
             AND empresa = '${req.query.emp}'
         `
       );
@@ -361,17 +361,17 @@ export default async function handler(req, res) {
                '${req.body.tipofactura}',
                '${req.body.proveedor}',
                '${req.body.empresa}',
-'               ${req.body.porciva}',
-               '${momen(req.body.fecha).format("YYYY-MM-DD")}',
+               '${req.body.porciva}',
+               '${moment(req.body.fecha).format("YYYY-MM-DD")}',
                '${req.body.nfactura}',
                ${parseFloat(req.body.ptoventa)},
-               ${req.body.operadorgestion},
-               ${req.body.operadortramite},
+               '${req.body.operadorgestion}',
+               '${req.body.operadortramite}',
                ${parseFloat(req.body.montoiva)},
                ${parseFloat(req.body.retiibb)},
                ${parseFloat(req.body.retggcias)},
                ${parseFloat(req.body.perciva)},
-               ${req.body.detalle},
+               '${req.body.detalle}',
                ${parseFloat(req.body.total)},
                ${parseInt(req.body.idservicio)}
             )
@@ -394,20 +394,23 @@ export default async function handler(req, res) {
                 nfactura,
                 ptoventa,
                 detalle,
-                monto
+                monto,
+                operador
               )
 
               VALUES
               (
                  ${parseInt(req.body.idcaja)},
-                 '${req.body.concepto},
+                 '${req.body.concepto}',
                  '${req.body.tipofactura}',
                  '${req.body.empresa}',
-                 '${momen(req.body.fecha).format("YYYY-MM-DD")}',
+                 '${moment(req.body.fecha).format("YYYY-MM-DD")}',
                  '${req.body.nfactura}',
                  ${parseFloat(req.body.ptoventa)},
                  '${req.body.detalle}',
-                 ${parseFloat(req.body.total)}
+                 ${parseFloat(req.body.total)},
+                 '${req.body.operador}'
+                 
                 
               )
             
@@ -542,7 +545,9 @@ export default async function handler(req, res) {
         `
                 UPDATE caja_sepelio
                 SET  estado= ${req.body.estado},
-                     cierre= '${moment(req.body.cierre).format("YYYY-MM-DD")}'
+                     cierre= '${moment(req.body.cierre).format(
+                       "YYYY-MM-DD HH:mm:ss"
+                     )}'
                 WHERE idcaja = ${parseInt(req.body.idcaja)}
               
               `
@@ -556,7 +561,7 @@ export default async function handler(req, res) {
         `
               UPDATE caja_sepelio
               SET ultimacarga = '${moment(req.body.ultimacarga).format(
-                "YYYY-MM-DD"
+                "YYYY-MM-DD HH:mm:ss"
               )}'
               WHERE idcaja = ${parseInt(req.body.idcaja)}
             
