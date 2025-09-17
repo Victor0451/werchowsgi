@@ -77,17 +77,17 @@ const ListadoOrdenesGeneradas = ({
       grow: 0.1,
       cell: (row, index) => (
         <>
-          {row.estado === true && row.autorizado === false ? (
+          {row.estado === 1 && row.autorizado === 0 ? (
             <div>Pendiente</div>
-          ) : row.estado === true &&
-            row.autorizado === true &&
-            row.pagado === false ? (
+          ) : row.estado === 1 &&
+            row.autorizado === 1 &&
+            row.pagado === 0 ? (
             <div>Autorizado, Sin Pagar</div>
-          ) : row.estado === true &&
-            row.autorizado === true &&
-            row.pagado === true ? (
+          ) : row.estado === 1 &&
+            row.autorizado === 1 &&
+            row.pagado === 1 ? (
             <div>Autorizado y Pagado</div>
-          ) : row.estado === false && row.autorizado === false ? (
+          ) : row.estado === 0 && row.autorizado === 0 ? (
             <div>Anulado</div>
           ) : null}
         </>
@@ -115,7 +115,7 @@ const ListadoOrdenesGeneradas = ({
               mandarMail(row);
             }}
           />
-          {row.autorizado === false ? (
+          {row.autorizado === 0 && row.estado === 1 ? (
             <>
               {usu.perfil === 1 || usu.perfil === 3 ? (
                 <CheckCircleIcon

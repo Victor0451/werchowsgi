@@ -78,10 +78,13 @@ function NuevaOrden(props) {
         },
       })
       .then((res) => {
-        if (!res.data.idorden) {
+        console.log(res.data);
+        if (!res.data[0].idorden) {
           guardarNOrden(`${1}/${moment().format("YYYY")}`);
-        } else if (res.data.idorden) {
-          guardarNOrden(`${res.data.idorden + 1}/${moment().format("YYYY")}`);
+        } else if (res.data[0].idorden) {
+          guardarNOrden(
+            `${res.data[0].idorden + 1}/${moment().format("YYYY")}`
+          );
         }
       })
 
@@ -133,8 +136,7 @@ function NuevaOrden(props) {
       });
   };
 
-  const traerDetalleMed = async (prestado) => {
-    console.log(prestado);
+  const traerDetalleMed = async (prestado) => {    
     await axios
       .get("/api/ordenpago", {
         params: {

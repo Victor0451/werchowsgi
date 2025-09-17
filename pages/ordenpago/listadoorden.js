@@ -190,14 +190,14 @@ function listadoorden(props) {
 
   const conditionalRowStyles = [
     {
-      when: (row) => row.estado === false,
+      when: (row) => row.estado === 0,
       style: {
         backgroundColor: "red",
         color: "white",
       },
     },
     {
-      when: (row) => row.estado === true && row.autorizado === true,
+      when: (row) => row.estado === 1 && row.autorizado === 1,
       style: {
         backgroundColor: "greenyellow",
         color: "black",

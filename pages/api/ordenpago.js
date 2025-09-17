@@ -38,6 +38,7 @@ export default async function handler(req, res) {
           SELECT idorden
           FROM ordenes_pago
           ORDER BY idorden DESC
+          LIMIT 1
         
         `
       );
@@ -240,7 +241,7 @@ export default async function handler(req, res) {
 
           (
             '${moment(req.body.fecha).format("YYYY-MM-DD")}',
-            '${req.body.proveedor},'
+            '${req.body.proveedor}',
             '${req.body.nombre}',
             '${req.body.cuit_cuil}',
             ${parseFloat(req.body.total)},
@@ -331,7 +332,7 @@ export default async function handler(req, res) {
       SET CONTROL = null,
           FECHA_CONTROL= null,
           NORDEN =null      
-      WHERE NORDEN = ${req.body.norden}         
+      WHERE NORDEN = '${req.body.norden}'         
 
       `);
 
@@ -344,7 +345,7 @@ export default async function handler(req, res) {
       SET CONTROL = null,
           FECHA_CONTROL= null,
           NORDEN =null      
-      WHERE NORDEN = ${req.body.norden}         
+      WHERE NORDEN = '${req.body.norden}'         
 
       `);
 
