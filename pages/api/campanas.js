@@ -12,9 +12,9 @@ export default async function handler(req, res) {
                 SELECT * 
                 FROM campanacasos AS cc 
                 INNER JOIN campanas AS c ON cc.idcampana = c.idcampana
-                WHERE c.operador = ${operador}
-                AND c.descripcion = ${campana}
-                AND c.empresa =  ${empresa}
+                WHERE c.operador = '${operador}'
+                AND c.descripcion = '${campana}'
+                AND c.empresa =  '${empresa}'
                 AND cc.estadocaso = 1
                 AND cc.accion IS NULL
                 ORDER BY cc.barrio, cc.calle, cc.nro_calle 
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
                 INNER JOIN campanas as c ON cc.idcampana = c.idcampana
                 WHERE MONTH(cc.fechacampana) = ${req.query.mes}
                 AND YEAR(cc.fechacampana) = ${req.query.ano}
-                AND c.operador = ${req.query.op}
+                AND c.operador = '${req.query.op}'
 
             
             `);
@@ -52,9 +52,9 @@ export default async function handler(req, res) {
                 SELECT * 
                 FROM campanacasos AS cc 
                 INNER JOIN campanas AS c ON cc.idcampana = c.idcampana
-                WHERE c.operador = ${operador}
-                AND c.descripcion = ${campana}
-                AND c.empresa =  ${empresa}
+                WHERE c.operador = '${operador}'
+                AND c.descripcion = '${campana}'
+                AND c.empresa =  '${empresa}'
                 AND cc.estadocaso = 1
                 AND cc.accion IS NOT NULL
                 ORDER BY cc.barrio, cc.calle, cc.nro_calle 
@@ -70,7 +70,7 @@ export default async function handler(req, res) {
                 INNER JOIN campanas as c ON cc.idcampana = c.idcampana
                 WHERE MONTH(cc.fechacampana) = ${req.query.mes}
                 AND YEAR(cc.fechacampana) = ${req.query.ano}
-                AND c.operador = ${req.query.op}
+                AND c.operador = '${req.query.op}'
                 AND cc.accion = 1
 
             
@@ -250,7 +250,7 @@ export default async function handler(req, res) {
 
       await sgi.end();
 
-      sgi.res.status(200).json(gestionCaso);
+      res.status(200).json(gestionCaso);
     } else if (req.body.f && req.body.f === "asig caso") {
       const asigCaso = await sgi.query(
         `
@@ -304,7 +304,7 @@ export default async function handler(req, res) {
            ${parseFloat(req.body.montoadeudado)},
            ${req.body.estadocaso},
            '${moment(req.body.alta).format("YYYY-MM-DD")}',
-           ${moment(req.body.vigencia).format("YYYY-MM-DD")}'
+           '${moment(req.body.vigencia).format("YYYY-MM-DD")}'
           
           )
 
@@ -322,7 +322,7 @@ export default async function handler(req, res) {
         `
         UPDATE campanacasos
         SET accion = ${parseInt(req.body.accion)}
-        WHERE idcaso = ${parseInt(req.body.idcaso)}
+        WHERE idcaso = ${parseInt(req.body.caso)}
         
         `
       );
