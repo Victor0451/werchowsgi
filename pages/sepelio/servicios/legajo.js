@@ -81,7 +81,7 @@ export default function Legajo() {
               })
               .then((res2) => {
                 if (res2.data) {
-                  guardarAtaud(res2.data);
+                  guardarAtaud(res2.data[0]);
                 } else if (!res2.data) {
                   toast.info("Este servicio no posee ataud registrado");
                 }
@@ -100,7 +100,7 @@ export default function Legajo() {
               })
               .then((res3) => {
                 let re = JSON.parse(res3.data);
-                console.log(re[0]);
+
                 if (re[0]) {
                   guardarParcela(re[0]);
                 } else if (!re[0]) {
