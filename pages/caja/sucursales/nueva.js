@@ -143,8 +143,6 @@ function Sucursales(props) {
         if (res.status === 200) {
           toast.success("Caja generada, registrando movimientos", "ATENCION");
 
-          postMov(res.data.idcaja);
-
           let accion = `Se registro caja de sucursal: ${
             caja.sucursal
           } del dia: ${moment(caja.fecha_carga).format(
@@ -155,9 +153,9 @@ function Sucursales(props) {
 
           registrarHistoria(accion, usu.usuario);
 
-          setTimeout(() => {
-            Router.push("/caja/sucursales/listado");
-          }, 500);
+          // setTimeout(() => {
+          //   Router.push("/caja/sucursales/listado");
+          // }, 500);
         }
       })
       .catch((error) => {
