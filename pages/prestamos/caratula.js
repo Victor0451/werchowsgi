@@ -49,18 +49,19 @@ export default function Caratula() {
         .then((res) => {
           if (res.data) {
             toast.success("Generando caratula");
-            guardarPrestamo(res.data);
+            guardarPrestamo(res.data[0]);
 
             axios
               .get("/api/prestamos", {
                 params: {
                   f: "prest socio",
-                  hc: res.data.ptm_ficha,
+                  hc: res.data[0].ptm_ficha,
                 },
               })
               .then((res1) => {
                 if (res1.data) {
-                  guardarSocio(res1.data);
+                  let dat = JSON.parse(res1.data);
+                  guardarSocio(dat[0]);
                 }
               })
               .catch((error) => {

@@ -164,7 +164,7 @@ export default async function handler(req, res) {
     if (req.query.f && req.query.f === "prest socio") {
       const ficha = await werchow.query(`
             
-            SELECT  *                    
+            SELECT *                    
             FROM maestro
             WHERE CONTRATO  = ${parseInt(req.query.hc)}
             
