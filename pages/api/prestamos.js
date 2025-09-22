@@ -185,9 +185,8 @@ export default async function handler(req, res) {
       const prest = await sgi.query(
         `
           SELECT archivo
-          FROM legajo_virtual_prestamos
-          WHERE cod_ptm_leg= '${req.query.id}'
-          AND contrato = ${parseInt(req.query.hc)}
+          FROM legajo_virtual_prestamos          
+          WHERE contrato = ${parseInt(req.query.hc)}
 
         `
       );

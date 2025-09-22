@@ -40,13 +40,13 @@ export default function legajo() {
         })
         .then((res) => {
           if (res.data) {
-            guardarPrestamo(res.data);
+            guardarPrestamo(res.data[0]);
 
             axios
               .get("/api/prestamos", {
                 params: {
                   f: "prest socio",
-                  hc: res.data.ptm_ficha,
+                  hc: res.data[0].ptm_ficha,
                 },
               })
               .then((res1) => {
@@ -64,8 +64,8 @@ export default function legajo() {
               .get(`/api/prestamos`, {
                 params: {
                   f: "traer archivos",
-                  id: res.data.cod_ptm_legajo,
-                  hc: res.data.ptm_ficha,
+                  id: res.data[0].cod_ptm_leg,
+                  hc: res.data[0].ptm_ficha,
                 },
               })
               .then((res2) => {
