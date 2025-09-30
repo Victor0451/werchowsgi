@@ -61,6 +61,19 @@ function Sorteo(props) {
       if (index > -1) {
         participantes.splice(index, 1);
       }
+
+      setTimeout(() => {
+        confirmAlert({
+          title: `¡¡Felicidades!!`,
+          message: `El ganador es: ${seleccion.participante}`,
+          buttons: [
+            {
+              label: "Ok",
+              onClick: () => {},
+            },
+          ],
+        });
+      }, 200);
     } else if (participantes.length === 0) {
       toast.info("No Hay Mas Participantes");
     }
@@ -198,10 +211,12 @@ function Sorteo(props) {
     });
   };
 
-  useEffect(() => {
+  const traerDatos = () => {
     traerParticipantes();
     padronGanadores();
-  }, []);
+  };
+
+  useSWR("/api/sepelio/servicios", traerDatos);
 
   if (isLoading === true) return <Skeleton />;
 

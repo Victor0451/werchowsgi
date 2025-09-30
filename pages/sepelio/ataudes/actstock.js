@@ -43,7 +43,7 @@ export default function actStock() {
         })
         .then((res) => {
           if (res.data) {
-            guardarAtaud(res.data);
+            guardarAtaud(res.data[0]);
           } else {
             toast.info("No se encuentra el ataud seleccionado");
           }
