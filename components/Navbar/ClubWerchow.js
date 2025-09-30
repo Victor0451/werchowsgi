@@ -48,7 +48,12 @@ export const ClubWerchow = () => {
           <ul className="col-span-4 flex w-full flex-col gap-1">
             <Link href={"/clubwerchow/sorteo"}>
               <MenuItem>
-                <Typography color="black">Realizar Sorteo</Typography>
+                <Typography color="black">Sorteo de Participantes</Typography>
+              </MenuItem>
+            </Link>
+            <Link href={"/clubwerchow/sorteopremios"}>
+              <MenuItem>
+                <Typography color="black">Sorteo de Premios</Typography>
               </MenuItem>
             </Link>
 

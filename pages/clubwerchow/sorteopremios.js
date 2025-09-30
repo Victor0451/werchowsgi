@@ -62,6 +62,8 @@ export default function SorteoPremios(props) {
 
         regGanador(seleccion);
 
+        updateStock(seleccion)
+
         guardarTiro(true);
 
         setTimeout(() => {
@@ -111,6 +113,26 @@ export default function SorteoPremios(props) {
       })
       .catch((error) => {
         console.log(error);
+      });
+  };
+
+  const updateStock = async (s) => {
+    const data = {
+      idpremio: s.idpremio,
+      f: "act stock premios",
+    };
+
+    await axios
+      .put("/api/clubwerchow", data)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.info("Stock actualizado");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+
+        toast.error("Ocurrio un error al actualizar el stock");
       });
   };
 

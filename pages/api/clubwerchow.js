@@ -90,6 +90,7 @@ export default async function handler(req, res) {
                *
             FROM
                premios
+            WHERE STOCK >= 1
                   
             
               `);
@@ -163,8 +164,7 @@ export default async function handler(req, res) {
       await sgi.end();
 
       res.status(200).json(ganador);
-    }
-    if (req.body.f && req.body.f === "reg ganador hist") {
+    } else if (req.body.f && req.body.f === "reg ganador hist") {
       const ganador = await arch.query(
         `
           INSERT INTO historial_ganadores
@@ -191,6 +191,19 @@ export default async function handler(req, res) {
       await arch.end();
 
       res.status(200).json(ganador);
+    }
+  } else if (req.method === "PUT") {
+    if (req.body.f && req.body.f === "act stock premios") {
+      const actStock = await sgi.query(
+        `
+        UPDATE premios 
+        SET stock = stock - 1
+        WHERE idpremio = ${parseInt(req.body.idpremio)}      
+      `
+      );
+
+      await sgi.end();
+      res.status(200).json(actStock);
     }
   } else if (req.method === "DELETE") {
     if (req.query.f && req.query.f === "eliminar ganador") {
