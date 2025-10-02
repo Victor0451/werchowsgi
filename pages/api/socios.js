@@ -915,8 +915,8 @@ export default async function handler(req, res) {
                 and p.ANO = ${ano}                  
                 )
                 and m.PLAN != 'P'
-                AND FIND_IN_SET(GRUPO, ${grupo} )
-                AND FIND_IN_SET(ZONA, ${zona} )
+                AND GRUPO in ( ${grupo} )
+                
 
     `);
 
@@ -975,8 +975,7 @@ export default async function handler(req, res) {
                 and p.ANO = ${ano}                  
                 )
            and m.PLAN != 'P'
-           AND FIND_IN_SET(GRUPO, ${grupo} )
-           AND FIND_IN_SET(ZONA, ${zona} )
+           AND GRUPO in ( ${grupo} )
 
 `);
         await werchow.end();
