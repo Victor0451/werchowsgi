@@ -35,7 +35,7 @@ export default async function handler(req, res) {
                 telefonos,
                 domicilio,
                 estado,
-                operador,
+                operador
               )
               
               VALUES
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
                  '${req.body.telefono}',
                  '${req.body.domicilio}',
                  ${req.body.estado},
-                 '${req.body.operador}',
+                 '${req.body.operador}'
               )
 
             `
