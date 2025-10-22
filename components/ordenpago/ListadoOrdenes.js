@@ -20,6 +20,24 @@ const ListadoOrdenes = ({
 }) => {
   let columns = [
     {
+      name: "Empresa",
+      button: true,
+      grow: 0.1,
+      cell: (row, index) => (
+        <>
+          {row.EMPRESA === "W" ? (
+            <>Werchow </>
+          ) : row.EMPRESA === "M" ? (
+            <>M. San Valentin</>
+          ) : row.EMPRESA === "SM" ? (
+            <>San Miguel</>
+          ) : row.EMPRESA === "ISJ" ? (
+            <>M. ISJ</>
+          ) : null}
+        </>
+      ),
+    },
+    {
       name: "Sucursal",
       button: true,
       grow: 0.1,

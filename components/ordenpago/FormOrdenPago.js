@@ -60,7 +60,7 @@ const FormOrdenPago = ({
   detMed,
   fTot,
   sucusmed,
-  traerMed
+  traerMed,
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -83,6 +83,13 @@ const FormOrdenPago = ({
               <u>Practicas Medicas</u>: Para cargar{" "}
               <strong>solamente Practicas Medicas</strong>. Valido para
               prestadores de Casa Central, Sucursales y Clinica Otero
+            </li>
+            <li>
+              <u>EMPRESAS</u>: El sistema maneja las ordenes de contulta y
+              practicas de todas las empresas. Los prestadores de las mismas se
+              buscan por su sucursal de antención, trayendo asi todas sus
+              ordenes, las cuales estan discriminadas por la columna empresa en
+              el listado.
             </li>
           </ul>
           <hr className="mt-5 mb-5" />

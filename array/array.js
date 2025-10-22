@@ -580,4 +580,5 @@ export const sucusmed = [
   { value: "R", label: "Perico" },
   { value: "C", label: "El Carmen" },
   { value: "P", label: "San Pedro" },
+  { value: "M", label: "Monterrico" },
 ];
