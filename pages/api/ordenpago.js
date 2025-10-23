@@ -216,8 +216,8 @@ export default async function handler(req, res) {
   }
   if (req.method === "POST") {
     if (req.body.f && req.body.f === "nueva orden") {
-      const regNovell = await sgi.query(
-        `
+      const regNovell = await _libs_db_index__WEBPACK_IMPORTED_MODULE_0__.sgi
+        .query(`
           INSERT INTO ordenes_pago
           (
             fecha,
@@ -244,25 +244,41 @@ export default async function handler(req, res) {
             '${req.body.proveedor}',
             '${req.body.nombre}',
             '${req.body.cuit_cuil}',
-            ${parseFloat(req.body.total)},
+            ${parseFloat(req.body.total) || 0},
             '${req.body.operador_carga}',
-            '${req.body.norden}',
+            'TEMP',
            ' ${req.body.observacion}',
             ${req.body.autorizado},
             '${req.body.tipo_orden}',
             '${req.body.nfactura}',
             '${req.body.tipo_factura}',
-            '${moment(req.body.fecha_pago).format("YYYY-MM-DD")}',
+           '${moment__WEBPACK_IMPORTED_MODULE_1___default()(
+             req.body.fecha_pago
+           ).format("YYYY-MM-DD")}',
             ${req.body.pagado},
             ${req.body.estado}
           )
           
-          `
-      );
+          `);
 
       await sgi.end();
 
-      res.status(200).json(regNovell);
+      const newId = regNovell.insertId;
+      const nordenFinal = `${newId}/${moment__WEBPACK_IMPORTED_MODULE_1___default()().format(
+        "YYYY"
+      )}`;
+
+      await _libs_db_index__WEBPACK_IMPORTED_MODULE_0__.sgi.query(`
+              UPDATE ordenes_pago
+              SET norden = '${nordenFinal}'
+              WHERE idorden = ${newId}
+            `);
+
+      await _libs_db_index__WEBPACK_IMPORTED_MODULE_0__.sgi.end();
+      res.status(200).json({
+        idorden: newId,
+        norden: nordenFinal,
+      });
     } else if (req.body.f && req.body.f === "nuevo detalle") {
       const regNovell = await sgi.query(
         `

@@ -71,23 +71,14 @@ function NuevaOrden(props) {
   };
 
   const traerDatos = async () => {
-    await axios
-      .get(`/api/ordenpago`, {
-        params: {
-          f: "norden",
-        },
-      })
+    // El N° de orden ahora se genera en el backend para evitar race conditions.
+    // Se solicita el proximo ID solo para mostrarlo en la UI.
+    axios
+      .get(`/api/ordenpago`, { params: { f: "norden" } })
       .then((res) => {
-        console.log(res.data);
-        if (!res.data[0].idorden) {
-          guardarNOrden(`${1}/${moment().format("YYYY")}`);
-        } else if (res.data[0].idorden) {
-          guardarNOrden(
-            `${res.data[0].idorden + 1}/${moment().format("YYYY")}`
-          );
-        }
+        const nextId = res.data?.[0]?.idorden ? res.data[0].idorden + 1 : 1;
+        guardarNOrden(`${nextId}/${moment().format("YYYY")}`);
       })
-
       .catch((error) => {
         console.log(error);
         toast.error("Ocurrio un error al traer el n° de orden", "ATENCION");
@@ -136,7 +127,7 @@ function NuevaOrden(props) {
       });
   };
 
-  const traerDetalleMed = async (prestado) => {    
+  const traerDetalleMed = async (prestado) => {
     await axios
       .get("/api/ordenpago", {
         params: {
@@ -414,102 +405,83 @@ function NuevaOrden(props) {
   };
 
   const postOrdenes = async (orPag) => {
-    await axios
-      .post(`/api/ordenpago`, orPag)
-      .then((res) => {
-        if (res.status === 200) {
-          toast.info(
-            "La orden de pago se genero correctamente. Cargando los detalles",
-            "ATENCION"
+    try {
+      const res = await axios.post(`/api/ordenpago`, orPag);
+
+      if (res.status === 200 && res.data.idorden) {
+        const { idorden, norden: nordenGenerado } = res.data;
+        toast.info(
+          "La orden de pago se generó correctamente. Cargando los detalles...",
+          "ATENCION"
+        );
+
+        const promises = listadoCheck.map((item) => {
+          const detOrdenPag = {
+            iduso: item.iduso,
+            norden: nordenGenerado,
+            nconsulta: item.ORDEN,
+            sucursal: item.SUC,
+            prestador: item.PRESTADO,
+            servicio: item.SERVICIO,
+            importe: `${item.IMP_LIQ}`,
+            operador_carga: usu.usuario,
+            fecha: moment().format("YYYY-MM-DD"),
+            f: "nuevo detalle",
+          };
+
+          const detallePromise = axios.post(`/api/ordenpago`, detOrdenPag);
+
+          const tipoPunteo =
+            detOrdenPag.sucursal === "O" ? "punteo orden" : "punteo orden FA";
+          const checkPromise = updateCheckUsos(
+            detOrdenPag.nconsulta,
+            detOrdenPag.norden,
+            detOrdenPag.fecha,
+            detOrdenPag.iduso,
+            tipoPunteo
           );
 
-          for (let i = 0; i < listadoCheck.length; i++) {
-            const detOrdenPag = {
-              iduso: listadoCheck[i].iduso,
-              norden: norden,
-              nconsulta: listadoCheck[i].ORDEN,
-              sucursal: listadoCheck[i].SUC,
-              prestador: listadoCheck[i].PRESTADO,
-              servicio: listadoCheck[i].SERVICIO,
-              importe: `${listadoCheck[i].IMP_LIQ}`,
-              operador_carga: usu.usuario,
-              fecha: moment().format("YYYY-MM-DD"),
-              f: "nuevo detalle",
-            };
+          return Promise.all([detallePromise, checkPromise]);
+        });
 
-            axios.post(`/api/ordenpago`, detOrdenPag);
+        await Promise.all(promises);
 
-            if (detOrdenPag.sucursal === "O") {
-              updateCheckUsos(
-                detOrdenPag.nconsulta,
-                detOrdenPag.norden,
-                detOrdenPag.fecha,
-                detOrdenPag.iduso,
-                "punteo orden"
-              );
-            } else {
-              updateCheckUsos(
-                detOrdenPag.nconsulta,
-                detOrdenPag.norden,
-                detOrdenPag.fecha,
-                detOrdenPag.iduso,
-                "punteo orden FA"
-              );
-            }
-          }
-
-          setTimeout(() => {
-            toast.success(
-              "La orden fue generada, lista para ser revisada y autorizada",
-              "ATENCION"
-            );
-
-            let accion = `Se registro una orden de Pago ID: ${orPag.norden}, por un monto de: ${orPag.total} al proveedor: ${orPag.proveedor}-${orPag.nombre} por el operador: ${orPag.operador_carga}.`;
-
-            registrarHistoria(accion, usu.usuario);
-
-            setTimeout(() => {
-              Router.reload();
-            }, 500);
-          }, 1000);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al generar la orden de pago", "ATENCION");
-      });
+        toast.success(
+          "La orden fue generada, lista para ser revisada y autorizada",
+          "ATENCION"
+        );
+        let accion = `Se registro una orden de Pago ID: ${nordenGenerado}, por un monto de: ${orPag.total} al proveedor: ${orPag.proveedor}-${orPag.nombre} por el operador: ${orPag.operador_carga}.`;
+        registrarHistoria(accion, usu.usuario);
+        setTimeout(() => Router.reload(), 500);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Ocurrio un error al generar la orden de pago", "ATENCION");
+    }
   };
 
   const postContable = async (orPag) => {
-    await axios
-      .post(`/api/ordenpago`, orPag)
-      .then((res) => {
-        if (res.status === 200) {
-          toast.info(
-            "La orden de pago se genero correctamente. Cargando los detalles",
-            "ATENCION"
-          );
+    try {
+      const res = await axios.post(`/api/ordenpago`, orPag);
 
-          setTimeout(() => {
-            toast.success(
-              "La orden fue generada, lista para ser revisada y autorizada",
-              "ATENCION"
-            );
+      if (res.status === 200 && res.data.idorden) {
+        const { norden: nordenGenerado } = res.data;
+        let accion = `Se registro una orden de Pago ID: ${nordenGenerado}, por un monto de: ${orPag.total} al proveedor: ${orPag.proveedor}-${orPag.nombre} por el operador: ${orPag.operador_carga}.`;
 
-            let accion = `Se registro una orden de Pago ID: ${orPag.norden}, por un monto de: ${orPag.total} al proveedor: ${orPag.proveedor}-${orPag.nombre} por el operador: ${orPag.operador_carga}.`;
+        registrarHistoria(accion, usu.usuario);
 
-            registrarHistoria(accion, usu.usuario);
-
-            setTimeout(() => {
-              Router.reload();
-            }, 500);
-          }, 1000);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al generar la orden de pago", "ATENCION");
-      });
+        toast.success(
+          "La orden fue generada, lista para ser revisada y autorizada",
+          {
+            autoClose: 2000,
+            onClose: () => Router.reload(),
+          }
+        );
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Ocurrio un error al generar la orden de pago", "ATENCION");
+    }
   };
 
   const totales = (arr, liq) => {
