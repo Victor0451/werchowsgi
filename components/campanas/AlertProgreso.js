@@ -13,6 +13,9 @@ import {
 import { IconSolid } from "../../libs/funciones";
 
 const AlertProgreso = ({ oper, mes, ano, asignado, trabajado, porcenTab }) => {
+  const totalAsignado = asignado.reduce((sum, item) => sum + item.asig, 0);
+  const totalTrabajado = trabajado.reduce((sum, item) => sum + item.trab, 0);
+
   return (
     <div>
       <Alert color="blue" variant="ghost" icon={<IconSolid />}>
@@ -31,13 +34,13 @@ const AlertProgreso = ({ oper, mes, ano, asignado, trabajado, porcenTab }) => {
         </Typography>
         <ul className="mt-2 ml-2 list-inside list-disc">
           <li className="mt-1">
-            <u>Casos Asignados</u>: <strong>{asignado}</strong>
+            <u>Casos Asignados</u>: <strong>{totalAsignado}</strong>
           </li>
           <li className="mt-1">
-            <u>Casos Trabajados</u>: <strong>{trabajado}</strong>
+            <u>Casos Trabajados</u>: <strong>{totalTrabajado}</strong>
           </li>
           <li className="mt-1">
-            <u>Progreso del Trabajo</u>:{" "}
+            <u>Progreso del Trabajo</u>:
             <strong> % {porcenTab(asignado, trabajado)}</strong>
           </li>
         </ul>

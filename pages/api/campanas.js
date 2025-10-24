@@ -25,12 +25,13 @@ export default async function handler(req, res) {
       res.status(200).json(nuevosCasos);
     } else if (req.query.f && req.query.f === "casos asignados progreso") {
       const nuevosCasos = await sgi.query(`
-                SELECT COUNT(*) 'asig'
+                SELECT c.idcampana, c.descripcion, COUNT(*) 'asig',sum(cc.cuota) 'mora'
                 FROM campanacasos as cc
                 INNER JOIN campanas as c ON cc.idcampana = c.idcampana
                 WHERE MONTH(cc.fechacampana) = ${req.query.mes}
                 AND YEAR(cc.fechacampana) = ${req.query.ano}
                 AND c.operador = '${req.query.op}'
+                Group by c.idcampana, c.descripcion
 
             
             `);
@@ -65,13 +66,36 @@ export default async function handler(req, res) {
       res.status(200).json(casosTrab);
     } else if (req.query.f && req.query.f === "casos trabajados progreso") {
       const casosTrab = await sgi.query(`
-                SELECT COUNT(*) 'trab'
+                SELECT c.idcampana, c.descripcion, COUNT(*) 'trab', sum(cc.cuota) 'mora'
                 FROM campanacasos as cc
                 INNER JOIN campanas as c ON cc.idcampana = c.idcampana
                 WHERE MONTH(cc.fechacampana) = ${req.query.mes}
                 AND YEAR(cc.fechacampana) = ${req.query.ano}
                 AND c.operador = '${req.query.op}'
                 AND cc.accion = 1
+                Group by c.idcampana, c.descripcion
+
+            
+            `);
+      await sgi.end();
+      res
+        .status(200)
+        .json(
+          JSON.stringify(casosTrab, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
+    } else if (req.query.f && req.query.f === "gestiones progreso") {
+      const casosTrab = await sgi.query(`
+                SELECT c.idcampana, c.descripcion, IFNULL(gc.accion, 'Sin Gestion') as accion, count(*) as 'gestiones'
+                FROM campanacasos as cc
+                INNER JOIN campanas as c ON cc.idcampana = c.idcampana 
+                LEFT JOIN gestioncaso as gc ON cc.idcaso = gc.idcaso
+                WHERE MONTH(cc.fechacampana) = ${req.query.mes}
+                AND YEAR(cc.fechacampana) = ${req.query.ano}
+                AND c.operador = '${req.query.op}'
+                AND cc.accion IS NOT NULL
+                Group by c.idcampana, c.descripcion, gc.accion
 
             
             `);

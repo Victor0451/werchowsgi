@@ -22,7 +22,7 @@ const FormProgresoCampaña = ({
   porcenTab,
   traerProgreso,
   asignado,
-  trabajado,
+  trabajado, // Ahora es un array
   operSel,
   mesSel,
   anoSel,
@@ -110,15 +110,7 @@ const FormProgresoCampaña = ({
         ) : (
           <div className="mt-4">
             <hr className="border-2 mt-5 mb-5" />
-
-            <AlertProgreso
-              oper={operSel}
-              mes={mesSel}
-              ano={anoSel}
-              asignado={asignado}
-              trabajado={trabajado}
-              porcenTab={porcenTab}
-            />
+            {/* AlertProgreso ahora se renderiza dentro de GraficosProgreso */}
           </div>
         )}
       </CardBody>

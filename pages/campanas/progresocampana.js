@@ -10,6 +10,7 @@ import moment from "moment";
 import { toast } from "react-toastify";
 import { meses2, anos } from "../../array/array";
 import FormProgresoCampaña from "@/components/campanas/FormProgresoCampaña";
+import GraficosProgreso from "@/components/campanas/GraficosProgreso";
 
 function progresocampana(props) {
   const [errores, guardarErrores] = useState(null);
@@ -19,6 +20,7 @@ function progresocampana(props) {
   const [anoSel, guardarAnoSel] = useState("");
   const [asignado, guardarAsignado] = useState([]);
   const [trabajado, guardarTrabajado] = useState([]);
+  const [gestiones, guardarGestiones] = useState([]);
   const [show, guardarShow] = useState(false);
 
   const { usu } = useWerchow();
@@ -73,7 +75,7 @@ function progresocampana(props) {
         .then((res) => {
           let asig = JSON.parse(res.data);
 
-          guardarAsignado(asig[0].asig);
+          guardarAsignado(asig);
         })
         .catch((error) => {
           console.log(error);
@@ -94,7 +96,7 @@ function progresocampana(props) {
         .then((res) => {
           let trab = JSON.parse(res.data);
 
-          guardarTrabajado(trab[0].trab);
+          guardarTrabajado(trab);
         })
         .catch((error) => {
           console.log(error);
@@ -103,17 +105,45 @@ function progresocampana(props) {
           );
         });
 
+      await axios
+        .get(`/api/campanas`, {
+          params: {
+            op: operSel,
+            mes: mesSel,
+            ano: anoSel,
+            f: "gestiones progreso",
+          },
+        })
+        .then((res) => {
+          let gest = JSON.parse(res.data);
+
+          guardarGestiones(gest);
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error(
+            "Ocurrio un error al traer el listado de gestiones."
+          );
+        });
+
       guardarShow(true);
     }
   };
 
-  const porcenTab = (a, t) => {
-    let resultado = 0;
+  const porcenTab = (asignadosArr, trabajadosArr) => {
+    const totalAsignado = asignadosArr.reduce(
+      (sum, item) => sum + item.asig,
+      0
+    );
+    const totalTrabajado = trabajadosArr.reduce(
+      (sum, item) => sum + item.trab,
+      0
+    );
 
-    if (t === 0) {
-      return resultado;
-    } else if (t > 0) {
-      resultado = (t * 100) / a;
+    if (totalAsignado === 0) {
+      return 0;
+    } else {
+      const resultado = (totalTrabajado * 100) / totalAsignado;
       return resultado.toFixed(2);
     }
   };
@@ -142,6 +172,17 @@ function progresocampana(props) {
             anoSel={anoSel}
             show={show}
           />
+          {show && (
+            <GraficosProgreso
+              asignado={asignado}
+              trabajado={trabajado}
+              operSel={operSel}
+              mesSel={mesSel}
+              anoSel={anoSel}
+              porcenTab={porcenTab}
+              gestiones={gestiones}
+            />
+          )}
         </>
       ) : null}
     </>

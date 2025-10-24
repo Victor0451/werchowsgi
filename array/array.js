@@ -22,6 +22,7 @@ export const nueavaaccion = [
   { value: 22, label: "LLAMAR DE NUEVO" },
   { value: 11, label: "SE ENVIA COBRADOR" },
   { value: 12, label: "PASA POR OFICINA" },
+  { value: 12, label: "NOTIFICACION EN MANO" },
   { value: 16, label: "DEBITO" },
   { value: 17, label: "CREDITO" },
   { value: 23, label: "CASO CERRADO" },
