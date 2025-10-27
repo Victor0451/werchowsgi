@@ -24,7 +24,6 @@ export default async function handler(req, res) {
         WHERE COD_PRES = '${req.query.prestado}'
       `);
 
-      await serv.end();
       res
         .status(200)
         .json(
@@ -43,8 +42,6 @@ export default async function handler(req, res) {
         `
       );
 
-      await sgi.end();
-
       res.status(200).json(nOrden);
     } else if (req.query.f && req.query.f === "traer ordenes") {
       if (
@@ -59,8 +56,6 @@ export default async function handler(req, res) {
           `
         );
 
-        await sgi.end();
-
         res.status(200).json(listado);
       } else {
         const listado = await sgi.query(
@@ -71,8 +66,6 @@ export default async function handler(req, res) {
             ORDER BY idorden DESC
           `
         );
-
-        await sgi.end();
 
         res.status(200).json(listado);
       }
@@ -86,8 +79,6 @@ export default async function handler(req, res) {
         `
       );
 
-      await sgi.end();
-
       res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "traer detalle orden") {
       const Orden = await sgi.query(
@@ -97,8 +88,6 @@ export default async function handler(req, res) {
            WHERE norden = '${req.query.idorden}'
         `
       );
-
-      await sgi.end();
 
       res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "traer datos orden") {
@@ -110,8 +99,6 @@ export default async function handler(req, res) {
           `
       );
 
-      await sgi.end();
-
       res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "traer ordenes pendientes") {
       const Orden = await sgi.query(
@@ -122,8 +109,6 @@ export default async function handler(req, res) {
             AND estado = true
           `
       );
-
-      await sgi.end();
 
       res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "usos sin puntear") {
@@ -153,8 +138,6 @@ export default async function handler(req, res) {
         if (response[0]) usosSinPun.push(response[0]);
       }
 
-      sgi.end();
-
       res.status(200).json(usosSinPun);
     } else if (req.query.f && req.query.f === "usos fa sin puntear") {
       let desde = moment()
@@ -183,8 +166,7 @@ export default async function handler(req, res) {
         if (response[0]) usosSinPun.push(response[0]);
       }
 
-      sgi.end();
-
+      await sgi.end();
       res.status(200).json(usosSinPun);
     } else if (req.query.f && req.query.f === "traer orden otero") {
       const Orden = await serv.query(
@@ -196,8 +178,6 @@ export default async function handler(req, res) {
         `
       );
 
-      await serv.end();
-
       res.status(200).json(Orden);
     } else if (req.query.f && req.query.f === "traer orden fabian") {
       const Orden = await serv.query(
@@ -208,8 +188,6 @@ export default async function handler(req, res) {
         
         `
       );
-
-      await serv.end();
 
       res.status(200).json(Orden);
     }
@@ -261,8 +239,6 @@ export default async function handler(req, res) {
           
           `);
 
-      await sgi.end();
-
       const newId = regNovell.insertId;
       const nordenFinal = `${newId}/${moment__WEBPACK_IMPORTED_MODULE_1___default()().format(
         "YYYY"
@@ -274,7 +250,6 @@ export default async function handler(req, res) {
               WHERE idorden = ${newId}
             `);
 
-      await _libs_db_index__WEBPACK_IMPORTED_MODULE_0__.sgi.end();
       res.status(200).json({
         idorden: newId,
         norden: nordenFinal,
@@ -308,8 +283,6 @@ export default async function handler(req, res) {
           `
       );
 
-      await sgi.end();
-
       res.status(200).json(regNovell);
     }
   }
@@ -325,8 +298,6 @@ export default async function handler(req, res) {
         `
       );
 
-      await serv.end();
-
       res.status(200).json(checkUSOS);
     } else if (req.body.f && req.body.f === "punteo orden FA") {
       const checkUSOSFA = await serv.query(
@@ -339,8 +310,6 @@ export default async function handler(req, res) {
         `
       );
 
-      await serv.end();
-
       res.status(200).json(checkUSOSFA);
     } else if (req.body.f && req.body.f === "anular detalle orden") {
       const checkUSOS = await serv.query(`
@@ -352,8 +321,6 @@ export default async function handler(req, res) {
 
       `);
 
-      await serv.end();
-
       res.status(200).json(checkUSOS);
 
       const checkUSOSFA = await serv.query(`
@@ -364,8 +331,6 @@ export default async function handler(req, res) {
       WHERE NORDEN = '${req.body.norden}'         
 
       `);
-
-      await serv.end();
 
       res.status(200).json(checkUSOSFA);
     } else if (req.body.f && req.body.f === "aprobar orden") {
@@ -379,8 +344,6 @@ export default async function handler(req, res) {
         `
       );
 
-      await sgi.end();
-
       res.status(200).json(apOrden);
     } else if (req.body.f && req.body.f === "anular orden") {
       const apOrden = await sgi.query(
@@ -390,8 +353,6 @@ export default async function handler(req, res) {
           WHERE idorden = ${parseInt(req.body.idorden)}
         `
       );
-
-      await sgi.end();
 
       res.status(200).json(apOrden);
     } else if (req.body.f && req.body.f === "imp liq ordenes") {
@@ -403,8 +364,6 @@ export default async function handler(req, res) {
 
       `);
 
-      await serv.end();
-
       res.status(200).json(impLiq);
     } else if (req.body.f && req.body.f === "imp liq practicas") {
       const impLiq = await serv.query(`
@@ -413,8 +372,6 @@ export default async function handler(req, res) {
         WHERE u.SERVICIO NOT IN ('ORDE', 'FARM') 
 
   `);
-
-      await serv.end();
 
       res.status(200).json(impLiq);
     } else if (req.body.f && req.body.f === "imp liq sin valor") {
@@ -425,8 +382,6 @@ export default async function handler(req, res) {
             OR u.IMP_LIQ = ''
 
 `);
-
-      await serv.end();
 
       res.status(200).json(impLiq);
     } else if (req.body.f && req.body.f === "repunteo de usos web") {
@@ -442,8 +397,6 @@ export default async function handler(req, res) {
       WHERE fecha BETWEEN '${desde}' AND '${hasta}'
 
 `);
-
-      await sgi.end();
 
       const usosSinPun = [];
 
@@ -462,8 +415,6 @@ export default async function handler(req, res) {
         if (response[0]) usosSinPun.push(response[0]);
       }
 
-      await serv.end();
-
       res.status(200).json(usosSinPun);
     } else if (req.body.f && req.body.f === "repunteo de usos fox") {
       let desde = moment()
@@ -478,8 +429,6 @@ export default async function handler(req, res) {
       WHERE fecha BETWEEN ${desde} AND ${hasta}
 
 `);
-
-      await sgi.end();
 
       const usosSinPun = [];
 
@@ -498,8 +447,6 @@ export default async function handler(req, res) {
         if (response[0]) usosSinPun.push(response[0]);
       }
 
-      await serv.end();
-
       res.status(200).json(usosSinPun);
     } else if (req.body.f && req.body.f === "levantar anulado") {
       if (req.body.sis === "O") {
@@ -512,8 +459,6 @@ export default async function handler(req, res) {
            `
         );
 
-        await serv.end();
-
         res.status(200).json(levUso);
       } else if (req.body.sis === "F") {
         const levUso = await serv.query(
@@ -525,7 +470,6 @@ export default async function handler(req, res) {
            `
         );
 
-        await serv.end();
         res.status(200).json(levUso);
       }
     } else if (req.body.f && req.body.f === "desbloquear uso") {
@@ -541,8 +485,6 @@ export default async function handler(req, res) {
            `
         );
 
-        await serv.end();
-
         res.status(200).json(levUso);
       } else if (req.body.sis === "F") {
         const levUso = await serv.query(
@@ -556,7 +498,6 @@ export default async function handler(req, res) {
            `
         );
 
-        await serv.end();
         res.status(200).json(levUso);
       }
     } else if (req.body.f && req.body.f === "modificar imp liq") {
@@ -569,8 +510,6 @@ export default async function handler(req, res) {
         `
         );
 
-        await serv.end();
-
         res.status(200).json(levUso);
       } else if (req.body.sis === "F") {
         const levUso = await serv.query(
@@ -581,7 +520,6 @@ export default async function handler(req, res) {
         `
         );
 
-        await serv.end();
         res.status(200).json(levUso);
       }
     } else if (req.body.f && req.body.f === "act importe ordenes") {
@@ -591,7 +529,6 @@ export default async function handler(req, res) {
         SET importe = '${req.body.importe}' 
         WHERE norden = '${req.body.orde}' 
         AND servicio = "ORDE"`);
-      await sgi.end();
 
       res.status(200).json(actImpDetOrde);
     } else if (req.body.f && req.body.f === "act importe orden pago") {
@@ -602,8 +539,6 @@ export default async function handler(req, res) {
         WHERE norden = '${req.body.orde}' 
         
         `);
-
-      await sgi.end();
 
       res.status(200).json(actTotOrdePag);
     } else if (req.body.f && req.body.f === "modificar importe orden") {
@@ -617,8 +552,6 @@ export default async function handler(req, res) {
           `
         );
 
-        await serv.end();
-
         res.status(200).json(modImp);
       } else {
         const modImp = await serv.query(
@@ -629,8 +562,6 @@ export default async function handler(req, res) {
             
           `
         );
-
-        await serv.end();
 
         res.status(200).json(modImp);
       }
@@ -647,8 +578,6 @@ export default async function handler(req, res) {
         `
         );
 
-        await serv.end();
-
         res.status(200).json(levUso);
       } else if (req.query.sis === "F") {
         const levUso = await serv.query(
@@ -658,8 +587,6 @@ export default async function handler(req, res) {
         
         `
         );
-
-        await serv.end();
 
         res.status(200).json(levUso);
       }
