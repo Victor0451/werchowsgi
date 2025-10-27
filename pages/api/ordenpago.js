@@ -194,8 +194,7 @@ export default async function handler(req, res) {
   }
   if (req.method === "POST") {
     if (req.body.f && req.body.f === "nueva orden") {
-      const regNovell = await _libs_db_index__WEBPACK_IMPORTED_MODULE_0__.sgi
-        .query(`
+      const regNovell = await sgi.query(`
           INSERT INTO ordenes_pago
           (
             fecha,
@@ -243,8 +242,7 @@ export default async function handler(req, res) {
       const nordenFinal = `${newId}/${moment__WEBPACK_IMPORTED_MODULE_1___default()().format(
         "YYYY"
       )}`;
-
-      await _libs_db_index__WEBPACK_IMPORTED_MODULE_0__.sgi.query(`
+      await sgi.query(`
               UPDATE ordenes_pago
               SET norden = '${nordenFinal}'
               WHERE idorden = ${newId}
