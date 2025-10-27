@@ -51,10 +51,17 @@ export default function Campanas() {
         },
       })
       .then((res) => {
-        console.log(res.data);
-        let asig = JSON.parse(res.data);
+        let asigData = JSON.parse(res.data);
 
-        guardarAsignado(asig[0].asig);
+        if (
+          Array.isArray(asigData) &&
+          asigData.length > 0 &&
+          Array.isArray(asigData[0].asig)
+        ) {
+          guardarAsignado(asigData[0].asig);
+        } else {
+          guardarAsignado([]); // Asegurarse de que sea un array
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -71,9 +78,17 @@ export default function Campanas() {
         },
       })
       .then((res) => {
-        let trab = JSON.parse(res.data);
+        let trabData = JSON.parse(res.data);
 
-        guardarTrabajado(trab[0].trab);
+        if (
+          Array.isArray(trabData) &&
+          trabData.length > 0 &&
+          Array.isArray(trabData[0].trab)
+        ) {
+          guardarTrabajado(trabData[0].trab);
+        } else {
+          guardarTrabajado([]); // Asegurarse de que sea un array
+        }
       })
       .catch((error) => {
         console.log(error);

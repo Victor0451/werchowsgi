@@ -12,9 +12,9 @@ import {
 } from "@material-tailwind/react";
 import { IconSolid } from "../../libs/funciones";
 
-const AlertProgreso = ({ oper, mes, ano, asignado, trabajado, porcenTab }) => {
-  const totalAsignado = asignado.reduce((sum, item) => sum + item.asig, 0);
-  const totalTrabajado = trabajado.reduce((sum, item) => sum + item.trab, 0);
+const AlertProgreso = ({ oper, mes, ano, asignado = [], trabajado = [], porcentaje }) => {
+  const totalAsignado = Array.isArray(asignado) ? asignado.reduce((sum, item) => sum + item.asig, 0) : 0;
+  const totalTrabajado = Array.isArray(trabajado) ? trabajado.reduce((sum, item) => sum + item.trab, 0) : 0;
 
   return (
     <div>
@@ -41,7 +41,7 @@ const AlertProgreso = ({ oper, mes, ano, asignado, trabajado, porcenTab }) => {
           </li>
           <li className="mt-1">
             <u>Progreso del Trabajo</u>:
-            <strong> % {porcenTab(asignado, trabajado)}</strong>
+            <strong> % {porcentaje}</strong>
           </li>
         </ul>
 

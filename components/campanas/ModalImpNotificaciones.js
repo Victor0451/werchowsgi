@@ -66,10 +66,15 @@ export default function ModalImpNotificaciones({ casos, usu, f }) {
             </div>
           ) : f === "T" ? (
             <div id="todo" ref={(el) => (componentRef = el)}>
-              {casos.map((caso) => (
-                <>
+              <style type="text/css" media="print">
+                {`
+                  .page-break { page-break-after: always; }
+                `}
+              </style>
+              {casos.map((caso, index) => (
+                <div key={index} className="page-break">
                   <Notificacion caso={caso} userData={usu.usuario} />
-                </>
+                </div>
               ))}
             </div>
           ) : null}

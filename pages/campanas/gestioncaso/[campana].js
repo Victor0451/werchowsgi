@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import useUser from "@/hook/useUser";
 import { Skeleton } from "@/components/Layouts/Skeleton";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { Redirect } from "@/components/auth/Redirect";
-import useSWR from "swr";
 import ListadoCasos from "@/components/campanas/ListadoCasos";
 import {
   Card,
@@ -66,56 +65,6 @@ export default function Campana() {
     }
   };
 
-  const nuevosCasos = async () => {
-    await axios
-      .get(`/api/campanas`, {
-        params: {
-          empresa: empresa,
-          operador: usu.usuario,
-          campana: camp,
-          f: "nuevos casos",
-        },
-      })
-      .then((res) => {
-        if (res.data.length > 0) {
-          guardarNoData(false);
-          guardarListado(res.data);
-        } else if (res.data.length === 0) {
-          guardarNoData(true);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        guardarNoData(true);
-        toast.error("Ocurrio un error al traer el listado de casos asignados");
-      });
-
-    await axios
-      .get(`/api/campanas`, {
-        params: {
-          empresa: empresa,
-          operador: usu.usuario,
-          campana: camp,
-          f: "casos trabajados",
-        },
-      })
-      .then((res) => {
-        if (res.data.length > 0) {
-          guardarNoData2(false);
-          guardarListadoTrab(res.data);
-        } else if (res.data.length === 0) {
-          guardarNoData2(true);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        guardarNoData(true);
-        toast.error("Ocurrio un error al traer el listado de casos trabajados");
-      });
-
-    traerProgreso();
-  };
-
   const updateAccion = async (id) => {
     const datos = {
       accion: 1,
@@ -173,7 +122,7 @@ export default function Campana() {
             let id = row.idcaso;
             updateAccion(id);
 
-            nuevosCasos();
+            traerDatos();
           }
         })
         .catch((error) => {
@@ -218,60 +167,83 @@ export default function Campana() {
       });
   };
 
-  const porcenTab = (a, t) => {
+  const porcentaje = useMemo(() => {
+    const totalAsignado = Array.isArray(asignado)
+      ? asignado.reduce((sum, item) => sum + item.asig, 0)
+      : 0;
+    const totalTrabajado = Array.isArray(trabajado)
+      ? trabajado.reduce((sum, item) => sum + item.trab, 0)
+      : 0;
+
+
+ 
     let resultado = 0;
 
-    if (t === 0) {
+    if (totalTrabajado === 0 || totalAsignado === 0) {
       return resultado;
-    } else if (t > 0) {
-      resultado = (t * 100) / a;
-      return resultado.toFixed(2);
+    } else if (totalTrabajado > 0) {
+      resultado = (totalTrabajado * 100) / totalAsignado;
+    }
+    return resultado.toFixed(2);
+  }, [asignado, trabajado]);
+
+  const traerDatos = async () => {
+    // Prevenimos la ejecución si no tenemos los datos necesarios
+    if (!usu || !empresa || !camp) return;
+
+    try {
+      const paramsProgreso = {
+        op: usu.usuario, // Asegúrate que el API espera 'op' y no 'operador'
+        mes: moment().format("MM"),
+        ano: moment().format("YYYY"),
+      };
+      const paramsCasos = {
+        empresa: empresa,
+        operador: usu.usuario,
+        campana: camp,
+      };
+
+      // Ejecutamos todas las llamadas en paralelo
+      const [resNuevos, resTrabajados, resProgAsignados, resProgTrabajados] =
+        await Promise.all([
+          axios.get(`/api/campanas`, {
+            params: { ...paramsCasos, f: "nuevos casos" },
+          }),
+          axios.get(`/api/campanas`, {
+            params: { ...paramsCasos, f: "casos trabajados" },
+          }),
+          axios.get(`/api/campanas`, {
+            params: { ...paramsProgreso, f: "casos asignados progreso" },
+          }),
+          axios.get(`/api/campanas`, {
+            params: { ...paramsProgreso, f: "casos trabajados progreso" },
+          }),
+        ]);
+
+      // Actualizamos estado para las listas de casos
+      guardarListado(resNuevos.data);
+      guardarNoData(resNuevos.data.length === 0);
+      guardarListadoTrab(resTrabajados.data);
+      guardarNoData2(resTrabajados.data.length === 0);
+
+      // Actualizamos estado para el progreso
+      const dataProgAsignados = JSON.parse(resProgAsignados.data);
+      const dataProgTrabajados = JSON.parse(resProgTrabajados.data);
+      guardarAsignado(Array.isArray(dataProgAsignados) ? dataProgAsignados : []);
+      guardarTrabajado(Array.isArray(dataProgTrabajados) ? dataProgTrabajados : []);
+    } catch (error) {
+      console.error("Error al traer los datos de la campaña:", error);
+      toast.error("Ocurrió un error al traer los datos de la campaña.");
+      guardarAsignado([]);
+      guardarTrabajado([]);
+      guardarNoData(true);
+      guardarNoData2(true);
     }
   };
 
-  const traerProgreso = async () => {
-    await axios
-      .get(`/api/campanas`, {
-        params: {
-          op: usu.usuario,
-          mes: moment().format("MM"),
-          ano: moment().format("YYYY"),
-          f: "casos asignados progreso",
-        },
-      })
-      .then((res) => {
-        let asig = JSON.parse(res.data);
-
-        guardarAsignado(asig[0].asig);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al traer el listado de casos asignados");
-      });
-
-    await axios
-      .get(`/api/campanas`, {
-        params: {
-          op: usu.usuario,
-          mes: moment().format("MM"),
-          ano: moment().format("YYYY"),
-          f: "casos trabajados progreso",
-        },
-      })
-      .then((res) => {
-        let trab = JSON.parse(res.data);
-
-        guardarTrabajado(trab[0].trab);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(
-          "Ocurrio un error al traer el listado de casos trabajados."
-        );
-      });
-  };
-
-  useSWR("/api/campanas", nuevosCasos);
+  useEffect(() => {
+    traerDatos();
+  }, [usu, empresa, camp]);
 
   return (
     <>
@@ -295,7 +267,7 @@ export default function Campana() {
                     ano={moment().format("YYYY")}
                     asignado={asignado}
                     trabajado={trabajado}
-                    porcenTab={porcenTab}
+                    porcentaje={porcentaje}
                   />
                 </CardBody>
               </Card>
