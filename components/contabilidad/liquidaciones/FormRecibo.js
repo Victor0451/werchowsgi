@@ -139,7 +139,7 @@ const FormRecibo = ({
               <Input
                 size="md"
                 label="Periodo"
-                type="month"
+                type="date"
                 inputRef={periodoRef}
               />
             </div>

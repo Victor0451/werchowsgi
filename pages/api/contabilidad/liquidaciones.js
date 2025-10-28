@@ -149,6 +149,8 @@ export default async function handler(req, res) {
 
       res.status(200).json(recibo);
     } else if (req.body.f && req.body.f === "reg movim recibo") {
+     
+     
       const reciboMovim = await sgi.query(
         `
         INSERT INTO recibo_movimientos

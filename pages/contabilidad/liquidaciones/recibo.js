@@ -222,7 +222,7 @@ function recibo(props) {
                 .then((res) => {
                   if (res.status === 200) {
                     toast.success("Se creo el recibo con exito");
-                    guardarIdRec(res.data.idrecibo);
+                    guardarIdRec(res.data.insertId);
                     jsCookie.set("idRec", res.data.idrecibo, { expires: 1 });
                   }
                 })
@@ -243,6 +243,7 @@ function recibo(props) {
   };
 
   let regMovim = async () => {
+  console.log(impu);
     await confirmAlert({
       title: "ATENCION",
       message:
@@ -260,9 +261,9 @@ function recibo(props) {
                 idrecibo: idRec,
                 cuil: operador.cuil,
                 concepto: impu[i].concepto,
-                remu_ren: impu[i].remu_ren,
-                remu_exe: impu[i].remu_exe,
-                desc: impu[i].desc,
+                remu_ren: impu[i].remu_ren || 0,
+                remu_exe: impu[i].remu_exe || 0,
+                desc: impu[i].desc || 0,
                 f: "reg movim recibo",
               };
 
