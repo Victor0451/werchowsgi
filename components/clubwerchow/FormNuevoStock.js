@@ -30,6 +30,7 @@ const FormNuevoStock = ({
   ObservacionRef,
   errores,
   regStock,
+  traerStock
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -103,7 +104,9 @@ const FormNuevoStock = ({
         <Typography variant="h5">Listado Premios Cargados</Typography>
 
         <div className="p-4 border-2 rounded-xl mt-5">
-          <ListadoStock listado={listado} />
+          <ListadoStock listado={listado} 
+          traerStock={traerStock}
+          />
         </div>
       </CardBody>
     </Card>

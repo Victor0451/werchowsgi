@@ -24,127 +24,29 @@ export default function SorteoPremios(props) {
   const [tiro, guardarTiro] = useState(false);
   const [alertas, guardarAlertas] = useState(null);
   const [errores, guardarErrores] = useState(null);
+  const [listado, guardarListado] = useState([]);
 
   const { usu } = useWerchow();
 
   const { isLoading } = useUser();
 
-  const traerParticipantes = async () => {
+  const traerStock = async () => {
     await axios
-      .get(`/api/clubwerchow`, {
+      .get("/api/clubwerchow", {
         params: {
           f: "traer stock",
         },
       })
       .then((res) => {
         if (res.data) {
-          let list = JSON.parse(res.data);
-          guardarParticipantes(list);
+          let dat = JSON.parse(res.data);
+          guardarListado(dat);
         }
       })
       .catch((error) => {
         console.log(error);
-        toast.error("Ocurrio un error al traer el listado de participantes");
+        toast.error("Ocurrio un error al traer el stock");
       });
-  };
-
-  const buscarGanador = (e) => {
-    if (tiro === false) {
-      e.preventDefault();
-
-      guardarSelec(null);
-
-      if (participantes.length !== 0) {
-        const rand = Math.floor(Math.random() * participantes.length);
-        const seleccion = participantes[rand];
-
-        guardarSelec(seleccion);
-
-        regGanador(seleccion);
-
-        updateStock(seleccion)
-
-        guardarTiro(true);
-
-        setTimeout(() => {
-          confirmAlert({
-            title: `¡¡Felicidades!!`,
-            message: `Ganaste un: ${seleccion.producto} - ${seleccion.observacion}`,
-            buttons: [
-              {
-                label: "Ok",
-                onClick: () => {},
-              },
-            ],
-          });
-        }, 150);
-      } else if (participantes.length === 0) {
-        toast.info("No Hay Mas Participantes");
-      }
-    } else if (tiro === true) {
-      confirmAlert({
-        title: `YA GANASTE`,
-        message: `Ahora es el turno de otro socio, gracias por confiar en nosotros`,
-        buttons: [
-          {
-            label: "Ok",
-            onClick: () => {},
-          },
-        ],
-      });
-    }
-  };
-
-  const regGanador = async (s) => {
-    const winner = {
-      participante: `${ficha[0].APELLIDOS}, ${ficha[0].NOMBRES}`,
-      premio: `${s.producto} - ${s.observacion}`,
-      fecha: moment().format("YYYY-MM-DD"),
-      dni: `${ficha[0].NRO_DOC}`,
-      f: "reg ganador hist",
-    };
-
-    axios
-      .post(`/api/clubwerchow`, winner)
-      .then((res) => {
-        if (res.status === 200) {
-          toast.success("El premio fue registrado en el historial del socio");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const updateStock = async (s) => {
-    const data = {
-      idpremio: s.idpremio,
-      f: "act stock premios",
-    };
-
-    await axios
-      .put("/api/clubwerchow", data)
-      .then((res) => {
-        if (res.status === 200) {
-          toast.info("Stock actualizado");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-
-        toast.error("Ocurrio un error al actualizar el stock");
-      });
-  };
-
-  const imprimir = () => {
-    let contenido = document.getElementById("win").innerHTML;
-    let contenidoOrg = document.body.innerHTML;
-
-    document.body.innerHTML = contenido;
-
-    window.print();
-
-    document.body.innerHTML = contenidoOrg;
   };
 
   const buscarParticipante = async () => {
@@ -152,133 +54,140 @@ export default function SorteoPremios(props) {
     guardarAlertas(null);
     guardarShow(false);
 
-    if (dniRef.current.value === "") {
-      guardarErrores("Debes ingresar un numero de DNI");
-    } else {
-      await axios
-        .get("/api/sepelio/servicios", {
-          params: {
-            f: "servicios",
-            dni: dniRef.current.value,
-          },
-        })
-        .then((res) => {
-          if (res.data.length > 0) {
-            toast.info("El DNI ingresado pertenece a un servicio registrado");
-            guardarAlertas(
-              "El DNI ingresado pertenece a un servicio registrado"
-            );
-          } else if (res.data.length === 0) {
-            axios
-              .get("/api/socios", {
-                params: {
-                  f: "maestro",
-                  dni: dniRef.current.value,
+    let dni = dniRef.current.value;
+
+    if (!dni || dni.length < 7) {
+      guardarErrores("Por favor ingrese un DNI válido");
+      return;
+    }
+
+    try {
+      // Array de tipos de socios a verificar
+      const tiposSocios = ["maestro", "mae adh", "mutual", "mut adh"];
+      let socioEncontrado = false;
+
+      for (const tipo of tiposSocios) {
+        try {
+          const response = await fetch(`/api/socios?f=${tipo}&dni=${dni}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+
+            // Analizar la respuesta y determinar si existe el socio
+            let dat = typeof data === "string" ? JSON.parse(data) : data;
+            let arr = Array.isArray(dat) ? dat[0] : dat;
+
+            if (arr && Object.keys(arr).length > 0) {
+              socioEncontrado = true;
+              // Verificar si ya fue ganador
+              const checkGanadorResponse = await fetch("/api/clubwerchow", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
                 },
-              })
-              .then((res0) => {
-                let re = JSON.parse(res0.data);
-                if (re.length > 0) {
-                  let ficha = JSON.parse(res0.data);
-                  guardarFicha(ficha);
-                  guardarShow(true);
-                } else if (re.length === 0) {
-                  axios
-                    .get("/api/socios", {
-                      params: {
-                        f: "mae adh",
-                        dni: dniRef.current.value,
-                      },
-                    })
-                    .then((res1) => {
-                      let re = JSON.parse(res1.data);
-
-                      if (re.length > 0) {
-                        guardarFicha(JSON.parse(res1.data));
-                        guardarShow(true);
-                      } else if (re.length === 0) {
-                        axios
-                          .get("/api/socios", {
-                            params: {
-                              f: "mutual",
-                              dni: dniRef.current.value,
-                            },
-                          })
-                          .then((res2) => {
-                            let re = JSON.parse(res2.data);
-
-                            if (re.length > 0) {
-                              let ficha = JSON.parse(res2.data);
-                              guardarFicha(ficha);
-                              guardarShow(true);
-                            } else if (re.length === 0) {
-                              axios
-                                .get("/api/socios", {
-                                  params: {
-                                    f: "mut adh",
-                                    dni: dniRef.current.value,
-                                  },
-                                })
-                                .then((res3) => {
-                                  let re = JSON.parse(res3.data);
-
-                                  if (re.length > 0) {
-                                    guardarFicha(JSON.parse(res3.data));
-                                  } else if (re.length === 0) {
-                                    toast.info(
-                                      "El DNI ingresado no se encuentra registrado o esta dado de baja"
-                                    );
-                                    guardarAlertas(
-                                      "El DNI ingresado no se encuentra registrado o esta dado de baja"
-                                    );
-                                  }
-                                })
-                                .catch((error) => {
-                                  console.log(error);
-                                  toast.error(
-                                    "Ocurrio un error al tarer los datos del difunto en adherente mutual"
-                                  );
-                                });
-                            }
-                          })
-                          .catch((error) => {
-                            console.log(error);
-                            toast.error(
-                              "Ocurrio un error al tarer los datos del difunto en mutual"
-                            );
-                          });
-                      }
-                    })
-                    .catch((error) => {
-                      console.log(error);
-                      toast.error(
-                        "Ocurrio un error al tarer los datos del difunto en adherentes"
-                      );
-                    });
-                }
-              })
-              .catch((error) => {
-                console.log(error);
-                toast.error(
-                  "Ocurrio un error al tarer los datos del difunto en maestro"
-                );
+                body: JSON.stringify({
+                  f: "check ganador",
+                  dni: dni,
+                }),
               });
+
+              if (checkGanadorResponse.ok) {
+                const ganadorData = await checkGanadorResponse.json();
+                if (ganadorData.esGanador) {
+                  guardarErrores(
+                    "Esta persona ya ha sido ganadora de un premio anteriormente. Intenta con otro integrante de la ficha."
+                  );
+                  toast.info(
+                    "Esta persona ya ha sido ganadora de un premio anteriormente. Intenta con otro integrante de la ficha."
+                  );
+                  return;
+                }
+              }
+              guardarShow(true);
+              guardarFicha(arr);
+              break; // Salir del loop ya que encontramos el socio
+            }
+            // Si no encontró socio en este tipo, continúa con el siguiente
           }
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error(
-            "Ocurrio un error al tarer los datos del difunto en servicios"
-          );
-        });
+        } catch (error) {
+          console.error(`Error consultando tipo de socio ${tipo}:`, error);
+        }
+      }
+
+      if (!socioEncontrado) {
+        guardarErrores("No se encontró un socio con el DNI proporcionado");
+        toast.info("No se encontró un socio con el DNI proporcionado");
+      }
+    } catch (error) {
+      guardarErrores("Error de conexión");
+      console.error("Error general:", error);
     }
   };
 
-  const traerDatos = () => {
-    traerParticipantes();
+  const regPremio = async (row) => {
+    confirmAlert({
+      title: "Confirmar Registro de Premio",
+      message: `¿Estás seguro de registrar el premio "${row.producto} - ${row.marca}" para ${ficha.APELLIDOS}, ${ficha.NOMBRES}?`,
+      buttons: [
+        {
+          label: "Sí, Registrar",
+          onClick: async () => {
+            try {
+              const response = await fetch("/api/clubwerchow", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  f: "descontar stock",
+                  producto_id: row.idpremio,
+                  premio: `${row.producto} - ${row.marca}`,
+                  dni: ficha.NRO_DOC,
+                  socio: `${ficha.APELLIDOS}, ${ficha.NOMBRES}`,
+                }),
+              });
+
+              if (response.ok) {
+                toast.success("Premio registrado correctamente");
+                traerStock();
+
+                // Confirmación de que el premio fue registrado
+                confirmAlert({
+                  title: "✓ Premio Registrado",
+                  message: `El premio ha sido registrado exitosamente para ${ficha.APELLIDOS}, ${ficha.NOMBRES}. Este participante ya tiene su premio y no puede registrar más.`,
+                  buttons: [
+                    {
+                      label: "Entendido",
+                      onClick: () => {
+                        guardarShow(false);
+                        guardarFicha([]);
+                      },
+                    },
+                  ],
+                });
+              } else {
+                toast.error("Error al registrar el premio");
+              }
+            } catch (error) {
+              console.error(error);
+              toast.error("Error de conexión");
+            }
+          },
+        },
+        {
+          label: "Cancelar",
+          onClick: () => {},
+        },
+      ],
+    });
   };
 
-  useSWR("/api/sepelio/servicios", traerDatos);
+  useSWR("/api/sepelio/servicios", traerStock);
 
   if (isLoading === true) return <Skeleton />;
 
@@ -297,12 +206,9 @@ export default function SorteoPremios(props) {
             />
           ) : show === true ? (
             <FormSorteoPremios
-              Premios
-              participantes={participantes}
-              buscarGanador={buscarGanador}
-              imprimir={imprimir}
-              selec={selec}
               ficha={ficha}
+              listado={listado}
+              regPremio={regPremio}
             />
           ) : null}
         </>

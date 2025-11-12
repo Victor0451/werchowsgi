@@ -128,6 +128,36 @@ export default async function handler(req, res) {
             typeof value === "bigint" ? value.toString() : value
           )
         );
+    } else if (req.query.f && req.query.f === "filtrar acciones") {
+      let operador = req.query.operador;
+      let campana = req.query.campana;
+      let empresa = req.query.empresa;
+      let accion = req.query.accion;
+
+      const campActivas = await sgi.query(`
+                select *
+                from campanacasos as cc
+                INNER JOIN campanas AS c ON cc.idcampana = c.idcampana
+                INNER JOIN gestioncaso as gc ON cc.idcaso = gc.idcaso
+                WHERE c.operador = '${operador}'
+                AND c.descripcion = '${campana}'
+                AND c.empresa =  '${empresa}'
+                AND cc.estadocaso = 1
+                AND cc.accion = 1
+                AND gc.nuevaaccion = '${accion}'
+                AND cc.fechacampana BETWEEN '2025-10-01' AND '2025-10-31'
+                ORDER BY cc.barrio, cc.calle, cc.nro_calle               
+
+            
+            `);
+      await sgi.end();
+      res
+        .status(200)
+        .json(
+          JSON.stringify(campActivas, (key, value) =>
+            typeof value === "bigint" ? value.toString() : value
+          )
+        );
     } else if (req.query.f && req.query.f === "historial") {
       const hist = await werchow.query(`
                 SELECT

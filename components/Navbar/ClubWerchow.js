@@ -62,6 +62,11 @@ export const ClubWerchow = () => {
                 <Typography color="black">Listado de Ganadores</Typography>
               </MenuItem>
             </Link>
+            <Link href={"/clubwerchow/stockpremios"}>
+              <MenuItem>
+                <Typography color="black">Stock de Premios</Typography>
+              </MenuItem>
+            </Link>
           </ul>
         </MenuList>
       </Menu>

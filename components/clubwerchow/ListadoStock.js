@@ -2,8 +2,12 @@ import React, { useMemo } from "react";
 import FilterComponent from "../Layouts/FilterComponent";
 import DataTable from "react-data-table-component";
 import moment from "moment";
+import {
+  CheckCircleIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/solid";
 
-const ListadoStock = ({listado}) => {
+const ListadoStock = ({ listado, f,  regPremio }) => {
   let columns = [
     {
       name: "#",
@@ -36,8 +40,24 @@ const ListadoStock = ({listado}) => {
       sortable: true,
       grow: 0.2,
     },
+    ...(f === "S"
+      ? [
+          {
+            name: "Acciones",
+            button: true,
+            cell: (row) => (
+              <CheckCircleIcon
+                color="green"
+                className="butlist mt-px h-6 w-6"
+                onClick={() => regPremio(row)}
+              >
+                Registrar Premio
+              </CheckCircleIcon>
+            ),
+          },
+        ]
+      : []),
   ];
-
   const [filterText, setFilterText] = React.useState("");
   const [resetPaginationToggle, setResetPaginationToggle] =
     React.useState(false);

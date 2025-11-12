@@ -191,6 +191,70 @@ export default async function handler(req, res) {
       await arch.end();
 
       res.status(200).json(ganador);
+    } else if (req.body.f && req.body.f === "check ganador") {
+      try {
+        const { dni } = req.body;
+
+        // Verificar si existe en la tabla de ganadores
+        const [ganador] = await arch.query(
+          `
+        SELECT * FROM historial_ganadores 
+        WHERE dni = ?
+        LIMIT 1
+      `,
+          [dni]
+        );
+
+        res.status(200).json({
+          esGanador: !!ganador,
+          detalles: ganador || null,
+        });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al verificar ganador" });
+      }
+    } else if (req.method === "POST" && req.body.f === "descontar stock") {
+      
+      try {
+        const { producto_id, dni, socio, premio } = req.body;
+
+        // Verificar stock actual
+        const [stockActual] = await sgi.query(
+          `
+        SELECT stock FROM premios WHERE idpremio = ?
+      `,
+          [producto_id]
+        );
+
+        if (!stockActual || stockActual.stock <= 0) {
+          res.status(400).json({ error: "No hay stock disponible" });
+          return;
+        }
+
+        // Actualizar stock
+        await sgi.query(
+          `
+        UPDATE premios
+        SET stock = stock - 1 
+        WHERE idpremio = ?
+      `,
+          [producto_id]
+        );
+
+        // Registrar entrega
+        await arch.query(
+          `
+        INSERT INTO historial_ganadores (participante, dni,  premio, fecha ) 
+        VALUES (?, ?, ?, ?)
+      `,
+          [socio, dni, premio, moment().format("YYYY-MM-DD")]
+        );
+
+        res.status(200).json({ message: "Stock actualizado correctamente" });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al procesar la solicitud" });
+      }
     }
   } else if (req.method === "PUT") {
     if (req.body.f && req.body.f === "act stock premios") {

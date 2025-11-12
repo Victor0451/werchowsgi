@@ -104,6 +104,7 @@ function StockPremios(props) {
             ObservacionRef={ObservacionRef}
             errores={errores}
             regStock={regStock}
+            traerStock={traerStock}
           />
         </>
       )}

@@ -33,13 +33,16 @@ export default function Campana() {
   const [fechaNuAcc, guardarFechaNuAcc] = useState("");
   const [observAcc, guardarObservAcc] = useState("");
   const [observNuAcc, guardarObservNuAcc] = useState("");
+  const [filNuAc, guardarFilNuAc] = useState("");
   const [historial, guardarHistorial] = useState([]);
   const [historialAcc, guardarHistorialAcc] = useState([]);
   const [errores, guardarErrores] = useState(null);
   const [noData, guardarNoData] = useState(false);
   const [noData2, guardarNoData2] = useState(false);
+  const [ejec, guardarEjec] = useState(false);
   const [asignado, guardarAsignado] = useState([]);
   const [trabajado, guardarTrabajado] = useState([]);
+  const [alertas, guardarAlertas] = useState(null);
 
   const { isLoading } = useUser();
 
@@ -62,6 +65,9 @@ export default function Campana() {
       guardarObservAcc(value);
     } else if (f === "observacion nuac") {
       guardarObservNuAcc(value);
+    } else if (f === "filtro") {
+      console.log(value);
+      guardarFilNuAc(value);
     }
   };
 
@@ -175,8 +181,6 @@ export default function Campana() {
       ? trabajado.reduce((sum, item) => sum + item.trab, 0)
       : 0;
 
-
- 
     let resultado = 0;
 
     if (totalTrabajado === 0 || totalAsignado === 0) {
@@ -229,8 +233,12 @@ export default function Campana() {
       // Actualizamos estado para el progreso
       const dataProgAsignados = JSON.parse(resProgAsignados.data);
       const dataProgTrabajados = JSON.parse(resProgTrabajados.data);
-      guardarAsignado(Array.isArray(dataProgAsignados) ? dataProgAsignados : []);
-      guardarTrabajado(Array.isArray(dataProgTrabajados) ? dataProgTrabajados : []);
+      guardarAsignado(
+        Array.isArray(dataProgAsignados) ? dataProgAsignados : []
+      );
+      guardarTrabajado(
+        Array.isArray(dataProgTrabajados) ? dataProgTrabajados : []
+      );
     } catch (error) {
       console.error("Error al traer los datos de la campaña:", error);
       toast.error("Ocurrió un error al traer los datos de la campaña.");
@@ -239,6 +247,44 @@ export default function Campana() {
       guardarNoData(true);
       guardarNoData2(true);
     }
+  };
+
+  const filtrarAcciones = async () => {
+    guardarEjec(true);
+    guardarAlertas(null);
+    if (!usu || !empresa || !camp) return;
+
+    const paramsCasos = {
+      empresa: empresa,
+      operador: usu.usuario,
+      campana: camp,
+      accion: filNuAc,
+    };
+
+    await axios
+      .get(`/api/campanas`, {
+        params: { ...paramsCasos, f: "filtrar acciones" },
+      })
+      .then((res) => {
+        let dat = JSON.parse(res.data);
+
+        if (dat.length > 0) {
+          guardarListadoTrab(dat);
+          guardarNoData2(res.data.length === 0);
+          toast.success("Filtro encontrado");
+        } else {
+          toast.info(
+            "No hay casos con acciones registradas para este filtro, se cargara todo el listado de casos trabajados"
+          );
+          guardarAlertas(
+            "No hay casos con acciones registradas para este filtro, se cargara todo el listado de casos trabajados"
+          );
+          traerDatos();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -355,6 +401,11 @@ export default function Campana() {
                             historialAcciones={historialAcciones}
                             historialAcc={historialAcc}
                             noData={noData}
+                            f={"T"}
+                            filtrarAcciones={filtrarAcciones}
+                            filNuAc={filNuAc}
+                            alertas={alertas}
+                            ejec={ejec}
                           />
                         )}
                       </TabPanel>
