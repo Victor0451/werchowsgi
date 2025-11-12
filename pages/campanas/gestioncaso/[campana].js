@@ -276,9 +276,7 @@ export default function Campana() {
           toast.info(
             "No hay casos con acciones registradas para este filtro, se cargara todo el listado de casos trabajados"
           );
-          guardarAlertas(
-            "No hay casos con acciones registradas para este filtro, se cargara todo el listado de casos trabajados"
-          );
+
           traerDatos();
         }
       })

@@ -144,8 +144,7 @@ export default async function handler(req, res) {
                 AND c.empresa =  '${empresa}'
                 AND cc.estadocaso = 1
                 AND cc.accion = 1
-                AND gc.nuevaaccion = '${accion}'
-                AND cc.fechacampana BETWEEN '2025-10-01' AND '2025-10-31'
+                AND gc.nuevaaccion = '${accion}'                
                 ORDER BY cc.barrio, cc.calle, cc.nro_calle               
 
             
