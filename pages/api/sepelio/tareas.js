@@ -33,8 +33,7 @@ export default async function handler(req, res) {
               title,
               start,
               end,
-              allDay,
-              user,              
+              allDay,              
               priority
            )
           VALUES
@@ -43,7 +42,6 @@ export default async function handler(req, res) {
             '${req.body.start}',
             '${req.body.end}',
             ${req.body.allDay},
-            '${req.body.user}',            
             ${parseInt(req.body.priority)}
           )
 
