@@ -402,10 +402,10 @@ const FormLegajoSocio = ({
                     Informacion del Socio
                   </Typography>
 
-                  <div className="grid md:grid-cols-4 md:gap-6 mt-6">
+                  <div className="grid md:grid-cols-3 md:gap-6 mt-6">
                     <div className="relative w-full mb-6 group">
                       <Input
-                        size="md"
+                        size="lg"
                         label="Medio Pago"
                         type="text"
                         defaultValue={grupo}
@@ -415,7 +415,7 @@ const FormLegajoSocio = ({
 
                     <div className="relative w-full mb-6 group">
                       <Input
-                        size="md"
+                        size="lg"
                         label="DNI"
                         type="text"
                         defaultValue={ficha.NRO_DOC}
@@ -424,7 +424,7 @@ const FormLegajoSocio = ({
                     </div>
                     <div className="relative w-full mb-6 group">
                       <Input
-                        size="md"
+                        size="lg"
                         label="Fecha Nacimiento"
                         type="text"
                         defaultValue={moment(ficha.NACIMIENTO).format(
@@ -436,7 +436,7 @@ const FormLegajoSocio = ({
 
                     <div className="relative w-full mb-6 group">
                       <Input
-                        size="md"
+                        size="lg"
                         label="Plan"
                         type="text"
                         defaultValue={`${ficha.PLAN}${ficha.SUB_PLAN}`}
@@ -445,7 +445,7 @@ const FormLegajoSocio = ({
                     </div>
                     <div className="relative w-full mb-6 group">
                       <Input
-                        size="md"
+                        size="lg"
                         label="Obra Social"
                         type="text"
                         defaultValue={ficha.OBRA_SOC}
@@ -454,7 +454,7 @@ const FormLegajoSocio = ({
                     </div>
                     <div className="relative w-full mb-6 group">
                       <Input
-                        size="md"
+                        size="lg"
                         label="Fecha Alta"
                         type="text"
                         defaultValue={moment(ficha.ALTA).format("DD/MM/YYYY")}
@@ -463,7 +463,7 @@ const FormLegajoSocio = ({
                     </div>
                     <div className="relative w-full mb-6 group">
                       <Input
-                        size="md"
+                        size="lg"
                         label="Fecha Vigencia"
                         type="text"
                         defaultValue={moment(ficha.VIGENCIA).format(
@@ -474,7 +474,7 @@ const FormLegajoSocio = ({
                     </div>
                     <div className="relative w-full mb-6 group">
                       <Input
-                        size="md"
+                        size="lg"
                         label="Telefono"
                         type="text"
                         value={ficha.TELEFONO}
@@ -483,7 +483,7 @@ const FormLegajoSocio = ({
                     </div>
                     <div className="relative w-full mb-6 group">
                       <Input
-                        size="md"
+                        size="lg"
                         label="Movil"
                         type="text"
                         value={ficha.MOVIL}
@@ -493,10 +493,60 @@ const FormLegajoSocio = ({
 
                     <div className="relative w-full mb-6 group">
                       <Input
-                        size="md"
+                        size="lg"
                         label="Cuota Mensual"
                         type="text"
                         value={`$${cuotaMensual}`}
+                        readOnly
+                      />
+                    </div>
+
+                    <div className="relative w-full mb-6 group">
+                      <Input
+                        size="lg"
+                        label="Calle"
+                        type="text"
+                        defaultValue={ficha.CALLE}
+                        readOnly
+                      />
+                    </div>
+
+                    <div className="relative w-full mb-6 group">
+                      <Input
+                        size="lg"
+                        label="Nro Calle"
+                        type="text"
+                        defaultValue={ficha.NRO_CALLE}
+                        readOnly
+                      />
+                    </div>
+
+                    <div className="relative w-full mb-6 group">
+                      <Input
+                        size="lg"
+                        label="Barrio"
+                        type="text"
+                        defaultValue={ficha.BARRIO}
+                        readOnly
+                      />
+                    </div>
+
+                    <div className="relative w-full mb-6 group">
+                      <Input
+                        size="lg"
+                        label="Localidad"
+                        type="text"
+                        defaultValue={ficha.LOCALIDAD}
+                        readOnly
+                      />
+                    </div>
+
+                    <div className="relative w-full mb-6 group">
+                      <Input
+                        size="lg"
+                        label="Mail"
+                        type="text"
+                        defaultValue={ficha.MAIL}
                         readOnly
                       />
                     </div>
