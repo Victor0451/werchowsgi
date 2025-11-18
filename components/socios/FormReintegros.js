@@ -293,7 +293,7 @@ const FormReintegros = ({
             ) : null}
 
             <div className="flex justify-end mt-6">
-              <Button className="" color="blue" onClick={regReintegro}>
+              <Button className="btn-primary" onClick={regReintegro}>
                 Registrar
               </Button>
 

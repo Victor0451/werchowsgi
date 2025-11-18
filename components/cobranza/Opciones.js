@@ -20,7 +20,7 @@ const Opciones = ({ actFunctions, creaFunctions }) => {
 
   return (
     <>
-      <Button color="gray" onClick={openDrawer}>
+      <Button className="btn-secondary" onClick={openDrawer}>
         Opciones
       </Button>
       <Drawer open={open} onClose={closeDrawer} className="p-4">

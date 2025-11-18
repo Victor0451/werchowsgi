@@ -12,159 +12,138 @@ import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 export const AccesosDirectos = () => {
   return (
-    <div className="mt-4">
-      <Typography variant="h5" color="blue-gray">
-        Accesos Directos
-      </Typography>
-
-      <div className="mt-4 grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-3">
-        <Card className="mt-6">
-          <CardBody>
-            <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
-            <Typography variant="h5" color="blue-gray" className="mb-2">
-              Sistema de Servicios Medicos.
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Card className="card-simple hover:shadow-xl transition-all duration-300 h-full">
+          <CardBody className="p-6">
+            <ArrowRightCircleIcon className="text-[var(--bright-teal-blue)] w-12 h-12 mb-4" />
+            <Typography variant="h5" color="blue-gray" className="mb-2 font-semibold">
+              Sistema de Servicios Médicos
             </Typography>
-            <Typography>
-              Sistema para generar ordenes de consultas y practicas medicas.
+            <Typography className="text-gray-600 mb-4">
+              Sistema para generar órdenes de consultas y prácticas médicas.
             </Typography>
           </CardBody>
-          <CardFooter className="pt-0">
+          <CardFooter className="pt-0 pb-6 px-6">
             <Link href="http://190.231.67.172:3002/" target="__blank">
               <Button
                 size="sm"
-                variant="text"
-                className="flex items-center gap-2"
+                className="btn-primary w-full"
               >
                 Acceder
-                <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
               </Button>
             </Link>
           </CardFooter>
         </Card>
 
-        <Card className="mt-6">
-          <CardBody>
-            <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
-            <Typography variant="h5" color="blue-gray" className="mb-2">
-              Certificado Para Policias.
+        <Card className="card-simple hover:shadow-xl transition-all duration-300 h-full">
+          <CardBody className="p-6">
+            <ArrowRightCircleIcon className="text-[var(--bright-teal-blue)] w-12 h-12 mb-4" />
+            <Typography variant="h5" color="blue-gray" className="mb-2 font-semibold">
+              Certificado Para Policías
             </Typography>
-            <Typography>
-              Acceso rapido para generar certificados a los policias.
+            <Typography className="text-gray-600 mb-4">
+              Acceso rápido para generar certificados a los policías.
             </Typography>
           </CardBody>
-          <CardFooter className="pt-0">
+          <CardFooter className="pt-0 pb-6 px-6">
             <Link href="/socios/solicitudes/certificadopoli">
               <Button
                 size="sm"
-                variant="text"
-                className="flex items-center gap-2"
+                className="btn-primary w-full"
               >
                 Generar
-                <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
               </Button>
             </Link>
           </CardFooter>
         </Card>
 
-        <Card className="mt-6">
-          <CardBody>
-            <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
-            <Typography variant="h5" color="blue-gray" className="mb-2">
+        <Card className="card-simple hover:shadow-xl transition-all duration-300 h-full">
+          <CardBody className="p-6">
+            <ArrowRightCircleIcon className="text-[var(--bright-teal-blue)] w-12 h-12 mb-4" />
+            <Typography variant="h5" color="blue-gray" className="mb-2 font-semibold">
               Reintegros ISJ
             </Typography>
-            <Typography>
-              Registro de reintegros de ordenes y practicas ISJ.
+            <Typography className="text-gray-600 mb-4">
+              Registro de reintegros de órdenes y prácticas ISJ.
             </Typography>
           </CardBody>
-          <CardFooter className="pt-0">
+          <CardFooter className="pt-0 pb-6 px-6">
             <Link href="/socios/solicitudes/reintegros">
               <Button
                 size="sm"
-                variant="text"
-                className="flex items-center gap-2"
+                className="btn-primary w-full"
               >
                 Acceder
-                <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
               </Button>
             </Link>
           </CardFooter>
         </Card>
 
-        <Card className="mt-6">
-          <CardBody>
-            <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
-            <Typography variant="h5" color="blue-gray" className="mb-2">
+        <Card className="card-simple hover:shadow-xl transition-all duration-300 h-full">
+          <CardBody className="p-6">
+            <ArrowRightCircleIcon className="text-[var(--bright-teal-blue)] w-12 h-12 mb-4" />
+            <Typography variant="h5" color="blue-gray" className="mb-2 font-semibold">
               Legajo Virtual
             </Typography>
-            <Typography>
-              Este es un acceso rapido legajo virtual del socio, donde figura su
-              informacion personal, adherentes y pagos, emulando la funcion del
-              fox.
+            <Typography className="text-gray-600 mb-4">
+              Acceso rápido al legajo virtual del socio con información personal, adherentes y pagos.
             </Typography>
           </CardBody>
-          <CardFooter className="pt-0">
+          <CardFooter className="pt-0 pb-6 px-6">
             <Link href="/socios/legajo">
               <Button
                 size="sm"
-                variant="text"
-                className="flex items-center gap-2"
+                className="btn-primary w-full"
               >
                 Buscar Ficha
-                <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
               </Button>
             </Link>
           </CardFooter>
         </Card>
 
-        <Card className="mt-6">
-          <CardBody>
-            <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
-            <Typography variant="h5" color="blue-gray" className="mb-2">
-              Prints de Pago y Ficha.
+        <Card className="card-simple hover:shadow-xl transition-all duration-300 h-full">
+          <CardBody className="p-6">
+            <ArrowRightCircleIcon className="text-[var(--bright-teal-blue)] w-12 h-12 mb-4" />
+            <Typography variant="h5" color="blue-gray" className="mb-2 font-semibold">
+              Prints de Pago y Ficha
             </Typography>
-            <Typography>
-              Acceso rapido para generar prinst de la ficha del socio.
+            <Typography className="text-gray-600 mb-4">
+              Acceso rápido para generar prints de la ficha del socio.
             </Typography>
           </CardBody>
-          <CardFooter className="pt-0">
+          <CardFooter className="pt-0 pb-6 px-6">
             <Link href="/socios/prints">
               <Button
                 size="sm"
-                variant="text"
-                className="flex items-center gap-2"
+                className="btn-primary w-full"
               >
                 Buscar Ficha
-                <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
               </Button>
             </Link>
           </CardFooter>
         </Card>
 
-        <Card className="mt-6">
-          <CardBody>
-            <ArrowRightCircleIcon className="text-blue-500 w-12 h-12 mb-4" />
-            <Typography variant="h5" color="blue-gray" className="mb-2">
-              Solicitud Baja de Afiliacion
+        <Card className="card-simple hover:shadow-xl transition-all duration-300 h-full">
+          <CardBody className="p-6">
+            <ArrowRightCircleIcon className="text-[var(--bright-teal-blue)] w-12 h-12 mb-4" />
+            <Typography variant="h5" color="blue-gray" className="mb-2 font-semibold">
+              Solicitud Baja de Afiliación
             </Typography>
-            <Typography>
-              Acceso rapido para generar la solicitud de baja de afiliacion por
-              sistema.
+            <Typography className="text-gray-600 mb-4">
+              Acceso rápido para generar la solicitud de baja de afiliación por sistema.
             </Typography>
           </CardBody>
-          <CardFooter className="pt-0">
+          <CardFooter className="pt-0 pb-6 px-6">
             <Link href="/socios/solicitudes/baja">
               <Button
                 size="sm"
-                variant="text"
-                className="flex items-center gap-2"
+                className="btn-primary w-full"
               >
                 Generar
-                <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
               </Button>
             </Link>
           </CardFooter>
         </Card>
-      </div>
     </div>
   );
 };

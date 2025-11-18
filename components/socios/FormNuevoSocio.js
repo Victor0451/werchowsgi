@@ -307,7 +307,7 @@ const FormNuevoSocio = ({
         ) : null}
 
         <div className="flex justify-end mt-6">
-          <Button className="" color="blue" onClick={regSocio}>
+          <Button className="btn-primary" onClick={regSocio}>
             Registrar
           </Button>
 

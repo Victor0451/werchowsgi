@@ -17,6 +17,8 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/solid";
 import FormLegajoSocio from "@/components/socios/FormLegajoSocio";
+import { MESSAGES } from "@/libs/messages";
+import apiGetSocios from "@/libs/apiSocios";
 
 function Legajo(props) {
   let dniRef = React.createRef();
@@ -51,28 +53,36 @@ function Legajo(props) {
 
   const { isLoading } = useUser();
 
+  // processFicha centraliza el guardado de ficha y las llamadas relacionadas
+  const processFicha = (f, adhsF = "adh") => {
+    if (!f || !f[0]) return;
+    guardarFicha(f);
+    guardarShow(true);
+    // baja se setea por el caller cuando corresponde
+
+    const contrato = f[0].CONTRATO;
+    traerAdhs(adhsF, contrato);
+    traerInfo(contrato);
+    descriGrupo(f[0].GRUPO);
+    traerPagos(contrato, f[0].EMPRESA);
+    traerUsos(contrato);
+    traerHistorial(contrato);
+    traerCuotas(contrato);
+  };
+
   const traerInfo = async (ficha) => {
-    await axios
-      .get(`/api/socios`, {
-        params: {
-          ficha: ficha,
-          f: "traer archivos",
-        },
-      })
-      .then((res1) => {
-        let archivos = res1.data;
+    try {
+      const archivos = await apiGetSocios({ ficha: ficha, f: "traer archivos" });
+      guardarArchivos(archivos);
 
-        guardarArchivos(archivos);
-
-        if (res1.data.length === 0) {
-          toast.warning("Este legajo no tiene archivos adjuntos");
-        } else {
-          toast.info("Se trajeron los archivos adjuntados a este legajo");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      if (!archivos || archivos.length === 0) {
+        toast.warning("Este legajo no tiene archivos adjuntos");
+      } else {
+        toast.info("Se trajeron los archivos adjuntados a este legajo");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const eliminarArchivos = async (id) => {
@@ -298,26 +308,19 @@ function Legajo(props) {
   };
 
   const traerAdhs = async (f, contrato) => {
-    await axios
-      .get(`/api/socios`, {
-        params: {
-          f: f,
-          contrato: contrato,
-        },
-      })
-      .then((res) => {
-        if (res.data.length > 0) {
-          guardarAdhs(JSON.parse(res.data));
-        } else if (res.data.length === 0) {
-          toast.info("El socio no posee adherentes");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(
-          "Orcurrio un error al traer el listado de adherentes de la ficha"
-        );
-      });
+    try {
+      const res = await apiGetSocios({ f, contrato });
+      if (res && res.length > 0) {
+        guardarAdhs(res);
+      } else {
+        toast.info("El socio no posee adherentes");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        "Orcurrio un error al traer el listado de adherentes de la ficha"
+      );
+    }
   };
 
   const traerPagos = async (ficha, empre) => {
@@ -325,45 +328,23 @@ function Legajo(props) {
     let pagosB = [];
     let allPagos = [];
 
-    await axios
-      .get(`/api/socios`, {
-        params: {
-          f: "traer pagos",
-          ficha: ficha,
-          empre: empre,
-        },
-      })
-      .then((res) => {
-        if (res.data.length > 0) {
-          pagos = res.data;
-        } else {
-          toast.info("El socio no posee pagos en efectivo registrados");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al traer los pagos");
-      });
+    try {
+      const p = await apiGetSocios({ f: "traer pagos", ficha, empre });
+      if (p && p.length > 0) pagos = p;
+      else toast.info("El socio no posee pagos en efectivo registrados");
+    } catch (error) {
+      console.log(error);
+      toast.error("Ocurrio un error al traer los pagos");
+    }
 
-    await axios
-      .get(`/api/socios`, {
-        params: {
-          f: "traer pagosb",
-          ficha: ficha,
-          empre: empre,
-        },
-      })
-      .then((res) => {
-        if (res.data.length > 0) {
-          pagosB = res.data;
-        } else {
-          toast.info("El socio no posee pagos de Debito/Credito registrados");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al traer los pagos");
-      });
+    try {
+      const pb = await apiGetSocios({ f: "traer pagosb", ficha, empre });
+      if (pb && pb.length > 0) pagosB = pb;
+      else toast.info("El socio no posee pagos de Debito/Credito registrados");
+    } catch (error) {
+      console.log(error);
+      toast.error("Ocurrio un error al traer los pagos");
+    }
 
     if (pagos.length > 0 && pagosB.length > 0) {
       allPagos = pagos.concat(pagosB);
@@ -376,441 +357,194 @@ function Legajo(props) {
   };
 
   const descriGrupo = async (grupo) => {
-    await axios
-      .get("/api/socios", {
-        params: {
-          f: "traer grupo",
-          grupo: grupo,
-        },
-      })
-      .then((res) => {
-        if (res.data.length > 0) {
-          let grup = `${res.data[0].CODIGO} - ${res.data[0].DESCRIP}`;
-          guardarGrupo(grup);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al traer el grupo");
-      });
-  };
-
-  const traerSocio = async () => {
-    guardarErrores(null);
-    guardarAlertas(null);
-    guardarShow(false);
-    guardarBaja(false);
-
-    if (dniRef.current.value === "") {
-      guardarErrores("Debes ingresar un numero de DNI");
-    } else {
-      axios
-        .get("/api/socios", {
-          params: {
-            f: "maestro",
-            dni: dniRef.current.value,
-          },
-        })
-        .then((res0) => {
-          let re = JSON.parse(res0.data);
-          if (re.length > 0) {
-            let ficha = JSON.parse(res0.data);
-            guardarFicha(ficha);
-            guardarShow(true);
-
-            traerAdhs("adh", ficha[0].CONTRATO);
-            traerInfo(ficha[0].CONTRATO);
-            descriGrupo(ficha[0].GRUPO);
-            traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
-            traerUsos(ficha[0].CONTRATO);
-            traerHistorial(ficha[0].CONTRATO);
-            traerCuotas(ficha[0].CONTRATO);
-          } else if (re.length === 0) {
-            axios
-              .get("/api/socios", {
-                params: {
-                  f: "maestro baja",
-                  dni: dniRef.current.value,
-                },
-              })
-              .then((res1) => {
-                let re = JSON.parse(res1.data);
-
-                if (re.length > 0) {
-                  let ficha = JSON.parse(res1.data);
-
-                  guardarFicha(ficha);
-                  guardarShow(true);
-                  guardarBaja(true);
-
-                  traerAdhs("adh", ficha[0].CONTRATO);
-                  traerInfo(ficha[0].CONTRATO);
-                  descriGrupo(ficha[0].GRUPO);
-                  traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
-                  traerUsos(ficha[0].CONTRATO);
-                  traerHistorial(ficha[0].CONTRATO);
-                  traerCuotas(ficha[0].CONTRATO);
-                } else {
-                  guardarAlertas(
-                    "El DNI ingresado no esta registrado o pertenece a un socio de Werchow"
-                  );
-                  toast.info(
-                    "El DNI ingresado no esta registrado o pertenece a un socio de Werchow"
-                  );
-                }
-              })
-              .catch((error) => {
-                console.log(error);
-                toast.error(
-                  "Ocurrio un error al tarer los datos del socio en Mutual"
-                );
-              });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error(
-            "Ocurrio un error al tarer los datos del socio en Werchow"
-          );
-        });
+    try {
+      const res = await apiGetSocios({ f: "traer grupo", grupo });
+      if (res && res.length > 0) {
+        let grup = `${res[0].CODIGO} - ${res[0].DESCRIP}`;
+        guardarGrupo(grup);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Ocurrio un error al traer el grupo");
     }
   };
 
-  const traerSocioMutual = async () => {
+  /* Generic helper to fetch socio by DNI (tries primary then baja) */
+  const fetchSocioByDni = async (primaryF, bajaF, dni, adhsF, notFoundMsg, errorMsg) => {
     guardarErrores(null);
     guardarAlertas(null);
     guardarShow(false);
     guardarBaja(false);
 
-    if (dniRef.current.value === "") {
-      guardarErrores("Debes ingresar un numero de DNI");
-    } else {
-      axios
-        .get("/api/socios", {
-          params: {
-            f: "mutual",
-            dni: dniRef.current.value,
-          },
-        })
-        .then((res2) => {
-          let re = JSON.parse(res2.data);
+    if (!dni || dni === "") {
+      guardarErrores(MESSAGES.DNI_REQUIRED);
+      return;
+    }
 
-          if (re.length > 0) {
-            let ficha = JSON.parse(res2.data);
-            guardarFicha(ficha);
-            guardarShow(true);
+    try {
+      const primaryData = await apiGetSocios({ f: primaryF, dni });
 
-            traerAdhs("mutual adh", ficha[0].CONTRATO);
-            traerInfo(ficha[0].CONTRATO);
-            descriGrupo(ficha[0].GRUPO);
-            traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
-            traerUsos(ficha[0].CONTRATO);
-            traerHistorial(ficha[0].CONTRATO);
-            traerCuotas(ficha[0].CONTRATO);
-          } else {
-            axios
-              .get("/api/socios", {
-                params: {
-                  f: "mutual baja",
-                  dni: dniRef.current.value,
-                },
-              })
-              .then((res3) => {
-                let re = JSON.parse(res3.data);
+      if (primaryData && primaryData.length > 0) {
+        const ficha = primaryData;
+        guardarBaja(false);
+        processFicha(ficha, adhsF);
+        return;
+      }
 
-                if (re.length > 0) {
-                  let ficha = JSON.parse(res3.data);
+      // try baja variant
+      const bajaData = await apiGetSocios({ f: bajaF, dni });
 
-                  guardarFicha(ficha);
-                  guardarShow(true);
-                  guardarBaja(true);
+      if (bajaData && bajaData.length > 0) {
+        const ficha = bajaData;
+        guardarBaja(true);
+        processFicha(ficha, adhsF);
+        return;
+      }
 
-                  traerAdhs("mutual adh", ficha[0].CONTRATO);
-                  traerInfo(ficha[0].CONTRATO);
-                  descriGrupo(ficha[0].GRUPO);
-                  traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
-                  traerUsos(ficha[0].CONTRATO);
-                  traerHistorial(ficha[0].CONTRATO);
-                  traerCuotas(ficha[0].CONTRATO);
-                } else {
-                  guardarAlertas(
-                    "El DNI ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
-                  );
-                  toast.info(
-                    "El DNI ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
-                  );
-                }
-              })
-              .catch((error) => {
-                console.log(error);
-                toast.error(
-                  "Ocurrio un error al tarer los datos del socio en Mutual"
-                );
-              });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error(
-            "Ocurrio un error al tarer los datos del socio en Mutual"
-          );
-        });
+      guardarAlertas(notFoundMsg);
+      toast.info(notFoundMsg);
+    } catch (error) {
+      console.log(error);
+      toast.error(errorMsg);
+    }
+  };
+
+  const traerSocio = async () => {
+    await fetchSocioByDni(
+      "maestro",
+      "maestro baja",
+      dniRef.current.value,
+      "adh",
+      MESSAGES.SOCIO_NOT_FOUND_WERCHOW,
+      MESSAGES.ERROR_WERCHOW
+    );
+  };
+
+  const traerSocioMutual = async () => {
+    await fetchSocioByDni(
+      "mutual",
+      "mutual baja",
+      dniRef.current.value,
+      "mutual adh",
+      MESSAGES.SOCIO_NOT_FOUND_MUTUAL,
+      MESSAGES.ERROR_MUTUAL
+    );
+  };
+
+  /* Generic helper to fetch socio by contrato (tries primary then baja) */
+  const fetchSocioByContrato = async (primaryF, bajaF, contrato, adhsF, notFoundMsg, errorMsg) => {
+    guardarErrores(null);
+    guardarAlertas(null);
+    guardarShow(false);
+    guardarBaja(false);
+
+    if (!contrato || contrato === "") {
+      guardarErrores(MESSAGES.SOCIO_REQUIRED);
+      return;
+    }
+
+    try {
+      const primaryData = await apiGetSocios({ f: primaryF, ficha: contrato });
+
+      if (primaryData && primaryData.length > 0) {
+        const ficha = primaryData;
+        guardarBaja(false);
+        processFicha(ficha, adhsF);
+        return;
+      }
+
+      const bajaData = await apiGetSocios({ f: bajaF, ficha: contrato });
+
+      if (bajaData && bajaData.length > 0) {
+        const ficha = bajaData;
+        guardarBaja(true);
+        processFicha(ficha, adhsF);
+        return;
+      }
+
+      guardarAlertas(notFoundMsg);
+      toast.info(notFoundMsg);
+    } catch (error) {
+      console.log(error);
+      toast.error(errorMsg);
     }
   };
 
   const tarerSocioContrato = async (hc) => {
-    guardarErrores(null);
-    guardarAlertas(null);
-    guardarShow(false);
-    guardarBaja(false);
-
     let contrato;
-
-    if (!hc.view) {
+    if (!hc || !hc.view) {
       contrato = hc;
     } else if (hc.view) {
       contrato = contratoRef.current.value;
     }
 
-    if (contrato === "") {
-      guardarErrores("Debes ingresar un numero de socio");
-    } else {
-      axios
-        .get("/api/socios", {
-          params: {
-            f: "maestro contrato",
-            ficha: contrato,
-          },
-        })
-        .then((res0) => {
-          let re = JSON.parse(res0.data);
-          if (re.length > 0) {
-            let ficha = JSON.parse(res0.data);
-            guardarFicha(ficha);
-            guardarShow(true);
-
-            traerAdhs("adh", ficha[0].CONTRATO);
-            traerInfo(ficha[0].CONTRATO);
-            descriGrupo(ficha[0].GRUPO);
-            traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
-            traerUsos(ficha[0].CONTRATO);
-            traerHistorial(ficha[0].CONTRATO);
-            traerCuotas(ficha[0].CONTRATO);
-          } else if (re.length === 0) {
-            axios
-              .get("/api/socios", {
-                params: {
-                  f: "maestro baja contrato",
-                  ficha: contrato,
-                },
-              })
-              .then((res1) => {
-                let re = JSON.parse(res1.data);
-
-                if (re.length > 0) {
-                  let ficha = JSON.parse(res1.data);
-
-                  guardarFicha(ficha);
-                  guardarShow(true);
-                  guardarBaja(true);
-
-                  traerAdhs("adh", ficha[0].CONTRATO);
-                  traerInfo(ficha[0].CONTRATO);
-                  descriGrupo(ficha[0].GRUPO);
-                  traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
-                  traerUsos(ficha[0].CONTRATO);
-                  traerHistorial(ficha[0].CONTRATO);
-                  traerCuotas(ficha[0].CONTRATO);
-                } else {
-                  guardarAlertas(
-                    "El DNI ingresado no esta registrado o pertenece a un socio de Werchow"
-                  );
-                  toast.info(
-                    "El DNI ingresado no esta registrado o pertenece a un socio de Werchow"
-                  );
-                }
-              })
-              .catch((error) => {
-                console.log(error);
-                toast.error(
-                  "Ocurrio un error al tarer los datos del socio en Mutual"
-                );
-              });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error(
-            "Ocurrio un error al tarer los datos del socio en Werchow"
-          );
-        });
-    }
+    await fetchSocioByContrato(
+      "maestro contrato",
+      "maestro baja contrato",
+      contrato,
+      "adh",
+      MESSAGES.SOCIO_NOT_FOUND_WERCHOW,
+      MESSAGES.ERROR_WERCHOW
+    );
   };
 
   const tarerSocioContratoMutual = async (hc) => {
-    guardarErrores(null);
-    guardarAlertas(null);
-    guardarShow(false);
-    guardarBaja(false);
-
     let contrato;
-
-    if (!hc.view) {
+    if (!hc || !hc.view) {
       contrato = hc;
     } else if (hc.view) {
       contrato = contratoRef.current.value;
     }
 
-    if (contrato === "") {
-      guardarErrores("Debes ingresar un numero de socio");
-    } else {
-      axios
-        .get("/api/socios", {
-          params: {
-            f: "mutual contrato",
-            ficha: contrato,
-          },
-        })
-        .then((res2) => {
-          let re = JSON.parse(res2.data);
+    await fetchSocioByContrato(
+      "mutual contrato",
+      "mutual baja contrato",
+      contrato,
+      "mutual adh",
+      MESSAGES.SOCIO_NOT_FOUND_MUTUAL,
+      MESSAGES.ERROR_MUTUAL
+    );
+  };
 
-          if (re.length > 0) {
-            let ficha = JSON.parse(res2.data);
-            guardarFicha(ficha);
-            guardarShow(true);
+  const fetchApellidos = async (fParam, apellido, notFoundMsg, errorMsg) => {
+    guardarErrores(null);
+    guardarAlertas(null);
 
-            traerAdhs("mutual adh", ficha[0].CONTRATO);
-            traerInfo(ficha[0].CONTRATO);
-            descriGrupo(ficha[0].GRUPO);
-            traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
-            traerUsos(ficha[0].CONTRATO);
-            traerHistorial(ficha[0].CONTRATO);
-            traerCuotas(ficha[0].CONTRATO);
-          } else {
-            axios
-              .get("/api/socios", {
-                params: {
-                  f: "mutual baja contrato",
-                  ficha: contrato,
-                },
-              })
-              .then((res3) => {
-                let re = JSON.parse(res3.data);
+    if (!apellido || apellido === "") {
+      guardarErrores(MESSAGES.APELLIDO_REQUIRED);
+      return;
+    }
 
-                if (re.length > 0) {
-                  let ficha = JSON.parse(res3.data);
-
-                  guardarFicha(ficha);
-                  guardarShow(true);
-                  guardarBaja(true);
-
-                  traerAdhs("mutual adh", ficha[0].CONTRATO);
-                  traerInfo(ficha[0].CONTRATO);
-                  descriGrupo(ficha[0].GRUPO);
-                  traerPagos(ficha[0].CONTRATO, ficha[0].EMPRESA);
-                  traerUsos(ficha[0].CONTRATO);
-                  traerHistorial(ficha[0].CONTRATO);
-                  traerCuotas(ficha[0].CONTRATO);
-                } else {
-                  guardarAlertas(
-                    "El DNI ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
-                  );
-                  toast.info(
-                    "El DNI ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
-                  );
-                }
-              })
-              .catch((error) => {
-                console.log(error);
-                toast.error(
-                  "Ocurrio un error al tarer los datos del socio en Mutual"
-                );
-              });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error(
-            "Ocurrio un error al tarer los datos del socio en Mutual"
-          );
-        });
+    try {
+      const re = await apiGetSocios({ f: fParam, apellido });
+      if (re && re.length > 0) {
+        guardarApellidos(re);
+      } else {
+        guardarAlertas(notFoundMsg);
+        toast.info(notFoundMsg);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(errorMsg);
     }
   };
 
   const traerApellido = async () => {
-    guardarErrores(null);
-    guardarAlertas(null);
-
-    let apellido = apellidoRef.current.value;
-
-    if (apellido === "") {
-      guardarErrores("Debes ingresar el apellido del titular");
-    } else {
-      axios
-        .get("/api/socios", {
-          params: {
-            f: "maestro apellido",
-            apellido: apellido,
-          },
-        })
-        .then((res0) => {
-          let re = JSON.parse(res0.data);
-          if (re.length > 0) {
-            guardarApellidos(re);
-          } else if (re.length === 0) {
-            guardarAlertas(
-              "El Apellido ingresado no esta registrado o pertenece a un socio de Werchow"
-            );
-            toast.info(
-              "El Apellido ingresado no esta registrado o pertenece a un socio de Werchow"
-            );
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error(
-            "Ocurrio un error al tarer los datos del socio en Werchow"
-          );
-        });
-    }
+    await fetchApellidos(
+      "maestro apellido",
+      apellidoRef.current.value,
+      MESSAGES.SOCIO_NOT_FOUND_WERCHOW,
+      MESSAGES.ERROR_WERCHOW
+    );
   };
 
   const traerApellidoMutual = async () => {
-    guardarErrores(null);
-    guardarAlertas(null);
-
-    let apellido = apellidoRef.current.value;
-
-    if (apellido === "") {
-      guardarErrores("Debes ingresar el apellido del titular");
-    } else {
-      axios
-        .get("/api/socios", {
-          params: {
-            f: "mutual apellido",
-            apellido: apellido,
-          },
-        })
-        .then((res0) => {
-          let re = JSON.parse(res0.data);
-          if (re.length > 0) {
-            guardarApellidos(re);
-          } else if (re.length === 0) {
-            guardarAlertas(
-              "El Apellido ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
-            );
-            toast.info(
-              "El Apellido ingresado no esta registrado o pertenece a un socio de Mutual San Valentin"
-            );
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error(
-            "Ocurrio un error al tarer los datos del socio en Werchow"
-          );
-        });
-    }
+    await fetchApellidos(
+      "mutual apellido",
+      apellidoRef.current.value,
+      MESSAGES.SOCIO_NOT_FOUND_MUTUAL,
+      MESSAGES.ERROR_MUTUAL
+    );
   };
 
   const handleVigencia = () => {
@@ -893,84 +627,52 @@ function Legajo(props) {
   };
 
   const traerUsos = async (contrato) => {
-    await axios
-      .get(`/api/socios`, {
-        params: {
-          contrato: contrato,
-          f: "traer usos",
-        },
-      })
-      .then((res) => {
-        if (res.data) {
-          let usos = JSON.parse(res.data);
-
-          guardarUsos(usos);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al generar el listado de usos");
-      });
+    try {
+      const res = await apiGetSocios({ contrato, f: "traer usos" });
+      if (res) {
+        const usos = Array.isArray(res) ? res : JSON.parse(res);
+        guardarUsos(usos);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Ocurrio un error al generar el listado de usos");
+    }
   };
 
   const traerHistorial = async (contrato) => {
-    await axios
-      .get(`/api/socios`, {
-        params: {
-          contrato: contrato,
-          f: "traer historial",
-        },
-      })
-      .then((res) => {
-        if (res.data) {
-          let list = JSON.parse(res.data);
-
-          guardarHistorial(list);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al generar el historial de movimientos");
-      });
+    try {
+      const res = await apiGetSocios({ contrato, f: "traer historial" });
+      if (res) {
+        const list = Array.isArray(res) ? res : JSON.parse(res);
+        guardarHistorial(list);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Ocurrio un error al generar el historial de movimientos");
+    }
   };
 
   const traerCuotas = async (contrato) => {
-    await axios
-      .get(`/api/socios`, {
-        params: {
-          contrato: contrato,
-          f: "traer cuotas",
-        },
-      })
-      .then((res) => {
-        if (res.data) {
-          let arr = JSON.parse(res.data);
-          guardarHistCuotas(arr);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(
-          "Ocurrio un error al generar el historial de cuotas mensuales"
-        );
-      });
+    try {
+      const res = await apiGetSocios({ contrato, f: "traer cuotas" });
+      if (res) {
+        const arr = Array.isArray(res) ? res : JSON.parse(res);
+        guardarHistCuotas(arr);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Ocurrio un error al generar el historial de cuotas mensuales");
+    }
 
-    await axios
-      .get(`/api/socios`, {
-        params: {
-          contrato: contrato,
-          f: "traer cuota mensual",
-        },
-      })
-      .then((res) => {
-        if (res.data) {
-          guardarCuotaMensual(res.data[0].IMPORTE);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al traer la cuota mensual");
-      });
+    try {
+      const res2 = await apiGetSocios({ contrato, f: "traer cuota mensual" });
+      if (res2 && res2.length > 0) {
+        guardarCuotaMensual(res2[0].IMPORTE);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Ocurrio un error al traer la cuota mensual");
+    }
   };
 
   const gasLuto = async (plan, alta, cantadh) => {
@@ -1025,21 +727,14 @@ function Legajo(props) {
   };
 
   const traerBeneficios = async (ficha) => {
-    await axios
-      .get(`/api/socios`, {
-        params: {
-          ficha: ficha,
-          f: "traer beneficios",
-        },
-      })
-      .then((res1) => {
-        console.log(res1.data);
-        guardarBeneficios(res1.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Ocurrio un error al traer el listado de beneficios");
-      });
+    try {
+      const res1 = await apiGetSocios({ ficha, f: "traer beneficios" });
+      console.log(res1);
+      guardarBeneficios(res1);
+    } catch (error) {
+      console.log(error);
+      toast.error("Ocurrio un error al traer el listado de beneficios");
+    }
   };
 
   useSWR("/api/sepelio/servicios", gasLuto);

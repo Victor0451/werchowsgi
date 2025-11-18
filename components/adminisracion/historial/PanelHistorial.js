@@ -42,7 +42,7 @@ const PanelHistorial = ({
 
           <div className="grid md:grid-cols-4 md:gap-6">
             <div className="relative w-full mb-6 group">
-              <Button color="gray" onClick={() => traerHistorial("T")}>
+              <Button className="btn-secondary" onClick={() => traerHistorial("T")}>
                 Historial Completo
               </Button>
             </div>
@@ -65,7 +65,7 @@ const PanelHistorial = ({
               </Select>
             </div>
             <div className="relative w-full mb-6 group">
-              <Button color="blue" onClick={traerHistorial}>
+              <Button className="btn-primary" onClick={traerHistorial}>
                 Buscar
               </Button>
             </div>

@@ -6,6 +6,13 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  /* CSS HEX */
+--deep-twilight: #03045eff;
+--bright-teal-blue: #0077b6ff;
+--turquoise-surf: #00b4d8ff;
+--frosted-blue: #90e0efff;
+--light-cyan: #caf0f8ff;
+--back: #f0f8ff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,7 +25,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: gainsboro;
+  background: var(--back);
 }
 
 .werchowlogo {
@@ -77,4 +84,72 @@ body {
   display: block;
   margin-top: 1cm;
   margin-bottom: 0.5cm;
+}
+
+/* Nuevas clases estéticas basadas en la paleta */
+
+.btn-primary {
+  background-color: var(--deep-twilight);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: var(--bright-teal-blue);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--deep-twilight);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bright-teal-blue);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.card-modern {
+  background: linear-gradient(135deg, var(--frosted-blue), var(--bright-teal-blue));
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card-modern:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.text-primary {
+  color: var(--bright-teal-blue);
+}
+
+.text-secondary {
+  color: var(--deep-twilight);
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--frosted-blue), var(--turquoise-surf));
+}
+
+.card-simple {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card-simple:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }

@@ -247,7 +247,7 @@ export const FormNuevoPrestamo = ({
                   ))}
                 </Select>
 
-                <Button color="blue" onClick={simularPrestamo}>
+                <Button className="btn-primary" onClick={simularPrestamo}>
                   Calular Subsidio
                 </Button>
               </div>

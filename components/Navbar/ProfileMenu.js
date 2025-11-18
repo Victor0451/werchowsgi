@@ -6,7 +6,6 @@ import {
   MenuHandler,
   MenuList,
   MenuItem,
-  Avatar,
   Badge,
 } from "@material-tailwind/react";
 import {
@@ -55,6 +54,18 @@ export const ProfileMenu = ({ user, msj, orde, prest }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Función para extraer las iniciales del usuario
+  const getInitials = (usuario) => {
+    if (!usuario) return "U";
+    const parts = usuario.trim().split(" ");
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+    return usuario.substring(0, 2).toUpperCase();
+  };
+
+  const initials = getInitials(user?.usuario || "Usuario");
+
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>
@@ -65,30 +76,26 @@ export const ProfileMenu = ({ user, msj, orde, prest }) => {
         >
           {msj > 0 ? (
             <Badge overlap="circular" placement="bottom-end">
-              <Avatar
-                variant="circular"
-                size="sm"
-                alt="candice wu"
-                className={`  ${
+              <div
+                className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-sm ${
                   msj > 0
-                    ? "border-2 p-0.5 border-red-900"
-                    : "border p-0.5 border-blue-500"
+                    ? "border-2 border-red-900 bg-blue-500"
+                    : "border border-blue-500 bg-blue-500"
                 }`}
-                src="https://png.pngtree.com/png-clipart/20210915/ourlarge/pngtree-user-avatar-login-interface-abstract-blue-icon-png-image_3917504.jpg"
-              />
+              >
+                {initials}
+              </div>
             </Badge>
           ) : (
-            <Avatar
-              variant="circular"
-              size="sm"
-              alt="candice wu"
-              className={`  ${
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-sm ${
                 msj > 0
-                  ? "border-2 p-0.5 border-red-900"
-                  : "border p-0.5 border-blue-500"
+                  ? "border-2 border-red-900 bg-blue-500"
+                  : "border border-blue-500 bg-blue-500"
               }`}
-              src="https://png.pngtree.com/png-clipart/20210915/ourlarge/pngtree-user-avatar-login-interface-abstract-blue-icon-png-image_3917504.jpg"
-            />
+            >
+              {initials}
+            </div>
           )}
 
           <ChevronDownIcon
