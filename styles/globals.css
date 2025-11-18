@@ -121,7 +121,7 @@ body {
 }
 
 .card-modern {
-  background: linear-gradient(135deg, var(--frosted-blue), var(--bright-teal-blue));
+  background: --back;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;

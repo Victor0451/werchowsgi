@@ -1,6 +1,6 @@
 {
   "name": "werchowsgi",
-  "version": "5.6",
+  "version": "5.6.1",
   "private": true,
   "scripts": {
     "dev": "next dev -p $PORT",
