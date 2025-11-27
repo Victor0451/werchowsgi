@@ -579,7 +579,7 @@ export default async function handler(req, res) {
     }
   } else if (req.method === "POST") {
     if (req.body.f && req.body.f === "nuevo servicio") {
-      
+
       const regServ = await sep.query(
         `
           INSERT INTO servicios
@@ -1036,8 +1036,8 @@ export default async function handler(req, res) {
             SET liquidado= true,
                 operadorliq= '${req.body.operadorliq}',
                 fecha_liquidacion= '${moment(req.body.fecha_liquidado).format(
-                  "YYYY-MM-DD"
-                )}'
+          "YYYY-MM-DD"
+        )}'
             WHERE  idtareas= ${parseInt(req.body.id)}   
           `
       );
@@ -1085,8 +1085,8 @@ export default async function handler(req, res) {
           UPDATE informe_gastos 
           SET liquidado = true,
               fecha_liquidado = '${moment(req.body.fecha_liquidado).format(
-                "YYYY-MM-DD"
-              )}',
+          "YYYY-MM-DD"
+        )}',
               operadorliq = '${req.body.operadorliq}'
           WHERE operador = '${req.body.operador}'
           AND liquidado = 0
@@ -1142,6 +1142,47 @@ export default async function handler(req, res) {
       await sep.end();
 
       res.status(200).json(liqTarea);
+    } else if (req.body.f && req.body.f === "actualizar servicio") {
+      const actServicio = await sep.query(
+        `
+          UPDATE servicios
+          SET 
+            apellido = '${req.body.apellido}',
+            nombre = '${req.body.nombre}',
+            edad = ${parseInt(req.body.edad)},
+            telefono = '${req.body.telefono}',
+            movil = '${req.body.movil}',
+            fecha_fallecimiento = '${moment(req.body.fecha_fallecimiento).format("YYYY-MM-DD")}',
+            lugar_fallecimiento = '${req.body.lugar_fallecimiento}',
+            casa_mortuaria = '${req.body.casa_mortuaria}',
+            fecha_inhumacion = '${moment(req.body.fecha_inhumacion).format("YYYY-MM-DD")}',
+            hora_inhumacion = '${req.body.hora_inhumacion}',
+            cementerio = '${req.body.cementerio}',
+            altura = ${parseFloat(req.body.altura)},
+            peso = ${parseFloat(req.body.peso)},
+            motivo = '${req.body.motivo}',
+            retiro = '${req.body.retiro}',
+            solicitado = '${req.body.solicitado}',
+            parentesco = '${req.body.parentesco}',
+            dni_solicitante = ${parseInt(req.body.dni_solicitante)},
+            domicilio_solicitante = '${req.body.domicilio_solicitante}',
+            cremacion = ${req.body.cremacion},
+            donacion = ${req.body.donacion},
+            serv_domicilio = ${req.body.serv_domicilio},
+            idataud = ${parseInt(req.body.idataud)},
+            idparcela = ${req.body.idparcela ? parseInt(req.body.idparcela) : 0},
+            detalle_corona = '${req.body.detalle_corona}',
+            religion = '${req.body.religion}',
+            estado_civil = '${req.body.estado_civil}',
+            importe_servicio = ${parseFloat(req.body.importe_servicio)},
+            conyugue = '${req.body.conyugue}'
+          WHERE idservicio = ${parseInt(req.body.idservicio)}
+        `
+      );
+
+      await sep.end();
+
+      res.status(200).json(actServicio);
     }
   } else if (req.method === "DELETE") {
     if (req.query.f && req.query.f === "eliminar tarea") {

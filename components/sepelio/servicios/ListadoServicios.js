@@ -129,11 +129,11 @@ const ListadoServicios = ({
           </Link>
 
           {usu.usuario === "vlongo" ||
-          usu.usuario === "nquintana" ||
-          usu.usuario === "jcmorales" ||
-          usu.usuario === "rquispe" ||
-          usu.usuario === "cflores" ||
-          usu.usuario === "pbandur" ? (
+            usu.usuario === "nquintana" ||
+            usu.usuario === "jcmorales" ||
+            usu.usuario === "rquispe" ||
+            usu.usuario === "cflores" ||
+            usu.usuario === "pbandur" ? (
             <Link
               href={{
                 pathname: "/sepelio/servicios/informe",
@@ -162,7 +162,7 @@ const ListadoServicios = ({
           <Link
             href={{
               pathname: "/sepelio/servicios/editarservicio",
-              query: { idservicio: row.idservicio },
+              query: { id: row.idservicio },
             }}
           >
             <PencilIcon color="orange" className="butlist mt-px h-6 w-6" />
