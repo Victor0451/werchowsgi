@@ -115,7 +115,7 @@ function Legajo(props) {
         },
         {
           label: "No",
-          onClick: () => {},
+          onClick: () => { },
         },
       ],
     });
@@ -792,6 +792,7 @@ function Legajo(props) {
             observacionRef={observacionRef}
             traerBeneficios={traerBeneficios}
             beneficios={beneficios}
+            traerAdhs={traerAdhs}
           />
         </>
       )}

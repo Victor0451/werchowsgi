@@ -78,7 +78,8 @@ const FormLegajoSocio = ({
   beneficioRef,
   observacionRef,
   traerBeneficios,
-  beneficios
+  beneficios,
+  traerAdhs
 }) => {
   return (
     <Card className="h-full w-full p-4 ">
@@ -323,17 +324,17 @@ const FormLegajoSocio = ({
             <div>
               <div className="p-4 border border-gray-200 rounded-lg mt-6 bg-white shadow-sm">
                 {(ficha && ficha.GRUPO === 666) ||
-                (ficha && ficha.GRUPO === 1001) ||
-                (ficha && ficha.GRUPO === 1005) ||
-                (ficha && ficha.GRUPO === 1006) ||
-                (ficha && ficha.GRUPO === 3444) ||
-                (ficha && ficha.GRUPO === 3666) ||
-                (ficha && ficha.GRUPO === 3777) ||
-                (ficha && ficha.GRUPO === 3888) ||
-                (ficha && ficha.GRUPO === 3999) ||
-                (ficha && ficha.GRUPO === 4004) ||
-                (ficha && ficha.GRUPO === 7777) ||
-                (ficha && ficha.GRUPO === 8500) ? (
+                  (ficha && ficha.GRUPO === 1001) ||
+                  (ficha && ficha.GRUPO === 1005) ||
+                  (ficha && ficha.GRUPO === 1006) ||
+                  (ficha && ficha.GRUPO === 3444) ||
+                  (ficha && ficha.GRUPO === 3666) ||
+                  (ficha && ficha.GRUPO === 3777) ||
+                  (ficha && ficha.GRUPO === 3888) ||
+                  (ficha && ficha.GRUPO === 3999) ||
+                  (ficha && ficha.GRUPO === 4004) ||
+                  (ficha && ficha.GRUPO === 7777) ||
+                  (ficha && ficha.GRUPO === 8500) ? (
                   <Alert
                     color="red"
                     icon={
@@ -612,13 +613,33 @@ const FormLegajoSocio = ({
                   Este socio no posee adherentes registrados.
                 </Alert>
               ) : (
-                <div className="p-4 border border-gray-200 rounded-lg mt-6 bg-white shadow-sm">
-                  <Typography variant="h5" color="blue-gray" className="mb-6">
-                    Adherentes
-                  </Typography>
+                <>
 
-                  <ListadoAdherentes listado={adhs} />
-                </div>
+                  <Alert
+                    icon={
+                      <InformationCircleIcon
+                        strokeWidth={2}
+                        className="h-6 w-6"
+                      />
+                    }
+                    color="blue"
+                  >
+                    Selecciona el/los adherentes que deseas solicitar baja, luego presiona el botón "Solicitar Baja" para imprimi y confirmar la baja de los mismos.
+                    El adherente que no puedas seleccionar es por que ya se le emitio una solicitud de baja, solo queda que el operador la impacte en el FOX.
+                  </Alert>
+
+                  <div className="p-4 border border-gray-200 rounded-lg mt-6 bg-white shadow-sm">
+                    <Typography variant="h5" color="blue-gray" className="mb-6">
+                      Adherentes
+                    </Typography>
+
+                    <ListadoAdherentes
+                      listado={adhs}
+                      maestro={ficha}
+                      onRefresh={() => traerAdhs && traerAdhs(ficha.EMPRESA === "WERCHOW" ? "adh" : "adhm", ficha.CONTRATO)}
+                    />
+                  </div>
+                </>
               )}
             </div>
             <hr className="mt-5 mb-5 border-t border-gray-200" />

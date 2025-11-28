@@ -31,6 +31,7 @@ function servicios(props) {
       })
       .then((res) => {
         if (res.data) {
+          console.log(res.data);
           let serv = JSON.parse(res.data);
 
           if (serv.length > 0) {

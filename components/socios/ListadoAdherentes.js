@@ -2,8 +2,9 @@ import React, { useMemo } from "react";
 import FilterComponent from "../Layouts/FilterComponent";
 import DataTable from "react-data-table-component";
 import moment from "moment";
+import ModalBajaAdherente from "./ModalBajaAdherente";
 
-const ListadoAdherentes = ({ listado }) => {
+const ListadoAdherentes = ({ listado, maestro, onRefresh }) => {
   let columns = [
     {
       name: "#",
@@ -51,7 +52,7 @@ const ListadoAdherentes = ({ listado }) => {
       grow: 0.2,
     },
     {
-      name: "Estado",
+      name: "Estado Fox",
       button: true,
       grow: 0.1,
       cell: (row, index) => (
@@ -71,11 +72,34 @@ const ListadoAdherentes = ({ listado }) => {
         </>
       ),
     },
+
   ];
 
   const [filterText, setFilterText] = React.useState("");
-  const [resetPaginationToggle, setResetPaginationToggle] =
-    React.useState(false);
+  const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
+  const [selectedRows, setSelectedRows] = React.useState([]);
+  const [toggleCleared, setToggleCleared] = React.useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
+
+  const handleRowSelected = React.useCallback((state) => {
+    setSelectedRows(state.selectedRows);
+  }, []);
+
+  const contextActions = React.useMemo(() => {
+    const handleOpenModal = () => {
+      setModalOpen(true);
+    };
+
+    return (
+      <button
+        key="delete"
+        onClick={handleOpenModal}
+        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Solicitar Baja ({selectedRows.length})
+      </button>
+    );
+  }, [selectedRows]);
 
   const filteredItems = listado.filter(
     (item) =>
@@ -92,18 +116,42 @@ const ListadoAdherentes = ({ listado }) => {
     };
 
     return (
-      <>
+      <div className="flex justify-between items-center w-full">
         <FilterComponent
           onFilter={(e) => setFilterText(e.target.value)}
           onClear={handleClear}
           filterText={filterText}
         />
-      </>
+
+        {selectedRows.length > 0 && (
+          <button
+            onClick={() => setModalOpen(true)}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-4"
+          >
+            Solicitar Baja ({selectedRows.length})
+          </button>
+        )}
+      </div>
     );
-  }, [filterText, resetPaginationToggle]);
+  }, [filterText, resetPaginationToggle, selectedRows]);
 
   return (
     <div>
+      {modalOpen && (
+        <ModalBajaAdherente
+          adherentes={selectedRows}
+          maestro={maestro}
+          onBajaConfirmada={() => {
+            onRefresh();
+            setToggleCleared(!toggleCleared);
+            setSelectedRows([]);
+            setModalOpen(false);
+          }}
+          open={modalOpen}
+          setOpen={setModalOpen}
+        />
+      )}
+
       <DataTable
         columns={columns}
         data={filteredItems}
@@ -112,6 +160,10 @@ const ListadoAdherentes = ({ listado }) => {
         pagination
         subHeader
         subHeaderComponent={subHeaderComponent}
+        selectableRows
+        selectableRowDisabled={(row) => row.ESTADO == 1}
+        onSelectedRowsChange={handleRowSelected}
+        clearSelectedRows={toggleCleared}
       />
     </div>
   );

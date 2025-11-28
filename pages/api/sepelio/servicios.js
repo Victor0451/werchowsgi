@@ -116,249 +116,102 @@ export default async function handler(req, res) {
       const servImp = await sep.query(
         `                
                 SELECT
-                s.empresa,
-                s.contrato,
-                concat(s.apellido,', ', s.nombre, ' - ', s.dni) 'difunto',                
-                (
-                  CASE
-                  WHEN s.empresa = 'Werchow'
-                  AND EXISTS (
-                    SELECT
-                      SEGURO
-                    FROM
-                      werchow.maestro AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND SEGURO = 1
-                  ) THEN
-                    'SI'
-                  WHEN s.empresa = 'Werchow'
-                  AND EXISTS (
-                    SELECT
-                      SEGURO
-                    FROM
-                      werchow.adherent AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND SEGURO = 1
-                  ) THEN
-                    'SI'
-                  WHEN s.empresa = 'Mutual'
-                  AND EXISTS (
-                    SELECT
-                      SEGURO
-                    FROM
-                      werchow.mutual AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND SEGURO = 1
-                  ) THEN
-                    'SI'
-                  WHEN s.empresa = 'Mutual'
-                  AND EXISTS (
-                    SELECT
-                      SEGURO
-                    FROM
-                      werchow.mutual_adh AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND SEGURO = 1
-                  ) THEN
-                    'SI'
-                  ELSE
-                    'NO'
-                  END
-                ) AS 'seguro',
-                (
-                  CASE
-                  WHEN dni_nuevotitular = 11111111
-                  AND s.empresa = 'Werchow'
-                  AND EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.maestro AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.PLAN = 'P'
-                    AND m.ADHERENTES = 0
-                  ) THEN
-                    'NOVELL/SIN ADH'
-                  WHEN dni_nuevotitular = 11111111
-                  AND s.empresa = 'Werchow'
-                  AND NOT EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.maestro AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.PLAN = 'P'
-                    AND m.ADHERENTES = 0
-                  ) THEN
-                    'NOVELL REALIZADO, FALTA IMPACTAR'
-                  WHEN dni_nuevotitular = 11111111
-                  AND s.empresa = 'Mutual'
-                  AND EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.mutual AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.PLAN = 'P'
-                    AND m.ADHERENTES = 0
-                  ) THEN
-                    'NOVELL/SIN ADH'
-                  WHEN dni_nuevotitular = 11111111
-                  AND s.empresa = 'Mutual'
-                  AND NOT EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.mutual AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.PLAN = 'P'
-                    AND m.ADHERENTES = 0
-                  ) THEN
-                    'NOVELL REALIZADO, FALTA IMPACTAR'
-                  WHEN s.empresa = 'Werchow'
-                  AND EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.maestro AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.PLAN != 'P'
-                  ) THEN
-                  (SELECT
-                    CONCAT(
-                      'NUEVO TIT.',
-                      ' --> ',
-                      m.APELLIDOS,
-                      ', ',
-                      m.NOMBRES,
-                      ' - ',
-                      m.NRO_DOC
-                    )
-                  FROM
-                    werchow.adherent AS m
-                  WHERE
-                    m.NRO_DOC = s.dni_nuevotitular LIMIT 1
-                 ) 
-                  WHEN s.empresa = 'Werchow'
-                  AND s.dni_nuevotitular NOT IN (1, 11111111)
-                  AND NOT EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.maestro AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.PLAN != 'P'
-                  ) THEN
-                    'TITULAR REALIZADO, FALTA IMPACTAR'
-                  WHEN s.empresa = 'Mutual'
-                  AND EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.mutual AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.PLAN != 'P'
-                  ) THEN
-                  (SELECT
-                      CONCAT(
-                        'NUEVO TIT.',
-                        ' --> ',
-                        m.APELLIDOS,
-                        ', ',
-                        m.NOMBRES,
-                        ' - ',
-                        m.NRO_DOC
-                      )
-                    FROM
-                      werchow.mutual_adh AS m
-                    WHERE
-                    m.NRO_DOC = s.dni_nuevotitular
-                   ) 
-                  WHEN s.empresa = 'Mutual'
-                  AND s.dni_nuevotitular NOT IN (1, 11111111)
-                  AND NOT EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.mutual AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.PLAN != 'P'
-                  ) THEN
-                    'TITULAR REALIZADO, FALTA IMPACTAR'
-                  WHEN dni_nuevotitular = 1
-                  AND s.empresa = 'Werchow'
-                  AND NOT EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.adherent AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.BAJA IS NOT NULL
-                    AND m.EDAD = 999
-                  ) THEN                 
-                    'ADHERENTE'
-                  WHEN dni_nuevotitular = 1
-                  AND s.empresa = 'Werchow'
-                  AND EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.adherent AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.BAJA IS NOT NULL
-                    AND m.EDAD = 999
-                  ) THEN
-                    'ADHERENTE REALIZADO, FALTA IMPACTAR'
-                  WHEN dni_nuevotitular = 1
-                  AND s.empresa = 'Mutual'
-                  AND NOT EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.mutual_adh AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.BAJA IS NOT NULL
-                    AND m.EDAD != 999
-                  ) THEN                
-                    'ADHERENTE'
-                  WHEN dni_nuevotitular = 1
-                  AND s.empresa = 'Mutual'
-                  AND EXISTS (
-                    SELECT
-                      *
-                    FROM
-                      werchow.mutual_adh AS m
-                    WHERE
-                      m.NRO_DOC = s.dni
-                    AND m.BAJA IS NOT NULL
-                    AND m.EDAD != 999
-                  ) THEN
-                    'ADHERENTE REALIZADO, FALTA IMPACTAR'
-                  WHEN dni_nuevotitular IS NULL THEN
-                    'PARTICULAR'
-                  END
-                ) AS 'estado_ficha',
-                fecha_fallecimiento
-              FROM
-                servicios AS s
-              WHERE
-                impactado = 0
-              AND dni IS NOT NULL
+    s.empresa,
+    s.contrato,
+    CONCAT(s.apellido, ', ', s.nombre, ' - ', s.dni) AS difunto,
+    -- 1. Lógica para 'seguro' simplificada
+    CASE
+        WHEN w_m.NRO_DOC IS NOT NULL OR w_a.NRO_DOC IS NOT NULL OR mu_m.NRO_DOC IS NOT NULL OR mu_a.NRO_DOC IS NOT NULL THEN 'SI'
+        ELSE 'NO'
+    END AS seguro,
+    -- 2. Lógica para 'estado_ficha' más clara
+    CASE
+        -- CASOS 'NOVELL' (dni_nuevotitular = 11111111)
+        WHEN s.dni_nuevotitular = 11111111 AND s.empresa = 'Werchow' THEN
+            CASE
+                WHEN w_m_novell.NRO_DOC IS NOT NULL THEN 'NOVELL/SIN ADH'
+                ELSE 'NOVELL REALIZADO, FALTA IMPACTAR'
+            END
+        WHEN s.dni_nuevotitular = 11111111 AND s.empresa = 'Mutual' THEN
+            CASE
+                WHEN mu_m_novell.NRO_DOC IS NOT NULL THEN 'NOVELL/SIN ADH'
+                ELSE 'NOVELL REALIZADO, FALTA IMPACTAR'
+            END
+
+        -- CASOS 'NUEVO TITULAR' (s.dni_nuevotitular NOT IN (1, 11111111))
+        WHEN s.dni_nuevotitular NOT IN (1, 11111111) AND s.empresa = 'Werchow' THEN
+            CASE
+                WHEN w_m_plan.NRO_DOC IS NOT NULL THEN
+                    CONCAT('NUEVO TIT. --> ', w_a_titular.APELLIDOS, ', ', w_a_titular.NOMBRES, ' - ', w_a_titular.NRO_DOC)
+                ELSE 'TITULAR REALIZADO, FALTA IMPACTAR'
+            END
+        WHEN s.dni_nuevotitular NOT IN (1, 11111111) AND s.empresa = 'Mutual' THEN
+            CASE
+                WHEN mu_m_plan.NRO_DOC IS NOT NULL THEN
+                    CONCAT('NUEVO TIT. --> ', mu_a_titular.APELLIDOS, ', ', mu_a_titular.NOMBRES, ' - ', mu_a_titular.NRO_DOC)
+                ELSE 'TITULAR REALIZADO, FALTA IMPACTAR'
+            END
+
+        -- CASOS 'ADHERENTE' (dni_nuevotitular = 1)
+        WHEN s.dni_nuevotitular = 1 AND s.empresa = 'Werchow' THEN
+            CASE
+                WHEN w_a_adh.NRO_DOC IS NOT NULL THEN 'ADHERENTE REALIZADO, FALTA IMPACTAR'
+                ELSE 'ADHERENTE'
+            END
+        WHEN s.dni_nuevotitular = 1 AND s.empresa = 'Mutual' THEN
+            CASE
+                WHEN mu_a_adh.NRO_DOC IS NOT NULL THEN 'ADHERENTE REALIZADO, FALTA IMPACTAR'
+                ELSE 'ADHERENTE'
+            END
+
+        -- CASO 'PARTICULAR'
+        WHEN s.dni_nuevotitular IS NULL THEN 'PARTICULAR'
+    END AS estado_ficha,
+    s.fecha_fallecimiento
+FROM
+    servicios AS s
+LEFT JOIN
+    -- Joins para el campo 'seguro' (Werchow Maestro y Adherent)
+    werchow.maestro AS w_m ON s.dni = w_m.NRO_DOC AND s.empresa = 'Werchow' AND w_m.SEGURO = 1
+LEFT JOIN
+    werchow.adherent AS w_a ON s.dni = w_a.NRO_DOC AND s.empresa = 'Werchow' AND w_a.SEGURO = 1
+LEFT JOIN
+    -- Joins para el campo 'seguro' (Mutual Maestro y Adherent)
+    werchow.mutual AS mu_m ON s.dni = mu_m.NRO_DOC AND s.empresa = 'Mutual' AND mu_m.SEGURO = 1
+LEFT JOIN
+    werchow.mutual_adh AS mu_a ON s.dni = mu_a.NRO_DOC AND s.empresa = 'Mutual' AND mu_a.SEGURO = 1
+
+LEFT JOIN
+    -- Joins para el campo 'estado_ficha' - Novell Werchow
+    werchow.maestro AS w_m_novell ON s.dni = w_m_novell.NRO_DOC AND s.empresa = 'Werchow' AND s.dni_nuevotitular = 11111111 AND w_m_novell.PLAN = 'P' AND w_m_novell.ADHERENTES = 0
+LEFT JOIN
+    -- Joins para el campo 'estado_ficha' - Novell Mutual
+    werchow.mutual AS mu_m_novell ON s.dni = mu_m_novell.NRO_DOC AND s.empresa = 'Mutual' AND s.dni_nuevotitular = 11111111 AND mu_m_novell.PLAN = 'P' AND mu_m_novell.ADHERENTES = 0
+
+LEFT JOIN
+    -- Joins para el campo 'estado_ficha' - Nuevo Titular Werchow (verificar PLAN != 'P' en Maestro)
+    werchow.maestro AS w_m_plan ON s.dni = w_m_plan.NRO_DOC AND s.empresa = 'Werchow' AND s.dni_nuevotitular NOT IN (1, 11111111) AND w_m_plan.PLAN != 'P'
+LEFT JOIN
+    -- Join para obtener datos del Nuevo Titular Werchow (desde Adherent)
+    werchow.adherent AS w_a_titular ON s.dni_nuevotitular = w_a_titular.NRO_DOC AND s.empresa = 'Werchow' AND w_m_plan.NRO_DOC IS NOT NULL
+
+LEFT JOIN
+    -- Joins para el campo 'estado_ficha' - Nuevo Titular Mutual (verificar PLAN != 'P' en Mutual)
+    werchow.mutual AS mu_m_plan ON s.dni = mu_m_plan.NRO_DOC AND s.empresa = 'Mutual' AND s.dni_nuevotitular NOT IN (1, 11111111) AND mu_m_plan.PLAN != 'P'
+LEFT JOIN
+    -- Join para obtener datos del Nuevo Titular Mutual (desde Mutual Adh)
+    werchow.mutual_adh AS mu_a_titular ON s.dni_nuevotitular = mu_a_titular.NRO_DOC AND s.empresa = 'Mutual' AND mu_m_plan.NRO_DOC IS NOT NULL
+
+LEFT JOIN
+    -- Joins para el campo 'estado_ficha' - Adherente Werchow (verificar si 'FALTA IMPACTAR')
+    werchow.adherent AS w_a_adh ON s.dni = w_a_adh.NRO_DOC AND s.empresa = 'Werchow' AND s.dni_nuevotitular = 1 AND w_a_adh.BAJA IS NOT NULL AND w_a_adh.EDAD = 999
+LEFT JOIN
+    -- Joins para el campo 'estado_ficha' - Adherente Mutual (verificar si 'FALTA IMPACTAR')
+    werchow.mutual_adh AS mu_a_adh ON s.dni = mu_a_adh.NRO_DOC AND s.empresa = 'Mutual' AND s.dni_nuevotitular = 1 AND mu_a_adh.BAJA IS NOT NULL AND mu_a_adh.EDAD != 999
+
+WHERE
+    s.impactado = 0
+    AND s.dni IS NOT NULL;
                `
       );
       await sep.end();
@@ -804,35 +657,15 @@ export default async function handler(req, res) {
       const servImp = await sep.query(
         `                
             UPDATE servicios AS s
-
-            SET impactado = (
-              CASE
-              WHEN NOT EXISTS (
-                SELECT
-                  a.NRO_DOC
-                FROM
-                  werchow.maestro AS a
-                WHERE
-                  a.NRO_DOC = s.dni
-               
-              ) THEN
-                TRUE
-            
-            WHEN EXISTS (
-                SELECT
-                  a.NRO_DOC
-                FROM
-                  werchow.maestro AS a
-                WHERE
-                  a.NRO_DOC = s.dni          
-              ) THEN
-                FALSE
-              
-              END
-            )
-            WHERE empresa = 'Werchow'
-            and dni_nuevotitular is not NULL
-            and dni_nuevotitular != 1
+SET impactado = NOT EXISTS (
+    SELECT 1
+    FROM werchow.maestro AS m
+    WHERE m.NRO_DOC = s.dni
+)
+WHERE
+    s.empresa = 'Werchow'
+    AND s.dni_nuevotitular IS NOT NULL
+    AND s.dni_nuevotitular != 1;
                    `
       );
 
@@ -848,37 +681,16 @@ export default async function handler(req, res) {
     } else if (req.body.f && req.body.f === "act titulares mutual") {
       const servImp = await sep.query(
         `                
-          UPDATE servicios AS s
-
-          SET impactado = (
-            CASE
-            WHEN NOT EXISTS (
-              SELECT
-                a.NRO_DOC
-              FROM
-                werchow.mutual AS a
-              WHERE
-                a.NRO_DOC = s.dni
-            
-            ) THEN
-              TRUE
-          
-          WHEN EXISTS (
-              SELECT
-                a.NRO_DOC
-              FROM
-                werchow.mutual AS a
-              WHERE
-                a.NRO_DOC = s.dni
-            
-            ) THEN
-              FALSE
-            
-            END
-          )
-          WHERE empresa = 'Mutual'
-          and dni_nuevotitular is not NULL
-          and dni_nuevotitular != 1
+         UPDATE servicios AS s
+SET impactado = NOT EXISTS (
+    SELECT 1
+    FROM werchow.mutual AS m
+    WHERE m.NRO_DOC = s.dni
+)
+WHERE
+    s.empresa = 'Mutual'
+    AND s.dni_nuevotitular IS NOT NULL
+    AND s.dni_nuevotitular != 1;
                      `
       );
 
@@ -894,38 +706,25 @@ export default async function handler(req, res) {
     } else if (req.body.f && req.body.f === "act adherentes werchow") {
       const servImp = await sep.query(
         `                
-          UPDATE servicios AS s
+         UPDATE servicios AS s
+LEFT JOIN werchow.adherent AS a ON s.dni = a.NRO_DOC
+SET s.impactado =
+    CASE
+        -- Caso 1: Se encontró el adherente y coincide con el estado "Impactado" (BAJA IS NOT NULL AND EDAD = 999)
+        WHEN a.NRO_DOC IS NOT NULL AND a.BAJA IS NOT NULL AND a.EDAD = 999 THEN TRUE
 
-          SET impactado = (
-            CASE
-            WHEN EXISTS (
-              SELECT
-                a.NRO_DOC
-              FROM
-                werchow.adherent AS a
-              WHERE
-                a.NRO_DOC = s.dni
-              AND a.BAJA IS NOT NULL
-              AND a.EDAD = 999
-            ) THEN
-              TRUE
-          
-          WHEN EXISTS (
-              SELECT
-                a.NRO_DOC
-              FROM
-                werchow.adherent AS a
-              WHERE
-                a.NRO_DOC = s.dni
-              AND a.BAJA IS NULL
-              AND a.EDAD != 999
-            ) THEN
-              FALSE
-            
-            END
-          )
-          WHERE empresa = 'Werchow'
-          and dni_nuevotitular = 1
+        -- Caso 2: Se encontró el adherente y coincide con el estado "Pendiente" (BAJA IS NULL AND EDAD != 999)
+        WHEN a.NRO_DOC IS NOT NULL AND a.BAJA IS NULL AND a.EDAD != 999 THEN FALSE
+
+        -- Si el registro no se encontró en 'werchow.adherent' (a.NRO_DOC IS NULL) o no coincide con los estados
+        -- cubiertos en los WHEN anteriores, el valor de impactado se mantendría sin cambios (NULL) o se podría
+        -- establecer un valor por defecto si es necesario. (Depende del comportamiento de tu base de datos)
+        ELSE s.impactado -- Mantiene el valor actual si no hay coincidencia con los estados clave
+    END
+WHERE
+    s.empresa = 'Werchow'
+    AND s.dni_nuevotitular = 1
+    AND a.NRO_DOC IS NOT NULL; -- Solo actualiza si hay una coincidencia en la tabla adherente
                        `
       );
 
@@ -941,38 +740,25 @@ export default async function handler(req, res) {
     } else if (req.body.f && req.body.f === "act adherentes mutual") {
       const servImp = await sep.query(
         `                
-          UPDATE servicios AS s
-            
-          SET impactado = (
-            CASE
-            WHEN EXISTS (
-              SELECT
-                a.NRO_DOC
-              FROM
-                werchow.mutual_adh AS a
-              WHERE
-                a.NRO_DOC = s.dni
-              AND a.BAJA IS NOT NULL
-              AND a.EDAD = 999
-            ) THEN
-              TRUE
-    
-          WHEN EXISTS (
-              SELECT
-                a.NRO_DOC
-              FROM
-                werchow.mutual_adh AS a
-              WHERE
-                a.NRO_DOC = s.dni
-              AND a.BAJA IS NULL
-              AND a.EDAD != 999
-            ) THEN
-              FALSE
-            
-            END
-          )
-          where empresa = 'Mutual'
-          and dni_nuevotitular = 1      
+         UPDATE servicios AS s
+LEFT JOIN werchow.mutual_adh AS a ON s.dni = a.NRO_DOC
+SET s.impactado =
+    CASE
+        -- Caso 1: Se encontró el adherente y coincide con el estado "Impactado" (BAJA IS NOT NULL AND EDAD = 999)
+        WHEN a.NRO_DOC IS NOT NULL AND a.BAJA IS NOT NULL AND a.EDAD = 999 THEN TRUE
+
+        -- Caso 2: Se encontró el adherente y coincide con el estado "Pendiente" (BAJA IS NULL AND EDAD != 999)
+        WHEN a.NRO_DOC IS NOT NULL AND a.BAJA IS NULL AND a.EDAD != 999 THEN FALSE
+
+        -- Si el registro no se encontró en 'werchow.adherent' (a.NRO_DOC IS NULL) o no coincide con los estados
+        -- cubiertos en los WHEN anteriores, el valor de impactado se mantendría sin cambios (NULL) o se podría
+        -- establecer un valor por defecto si es necesario. (Depende del comportamiento de tu base de datos)
+        ELSE s.impactado -- Mantiene el valor actual si no hay coincidencia con los estados clave
+    END
+WHERE
+    s.empresa = 'Werchow'
+    AND s.dni_nuevotitular = 1
+    AND a.NRO_DOC IS NOT NULL; -- Solo actualiza si hay una coincidencia en la tabla adherente
                        `
       );
 
