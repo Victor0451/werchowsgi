@@ -117,22 +117,10 @@ export const ProfileMenu = ({ user, msj, orde, prest }) => {
         {profileMenuItems.map(({ label, icon, url, f, user }, key) => {
           const isLastItem = key === profileMenuItems.length - 1;
           return (
-            <MenuItem
-              key={label}
-              onClick={closeMenu}
-              className={`flex items-center gap-2 rounded ${
-                isLastItem
-                  ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                  : ""
-              }`}
-            >
-              {React.createElement(icon, {
-                className: `h-5 w-5 ${isLastItem ? "text-red-500" : ""}`,
-                strokeWidth: 2,
-              })}
-              <Link
-                href={`${url}`}
+            <Link key={label} href={`${url}`}>
+              <MenuItem
                 onClick={() => {
+                  closeMenu();
                   if (f === 1) {
                     jsCookie.remove("usuario");
                     jsCookie.remove("token");
@@ -142,7 +130,16 @@ export const ProfileMenu = ({ user, msj, orde, prest }) => {
                     }, 500);
                   }
                 }}
+                className={`flex items-center gap-2 rounded ${
+                  isLastItem
+                    ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+                    : ""
+                }`}
               >
+                {React.createElement(icon, {
+                  className: `h-5 w-5 ${isLastItem ? "text-red-500" : ""}`,
+                  strokeWidth: 2,
+                })}
                 {f === 2 ? (
                   <Badge content={msj + orde + prest} withBorder />
                 ) : f === 3 ? (
@@ -156,8 +153,8 @@ export const ProfileMenu = ({ user, msj, orde, prest }) => {
                 >
                   {label}
                 </Typography>
-              </Link>
-            </MenuItem>
+              </MenuItem>
+            </Link>
           );
         })}
       </MenuList>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import {
   Typography,
   Menu,
@@ -47,6 +47,12 @@ export const Administracion = () => {
           className="hidden  grid-cols-4 gap-3 overflow-visible lg:grid"
         >
           <ul className="col-span-4 flex w-full flex-col gap-1">
+            <Link href={"/auth/register"}>
+              <MenuItem>
+                <Typography color="black">Registrar Usuario</Typography>
+              </MenuItem>
+            </Link>
+
             <Menu placement="right-start">
               <MenuHandler>
                 <MenuItem className="hidden items-center gap-2 lg:flex lg:rounded-full">
