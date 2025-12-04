@@ -31,7 +31,7 @@ export default async function handler(req, res) {
                 WHERE MONTH(cc.fechacampana) = ${req.query.mes}
                 AND YEAR(cc.fechacampana) = ${req.query.ano}
                 AND c.operador = '${req.query.op}'
-                AND cc.estadocaso = 1
+                
                 Group by c.idcampana, c.descripcion
 
             
@@ -73,7 +73,7 @@ export default async function handler(req, res) {
                 WHERE MONTH(cc.fechacampana) = ${req.query.mes}
                 AND YEAR(cc.fechacampana) = ${req.query.ano}
                 AND c.operador = '${req.query.op}'
-                AND cc.estadocaso = 1
+                
                 AND cc.accion = 1
                 Group by c.idcampana, c.descripcion
 
@@ -96,7 +96,7 @@ export default async function handler(req, res) {
                 WHERE MONTH(cc.fechacampana) = ${req.query.mes}
                 AND YEAR(cc.fechacampana) = ${req.query.ano}
                 AND c.operador = '${req.query.op}'
-                AND cc.estadocaso = 1
+
                 AND cc.accion IS NOT NULL
                 Group by c.idcampana, c.descripcion, gc.accion
 
@@ -392,8 +392,8 @@ export default async function handler(req, res) {
         UPDATE campanatemporal
         SET  accion= '${req.body.accion}',
               fecha_observacion= '${moment(req.body.fecha_observacion).format(
-                "YYYY-MM-DD"
-              )}',
+          "YYYY-MM-DD"
+        )}',
               observacion= '${req.body.observacion}',
               estado= false
         WHERE idcaso = ${parseInt(req.body.idcaso)}

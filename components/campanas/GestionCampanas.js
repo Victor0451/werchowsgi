@@ -45,8 +45,20 @@ export const GestionCampanas = () => {
               <p className="text-2xl underline underline-offset-8">Werchow</p>
               <div className="mt-5 grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-3 p-4">
                 <Campana
-                  titulo="ATRASADOS 1 CUOTA"
+                  titulo="ATRASADOS 1 CUOTA OFICINA"
                   camp="Atrasados"
+                  empresa="werchow"
+                  operador={operadorNom}
+                />
+                <Campana
+                  titulo="ATRASADOS 1 CUOTA TARJETA"
+                  camp="AtrasadosTJT"
+                  empresa="werchow"
+                  operador={operadorNom}
+                />
+                <Campana
+                  titulo="ATRASADOS 1 CUOTA BANCO"
+                  camp="AtrasadosBCO"
                   empresa="werchow"
                   operador={operadorNom}
                 />
