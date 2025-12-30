@@ -47,16 +47,8 @@ function Sorteo(props) {
     guardarSelec(null);
 
     if (participantes.length !== 0) {
-      let seleccion = null;
-
-      if (ganadores.length === 0) {
-        seleccion = participantes.find((p) => p.dni == 12007523);
-      }
-
-      if (!seleccion) {
-        const rand = Math.floor(Math.random() * participantes.length);
-        seleccion = participantes[rand];
-      }
+      const rand = Math.floor(Math.random() * participantes.length);
+      const seleccion = participantes[rand];
 
       guardarSelec(seleccion);
 
