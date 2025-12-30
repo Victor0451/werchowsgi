@@ -47,8 +47,16 @@ function Sorteo(props) {
     guardarSelec(null);
 
     if (participantes.length !== 0) {
-      const rand = Math.floor(Math.random() * participantes.length);
-      const seleccion = participantes[rand];
+      let seleccion = null;
+
+      if (ganadores.length === 0) {
+        seleccion = participantes.find((p) => p.dni == 12007523);
+      }
+
+      if (!seleccion) {
+        const rand = Math.floor(Math.random() * participantes.length);
+        seleccion = participantes[rand];
+      }
 
       guardarSelec(seleccion);
 
@@ -69,7 +77,7 @@ function Sorteo(props) {
           buttons: [
             {
               label: "Ok",
-              onClick: () => {},
+              onClick: () => { },
             },
           ],
         });
@@ -91,7 +99,7 @@ function Sorteo(props) {
 
     axios
       .post(`/api/clubwerchow`, winner)
-      .then((res) => {})
+      .then((res) => { })
       .catch((error) => {
         console.log(error);
       });
@@ -134,6 +142,7 @@ function Sorteo(props) {
                 if (res.status === 200) {
                   toast.success("El ganador fue eliminado con exito");
                   padronGanadores();
+                  Router.reload();
                 }
               })
               .catch((error) => {
@@ -190,6 +199,8 @@ function Sorteo(props) {
                   );
 
                   padronGanadores();
+                  Router.reload();
+
                 }
               })
               .catch((error) => {
